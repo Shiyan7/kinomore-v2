@@ -1,18 +1,15 @@
-import './globals.css'
+import { ReactNode } from "react";
+import { BaseLayout } from "widgets/layouts/base-layout";
+import clsx from "clsx";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html className={clsx("page")} lang="ru">
       <head />
-      <body>{children}</body>
+      <body className="page__body">
+        <BaseLayout>{children}</BaseLayout>
+      </body>
     </html>
-  )
-}
+  );
+};
+export default RootLayout;

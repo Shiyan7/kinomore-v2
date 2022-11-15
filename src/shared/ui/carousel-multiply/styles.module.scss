@@ -1,0 +1,18 @@
+.slider {
+  position: static;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  z-index: 2;
+  transform: translateY(-50%);
+}
+
+.next {
+  right: 30px;
+  left: auto;
+  transform: translateY(-50%) rotate(180deg);
+}

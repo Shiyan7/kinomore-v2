@@ -1,0 +1,20 @@
+.btn {
+  display: block;
+  width: 24px;
+  height: 24px;
+  opacity: 0.5;
+  color: var(--color-white);
+  margin-right: 27px;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+}

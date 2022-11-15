@@ -1,0 +1,67 @@
+.item {
+  display: block;
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.25%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: rgba(59, 58, 62, 0.48);
+  color: var(--color-white);
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--radius);
+    border: 1px solid rgba(#fff, 0.1);
+  }
+}
+
+.image {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.content {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  z-index: 2;
+}
+
+.title {
+  text-shadow: 0 0.75px 0 rgb(0 0 0 / 20%);
+  margin-bottom: 15px;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+}
+
+.year {
+  display: block;
+  text-shadow: 0 0.75px 0 rgb(0 0 0 / 20%);
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.2)) drop-shadow(0 -1px 15px rgba(0, 0, 0, 0.12));
+  font-size: 16px;
+  margin-right: 15px;
+  line-height: 20px;
+}
+
+.genre {
+  display: block;
+  text-shadow: 0 0.75px 0 rgb(0 0 0 / 20%);
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.2)) drop-shadow(0 -1px 15px rgba(0, 0, 0, 0.12));
+  font-size: 16px;
+  line-height: 20px;
+}

@@ -1,0 +1,21 @@
+.profile {
+  display: flex;
+  align-items: center;
+  opacity: 0.5;
+  color: var(--color-white);
+  font-size: 14px;
+  line-height: 20px;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    margin-right: 6px;
+  }
+}

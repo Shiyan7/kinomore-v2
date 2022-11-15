@@ -1,0 +1,23 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--header-z-index);
+  // border-bottom: 1px solid rgba(#fff, 10%);
+  backdrop-filter: saturate(180%) blur(10px);
+  background-color: rgba(#000, 0.7);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}

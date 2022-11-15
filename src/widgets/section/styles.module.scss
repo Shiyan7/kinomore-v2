@@ -1,0 +1,25 @@
+.section {
+  overflow: hidden;
+}
+
+.container {
+  padding-bottom: 100px;
+  padding-top: 30px;
+}
+
+.title {
+  margin-bottom: 15px;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.slider {
+  overflow: visible;
+}
+
+.slide {
+  width: 18%;
+  aspect-ratio: 2/3;
+}

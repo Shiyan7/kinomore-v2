@@ -1,0 +1,39 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 50px;
+  height: 70px;
+  border-radius: 8px;
+
+  &:hover {
+    &:before {
+      background: radial-gradient(100% 100% at 100% 0, rgba(188, 186, 193, 0.32) 0, rgba(139, 136, 146, 0.32) 100%);
+      transform: scale(1.2) translateZ(0);
+    }
+  }
+
+  svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+    fill: var(--color-white);
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    -webkit-backdrop-filter: blur(13px);
+    backdrop-filter: blur(13px);
+    background: rgba(139, 136, 146, 0.32);
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border: none;
+    border-radius: 8px;
+    transition: transform 0.1s;
+  }
+}
