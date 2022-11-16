@@ -1,15 +1,16 @@
-import Image from "next/image";
-import Link from "next/link";
+import { FC } from "react";
 import { Title } from "shared/ui/title";
 import { Rating } from "shared/ui/rating";
-import type { ISlide } from "./types";
+import Image from "next/image";
+import Link from "next/link";
+import type { SlideProps } from "./types";
 import styles from "./styles.module.scss";
 
-export const HeroSlide = ({ item }: { item: ISlide }) => {
+export const HeroSlide: FC<SlideProps> = ({ item }) => {
   const { id, image, title, rating, year, genre } = item;
 
   return (
-    <Link href={`/movie/${id}`} className={styles.item}>
+    <Link href={`/film/${id}`} className={styles.item}>
       <div className={styles.content}>
         <Title className={styles.title} level="h2" size="small">
           {title}
@@ -20,7 +21,7 @@ export const HeroSlide = ({ item }: { item: ISlide }) => {
           <span className={styles.genre}>{genre}</span>
         </div>
       </div>
-      <Image fill quality={100} className={styles.image} src={image} alt={title} />
+      <Image sizes="100%" fill quality={100} className={styles.image} src={image} alt={title} />
     </Link>
   );
 };

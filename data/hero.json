@@ -1,6 +1,6 @@
 [
 	{
-		"id": 1,
+		"id": 1199773,
 		"rating": "6.8",
 		"year": 2022,
 		"title": "Чёрная Пантера: Ваканда навеки",
@@ -9,27 +9,27 @@
 	},
 	{
 		"id": 2,
-		"year": 2022,
+		"year": 1115098,
 		"rating": "5.7",
 		"title": "Мир Юрского периода: Господство",
 		"genre": "Триллеры",
 		"image": "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/jauI01vUIkPA0xVsamGj0Gs1nNL.jpg"
 	},
 	{
-		"id": 3,
+		"id": 1009017,
 		"year": 2022,
-		"rating": "6.0",
+		"rating": "6.4",
 		"title": "Чёрный Адам",
-		"genre": "Триллеры",
+		"genre": "Боевик",
 		"image": "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg"
 	},
 	{
 
-		"id": 3,
+		"id": 1161308,
 		"year": 2022,
-		"rating": "6.0",
-		"title": "Чёрный Адам",
-		"genre": "Триллеры",
+		"rating": "5.4",
+		"title": "Пиноккио",
+		"genre": "Мюзикл",
 		"image": "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/nnUQqlVZeEGuCRx8SaoCU4XVHJN.jpg"
 	}
 ]

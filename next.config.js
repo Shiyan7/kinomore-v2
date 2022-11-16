@@ -2,9 +2,9 @@
 const nextConfig = {
   experimental: {
     appDir: true,
-		/* images: {
+		images: {
 			unoptimized: true,
-		}, */
+		},
   },
 	images: {
 		domains: ['st.kp.yandex.net', 'avatars.mds.yandex.net', 'www.themoviedb.org'],
@@ -12,6 +12,7 @@ const nextConfig = {
 	env: {
 		API_TOKEN: process.env.API_TOKEN,
 		API_URL: process.env.API_URL,
+		HOST: process.env.HOST
 	},
 	webpack(config) {
 		config.module.rules.push({

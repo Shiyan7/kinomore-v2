@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+import { FC, PropsWithChildren } from "react";
 import { BaseLayout } from "widgets/layouts/base-layout";
 import clsx from "clsx";
 
-const RootLayout = ({ children }: { children: ReactNode }) => {
+const RootLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <html className={clsx("page")} lang="ru">
       <head />

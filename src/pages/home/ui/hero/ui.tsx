@@ -7,7 +7,7 @@ import { getHeroMovies } from "./model";
 import styles from "./styles.module.scss";
 
 export const Hero = () => {
-  const data = use(queryClient("/movie", getHeroMovies));
+  const data = use(queryClient("hero", getHeroMovies));
 
   return (
     <section className={styles.section}>
