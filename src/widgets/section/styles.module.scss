@@ -23,3 +23,17 @@
   width: 18%;
   aspect-ratio: 2/3;
 }
+
+.prevBtn[disabled],
+.nextBtn[disabled] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.prevBtn {
+  left: 15px;
+}
+
+.nextBtn {
+  right: 15px;
+}

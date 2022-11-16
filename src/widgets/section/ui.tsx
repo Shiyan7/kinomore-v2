@@ -25,7 +25,13 @@ const Title = ({ children, ...props }: PropsWithChildren<TitleProps>) => {
 function Carousel<T>({ ...props }: CarouselProps<T>) {
   return (
     <div className={styles.wrapper}>
-      <CarouselMultiply className={styles.slider} slideClassName={styles.slide} {...props} />
+      <CarouselMultiply
+        prevBtnClass={styles.prevBtn}
+        nextBtnClass={styles.nextBtn}
+        className={styles.slider}
+        slideClassName={styles.slide}
+        {...props}
+      />
     </div>
   );
 }

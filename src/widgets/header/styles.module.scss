@@ -4,7 +4,6 @@
   left: 0;
   width: 100%;
   z-index: var(--header-z-index);
-  // border-bottom: 1px solid rgba(#fff, 10%);
   backdrop-filter: saturate(180%) blur(10px);
   background-color: rgba(#000, 0.7);
 }
@@ -13,11 +12,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  height: 90px;
+  transition: height 0.3s;
 }
 
 .row {
   display: flex;
   align-items: center;
+}
+
+.fixed {
+  height: 78px;
 }

@@ -13,7 +13,15 @@ const defaultOptions: SwiperOptions = {
   slidesPerView: "auto",
 };
 
-export function CarouselMultiply<T>({ items, renderItem, className, slideClassName, options }: CarouselProps<T>) {
+export function CarouselMultiply<T>({
+  items,
+  renderItem,
+  className,
+  slideClassName,
+  options,
+  prevBtnClass,
+  nextBtnClass,
+}: CarouselProps<T>) {
   const navigationPrevRef = useRef<HTMLButtonElement>(null);
   const navigationNextRef = useRef<HTMLButtonElement>(null);
 
@@ -55,8 +63,8 @@ export function CarouselMultiply<T>({ items, renderItem, className, slideClassNa
       onSwiper={onSwiper}
       className={clsx(styles.slider, className)}
       {...(options ?? defaultOptions)}>
-      <SliderButton className={styles.prev} dir="left" ref={navigationPrevRef} />
-      <SliderButton className={styles.next} dir="right" ref={navigationNextRef} />
+      <SliderButton className={clsx(styles.prev, prevBtnClass)} dir="left" ref={navigationPrevRef} />
+      <SliderButton className={clsx(styles.next, nextBtnClass)} dir="right" ref={navigationNextRef} />
       {renderItems(items)}
     </Swiper>
   );

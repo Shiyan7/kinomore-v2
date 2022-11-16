@@ -10,7 +10,7 @@ export const MovieItem: FC<MovieItemProps> = ({ item }) => {
   console.log(item);
 
   return (
-    <Link className={styles.item} href={`/movie/${id}`}>
+    <Link className={styles.item} href={`/film/${id}`}>
       <Image
         sizes="100%"
         fill
