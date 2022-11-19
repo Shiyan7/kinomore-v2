@@ -8,6 +8,7 @@ const data = [
     title: "Чёрная Пантера: Ваканда навеки",
     genre: "Триллеры",
     image: "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/yYrvN5WFeGYjJnRzhY0QXuo4Isw.jpg",
+    trailer: "https://youtu.be/c8bvibtwADE",
   },
   {
     id: 1115098,
@@ -16,6 +17,7 @@ const data = [
     title: "Мир Юрского периода: Господство",
     genre: "Триллеры",
     image: "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/jauI01vUIkPA0xVsamGj0Gs1nNL.jpg",
+    trailer: "https://youtu.be/c8bvibtwADE",
   },
   {
     id: 1009017,
@@ -24,6 +26,7 @@ const data = [
     title: "Чёрный Адам",
     genre: "Боевик",
     image: "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg",
+    trailer: "https://youtu.be/c8bvibtwADE",
   },
   {
     id: 1161308,
@@ -32,6 +35,7 @@ const data = [
     title: "Пиноккио",
     genre: "Мюзикл",
     image: "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/nnUQqlVZeEGuCRx8SaoCU4XVHJN.jpg",
+    trailer: "https://youtu.be/c8bvibtwADE",
   },
 ];
 

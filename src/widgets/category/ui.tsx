@@ -5,11 +5,11 @@ import { Title, type TitleProps } from "shared/ui/title";
 import { CarouselMultiply, type CarouselProps } from "shared/ui/carousel-multiply";
 import styles from "./styles.module.scss";
 
-interface SectionProps {
+interface CategoryProps {
   className?: string;
 }
 
-export const Section = ({ className, children }: PropsWithChildren<SectionProps>) => {
+export const Category = ({ className, children }: PropsWithChildren<CategoryProps>) => {
   return (
     <section className={clsx(styles.section, className)}>
       <div className={clsx("container", styles.container)}>{children}</div>
@@ -17,7 +17,7 @@ export const Section = ({ className, children }: PropsWithChildren<SectionProps>
   );
 };
 
-const SectionTitle = ({ children, ...props }: PropsWithChildren<TitleProps>) => {
+const CategoryTitle = ({ children, ...props }: PropsWithChildren<TitleProps>) => {
   return (
     <Title className={styles.title} level="h2" {...props}>
       {children}
@@ -25,7 +25,7 @@ const SectionTitle = ({ children, ...props }: PropsWithChildren<TitleProps>) => 
   );
 };
 
-function SectionCarousel<T>({ ...props }: CarouselProps<T>) {
+function CategoryCarousel<T>({ ...props }: CarouselProps<T>) {
   return (
     <div className={styles.wrapper}>
       <CarouselMultiply
@@ -39,5 +39,5 @@ function SectionCarousel<T>({ ...props }: CarouselProps<T>) {
   );
 }
 
-Section.SectionTitle = SectionTitle;
-Section.SectionCarousel = SectionCarousel;
+Category.Title = CategoryTitle;
+Category.Carousel = CategoryCarousel;
