@@ -1,7 +1,12 @@
-import { FC, PropsWithChildren } from "react";
+import { FC, HTMLProps, PropsWithChildren } from "react";
 import clsx from "clsx";
-import type { TitleProps } from "./types";
 import styles from "./styles.module.scss";
+
+export interface TitleProps extends Omit<HTMLProps<HTMLHeadingElement>, "size"> {
+  className?: string;
+  level?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  size?: "small" | "large" | "medium";
+}
 
 export const Title: FC<PropsWithChildren<TitleProps>> = ({
   className,

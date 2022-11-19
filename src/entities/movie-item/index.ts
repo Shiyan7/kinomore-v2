@@ -1,2 +1,2 @@
 export { MovieItem } from "./ui";
-export type { MovieItemProps } from "./types";
+export type { IMovieItem } from "./types";

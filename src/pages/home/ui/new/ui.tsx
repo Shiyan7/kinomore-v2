@@ -8,10 +8,12 @@ import { getNewMovies } from "./model";
 export const New = () => {
   const { docs } = use(queryClient("new", getNewMovies));
 
+  const { SectionTitle, SectionCarousel } = Section;
+
   return (
     <Section>
-      <Section.Title size="medium">Новые фильмы</Section.Title>
-      <Section.Carousel items={docs} renderItem={(item) => <MovieItem item={item} />} />
+      <SectionTitle size="medium">Новые фильмы</SectionTitle>
+      <SectionCarousel items={docs} renderItem={(item) => <MovieItem item={item} />} />
     </Section>
   );
 };

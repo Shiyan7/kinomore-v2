@@ -3,8 +3,12 @@ import { Title } from "shared/ui/title";
 import { Rating } from "shared/ui/rating";
 import Image from "next/image";
 import Link from "next/link";
-import type { SlideProps } from "./types";
+import type { ISlide } from "./types";
 import styles from "./styles.module.scss";
+
+interface SlideProps {
+  item: ISlide;
+}
 
 export const HeroSlide: FC<SlideProps> = ({ item }) => {
   const { id, image, title, rating, year, genre } = item;

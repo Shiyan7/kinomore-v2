@@ -1,17 +1,26 @@
 "use client";
 import "swiper/css";
-import { useCallback, useRef } from "react";
+import { ReactNode, useCallback, useRef } from "react";
 import SwiperClass, { Navigation, SwiperOptions } from "swiper";
 import clsx from "clsx";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { SliderButton } from "shared/ui/slider-button";
-import type { CarouselProps } from "./types";
 import styles from "./styles.module.scss";
 
 const defaultOptions: SwiperOptions = {
   spaceBetween: 15,
   slidesPerView: "auto",
 };
+
+export interface CarouselProps<T> {
+  items: Array<T>;
+  prevBtnClass?: string;
+  nextBtnClass?: string;
+  renderItem: (item: T) => ReactNode;
+  className?: string;
+  slideClassName?: string;
+  options?: SwiperOptions;
+}
 
 export function CarouselMultiply<T>({
   items,

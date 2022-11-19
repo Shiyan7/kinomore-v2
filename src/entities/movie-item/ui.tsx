@@ -1,13 +1,15 @@
 import { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import type { MovieItemProps } from "./types";
+import type { IMovieItem } from "./types";
 import styles from "./styles.module.scss";
+
+interface MovieItemProps {
+  item: IMovieItem;
+}
 
 export const MovieItem: FC<MovieItemProps> = ({ item }) => {
   const { id, name } = item;
-
-  console.log(item);
 
   return (
     <Link className={styles.item} href={`/film/${id}`}>

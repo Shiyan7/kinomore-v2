@@ -1,10 +1,13 @@
 "use client";
 import clsx from "clsx";
 import { PropsWithChildren } from "react";
-import { Title as UITitle, type TitleProps } from "shared/ui/title";
+import { Title, type TitleProps } from "shared/ui/title";
 import { CarouselMultiply, type CarouselProps } from "shared/ui/carousel-multiply";
-import type { SectionProps } from "./types";
 import styles from "./styles.module.scss";
+
+interface SectionProps {
+  className?: string;
+}
 
 export const Section = ({ className, children }: PropsWithChildren<SectionProps>) => {
   return (
@@ -14,15 +17,15 @@ export const Section = ({ className, children }: PropsWithChildren<SectionProps>
   );
 };
 
-const Title = ({ children, ...props }: PropsWithChildren<TitleProps>) => {
+const SectionTitle = ({ children, ...props }: PropsWithChildren<TitleProps>) => {
   return (
-    <UITitle className={styles.title} level="h2" {...props}>
+    <Title className={styles.title} level="h2" {...props}>
       {children}
-    </UITitle>
+    </Title>
   );
 };
 
-function Carousel<T>({ ...props }: CarouselProps<T>) {
+function SectionCarousel<T>({ ...props }: CarouselProps<T>) {
   return (
     <div className={styles.wrapper}>
       <CarouselMultiply
@@ -36,5 +39,5 @@ function Carousel<T>({ ...props }: CarouselProps<T>) {
   );
 }
 
-Section.Title = Title;
-Section.Carousel = Carousel;
+Section.SectionTitle = SectionTitle;
+Section.SectionCarousel = SectionCarousel;

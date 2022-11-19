@@ -6,7 +6,3 @@ export interface ISlide {
   year: number;
   genre: string;
 }
-
-export interface SlideProps {
-  item: ISlide;
-}

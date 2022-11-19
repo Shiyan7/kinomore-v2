@@ -9,7 +9,7 @@ interface IMovieTrailer {
   url: string;
 }
 
-export interface IMovieRating {
+interface IMovieRating {
   await: number;
   filmCritics: number;
   imdb: number;
@@ -39,7 +39,7 @@ interface IMovieTechnology {
   hasImax: boolean;
 }
 
-export interface IMoviePerson {
+interface IMoviePerson {
   id: number;
   name: string;
   enName: string;
@@ -67,27 +67,19 @@ interface IMovieSequels {
   type: string;
 }
 
-export interface ISimilarMovie {
-  alternativeName: string;
-  enName: string;
-  id: number;
-  name: string;
-  poster: IMoviePoster;
-}
-
 interface IMovieLang {
   name: string;
   nameEn: string;
 }
 
-type Fees = {
+interface IFees {
   value: number;
   currency: string;
-};
+}
 
 interface IMovieFees {
-  usa: Fees;
-  world: Fees;
+  usa: IFees;
+  world: IFees;
 }
 
 export interface IMovie {
