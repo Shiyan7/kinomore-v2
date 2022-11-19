@@ -6,13 +6,14 @@
   z-index: var(--header-z-index);
   backdrop-filter: saturate(180%) blur(10px);
   background-color: rgba(#000, 0.7);
+  transition: transform 0.3s;
 }
 
 .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 90px;
+  height: 86px;
   transition: height 0.3s;
 }
 
@@ -22,5 +23,5 @@
 }
 
 .fixed {
-  height: 78px;
+  transform: translateY(-100%);
 }

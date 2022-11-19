@@ -10,8 +10,8 @@ export const Header = () => {
   const { headerRef, isFixed } = useHeaderFixed();
 
   return (
-    <header ref={headerRef} className={styles.header}>
-      <div className={clsx("container", styles.container, isFixed && styles.fixed)}>
+    <header ref={headerRef} className={clsx(styles.header, isFixed && styles.fixed)}>
+      <div className={clsx("container", styles.container)}>
         <div className={styles.row}>
           <Logo />
           <Nav />

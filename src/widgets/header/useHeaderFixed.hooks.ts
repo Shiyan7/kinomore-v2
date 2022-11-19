@@ -1,16 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 
 export const useHeaderFixed = () => {
-  const [isFixed, setIsFixed] = useState(false);
+  const [isFixed, setIsFixed] = useState<boolean>(false);
   const headerRef = useRef<HTMLDivElement>(null);
+  const lastScrollTop = useRef<number>(0);
 
   useEffect(() => {
     const headerFixed = () => {
-      const scrollTop = window.scrollY;
-      const headerHeight = headerRef.current?.offsetHeight;
-      const condition = scrollTop > headerHeight!;
+      const scrollDistance = window.scrollY;
+      const isFixed = scrollDistance > lastScrollTop.current;
 
-      setIsFixed(condition);
+      setIsFixed(isFixed);
+
+      if (scrollDistance === 0) {
+        setIsFixed(false);
+      }
+
+      lastScrollTop.current = scrollDistance;
     };
 
     window.addEventListener("scroll", headerFixed, { passive: true });
