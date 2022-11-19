@@ -1,7 +1,7 @@
+import type { IMovieItem } from "entities/movie-item";
 import { axios } from "shared/lib/axios";
 import { getCurrentYear } from "shared/lib/get-current-year";
 import type { IData } from "shared/types/IData";
-import type { IMovieItem } from "entities/movie-item";
 
 export const getNewMovies = async () => {
   const { data } = await axios.get<IData<IMovieItem[]>>("/movie", {

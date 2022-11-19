@@ -1,3 +1,5 @@
+import "normalize.css";
+import "app/styles/index.scss";
 import { FC, PropsWithChildren } from "react";
 import { BaseLayout } from "widgets/layouts/base-layout";
 import clsx from "clsx";

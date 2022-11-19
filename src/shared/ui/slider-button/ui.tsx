@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
-import { ChevronIcon } from "shared/ui/icons";
 import clsx from "clsx";
+import { ChevronIcon } from "shared/ui/icons";
 import styles from "./styles.module.scss";
 
 interface SliderButtonProps {

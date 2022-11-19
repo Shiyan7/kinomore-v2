@@ -1,3 +1,4 @@
+"use client";
 import clsx from "clsx";
 import { Logo } from "./logo";
 import { Nav } from "./nav";

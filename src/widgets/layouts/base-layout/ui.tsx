@@ -1,6 +1,3 @@
-"use client";
-import "normalize.css";
-import "app/styles/index.scss";
 import { PropsWithChildren } from "react";
 import { Header } from "widgets/header";
 

@@ -1,4 +1,29 @@
-{
+/** Разрешенные импорты (для сортировки) */
+const ALLOWED_PATH_GROUPS = ["pages/**", "features/**", "entities/**", "shared/**"].map(
+	(pattern) => ({
+		pattern,
+		group: "internal",
+		position: "after",
+	}),
+);
+
+/** Для запрета приватных путей */
+const DENIED_PATH_GROUPS = [
+	// Private imports are prohibited, use public imports instead
+	"app/**",
+	"pages/*/**",
+	"features/*/**",
+	"entities/*/**",
+	"shared/*/*/**", // Для shared +1 уровень, т.к. там чаще мы обращаемся к конкретной библиотеке/компоненты
+	// Prefer absolute imports instead of relatives (for root modules)
+	"../**/app",
+	"../**/pages",
+	"../**/features",
+	"../**/entities",
+	"../**/shared",
+];
+
+module.exports = {
 	"env": {
 		"browser": true,
 		"es2021": true,
@@ -25,6 +50,23 @@
 		"prettier"
 	],
 	"rules": {
+
+		// TODO: eslint-plugin-boundaries
+		"import/order": [
+			2,
+			{
+				pathGroups: ALLOWED_PATH_GROUPS,
+				pathGroupsExcludedImportTypes: ["builtin"],
+				groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
+			},
+		],
+		"no-restricted-imports": [
+			2,
+			{
+				patterns: DENIED_PATH_GROUPS
+			}
+		],
+
 		"no-empty": "off",
 		"arrow-body-style": "off",
 		"react/prop-types": "off",

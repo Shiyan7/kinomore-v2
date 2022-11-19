@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { Title } from "shared/ui/title";
-import { Rating } from "shared/ui/rating";
 import Image from "next/image";
 import Link from "next/link";
+import { Title } from "shared/ui/title";
+import { Rating } from "shared/ui/rating";
 import type { ISlide } from "./types";
 import styles from "./styles.module.scss";
 

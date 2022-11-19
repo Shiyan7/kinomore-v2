@@ -1,8 +1,8 @@
 "use client";
 import { use } from "react";
-import { queryClient } from "shared/lib/query-client";
-import { MovieItem } from "entities/movie-item";
 import { Section } from "widgets/section";
+import { MovieItem } from "entities/movie-item";
+import { queryClient } from "shared/lib/query-client";
 import { getNewMovies } from "./model";
 
 export const New = () => {

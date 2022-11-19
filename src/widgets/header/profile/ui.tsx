@@ -1,7 +1,7 @@
 import Link from "next/link";
+import clsx from "clsx";
 import { RoutesEnum } from "shared/config";
 import { ProfileIcon } from "shared/ui/icons";
-import clsx from "clsx";
 import styles from "./styles.module.scss";
 
 export const Profile = () => {
