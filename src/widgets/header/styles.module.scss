@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   z-index: var(--header-z-index);
-  backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(7px);
   background-color: rgba(#000, 0.7);
   transition: transform 0.3s;
 }

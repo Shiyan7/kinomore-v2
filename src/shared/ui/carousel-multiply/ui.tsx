@@ -4,13 +4,9 @@ import { ReactNode, useCallback, useRef } from "react";
 import SwiperClass, { Navigation, SwiperOptions } from "swiper";
 import clsx from "clsx";
 import { SwiperSlide, Swiper } from "swiper/react";
-import { SliderButton } from "shared/ui/slider-button";
+import { SliderButton } from "./slider-button";
+import { defaultSwiperOptions } from "./config";
 import styles from "./styles.module.scss";
-
-const defaultOptions: SwiperOptions = {
-  spaceBetween: 15,
-  slidesPerView: "auto",
-};
 
 export interface CarouselProps<T> {
   items: Array<T>;
@@ -71,7 +67,7 @@ export function CarouselMultiply<T>({
       navigation={swiperNavigation}
       onSwiper={onSwiper}
       className={clsx(styles.slider, className)}
-      {...(options ?? defaultOptions)}>
+      {...(options ?? defaultSwiperOptions)}>
       <SliderButton className={clsx(styles.prev, prevBtnClass)} dir="left" ref={navigationPrevRef} />
       <SliderButton className={clsx(styles.next, nextBtnClass)} dir="right" ref={navigationNextRef} />
       {renderItems(items)}
