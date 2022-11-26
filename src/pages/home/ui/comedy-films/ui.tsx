@@ -6,7 +6,7 @@ import { queryClient } from "shared/lib/query-client";
 import { getComedyFilms } from "./model";
 
 export const ComedyFilms = () => {
-  const { docs } = use(queryClient("/comedy", getComedyFilms));
+  const { docs } = use(queryClient("comedy films", getComedyFilms));
 
   return (
     <Category>

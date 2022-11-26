@@ -13,7 +13,7 @@ export const Hero = () => {
       rating: "8.4",
       title: "Очень странные дела",
       genre: "Ужасы",
-      image: "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/56v2KjBlU4XaOv9rVYEQypROD7P.jpg",
+      image: "https://www.themoviedb.org/t/p/original/2MaumbgBlW1NoPo3ZJO38A6v7OS.jpg",
     },
     {
       id: 1199773,
@@ -21,7 +21,7 @@ export const Hero = () => {
       rating: "6.8",
       title: "Чёрная Пантера: Ваканда навеки",
       genre: "Триллеры",
-      image: "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/yYrvN5WFeGYjJnRzhY0QXuo4Isw.jpg",
+      image: "https://www.themoviedb.org/t/p/original/xDMIl84Qo5Tsu62c9DGWhmPI67A.jpg",
     },
     {
       id: 1115098,
@@ -38,6 +38,14 @@ export const Hero = () => {
       title: "Пиноккио",
       genre: "Мюзикл",
       image: "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/nnUQqlVZeEGuCRx8SaoCU4XVHJN.jpg",
+    },
+    {
+      id: 505898,
+      year: 2022,
+      rating: "8.4",
+      title: "Аватар: Путь воды",
+      genre: "Фантастика",
+      image: "https://www.themoviedb.org/t/p/original/zaapQ1zjKe2BGhhowh5pM251Gpl.jpg",
     },
   ];
 

@@ -1,4 +1,5 @@
 import type { IMovieItem } from "entities/movie-item";
+import { LIMIT } from "shared/config";
 import { axios } from "shared/lib/axios";
 import { getCurrentYear } from "shared/lib/get-current-year";
 import type { IData } from "shared/types/IData";
@@ -12,7 +13,7 @@ export const getComedyFilms = async () => {
         field: "year",
         "search[]": "комедия",
         "field[]": "genres.name",
-        limit: 15,
+        limit: LIMIT,
       },
     }
   );

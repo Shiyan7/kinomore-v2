@@ -3,10 +3,10 @@ import { use } from "react";
 import { Category } from "widgets/category";
 import { MovieItem } from "entities/movie-item";
 import { queryClient } from "shared/lib/query-client";
-import { getNewMovies } from "./model";
+import { getNewFilms } from "./model";
 
-export const New = () => {
-  const { docs } = use(queryClient("/new", getNewMovies));
+export const NewFilms = () => {
+  const { docs } = use(queryClient("new films", getNewFilms));
 
   return (
     <Category>

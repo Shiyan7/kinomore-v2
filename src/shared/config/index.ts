@@ -5,3 +5,5 @@ export enum RoutesEnum {
   Cartoons = "/cartoons",
   Cabinet = "/cabinet",
 }
+
+export const LIMIT = 15;
