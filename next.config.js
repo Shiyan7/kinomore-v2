@@ -11,8 +11,7 @@ const nextConfig = {
 	},
 	env: {
 		API_TOKEN: process.env.API_TOKEN,
-		API_URL: process.env.API_URL,
-		HOST: process.env.HOST
+		API_URL: process.env.API_URL
 	},
 	webpack(config) {
 		config.module.rules.push({

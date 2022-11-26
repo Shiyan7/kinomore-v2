@@ -1,11 +1,11 @@
 "use client";
 import clsx from "clsx";
+import { useHeaderFixed } from "../model";
 import { Logo } from "./logo";
 import { Nav } from "./nav";
 import { Profile } from "./profile";
 import { Search } from "./search";
 import styles from "./styles.module.scss";
-import { useHeaderFixed } from "./useHeaderFixed.hooks";
 
 export const Header = () => {
   const { headerRef, isFixed } = useHeaderFixed();
