@@ -5,7 +5,7 @@
   padding-bottom: 56.25%;
   border-radius: var(--radius);
   overflow: hidden;
-  background-color: rgba(59, 58, 62, 0.48);
+  background-color: var(--color-loader);
   color: var(--color-white);
 
   &:after {

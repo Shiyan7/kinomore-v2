@@ -16,5 +16,5 @@
 
 .slide {
   width: 100%;
-  margin: 0 calc(15px / 2);
+  margin: 0 calc(var(--column-gap) / 2);
 }

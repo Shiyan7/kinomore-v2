@@ -54,7 +54,10 @@ export function CarouselMultiply<T>({
   const renderItems = useCallback(
     (_items: typeof items) =>
       _items?.map((item, idx) => (
-        <SwiperSlide style={{ marginRight: "15px" }} className={slideClassName} key={idx}>
+        <SwiperSlide
+          style={{ marginRight: options?.loop ? "calc(var(--column-gap) / 2)" : "var(--column-gap)" }}
+          className={slideClassName}
+          key={idx}>
           {renderItem(item)}
         </SwiperSlide>
       )),

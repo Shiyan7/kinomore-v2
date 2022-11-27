@@ -10,6 +10,11 @@ html {
 
 .page {
   height: 100%;
+  --column-gap: 10px;
+
+  @media (min-width: 769px) {
+    --column-gap: 15px;
+  }
 }
 
 .page__body {
