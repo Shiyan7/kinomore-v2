@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 
 export const useHeaderFixed = () => {
   const [isFixed, setIsFixed] = useState<boolean>(false);
-  const headerRef = useRef<HTMLDivElement>(null);
   const lastScrollTop = useRef<number>(0);
 
   useEffect(() => {
@@ -11,10 +10,6 @@ export const useHeaderFixed = () => {
       const isFixed = scrollDistance > lastScrollTop.current;
 
       setIsFixed(isFixed);
-
-      if (scrollDistance === 0) {
-        setIsFixed(false);
-      }
 
       lastScrollTop.current = scrollDistance;
     };
@@ -26,6 +21,6 @@ export const useHeaderFixed = () => {
 
   return {
     isFixed,
-    headerRef,
+    setIsFixed,
   };
 };

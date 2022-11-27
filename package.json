@@ -22,6 +22,7 @@
     "eslint": "8.27.0",
     "fs": "^0.0.1-security",
     "next": "^13.0.5",
+    "nextjs-progressbar": "^0.0.16",
     "normalize.css": "^8.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",

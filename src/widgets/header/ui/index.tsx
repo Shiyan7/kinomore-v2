@@ -8,10 +8,10 @@ import { Search } from "./search";
 import styles from "./styles.module.scss";
 
 export const Header = () => {
-  const { headerRef, isFixed } = useHeaderFixed();
+  const { isFixed } = useHeaderFixed();
 
   return (
-    <header ref={headerRef} className={clsx(styles.header, isFixed && styles.fixed)}>
+    <header className={clsx(styles.header, isFixed && styles.fixed)}>
       <div className={clsx("container", styles.container)}>
         <div className={styles.row}>
           <Logo />

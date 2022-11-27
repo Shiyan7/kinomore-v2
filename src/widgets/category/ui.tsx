@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ElementType, PropsWithChildren } from "react";
 import { Title, type TitleProps } from "shared/ui/title";
 import { CarouselMultiply, type CarouselProps } from "shared/ui/carousel-multiply";
+import { ChevronIcon } from "shared/ui/icons";
 import styles from "./styles.module.scss";
 
 interface CategoryProps {
@@ -22,6 +23,9 @@ const CategoryTitle = ({ children, href, ...props }: TitleProps<ElementType<Part
   return (
     <Title size="medium" className={styles.title} as={Link} href={href} {...props}>
       {children}
+      <span className={styles.icon}>
+        <ChevronIcon />
+      </span>
     </Title>
   );
 };
