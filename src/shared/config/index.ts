@@ -4,6 +4,8 @@ export enum RoutesEnum {
   Series = "/series",
   Cartoons = "/cartoons",
   Cabinet = "/cabinet",
+  NewFilms = "/new-films",
+  ComedyFilms = "/comedy-films",
 }
 
 export const LIMIT = 15;

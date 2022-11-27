@@ -1,6 +1,7 @@
 "use client";
 import clsx from "clsx";
-import { PropsWithChildren } from "react";
+import Link from "next/link";
+import { ElementType, PropsWithChildren } from "react";
 import { Title, type TitleProps } from "shared/ui/title";
 import { CarouselMultiply, type CarouselProps } from "shared/ui/carousel-multiply";
 import styles from "./styles.module.scss";
@@ -17,9 +18,9 @@ export const Category = ({ className, children }: PropsWithChildren<CategoryProp
   );
 };
 
-const CategoryTitle = ({ children, ...props }: PropsWithChildren<Omit<TitleProps, "level" | "size">>) => {
+const CategoryTitle = ({ children, href, ...props }: TitleProps<ElementType<Partial<HTMLAnchorElement>>>) => {
   return (
-    <Title size="medium" className={styles.title} level="h2" {...props}>
+    <Title size="medium" className={styles.title} as={Link} href={href} {...props}>
       {children}
     </Title>
   );

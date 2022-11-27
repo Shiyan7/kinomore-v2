@@ -8,5 +8,17 @@
   "singleQuote": false,
   "jsxSingleQuote": false,
   "jsxBracketSameLine": true,
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+	"importOrder": [
+		"app/**",
+		"pages/*/**",
+		"features/*/**",
+		"entities/*/**",
+		"shared/*/*/**",
+		"../**/app",
+		"../**/pages",
+		"../**/features",
+		"../**/entities",
+		"../**/shared"
+	]
 }

@@ -1,10 +1,11 @@
 .title {
+  display: inline-block;
   margin: 0;
   color: var(--color-white);
+  font-weight: 700;
 }
 
 .large {
-  font-weight: 700;
   font-size: 38px;
   line-height: 42px;
 }
@@ -15,7 +16,6 @@
 }
 
 .small {
-  font-weight: 700;
   font-size: 22px;
   line-height: 26px;
 }

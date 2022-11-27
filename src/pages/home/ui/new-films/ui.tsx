@@ -2,6 +2,7 @@
 import { use } from "react";
 import { Category } from "widgets/category";
 import { MovieItem } from "entities/movie-item";
+import { RoutesEnum } from "shared/config";
 import { queryClient } from "shared/lib/query-client";
 import { getNewFilms } from "./model";
 
@@ -10,7 +11,7 @@ export const NewFilms = () => {
 
   return (
     <Category>
-      <Category.Title>Новые фильмы</Category.Title>
+      <Category.Title href={RoutesEnum.NewFilms}>Новые фильмы</Category.Title>
       <Category.Carousel items={docs} renderItem={(item) => <MovieItem item={item} />} />
     </Category>
   );

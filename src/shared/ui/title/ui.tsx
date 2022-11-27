@@ -1,23 +1,30 @@
-import { FC, HTMLProps, PropsWithChildren } from "react";
+import { ComponentProps, ElementType, ReactNode } from "react";
 import clsx from "clsx";
 import styles from "./styles.module.scss";
 
-export interface TitleProps extends Omit<HTMLProps<HTMLHeadingElement>, "size"> {
+interface TitleOwnProps<E extends ElementType = ElementType> {
   className?: string;
-  level?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  children: ReactNode;
   size?: "small" | "large" | "medium";
+  as?: E;
 }
 
-export const Title: FC<PropsWithChildren<TitleProps>> = ({
+const DEFAULT_ELEMENT: ElementType = "h1";
+
+export type TitleProps<E extends ElementType> = TitleOwnProps<E> & Omit<ComponentProps<E>, keyof TitleOwnProps>;
+
+export const Title = <E extends ElementType = typeof DEFAULT_ELEMENT>({
   className,
-  size = "large",
-  level: Level = "h1",
   children,
+  size = "large",
+  as,
   ...props
-}) => {
+}: TitleProps<E>) => {
+  const Element = as || DEFAULT_ELEMENT;
+
   return (
-    <Level className={clsx(styles.title, styles[size], className)} {...props}>
+    <Element className={clsx(styles.title, styles[size], className)} {...props}>
       {children}
-    </Level>
+    </Element>
   );
 };

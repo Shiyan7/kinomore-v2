@@ -61,7 +61,7 @@ export function CarouselMultiply<T>({
           {renderItem(item)}
         </SwiperSlide>
       )),
-    [slideClassName, renderItem]
+    [slideClassName, options, renderItem]
   );
 
   return (

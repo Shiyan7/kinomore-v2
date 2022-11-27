@@ -16,7 +16,7 @@ export const HeroSlide: FC<SlideProps> = ({ item }) => {
   return (
     <Link href={`/film/${id}`} className={styles.item}>
       <div className={styles.content}>
-        <Title className={styles.title} level="h2" size="small">
+        <Title className={styles.title} as="h2" size="small">
           {title}
         </Title>
         <div className={styles.bottom}>
