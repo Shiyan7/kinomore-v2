@@ -17,7 +17,7 @@ export const Category = ({ className, children }: PropsWithChildren<CategoryProp
   );
 };
 
-const CategoryTitle = ({ children, ...props }: PropsWithChildren<TitleProps>) => {
+const CategoryTitle = ({ children, ...props }: PropsWithChildren<Omit<TitleProps, "level" | "size">>) => {
   return (
     <Title size="medium" className={styles.title} level="h2" {...props}>
       {children}

@@ -6,6 +6,19 @@
   border-radius: 15px;
   overflow: hidden;
   background-color: var(--color-loader);
+  padding-top: 150%;
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--radius);
+    border: 1px solid rgba(#fff, 0.1);
+  }
 }
 
 .image {

@@ -1,7 +1,7 @@
 import "normalize.css";
 import "app/styles/index.scss";
 import { FC, PropsWithChildren } from "react";
-import { BaseLayout } from "widgets/layouts/base-layout";
+import { BaseLayout } from "shared/ui/layouts";
 import clsx from "clsx";
 import localFont from "@next/font/local";
 
