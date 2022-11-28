@@ -9,7 +9,7 @@ import { defaultSwiperOptions } from "./config";
 import styles from "./styles.module.scss";
 
 export interface CarouselProps<T> {
-  items: Array<T>;
+  items: Array<T> | undefined;
   prevBtnClass?: string;
   nextBtnClass?: string;
   renderItem: (item: T) => ReactNode;

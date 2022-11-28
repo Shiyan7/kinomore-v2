@@ -1,7 +1,8 @@
 "use client";
+import { ElementType, PropsWithChildren } from "react";
 import clsx from "clsx";
 import Link from "next/link";
-import { ElementType, PropsWithChildren } from "react";
+import { LIMIT } from "shared/config";
 import { Title, type TitleProps } from "shared/ui/title";
 import { CarouselMultiply, type CarouselProps } from "shared/ui/carousel-multiply";
 import { ChevronIcon } from "shared/ui/icons";
@@ -30,7 +31,7 @@ const CategoryTitle = ({ children, href, ...props }: TitleProps<ElementType<Part
   );
 };
 
-function CategoryCarousel<T>({ ...props }: CarouselProps<T>) {
+function CategoryCarousel<T>({ items, ...props }: CarouselProps<T>) {
   return (
     <div className={styles.wrapper}>
       <CarouselMultiply
@@ -38,6 +39,7 @@ function CategoryCarousel<T>({ ...props }: CarouselProps<T>) {
         nextBtnClass={styles.nextBtn}
         className={styles.slider}
         slideClassName={styles.slide}
+        items={items ?? [...Array(LIMIT)]}
         {...props}
       />
     </div>

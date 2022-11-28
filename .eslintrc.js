@@ -50,8 +50,6 @@ module.exports = {
 		"prettier"
 	],
 	"rules": {
-
-		// TODO: eslint-plugin-boundaries
 		"import/order": [
 			2,
 			{
@@ -66,6 +64,8 @@ module.exports = {
 				patterns: DENIED_PATH_GROUPS
 			}
 		],
+
+		"consistent-return": "off",
 
 		"no-empty": "off",
 		"arrow-body-style": "off",
@@ -184,7 +184,7 @@ module.exports = {
 		"indent": "off",
 		"no-tabs": "off",
 		"no-eval": "error",
-		"no-console": "warn",
+		"no-console": "off",
 		"no-duplicate-imports": "error",
 		"no-unused-vars": "off",
 		"no-underscore-dangle": "off",

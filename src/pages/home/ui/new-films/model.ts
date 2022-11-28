@@ -5,15 +5,19 @@ import { getCurrentYear } from "shared/lib/get-current-year";
 import type { IData } from "shared/types/IData";
 
 export const getNewFilms = async () => {
-  const { data } = await axios.get<IData<IMovieItem[]>>("/movie", {
-    params: {
-      search: getCurrentYear(),
-      field: "year",
-      sortField: "votes.filmCritics",
-      sortType: "-1",
-      limit: LIMIT,
-    },
-  });
+  try {
+    const { data } = await axios.get<IData<IMovieItem[]>>("/movie", {
+      params: {
+        search: getCurrentYear(),
+        field: "year",
+        sortField: "votes.filmCritics",
+        sortType: "-1",
+        limit: LIMIT,
+      },
+    });
 
-  return data;
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 };

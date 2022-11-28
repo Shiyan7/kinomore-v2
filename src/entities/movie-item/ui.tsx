@@ -9,19 +9,17 @@ interface MovieItemProps {
 }
 
 export const MovieItem: FC<MovieItemProps> = ({ item }) => {
-  const { id, name } = item;
-
   return (
-    <Link className={styles.item} href={`/film/${id}`}>
+    <Link className={styles.item} href={`/film/${item?.id}`}>
       <Image
         sizes="100%"
         fill
         quality={100}
         className={styles.image}
-        alt={name}
-        src={`https://st.kp.yandex.net/images/film_iphone/iphone360_${id}.jpg`}
+        alt={item?.name}
+        src={`https://st.kp.yandex.net/images/film_iphone/iphone360_${item?.id}.jpg`}
       />
-      <div className={styles.content}>{name}</div>
+      <div className={styles.content}>{item?.name}</div>
     </Link>
   );
 };
