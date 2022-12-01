@@ -1,9 +1,9 @@
 import "normalize.css";
 import "app/styles/index.scss";
 import { FC, PropsWithChildren } from "react";
-import { BaseLayout } from "shared/ui/layouts";
-import clsx from "clsx";
 import localFont from "@next/font/local";
+import clsx from "clsx";
+import { BaseLayout } from "shared/ui/layouts";
 
 const font = localFont({
   display: "swap",

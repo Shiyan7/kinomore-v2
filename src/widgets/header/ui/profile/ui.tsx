@@ -6,12 +6,11 @@ import styles from "./styles.module.scss";
 
 export const Profile = () => {
   const isAuth = false;
-  const name = "Евгений";
 
   const ProfileLink = (
-    <Link href={RoutesEnum.Cabinet} className={clsx("btn-reset", styles.profile)}>
+    <Link href={RoutesEnum.Cabinet} className={styles.profile}>
       <ProfileIcon />
-      {name}
+      Кабинет
     </Link>
   );
 

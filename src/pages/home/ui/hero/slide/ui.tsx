@@ -25,7 +25,7 @@ export const HeroSlide: FC<SlideProps> = ({ item }) => {
           <span className={styles.genre}>{genre}</span>
         </div>
       </div>
-      <Image sizes="100%" fill quality={100} className={styles.image} src={image} alt={title} />
+      <Image priority sizes="100%" fill quality={100} className={styles.image} src={image} alt={title} />
     </Link>
   );
 };
