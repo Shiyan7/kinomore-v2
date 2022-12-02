@@ -15,6 +15,10 @@ html {
   @media (min-width: 769px) {
     --column-gap: 15px;
   }
+
+  @media (min-width: 1401px) {
+    --column-gap: 20px;
+  }
 }
 
 .page__body {

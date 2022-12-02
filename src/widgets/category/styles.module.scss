@@ -12,6 +12,10 @@
   align-items: center;
   margin-bottom: 15px;
 
+  @media (min-width: 1401px) {
+    margin-bottom: 18px;
+  }
+
   &:hover {
     .icon svg {
       transform: translateX(-2px);

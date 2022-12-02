@@ -19,7 +19,9 @@ export const MovieItem: FC<MovieItemProps> = ({ item }) => {
         alt={item?.name}
         src={`https://st.kp.yandex.net/images/film_iphone/iphone360_${item?.id}.jpg`}
       />
-      <div className={styles.content}>{item?.name}</div>
+      <div className={styles.content}>
+        <h3 className={styles.name}>{item?.name}</h3>
+      </div>
     </Link>
   );
 };

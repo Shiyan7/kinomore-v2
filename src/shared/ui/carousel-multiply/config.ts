@@ -6,6 +6,9 @@ export const defaultSwiperOptions: SwiperOptions = {
     769: {
       spaceBetween: 15,
     },
+    1401: {
+      spaceBetween: 18,
+    },
   },
   slidesPerView: "auto",
 };
