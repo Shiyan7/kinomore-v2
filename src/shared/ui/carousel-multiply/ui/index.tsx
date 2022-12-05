@@ -4,11 +4,11 @@ import clsx from "clsx";
 import { ReactNode, useCallback } from "react";
 import { Navigation, SwiperOptions } from "swiper";
 import { SwiperSlide, Swiper } from "swiper/react";
+import { defaultSwiperOptions } from "../config";
 import { SliderButton } from "./slider-button";
-import { defaultSwiperOptions } from "./config";
 import styles from "./styles.module.scss";
 
-export interface CarouselProps<T> {
+export interface CarouselMultiplyProps<T> {
   items: Array<T> | undefined;
   prevBtnClass?: string;
   nextBtnClass?: string;
@@ -26,7 +26,7 @@ export function CarouselMultiply<T>({
   options,
   prevBtnClass,
   nextBtnClass,
-}: CarouselProps<T>) {
+}: CarouselMultiplyProps<T>) {
   const renderItems = useCallback(
     (_items: typeof items) =>
       _items?.map((item, idx) => (

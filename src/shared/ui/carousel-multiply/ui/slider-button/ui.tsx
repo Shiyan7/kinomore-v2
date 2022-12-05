@@ -1,6 +1,6 @@
+import clsx from "clsx";
 import { ButtonHTMLAttributes, FC } from "react";
 import { useSwiper } from "swiper/react";
-import clsx from "clsx";
 import { ChevronIcon } from "shared/ui/icons";
 import styles from "./styles.module.scss";
 

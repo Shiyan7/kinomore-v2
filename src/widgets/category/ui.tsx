@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { LIMIT } from "shared/config";
 import { Title, type TitleProps } from "shared/ui/title";
-import { CarouselMultiply, type CarouselProps } from "shared/ui/carousel-multiply";
+import { CarouselMultiply, type CarouselMultiplyProps } from "shared/ui/carousel-multiply";
 import { ChevronIcon } from "shared/ui/icons";
 import styles from "./styles.module.scss";
 
@@ -31,7 +31,7 @@ const CategoryTitle = ({ children, href, ...props }: TitleProps<ElementType<Part
   );
 };
 
-function CategoryCarousel<T>({ items, ...props }: CarouselProps<T>) {
+function CategoryCarousel<T>({ items, ...props }: CarouselMultiplyProps<T>) {
   return (
     <div className={styles.wrapper}>
       <CarouselMultiply
