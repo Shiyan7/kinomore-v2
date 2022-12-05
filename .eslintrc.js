@@ -93,7 +93,7 @@ module.exports = {
 		"react/jsx-props-no-spreading": 0,
 		"react/destructuring-assignment": 1,
 		"react/require-default-props": 0,
-		"react/no-array-index-key": 1,
+		"react/no-array-index-key": 0,
 		"react/no-unescaped-entities": 1,
 		"react/no-danger": 0,
 		"react/function-component-definition": 0,
@@ -277,4 +277,4 @@ module.exports = {
 		"class-methods-use-this": "warn",
 		"react/display-name": "off"
 	}
-}
+};
