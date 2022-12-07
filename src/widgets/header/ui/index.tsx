@@ -4,7 +4,7 @@ import { useHeaderFixed } from "../model";
 import { Logo } from "./logo";
 import { Nav } from "./nav";
 import { Profile } from "./profile";
-import { Search } from "./search";
+import { SearchButton } from "./search-button";
 import styles from "./styles.module.scss";
 
 export const Header = () => {
@@ -18,7 +18,7 @@ export const Header = () => {
           <Nav />
         </div>
         <div className={styles.row}>
-          <Search />
+          <SearchButton />
           <Profile />
         </div>
       </div>
