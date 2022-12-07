@@ -6,7 +6,7 @@
   z-index: var(--header-z-index);
   backdrop-filter: saturate(180%) blur(7px);
   background-color: rgba(#000, 0.7);
-  transition: transform 0.3s;
+  transition: transform var(--duration);
 }
 
 .container {
@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: space-between;
   height: 83px;
-  transition: height 0.3s;
+  transition: height var(--duration);
 }
 
 .row {

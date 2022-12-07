@@ -12,7 +12,6 @@
     .content {
       opacity: 1;
       visibility: visible;
-      transform: scale(1.17);
       background-color: rgba(#000, 0.9);
     }
   }
@@ -49,19 +48,21 @@
   bottom: 0;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 23px 20px;
   justify-content: flex-end;
   opacity: 0;
   border-radius: 15px;
   background-color: rgba(#000, 0.5);
   visibility: hidden;
   border: 1px solid rgba(#fff, 0.1);
-  transition: opacity var(--duration), visibility var(--duration), transform var(--duration), background-color 0.5s;
+  transition: opacity var(--duration), visibility var(--duration), transform var(--duration),
+    background-color var(--duration);
 }
 
 .name {
+  margin: 0;
   color: inherit;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 20px;
   font-weight: 500;
 }

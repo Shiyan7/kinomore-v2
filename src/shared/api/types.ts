@@ -1,15 +1,23 @@
-export interface IMoviePoster {
+export interface Data<T> {
+  docs: T;
+  total: number;
+  limit: number;
+  page: number;
+  pages: number;
+}
+
+export interface MoviePoster {
   previewUrl: string;
   url: string;
 }
 
-interface IMovieTrailer {
+export interface MovieTrailer {
   name: string;
   site: string;
   url: string;
 }
 
-interface IMovieRating {
+export interface MovieRating {
   await: number;
   filmCritics: number;
   imdb: number;
@@ -17,29 +25,29 @@ interface IMovieRating {
   russianFilmCritics: number;
 }
 
-interface IMovieBudget {
+export interface MovieBudget {
   currency: string;
   value: number;
 }
 
-interface IMoviePremiere {
+export interface MoviePremiere {
   cinema: Date;
   country: string;
   russia: Date;
   world: Date;
 }
 
-interface IMovieSeasonsInfo {
+export interface MovieSeasonsInfo {
   number: number;
   episodesCount: number;
 }
 
-interface IMovieTechnology {
+export interface MovieTechnology {
   has3D: boolean;
   hasImax: boolean;
 }
 
-interface IMoviePerson {
+export interface MoviePerson {
   id: number;
   name: string;
   enName: string;
@@ -48,51 +56,51 @@ interface IMoviePerson {
   photo: string;
 }
 
-interface IMovieDistributors {
+export interface MovieDistributors {
   distributor: string;
   distributorRelease: null;
 }
 
-interface IMovieProdComp {
+export interface MovieProdComp {
   name: string;
   previewUrl: string;
   url: string;
 }
 
-interface IMovieSequels {
+export interface MovieSequels {
   alternativeName: string;
   enName: string;
   id: number;
-  poster: IMoviePoster;
+  poster: MoviePoster;
   type: string;
 }
 
-interface IMovieLang {
+export interface MovieLang {
   name: string;
   nameEn: string;
 }
 
-interface IFees {
+export interface Fees {
   value: number;
   currency: string;
 }
 
-interface IMovieFees {
-  usa: IFees;
-  world: IFees;
+export interface MovieFees {
+  usa: Fees;
+  world: Fees;
 }
 
-export interface IMovie {
+export interface Movie {
   ageRating: number;
   alternativeName: string;
   backdrop: { url: string };
-  budget: IMovieBudget;
+  budget: MovieBudget;
   countries: { name: string }[];
   createDate: Date;
   description: string;
-  distributors: IMovieDistributors;
-  fees: IMovieFees;
-  // facts: IFact[];
+  distributors: MovieDistributors;
+  fees: MovieFees;
+  // facts: Fact[];
   genres: { name: string }[];
   id: number;
   enName: string;
@@ -102,26 +110,26 @@ export interface IMovie {
   movieLength: number;
   name: string;
   names: { name: string }[];
-  persons: IMoviePerson[];
-  poster: IMoviePoster;
-  premiere: IMoviePremiere;
-  productionCompanies: IMovieProdComp[];
-  rating?: IMovieRating;
+  persons: MoviePerson[];
+  poster: MoviePoster;
+  premiere: MoviePremiere;
+  productionCompanies: MovieProdComp[];
+  rating?: MovieRating;
   ratingMpaa: string;
-  seasonsInfo?: IMovieSeasonsInfo[];
-  sequelsAndPrequels: IMovieSequels[];
+  seasonsInfo?: MovieSeasonsInfo[];
+  sequelsAndPrequels: MovieSequels[];
   shortDescription: string;
-  similarMovies: IMovie[];
+  similarMovies: Movie[];
   slogan: string;
-  spokenLanguages: IMovieLang[];
+  spokenLanguages: MovieLang[];
   status: string;
-  technology: IMovieTechnology;
+  technology: MovieTechnology;
   ticketsOnSale: boolean;
   type: string;
   typeNumber: number;
   updateDates: Date[];
   updatedAt: Date;
-  videos: { trailers: IMovieTrailer[] };
-  votes: IMovieRating;
+  videos: { trailers: MovieTrailer[] };
+  votes: MovieRating;
   year: number;
 }

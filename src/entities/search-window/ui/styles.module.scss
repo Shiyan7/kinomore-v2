@@ -8,7 +8,7 @@
   opacity: 0;
   visibility: hidden;
   background-color: rgba(#000, 0.9);
-  transition: opacity 0.3s, visibility 0.3s;
+  transition: opacity var(--duration), visibility var(--duration);
 }
 
 .opened {

@@ -5,7 +5,7 @@
   opacity: 0.5;
   color: var(--color-white);
   margin-right: 27px;
-  transition: opacity 0.3s;
+  transition: opacity var(--duration);
 
   &:hover {
     opacity: 1;

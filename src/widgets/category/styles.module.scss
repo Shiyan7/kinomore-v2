@@ -34,7 +34,7 @@
     width: 15px;
     height: 15px;
     fill: currentColor;
-    transition: transform 0.3s;
+    transition: transform var(--duration);
   }
 }
 

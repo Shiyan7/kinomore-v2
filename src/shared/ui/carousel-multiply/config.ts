@@ -1,6 +1,7 @@
 import type { SwiperOptions } from "swiper";
 
 export const defaultSwiperOptions: SwiperOptions = {
+  slidesPerView: "auto",
   spaceBetween: 10,
   breakpoints: {
     769: {
@@ -10,5 +11,4 @@ export const defaultSwiperOptions: SwiperOptions = {
       spaceBetween: 18,
     },
   },
-  slidesPerView: "auto",
 };
