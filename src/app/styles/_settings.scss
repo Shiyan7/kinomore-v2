@@ -17,7 +17,7 @@ html {
   }
 
   @media (min-width: 1401px) {
-    --column-gap: 20px;
+    --column-gap: 18px;
   }
 }
 
@@ -38,6 +38,15 @@ img {
 
 a {
   text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 
 .btn-reset {

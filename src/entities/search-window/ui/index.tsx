@@ -1,18 +1,28 @@
 "use client";
 import clsx from "clsx";
-import { useToggler } from "shared/lib/hooks";
+import { useToggler, useLockedBody } from "shared/lib/hooks";
+import { CloseIcon } from "shared/ui/icons";
+import { Input } from "shared/ui/input";
+import { Title } from "shared/ui/title";
 import { searchInstance } from "../model";
 import styles from "./styles.module.scss";
 
 export const SearchWindow = () => {
   const { close, isOpen } = useToggler(searchInstance);
 
+  useLockedBody(isOpen);
+
   return (
     <div className={clsx(styles.window, isOpen && styles.opened)}>
-      <button type="button" onClick={close}>
-        close
+      <button className={clsx("btn-reset", styles.close)} type="button" onClick={close}>
+        <CloseIcon />
       </button>
-      <input />
+      <div className={styles.container}>
+        <Title className={styles.title} size="large">
+          Поиск
+        </Title>
+        <Input className={styles.input} placeholder="Название фильма, сериала или имя актёра" />
+      </div>
     </div>
   );
 };
