@@ -4,10 +4,10 @@ import { Category } from "widgets/category";
 import { MovieItem } from "entities/movie-item";
 import { RoutesEnum } from "shared/config";
 import { queryClient } from "shared/lib/query-client";
-import { getNewFilms } from "./model";
+import { moviesApi } from "shared/api";
 
 export const NewFilms = () => {
-  const data = use(queryClient("new films", getNewFilms));
+  const data = use(queryClient("new films", moviesApi.getNew));
 
   return (
     <Category>

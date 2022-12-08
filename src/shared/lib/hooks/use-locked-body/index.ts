@@ -11,7 +11,6 @@ export function useLockedBody(initialLocked = false): UseLockedBodyOutput {
     }
 
     const originalOverflow = document.body.style.overflow;
-    const originalPaddingRight = document.body.style.paddingRight;
 
     const scrollBarWidth = window.innerWidth - document.body.offsetWidth;
 
@@ -23,9 +22,7 @@ export function useLockedBody(initialLocked = false): UseLockedBodyOutput {
     return () => {
       document.body.style.overflow = originalOverflow;
 
-      setTimeout(() => {
-        document.body.style.paddingRight = originalPaddingRight;
-      }, 300);
+      document.body.style.paddingRight = "0px";
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locked]);

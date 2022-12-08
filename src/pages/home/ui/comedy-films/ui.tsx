@@ -3,11 +3,11 @@ import { use } from "react";
 import { Category } from "widgets/category";
 import { MovieItem } from "entities/movie-item";
 import { RoutesEnum } from "shared/config";
+import { moviesApi } from "shared/api";
 import { queryClient } from "shared/lib/query-client";
-import { getComedyFilms } from "./model";
 
 export const ComedyFilms = () => {
-  const data = use(queryClient("comedy films", getComedyFilms));
+  const data = use(queryClient("comedy films", moviesApi.getComedy));
 
   return (
     <Category>

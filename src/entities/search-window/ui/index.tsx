@@ -1,6 +1,6 @@
 "use client";
 import clsx from "clsx";
-import { useToggler, useLockedBody } from "shared/lib/hooks";
+import { useToggler, useLockedBody, useEscape } from "shared/lib/hooks";
 import { CloseIcon } from "shared/ui/icons";
 import { Input } from "shared/ui/input";
 import { Title } from "shared/ui/title";
@@ -11,6 +11,8 @@ export const SearchWindow = () => {
   const { close, isOpen } = useToggler(searchInstance);
 
   useLockedBody(isOpen);
+
+  useEscape(close);
 
   return (
     <div className={clsx(styles.window, isOpen && styles.opened)}>

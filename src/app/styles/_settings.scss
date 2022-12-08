@@ -53,6 +53,7 @@ h6 {
   border: none;
   font-family: inherit;
   padding: 0;
+  outline: none;
   background-color: transparent;
   cursor: pointer;
 }
@@ -67,6 +68,7 @@ h6 {
   -webkit-appearance: none;
   appearance: none;
   border: none;
+  outline: none;
   border-radius: 0;
   background-color: #fff;
 
@@ -94,8 +96,8 @@ h6 {
   padding-right: 96px;
 
   @media (max-width: 1720px) {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 25px;
+    padding-right: 25px;
   }
 
   @media (max-width: 375px) {

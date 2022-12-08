@@ -3,6 +3,10 @@
   width: 131px;
   height: 26px;
   margin-right: 40px;
+
+  @media (max-width: 1024px) {
+    margin-right: 30px;
+  }
 }
 
 .image {
