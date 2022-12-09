@@ -25,6 +25,11 @@ export interface IMovieItem {
   alternativeName: string;
   description: string;
   enName: string;
+  externalId: {
+    imdb: string;
+    kpHD: null;
+    tmdb: number;
+  };
   id: number;
   logo: ILogo;
   movieLength: number;

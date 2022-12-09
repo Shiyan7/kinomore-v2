@@ -7,7 +7,7 @@ const nextConfig = {
 		},
   },
 	images: {
-		domains: ['st.kp.yandex.net', 'avatars.mds.yandex.net', 'www.themoviedb.org'],
+		domains: ["st.kp.yandex.net", "avatars.mds.yandex.net", "www.themoviedb.org"],
 	},
 	env: {
 		API_TOKEN: process.env.API_TOKEN,
@@ -18,7 +18,7 @@ const nextConfig = {
 			test: /\.svg$/,
 			use: [
 				{
-					loader: '@svgr/webpack',
+					loader: "@svgr/webpack",
 					options: {
 						icon: true,
 					},

@@ -6,6 +6,7 @@ export enum RoutesEnum {
   Cabinet = "/cabinet",
   NewFilms = "/new-films",
   ComedyFilms = "/comedy-films",
+  ForFamily = "/for-family",
 }
 
 export const LIMIT = 15;

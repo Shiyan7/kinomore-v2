@@ -3,11 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Title } from "shared/ui/title";
 import { Rating } from "shared/ui/rating";
-import type { ISlide } from "./types";
+import type { Slide } from "./types";
 import styles from "./styles.module.scss";
 
 interface SlideProps {
-  item: ISlide;
+  item: Slide;
 }
 
 export const HeroSlide: FC<SlideProps> = ({ item }) => {

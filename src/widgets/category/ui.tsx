@@ -1,5 +1,5 @@
 "use client";
-import { ElementType, PropsWithChildren } from "react";
+import type { ElementType, PropsWithChildren } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 import { LIMIT } from "shared/config";
