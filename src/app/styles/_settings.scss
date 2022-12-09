@@ -96,17 +96,22 @@ h6 {
   padding-right: 96px;
 
   @media (max-width: 1720px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media (max-width: 1024px) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @media (max-width: 576px) {
     padding-left: 25px;
     padding-right: 25px;
   }
 
   @media (max-width: 375px) {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  @media (max-width: 360px) {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }

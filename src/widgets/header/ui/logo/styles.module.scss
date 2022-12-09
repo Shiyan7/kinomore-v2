@@ -7,6 +7,20 @@
   @media (max-width: 1024px) {
     margin-right: 30px;
   }
+
+  @media (max-width: 768px) {
+    margin-right: 0;
+  }
+
+  @media (max-width: 576px) {
+    width: 109px;
+    height: 22px;
+  }
+
+  @media (max-width: 375px) {
+    width: 106px;
+    height: 21px;
+  }
 }
 
 .image {

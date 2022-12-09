@@ -2,14 +2,30 @@
   position: relative;
   overflow: hidden;
   margin: 10px 0 20px;
+
+  @media (max-width: 576px) {
+    margin: 5px 0 10px;
+  }
 }
 
 .container {
   max-width: 57%;
   margin: 0 auto;
 
+  @media (max-width: 1024px) {
+    max-width: 70%;
+  }
+
   @media (max-width: 768px) {
-    max-width: 80%;
+    max-width: calc(100% - 60px);
+  }
+
+  @media (max-width: 576px) {
+    max-width: calc(100% - 50px);
+  }
+
+  @media (max-width: 375px) {
+    max-width: calc(100% - 40px);
   }
 }
 
@@ -20,5 +36,4 @@
 
 .slide {
   width: 100%;
-  margin: 0 calc(var(--column-gap) / 2);
 }

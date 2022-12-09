@@ -8,6 +8,10 @@
   border-radius: 8px;
   transition: opacity var(--duration), visibility var(--duration);
 
+  @media (max-width: 768px) {
+    display: none;
+  }
+
   &:hover {
     &:before {
       background: radial-gradient(100% 100% at 100% 0, rgba(188, 186, 193, 0.32) 0, rgba(139, 136, 146, 0.32) 100%);

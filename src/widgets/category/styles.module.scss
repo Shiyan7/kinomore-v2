@@ -1,10 +1,23 @@
 .section {
   overflow: hidden;
+
+  .title {
+    @media (max-width: 576px) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
 }
 
 .container {
   padding-bottom: 30px;
   padding-top: 30px;
+
+  @media (max-width: 576px) {
+    padding-bottom: 18px;
+    padding-top: 20px;
+  }
 }
 
 .title {
@@ -14,9 +27,11 @@
     margin-bottom: 18px;
   }
 
-  &:hover {
-    .icon svg {
-      transform: translateX(-2px);
+  @media (any-hover: hover) {
+    &:hover {
+      .icon svg {
+        transform: translateX(-2px);
+      }
     }
   }
 }
@@ -47,8 +62,20 @@
 .slide {
   width: 18%;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1200px) {
     width: 22%;
+  }
+
+  @media (max-width: 1024px) {
+    width: 25%;
+  }
+
+  @media (max-width: 768px) {
+    width: 30%;
+  }
+
+  @media (max-width: 576px) {
+    width: 42%;
   }
 }
 

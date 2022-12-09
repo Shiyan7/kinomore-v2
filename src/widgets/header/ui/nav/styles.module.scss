@@ -1,3 +1,9 @@
+.nav {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
 .list {
   display: flex;
   align-items: center;

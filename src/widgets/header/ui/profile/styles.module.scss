@@ -7,6 +7,11 @@
   line-height: 20px;
   transition: opacity var(--duration);
 
+  @media (max-width: 375px) {
+    font-size: 13px;
+    line-height: 19px;
+  }
+
   &:hover {
     opacity: 1;
   }
@@ -17,5 +22,15 @@
     height: 24px;
     fill: currentColor;
     margin-right: 6px;
+
+    @media (max-width: 576px) {
+      width: 22px;
+      height: 22px;
+    }
+
+    @media (max-width: 375px) {
+      width: 20px;
+      height: 20px;
+    }
   }
 }

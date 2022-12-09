@@ -1,6 +1,11 @@
-import React, { PropsWithChildren } from "react";
+import clsx from "clsx";
+import React, { FC, PropsWithChildren } from "react";
 import styles from "./styles.module.scss";
 
-export const Rating = ({ children }: PropsWithChildren) => {
-  return <span className={styles.rating}>{children}</span>;
+interface RatingProps {
+  className?: string;
+}
+
+export const Rating: FC<PropsWithChildren<RatingProps>> = ({ children, className }) => {
+  return <span className={clsx(styles.rating, className)}>{children}</span>;
 };

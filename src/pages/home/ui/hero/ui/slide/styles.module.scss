@@ -8,6 +8,10 @@
   background-color: var(--color-loader);
   color: var(--color-white);
 
+  @media (max-width: 576px) {
+    padding-top: 65%;
+  }
+
   &:after {
     content: "";
     display: block;
@@ -36,17 +40,37 @@
   position: absolute;
   bottom: 30px;
   left: 30px;
+  right: 30px;
   z-index: 2;
+
+  @media (max-width: 576px) {
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+  }
 }
 
 .title {
   text-shadow: 0 0.75px 0 rgb(0 0 0 / 20%);
   margin-bottom: 15px;
+
+  @media (max-width: 576px) {
+    margin-bottom: 10px;
+    max-width: 70%;
+  }
 }
 
 .bottom {
   display: flex;
   align-items: center;
+}
+
+.rating {
+  margin-right: 15px;
+
+  @media (max-width: 576px) {
+    margin-right: 12px;
+  }
 }
 
 .year {
@@ -56,6 +80,10 @@
   font-size: 16px;
   margin-right: 15px;
   line-height: 20px;
+
+  @media (max-width: 576px) {
+    margin-right: 12px;
+  }
 }
 
 .genre {

@@ -55,7 +55,6 @@ export const Hero = () => {
         <CarouselMultiply
           options={{
             loop: true,
-            slidesPerView: "auto",
           }}
           className={styles.slider}
           slideClassName={styles.slide}

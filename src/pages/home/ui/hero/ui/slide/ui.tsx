@@ -20,7 +20,7 @@ export const HeroSlide: FC<SlideProps> = ({ item }) => {
           {title}
         </Title>
         <div className={styles.bottom}>
-          <Rating>{rating}</Rating>
+          <Rating className={styles.rating}>{rating}</Rating>
           <span className={styles.year}>{year}</span>
           <span className={styles.genre}>{genre}</span>
         </div>
