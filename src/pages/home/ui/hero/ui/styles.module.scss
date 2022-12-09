@@ -17,15 +17,15 @@
   }
 
   @media (max-width: 768px) {
-    max-width: calc(100% - 60px);
+    max-width: calc(100% - calc(30px * 2));
   }
 
   @media (max-width: 576px) {
-    max-width: calc(100% - 50px);
+    max-width: calc(100% - calc(18px * 2));
   }
 
   @media (max-width: 375px) {
-    max-width: calc(100% - 40px);
+    max-width: calc(100% - calc(14px * 2));
   }
 }
 
