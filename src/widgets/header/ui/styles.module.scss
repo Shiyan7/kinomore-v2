@@ -28,4 +28,8 @@
 
 .fixed {
   transform: translateY(-100%);
+
+  @media (max-width: 1024px) {
+    transform: translateX(0%);
+  }
 }

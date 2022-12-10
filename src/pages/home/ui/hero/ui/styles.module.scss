@@ -4,7 +4,7 @@
   margin: 10px 0 20px;
 
   @media (max-width: 576px) {
-    margin: 5px 0 10px;
+    margin: 0 0 10px;
   }
 }
 
@@ -21,11 +21,7 @@
   }
 
   @media (max-width: 576px) {
-    max-width: calc(100% - calc(18px * 2));
-  }
-
-  @media (max-width: 375px) {
-    max-width: calc(100% - calc(14px * 2));
+    max-width: calc(100% - calc(calc(18px + calc(10px / 2) / 2) * 2));
   }
 }
 

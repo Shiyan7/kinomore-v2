@@ -7,6 +7,10 @@
   line-height: 20px;
   transition: opacity var(--duration);
 
+  @media (max-width: 768px) {
+    opacity: 1;
+  }
+
   @media (max-width: 375px) {
     font-size: 13px;
     line-height: 19px;
@@ -18,19 +22,19 @@
 
   svg {
     display: block;
-    width: 24px;
-    height: 24px;
+    width: 24.5px;
+    height: 24.5px;
     fill: currentColor;
     margin-right: 6px;
 
     @media (max-width: 576px) {
-      width: 22px;
-      height: 22px;
+      width: 22.5px;
+      height: 22.5px;
     }
 
     @media (max-width: 375px) {
-      width: 20px;
-      height: 20px;
+      width: 20.5px;
+      height: 20.5px;
     }
   }
 }
