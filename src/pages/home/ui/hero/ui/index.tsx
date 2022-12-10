@@ -8,6 +8,14 @@ export const Hero = () => {
 
   const data = [
     {
+      id: 4365427,
+      year: 2022,
+      rating: "8.3",
+      title: "Уэнсдэй",
+      genre: "Фэнтези",
+      image: "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/nPWRN9MDIjO2gDB7nYOPje1pBLu.jpg",
+    },
+    {
       id: 915196,
       year: 2016,
       rating: "8.4",
@@ -30,14 +38,6 @@ export const Hero = () => {
       title: "Мир Юрского периода: Господство",
       genre: "Триллеры",
       image: "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/jauI01vUIkPA0xVsamGj0Gs1nNL.jpg",
-    },
-    {
-      id: 1161308,
-      year: 2022,
-      rating: "5.4",
-      title: "Пиноккио",
-      genre: "Мюзикл",
-      image: "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/nnUQqlVZeEGuCRx8SaoCU4XVHJN.jpg",
     },
     {
       id: 505898,

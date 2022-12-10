@@ -2,7 +2,7 @@
 import type { ElementType, PropsWithChildren } from "react";
 import clsx from "clsx";
 import Link from "next/link";
-import { LIMIT } from "shared/config";
+import { LIMIT } from "shared/api/movies";
 import { Title, type TitleProps } from "shared/ui/title";
 import { CarouselMultiply, type CarouselMultiplyProps } from "shared/ui/carousel-multiply";
 import { ChevronIcon } from "shared/ui/icons";

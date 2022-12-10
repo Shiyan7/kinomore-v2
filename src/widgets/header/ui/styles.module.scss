@@ -4,9 +4,8 @@
   left: 0;
   width: 100%;
   backdrop-filter: saturate(180%) blur(7px);
-  background-color: rgba(#000, 0.7);
+  background-color: rgba(#000, 0.8);
   z-index: var(--header-z-index);
-  background-color: var(--color-black);
   transition: transform var(--duration);
 
   @media (max-width: 1024px) {
