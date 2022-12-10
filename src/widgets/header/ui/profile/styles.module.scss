@@ -9,11 +9,13 @@
 
   @media (max-width: 768px) {
     opacity: 1;
+    font-size: 0;
+    line-height: 0;
+    margin-right: 27px;
   }
 
   @media (max-width: 576px) {
-    font-size: 13px;
-    line-height: 19px;
+    margin-right: 17px;
   }
 
   &:hover {
@@ -27,14 +29,13 @@
     fill: currentColor;
     margin-right: 6px;
 
-    @media (max-width: 576px) {
-      width: 22.5px;
-      height: 22.5px;
+    @media (max-width: 768px) {
+      margin-right: 0;
     }
 
-    @media (max-width: 375px) {
-      width: 20.5px;
-      height: 20.5px;
+    @media (max-width: 576px) {
+      width: 22px;
+      height: 22px;
     }
   }
 }

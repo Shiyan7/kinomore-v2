@@ -1,20 +1,19 @@
 .btn {
-  display: block;
+  display: none;
   width: 24px;
   height: 24px;
   opacity: 0.5;
   color: var(--color-white);
-  margin-right: 27px;
   transition: opacity var(--duration);
 
   @media (max-width: 768px) {
     opacity: 1;
+    display: block;
   }
 
   @media (max-width: 576px) {
     width: 22px;
     height: 22px;
-    margin-right: 17px;
   }
 
   &:hover {
