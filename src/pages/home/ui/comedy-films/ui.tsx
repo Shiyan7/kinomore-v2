@@ -1,13 +1,12 @@
 "use client";
-import { use } from "react";
+import { useStore } from "effector-react";
 import { Category } from "widgets/category";
+import { pageModel } from "pages/home";
 import { MovieItem } from "entities/movie-item";
 import { RoutesEnum } from "shared/config";
-import { moviesApi } from "shared/api";
-import { queryClient } from "shared/lib/query-client";
 
 export const ComedyFilms = () => {
-  const data = use(queryClient("comedy films", moviesApi.getComedy));
+  const data = useStore(pageModel.$comedyFilms);
 
   return (
     <Category>

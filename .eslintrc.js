@@ -10,7 +10,6 @@ const ALLOWED_PATH_GROUPS = ["pages/**", "features/**", "entities/**", "shared/*
 /** Для запрета приватных путей */
 const DENIED_PATH_GROUPS = [
 	// Private imports are prohibited, use public imports instead
-	"app/**",
 	"pages/*/**",
 	"features/*/**",
 	"entities/*/**",
@@ -66,7 +65,8 @@ module.exports = {
 		],
 
 		"consistent-return": "off",
-
+		"@next/next/google-font-display": "off",
+		"@next/next/google-font-preconnect": "off",
 		"no-empty": "off",
 		"arrow-body-style": "off",
 		"react/prop-types": "off",
@@ -200,18 +200,6 @@ module.exports = {
 		"unicorn/throw-new-error": "error",
 		"unicorn/no-useless-spread": "error",
 		"unicorn/no-unnecessary-await": "error",
-		"unicorn/filename-case": [
-			"warn",
-			{
-				"cases": {
-					"camelCase": true,
-					"pascalCase": true
-				},
-				"ignore": [
-					"^\\\\[id\\\\]\\\\.tsx$"
-				]
-			}
-		],
 		"jsx-quotes": [
 			"error",
 			"prefer-double"

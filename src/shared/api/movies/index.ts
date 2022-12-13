@@ -42,6 +42,14 @@ const routesConfig = http.createRoutesConfig({
       limit,
     },
   })),
+  searchByName: http.createRoute<string, Data<IMovieItem[]>>((query) => ({
+    url: "/movie",
+    params: {
+      search: query,
+      field: "id",
+      limit: 20,
+    },
+  })),
 });
 
 const moviesApi = routesConfig.build();
