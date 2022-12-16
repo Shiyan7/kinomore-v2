@@ -33,6 +33,7 @@
   display: block;
   position: absolute;
   border-radius: 15px;
+  overflow: hidden;
   top: 0;
   left: 0;
   width: 100%;
@@ -57,6 +58,10 @@
   border: 1px solid rgba(#fff, 0.1);
   transition: opacity var(--duration), visibility var(--duration), transform var(--duration),
     background-color var(--duration);
+
+  @media (max-width: 576px) {
+    padding: 17px;
+  }
 }
 
 .name {
@@ -65,4 +70,9 @@
   font-size: 16px;
   line-height: 22px;
   font-weight: 500;
+
+  @media (max-width: 576px) {
+    font-size: 15px;
+    line-height: 21px;
+  }
 }

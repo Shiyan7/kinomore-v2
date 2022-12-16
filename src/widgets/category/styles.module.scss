@@ -11,8 +11,8 @@
 }
 
 .container {
-  padding-bottom: 30px;
-  padding-top: 30px;
+  padding-bottom: 25px;
+  padding-top: 25px;
 
   @media (max-width: 576px) {
     padding-bottom: 18px;
@@ -42,6 +42,10 @@
   margin-left: 12px;
   opacity: 0.7;
 
+  @media (max-width: 576px) {
+    margin-top: 0;
+  }
+
   svg {
     display: block;
     width: 15px;
@@ -60,7 +64,7 @@
 }
 
 .slide {
-  width: 18%;
+  width: 17%;
 
   @media (max-width: 1200px) {
     width: 22%;

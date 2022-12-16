@@ -1,14 +1,22 @@
+.label {
+  display: flex;
+  flex-direction: column;
+}
+
 .input {
-  height: 45px;
-  padding: 0 16px;
   border-radius: 10px;
   font-weight: 500;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 13.2px;
+  line-height: 15px;
+  height: 41px;
+  padding: 0 14px;
   background-color: #fff;
-  color: rgba(#000, 0.56);
+  color: var(--color-black);
+
+  @media (max-width: 576px) {
+  }
 
   &::placeholder {
-    color: rgba(#000, 0.56);
+    color: rgba(#000, 0.45);
   }
 }

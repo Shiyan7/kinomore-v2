@@ -74,7 +74,7 @@ module.exports = {
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn",
 		"react/react-in-jsx-scope": "off",
-		"react/button-has-type": 1,
+		"react/button-has-type": "off",
 		"react/jsx-key": 1,
 		"lines-around-directive": "off",
 		"react/jsx-wrap-multilines": [

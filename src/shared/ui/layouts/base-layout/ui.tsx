@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 import { Header } from "widgets/header";
-import { BottomNavigation } from "widgets/bottom-navigation";
+import { AuthWindow } from "features/auth";
 import { SearchWindow } from "entities/search-window";
 
 export const BaseLayout = ({ children }: PropsWithChildren) => {
@@ -8,7 +8,7 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
     <>
       <Header />
       <main className="main">{children}</main>
-      <BottomNavigation />
+      <AuthWindow />
       <SearchWindow />
     </>
   );

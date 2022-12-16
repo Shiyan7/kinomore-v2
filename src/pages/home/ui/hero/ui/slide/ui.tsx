@@ -11,21 +11,19 @@ interface SlideProps {
 }
 
 export const HeroSlide: FC<SlideProps> = ({ item }) => {
-  const { id, image, title, rating, year, genre } = item;
-
   return (
-    <Link href={`/film/${id}`} className={styles.item}>
+    <Link href={`/film/${item?.id}`} className={styles.item}>
       <div className={styles.content}>
         <Title className={styles.title} as="h2" size="small">
-          {title}
+          {item?.title}
         </Title>
         <div className={styles.bottom}>
-          <Rating className={styles.rating}>{rating}</Rating>
-          <span className={styles.year}>{year}</span>
-          <span className={styles.genre}>{genre}</span>
+          <Rating className={styles.rating}>{item?.rating}</Rating>
+          <span className={styles.year}>{item?.year}</span>
+          <span className={styles.genre}>{item?.genre}</span>
         </div>
       </div>
-      <Image priority sizes="100%" fill quality={100} className={styles.image} src={image} alt={title} />
+      <Image priority sizes="100%" fill quality={100} className={styles.image} src={item?.image} alt={item?.title} />
     </Link>
   );
 };

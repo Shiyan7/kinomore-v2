@@ -1,127 +1,226 @@
-export interface MoviePoster {
-  previewUrl: string;
+export interface Data<T> {
+  docs: T[];
+  total: number;
+  limit: number;
+  page: number;
+  pages: number;
+}
+export interface ExternalId {
+  kpHd: string;
+  imdb: string;
+  tmdb: number;
+}
+
+export interface Rating {
+  kpHd: string;
+  imdb: string;
+  tmdb: number;
+}
+
+export interface VendorNumbers {
+  kp: number;
+  imdb: number;
+  tmdb: number;
+  filmCritics: number;
+  russianFilmCritics: number;
+  await: number;
+}
+
+export interface Logo {
   url: string;
 }
 
-export interface MovieTrailer {
+export interface Image {
+  url: string;
+  previewUrl: string;
+}
+
+export interface VendorImage {
+  name: string;
+  url: string;
+  previewUrl: string;
+}
+
+export interface Name {
+  name: string;
+}
+
+export interface Video {
+  url: string;
   name: string;
   site: string;
-  url: string;
-}
-
-export interface MovieRating {
-  await: number;
-  filmCritics: number;
-  imdb: number;
-  kp: number;
-  russianFilmCritics: number;
-}
-
-export interface MovieBudget {
-  currency: string;
-  value: number;
-}
-
-export interface MoviePremiere {
-  cinema: Date;
-  country: string;
-  russia: Date;
-  world: Date;
-}
-
-export interface MovieSeasonsInfo {
-  number: number;
-  episodesCount: number;
-}
-
-export interface MovieTechnology {
-  has3D: boolean;
-  hasImax: boolean;
-}
-
-export interface MoviePerson {
-  id: number;
-  name: string;
-  enName: string;
-  description: string;
-  enProfession: "director" | "actor" | "design" | "producer" | "composer" | "editor";
-  photo: string;
-}
-
-export interface MovieDistributors {
-  distributor: string;
-  distributorRelease: null;
-}
-
-export interface MovieProdComp {
-  name: string;
-  previewUrl: string;
-  url: string;
-}
-
-export interface MovieSequels {
-  alternativeName: string;
-  enName: string;
-  id: number;
-  poster: MoviePoster;
+  size: number;
   type: string;
 }
 
-export interface MovieLang {
+export interface VideoTypes {
+  trailers: Video[];
+  teasers: Video[];
+}
+
+export interface Person {
+  id: number;
+  photo: string;
+  name: string;
+  enName: string;
+  description: string;
+  profession: string;
+  enProfession: string;
+}
+
+export interface CurrencyValue {
+  value: number;
+  currency: string;
+}
+
+export interface Fees {
+  world: CurrencyValue | undefined;
+  russia: CurrencyValue | undefined;
+  usa: CurrencyValue | undefined;
+}
+
+export interface Distributor {
+  distributor: string;
+  distributorRelease: string;
+}
+
+export interface Premiere {
+  country: string;
+  world: string;
+  russia: string;
+  digital: string;
+  cinema: string;
+  bluray: string;
+  dvd: string;
+}
+
+export interface SpokenLanguages {
   name: string;
   nameEn: string;
 }
 
-export interface Fees {
-  value: number;
-  currency: string;
+export interface Images {
+  postersCount: number;
+  backdropsCount: number;
+  framesCount: number;
 }
 
-export interface MovieFees {
-  usa: Fees;
-  world: Fees;
+export interface Value {
+  value: string;
+}
+
+export interface Fact {
+  value: string;
+  type: string;
+  spoiler: boolean;
+}
+
+export interface ReviewInfo {
+  count: number;
+  positiveCount: number;
+  percentage: string;
+}
+
+export interface SeasonInfo {
+  number: number;
+  episodesCount: number;
+}
+
+export interface LinkedMovie {
+  id: number;
+  name: string;
+  enName: string;
+  alternativeName: string;
+  type: string;
+  poster: Image | undefined;
+}
+
+export interface WatchabilityItem {
+  name: string;
+  logo: Logo | undefined;
+  url: string;
+}
+
+export interface Watchability {
+  items: WatchabilityItem[];
+}
+
+export interface Technology {
+  hasImax: boolean;
+  has3d: boolean;
+}
+
+export interface Lists {
+  countries: string[];
+  genres: string[];
+  directors: string[];
+  screenwriters: string[];
+  producers: string[];
+  operators: string[];
+  composers: string[];
+  artists: string[];
+  editors: string[];
+  actors: string[];
+}
+
+export interface Id {
+  id: number;
+}
+
+export interface Request {
+  field?: string[];
+  search?: string[];
+  sortField?: string[];
+  sortType?: string[];
+  page?: number;
+  limit?: number;
 }
 
 export interface Movie {
-  ageRating: number;
-  alternativeName: string;
-  backdrop: { url: string };
-  budget: MovieBudget;
-  countries: { name: string }[];
-  createDate: Date;
-  description: string;
-  distributors: MovieDistributors;
-  fees: MovieFees;
-  // facts: Fact[];
-  genres: { name: string }[];
   id: number;
-  enName: string;
-  images: { framesCount: number };
-  lists: [];
-  logo: { url: string };
-  movieLength: number;
+  externalId: ExternalId | undefined;
   name: string;
-  names: { name: string }[];
-  persons: MoviePerson[];
-  poster: MoviePoster;
-  premiere: MoviePremiere;
-  productionCompanies: MovieProdComp[];
-  rating?: MovieRating;
-  ratingMpaa: string;
-  seasonsInfo?: MovieSeasonsInfo[];
-  sequelsAndPrequels: MovieSequels[];
-  shortDescription: string;
-  similarMovies: Movie[];
-  slogan: string;
-  spokenLanguages: MovieLang[];
-  status: string;
-  technology: MovieTechnology;
-  ticketsOnSale: boolean;
+  alternativeName: string;
+  enName: string;
+  names: Name[];
   type: string;
   typeNumber: number;
-  updateDates: Date[];
-  updatedAt: Date;
-  videos: { trailers: MovieTrailer[] };
-  votes: MovieRating;
+  subType: string;
   year: number;
+  description: string;
+  shortDescription: string;
+  slogan: string;
+  status: string;
+  facts: Fact[];
+  rating: VendorNumbers | undefined;
+  votes: VendorNumbers | undefined;
+  movieLength: number;
+  ratingMpaa: string;
+  ageRating: number;
+  logo: Logo | undefined;
+  poster: Image | undefined;
+  horizontalPoster: Image | undefined;
+  backdrop: Image | undefined;
+  imagesInfo: Images | undefined;
+  videos: VideoTypes | undefined;
+  genres: Name[];
+  countries: Name[];
+  persons: Person[];
+  color: string;
+  networks: VendorImage | undefined;
+  distributors: Distributor | undefined;
+  spokenLanguages: SpokenLanguages[];
+  reviewInfo: ReviewInfo | undefined;
+  seasonsInfo: SeasonInfo[];
+  productionCompanies: VendorImage[];
+  budget: CurrencyValue | undefined;
+  fees: Fees | undefined;
+  premiere: Premiere | undefined;
+  ticketsOnSale: boolean;
+  technology: Technology | undefined;
+  similarMovies: LinkedMovie[];
+  sequelsAndPrequels: LinkedMovie[];
+  watchability: Watchability | undefined;
+  lists: Lists | undefined;
+  kinopoiskId: number;
 }

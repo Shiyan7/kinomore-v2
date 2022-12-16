@@ -1,5 +1,5 @@
 import { attach, createEvent, restore, sample } from "effector";
-import { moviesApi } from "shared/api";
+import { moviesApi, internalApi } from "shared/api";
 
 export const pageStarted = createEvent();
 
@@ -12,7 +12,10 @@ export const $comedyFilms = restore(getComedyFilmsFx, null);
 const getForFamilyFx = attach({ effect: moviesApi.forFamily });
 export const $forFamily = restore(getForFamilyFx, null);
 
+const getHeroMoviesFx = attach({ effect: internalApi.getHeroMovies });
+export const $heroMovies = restore(getHeroMoviesFx, []);
+
 sample({
   clock: pageStarted,
-  target: [getNewFilmsFx, getComedyFilmsFx, getForFamilyFx],
+  target: [getHeroMoviesFx, getNewFilmsFx, getComedyFilmsFx, getForFamilyFx],
 });

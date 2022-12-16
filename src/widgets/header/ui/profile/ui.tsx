@@ -1,10 +1,14 @@
 import Link from "next/link";
 import clsx from "clsx";
+import { authModel } from "features/auth";
+import { useToggler } from "shared/lib/hooks";
 import { RoutesEnum } from "shared/config";
 import { ProfileIcon } from "shared/ui/icons";
 import styles from "./styles.module.scss";
 
 export const Profile = () => {
+  const { open } = useToggler(authModel.authInstance);
+
   const isAuth = false;
 
   const ProfileLink = (
@@ -15,7 +19,7 @@ export const Profile = () => {
   );
 
   const ProfileButton = (
-    <button type="button" className={clsx("btn-reset", styles.profile)}>
+    <button onClick={open} type="button" className={clsx("btn-reset", styles.profile)}>
       <ProfileIcon />
       Войти
     </button>

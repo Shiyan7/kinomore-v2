@@ -65,6 +65,10 @@
 
 .title {
   margin-bottom: 40px;
+
+  @media (max-width: 576px) {
+    margin-bottom: 36px;
+  }
 }
 
 .input {

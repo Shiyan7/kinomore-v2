@@ -1,1 +1,0 @@
-export { BottomNavigation } from "./ui";

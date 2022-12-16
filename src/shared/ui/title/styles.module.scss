@@ -8,11 +8,16 @@
 .large {
   font-size: 38px;
   line-height: 42px;
+
+  @media (max-width: 576px) {
+    font-size: 36px;
+    line-height: 40px;
+  }
 }
 
 .medium {
-  font-size: 26px;
-  line-height: 32px;
+  font-size: 25px;
+  line-height: 31px;
 
   @media (max-width: 576px) {
     font-size: 20px;

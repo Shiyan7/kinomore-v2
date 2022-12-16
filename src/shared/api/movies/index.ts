@@ -1,7 +1,7 @@
 import type { IMovieItem } from "entities/movie-item";
 import { GenresEnum } from "shared/config";
 import { getCurrentYear } from "shared/lib";
-import type { Data } from "../types";
+import type { Data } from "./types";
 import { http } from "./base";
 
 const LIMIT = 15;
@@ -10,7 +10,7 @@ const DEFAULT_PARAMS =
   "&field[]=rating.kp&search=!null&field=name&search=!null&field=votes.kp&sortField=year&sortType=-1";
 
 const routesConfig = http.createRoutesConfig({
-  getNew: http.createRoute<number | void, Data<IMovieItem[]>>((limit = LIMIT) => ({
+  getNew: http.createRoute<number | void, Data<IMovieItem>>((limit = LIMIT) => ({
     url: "/movie",
     params: {
       "search[]": "5-9",
@@ -22,7 +22,7 @@ const routesConfig = http.createRoutesConfig({
       limit,
     },
   })),
-  getComedy: http.createRoute<number | void, Data<IMovieItem[]>>((limit = LIMIT) => ({
+  getComedy: http.createRoute<number | void, Data<IMovieItem>>((limit = LIMIT) => ({
     url: `/movie?search[]=7-10${DEFAULT_PARAMS}&search=1&field=typeNumber`,
     params: {
       search: getCurrentYear(),
@@ -32,7 +32,7 @@ const routesConfig = http.createRoutesConfig({
       limit,
     },
   })),
-  forFamily: http.createRoute<number | void, Data<IMovieItem[]>>((limit = LIMIT) => ({
+  forFamily: http.createRoute<number | void, Data<IMovieItem>>((limit = LIMIT) => ({
     url: `/movie?search[]=1-10${DEFAULT_PARAMS}`,
     params: {
       search: `1960-${getCurrentYear()}`,
@@ -42,7 +42,7 @@ const routesConfig = http.createRoutesConfig({
       limit,
     },
   })),
-  searchByName: http.createRoute<string, Data<IMovieItem[]>>((query) => ({
+  searchByName: http.createRoute<string, Data<IMovieItem>>((query) => ({
     url: "/movie",
     params: {
       search: query,

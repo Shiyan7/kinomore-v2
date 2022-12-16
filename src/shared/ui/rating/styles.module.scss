@@ -8,4 +8,10 @@
   background-color: rgba(139, 136, 146, 0.32);
   border-radius: 5px;
   padding: 0 5px;
+
+  @media (max-width: 576px) {
+    font-size: 14px;
+    line-height: 23px;
+    padding: 0 4px;
+  }
 }

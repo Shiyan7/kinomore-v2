@@ -23,7 +23,7 @@ export const SearchWindow = () => {
         <Title className={styles.title} size="large">
           Поиск
         </Title>
-        <Input className={styles.input} placeholder="Название фильма, сериала или имя актёра" />
+        <Input className={styles.input} placeholder="Фильмы, сериалы, персоны" />
       </div>
     </div>
   );

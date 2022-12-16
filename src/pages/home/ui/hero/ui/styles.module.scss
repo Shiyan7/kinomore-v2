@@ -1,7 +1,7 @@
 .section {
   position: relative;
   overflow: hidden;
-  margin: 10px 0 20px;
+  margin: 15px 0 20px;
 
   @media (max-width: 576px) {
     margin: 0 0 10px;
@@ -9,7 +9,7 @@
 }
 
 .container {
-  max-width: 57%;
+  max-width: 55%;
   margin: 0 auto;
 
   @media (max-width: 1024px) {
@@ -21,7 +21,7 @@
   }
 
   @media (max-width: 576px) {
-    max-width: calc(100% - calc(calc(18px + calc(10px / 2) / 2) * 2));
+    max-width: calc(100% - calc(18px * 2));
   }
 }
 
