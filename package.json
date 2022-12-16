@@ -28,6 +28,7 @@
     "normalize.css": "^8.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.7.1",
     "sass": "^1.56.1",
     "server-only": "^0.0.1",
     "swiper": "^8.4.4"

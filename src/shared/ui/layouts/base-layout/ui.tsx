@@ -8,8 +8,8 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
     <>
       <Header />
       <main className="main">{children}</main>
-      <AuthWindow />
       <SearchWindow />
+      <AuthWindow />
     </>
   );
 };
