@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const address = require("address");
+
 const nextConfig = {
   experimental: {
 		images: {
@@ -28,5 +30,9 @@ const nextConfig = {
 		return config;
 	},
 };
+
+if (process.env.NODE_ENV === "development") {
+  console.log("info  - lanUrl:", `http://${address.ip()}:3000`);
+}
 
 module.exports = nextConfig;

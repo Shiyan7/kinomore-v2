@@ -37,7 +37,7 @@ export const GenresEnum = {
   Myuzikl: "мюзикл",
   Novosti: "новости",
   Priklyucheniya: "приключения",
-  realnoeTv: "реальное ТВ",
+  RealnoeTv: "реальное ТВ",
   Semejnyj: "семейный",
   Sport: "спорт",
   TokShou: "ток-шоу",
