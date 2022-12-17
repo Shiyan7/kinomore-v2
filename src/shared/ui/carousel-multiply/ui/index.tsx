@@ -1,7 +1,7 @@
 "use client";
 import "swiper/css";
 import clsx from "clsx";
-import { ReactNode, useCallback } from "react";
+import { useCallback, type ReactNode } from "react";
 import { Navigation, type SwiperOptions } from "swiper";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { SliderButton } from "./slider-button";

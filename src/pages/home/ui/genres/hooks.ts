@@ -14,10 +14,8 @@ export function useScroll(node: HTMLElement | null) {
 
     node?.addEventListener("scroll", onScroll);
 
-    return () => node?.removeEventListener("scroll", onScroll);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [node]);
 
   return {
     isScrolled,
