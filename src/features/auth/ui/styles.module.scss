@@ -149,6 +149,14 @@
   background-color: #1f1f1f;
   border-radius: 16px 16px 16px 0;
   margin-bottom: 40px;
+  transform: translateY(60px);
+  opacity: 0;
+  transition: transform var(--duration), opacity 0.5s;
+
+  &.done {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 
   @media (max-width: 576px) {
     margin-bottom: 30px;
@@ -186,7 +194,14 @@
   width: 45px;
   height: 45px;
   margin-bottom: 15px;
-  transition: opacity 0.3s;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform var(--duration), opacity var(--duration);
+
+  &.done {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 
   &:hover {
     opacity: 0.8;
@@ -211,6 +226,14 @@
   font-weight: 300;
   color: rgba(#fff, 0.5);
   margin-bottom: 40px;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform var(--duration), opacity var(--duration);
+
+  &.done {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 
   @media (max-width: 576px) {
     margin-bottom: 30px;

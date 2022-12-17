@@ -1,8 +1,9 @@
+import { FormEvent, useState } from "react";
 import { useEvent, useStore } from "effector-react";
-import { useState } from "react";
 import { Button } from "shared/ui/button";
 import { Input } from "shared/ui/input";
 import { $emailStore, handleEmail } from "../../model";
+import { Transition } from "../transition";
 import styles from "./styles.module.scss";
 
 export const AuthForm = () => {
@@ -10,10 +11,12 @@ export const AuthForm = () => {
   const value = useStore($emailStore);
   const onChange = useEvent(handleEmail);
 
-  const onSubmit = () => {
-    setLoading(true);
-
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     /* FIXME! */
+
+    e.preventDefault();
+
+    setLoading(true);
 
     setTimeout(() => {
       setLoading(false);
@@ -22,17 +25,23 @@ export const AuthForm = () => {
   };
 
   return (
-    <form onSubmit={onSubmit} noValidate className={styles.form} action="#">
-      <Input
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        type="email"
-        className={styles.input}
-        placeholder="Введите email"
-      />
-      <Button disabled={!value.length} loading={loading} type="submit">
-        Продолжить
-      </Button>
-    </form>
+    <Transition timeout={250} doneClass={styles.done}>
+      <form onSubmit={onSubmit} noValidate className={styles.form} action="#">
+        <Transition timeout={300} doneClass={styles.done}>
+          <Input
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            type="email"
+            className={styles.input}
+            placeholder="Введите email"
+          />
+        </Transition>
+        <Transition timeout={300} doneClass={styles.done}>
+          <Button className={styles.btn} disabled={!value.length} loading={loading} type="submit">
+            Продолжить
+          </Button>
+        </Transition>
+      </form>
+    </Transition>
   );
 };

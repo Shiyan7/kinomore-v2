@@ -2,9 +2,30 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  &.done {
+    opacity: 1;
+  }
 }
 
 .input {
   width: 100%;
   margin-bottom: 13px;
+  transform: translateY(20px);
+  transition: transform var(--duration);
+
+  &.done {
+    transform: translateY(0px);
+  }
+}
+
+.btn {
+  transform: translateY(25px);
+  transition: transform var(--duration);
+
+  &.done {
+    transform: translateY(0px);
+  }
 }

@@ -4,6 +4,7 @@ import { CloseIcon, GoogleIcon } from "shared/ui/icons";
 import { useEscape, useLockedBody, useToggler } from "shared/lib/hooks";
 import { authInstance } from "../model";
 import { AuthForm } from "./auth-form";
+import { Transition } from "./transition";
 import styles from "./styles.module.scss";
 
 export const AuthWindow = () => {
@@ -22,18 +23,24 @@ export const AuthWindow = () => {
         <button className={clsx("btn-reset", styles.close)} type="button" onClick={close}>
           <CloseIcon />
         </button>
-        <div className={styles.progress} style={{ "--progress-width": `${10}%` } as CSSProperties} />
+        <div className={styles.progress} style={{ "--progress-width": `${6}%` } as CSSProperties} />
       </div>
       <div className={styles.container}>
-        <div className={styles.message}>
-          <span className={styles.messageTitle}>Войдите или зарегистрируйтесь</span>
-          <p className={styles.messageDesc}>чтобы пользоваться сервисом на любом устройстве</p>
-        </div>
+        <Transition doneClass={styles.done} timeout={50}>
+          <div className={styles.message}>
+            <span className={styles.messageTitle}>Войдите или зарегистрируйтесь</span>
+            <p className={styles.messageDesc}>чтобы пользоваться сервисом на любом устройстве</p>
+          </div>
+        </Transition>
         <div className={styles.content}>
-          <button type="button" className={clsx("btn-reset", styles.logo)}>
-            <GoogleIcon />
-          </button>
-          <span className={styles.sep}>или</span>
+          <Transition doneClass={styles.done} timeout={200}>
+            <button type="button" className={clsx("btn-reset", styles.logo)}>
+              <GoogleIcon />
+            </button>
+          </Transition>
+          <Transition doneClass={styles.done} timeout={230}>
+            <span className={styles.sep}>или</span>
+          </Transition>
           <AuthForm />
         </div>
       </div>
