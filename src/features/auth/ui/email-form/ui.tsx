@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { useEvent, useStore } from "effector-react";
+import { useEvent } from "effector-react";
 import { authModel } from "features/auth";
 import { Button } from "shared/ui/button";
 import { Input } from "shared/ui/input";
@@ -10,7 +10,6 @@ import styles from "./styles.module.scss";
 export const EmailForm = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
-  const email = useStore(authModel.$emailStore);
   const setEmail = useEvent(authModel.setEmail);
   const setIsNewUser = useEvent(authModel.setIsNewUser);
   const setFormState = useEvent(authModel.setFormState);
@@ -24,7 +23,7 @@ export const EmailForm = () => {
     setEmail(value);
 
     try {
-      const { status } = await internalApi.check(email);
+      const { status } = await internalApi.check(value);
 
       setIsNewUser(status);
       setFormState("password");
