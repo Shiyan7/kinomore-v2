@@ -1,7 +1,11 @@
 .header {
   --height: 57px;
   --progress-height: 2px;
-  position: relative;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
   height: var(--height);
   display: flex;
   justify-content: center;
@@ -61,7 +65,12 @@
   right: 0;
   width: var(--height);
   height: var(--height);
-  color: #fff;
+  color: var(--color-white);
+  transition: color var(--duration);
+
+  &:hover {
+    color: rgba(#fff, 0.7);
+  }
 
   @media (max-width: 576px) {
     width: 30px;

@@ -13,6 +13,7 @@ import CupIcon from "./assets/cup.svg";
 import GamepadIcon from "./assets/gamepad.svg";
 import MusicIcon from "./assets/music.svg";
 import KnifeIcon from "./assets/knife.svg";
+import EditIcon from "./assets/edit.svg";
 
 export {
   SearchIcon,
@@ -30,4 +31,5 @@ export {
   GamepadIcon,
   MusicIcon,
   KnifeIcon,
+  EditIcon,
 };

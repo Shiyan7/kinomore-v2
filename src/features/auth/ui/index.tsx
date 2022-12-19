@@ -21,28 +21,26 @@ export const AuthWindow = () => {
   useEscape(close);
 
   const EmailFormContent = (
-    <>
-      <Transition doneClass={styles.done} timeout={200}>
+    <div className={styles.content}>
+      <Transition doneClass={styles.done} timeout={100}>
         <button type="button" className={clsx("btn-reset", styles.logo)}>
           <GoogleIcon />
         </button>
       </Transition>
-      <Transition doneClass={styles.done} timeout={230}>
+      <Transition doneClass={styles.done} timeout={130}>
         <span className={styles.sep}>или</span>
       </Transition>
       <EmailForm />
-    </>
+    </div>
   );
 
   return (
     <div className={clsx(styles.window, isOpen && styles.opened)}>
       <Header />
-      <div className={styles.container}>
+      <TransitionGroup className={styles.container}>
         <Message title="Войдите или зарегистрируйтесь" description="чтобы пользоваться сервисом на любом устройстве" />
-        <TransitionGroup className={styles.content}>
-          {isEmailState ? EmailFormContent : <PasswordForm />}
-        </TransitionGroup>
-      </div>
+        {isEmailState ? EmailFormContent : <PasswordForm />}
+      </TransitionGroup>
     </div>
   );
 };

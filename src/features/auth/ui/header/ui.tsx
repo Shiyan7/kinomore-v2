@@ -19,7 +19,7 @@ export const Header = () => {
           <span className={styles.title}>Вход или регистрация</span>
         ) : (
           <>
-            <span className={styles.title}>{isNewUser ? "Здравствуйте" : "Новый пользователь"}</span>
+            <span className={styles.title}>{isNewUser ? "Новый пользователь" : "Здравствуйте"}</span>
             <span className={styles.email}>{email}</span>
           </>
         )}

@@ -37,7 +37,7 @@ export const EmailForm = () => {
 
   return (
     <form onSubmit={onSubmit} noValidate className={styles.form} action="#">
-      <Transition timeout={350} doneClass={styles.done}>
+      <Transition timeout={200} doneClass={styles.done}>
         <Input
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -46,7 +46,7 @@ export const EmailForm = () => {
           placeholder="Введите email"
         />
       </Transition>
-      <Transition timeout={350} doneClass={styles.done}>
+      <Transition timeout={250} doneClass={styles.done}>
         <div className={styles.btnWrapper}>
           <Button className={styles.btn} disabled={!value.length} loading={loading} type="submit">
             Продолжить
