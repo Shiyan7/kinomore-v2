@@ -1,0 +1,85 @@
+.header {
+  --height: 57px;
+  --progress-height: 2px;
+  position: relative;
+  height: var(--height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-black);
+  padding: 0 96px;
+  padding-bottom: var(--progress-height);
+
+  @media (max-width: 1720px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media (max-width: 1024px) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @media (max-width: 576px) {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  @media (max-width: 375px) {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.email {
+  display: block;
+  font-size: 11.5px;
+  line-height: 14px;
+  color: rgba(#fff, 0.6);
+  margin-top: 3px;
+}
+
+.close {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  width: var(--height);
+  height: var(--height);
+  color: #fff;
+
+  @media (max-width: 576px) {
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+  }
+
+  svg {
+    display: block;
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+
+    @media (max-width: 576px) {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}

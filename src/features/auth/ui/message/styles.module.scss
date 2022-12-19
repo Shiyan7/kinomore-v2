@@ -1,0 +1,35 @@
+.message {
+  padding: 17px 16px;
+  padding-right: 80px;
+  background-color: #1f1f1f;
+  border-radius: 16px 16px 16px 0;
+  margin-bottom: 40px;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform var(--duration), opacity var(--duration);
+
+  &.done {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  @media (max-width: 576px) {
+    margin-bottom: 30px;
+  }
+}
+
+.messageTitle {
+  display: block;
+  font-weight: 700;
+  font-size: 13.5px;
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+
+.messageDesc {
+  margin: 0;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(#fff, 0.5);
+}

@@ -3,7 +3,16 @@ import { createToggler } from "shared/lib/toggler";
 
 export const authInstance = createToggler();
 
-export const handleEmail = createEvent<string>();
-export const $emailStore = createStore("");
+export const setEmail = createEvent<string>();
+export const $emailStore = createStore("").on(setEmail, (_, payload) => payload);
 
-$emailStore.on(handleEmail, (_, value) => value);
+export const setProgress = createEvent<number>();
+export const $progressStore = createStore(6).on(setProgress, (_, payload) => payload);
+
+export const setIsNewUser = createEvent<boolean>();
+export const $isNewUser = createStore(false).on(setIsNewUser, (_, payload) => payload);
+
+type FormState = "email" | "password";
+
+export const setFormState = createEvent<FormState>();
+export const $formState = createStore<FormState>("email").on(setFormState, (_, payload) => payload);

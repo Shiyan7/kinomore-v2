@@ -1,7 +1,7 @@
-import React, { FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren } from "react";
 import { CSSTransition } from "react-transition-group";
+import { authModel } from "features/auth";
 import { useToggler } from "shared/lib/hooks";
-import { authInstance } from "../../model";
 
 interface TransitionProps {
   timeout: number;
@@ -9,7 +9,7 @@ interface TransitionProps {
 }
 
 export const Transition: FC<PropsWithChildren<TransitionProps>> = ({ children, doneClass, timeout }) => {
-  const { isOpen } = useToggler(authInstance);
+  const { isOpen } = useToggler(authModel.authInstance);
 
   const classNames = {
     enterDone: doneClass,

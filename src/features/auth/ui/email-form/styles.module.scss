@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  margin-bottom: 13px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform var(--duration), opacity var(--duration);
+
+  &.done {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.btnWrapper {
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform var(--duration), opacity var(--duration);
+
+  &.done {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.btn {
+  width: 100%;
+}
