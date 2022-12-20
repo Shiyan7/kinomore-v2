@@ -51,7 +51,7 @@
   min-width: 430px;
   padding: 17px;
   overflow: hidden;
-  background-color: #313131;
+  background-color: #2a2a2a;
   border-radius: 16px 16px 16px 0;
 
   &.right {
@@ -73,8 +73,12 @@
 
   @media (max-width: 576px) {
     min-width: auto;
-    max-width: 450px;
+    max-width: 88%;
     width: 100%;
+  }
+
+  @media (max-width: 360px) {
+    max-width: 93%;
   }
 }
 
@@ -84,7 +88,7 @@
   font-size: 13.5px;
   line-height: 20px;
 
-  @media (max-width: 360px) {
+  @media (max-width: 576px) {
     font-size: 12.5px;
     line-height: 18px;
   }
@@ -99,7 +103,7 @@
   transition: opacity var(--duration);
   margin-top: 4px;
 
-  @media (max-width: 360px) {
+  @media (max-width: 576px) {
     font-size: 11px;
     line-height: 15px;
   }

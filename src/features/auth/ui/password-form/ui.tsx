@@ -11,11 +11,13 @@ export const PasswordForm = () => {
   const email = useStore(authModel.$emailStore);
   const isNewUser = useStore(authModel.$isNewUser);
   const setIsEmailState = useEvent(authModel.setIsEmailState);
+  const setInputValue = useEvent(authModel.setInputValue);
   const setProgress = useEvent(authModel.setProgress);
 
   const editEmail = () => {
     setIsEmailState(true);
     setProgress(6);
+    setInputValue(email);
   };
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {

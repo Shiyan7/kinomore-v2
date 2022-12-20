@@ -1,5 +1,5 @@
-import { FormEvent, useState } from "react";
-import { useEvent } from "effector-react";
+import { FormEvent, useEffect, useRef, useState } from "react";
+import { useEvent, useStore } from "effector-react";
 import { authModel } from "features/auth";
 import { Button } from "shared/ui/button";
 import { Input } from "shared/ui/input";
@@ -8,8 +8,10 @@ import { Transition } from "../transition";
 import styles from "./styles.module.scss";
 
 export const EmailForm = () => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [value, setValue] = useState<string>("");
+  const inputValue = useStore(authModel.$inputValue);
+  const setInputValue = useEvent(authModel.setInputValue);
   const setEmail = useEvent(authModel.setEmail);
   const setIsNewUser = useEvent(authModel.setIsNewUser);
   const setIsEmailState = useEvent(authModel.setIsEmailState);
@@ -20,15 +22,16 @@ export const EmailForm = () => {
 
     setLoading(true);
 
-    setEmail(value);
+    setEmail(inputValue);
 
     try {
-      const { status } = await internalApi.check(value);
+      const { status } = await internalApi.check(inputValue);
+
+      setIsNewUser(status);
 
       setTimeout(() => {
-        setIsNewUser(status);
         setIsEmailState(false);
-        setValue("");
+        setInputValue("");
         setLoading(false);
         setProgress(50);
       }, 1000);
@@ -37,12 +40,17 @@ export const EmailForm = () => {
     }
   };
 
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
+
   return (
     <form onSubmit={onSubmit} noValidate className={styles.form} action="#">
       <Transition timeout={200} doneClass={styles.done}>
         <Input
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
+          ref={inputRef}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
           type="email"
           className={styles.input}
           placeholder="Введите email"
@@ -50,7 +58,7 @@ export const EmailForm = () => {
       </Transition>
       <Transition timeout={250} doneClass={styles.done}>
         <div className={styles.btnWrapper}>
-          <Button className={styles.btn} disabled={!value.length} loading={loading} type="submit">
+          <Button className={styles.btn} disabled={!inputValue.length} loading={loading} type="submit">
             Продолжить
           </Button>
         </div>
