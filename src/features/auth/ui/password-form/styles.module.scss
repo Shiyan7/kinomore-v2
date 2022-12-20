@@ -24,11 +24,18 @@
   }
 }
 
+.inputs {
+  margin-bottom: 10px;
+}
+
 .input {
-  margin-bottom: 13px;
   transform: translateY(20px);
   opacity: 0;
   transition: transform var(--duration), opacity var(--duration);
+
+  &:not(:last-child) {
+    margin-bottom: 7px;
+  }
 
   &.done {
     transform: translateY(0px);

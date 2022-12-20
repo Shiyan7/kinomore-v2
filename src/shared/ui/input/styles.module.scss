@@ -1,22 +1,43 @@
 .label {
+  position: relative;
   display: flex;
   flex-direction: column;
 }
 
 .input {
+  position: relative;
   border-radius: 10px;
+  font-size: 13px;
+  line-height: 15px;
+  padding: 20px 14px 9px;
+  background-color: var(--color-white);
+  transition: opacity 0.3s;
+  color: transparent;
+  transition: color 0.3s;
+
+  &.isFocus {
+    color: var(--color-black);
+  }
+}
+
+.placeholder {
+  --duration: 0.2s;
+  position: absolute;
+  z-index: 2;
+  left: 14px;
+  right: 14px;
+  top: 50%;
   font-weight: 500;
   font-size: 13.2px;
   line-height: 15px;
-  height: 41px;
-  padding: 0 14px;
-  background-color: #fff;
-  color: var(--color-black);
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(#000, 0.45);
+  transition: font-size var(--duration), line-height var(--duration), top var(--duration);
 
-  @media (max-width: 576px) {
-  }
-
-  &::placeholder {
-    color: rgba(#000, 0.45);
+  &.isFocus {
+    font-size: 10px;
+    line-height: 13px;
+    top: 12.5px;
   }
 }

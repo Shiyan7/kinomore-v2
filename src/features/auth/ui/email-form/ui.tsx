@@ -21,22 +21,17 @@ export const EmailForm = () => {
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     setLoading(true);
-
     setEmail(inputValue);
 
     try {
       const { status } = await internalApi.check(inputValue);
 
       setIsNewUser(status);
-
-      setTimeout(() => {
-        setIsEmailState(false);
-        setInputValue("");
-        setLoading(false);
-        setProgress(50);
-      }, 1000);
+      setIsEmailState(false);
+      setInputValue("");
+      setLoading(false);
+      setProgress(50);
     } catch (e) {
       console.error(e);
     }

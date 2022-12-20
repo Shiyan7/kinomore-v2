@@ -37,9 +37,22 @@ export const PasswordForm = () => {
         />
       </Transition>
       <form onSubmit={onSubmit} noValidate className={styles.form} action="#">
-        <Transition doneClass={styles.done} timeout={150}>
-          <Input className={styles.input} placeholder={isNewUser ? "Придумайте пароль" : "Введите пароль"} />
-        </Transition>
+        <div className={styles.inputs}>
+          {isNewUser ? (
+            <>
+              <Transition doneClass={styles.done} timeout={150}>
+                <Input type="password" className={styles.input} placeholder="Придумайте пароль" />
+              </Transition>
+              <Transition doneClass={styles.done} timeout={150}>
+                <Input type="password" className={styles.input} placeholder="Повторите пароль" />
+              </Transition>
+            </>
+          ) : (
+            <Transition doneClass={styles.done} timeout={150}>
+              <Input type="password" className={styles.input} placeholder="Введите пароль" />
+            </Transition>
+          )}
+        </div>
         <Transition doneClass={styles.done} timeout={170}>
           <Button className={styles.btn}>{isNewUser ? "Продолжить" : "Войти"}</Button>
         </Transition>

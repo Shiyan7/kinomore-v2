@@ -29,7 +29,7 @@ export const AuthWindow = () => {
           <Message
             className={styles.message}
             title="Войдите или зарегистрируйтесь"
-            description="чтобы пользоваться сервисом на любом устройстве"
+            description={isEmailState ? "чтобы пользоваться сервисом на любом устройстве" : null}
           />
         </Transition>
         {isEmailState ? <EmailForm /> : <PasswordForm />}
