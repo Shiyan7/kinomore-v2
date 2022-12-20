@@ -16,8 +16,8 @@ export const PasswordForm = () => {
 
   const editEmail = () => {
     setIsEmailState(true);
-    setProgress(6);
     setInputValue(email);
+    setProgress(6);
   };
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {

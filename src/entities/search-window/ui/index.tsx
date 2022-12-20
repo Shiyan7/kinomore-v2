@@ -1,8 +1,9 @@
 "use client";
 import clsx from "clsx";
-import { useToggler, useLockedBody, useEscape } from "shared/lib/hooks";
+import { useToggler } from "shared/lib/hooks";
 import { CloseIcon } from "shared/ui/icons";
 import { Input } from "shared/ui/input";
+import { Modal } from "shared/ui/modal";
 import { Title } from "shared/ui/title";
 import { searchInstance } from "../model";
 import styles from "./styles.module.scss";
@@ -10,12 +11,8 @@ import styles from "./styles.module.scss";
 export const SearchWindow = () => {
   const { close, isOpen } = useToggler(searchInstance);
 
-  useLockedBody(isOpen);
-
-  useEscape(close);
-
   return (
-    <div className={clsx(styles.window, isOpen && styles.opened)}>
+    <Modal isOpen={isOpen} close={close} className={clsx(styles.window, isOpen && styles.opened)}>
       <button className={clsx("btn-reset", styles.close)} type="button" onClick={close}>
         <CloseIcon />
       </button>
@@ -25,6 +22,6 @@ export const SearchWindow = () => {
         </Title>
         <Input className={styles.input} placeholder="Фильмы, сериалы, персоны" />
       </div>
-    </div>
+    </Modal>
   );
 };

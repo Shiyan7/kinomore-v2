@@ -10,7 +10,7 @@ export const setInputValue = createEvent<string>();
 export const $inputValue = createStore("").on(setInputValue, (_, payload) => payload);
 
 export const setProgress = createEvent<number>();
-export const $progressStore = createStore(6).on(setProgress, (_, payload) => payload);
+export const $progressStore = createStore(5).on(setProgress, (_, payload) => payload);
 
 export const setIsNewUser = createEvent<boolean>();
 export const $isNewUser = createStore(false).on(setIsNewUser, (_, payload) => payload);

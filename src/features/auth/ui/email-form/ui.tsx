@@ -1,6 +1,8 @@
+import clsx from "clsx";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useEvent, useStore } from "effector-react";
 import { authModel } from "features/auth";
+import { GoogleIcon } from "shared/ui/icons";
 import { Button } from "shared/ui/button";
 import { Input } from "shared/ui/input";
 import { internalApi } from "shared/api";
@@ -8,8 +10,8 @@ import { Transition } from "../transition";
 import styles from "./styles.module.scss";
 
 export const EmailForm = () => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const inputRef = useRef<HTMLInputElement>(null);
   const inputValue = useStore(authModel.$inputValue);
   const setInputValue = useEvent(authModel.setInputValue);
   const setEmail = useEvent(authModel.setEmail);
@@ -45,24 +47,34 @@ export const EmailForm = () => {
   }, []);
 
   return (
-    <form onSubmit={onSubmit} noValidate className={styles.form} action="#">
-      <Transition timeout={200} doneClass={styles.done}>
-        <Input
-          ref={inputRef}
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          type="email"
-          className={styles.input}
-          placeholder="Введите email"
-        />
+    <div className={styles.content}>
+      <Transition doneClass={styles.done} timeout={100}>
+        <button type="button" className={clsx("btn-reset", styles.logo)}>
+          <GoogleIcon />
+        </button>
       </Transition>
-      <Transition timeout={250} doneClass={styles.done}>
-        <div className={styles.btnWrapper}>
-          <Button className={styles.btn} disabled={!inputValue.length} loading={loading} type="submit">
-            Продолжить
-          </Button>
-        </div>
+      <Transition doneClass={styles.done} timeout={130}>
+        <span className={styles.sep}>или</span>
       </Transition>
-    </form>
+      <form onSubmit={onSubmit} noValidate className={styles.form} action="#">
+        <Transition timeout={200} doneClass={styles.done}>
+          <Input
+            ref={inputRef}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            type="email"
+            className={styles.input}
+            placeholder="Введите email"
+          />
+        </Transition>
+        <Transition timeout={250} doneClass={styles.done}>
+          <div className={styles.btnWrapper}>
+            <Button className={styles.btn} disabled={!inputValue.length} loading={loading} type="submit">
+              Продолжить
+            </Button>
+          </div>
+        </Transition>
+      </form>
+    </div>
   );
 };
