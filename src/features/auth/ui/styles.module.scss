@@ -115,3 +115,13 @@
     margin-bottom: 30px;
   }
 }
+
+.message {
+  transform: translateY(40px);
+  opacity: 0;
+
+  &.done {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

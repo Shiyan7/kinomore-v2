@@ -1,23 +1,28 @@
 import clsx from "clsx";
 import { FC } from "react";
-import { Transition } from "../transition";
+import { EditIcon } from "shared/ui/icons";
 import styles from "./styles.module.scss";
 
 interface MessageProps {
   title: string;
-  className?: string;
   description?: string | null;
-  right?: boolean;
-  timeout?: number;
+  isEditable?: boolean;
+  onEdit?: () => void;
+  className?: string;
 }
 
-export const Message: FC<MessageProps> = ({ title, right, description, className, timeout = 0 }) => {
+export const Message: FC<MessageProps> = ({ title, isEditable, onEdit, description, className }) => {
   return (
-    <Transition doneClass={styles.done} timeout={timeout}>
-      <div className={clsx(styles.message, className, right && styles.right)}>
+    <div className={clsx(styles.messageWrapper, isEditable && styles.isEditable, className)}>
+      {isEditable && (
+        <button onClick={onEdit} className={clsx("btn-reset", styles.edit)}>
+          <EditIcon />
+        </button>
+      )}
+      <div className={clsx(styles.message, isEditable && styles.right)}>
         <span className={styles.messageTitle}>{title}</span>
         {description && <p className={styles.messageDesc}>{description}</p>}
       </div>
-    </Transition>
+    </div>
   );
 };

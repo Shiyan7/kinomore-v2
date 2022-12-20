@@ -11,11 +11,12 @@ export const Header = () => {
   const email = useStore(authModel.$emailStore);
   const state = useStore(authModel.$formState);
   const isNewUser = useStore(authModel.$isNewUser);
+  const isEmailState = state === "email";
 
   return (
     <div className={styles.header}>
       <div className={styles.text}>
-        {state === "email" ? (
+        {isEmailState ? (
           <span className={styles.title}>Вход или регистрация</span>
         ) : (
           <>

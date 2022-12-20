@@ -38,7 +38,13 @@ export const AuthWindow = () => {
     <div className={clsx(styles.window, isOpen && styles.opened)}>
       <Header />
       <TransitionGroup className={styles.container}>
-        <Message title="Войдите или зарегистрируйтесь" description="чтобы пользоваться сервисом на любом устройстве" />
+        <Transition doneClass={styles.done} timeout={0}>
+          <Message
+            className={styles.message}
+            title="Войдите или зарегистрируйтесь"
+            description="чтобы пользоваться сервисом на любом устройстве"
+          />
+        </Transition>
         {isEmailState ? EmailFormContent : <PasswordForm />}
       </TransitionGroup>
     </div>

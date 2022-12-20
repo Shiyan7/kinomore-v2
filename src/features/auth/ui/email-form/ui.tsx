@@ -27,7 +27,7 @@ export const EmailForm = () => {
 
       setIsNewUser(status);
       setFormState("password");
-      setValue("");
+      // setValue("");
       setLoading(false);
       setProgress(50);
     } catch (e) {

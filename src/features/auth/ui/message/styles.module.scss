@@ -1,41 +1,80 @@
+.messageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: transform var(--duration), opacity var(--duration), height var(--duration);
+
+  &.isEditable {
+    justify-content: flex-end;
+  }
+}
+
+.edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border: 2px solid rgba(#fff, 0.3);
+  border-radius: 100%;
+  margin-right: 20px;
+  transition: border-color var(--duration), background-color var(--duration);
+
+  @media (max-width: 360px) {
+    margin-right: 10px;
+    width: 35px;
+    height: 35px;
+  }
+
+  &:hover {
+    border-color: transparent;
+    background-color: rgba(#fff, 0.3);
+  }
+
+  svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+
+    @media (max-width: 360px) {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
+
 .message {
   display: flex;
   flex-direction: column;
   align-self: flex-start;
   min-width: 430px;
   padding: 17px;
-  background-color: #1f1f1f;
+  overflow: hidden;
+  background-color: #313131;
   border-radius: 16px 16px 16px 0;
+
+  &.right {
+    min-width: 370px;
+    align-self: flex-end;
+    color: #000;
+    background-color: #fff;
+    border-radius: 16px 16px 0px 16px;
+
+    @media (max-width: 576px) {
+      min-width: auto;
+      max-width: 80%;
+    }
+
+    @media (max-width: 360px) {
+      min-width: auto;
+    }
+  }
 
   @media (max-width: 576px) {
     min-width: auto;
     max-width: 450px;
     width: 100%;
-  }
-
-  /* transform: translateY(40px);
-  opacity: 0;
-  transition: transform var(--duration), opacity var(--duration);
-
-  &.done {
-    opacity: 1;
-    transform: translateY(0px);
-  } */
-}
-
-.right {
-  min-width: 370px;
-  align-self: flex-end;
-  background-color: #151515;
-  border-radius: 16px 16px 0px 16px;
-
-  @media (max-width: 576px) {
-    min-width: auto;
-    max-width: 80%;
-  }
-
-  @media (max-width: 360px) {
-    min-width: auto;
   }
 }
 
@@ -49,10 +88,6 @@
     font-size: 12.5px;
     line-height: 18px;
   }
-
-  &:not(:last-child) {
-    margin-bottom: 4px;
-  }
 }
 
 .messageDesc {
@@ -61,6 +96,8 @@
   font-size: 12px;
   line-height: 16px;
   color: rgba(#fff, 0.5);
+  transition: opacity var(--duration);
+  margin-top: 4px;
 
   @media (max-width: 360px) {
     font-size: 11px;

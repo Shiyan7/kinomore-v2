@@ -1,42 +1,11 @@
 .message {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin: 30px 0;
-}
+  margin-top: 30px;
+  transform: translateY(30px);
+  opacity: 0;
 
-.edit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  border: 2px solid rgba(#fff, 0.3);
-  border-radius: 100%;
-  margin-right: 20px;
-  transition: border-color var(--duration), background-color var(--duration);
-
-  @media (max-width: 360px) {
-    margin-right: 10px;
-    width: 35px;
-    height: 35px;
-  }
-
-  &:hover {
-    border-color: transparent;
-    background-color: rgba(#fff, 0.3);
-  }
-
-  svg {
-    display: block;
-    width: 18px;
-    height: 18px;
-
-    @media (max-width: 360px) {
-      width: 15px;
-      height: 15px;
-    }
+  &.done {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }
 
@@ -58,4 +27,23 @@
 
 .input {
   margin-bottom: 13px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform var(--duration), opacity var(--duration);
+
+  &.done {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.btn {
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform var(--duration), opacity var(--duration);
+
+  &.done {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
