@@ -1,3 +1,5 @@
+export const LIMIT = 15;
+
 export enum RoutesEnum {
   Home = "/",
   Films = "/films",

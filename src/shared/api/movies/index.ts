@@ -1,10 +1,8 @@
 import type { IMovieItem } from "entities/movie-item";
-import { GenresEnum } from "shared/config";
+import { GenresEnum, LIMIT } from "shared/config";
 import { getCurrentYear } from "shared/lib";
 import type { Data } from "./types";
 import { http } from "./base";
-
-const LIMIT = 15;
 
 const DEFAULT_PARAMS =
   "&field[]=rating.kp&search=!null&field=name&search=!null&field=votes.kp&sortField=year&sortType=-1";
@@ -54,4 +52,4 @@ const routesConfig = http.createRoutesConfig({
 
 const moviesApi = routesConfig.build();
 
-export { moviesApi, LIMIT };
+export { moviesApi };

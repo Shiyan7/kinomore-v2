@@ -14,16 +14,14 @@ export const Header = () => {
 
   return (
     <div className={styles.header}>
-      <div className={styles.text}>
-        {isEmailState ? (
-          <span className={styles.title}>Вход или регистрация</span>
-        ) : (
-          <>
-            <span className={styles.title}>{isNewUser ? "Новый пользователь" : "Здравствуйте"}</span>
-            <span className={styles.email}>{email}</span>
-          </>
-        )}
-      </div>
+      {isEmailState ? (
+        <span className={styles.title}>Вход или регистрация</span>
+      ) : (
+        <div className={styles.text}>
+          <span className={styles.title}>{isNewUser ? "Новый пользователь" : "Здравствуйте"}</span>
+          <span className={styles.email}>{email}</span>
+        </div>
+      )}
       <button className={clsx("btn-reset", styles.close)} type="button" onClick={close}>
         <CloseIcon />
       </button>
