@@ -9,9 +9,8 @@ import styles from "./styles.module.scss";
 export const Header = () => {
   const { close } = useToggler(authModel.authInstance);
   const email = useStore(authModel.$emailStore);
-  const state = useStore(authModel.$formState);
+  const isEmailState = useStore(authModel.$isEmailState);
   const isNewUser = useStore(authModel.$isNewUser);
-  const isEmailState = state === "email";
 
   return (
     <div className={styles.header}>

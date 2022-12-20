@@ -12,7 +12,5 @@ export const $progressStore = createStore(6).on(setProgress, (_, payload) => pay
 export const setIsNewUser = createEvent<boolean>();
 export const $isNewUser = createStore(false).on(setIsNewUser, (_, payload) => payload);
 
-type FormState = "email" | "password";
-
-export const setFormState = createEvent<FormState>();
-export const $formState = createStore<FormState>("email").on(setFormState, (_, payload) => payload);
+export const setIsEmailState = createEvent<boolean>();
+export const $isEmailState = createStore(true).on(setIsEmailState, (_, payload) => payload);

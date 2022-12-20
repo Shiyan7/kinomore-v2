@@ -10,11 +10,11 @@ import styles from "./styles.module.scss";
 export const PasswordForm = () => {
   const email = useStore(authModel.$emailStore);
   const isNewUser = useStore(authModel.$isNewUser);
-  const setFormState = useEvent(authModel.setFormState);
+  const setIsEmailState = useEvent(authModel.setIsEmailState);
   const setProgress = useEvent(authModel.setProgress);
 
-  const handleEditEmail = () => {
-    setFormState("email");
+  const editEmail = () => {
+    setIsEmailState(true);
     setProgress(6);
   };
 
@@ -25,7 +25,7 @@ export const PasswordForm = () => {
   return (
     <>
       <Transition doneClass={styles.done} timeout={50}>
-        <Message className={styles.message} isEditable onEdit={handleEditEmail} title={email} />
+        <Message className={styles.message} isEditable onEdit={editEmail} title={email} />
       </Transition>
       <Transition doneClass={styles.done} timeout={80}>
         <Message

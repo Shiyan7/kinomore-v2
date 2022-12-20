@@ -6,10 +6,9 @@ import { useToggler } from "shared/lib/hooks";
 interface TransitionProps {
   timeout: number;
   doneClass: string;
-  inStart?: boolean;
 }
 
-export const Transition: FC<PropsWithChildren<TransitionProps>> = ({ children, doneClass, timeout, inStart }) => {
+export const Transition: FC<PropsWithChildren<TransitionProps>> = ({ children, doneClass, timeout }) => {
   const { isOpen } = useToggler(authModel.authInstance);
 
   const classNames = {
@@ -17,7 +16,7 @@ export const Transition: FC<PropsWithChildren<TransitionProps>> = ({ children, d
   };
 
   return (
-    <CSSTransition classNames={classNames} timeout={timeout} in={inStart ?? isOpen}>
+    <CSSTransition classNames={classNames} timeout={timeout} in={isOpen}>
       {children}
     </CSSTransition>
   );

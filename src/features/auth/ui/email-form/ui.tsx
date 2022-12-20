@@ -12,7 +12,7 @@ export const EmailForm = () => {
   const [value, setValue] = useState<string>("");
   const setEmail = useEvent(authModel.setEmail);
   const setIsNewUser = useEvent(authModel.setIsNewUser);
-  const setFormState = useEvent(authModel.setFormState);
+  const setIsEmailState = useEvent(authModel.setIsEmailState);
   const setProgress = useEvent(authModel.setProgress);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -25,11 +25,13 @@ export const EmailForm = () => {
     try {
       const { status } = await internalApi.check(value);
 
-      setIsNewUser(status);
-      setFormState("password");
-      // setValue("");
-      setLoading(false);
-      setProgress(50);
+      setTimeout(() => {
+        setIsNewUser(status);
+        setIsEmailState(false);
+        setValue("");
+        setLoading(false);
+        setProgress(50);
+      }, 1000);
     } catch (e) {
       console.error(e);
     }

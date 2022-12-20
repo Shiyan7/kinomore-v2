@@ -82,13 +82,13 @@
 
   svg {
     display: block;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     fill: currentColor;
 
     @media (max-width: 576px) {
-      width: 25px;
-      height: 25px;
+      width: 30px;
+      height: 30px;
     }
   }
 }
