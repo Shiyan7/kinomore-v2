@@ -15,6 +15,10 @@
   color: transparent;
   transition: color 0.3s;
 
+  &.error {
+    box-shadow: 0 0 0 2px #f00;
+  }
+
   &.isFocus {
     color: var(--color-black);
   }
