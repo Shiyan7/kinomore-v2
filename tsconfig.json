@@ -16,8 +16,6 @@
     "incremental": true,
 		"paths": {
       "*": ["./src/*"],
-      "effector-react-form": ["./effector-react-form"],
-      "effector-react-form/*": ["./effector-react-form/*"]
     },
     "plugins": [
       {

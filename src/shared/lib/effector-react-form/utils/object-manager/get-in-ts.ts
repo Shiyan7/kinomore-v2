@@ -1,11 +1,13 @@
-import { getIn } from './object-manager';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-redeclare */
+import { getIn } from "./object-manager";
 
 export function getInTs<Obj extends object, K0 extends keyof Obj>(obj: Obj, k0: K0): Obj[K0];
 
 export function getInTs<Obj extends object, K0 extends keyof Obj, K1 extends keyof Obj[K0]>(
   obj: Obj,
   k0: K0,
-  k1: K1,
+  k1: K1
 ): Obj[K0][K1];
 
 export function getInTs<

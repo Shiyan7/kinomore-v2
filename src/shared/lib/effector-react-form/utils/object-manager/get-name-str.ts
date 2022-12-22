@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export type GetNameStr<Obj> = {
   <K0 extends keyof Obj>(k0: K0): string;
 
@@ -9,7 +10,7 @@ export type GetNameStr<Obj> = {
     k0: K0,
     k1: K1,
     k2: K2,
-    k3: K3,
+    k3: K3
   ): string;
 
   <
@@ -23,7 +24,7 @@ export type GetNameStr<Obj> = {
     k1: K1,
     k2: K2,
     k3: K3,
-    k4: K4,
+    k4: K4
   ): string;
 
   <
@@ -39,7 +40,7 @@ export type GetNameStr<Obj> = {
     k2: K2,
     k3: K3,
     k4: K4,
-    k5: K5,
+    k5: K5
   ): string;
 
   <
@@ -57,8 +58,8 @@ export type GetNameStr<Obj> = {
     k3: K3,
     k4: K4,
     k5: K5,
-    k6: K6,
+    k6: K6
   ): string;
 };
 
-export const getNameStr = (...keys: any): any => keys.join('.');
+export const getNameStr = (...keys: any): any => keys.join(".");

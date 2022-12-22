@@ -1,5 +1,5 @@
-import { forwardRef, InputHTMLAttributes, useState } from "react";
 import clsx from "clsx";
+import { forwardRef, InputHTMLAttributes, useState } from "react";
 import styles from "./styles.module.scss";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -19,17 +19,19 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     };
 
     return (
-      <label className={clsx(styles.label, className)}>
-        <span className={clsx(styles.placeholder, isFocus && styles.isFocus)}>{placeholder}</span>
-        <input
-          ref={ref}
-          onFocus={() => setIsFocus(true)}
-          onBlur={handleOnBlur}
-          className={clsx("input-reset", error && styles.error, isFocus && styles.isFocus, styles.input)}
-          value={value}
-          {...props}
-        />
-      </label>
+      <div className={clsx(styles.field, className)}>
+        <label className={clsx(styles.label, error && styles.error)}>
+          <span className={clsx(styles.placeholder, isFocus && styles.isFocus)}>{placeholder}</span>
+          <input
+            ref={ref}
+            onFocus={() => setIsFocus(true)}
+            onBlur={handleOnBlur}
+            className={clsx("input-reset", isFocus && styles.isFocus, styles.input)}
+            value={value}
+            {...props}
+          />
+        </label>
+      </div>
     );
   }
 );

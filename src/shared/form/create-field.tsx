@@ -1,12 +1,14 @@
-import type { ChangeEvent, ComponentType } from "react";
-import type { Controller } from "effector-react-form";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-restricted-syntax */
+import { forwardRef, type ChangeEvent, ComponentType } from "react";
+import type { Controller } from "shared/lib/effector-react-form";
 
 export function createField<P, Keys extends string = "">(
   Component: ComponentType<P>,
   skippedFieldProps?: (keyof ReturnType<Controller>)[]
 ) {
   // eslint-disable-next-line func-names
-  return function ({ use, ...props }: Omit<P, Keys> & { use: Controller }) {
+  return forwardRef(({ use, ...props }: Omit<P, Keys> & { use: Controller }, ref) => {
     const { input, error, isShowError } = use();
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -23,8 +25,8 @@ export function createField<P, Keys extends string = "">(
       }
     }
 
-    return <Component {...(props as any)} {...fieldProps} value={fieldProps.value ?? ""} />;
-  };
+    return <Component ref={ref} {...(props as any)} {...fieldProps} value={fieldProps.value ?? ""} />;
+  });
 }
 
 export function createSuggestField<P, Keys extends string = "">(

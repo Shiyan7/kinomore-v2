@@ -1,8 +1,9 @@
 /* eslint-disable import/no-unresolved */
 import { object, type ValidationError } from "yup";
-import { createNameHelper, type FormValidateParams } from "effector-react-form";
+import { createNameHelper, type FormValidateParams } from "shared/lib/effector-react-form";
 
 export function createObjectValidator<Values extends object, Meta>(obj: {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [K in keyof Values]?: any;
 }) {
   const schema = object(obj);

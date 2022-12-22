@@ -1,20 +1,20 @@
 import clsx from "clsx";
 import { useEffect, useRef } from "react";
-import { useForm } from "effector-react-form";
+import { useEvent, useStore } from "effector-react";
 import { authModel } from "features/auth";
+import { useForm } from "shared/lib/effector-react-form";
 import { Form, Field } from "shared/form";
 import { GoogleIcon } from "shared/ui/icons";
 import { Button } from "shared/ui/button";
-/* import { Input } from "shared/ui/input";
-import { internalApi } from "shared/api"; */
 import { Transition } from "../transition";
 import styles from "./styles.module.scss";
 
 export const EmailForm = () => {
-  // const [loading, setLoading] = useState<boolean>(false);
+  const { controller } = useForm({ form: authModel.authForm, resetUnmount: false });
+  const { email } = useStore(authModel.authForm.$values);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const { controller, handleSubmit } = useForm({ form: authModel.emailForm });
+  const pending = useStore(authModel.checkUserFx.pending);
+  const checkUserFx = useEvent(authModel.checkUserFx);
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -30,7 +30,7 @@ export const EmailForm = () => {
       <Transition doneClass={styles.done} timeout={130}>
         <span className={styles.sep}>или</span>
       </Transition>
-      <Form onSubmit={handleSubmit} className={styles.form}>
+      <Form onSubmit={() => checkUserFx(email)} className={styles.form}>
         <Transition timeout={200} doneClass={styles.done}>
           <Field.Input
             use={controller({
@@ -44,7 +44,7 @@ export const EmailForm = () => {
         </Transition>
         <Transition timeout={250} doneClass={styles.done}>
           <div className={styles.btnWrapper}>
-            <Button className={styles.btn} /* disabled={!inputValue.length} */ type="submit">
+            <Button className={styles.btn} disabled={!email} loading={pending} type="submit">
               Продолжить
             </Button>
           </div>
