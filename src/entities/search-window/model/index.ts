@@ -1,7 +1,28 @@
-import { createEvent, createStore } from "effector";
+import { attach, createEvent, createStore, restore, sample } from "effector";
+import { debounce } from "patronum";
+import { moviesApi as api } from "shared/api";
 import { createToggler } from "shared/lib/toggler";
+
+const DEBOUNCE_TIME = 400;
 
 export const searchInstance = createToggler();
 
-export const setInputValue = createEvent<string>();
-export const $inputValue = createStore("").on(setInputValue, (_, payload) => payload);
+export const searchFx = attach({ effect: api.searchByName });
+export const $searchResult = restore(searchFx, null);
+
+export const $search = createStore("");
+
+export const searchChanged = createEvent<string>();
+
+$search.on(searchChanged, (_, payload) => payload);
+
+const debouncedSearchChanged = debounce({
+  source: searchChanged,
+  timeout: DEBOUNCE_TIME,
+});
+
+sample({
+  clock: debouncedSearchChanged,
+  fn: (search) => search,
+  target: searchFx,
+});

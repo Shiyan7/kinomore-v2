@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import type { IMovieItem } from "./types";
+import type { IMovieItem } from "shared/api";
 import styles from "./styles.module.scss";
 
 interface MovieItemProps {

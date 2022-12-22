@@ -167,16 +167,7 @@ export interface Id {
   id: number;
 }
 
-export interface Request {
-  field?: string[];
-  search?: string[];
-  sortField?: string[];
-  sortType?: string[];
-  page?: number;
-  limit?: number;
-}
-
-export interface Movie {
+export interface IMovie {
   id: number;
   externalId: ExternalId | undefined;
   name: string;
@@ -223,4 +214,40 @@ export interface Movie {
   watchability: Watchability | undefined;
   lists: Lists | undefined;
   kinopoiskId: number;
+}
+
+interface MoviePoster {
+  previewUrl: string;
+  url: string;
+}
+
+interface MovieRating {
+  await: number;
+  filmCritics: number;
+  imdb: number;
+  kp: number;
+  russianFilmCritics: number;
+}
+
+export interface IMovieItem {
+  alternativeName: string;
+  description: string;
+  enName: string;
+  externalId: {
+    imdb: string;
+    kpHD: null;
+    tmdb: number;
+  };
+  id: number;
+  logo: Logo;
+  movieLength: number;
+  name: string;
+  names: { name: string }[];
+  poster: MoviePoster;
+  rating?: MovieRating;
+  shortDescription: string;
+  type: string;
+  votes: MovieRating;
+  year: number;
+  watchability: Watchability[];
 }

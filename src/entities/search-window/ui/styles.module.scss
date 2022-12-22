@@ -6,9 +6,9 @@
   width: 100%;
   height: 100vh;
   opacity: 0;
+  pointer-events: none;
   overflow-x: hidden;
   overflow-y: auto;
-  visibility: hidden;
   background-color: rgba(#000, 0.9);
   backdrop-filter: blur(7px);
   transition: opacity var(--duration), visibility var(--duration);
@@ -16,24 +16,24 @@
 
 .opened {
   opacity: 1;
-  visibility: visible;
+  pointer-events: all;
 }
 
 .close {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 45px;
-  height: 45px;
+  top: 25px;
+  right: 25px;
+  width: 52px;
+  height: 52px;
 
   @media (max-width: 1024px) {
     right: 10px;
   }
 
   @media (max-width: 576px) {
-    width: 35px;
-    height: 35px;
-    top: 10px;
+    width: 40px;
+    height: 40px;
+    top: 15px;
   }
 
   &:hover {
@@ -74,4 +74,21 @@
 .input {
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.list {
+  display: grid;
+  row-gap: 17px;
+  column-gap: 50px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @media (max-width: 1200px) {
+    column-gap: 20px;
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+  }
 }

@@ -1,7 +1,6 @@
-import type { IMovieItem } from "entities/movie-item";
 import { GenresEnum, LIMIT } from "shared/config";
 import { getCurrentYear } from "shared/lib";
-import type { Data } from "./types";
+import type { Data, IMovieItem } from "./types";
 import { http } from "./base";
 
 const DEFAULT_PARAMS =
@@ -41,11 +40,14 @@ const routesConfig = http.createRoutesConfig({
     },
   })),
   searchByName: http.createRoute<string, Data<IMovieItem>>((query) => ({
-    url: "/movie",
+    url: "/movie?search=!null&field=poster.previewUrl",
     params: {
       search: query,
-      field: "id",
+      field: "name",
       limit: 20,
+      sortField: "year",
+      sortType: "-1",
+      isStrict: true,
     },
   })),
 });

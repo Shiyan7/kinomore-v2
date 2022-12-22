@@ -21,12 +21,6 @@ const Document = () => {
         <link rel="preload" href="/fonts/e-Ukraine-Bold.woff2" as="font" type="font/woff2" crossOrigin="" />
         <link rel="preload" href="/fonts/e-Ukraine-Regular.woff2" as="font" type="font/woff2" crossOrigin="" />
         <link rel="preload" href="/fonts/e-Ukraine-Light.woff2" as="font" type="font/woff2" crossOrigin="" />
-        <style
-          type="text/css"
-          dangerouslySetInnerHTML={{
-            __html: `@font-face {font-family: __font_083edc;src: url(/fonts/e-Ukraine-Bold.woff2) format("woff2");font-display: swap;font-weight: 700;}@font-face {font-family: __font_083edc;src: url(/fonts/e-Ukraine-Regular.woff2) format("woff2");font-display: swap;font-weight: 400;}@font-face {font-family: __font_083edc;src: url(/fonts/e-Ukraine-Light.woff2) format("woff2");font-display: swap;font-weight: 300;}@font-face {font-family: __font_Fallback_083edc;src: local("Arial");ascent-override: 79.81%;descent-override: 15.53%;line-gap-override: 0%;size-adjust: 125.78%;}#__next {font-family: __font_083edc, __font_Fallback_083edc;}`,
-          }}
-        />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <link href="/icons/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16" />
         <link href="/icons/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32" />
