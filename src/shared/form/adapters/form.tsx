@@ -11,7 +11,8 @@ export const Form: FC<PropsWithChildren<FormProps>> = ({ onSubmit, children, ...
     onSubmit={(e) => {
       e.preventDefault();
       onSubmit(e);
-    }}>
+    }}
+  >
     {children}
   </form>
 );

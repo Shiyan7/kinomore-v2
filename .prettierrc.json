@@ -9,16 +9,16 @@
   "jsxSingleQuote": false,
   "jsxBracketSameLine": true,
   "endOfLine": "lf",
-	"importOrder": [
-		"app/**",
-		"pages/*/**",
-		"features/*/**",
-		"entities/*/**",
-		"shared/*/*/**",
-		"../**/app",
-		"../**/pages",
-		"../**/features",
-		"../**/entities",
-		"../**/shared"
-	]
+  "importOrder": [
+    "app/**",
+    "pages/*/**",
+    "features/*/**",
+    "entities/*/**",
+    "shared/*/*/**",
+    "../**/app",
+    "../**/pages",
+    "../**/features",
+    "../**/entities",
+    "../**/shared"
+  ]
 }
