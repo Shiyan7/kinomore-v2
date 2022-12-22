@@ -1,8 +1,8 @@
 import { http } from "./base";
-import { IHeroMovie } from "./types";
+import type { HeroMovie } from "./types";
 
 const routesConfig = http.createRoutesConfig({
-  getHeroMovies: http.createRoute<void, IHeroMovie[]>(() => ({
+  getHeroMovies: http.createRoute<void, HeroMovie[]>(() => ({
     url: "/hero",
   })),
   check: http.createRoute<string, { status: boolean }>((email) => ({

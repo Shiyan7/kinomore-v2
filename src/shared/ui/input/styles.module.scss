@@ -1,19 +1,33 @@
+.field {
+  position: relative;
+}
+
 .label {
   position: relative;
   display: flex;
   flex-direction: column;
+
+  &.error {
+    .input {
+      color: var(--color-red);
+    }
+
+    .placeholder {
+      color: var(--color-red);
+    }
+  }
 }
 
 .input {
   position: relative;
   border-radius: 10px;
+  font-weight: 500;
   font-size: 13px;
   line-height: 15px;
   padding: 20px 14px 9px;
   background-color: var(--color-white);
-  transition: opacity 0.3s;
   color: transparent;
-  transition: color 0.3s;
+  transition: color var(--duration);
 
   &.isFocus {
     color: var(--color-black);
@@ -33,7 +47,7 @@
   transform: translateY(-50%);
   pointer-events: none;
   color: rgba(#000, 0.45);
-  transition: font-size var(--duration), line-height var(--duration), top var(--duration);
+  transition: font-size var(--duration), line-height var(--duration), top var(--duration), color var(--duration);
 
   &.isFocus {
     font-size: 10px;

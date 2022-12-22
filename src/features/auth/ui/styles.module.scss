@@ -25,12 +25,7 @@
   flex-direction: column;
   max-width: 650px;
   margin: 0 auto;
-  padding: 20px 96px 50px;
-
-  @media (max-width: 1720px) {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
+  padding: 20px 40px 50px;
 
   @media (max-width: 1024px) {
     padding-left: 30px;

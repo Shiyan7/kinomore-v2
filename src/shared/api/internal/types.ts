@@ -1,4 +1,4 @@
-export interface IHeroMovie {
+export interface HeroMovie {
   id: number;
   year: number;
   rating: string;

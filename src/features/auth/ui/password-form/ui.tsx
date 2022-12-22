@@ -1,28 +1,17 @@
-import type { FormEvent } from "react";
 import { useEvent, useStore } from "effector-react";
 import { authModel } from "features/auth";
+import { useForm } from "shared/lib/effector-react-form";
 import { Button } from "shared/ui/button";
-import { Input } from "shared/ui/input";
+import { Field, Form } from "shared/form";
 import { Message } from "../message";
 import { Transition } from "../transition";
 import styles from "./styles.module.scss";
 
 export const PasswordForm = () => {
-  const email = useStore(authModel.$emailStore);
+  const { handleSubmit, controller } = useForm({ form: authModel.authForm, resetUnmount: false });
+  const { email } = useStore(authModel.authForm.$values);
   const isNewUser = useStore(authModel.$isNewUser);
-  const setIsEmailState = useEvent(authModel.setIsEmailState);
-  const setInputValue = useEvent(authModel.setInputValue);
-  const setProgress = useEvent(authModel.setProgress);
-
-  const editEmail = () => {
-    setIsEmailState(true);
-    setInputValue(email);
-    setProgress(6);
-  };
-
-  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    console.log(e);
-  };
+  const editEmail = useEvent(authModel.editEmail);
 
   return (
     <>
@@ -36,27 +25,25 @@ export const PasswordForm = () => {
           description={isNewUser ? "Установите пароль для входа, минимум 6 символов" : ""}
         />
       </Transition>
-      <form onSubmit={onSubmit} noValidate className={styles.form} action="#">
+      <Form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.inputs}>
-          {isNewUser ? (
-            <>
-              <Transition doneClass={styles.done} timeout={150}>
-                <Input type="password" className={styles.input} placeholder="Придумайте пароль" />
-              </Transition>
-              <Transition doneClass={styles.done} timeout={150}>
-                <Input type="password" className={styles.input} placeholder="Повторите пароль" />
-              </Transition>
-            </>
-          ) : (
-            <Transition doneClass={styles.done} timeout={150}>
-              <Input type="password" className={styles.input} placeholder="Введите пароль" />
-            </Transition>
-          )}
+          <Transition doneClass={styles.done} timeout={150}>
+            <Field.Input
+              use={controller({
+                name: "password",
+              })}
+              type="password"
+              className={styles.input}
+              placeholder={isNewUser ? "Придумайте пароль" : "Введите пароль"}
+            />
+          </Transition>
         </div>
         <Transition doneClass={styles.done} timeout={170}>
-          <Button className={styles.btn}>{isNewUser ? "Продолжить" : "Войти"}</Button>
+          <Button className={styles.btn} type="submit">
+            {isNewUser ? "Зарегистрироваться" : "Войти"}
+          </Button>
         </Transition>
-      </form>
+      </Form>
     </>
   );
 };

@@ -19,7 +19,8 @@ export const SliderButton: FC<SliderButtonProps> = ({ className, dir, ...props }
       onClick={handleClick}
       type="button"
       className={clsx("btn-reset", styles.btn, styles[dir], className)}
-      {...props}>
+      {...props}
+    >
       <ChevronIcon />
     </button>
   );
