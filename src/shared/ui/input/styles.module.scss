@@ -68,12 +68,20 @@
   display: block;
   width: 26px;
   height: 26px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration), visibility var(--duration);
+
+  &.visibile {
+    opacity: 1;
+    visibility: visible;
+  }
 
   svg {
     display: block;
     width: 100%;
     height: 100%;
-    stroke: var(--color-black);
-    fill: var(--color-black);
+    stroke: rgba(#000, 0.7);
+    fill: rgba(#000, 0.7);
   }
 }

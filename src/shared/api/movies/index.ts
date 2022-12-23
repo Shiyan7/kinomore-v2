@@ -1,6 +1,6 @@
 import { GenresEnum, LIMIT } from "shared/config";
 import { getCurrentYear } from "shared/lib";
-import type { Data, IMovieItem } from "./types";
+import type { Data, IMovie, IMovieItem } from "./types";
 import { http } from "./base";
 
 const DEFAULT_PARAMS =
@@ -48,6 +48,13 @@ const routesConfig = http.createRoutesConfig({
       sortField: "year",
       sortType: "-1",
       isStrict: true,
+    },
+  })),
+  getById: http.createRoute<void, IMovie>((id) => ({
+    url: "/movie",
+    params: {
+      search: id,
+      field: "id",
     },
   })),
 });

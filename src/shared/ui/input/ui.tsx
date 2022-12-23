@@ -34,7 +34,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           />
         </label>
         {onClear && (
-          <button onClick={onClear} className={clsx("btn-reset", styles.clearBtn)}>
+          <button onClick={onClear} className={clsx("btn-reset", value && styles.visibile, styles.clearBtn)}>
             <CloseIcon />
           </button>
         )}
