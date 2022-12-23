@@ -14,6 +14,7 @@ export const SearchInput = () => {
     <Input
       ref={ref}
       value={search}
+      onClear={() => searchChanged("")}
       onChange={(e) => searchChanged(e.target.value)}
       className={styles.input}
       placeholder="Фильмы, сериалы, персоны"

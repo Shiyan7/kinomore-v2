@@ -1,14 +1,16 @@
 import clsx from "clsx";
 import { forwardRef, InputHTMLAttributes, useState } from "react";
+import { CloseIcon } from "shared/ui/icons";
 import styles from "./styles.module.scss";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   error?: string;
+  onClear?: () => void;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, error, placeholder, value, ...props }, ref) => {
+  ({ className, error, placeholder, onClear, value, ...props }, ref) => {
     const [isFocus, setIsFocus] = useState<boolean>(false);
 
     const handleOnBlur = () => {
@@ -26,11 +28,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             onFocus={() => setIsFocus(true)}
             onBlur={handleOnBlur}
-            className={clsx("input-reset", isFocus && styles.isFocus, styles.input)}
+            className={clsx("input-reset", isFocus && styles.isFocus, onClear && styles.clear, styles.input)}
             value={value}
             {...props}
           />
         </label>
+        {onClear && (
+          <button onClick={onClear} className={clsx("btn-reset", styles.clearBtn)}>
+            <CloseIcon />
+          </button>
+        )}
       </div>
     );
   }
