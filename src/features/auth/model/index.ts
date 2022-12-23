@@ -29,6 +29,7 @@ export const authForm = createForm({
     password: "",
   },
   validate: createObjectValidator({
+    email: string().email().required(),
     password: string().min(6).required(),
   }),
 });

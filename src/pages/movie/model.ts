@@ -1,5 +1,5 @@
 import { attach, createEvent, restore, sample } from "effector";
-import { ClientPageContext } from "nextjs-effector";
+import { StaticPageContext } from "nextjs-effector";
 import { moviesApi } from "shared/api";
 
 export const pageStarted = createEvent();
@@ -9,6 +9,6 @@ export const $movie = restore(getMovieByIdFx, null);
 
 sample({
   clock: pageStarted,
-  fn: (context: ClientPageContext | void) => context?.params?.id,
+  fn: (context: StaticPageContext | void) => context?.params?.id,
   target: getMovieByIdFx,
 });
