@@ -1,6 +1,6 @@
 import { forwardRef, PropsWithChildren } from "react";
 import { useLockedBody } from "shared/lib/hooks";
-import { useEscape } from "./model";
+import { useEscape } from "./lib";
 
 interface ModalProps {
   className?: string;

@@ -14,6 +14,8 @@ export const $search = createStore("");
 
 export const searchChanged = createEvent<string>();
 
+export const loadSearchResults = createEvent();
+
 $search.on(searchChanged, (_, payload) => payload);
 
 const debouncedSearchChanged = debounce({
@@ -24,5 +26,10 @@ const debouncedSearchChanged = debounce({
 sample({
   clock: debouncedSearchChanged,
   fn: (search) => search,
+  target: searchFx,
+});
+
+sample({
+  clock: loadSearchResults,
   target: searchFx,
 });

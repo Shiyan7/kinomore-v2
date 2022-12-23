@@ -1,8 +1,6 @@
-import { createGIPFactory, createGSPFactory } from "nextjs-effector";
+import { createGSPFactory } from "nextjs-effector";
 import { appStarted } from "./model";
 
-export const createGIP = createGIPFactory({
+export const createGSP = createGSPFactory({
   sharedEvents: [appStarted],
 });
-
-export const createGSP = createGSPFactory();

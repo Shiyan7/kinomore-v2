@@ -1,2 +1,2 @@
-export { createGIP, createGSP } from "./bindings";
+export { createGSP } from "./bindings";
 export { appStarted } from "./model";

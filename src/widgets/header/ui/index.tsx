@@ -1,6 +1,6 @@
 "use client";
 import clsx from "clsx";
-import { headerModel } from "widgets/header";
+import { useHeaderFixed } from "../lib";
 import { Burger } from "./burger";
 import { Logo } from "./logo";
 import { Nav } from "./nav";
@@ -9,7 +9,7 @@ import { SearchButton } from "./search-button";
 import styles from "./styles.module.scss";
 
 export const Header = () => {
-  const { isFixed } = headerModel.useHeaderFixed();
+  const { isFixed } = useHeaderFixed();
 
   return (
     <header className={clsx(styles.header, isFixed && styles.fixed)}>

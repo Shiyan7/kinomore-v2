@@ -1,1 +1,0 @@
-export { useHeaderFixed } from "./hooks";

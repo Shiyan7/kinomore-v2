@@ -32,15 +32,15 @@ const routesConfig = http.createRoutesConfig({
   forFamily: http.createRoute<number | void, Data<IMovieItem>>((limit = LIMIT) => ({
     url: `/movie?search[]=1-10${DEFAULT_PARAMS}`,
     params: {
-      search: `1960-${getCurrentYear()}`,
+      search: `0-${getCurrentYear()}`,
       field: "year",
       "search[]": GenresEnum.Semejnyj,
       "field[]": "genres.name",
       limit,
     },
   })),
-  searchByName: http.createRoute<string, Data<IMovieItem>>((query) => ({
-    url: "/movie?search=!null&field=poster.previewUrl",
+  searchByName: http.createRoute<string | void, Data<IMovieItem>>((query) => ({
+    url: `/movie?search=!null&field=poster.previewUrl&search=0-${getCurrentYear()}&field=year`,
     params: {
       search: query,
       field: "name",

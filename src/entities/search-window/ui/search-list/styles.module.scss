@@ -1,0 +1,21 @@
+.list {
+  display: grid;
+  row-gap: 17px;
+  column-gap: 50px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @media (max-width: 1200px) {
+    column-gap: 20px;
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+  }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
