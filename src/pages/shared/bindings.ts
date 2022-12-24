@@ -1,10 +1,10 @@
 import { createGSPFactory, createGSSPFactory } from "nextjs-effector";
-import { appStarted } from "./model";
+import { appModel } from "pages/shared";
 
 export const createGSP = createGSPFactory({
-  sharedEvents: [appStarted],
+  sharedEvents: [appModel.appStarted],
 });
 
 export const createGSSP = createGSSPFactory({
-  sharedEvents: [appStarted],
+  sharedEvents: [appModel.appStarted],
 });

@@ -1,10 +1,22 @@
 import type { AppProps } from "next/app";
+import { useRouter } from "next/router";
+import { useEvent } from "effector-react";
+import { useEffect } from "react";
 import NextNProgress from "nextjs-progressbar";
 import Head from "next/head";
+import { navigationModel } from "entities/navigation";
 import { BaseLayout } from "shared/ui/layouts";
 import { withProviders } from "./providers";
 
 const App = ({ Component, pageProps }: AppProps) => {
+  const router = useRouter();
+  const routerUpdated = useEvent(navigationModel.routerUpdated);
+
+  useEffect(() => {
+    routerUpdated(router);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router]);
+
   return (
     <>
       <Head>

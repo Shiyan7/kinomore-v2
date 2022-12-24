@@ -1,2 +1,2 @@
-export { createGSP, createGSSP } from "./bindings";
-export { appStarted } from "./model";
+export * from "./bindings";
+export * as appModel from "./model";
