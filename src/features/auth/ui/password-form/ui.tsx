@@ -1,4 +1,4 @@
-import { useEvent, useStore } from "effector-react";
+import { useUnit } from "effector-react";
 import { authModel } from "features/auth";
 import { useForm } from "shared/lib/effector-react-form";
 import { Button } from "shared/ui/button";
@@ -9,9 +9,9 @@ import styles from "./styles.module.scss";
 
 export const PasswordForm = () => {
   const { handleSubmit, controller } = useForm({ form: authModel.authForm, resetUnmount: false });
-  const { email } = useStore(authModel.authForm.$values);
-  const isNewUser = useStore(authModel.$isNewUser);
-  const editEmail = useEvent(authModel.editEmail);
+  const { email } = useUnit(authModel.authForm.$values);
+  const isNewUser = useUnit(authModel.$isNewUser);
+  const editEmail = useUnit(authModel.editEmail);
 
   return (
     <>

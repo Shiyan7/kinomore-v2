@@ -16,6 +16,8 @@ export const $search = createStore("")
   .on(searchChanged, (_, payload) => payload)
   .reset(navigationModel.routerUpdated);
 
+/* FIXME: дебаунсить не функцию, а значение */
+
 const debouncedSearchChanged = debounce({
   source: searchChanged,
   timeout: DEBOUNCE_TIME,

@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { useEffect, useRef } from "react";
 import { TransitionGroup } from "react-transition-group";
-import { useStore } from "effector-react";
+import { useUnit } from "effector-react";
 import { authModel } from "features/auth";
 import { Modal } from "shared/ui/modal";
 import { useToggler } from "shared/lib/hooks";
@@ -15,7 +15,7 @@ import styles from "./styles.module.scss";
 export const AuthWindow = () => {
   const { close, isOpen } = useToggler(authModel.authInstance);
   const windowRef = useRef<HTMLDivElement>(null);
-  const isEmailState = useStore(authModel.$isEmailState);
+  const isEmailState = useUnit(authModel.$isEmailState);
 
   useEffect(() => {
     windowRef.current?.scrollTo(0, 0);
