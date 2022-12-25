@@ -8,9 +8,10 @@ import styles from "./styles.module.scss";
 
 export const Header = () => {
   const { close } = useToggler(authModel.authInstance);
-  const { email } = useUnit(authModel.authForm.$values);
-  const isEmailState = useUnit(authModel.$isEmailState);
+  const { email } = useUnit(authModel.emailForm.$values);
+  const state = useUnit(authModel.$state);
   const isNewUser = useUnit(authModel.$isNewUser);
+  const isEmailState = state === "email";
 
   return (
     <div className={styles.header}>

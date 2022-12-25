@@ -1,5 +1,7 @@
-import { attach, createEvent, createStore, sample } from "effector";
+import { attach, combine, createEvent, createStore, sample } from "effector";
+import { not } from "patronum";
 import { string } from "yup";
+import { navigationModel } from "entities/navigation";
 import { createForm } from "shared/lib/effector-react-form";
 import { createObjectValidator } from "shared/form";
 import { createToggler } from "shared/lib/toggler";
@@ -7,64 +9,76 @@ import { internalApi } from "shared/api";
 
 export const authInstance = createToggler();
 
-export const setEmail = createEvent<string>();
-export const $emailStore = createStore("").on(setEmail, (_, payload) => payload);
-
-export const setProgress = createEvent<number>();
-export const $progressStore = createStore(5).on(setProgress, (_, payload) => payload);
-
-export const setIsNewUser = createEvent<boolean>();
-export const $isNewUser = createStore(false).on(setIsNewUser, (_, payload) => payload);
-
-export const setIsEmailState = createEvent<boolean>();
-export const $isEmailState = createStore(true).on(setIsEmailState, (_, payload) => payload);
-
 export const checkUserFx = attach({ effect: internalApi.check });
 
-export const editEmail = createEvent();
+/* p.s можно было сделать вместо двух форм одну, но при сабмите email формы, нужно проверять корректный ли email, и юзера. */
 
-export const authForm = createForm({
+export const emailForm = createForm({
   initialValues: {
     email: "",
-    password: "",
   },
   validate: createObjectValidator({
     email: string().email().required(),
+  }),
+});
+
+export const passwordForm = createForm({
+  initialValues: {
+    password: "",
+  },
+  validate: createObjectValidator({
     password: string().min(6).required(),
   }),
 });
 
+export const editClicked = createEvent();
+export const continueClicked = createEvent();
+
+export const $progress = createStore(5);
+
+$progress.on(continueClicked, () => 50);
+$progress.on(editClicked, () => 5);
+$progress.reset(navigationModel.routerUpdated);
+
+export const $state = createStore<"email" | "password">("email");
+
+$state.on(continueClicked, () => "password");
+$state.on(editClicked, () => "email");
+$state.reset(navigationModel.routerUpdated);
+
+export const $isNewUser = createStore(false);
+
 sample({
-  clock: authForm.onSubmit,
-  fn: ({ values }) => console.log(values),
+  clock: emailForm.onSubmit,
+  fn: ({ values }) => values.email,
+  target: checkUserFx,
 });
 
 sample({
   clock: checkUserFx.doneData,
   fn: ({ status }) => status,
-  target: setIsNewUser,
+  target: $isNewUser,
 });
 
 sample({
   clock: checkUserFx.doneData,
-  fn: () => 50,
-  target: setProgress,
+  target: continueClicked,
+});
+
+const formValue = combine(emailForm.$values, passwordForm.$values, ({ email }, { password }) => {
+  return { email, password };
 });
 
 sample({
-  clock: checkUserFx.doneData,
-  fn: () => false,
-  target: setIsEmailState,
+  clock: passwordForm.onSubmit,
+  source: formValue,
+  filter: not($isNewUser),
+  fn: (value) => console.log("login", value),
 });
 
 sample({
-  clock: editEmail,
-  fn: () => 5,
-  target: setProgress,
-});
-
-sample({
-  clock: editEmail,
-  fn: () => true,
-  target: setIsEmailState,
+  clock: passwordForm.onSubmit,
+  source: formValue,
+  filter: $isNewUser,
+  fn: (value) => console.log("register", value),
 });

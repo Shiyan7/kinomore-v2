@@ -15,7 +15,8 @@ import styles from "./styles.module.scss";
 export const AuthWindow = () => {
   const { close, isOpen } = useToggler(authModel.authInstance);
   const windowRef = useRef<HTMLDivElement>(null);
-  const isEmailState = useUnit(authModel.$isEmailState);
+  const state = useUnit(authModel.$state);
+  const isEmailState = state === "email";
 
   useEffect(() => {
     windowRef.current?.scrollTo(0, 0);

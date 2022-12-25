@@ -4,7 +4,7 @@ import { authModel } from "features/auth";
 import styles from "./styles.module.scss";
 
 export const Progress = () => {
-  const value = useUnit(authModel.$progressStore);
+  const progress = useUnit(authModel.$progress);
 
-  return <div className={styles.progress} style={{ "--progress-width": `${value}%` } as CSSProperties} />;
+  return <div className={styles.progress} style={{ "--progress-width": `${progress}%` } as CSSProperties} />;
 };

@@ -10,11 +10,10 @@ import { Transition } from "../transition";
 import styles from "./styles.module.scss";
 
 export const EmailForm = () => {
-  const { controller } = useForm({ form: authModel.authForm, resetUnmount: false });
+  const { controller, handleSubmit } = useForm({ form: authModel.emailForm, resetUnmount: false });
+  const { email } = useUnit(authModel.emailForm.$values);
   const inputRef = useRef<HTMLInputElement>(null);
-  const { email } = useUnit(authModel.authForm.$values);
   const pending = useUnit(authModel.checkUserFx.pending);
-  const checkUserFx = useUnit(authModel.checkUserFx);
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -30,7 +29,7 @@ export const EmailForm = () => {
       <Transition doneClass={styles.done} timeout={130}>
         <span className={styles.sep}>или</span>
       </Transition>
-      <Form onSubmit={() => checkUserFx(email)} className={styles.form}>
+      <Form onSubmit={handleSubmit} className={styles.form}>
         <Transition timeout={200} doneClass={styles.done}>
           <Field.Input
             use={controller({
