@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import type { NextPage } from "next";
-import { BaseLayout } from "shared/ui/layouts";
 /* import { useUnit } from "effector-react";
 import { useRouter } from "next/router";
 import { pageModel } from "pages/movie";
@@ -12,10 +11,8 @@ export const Movie: NextPage = () => {
   const movie = useUnit(pageModel.$movie); */
 
   return (
-    <BaseLayout>
-      <section className={styles.section}>
-        <div className={clsx("container", styles.container)}>123</div>
-      </section>
-    </BaseLayout>
+    <section className={styles.section}>
+      <div className={clsx("container", styles.container)}>123</div>
+    </section>
   );
 };
