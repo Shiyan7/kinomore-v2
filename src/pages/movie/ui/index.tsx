@@ -16,7 +16,7 @@ export const Movie: NextPage = () => {
 
   return (
     <section className={styles.section}>
-      <div className={clsx("container", styles.container)}>{movie?.alternativeName}</div>
+      <div className={clsx("container", styles.container)}>{movie?.name}</div>
     </section>
   );
 };

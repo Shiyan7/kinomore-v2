@@ -3,8 +3,10 @@ import { Header } from "widgets/header";
 import { AuthWindow } from "features/auth";
 import { SearchWindow } from "entities/search-window";
 
+// run process logic for all base layout pages
+import "processes/root";
+
 export const BaseLayout = ({ children }: PropsWithChildren) => {
-	console.log('LAYOUT RENDERED');
   return (
     <>
       <Header />

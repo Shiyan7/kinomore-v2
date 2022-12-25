@@ -6,9 +6,7 @@ import { ReactNode, useEffect, ReactElement } from "react";
 import NextNProgress from "nextjs-progressbar";
 import Head from "next/head";
 import { navigationModel } from "entities/navigation";
-import { BaseLayout } from "shared/ui/layouts";
 import { withProviders } from "./providers";
-
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPage & {

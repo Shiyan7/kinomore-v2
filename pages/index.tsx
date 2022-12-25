@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { createGSP } from "pages/shared";
 import { Home, pageModel } from "pages/home";
-import { BaseLayout } from "shared/ui/layouts";
+import { BaseLayout } from "widgets/layouts";
 
 const Page = (props: any) => <Home {...props} />;
 

@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Movie, pageModel } from "pages/movie";
 import { createGSSP } from "pages/shared";
-import { BaseLayout } from "shared/ui/layouts";
+import { BaseLayout } from "widgets/layouts";
 
 const Page = (props: any) => <Movie {...props} />;
 
