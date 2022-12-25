@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import NextNProgress from "nextjs-progressbar";
 import Head from "next/head";
 import { navigationModel } from "entities/navigation";
-import { BaseLayout } from "shared/ui/layouts";
 import { withProviders } from "./providers";
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -29,9 +28,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         />
       </Head>
       <NextNProgress color="var(--color-primary)" height={3} options={{ showSpinner: false }} />
-      <BaseLayout>
-        <Component {...pageProps} />
-      </BaseLayout>
+      <Component {...pageProps} />
     </>
   );
 };
