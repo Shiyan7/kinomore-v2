@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useEffect, useRef } from "react";
-import { useUnit } from "effector-react";
+import { useStore } from "effector-react/scope";
 import { authModel } from "features/auth";
 import { useForm } from "shared/lib/effector-react-form";
 import { Form, Field } from "shared/form";
@@ -11,9 +11,9 @@ import styles from "./styles.module.scss";
 
 export const EmailForm = () => {
   const { controller, handleSubmit } = useForm({ form: authModel.emailForm, resetUnmount: false });
-  const { email } = useUnit(authModel.emailForm.$values);
+  const { email } = useStore(authModel.emailForm.$values);
   const inputRef = useRef<HTMLInputElement>(null);
-  const pending = useUnit(authModel.checkUserFx.pending);
+  const pending = useStore(authModel.checkUserFx.pending);
 
   useEffect(() => {
     inputRef.current?.focus();

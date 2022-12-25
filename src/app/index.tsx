@@ -1,14 +1,25 @@
 import type { AppProps } from "next/app";
+import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useEvent } from "effector-react";
-import { useEffect } from "react";
+import { useEvent } from "effector-react/scope";
+import { ReactNode, useEffect, ReactElement } from "react";
 import NextNProgress from "nextjs-progressbar";
 import Head from "next/head";
 import { navigationModel } from "entities/navigation";
 import { BaseLayout } from "shared/ui/layouts";
 import { withProviders } from "./providers";
 
-const App = ({ Component, pageProps }: AppProps) => {
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+};
+
+const getFallbackLayout: (page: ReactElement) => ReactNode = (page) => page;
+
+const App = ({ Component, pageProps }: AppPropsWithLayout) => {
+	const getLayout = Component?.getLayout ?? getFallbackLayout;
   const router = useRouter();
   const routerUpdated = useEvent(navigationModel.routerUpdated);
 
@@ -29,9 +40,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         />
       </Head>
       <NextNProgress color="var(--color-primary)" height={3} options={{ showSpinner: false }} />
-      <BaseLayout>
-        <Component {...pageProps} />
-      </BaseLayout>
+			{getLayout(<Component {...pageProps} />)}
     </>
   );
 };

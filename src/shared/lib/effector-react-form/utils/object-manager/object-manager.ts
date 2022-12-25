@@ -1,7 +1,5 @@
-/* eslint-disable no-restricted-globals */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // @ts-nocheck
-import stringToPath from "lodash.topath";
+import stringToPath from 'lodash.topath';
 
 /**
  * @param {object} state Redux state
@@ -16,7 +14,7 @@ export const deleteIn = <Obj = any>(
   path: string | string[],
   removeEmpty = false,
   inDeep = true, // false for inlineMap
-  index = 0
+  index = 0,
 ): any => {
   let pathArray = index === 0 ? stringToPath(path) : path;
   if (!inDeep) {
@@ -31,7 +29,7 @@ export const deleteIn = <Obj = any>(
 
   const isEndPoint = pathArray.length - 1 === index;
   const isArray = Array.isArray(state);
-  const isObject = !isArray && typeof state === "object";
+  const isObject = !isArray && typeof state === 'object';
   // @ts-ignore
   const newState = isArray ? [...state] : { ...state };
 
@@ -40,31 +38,32 @@ export const deleteIn = <Obj = any>(
       // tslint:disable-next-line:no-dynamic-delete
       delete newState[currentKey];
       return newState;
-    }
-    const result = deleteIn(newState[currentKey], pathArray, removeEmpty, inDeep, index + 1);
-    const isRemoveEmpty = !result || (removeEmpty && (!result || !Object.keys(result).length));
-    if (isRemoveEmpty) {
-      // tslint:disable-next-line:no-dynamic-delete
-      delete newState[currentKey];
     } else {
-      newState[currentKey] = result;
+      const result = deleteIn(newState[currentKey], pathArray, removeEmpty, inDeep, index + 1);
+      const isRemoveEmpty = !result || (removeEmpty && (!result || !Object.keys(result).length));
+      if (isRemoveEmpty) {
+        // tslint:disable-next-line:no-dynamic-delete
+        delete newState[currentKey];
+      } else {
+        newState[currentKey] = result;
+      }
+      return newState;
     }
-    return newState;
-  }
-  if (isArray) {
+  } else if (isArray) {
     if (isEndPoint) {
       // @ts-ignore
       return newState.filter((_, i) => Number(currentKey) !== i);
+    } else {
+      const result = deleteIn(newState[currentKey], pathArray, removeEmpty, inDeep, index + 1);
+      const isRemoveEmpty = !result || (removeEmpty && (!result || !Object.keys(result).length));
+      if (isRemoveEmpty) {
+        // @ts-ignore
+        return newState.filter((_, i) => Number(currentKey) !== i);
+      } else {
+        newState[currentKey] = result;
+      }
+      return newState;
     }
-    const result = deleteIn(newState[currentKey], pathArray, removeEmpty, inDeep, index + 1);
-    const isRemoveEmpty = !result || (removeEmpty && (!result || !Object.keys(result).length));
-    if (isRemoveEmpty) {
-      // @ts-ignore
-      return newState.filter((_, i) => Number(currentKey) !== i);
-    }
-    newState[currentKey] = result;
-
-    return newState;
   }
 };
 
@@ -80,7 +79,7 @@ export const setIn = <Obj = any, Result = any | any[]>(
   state: Obj,
   path: string | string[],
   value,
-  pathIndex = 0
+  pathIndex = 0,
 ): Result => {
   const pathArray = pathIndex === 0 ? stringToPath(path) : path;
 
@@ -94,7 +93,7 @@ export const setIn = <Obj = any, Result = any | any[]>(
 
   if (!state) {
     if (isNaN(first)) {
-      return { [first]: next } as unknown as Result;
+      return {[first]: next} as unknown as Result;
     }
     const initialized = [];
     // @ts-ignore
@@ -148,7 +147,7 @@ export const getIn = <Obj, Result>(state: Obj, field: string | string[], default
 export const makeNested = <Result = Record<string, any>>(inlineMap: Record<string, any>): Result =>
   Object.entries(inlineMap).reduce((acc, [key, value]) => setIn(acc, key, value), {} as Result);
 
-const isFieldMeta = (value) => typeof value === "object" && value._type === "fieldMeta";
+const isFieldMeta = (value) => typeof value === 'object' && value._type === 'fieldMeta';
 
 export const removeFromInlineMap = (map: Record<string, any>, key: string) => {
   const nestedMap = deleteIn(makeNested(map), key);
@@ -159,7 +158,7 @@ export const removeFromInlineMap = (map: Record<string, any>, key: string) => {
     const currentNode = nodes.pop();
     Object.entries(currentNode.node).forEach(([k, v]) => {
       if (isFieldMeta(v)) {
-        newInlineMap[currentNode.path.concat(k).join(".")] = v;
+        newInlineMap[currentNode.path.concat(k).join('.')] = v;
       } else {
         nodes.push({
           node: v,
@@ -174,8 +173,8 @@ export const removeFromInlineMap = (map: Record<string, any>, key: string) => {
 
 export const makeConsistentKey = (key: string | string[]) => {
   if (Array.isArray(key)) {
-    return key.join(".");
+    return key.join('.');
   }
 
-  return stringToPath(key).join(".");
+  return stringToPath(key).join('.');
 };

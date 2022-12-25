@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { ReactNode, useCallback, useRef } from "react";
-import { useStore, useEvent } from "effector-react/scope";
-import { AnyState, FieldArrayParams, MapFieldArrayCallback, ResultUseFieldArray } from "./ts";
-import { getIn } from "./utils/object-manager";
+import { ReactNode, useCallback, useRef } from 'react';
+import { useStore, useEvent } from 'effector-react/scope';
+import { AnyState, FieldArrayParams, MapFieldArrayCallback, ResultUseFieldArray } from './ts';
+import { getIn } from './utils/object-manager';
 
 const useFieldArray = <Values extends object = AnyState>({
   fieldArray,
@@ -34,7 +33,7 @@ const useFieldArray = <Values extends object = AnyState>({
       });
       return results;
     },
-    [values]
+    [values],
   );
 
   return {

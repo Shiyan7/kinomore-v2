@@ -1,13 +1,12 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require("path");
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  experimental: {
-		images: {
-			unoptimized: true,
-		},
-  },
 	images: {
 		domains: ["st.kp.yandex.net", "avatars.mds.yandex.net", "www.themoviedb.org"],
+		unoptimized: true,
 	},
 	env: {
 		API_TOKEN: process.env.API_TOKEN,
@@ -26,6 +25,17 @@ const nextConfig = {
 				},
 			],
 		});
+
+		config.resolve.alias = {
+      ...config.resolve?.alias,
+      /**
+       * Prevent using effector .mjs extension in "web" version of bundle
+       * Otherwise, we can face different bugs when using effector
+       */
+      effector: path.resolve("./node_modules/effector/effector.cjs.js"),
+      "effector-react/scope": path.resolve("./node_modules/effector-react/scope.js"),
+      "effector-react": path.resolve("./node_modules/effector-react/effector-react.cjs.js"),
+    };
 
 		return config;
 	},

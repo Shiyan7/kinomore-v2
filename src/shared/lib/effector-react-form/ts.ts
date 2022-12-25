@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-use-before-define */
 // @ts-nocheck
-import { Store, Event, Domain } from "effector";
-import React from "react";
-import { GetName, GetNameStr } from "./utils/object-manager";
+import { Store, Event, Domain } from 'effector';
+import React from 'react';
+import { GetName, GetNameStr } from './utils/object-manager';
 
 export type AnyState = Record<string, any>;
 
@@ -32,7 +30,7 @@ export type FormState = {
 };
 
 export type FieldState = {
-  _type: "fieldMeta";
+  _type: 'fieldMeta';
   active: boolean;
   touched: boolean;
   changed: boolean;
@@ -76,7 +74,7 @@ export type ResetOuterErrorParams = string | string[];
 export type FieldInitParams = {
   name: string | string[];
   flat?: boolean;
-  validate?: ControllerParams["validate"];
+  validate?: ControllerParams['validate'];
 };
 
 export type ControllerInjectedResult<Meta = any> = {
@@ -110,7 +108,7 @@ export type ControllerHof<Meta = any> = (a: ControllerParams) => Controller<Meta
 export type FormValidate<Values, Meta> = (params: FormValidateParams<Values, Meta>) => ErrorsInline;
 
 export type MapSubmit<Values, ResultValues, Meta = any> = (
-  params: SubmitParams<Values, Meta>
+  params: SubmitParams<Values, Meta>,
 ) => SubmitParams<ResultValues, Meta>;
 
 export type FormValidateParams<Values, Meta> = SubmitParams<Values, Meta>;
@@ -191,7 +189,7 @@ export type Form<Values = any, Meta = any> = {
   $fieldsInline: Store<Record<string, FieldState>>;
   $meta: Store<Meta>;
   $allFormState: AllFormState<Values, Meta>;
-  created: Event<void>;
+  created: Event<void>,
   setValue: Event<SetValueParams>;
   setValues: Event<SetValuesParams<Values>>;
   setOrDeleteError: Event<SetOrDeleteErrorParams>;

@@ -4,6 +4,7 @@ import { AuthWindow } from "features/auth";
 import { SearchWindow } from "entities/search-window";
 
 export const BaseLayout = ({ children }: PropsWithChildren) => {
+	console.log('LAYOUT RENDERED');
   return (
     <>
       <Header />

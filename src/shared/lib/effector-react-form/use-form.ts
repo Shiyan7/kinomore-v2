@@ -1,9 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
-import React, { useCallback, useEffect, useRef } from "react";
-import { useEvent, useStoreMap } from "effector-react/scope";
+import React, { useCallback, useEffect, useRef } from 'react';
+import { useStore, useEvent, useStoreMap } from 'effector-react/scope';
 import {
   ControllerHof,
   ControllerInjectedResult,
@@ -20,9 +17,9 @@ import {
   SetFieldStateParams,
   SetOrDeleteOuterErrorParams,
   FieldInitParams,
-} from "./ts";
-import { getIn, makeConsistentKey } from "./utils/object-manager";
-import { initialFieldState } from "./default-states";
+} from './ts';
+import { getIn, makeConsistentKey } from './utils/object-manager';
+import { initialFieldState } from './default-states';
 
 type UseFormParamsWithFactory<Values extends object, Meta> = {
   form: Form<Values>;
@@ -88,19 +85,29 @@ const useForm = <Values extends AnyState = AnyState, Meta = any>({
   const controller = useCallback<ControllerHof>(({ name: nameProp, validate, flat }) => {
     return (): ControllerInjectedResult => {
       const refName = useRef<string>(makeConsistentKey(nameProp));
+      // refName.current = makeConsistentKey(nameProp);
       const refFlat = useRef<boolean>(flat);
+      // refFlat.current = flat;
+
+      // console.log({nameProp, cur: refName.current})
 
       useEffect(() => {
         fieldInit({ name: refName.current, validate, flat });
       }, []);
 
+      // const values = useStore($values);
+      // const value = values[refName.current];
+      // console.log({values, value, st: $values.getState()})
       const value = useStoreMap({
         store: $values,
         keys: [refName.current],
         fn: (values, [field]) => {
-          return (flat ? values[field] : getIn(values, field)) ?? null;
+          // console.log({values, field})
+          return (flat ? values[field] : getIn(values, field)) ?? null
         },
       });
+
+      // console.log({nameProp, value})
 
       const innerError = useStoreMap({
         store: $errorsInline,
