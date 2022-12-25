@@ -29,6 +29,7 @@ const Document = () => {
       </Head>
       <body className="page__body">
         <Main />
+        <div id="modal" />
         <NextScript />
       </body>
     </Html>

@@ -31,6 +31,11 @@ export const passwordForm = createForm({
   }),
 });
 
+sample({
+  clock: navigationModel.routerUpdated,
+  target: [emailForm.reset, passwordForm.reset],
+});
+
 export const editClicked = createEvent();
 export const continueClicked = createEvent();
 
