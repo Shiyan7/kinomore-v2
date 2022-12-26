@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
+import { BaseLayout } from "widgets/layouts";
 import { createGSP } from "pages/shared";
 import { Home, pageModel } from "pages/home";
-import { BaseLayout } from "widgets/layouts";
 
-const Page = (props: any) => <Home {...props} />;
+const Page = () => <Home />;
 
 Page.getLayout = (page: ReactNode) => <BaseLayout>{page}</BaseLayout>;
 
@@ -12,4 +12,3 @@ export const getStaticProps = createGSP({
 });
 
 export default Page;
-

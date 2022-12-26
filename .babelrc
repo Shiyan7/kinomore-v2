@@ -15,7 +15,7 @@
     [
       "effector/babel-plugin",
       {
-        "importName": "shared/lib/effector-react-form",
+        "importName": "effector-react-form",
         "storeCreators": ["createForm"],
         "noDefaults": true
       },

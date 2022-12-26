@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { useStore, useEvent } from "effector-react/scope";
+import { useForm } from "effector-react-form";
 import { authModel } from "features/auth";
-import { useForm } from "shared/lib/effector-react-form";
 import { Button } from "shared/ui/button";
 import { Field, Form } from "shared/form";
 import { Message } from "../message";

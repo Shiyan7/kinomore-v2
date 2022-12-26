@@ -18,7 +18,9 @@
 		"paths": {
 			"*": ["src/*"],
 			"nextjs-effector": ["./src/shared/lib/nextjs-effector"],
-      "nextjs-effector/*": ["./src/shared/lib/nextjs-effector/*"]
+      "nextjs-effector/*": ["./src/shared/lib/nextjs-effector/*"],
+			"effector-react-form": ["./src/shared/lib/effector-react-form"],
+      "effector-react-form/*": ["./src/shared/lib/effector-react-form/*"]
     },
     "plugins": [
       {

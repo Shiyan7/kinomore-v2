@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
+import { BaseLayout } from "widgets/layouts";
 import { Movie, pageModel } from "pages/movie";
 import { createGSSP } from "pages/shared";
-import { BaseLayout } from "widgets/layouts";
 
-const Page = (props: any) => <Movie {...props} />;
+const Page = () => <Movie />;
 
 Page.getLayout = (page: ReactNode) => <BaseLayout>{page}</BaseLayout>;
 

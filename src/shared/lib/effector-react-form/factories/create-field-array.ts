@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // @ts-nocheck
-import { createEvent as createEventNative, sample } from 'effector';
-import { CreateFieldArrayParams, FieldArray } from '../ts';
-import { getIn, removeFromInlineMap, setIn } from '../utils/object-manager';
+import { createEvent as createEventNative, sample } from "effector";
+import { CreateFieldArrayParams, FieldArray } from "../ts";
+import { getIn, removeFromInlineMap, setIn } from "../utils/object-manager";
 
 const createFieldArray = <Values extends object = any>({
   form,
@@ -20,7 +21,7 @@ const createFieldArray = <Values extends object = any>({
   // const swap = useMemo(() => createEvent<{ from: number; to: number }>('hookForm_fieldArray_Swap'), []);
 
   $fieldsInline.on(remove, (fieldsInline, { index, fieldName }) =>
-    removeFromInlineMap(fieldsInline, `${fieldName}.${index}`),
+    removeFromInlineMap(fieldsInline, `${fieldName}.${index}`)
   );
 
   $values

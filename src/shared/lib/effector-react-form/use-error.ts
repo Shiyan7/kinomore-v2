@@ -1,7 +1,8 @@
-import { useStore, useStoreMap } from 'effector-react/scope';
-import { ErrorsInline, FieldsInline, FieldState, FormState, Message, UseErrorParams, UseErrorResult } from './ts';
-import { getIn } from './utils/object-manager';
-import { initialFieldState } from './default-states';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useStore, useStoreMap } from "effector-react/scope";
+import { ErrorsInline, FieldsInline, FieldState, FormState, Message, UseErrorParams, UseErrorResult } from "./ts";
+import { getIn } from "./utils/object-manager";
+import { initialFieldState } from "./default-states";
 
 const useError = <Values extends object>({ name, form }: UseErrorParams<Values>): UseErrorResult => {
   const { $values, $fieldsInline, $errorsInline, $outerErrorsInline, $form } = form;

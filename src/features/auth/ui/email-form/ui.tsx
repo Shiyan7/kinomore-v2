@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import { useEffect, useRef } from "react";
 import { useStore } from "effector-react/scope";
+import { useForm } from "effector-react-form";
 import { authModel } from "features/auth";
-import { useForm } from "shared/lib/effector-react-form";
 import { Form, Field } from "shared/form";
 import { GoogleIcon } from "shared/ui/icons";
 import { Button } from "shared/ui/button";
