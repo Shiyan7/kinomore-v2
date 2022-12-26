@@ -1,12 +1,10 @@
 import clsx from "clsx";
 import { useEffect, useRef } from "react";
-import { TransitionGroup } from "react-transition-group";
 import { useUnit } from "effector-react";
 import { authModel } from "features/auth";
 import { Modal } from "shared/ui/modal";
 import { useToggler } from "shared/lib/hooks";
 import { EmailForm } from "./email-form";
-import { Transition } from "./transition";
 import { Message } from "./message";
 import { Header } from "./header";
 import { PasswordForm } from "./password-form";
@@ -25,16 +23,14 @@ export const AuthWindow = () => {
   return (
     <Modal isOpen={isOpen} close={close} ref={windowRef} className={clsx(styles.window, isOpen && styles.opened)}>
       <Header />
-      <TransitionGroup className={styles.container}>
-        <Transition doneClass={styles.done} timeout={0}>
-          <Message
-            className={styles.message}
-            title="Войдите или зарегистрируйтесь"
-            description={isEmailState ? "чтобы пользоваться сервисом на любом устройстве" : null}
-          />
-        </Transition>
+      <div className={styles.container}>
+        <Message
+          className={styles.message}
+          title="Войдите или зарегистрируйтесь"
+          description={isEmailState ? "чтобы пользоваться сервисом на любом устройстве" : null}
+        />
         {isEmailState ? <EmailForm /> : <PasswordForm />}
-      </TransitionGroup>
+      </div>
     </Modal>
   );
 };

@@ -1,5 +1,6 @@
 import { forwardRef, PropsWithChildren } from "react";
 import { useLockedBody } from "shared/lib/hooks";
+import { Portal } from "../portal";
 import { useEscape } from "./lib";
 
 interface ModalProps {
@@ -14,12 +15,14 @@ export const Modal = forwardRef<HTMLDivElement, PropsWithChildren<ModalProps>>(
 
     useEscape(close);
 
-    /* FIXME: добавить сюда портал */
-
     return (
-      <div className={className} ref={ref}>
-        {children}
-      </div>
+      <Portal rootId="#modal">
+        {isOpen && (
+          <div className={className} ref={ref}>
+            {children}
+          </div>
+        )}
+      </Portal>
     );
   }
 );
