@@ -7,6 +7,7 @@ const getSelectedValues = (options) => {
   if (options) {
     for (const option of options) {
       if (option.selected) {
+        // @ts-ignore
         result.push(option.value);
       }
     }

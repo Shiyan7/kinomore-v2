@@ -1,5 +1,6 @@
-/* eslint-disable no-restricted-globals */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-else-return */
 // @ts-nocheck
 import stringToPath from "lodash.topath";
 
@@ -40,31 +41,32 @@ export const deleteIn = <Obj = any>(
       // tslint:disable-next-line:no-dynamic-delete
       delete newState[currentKey];
       return newState;
-    }
-    const result = deleteIn(newState[currentKey], pathArray, removeEmpty, inDeep, index + 1);
-    const isRemoveEmpty = !result || (removeEmpty && (!result || !Object.keys(result).length));
-    if (isRemoveEmpty) {
-      // tslint:disable-next-line:no-dynamic-delete
-      delete newState[currentKey];
     } else {
-      newState[currentKey] = result;
+      const result = deleteIn(newState[currentKey], pathArray, removeEmpty, inDeep, index + 1);
+      const isRemoveEmpty = !result || (removeEmpty && (!result || !Object.keys(result).length));
+      if (isRemoveEmpty) {
+        // tslint:disable-next-line:no-dynamic-delete
+        delete newState[currentKey];
+      } else {
+        newState[currentKey] = result;
+      }
+      return newState;
     }
-    return newState;
-  }
-  if (isArray) {
+  } else if (isArray) {
     if (isEndPoint) {
       // @ts-ignore
       return newState.filter((_, i) => Number(currentKey) !== i);
+    } else {
+      const result = deleteIn(newState[currentKey], pathArray, removeEmpty, inDeep, index + 1);
+      const isRemoveEmpty = !result || (removeEmpty && (!result || !Object.keys(result).length));
+      if (isRemoveEmpty) {
+        // @ts-ignore
+        return newState.filter((_, i) => Number(currentKey) !== i);
+      } else {
+        newState[currentKey] = result;
+      }
+      return newState;
     }
-    const result = deleteIn(newState[currentKey], pathArray, removeEmpty, inDeep, index + 1);
-    const isRemoveEmpty = !result || (removeEmpty && (!result || !Object.keys(result).length));
-    if (isRemoveEmpty) {
-      // @ts-ignore
-      return newState.filter((_, i) => Number(currentKey) !== i);
-    }
-    newState[currentKey] = result;
-
-    return newState;
   }
 };
 

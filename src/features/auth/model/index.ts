@@ -1,8 +1,8 @@
 import { attach, combine, createEvent, createStore, sample } from "effector";
 import { not } from "patronum";
 import { string } from "yup";
+import { createForm } from "effector-react-form";
 import { navigationModel } from "entities/navigation";
-import { createForm } from "shared/lib/effector-react-form";
 import { createObjectValidator } from "shared/form";
 import { createToggler } from "shared/lib/toggler";
 import { internalApi } from "shared/api";

@@ -1,12 +1,12 @@
 "use client";
-import { useUnit } from "effector-react";
+import { useStore } from "effector-react/scope";
 import { Category } from "widgets/category";
 import { pageModel } from "pages/home";
 import { MovieItem } from "entities/movie-item";
 import { RoutesEnum } from "shared/config";
 
 export const ForFamily = () => {
-  const data = useUnit(pageModel.$forFamily);
+  const data = useStore(pageModel.$forFamily);
 
   return (
     <Category>

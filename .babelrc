@@ -1,4 +1,34 @@
 {
-  "presets": ["next/babel"],
-  "plugins": [["effector/babel-plugin", { "reactSsr": true }]]
+  "presets": ["next/babel", "effector-http-api/babel-preset", "patronum/babel-preset"],
+  "plugins": [
+    [
+      "effector/babel-plugin",
+      {
+        "factories": [
+          "effector-http-api",
+          "patronum"
+        ],
+        "addLoc": true,
+        "reactSsr": true
+      }
+    ],
+    [
+      "effector/babel-plugin",
+      {
+        "importName": "effector-react-form",
+        "storeCreators": ["createForm"],
+        "noDefaults": true
+      },
+      "createForm"
+    ],
+		[
+      "effector/babel-plugin",
+      {
+        "importName": "shared/lib/toggler",
+        "storeCreators": ["createToggler"],
+        "noDefaults": true
+      },
+      "createToggler"
+    ]
+  ]
 }

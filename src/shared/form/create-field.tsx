@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-restricted-syntax */
 import { forwardRef, type ChangeEvent, ComponentType } from "react";
-import type { Controller } from "shared/lib/effector-react-form";
+import type { Controller } from "effector-react-form";
 
 export function createField<P, Keys extends string = "">(
   Component: ComponentType<P>,

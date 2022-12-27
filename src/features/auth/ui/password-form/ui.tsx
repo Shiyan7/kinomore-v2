@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
-import { useUnit } from "effector-react";
+import { useStore, useEvent } from "effector-react/scope";
+import { useForm } from "effector-react-form";
 import { authModel } from "features/auth";
-import { useForm } from "shared/lib/effector-react-form";
 import { Button } from "shared/ui/button";
 import { Field, Form } from "shared/form";
 import { Message } from "../message";
@@ -10,10 +10,10 @@ import styles from "./styles.module.scss";
 
 export const PasswordForm = () => {
   const { handleSubmit, controller } = useForm({ form: authModel.passwordForm, resetUnmount: false });
-  const { email } = useUnit(authModel.emailForm.$values);
+  const { email } = useStore(authModel.emailForm.$values);
   const inputRef = useRef<HTMLInputElement>(null);
-  const isNewUser = useUnit(authModel.$isNewUser);
-  const editClicked = useUnit(authModel.editClicked);
+  const isNewUser = useStore(authModel.$isNewUser);
+  const editClicked = useEvent(authModel.editClicked);
 
   useEffect(() => {
     inputRef.current?.focus();

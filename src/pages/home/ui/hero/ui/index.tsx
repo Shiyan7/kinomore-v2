@@ -1,5 +1,5 @@
 "use client";
-import { useUnit } from "effector-react";
+import { useStore } from "effector-react/scope";
 import { pageModel } from "pages/home";
 import { LIMIT } from "shared/config";
 import { CarouselMultiply } from "shared/ui/carousel-multiply";
@@ -7,7 +7,7 @@ import { HeroSlide } from "./slide";
 import styles from "./styles.module.scss";
 
 export const Hero = () => {
-  const data = useUnit(pageModel.$heroMovies);
+  const data = useStore(pageModel.$heroMovies);
 
   return (
     <section className={styles.section}>

@@ -1,6 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
 import React, { useCallback, useEffect, useRef } from "react";
 import { useEvent, useStoreMap } from "effector-react/scope";
@@ -88,19 +88,29 @@ const useForm = <Values extends AnyState = AnyState, Meta = any>({
   const controller = useCallback<ControllerHof>(({ name: nameProp, validate, flat }) => {
     return (): ControllerInjectedResult => {
       const refName = useRef<string>(makeConsistentKey(nameProp));
+      // refName.current = makeConsistentKey(nameProp);
       const refFlat = useRef<boolean>(flat);
+      // refFlat.current = flat;
+
+      // console.log({nameProp, cur: refName.current})
 
       useEffect(() => {
         fieldInit({ name: refName.current, validate, flat });
       }, []);
 
+      // const values = useStore($values);
+      // const value = values[refName.current];
+      // console.log({values, value, st: $values.getState()})
       const value = useStoreMap({
         store: $values,
         keys: [refName.current],
         fn: (values, [field]) => {
+          // console.log({values, field})
           return (flat ? values[field] : getIn(values, field)) ?? null;
         },
       });
+
+      // console.log({nameProp, value})
 
       const innerError = useStoreMap({
         store: $errorsInline,
