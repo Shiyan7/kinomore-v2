@@ -11,7 +11,7 @@ export const SearchWindow = () => {
   const { close, isOpen } = useToggler(searchModel.searchInstance);
 
   return (
-    <Modal isOpen={isOpen} close={close} className={clsx(styles.window, isOpen && styles.opened)}>
+    <Modal isOpen={isOpen} close={close} className={styles.window}>
       <button className={clsx("btn-reset", styles.close)} type="button" onClick={close}>
         <CloseIcon />
       </button>

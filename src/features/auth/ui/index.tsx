@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { useEffect, useRef } from "react";
 import { useUnit } from "effector-react";
 import { authModel } from "features/auth";
@@ -21,7 +20,7 @@ export const AuthWindow = () => {
   }, [isEmailState]);
 
   return (
-    <Modal isOpen={isOpen} close={close} ref={windowRef} className={clsx(styles.window, isOpen && styles.opened)}>
+    <Modal isOpen={isOpen} close={close} ref={windowRef} className={styles.window}>
       <Header />
       <div className={styles.container}>
         <Message

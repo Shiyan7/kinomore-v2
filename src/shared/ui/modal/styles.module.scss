@@ -1,0 +1,11 @@
+.modal {
+  transition: opacity var(--duration);
+
+  &.enter {
+    opacity: 0;
+  }
+
+  &.enterActive {
+    opacity: 1;
+  }
+}
