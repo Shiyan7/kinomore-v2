@@ -23,10 +23,7 @@ export const Modal = forwardRef<HTMLDivElement, PropsWithChildren<ModalProps>>(
         in={isOpen}
         timeout={0}
         classNames={{
-          enter: styles.enter,
-          enterActive: styles.enterActive,
-          exit: styles.done,
-          exitActive: styles.exitActive,
+          enterDone: styles.done,
         }}>
         <Portal rootId="#modal">
           {isOpen && (
