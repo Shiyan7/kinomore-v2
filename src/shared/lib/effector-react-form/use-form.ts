@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, type SyntheticEvent } from "react";
 import { useEvent, useStoreMap } from "effector-react/scope";
 import {
   ControllerHof,
@@ -32,7 +32,7 @@ type UseFormParamsWithFactory<Values extends object, Meta> = {
 
 type UseFormResultWithFactory<Values> = {
   controller: ControllerHof;
-  handleSubmit: (e: React.SyntheticEvent<HTMLFormElement>) => void;
+  handleSubmit: (e: SyntheticEvent<HTMLFormElement>) => void;
   setMeta: (meta: any) => void;
   setValue: (params: SetValueParams) => void;
   setValues: (params: SetValuesParams<Values>) => void;
@@ -172,7 +172,7 @@ const useForm = <Values extends AnyState = AnyState, Meta = any>({
     };
   }, []);
 
-  const handleSubmit = useCallback((e: React.SyntheticEvent<HTMLFormElement>): void => {
+  const handleSubmit = useCallback((e: SyntheticEvent<HTMLFormElement>): void => {
     e.preventDefault();
     submit();
   }, []);
