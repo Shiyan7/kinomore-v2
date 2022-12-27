@@ -3,6 +3,7 @@ import clsx from "clsx";
 import { useHeaderFixed } from "../lib";
 import { Burger } from "./burger";
 import { Logo } from "./logo";
+import { Menu } from "./menu";
 import { Nav } from "./nav";
 import { Profile } from "./profile";
 import { SearchButton } from "./search-button";
@@ -24,6 +25,7 @@ export const Header = () => {
           <Burger />
         </div>
       </div>
+      <Menu />
     </header>
   );
 };

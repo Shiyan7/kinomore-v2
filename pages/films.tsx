@@ -1,3 +1,3 @@
 export default function FilmsPage() {
-  return <div>123</div>;
+  return <div>Фильмы</div>;
 }

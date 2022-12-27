@@ -1,6 +1,6 @@
 .window {
   position: fixed;
-  z-index: 1000;
+  z-index: var(--window-z-index);
   top: 0;
   left: 0;
   width: 100%;
@@ -17,6 +17,7 @@
   right: 25px;
   width: 52px;
   height: 52px;
+  opacity: 0.5;
 
   @media (max-width: 1024px) {
     right: 10px;
@@ -26,6 +27,7 @@
     width: 40px;
     height: 40px;
     top: 15px;
+    opacity: 1;
   }
 
   &:hover {
@@ -38,8 +40,8 @@
     display: block;
     width: 100%;
     height: 100%;
-    fill: rgba(#fff, 0.56);
-    transition: fill 0.3s;
+    fill: var(--color-white);
+    transition: fill var(--duration);
   }
 }
 

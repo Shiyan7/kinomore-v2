@@ -1,7 +1,7 @@
 .bounceInBottom {
   transform: translateY(var(--offset));
   opacity: 0;
-  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity var(--duration), transform var(--duration);
 
   &.mounted {
     opacity: 1;

@@ -1,6 +1,6 @@
 .window {
   position: fixed;
-  z-index: 1000;
+  z-index: var(--window-z-index);
   top: 0;
   left: 0;
   width: 100%;
