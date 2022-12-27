@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
     "@svgr/webpack": "^6.5.1",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
@@ -30,6 +31,8 @@
     "normalize.css": "^8.0.1",
     "patronum": "^1.12.3",
     "react": "18.2.0",
+    "react-anime": "^4.1.1",
+    "react-awesome-reveal": "^4.1.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
     "react-transition-group": "^4.4.5",
