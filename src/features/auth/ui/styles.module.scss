@@ -5,19 +5,12 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  opacity: 0;
   min-width: var(--min-width);
   overflow-x: hidden;
   overflow-y: auto;
-  visibility: hidden;
   background-color: rgba(#000, 0.95);
   backdrop-filter: blur(7px);
   transition: opacity var(--duration), visibility var(--duration);
-}
-
-.opened {
-  opacity: 1;
-  visibility: visible;
 }
 
 .container {
@@ -40,15 +33,5 @@
   @media (max-width: 375px) {
     padding-left: 14px;
     padding-right: 14px;
-  }
-}
-
-.message {
-  transform: translateY(40px);
-  opacity: 0;
-
-  &.done {
-    opacity: 1;
-    transform: translateY(0px);
   }
 }

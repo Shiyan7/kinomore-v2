@@ -1,18 +1,21 @@
 import { useUnit } from "effector-react";
-import { useToggleFocus, searchModel } from "entities/search-window";
-import { useToggler } from "shared/lib/hooks";
+import { useEffect, useRef } from "react";
+import { searchModel } from "entities/search-window";
 import { Input } from "shared/ui/input";
 import styles from "./styles.module.scss";
 
 export const SearchInput = () => {
-  const { isOpen } = useToggler(searchModel.searchInstance);
-  const { ref } = useToggleFocus(isOpen);
   const search = useUnit(searchModel.$search);
   const searchChanged = useUnit(searchModel.searchChanged);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   return (
     <Input
-      ref={ref}
+      ref={inputRef}
       value={search}
       onClear={() => searchChanged("")}
       onChange={(e) => searchChanged(e.target.value)}

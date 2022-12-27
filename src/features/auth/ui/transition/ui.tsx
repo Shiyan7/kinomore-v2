@@ -1,23 +1,33 @@
-import { FC, PropsWithChildren } from "react";
-import { CSSTransition } from "react-transition-group";
-import { authModel } from "features/auth";
-import { useToggler } from "shared/lib/hooks";
+import clsx from "clsx";
+import { useEffect, useState, type CSSProperties, FC, PropsWithChildren } from "react";
+import styles from "./styles.module.scss";
 
 interface TransitionProps {
-  timeout: number;
-  doneClass: string;
+  delay?: number;
+  offset?: number;
+  variant?: "bounceInBottom";
 }
 
-export const Transition: FC<PropsWithChildren<TransitionProps>> = ({ children, doneClass, timeout }) => {
-  const { isOpen } = useToggler(authModel.authInstance);
+export const Transition: FC<PropsWithChildren<TransitionProps>> = ({
+  children,
+  variant = "bounceInBottom",
+  offset = 40,
+  delay = 0,
+}) => {
+  const [mounted, setMounted] = useState(false);
 
-  const classNames = {
-    enterDone: doneClass,
-  };
+  useEffect(() => {
+    setTimeout(() => {
+      setMounted(true);
+    }, delay);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <CSSTransition classNames={classNames} timeout={timeout} in={isOpen}>
+    <div
+      style={{ "--offset": `${offset}px`, "--delay": `${delay}s` } as CSSProperties}
+      className={clsx(styles[variant], mounted && styles.mounted)}>
       {children}
-    </CSSTransition>
+    </div>
   );
 };

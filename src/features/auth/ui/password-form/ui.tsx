@@ -21,10 +21,10 @@ export const PasswordForm = () => {
 
   return (
     <>
-      <Transition doneClass={styles.done} timeout={50}>
+      <Transition offset={30} delay={50}>
         <Message className={styles.message} isEditable onEdit={editClicked} title={email} />
       </Transition>
-      <Transition doneClass={styles.done} timeout={80}>
+      <Transition offset={30} delay={80}>
         <Message
           className={styles.message}
           title={isNewUser ? "Придумайте пароль для входа" : "Введите пароль, чтобы войти"}
@@ -33,7 +33,7 @@ export const PasswordForm = () => {
       </Transition>
       <Form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.inputs}>
-          <Transition doneClass={styles.done} timeout={150}>
+          <Transition offset={20} delay={150}>
             <Field.Input
               use={controller({
                 name: "password",
@@ -45,7 +45,7 @@ export const PasswordForm = () => {
             />
           </Transition>
         </div>
-        <Transition doneClass={styles.done} timeout={170}>
+        <Transition offset={40} delay={170}>
           <Button className={styles.btn} type="submit">
             {isNewUser ? "Зарегистрироваться" : "Войти"}
           </Button>

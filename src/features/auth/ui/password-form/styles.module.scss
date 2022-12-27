@@ -1,12 +1,5 @@
 .message {
   margin-top: 30px;
-  transform: translateY(30px);
-  opacity: 0;
-
-  &.done {
-    opacity: 1;
-    transform: translateY(0px);
-  }
 }
 
 .form {
@@ -29,27 +22,11 @@
 }
 
 .input {
-  transform: translateY(20px);
-  opacity: 0;
-  transition: transform var(--duration), opacity var(--duration);
-
   &:not(:last-child) {
     margin-bottom: 7px;
-  }
-
-  &.done {
-    transform: translateY(0px);
-    opacity: 1;
   }
 }
 
 .btn {
-  transform: translateY(40px);
-  opacity: 0;
-  transition: transform var(--duration), opacity var(--duration);
-
-  &.done {
-    transform: translateY(0px);
-    opacity: 1;
-  }
+  width: 100%;
 }

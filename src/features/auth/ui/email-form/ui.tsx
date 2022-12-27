@@ -21,16 +21,16 @@ export const EmailForm = () => {
 
   return (
     <div className={styles.content}>
-      <Transition doneClass={styles.done} timeout={100}>
+      <Transition delay={100}>
         <button type="button" className={clsx("btn-reset", styles.logo)}>
           <GoogleIcon />
         </button>
       </Transition>
-      <Transition doneClass={styles.done} timeout={130}>
+      <Transition delay={130}>
         <span className={styles.sep}>или</span>
       </Transition>
       <Form onSubmit={handleSubmit} className={styles.form}>
-        <Transition timeout={200} doneClass={styles.done}>
+        <Transition offset={20} delay={130}>
           <Field.Input
             use={controller({
               name: "email",
@@ -41,12 +41,10 @@ export const EmailForm = () => {
             placeholder="Введите email"
           />
         </Transition>
-        <Transition timeout={250} doneClass={styles.done}>
-          <div className={styles.btnWrapper}>
-            <Button className={styles.btn} disabled={!email} loading={pending} type="submit">
-              Продолжить
-            </Button>
-          </div>
+        <Transition offset={40} delay={130}>
+          <Button className={styles.btn} disabled={!email} loading={pending} type="submit">
+            Продолжить
+          </Button>
         </Transition>
       </Form>
     </div>

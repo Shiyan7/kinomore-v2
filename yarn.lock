@@ -1484,6 +1484,11 @@ acorn@^8.8.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.1.tgz#0a3f9cbecc4ec3bea6f0a80b66ae8dd2da250b73"
   integrity sha512-7zFpHzhnqYKrkYdUjF1HI1bzd0VygEGX8lFk4k5zVMqHEoES+P+7TKI+EvLO9WVMJ8eekdO0aDEK044xTXwPPA==
 
+address@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/address/-/address-1.2.2.tgz#2b5248dac5485a6390532c6a517fda2e3faac89e"
+  integrity sha512-4B/qKCfeE/ODUaAUpSwfzazo5x29WD4r3vXiWsB7I2mSDAihwEqKO+g8GELZUQSSAo5e1XTYh3ZVfLyxBc12nA==
+
 ajv@^6.10.0, ajv@^6.12.4:
   version "6.12.6"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
@@ -1990,11 +1995,6 @@ domutils@^2.8.0:
     dom-serializer "^1.0.1"
     domelementtype "^2.2.0"
     domhandler "^4.2.0"
-
-effector-debounce@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/effector-debounce/-/effector-debounce-1.1.0.tgz#e6aa74efd302d480f57b2e945e71ab34772ba360"
-  integrity sha512-UfJLUQx2fIjNIGx9kmPvmCjClInXvJP+jmREpVMamLQkEoMw3PqdnzoLUqFPJQI/tXGD9LQ1OYrL9eANVpIAtg==
 
 effector-http-api@^2.3.0:
   version "2.3.0"

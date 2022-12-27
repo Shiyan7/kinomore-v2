@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-use-before-define */
 // @ts-nocheck
+import type { ReactNode, SyntheticEvent } from "react";
 import { Store, Event, Domain } from "effector";
-import React from "react";
 import { GetName, GetNameStr } from "./utils/object-manager";
 
 export type AnyState = Record<string, any>;
@@ -149,10 +149,10 @@ export type MapFieldsArrayCallbackParams = {
   index: number;
 };
 
-export type MapFieldArrayCallback = (params: MapFieldsArrayCallbackParams) => React.ReactNode;
+export type MapFieldArrayCallback = (params: MapFieldsArrayCallbackParams) => ReactNode;
 
 export type ResultUseFieldArray = {
-  map: (fn: MapFieldArrayCallback) => React.ReactNode[];
+  map: (fn: MapFieldArrayCallback) => ReactNode[];
   remove: (index: number) => void;
   push: (value: any | Array<any>) => void;
 };
@@ -210,9 +210,9 @@ export type Form<Values = any, Meta = any> = {
   submit: Event<any>;
   onSubmit: Event<SubmitParams<Values, Meta>>;
 
-  onChangeFieldBrowser: Event<{ event: React.SyntheticEvent; name: string; flat?: boolean }>;
-  onFocusFieldBrowser: Event<{ event: React.SyntheticEvent; name: string }>;
-  onBlurFieldBrowser: Event<{ event: React.SyntheticEvent; name: string }>;
+  onChangeFieldBrowser: Event<{ event: SyntheticEvent; name: string; flat?: boolean }>;
+  onFocusFieldBrowser: Event<{ event: SyntheticEvent; name: string }>;
+  onBlurFieldBrowser: Event<{ event: SyntheticEvent; name: string }>;
   fieldInit: Event<FieldInitParams>;
 
   getName: GetName<Values>;

@@ -20,14 +20,6 @@
   width: 45px;
   height: 45px;
   margin-bottom: 15px;
-  transform: translateY(40px);
-  opacity: 0;
-  transition: transform var(--duration), opacity var(--duration);
-
-  &.done {
-    opacity: 1;
-    transform: translateY(0px);
-  }
 
   &:hover {
     opacity: 0.8;
@@ -52,14 +44,6 @@
   font-weight: 300;
   color: rgba(#fff, 0.5);
   margin-bottom: 40px;
-  transform: translateY(40px);
-  opacity: 0;
-  transition: transform var(--duration), opacity var(--duration);
-
-  &.done {
-    opacity: 1;
-    transform: translateY(0px);
-  }
 
   @media (max-width: 576px) {
     margin-bottom: 30px;
@@ -75,27 +59,7 @@
 .input {
   width: 100%;
   margin-bottom: 13px;
-  transform: translateY(20px);
-  opacity: 0;
-  transition: transform var(--duration), opacity var(--duration);
-
-  &.done {
-    transform: translateY(0px);
-    opacity: 1;
-  }
 }
-
-.btnWrapper {
-  transform: translateY(40px);
-  opacity: 0;
-  transition: transform var(--duration), opacity var(--duration);
-
-  &.done {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-}
-
 .btn {
   width: 100%;
 }
