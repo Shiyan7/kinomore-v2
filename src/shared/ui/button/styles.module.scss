@@ -15,9 +15,6 @@
   span {
     position: relative;
   }
-
-  @media (max-width: 576px) {
-  }
 }
 
 .primary {
@@ -35,6 +32,16 @@
   &:active {
     background-color: #1c63ee;
   }
+}
+
+.small {
+	color: var(--color-white);
+  border-radius: 8px;
+	background: linear-gradient(77.72deg, #2253B2 0%, #37B7FF 115.84%);
+	font-size: 13px;
+	line-height: 15px;
+  padding: 10px;
+  overflow: hidden;
 }
 
 .spinner {

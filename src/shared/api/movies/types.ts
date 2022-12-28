@@ -11,12 +11,6 @@ export interface ExternalId {
   tmdb: number;
 }
 
-export interface Rating {
-  kpHd: string;
-  imdb: string;
-  tmdb: number;
-}
-
 export interface VendorNumbers {
   kp: number;
   imdb: number;
@@ -221,7 +215,7 @@ interface MoviePoster {
   url: string;
 }
 
-interface MovieRating {
+export interface MovieRating {
   await: number;
   filmCritics: number;
   imdb: number;
