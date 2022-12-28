@@ -53,15 +53,14 @@ export function CarouselMultiply<T>({
     ...options,
   };
 
-  const defaultModules = [Navigation];
+  const DEFAULT_MODULES = [Navigation];
 
   return (
     <Swiper
       className={clsx(styles.slider, className)}
-      modules={[...(modules ?? defaultModules)]}
+      modules={[...(modules ?? DEFAULT_MODULES)]}
       {...swiperOptions}
-      {...props}
-    >
+      {...props}>
       <SliderButton className={clsx(styles.prev, prevBtnClass)} dir="left" />
       <SliderButton className={clsx(styles.next, nextBtnClass)} dir="right" />
       {renderItems(items)}

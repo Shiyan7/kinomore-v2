@@ -56,7 +56,7 @@
   transition: opacity var(--duration), transform var(--duration);
 
   &:not(:last-child) {
-    margin-bottom: 16px;
+    margin-bottom: 17px;
   }
 
   &.done {

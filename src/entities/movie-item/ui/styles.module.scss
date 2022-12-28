@@ -3,6 +3,7 @@
   display: block;
   width: 100%;
   height: 100%;
+	outline: none;
   color: var(--color-white);
 
   @media (min-width: 1025px) {
@@ -72,14 +73,23 @@
   transition: opacity var(--duration), visibility var(--duration), background-color var(--duration);
 
   @media (max-width: 1024px) {
-    display: none;
+		position: static;
+		padding: 0;
+		border: none;
+		opacity: 1;
+		visibility: visible;
+		margin-top: 15px;
   }
 }
 
 .rating {
   position: absolute;
   top: 23px;
-  right: 20px;
+  left: 20px;
+
+	@media (max-width: 1024px) {
+		display: none;
+	}
 }
 
 .name {
@@ -115,21 +125,21 @@
   font-size: 14px;
   line-height: 18px;
   color: rgba(#fff, 0.7);
+
+	@media (max-width: 1024px) {
+		display: none;
+	}
 }
 
 .btns {
   display: flex;
   align-items: center;
+
+	@media (max-width: 1024px) {
+		display: none;
+	}
 }
 
 .more {
   margin-right: 10px;
-}
-
-.mobileContent {
-  margin-top: 15px;
-
-  @media (min-width: 1025px) {
-    display: none;
-  }
 }

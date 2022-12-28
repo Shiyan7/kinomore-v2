@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { forwardRef, PropsWithChildren } from "react";
 import { CSSTransition } from "react-transition-group";
 import { useLockedBody } from "shared/lib/hooks";
-import { Portal } from "../portal";
+import { Portal } from "shared/ui/portal";
 import { useEscape } from "./lib";
 import styles from "./styles.module.scss";
 
@@ -24,8 +24,7 @@ export const Modal = forwardRef<HTMLDivElement, PropsWithChildren<ModalProps>>(
         timeout={0}
         classNames={{
           enterDone: styles.done,
-        }}
-      >
+        }}>
         <Portal rootId="#modal">
           {isOpen && (
             <div className={clsx(styles.modal, className)} ref={ref}>

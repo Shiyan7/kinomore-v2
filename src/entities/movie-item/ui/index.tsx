@@ -38,10 +38,6 @@ export const MovieItem: FC<MovieItemProps> = ({ item }) => {
           <FavoriteButton id={item?.id} />
         </div>
       </div>
-      <div className={styles.mobileContent}>
-        <h3 className={styles.name}>{item?.name}</h3>
-        <span className={styles.year}>{item.year}</span>
-      </div>
     </Link>
   );
 };
