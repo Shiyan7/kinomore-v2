@@ -34,6 +34,6 @@ export {
   MusicIcon,
   KnifeIcon,
   EditIcon,
-	BookmarkIcon,
-	BookmarkSlashIcon
+  BookmarkIcon,
+  BookmarkSlashIcon,
 };
