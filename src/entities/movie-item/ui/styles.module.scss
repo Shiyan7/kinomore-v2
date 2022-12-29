@@ -109,14 +109,13 @@
 .top {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
 }
 
 .year {
   display: block;
   font-size: 14px;
   line-height: 18px;
-  color: rgba(#fff, 0.7);
+  color: rgba(#fff, 0.8);
   margin-right: 12px;
 }
 
@@ -124,7 +123,7 @@
   display: block;
   font-size: 14px;
   line-height: 18px;
-  color: rgba(#fff, 0.7);
+  color: rgba(#fff, 0.8);
 
 	@media (max-width: 1024px) {
 		display: none;
@@ -134,6 +133,8 @@
 .btns {
   display: flex;
   align-items: center;
+	margin-top: 15px;
+	display: none;
 
 	@media (max-width: 1024px) {
 		display: none;

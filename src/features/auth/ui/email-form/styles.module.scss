@@ -59,6 +59,10 @@
 .input {
   width: 100%;
   margin-bottom: 13px;
+
+	@media (max-width: 576px) {
+		margin-bottom: 7px;
+	}
 }
 .btn {
   width: 100%;

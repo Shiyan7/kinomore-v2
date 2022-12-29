@@ -1,14 +1,11 @@
 import { GenresEnum, LIMIT } from "shared/config";
-import { getCurrentYear } from "shared/lib";
+import { getCurrentYear, getYears } from "shared/lib/get-year";
+import { http, url } from "./base";
 import type { Data, IMovie, IMovieItem } from "./types";
-import { http } from "./base";
-
-const DEFAULT_PARAMS =
-  "&field[]=rating.kp&search=!null&field=name&search=!null&field=votes.kp&sortField=year&sortType=-1";
 
 const routesConfig = http.createRoutesConfig({
   getNew: http.createRoute<number | void, Data<IMovieItem>>((limit = LIMIT) => ({
-    url: "/movie",
+    url,
     params: {
       "search[]": "5-9",
       "field[]": "rating.kp",
@@ -20,38 +17,42 @@ const routesConfig = http.createRoutesConfig({
     },
   })),
   getComedy: http.createRoute<number | void, Data<IMovieItem>>((limit = LIMIT) => ({
-    url: `/movie?search[]=7-10${DEFAULT_PARAMS}&search=1&field=typeNumber`,
+    url,
     params: {
-      search: getCurrentYear(),
-      field: "year",
+      search: [getCurrentYear(), "7-10", "1", "!null", "!null", "!null"],
+      field: ["year", "rating.kp", "typeNumber", "name", "votes.kp", "poster.previewUrl"],
+      sortField: "year",
+      sortType: "-1",
       "search[]": GenresEnum.Komediya,
       "field[]": "genres.name",
       limit,
     },
   })),
   forFamily: http.createRoute<number | void, Data<IMovieItem>>((limit = LIMIT) => ({
-    url: `/movie?search[]=1-10${DEFAULT_PARAMS}`,
+    url,
     params: {
-      search: `0-${getCurrentYear()}`,
-      field: "year",
-      "search[]": GenresEnum.Semejnyj,
-      "field[]": "genres.name",
+      "search[]": [GenresEnum.Semejnyj, "1-10", "!null"],
+      "field[]": ["genres.name", "rating.kp", "poster.previewUrl"],
+      search: [getYears(), "!null", "!null"],
+      field: ["year", "name", "votes.kp"],
+      sortField: "year",
+      sortType: "-1",
       limit,
     },
   })),
   searchByName: http.createRoute<string | void, Data<IMovieItem>>((query) => ({
-    url: `/movie?search=!null&field=poster.previewUrl&search=0-${getCurrentYear()}&field=year`,
+    url,
     params: {
-      search: query,
-      field: "name",
+      search: [query, "!null", getYears()],
+      field: ["name", "poster.previewUrl", "year"],
       limit: 20,
       sortField: "year",
       sortType: "-1",
-      isStrict: true,
+      isStrict: false,
     },
   })),
   getById: http.createRoute<void, IMovie>((id) => ({
-    url: "/movie",
+    url,
     params: {
       search: id,
       field: "id",
