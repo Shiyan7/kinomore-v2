@@ -23,10 +23,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <title>
           Онлайн-кинотеатр Kinomore - фильмы, сериалы и мультфильмы смотреть онлайн бесплатно в хорошем качестве
         </title>
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
-        />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
       </Head>
       <NextNProgress color="var(--color-primary)" height={3} options={{ showSpinner: false }} />
       <BaseLayout>

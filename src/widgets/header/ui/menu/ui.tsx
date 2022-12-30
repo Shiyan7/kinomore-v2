@@ -16,6 +16,11 @@ export const Menu = () => {
 
   return (
     <div className={clsx(styles.menu, isOpen && styles.opened)}>
+      <div className={styles.snowContainer}>
+        {Array.from({ length: 150 }).map((_, idx) => {
+          return <div key={idx} className={styles.snow} />;
+        })}
+      </div>
       <button onClick={close} className={clsx("btn-reset", styles.close)}>
         <CloseIcon />
       </button>

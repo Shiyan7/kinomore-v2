@@ -1,119 +1,151 @@
 .menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-width: var(--min-width);
-  height: 100vh;
-  z-index: var(--menu-z-index);
-  overflow-x: hidden;
-  overflow-y: auto;
-  opacity: 0;
-  visibility: hidden;
-  background-color: var(--color-black);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-width: var(--min-width);
+	height: 100vh;
+	z-index: var(--menu-z-index);
+	overflow-x: hidden;
+	overflow-y: auto;
+	opacity: 0;
+	visibility: hidden;
+	background-color: rgba(#000, .95);
+	transition: opacity var(--duration), visibility var(--duration);
 
-  &:before {
-    content: "";
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 83px;
-    z-index: 2;
-    background-color: var(--color-black);
-
-    @media (max-width: 576px) {
-      height: 70px;
-    }
-  }
-
-  @media (min-width: 769px) {
-    display: none;
-  }
+	@media (min-width: 769px) {
+		display: none;
+	}
 }
 
 .container {
-  padding-top: 90px;
-  padding-bottom: 50px;
-
-  @media (max-width: 576px) {
-    padding-top: 80px;
-    padding-bottom: 40px;
-  }
+	padding: 70px 25px 50px;
 }
 
 .opened {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity var(--duration), visibility var(--duration);
+	opacity: 1;
+	visibility: visible;
 }
 
 .item {
-  position: relative;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity var(--duration), transform var(--duration);
+	position: relative;
+	opacity: 0;
+	transform: translateY(10px);
+	transition: opacity var(--duration), transform var(--duration);
 
-  &:not(:last-child) {
-    margin-bottom: 17px;
-  }
+	&:not(:last-child) {
+		margin-bottom: 20px;
+	}
 
-  &.done {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	&.done {
+		opacity: 1;
+		transform: translateY(0);
+	}
 
-  &.current {
-    &:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -10px;
-      width: 2px;
-      height: 100%;
-      background-color: #fff;
+	&.current {
+		&:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: -10px;
+			width: 2px;
+			height: 100%;
+			background-color: #fff;
 
-      @media (max-width: 375px) {
-        left: -14px;
-      }
-    }
-  }
+			@media (max-width: 375px) {
+				left: -14px;
+			}
+		}
+	}
 }
 
 .link {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 25px;
-  text-transform: uppercase;
-  color: var(--color-white);
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 30px;
+	text-transform: uppercase;
+	color: var(--color-white);
 }
 
 .close {
-  position: fixed;
-  z-index: 2;
-  top: 16px;
-  right: 16px;
-  width: 52px;
-  height: 52px;
+	position: fixed;
+	z-index: 2;
+	top: 16px;
+	right: 16px;
+	width: 52px;
+	height: 52px;
 
-  @media (max-width: 576px) {
-    width: 40px;
-    height: 40px;
-    right: 8px;
-    top: 15px;
-  }
+	@media (max-width: 576px) {
+		width: 45px;
+		height: 45px;
+		right: 10px;
+		top: 12px;
+	}
 
-  &:hover {
-    svg {
-      fill: var(--color-white);
+	&:hover {
+		svg {
+			fill: var(--color-white);
+		}
+	}
+
+	svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+		fill: var(--color-white);
+	}
+}
+
+@function random_range($min, $max) {
+  $rand: random();
+  $random_range: $min + floor($rand * (($max - $min) + 1));
+  @return $random_range;
+}
+
+.snowContainer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	pointer-events: none;
+	z-index: var(--header-z-index);
+}
+
+.snow {
+  $total: 200;
+  position: absolute;
+	width: 11px;
+	height: 10px;
+	background-image: url("data:image/svg+xml,%3Csvg width='11' height='10' viewBox='0 0 11 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5.16093 5.0005L3.03075 6.24667L1.34222 5.47142L0.995605 6.23407L2.14793 6.76313L1.51409 7.13393L1.92662 7.85794L2.56036 7.4872L2.4364 8.76269L3.26153 8.83985L3.44318 6.97074L5.57436 5.72398V8.23035L4.06637 9.32506L4.55576 9.99948L5.57436 9.26004V10H6.40753V9.26L7.42618 9.99948L7.91558 9.32506L6.40753 8.23031V5.72977L8.54347 6.97931L8.72514 8.84862L9.55027 8.77145L9.42629 7.49576L10.0602 7.86658L10.4727 7.14257L9.83892 6.77181L10.9911 6.24283L10.6444 5.48019L8.9561 6.25535L6.81108 5.0005L8.94949 3.74951L10.649 4.5298L10.9956 3.76715L9.83231 3.23306L10.4735 2.85794L10.061 2.13393L9.43203 2.50188L9.55481 1.23853L8.72968 1.16137L8.54921 3.01833L6.40753 4.27123V1.77814L7.92526 0.676363L7.43587 0.00194145L6.40753 0.748455V0H5.57436V0.734357L4.56544 0.00194145L4.07605 0.676363L5.57436 1.76405V4.27701L3.44973 3.03409L3.26689 1.15271L2.44175 1.22987L2.5669 2.51763L1.92579 2.14257L1.51325 2.86658L2.1422 3.23452L1.00096 3.75849L1.34758 4.52113L3.02502 3.75098L5.16093 5.0005Z' fill='white'/%3E%3C/svg%3E%0A");
+	background-repeat: no-repeat;
+	background-size: cover;
+
+  @for $i from 1 through $total {
+    $random-x: random(1000000) * 0.0001vw;
+    $random-offset: random_range(-100000, 100000) * 0.0001vw;
+    $random-x-end: $random-x + $random-offset;
+    $random-x-end-yoyo: $random-x + ($random-offset / 2);
+    $random-yoyo-time: random_range(30000, 80000) / 100000;
+    $random-yoyo-y: $random-yoyo-time * 100vh;
+    $random-scale: random(10000) * 0.0001;
+    $fall-duration: random_range(10, 30) * 1s;
+    $fall-delay: random(30) * -1s;
+
+    &:nth-child(#{$i}) {
+      opacity: random(7000) * 0.0001;
+      transform: translate($random-x, -10px) scale($random-scale);
+      animation: fall-#{$i} $fall-duration $fall-delay linear infinite;
     }
-  }
 
-  svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-    fill: var(--color-white);
+    @keyframes fall-#{$i} {
+      #{percentage($random-yoyo-time)} {
+        transform: translate($random-x-end, $random-yoyo-y) scale($random-scale);
+      }
+
+      to {
+        transform: translate($random-x-end-yoyo, 100vh) scale($random-scale);
+      }
+    }
   }
 }
