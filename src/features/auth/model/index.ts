@@ -1,7 +1,6 @@
 import { attach, combine, createEvent, createStore, sample } from "effector";
 import { not } from "patronum";
 import { string } from "yup";
-import { navigationModel } from "entities/navigation";
 import { createForm } from "shared/lib/effector-react-form";
 import { createObjectValidator } from "shared/form";
 import { createToggler } from "shared/lib/toggler";
@@ -10,8 +9,6 @@ import { internalApi } from "shared/api";
 export const authInstance = createToggler();
 
 export const checkUserFx = attach({ effect: internalApi.check });
-
-/* p.s можно было сделать вместо двух форм одну, но при сабмите email формы, нужно проверять корректный ли email, и юзера. */
 
 export const emailForm = createForm({
   initialValues: {
@@ -31,11 +28,6 @@ export const passwordForm = createForm({
   }),
 });
 
-sample({
-  clock: navigationModel.routerUpdated,
-  target: [emailForm.reset, passwordForm.reset],
-});
-
 export const editClicked = createEvent();
 export const continueClicked = createEvent();
 
@@ -43,13 +35,11 @@ export const $progress = createStore(5);
 
 $progress.on(continueClicked, () => 50);
 $progress.on(editClicked, () => 5);
-$progress.reset(navigationModel.routerUpdated);
 
 export const $state = createStore<"email" | "password">("email");
 
 $state.on(continueClicked, () => "password");
 $state.on(editClicked, () => "email");
-$state.reset(navigationModel.routerUpdated);
 
 export const $isNewUser = createStore(false);
 

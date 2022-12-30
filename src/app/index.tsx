@@ -1,11 +1,11 @@
+import NextNProgress from "nextjs-progressbar";
+import Head from "next/head";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEvent } from "effector-react";
 import { useEffect } from "react";
-import NextNProgress from "nextjs-progressbar";
-import Head from "next/head";
+import { BaseLayout } from "widgets/layouts";
 import { navigationModel } from "entities/navigation";
-import { BaseLayout } from "shared/ui/layouts";
 import { withProviders } from "./providers";
 
 const App = ({ Component, pageProps }: AppProps) => {
