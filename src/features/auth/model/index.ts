@@ -31,15 +31,13 @@ export const passwordForm = createForm({
 export const editClicked = createEvent();
 export const continueClicked = createEvent();
 
-export const $progress = createStore(5);
+export const $progress = createStore(5)
+  .on(continueClicked, () => 50)
+  .on(editClicked, () => 5);
 
-$progress.on(continueClicked, () => 50);
-$progress.on(editClicked, () => 5);
-
-export const $state = createStore<"email" | "password">("email");
-
-$state.on(continueClicked, () => "password");
-$state.on(editClicked, () => "email");
+export const $state = createStore<"email" | "password">("email")
+  .on(continueClicked, () => "password")
+  .on(editClicked, () => "email");
 
 export const $isNewUser = createStore(false);
 

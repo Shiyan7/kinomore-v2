@@ -9,13 +9,9 @@ export const searchInstance = createToggler();
 export const searchFx = attach({ effect: moviesApi.searchByName });
 export const $searchResult = restore(searchFx, null);
 export const searchChanged = createEvent<string>();
-export const loadSearchResults = createEvent();
 
-export const $search = createStore("");
-
-$search.on(searchChanged, (_, payload) => payload);
-
-/* FIXME: дебаунсить не функцию, а значение */
+export const $search = createStore("").on(searchChanged, (_, payload) => payload);
+export const $debouncedValue = createStore("");
 
 const debouncedSearchChanged = debounce({
   source: searchChanged,
@@ -25,10 +21,5 @@ const debouncedSearchChanged = debounce({
 sample({
   clock: debouncedSearchChanged,
   fn: (search) => search,
-  target: searchFx,
-});
-
-sample({
-  clock: loadSearchResults,
-  target: searchFx,
+  target: [searchFx, $debouncedValue],
 });

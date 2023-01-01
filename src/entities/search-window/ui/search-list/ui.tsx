@@ -7,13 +7,13 @@ import styles from "./styles.module.scss";
 
 export const SearchList = () => {
   const searchResult = useUnit(searchModel.$searchResult);
-  const search = useUnit(searchModel.$search);
   const pending = useUnit(searchModel.searchFx.pending);
-  const searchHasResults = search.length > 2;
 
   const SearchList = (
     <ul className={clsx("list-reset", styles.list)}>
-      {searchHasResults && searchResult?.docs?.map((item) => <SearchItem key={item.id} item={item} />)}
+      {searchResult?.docs?.map((item) => (
+        <SearchItem key={item.id} item={item} />
+      ))}
     </ul>
   );
 
@@ -23,5 +23,5 @@ export const SearchList = () => {
     </div>
   );
 
-  return searchHasResults && pending ? Loader : SearchList;
+  return pending ? Loader : SearchList;
 };

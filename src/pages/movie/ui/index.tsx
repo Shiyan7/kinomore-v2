@@ -1,18 +1,15 @@
 import clsx from "clsx";
 import type { NextPage } from "next";
-/* import { useUnit } from "effector-react";
-import { useRouter } from "next/router";
+import { useUnit } from "effector-react";
 import { pageModel } from "pages/movie";
-import { Title } from "shared/ui/title"; */
 import styles from "./styles.module.scss";
 
 export const Movie: NextPage = () => {
-  /* const { query } = useRouter();
-  const movie = useUnit(pageModel.$movie); */
+  const movie = useUnit(pageModel.$movie);
 
   return (
     <section className={styles.section}>
-      <div className={clsx("container", styles.container)}>123</div>
+      <div className={clsx("container", styles.container)}>{movie?.name}</div>
     </section>
   );
 };
