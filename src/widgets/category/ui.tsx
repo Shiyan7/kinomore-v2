@@ -1,4 +1,3 @@
-"use client";
 import type { ElementType, PropsWithChildren } from "react";
 import clsx from "clsx";
 import Link from "next/link";

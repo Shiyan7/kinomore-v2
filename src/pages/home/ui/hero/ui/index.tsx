@@ -1,4 +1,3 @@
-"use client";
 import { useUnit } from "effector-react";
 import { pageModel } from "pages/home";
 import { LIMIT } from "shared/config";

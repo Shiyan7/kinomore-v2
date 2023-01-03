@@ -1,4 +1,3 @@
-"use client";
 import clsx from "clsx";
 import { useHeaderFixed } from "../lib";
 import { Burger } from "./burger";

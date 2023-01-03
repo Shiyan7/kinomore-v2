@@ -1,4 +1,3 @@
-"use client";
 import { useUnit } from "effector-react";
 import { Category } from "widgets/category";
 import { pageModel } from "pages/home";

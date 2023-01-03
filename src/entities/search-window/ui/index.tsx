@@ -1,4 +1,3 @@
-"use client";
 import clsx from "clsx";
 import { useUnit } from "effector-react";
 import { searchModel } from "entities/search-window";

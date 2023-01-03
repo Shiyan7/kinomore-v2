@@ -1,4 +1,3 @@
-"use client";
 import "swiper/css";
 import clsx from "clsx";
 import { useCallback, type ReactNode } from "react";

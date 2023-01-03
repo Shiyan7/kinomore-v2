@@ -1,4 +1,3 @@
-"use client";
 import { ComponentProps, ElementType, ReactNode } from "react";
 import clsx from "clsx";
 import styles from "./styles.module.scss";
