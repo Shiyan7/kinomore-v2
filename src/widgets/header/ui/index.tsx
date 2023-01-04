@@ -1,5 +1,7 @@
 import clsx from "clsx";
-import { useHeaderFixed } from "../lib";
+import { useRouter } from "next/router";
+import { useHeaderFixed } from "widgets/header";
+import { RoutesEnum } from "shared/config";
 import { Burger } from "./burger";
 import { Logo } from "./logo";
 import { Menu } from "./menu";
@@ -9,10 +11,12 @@ import { SearchButton } from "./search-button";
 import styles from "./styles.module.scss";
 
 export const Header = () => {
+  const { asPath } = useRouter();
   const { isFixed } = useHeaderFixed();
+  const isHomePage = asPath === RoutesEnum.Home;
 
   return (
-    <header className={clsx(styles.header, isFixed && styles.fixed)}>
+    <header className={clsx(styles.header, isHomePage && styles.home, isFixed && styles.fixed)}>
       <div className={clsx("container", styles.container)}>
         <div className={styles.row}>
           <Logo />

@@ -7,6 +7,8 @@ interface ButtonOwnProps<E extends ElementType = ElementType> {
   className?: string;
   loading?: boolean;
   variant?: "primary" | "small";
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
   children: ReactNode;
   as?: E;
 }
@@ -19,6 +21,8 @@ export const Button = <E extends ElementType = typeof DEFAULT_ELEMENT>({
   children,
   as,
   loading,
+  startIcon,
+  endIcon,
   variant = "primary",
   className,
   ...props
@@ -33,7 +37,9 @@ export const Button = <E extends ElementType = typeof DEFAULT_ELEMENT>({
 
   return (
     <Element className={clsx("btn-reset", styles.btn, styles[variant], className)} {...props}>
+      {startIcon && <span className={styles.startIcon}>{startIcon}</span>}
       <span>{loading ? ButtonSpinner : children}</span>
+      {endIcon && <span className={styles.endIcon}>{endIcon}</span>}
     </Element>
   );
 };

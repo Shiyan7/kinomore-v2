@@ -63,7 +63,7 @@ module.exports = {
 				patterns: DENIED_PATH_GROUPS
 			}
 		],
-
+		"@typescript-eslint/no-non-null-assertion": "off",
 		"consistent-return": "off",
 		"@next/next/google-font-display": "off",
 		"@next/next/google-font-preconnect": "off",
@@ -263,6 +263,6 @@ module.exports = {
 		"no-unused-class-component-methods": "off",
 		"react/no-unused-class-component-methods": "warn",
 		"class-methods-use-this": "warn",
-		"react/display-name": "off"
+		"react/display-name": "off",
 	}
 };
