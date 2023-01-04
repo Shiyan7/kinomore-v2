@@ -18,11 +18,13 @@
 }
 
 .btns {
-  margin-top: 25px;
+	display: flex;
+	align-items: center;
+  margin-top: 28px;
 }
 
 .btn {
   &:not(:last-child) {
-    margin-right: 15px;
+    margin-right: 17px;
   }
 }

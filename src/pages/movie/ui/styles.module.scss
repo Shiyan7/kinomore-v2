@@ -10,20 +10,20 @@
     height: 100vh;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.2;
+    opacity: 0.18;
     background: linear-gradient(180deg, #2253b2 0%, #000 100%);
   }
 }
 
 .container {
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding-top: 25px;
+  padding-bottom: 25px;
   max-width: 1700px;
   margin: 0 auto;
 }
 
 .breadcrumbs {
-  margin-bottom: 35px;
+  margin-bottom: 27px;
 }
 
 .content {

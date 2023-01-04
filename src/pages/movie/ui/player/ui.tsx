@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { PlayIcon, Button } from "shared/ui";
+import { PlayIcon, Button, BookmarkIcon, ExportIcon } from "shared/ui";
 import styles from "./styles.module.scss";
 
 export const Player = () => {
@@ -17,8 +17,14 @@ export const Player = () => {
         />
       </div>
       <div className={styles.btns}>
-        <Button className={styles.btn} startIcon={<PlayIcon />}>
+        <Button variant="glass" className={styles.btn} startIcon={<PlayIcon />}>
           Трейлер
+        </Button>
+        <Button variant="glass" className={styles.btn} aria-label="В избранное">
+          <BookmarkIcon />
+        </Button>
+        <Button variant="glass" className={styles.btn} aria-label="Поделиться">
+          <ExportIcon />
         </Button>
       </div>
     </div>
