@@ -6,6 +6,7 @@
 .title {
   display: flex;
   flex-direction: column;
+	padding: 0 30px;
   margin-bottom: 23px;
   text-shadow: 0 1px 0 rgb(0 0 0 / 20%);
 }
@@ -41,14 +42,4 @@
       background-color: rgba(#fff, 0.8);
     }
   }
-}
-
-.desc {
-  margin: 0;
-  font-size: 15px;
-  line-height: 27px;
-  font-weight: 300;
-  color: rgba(#fff, 0.8);
-  text-align: left;
-  text-shadow: 0 1px 0 rgb(0 0 0 / 20%);
 }

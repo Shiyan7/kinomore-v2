@@ -4,12 +4,14 @@ import { useUnit } from "effector-react";
 import { pageModel, getSeasonString, getAgeRating, getCountry } from "pages/movie";
 import { Title } from "shared/ui";
 import { MainPersons } from "../main-persons";
+import { Rating } from "../rating";
+import { Description } from "../description";
 import styles from "./styles.module.scss";
 
 export const Info = () => {
-  const { seasonsInfo, name, description, year, ageRating, shortDescription, countries } = useUnit(pageModel.$movie)!;
+  const { seasonsInfo, name, year, ageRating, countries } = useUnit(pageModel.$movie)!;
 
-  const items = [year, getSeasonString(seasonsInfo.length), getAgeRating(ageRating), getCountry(countries)];
+  const info = [year, getSeasonString(seasonsInfo.length), getCountry(countries), getAgeRating(ageRating)];
 
   return (
     <div className={styles.info}>
@@ -17,12 +19,13 @@ export const Info = () => {
         <span>Сериал {name} Смотреть онлайн</span>
       </Title>
       <ul className={clsx("list-reset", styles.list)}>
-        {items.map((item, idx) => (
+        {info.map((item, idx) => (
           <Fragment key={idx}>{item && <li className={styles.listItem}>{item}</li>}</Fragment>
         ))}
       </ul>
       <MainPersons />
-      <p className={styles.desc}>{description || shortDescription}</p>
+      <Description />
+      <Rating />
     </div>
   );
 };

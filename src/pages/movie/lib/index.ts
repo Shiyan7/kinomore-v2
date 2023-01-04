@@ -1,5 +1,6 @@
-export { getMovieType } from "./getMovieType";
-export { getGenre } from "./getGenre";
-export { getSeasonString } from "./getSeasonString";
-export { getAgeRating } from "./getAgeRating";
-export { getCountry } from "./getCountry";
+export * from "./getMovieType";
+export * from "./getGenre";
+export * from "./getSeasonString";
+export * from "./getAgeRating";
+export * from "./getCountry";
+export * from "./getVotes";
