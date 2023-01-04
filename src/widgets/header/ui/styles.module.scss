@@ -1,7 +1,7 @@
 .header {
   z-index: var(--header-z-index);
   transition: transform var(--duration);
-	border-bottom: 1px solid rgba(#fff, 0.15);
+  border-bottom: 1px solid rgba(#fff, 0.15);
 }
 
 .home {
@@ -9,19 +9,19 @@
   top: 0;
   left: 0;
   width: 100%;
-	border-bottom: none;
+  border-bottom: none;
   backdrop-filter: saturate(180%) blur(7px);
   background-color: rgba(#000, 0.8);
 
-	&.fixed {
-		transform: translateY(-100%);
+  &.fixed {
+    transform: translateY(-100%);
 
-		@media (max-width: 1024px) {
-			backdrop-filter: saturate(180%) blur(5px);
-			background-color: rgba(#000, 0.93);
-			transform: translateX(0%);
-		}
-	}
+    @media (max-width: 1024px) {
+      backdrop-filter: saturate(180%) blur(5px);
+      background-color: rgba(#000, 0.93);
+      transform: translateX(0%);
+    }
+  }
 }
 
 .container {
@@ -40,4 +40,3 @@
   display: flex;
   align-items: center;
 }
-

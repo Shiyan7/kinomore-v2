@@ -1,38 +1,37 @@
 .list {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-
 .item {
-	position: relative;
+  position: relative;
 
-	&:not(:first-child) {
-		padding-left: calc(8px + 3px);
-		margin-left: 8px;
+  &:not(:first-child) {
+    padding-left: calc(8px + 3px);
+    margin-left: 8px;
 
-		&:before {
-			content: "";
-			display: block;
-			width: 3px;
-			height: 3px;
-			position: absolute;
-			top: 11px;
-			left: 0;
-			transform: translateY(-50%);
-			border-radius: 100%;
-			background-color: rgba(#fff, 0.4);
-		}
-	}
+    &:before {
+      content: "";
+      display: block;
+      width: 3px;
+      height: 3px;
+      position: absolute;
+      top: 11px;
+      left: 0;
+      transform: translateY(-50%);
+      border-radius: 100%;
+      background-color: rgba(#fff, 0.4);
+    }
+  }
 }
 
 .link {
-	font-size: 15px;
-	line-height: 18.2px;
-	color: rgba(#fff, 0.7);
-	transition: color 0.3s;
+  font-size: 15px;
+  line-height: 18.2px;
+  color: rgba(#fff, 0.7);
+  transition: color 0.3s;
 
-	&:hover {
-		color: var(--color-white);
-	}
+  &:hover {
+    color: var(--color-white);
+  }
 }

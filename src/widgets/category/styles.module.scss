@@ -66,13 +66,13 @@
 .slide {
   width: 17%;
 
-	@media (max-width: 1400px) {
-		width: 19%;
-	}
+  @media (max-width: 1400px) {
+    width: 19%;
+  }
 
-	@media (max-width: 1300px) {
-		width: 250px;
-	}
+  @media (max-width: 1300px) {
+    width: 250px;
+  }
 
   @media (max-width: 1024px) {
     width: 25%;
@@ -95,9 +95,9 @@
 
 .prevBtn,
 .nextBtn {
-	@media (max-width: 1024px) {
-		display: none;
-	}
+  @media (max-width: 1024px) {
+    display: none;
+  }
 }
 
 .prevBtn {
