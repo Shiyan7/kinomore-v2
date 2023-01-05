@@ -1,6 +1,6 @@
-import clsx from "clsx";
-import type { FC, PropsWithChildren } from "react";
-import styles from "./styles.module.scss";
+import clsx from 'clsx';
+import type { FC, PropsWithChildren } from 'react';
+import styles from './styles.module.scss';
 
 interface RatingProps {
   className?: string;

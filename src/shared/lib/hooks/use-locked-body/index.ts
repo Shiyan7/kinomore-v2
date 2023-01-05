@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 type UseLockedBodyOutput = [boolean, (locked: boolean) => void];
 
@@ -17,12 +17,12 @@ export function useLockedBody(initialLocked = false): UseLockedBodyOutput {
     document.body.style.paddingRight = `${scrollBarWidth}px`;
 
     // Lock body scroll
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
 
     return () => {
       document.body.style.overflow = originalOverflow;
 
-      document.body.style.paddingRight = "0px";
+      document.body.style.paddingRight = '0px';
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locked]);

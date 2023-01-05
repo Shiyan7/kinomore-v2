@@ -1,1 +1,1 @@
-export * as navigationModel from "./model";
+export * as navigationModel from './model';

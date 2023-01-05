@@ -1,5 +1,5 @@
-import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { FC, PropsWithChildren, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 interface PortalProps {
   rootId?: string;

@@ -27,13 +27,13 @@ export const getValue = (event, isReactNative?) => {
       target: { type, value, checked, files },
       dataTransfer,
     } = detypedEvent;
-    if (type === "checkbox") {
+    if (type === 'checkbox') {
       return !!checked;
     }
-    if (type === "file") {
+    if (type === 'file') {
       return files || (dataTransfer && dataTransfer.files);
     }
-    if (type === "select-multiple") {
+    if (type === 'select-multiple') {
       return getSelectedValues(event.target.options);
     }
     return value;

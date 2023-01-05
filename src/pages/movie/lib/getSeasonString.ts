@@ -1,13 +1,13 @@
 export function getSeasonString(length: number): string | null {
-  const formatter = new Intl.PluralRules("ru");
+  const formatter = new Intl.PluralRules('ru');
   const pluralCategory = formatter.select(length);
 
   if (!length) return null;
 
   switch (pluralCategory) {
-    case "one":
-      return "1 сезон";
-    case "few":
+    case 'one':
+      return '1 сезон';
+    case 'few':
       return `${length} сезона`;
     default:
       return `${length} сезонов`;

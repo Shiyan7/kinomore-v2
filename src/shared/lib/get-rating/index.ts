@@ -1,4 +1,4 @@
-import type { MovieRating } from "shared/api";
+import type { MovieRating } from 'shared/api';
 
 export const getRating = (rating: MovieRating | undefined) => {
   return (rating?.kp || rating?.imdb)?.toFixed(1);

@@ -1,1 +1,1 @@
-export { CarouselMultiply, type CarouselMultiplyProps } from "./ui";
+export { CarouselMultiply, type CarouselMultiplyProps } from './ui';

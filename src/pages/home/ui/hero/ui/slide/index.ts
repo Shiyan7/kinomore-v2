@@ -1,1 +1,1 @@
-export { HeroSlide } from "./ui";
+export { HeroSlide } from './ui';

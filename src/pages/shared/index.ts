@@ -1,2 +1,2 @@
-export * from "./bindings";
-export * as appModel from "./model";
+export * from './bindings';
+export * as appModel from './model';

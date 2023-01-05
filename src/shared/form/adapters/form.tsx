@@ -1,4 +1,4 @@
-import type { FC, HTMLAttributes, PropsWithChildren, SyntheticEvent } from "react";
+import type { FC, HTMLAttributes, PropsWithChildren, SyntheticEvent } from 'react';
 
 interface FormProps extends HTMLAttributes<HTMLFormElement> {
   onSubmit: (e: SyntheticEvent<HTMLFormElement>) => void;

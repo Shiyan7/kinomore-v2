@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-use-before-define */
 // @ts-nocheck
-import type { ReactNode, SyntheticEvent } from "react";
-import { Store, Event, Domain } from "effector";
-import { GetName, GetNameStr } from "./utils/object-manager";
+import type { ReactNode, SyntheticEvent } from 'react';
+import { Store, Event, Domain } from 'effector';
+import { GetName, GetNameStr } from './utils/object-manager';
 
 export type AnyState = Record<string, any>;
 
@@ -32,7 +32,7 @@ export type FormState = {
 };
 
 export type FieldState = {
-  _type: "fieldMeta";
+  _type: 'fieldMeta';
   active: boolean;
   touched: boolean;
   changed: boolean;
@@ -76,7 +76,7 @@ export type ResetOuterErrorParams = string | string[];
 export type FieldInitParams = {
   name: string | string[];
   flat?: boolean;
-  validate?: ControllerParams["validate"];
+  validate?: ControllerParams['validate'];
 };
 
 export type ControllerInjectedResult<Meta = any> = {

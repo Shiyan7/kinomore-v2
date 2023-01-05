@@ -1,1 +1,1 @@
-export { Genres } from "./ui";
+export { Genres } from './ui';

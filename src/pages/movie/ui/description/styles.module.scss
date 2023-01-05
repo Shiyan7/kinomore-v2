@@ -1,8 +1,8 @@
 .container {
-	display: flex;
-	align-items: flex-start;
-	flex-direction: column;
-	margin-bottom: 30px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 30px;
 }
 
 .desc {
@@ -15,16 +15,15 @@
   text-shadow: 0 1px 0 rgb(0 0 0 / 20%);
 }
 
-
 .btn {
   font-size: 15px;
   line-height: 18px;
-	margin-top: 7px;
-	color: var(--color-white);
-	color: rgba(#fff, 0.6);
-	transition: color var(--duration);
+  margin-top: 7px;
+  color: var(--color-white);
+  color: rgba(#fff, 0.6);
+  transition: color var(--duration);
 
-	&:hover {
-		color: var(--color-white);
-	}
+  &:hover {
+    color: var(--color-white);
+  }
 }

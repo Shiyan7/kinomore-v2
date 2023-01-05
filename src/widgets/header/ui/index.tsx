@@ -1,14 +1,14 @@
-import clsx from "clsx";
-import { useRouter } from "next/router";
-import { useHeaderFixed } from "widgets/header";
-import { RoutesEnum } from "shared/config";
-import { Burger } from "./burger";
-import { Logo } from "./logo";
-import { Menu } from "./menu";
-import { Nav } from "./nav";
-import { Profile } from "./profile";
-import { SearchButton } from "./search-button";
-import styles from "./styles.module.scss";
+import clsx from 'clsx';
+import { useRouter } from 'next/router';
+import { useHeaderFixed } from 'widgets/header';
+import { RoutesEnum } from 'shared/config';
+import { Burger } from './burger';
+import { Logo } from './logo';
+import { Menu } from './menu';
+import { Nav } from './nav';
+import { Profile } from './profile';
+import { SearchButton } from './search-button';
+import styles from './styles.module.scss';
 
 export const Header = () => {
   const { asPath } = useRouter();
@@ -17,7 +17,7 @@ export const Header = () => {
 
   return (
     <header className={clsx(styles.header, isHomePage && styles.home, isFixed && styles.fixed)}>
-      <div className={clsx("container", styles.container)}>
+      <div className={clsx('container', styles.container)}>
         <div className={styles.row}>
           <Logo />
           <Nav />

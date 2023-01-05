@@ -1,6 +1,6 @@
-import { attach, createEvent, restore, sample } from "effector";
-import { StaticPageContext } from "nextjs-effector";
-import { moviesApi } from "shared/api";
+import { attach, createEvent, restore, sample } from 'effector';
+import { StaticPageContext } from 'nextjs-effector';
+import { moviesApi } from 'shared/api';
 
 export const pageStarted = createEvent();
 

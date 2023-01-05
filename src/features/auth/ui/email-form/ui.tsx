@@ -1,13 +1,13 @@
-import clsx from "clsx";
-import { useEffect, useRef } from "react";
-import { useStore } from "effector-react";
-import { authModel } from "features/auth";
-import { useForm } from "shared/lib/effector-react-form";
-import { Form, Field } from "shared/form";
-import { GoogleIcon } from "shared/ui/icons";
-import { Button } from "shared/ui/button";
-import { Transition } from "../transition";
-import styles from "./styles.module.scss";
+import clsx from 'clsx';
+import { useEffect, useRef } from 'react';
+import { useStore } from 'effector-react';
+import { authModel } from 'features/auth';
+import { useForm } from 'shared/lib/effector-react-form';
+import { Form, Field } from 'shared/form';
+import { GoogleIcon } from 'shared/ui/icons';
+import { Button } from 'shared/ui/button';
+import { Transition } from '../transition';
+import styles from './styles.module.scss';
 
 export const EmailForm = () => {
   const { controller, handleSubmit } = useForm({ form: authModel.emailForm, resetUnmount: false });
@@ -22,7 +22,7 @@ export const EmailForm = () => {
   return (
     <div className={styles.content}>
       <Transition delay={100}>
-        <button type="button" className={clsx("btn-reset", styles.logo)}>
+        <button type='button' className={clsx('btn-reset', styles.logo)}>
           <GoogleIcon />
         </button>
       </Transition>
@@ -33,16 +33,16 @@ export const EmailForm = () => {
         <Transition offset={20} delay={130}>
           <Field.Input
             use={controller({
-              name: "email",
+              name: 'email',
             })}
             ref={inputRef}
-            type="email"
+            type='email'
             className={styles.input}
-            placeholder="Введите email"
+            placeholder='Введите email'
           />
         </Transition>
         <Transition offset={40} delay={130}>
-          <Button className={styles.btn} disabled={!email} loading={pending} type="submit">
+          <Button className={styles.btn} disabled={!email} loading={pending} type='submit'>
             Продолжить
           </Button>
         </Transition>

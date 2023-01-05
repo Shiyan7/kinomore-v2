@@ -7,7 +7,7 @@ const nextConfig = {
 		},
   },
 	images: {
-		domains: ["st.kp.yandex.net", "avatars.mds.yandex.net", "www.themoviedb.org"],
+		domains: ["st.kp.yandex.net", "avatars.mds.yandex.net", "www.themoviedb.org", "kinomore.onrender.com"],
 	},
 	env: {
 		API_TOKEN: process.env.API_TOKEN,

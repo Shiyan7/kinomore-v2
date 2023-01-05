@@ -1,7 +1,7 @@
-import { Form, Input } from "./adapters";
-import { createField } from "./create-field";
+import { Form, Input } from './adapters';
+import { createField } from './create-field';
 
-import { createObjectValidator } from "./create-validator";
+import { createObjectValidator } from './create-validator';
 
 const Field = {
   Input,

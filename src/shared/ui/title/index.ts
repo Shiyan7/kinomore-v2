@@ -1,1 +1,1 @@
-export { Title, type TitleProps } from "./ui";
+export { Title, type TitleProps } from './ui';

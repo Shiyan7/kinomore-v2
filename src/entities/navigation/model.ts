@@ -1,5 +1,5 @@
-import { createEvent, createStore, sample } from "effector";
-import type { NextRouter } from "next/router";
+import { createEvent, createStore, sample } from 'effector';
+import type { NextRouter } from 'next/router';
 
 export const routerUpdated = createEvent<NextRouter | null>();
 export const $isRouterDirty = createStore(true);
