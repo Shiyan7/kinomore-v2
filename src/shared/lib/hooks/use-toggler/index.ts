@@ -1,5 +1,5 @@
-import { useEvent, useStore } from "effector-react/scope";
-import { TogglerInstance } from "shared/lib/toggler";
+import { useEvent, useStore } from 'effector-react/scope';
+import { TogglerInstance } from 'shared/lib/toggler';
 
 export function useToggler(togglerInstance: TogglerInstance) {
   const { $isOpen, ...togglerEvents } = togglerInstance;

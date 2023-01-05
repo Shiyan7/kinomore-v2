@@ -1,8 +1,8 @@
-import clsx from "clsx";
-import { useStore } from "effector-react";
-import { pageModel, getVotes, getMovieType } from "pages/movie";
-import { getRating } from "shared/lib/get-rating";
-import styles from "./styles.module.scss";
+import clsx from 'clsx';
+import { useStore } from 'effector-react';
+import { pageModel, getVotes, getMovieType } from 'pages/movie';
+import { getRating } from 'shared/lib/get-rating';
+import styles from './styles.module.scss';
 
 export const Rating = () => {
   const { rating, votes, type } = useStore(pageModel.$movie)!;
@@ -15,7 +15,7 @@ export const Rating = () => {
           <span className={styles.caption}>Рейтинг {getMovieType(type)}</span>
           <span className={styles.desc}>{getVotes(votes)} оценок</span>
         </div>
-        <button className={clsx("btn-reset", styles.btn)}>Оценить</button>
+        <button className={clsx('btn-reset', styles.btn)}>Оценить</button>
       </div>
     </div>
   );

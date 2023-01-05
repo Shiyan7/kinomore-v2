@@ -1,9 +1,9 @@
-import { useStore } from "effector-react";
-import { pageModel } from "pages/home";
-import { LIMIT } from "shared/config";
-import { CarouselMultiply } from "shared/ui/carousel-multiply";
-import { HeroSlide } from "./slide";
-import styles from "./styles.module.scss";
+import { useStore } from 'effector-react';
+import { pageModel } from 'pages/home';
+import { LIMIT } from 'shared/config';
+import { CarouselMultiply } from 'shared/ui/carousel-multiply';
+import { HeroSlide } from './slide';
+import styles from './styles.module.scss';
 
 export const Hero = () => {
   const data = useStore(pageModel.$heroMovies);

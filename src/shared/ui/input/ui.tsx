@@ -1,7 +1,7 @@
-import clsx from "clsx";
-import { forwardRef, InputHTMLAttributes, useState } from "react";
-import { CloseIcon } from "shared/ui/icons";
-import styles from "./styles.module.scss";
+import clsx from 'clsx';
+import { forwardRef, InputHTMLAttributes, useState } from 'react';
+import { CloseIcon } from 'shared/ui/icons';
+import styles from './styles.module.scss';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
@@ -15,7 +15,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     const handleOnBlur = () => {
       /* p.s: не работает без переданного value параметра */
-      if (value === "") {
+      if (value === '') {
         setIsFocus(false);
       }
     };
@@ -28,13 +28,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             onFocus={() => setIsFocus(true)}
             onBlur={handleOnBlur}
-            className={clsx("input-reset", isFocus && styles.isFocus, onClear && styles.clear, styles.input)}
+            className={clsx('input-reset', isFocus && styles.isFocus, onClear && styles.clear, styles.input)}
             value={value}
             {...props}
           />
         </label>
         {onClear && (
-          <button onClick={onClear} className={clsx("btn-reset", value && styles.visibile, styles.clearBtn)}>
+          <button onClick={onClear} className={clsx('btn-reset', value && styles.visibile, styles.clearBtn)}>
             <CloseIcon />
           </button>
         )}

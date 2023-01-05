@@ -1,4 +1,4 @@
-import { createEvent, createStore, type Store, Event } from "effector";
+import { createEvent, createStore, type Store, Event } from 'effector';
 
 export type TogglerInstance = {
   open: Event<void>;

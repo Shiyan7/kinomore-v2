@@ -1,7 +1,7 @@
-import clsx from "clsx";
-import { FC } from "react";
-import { EditIcon } from "shared/ui/icons";
-import styles from "./styles.module.scss";
+import clsx from 'clsx';
+import { FC } from 'react';
+import { EditIcon } from 'shared/ui/icons';
+import styles from './styles.module.scss';
 
 interface MessageProps {
   title: string;
@@ -15,7 +15,7 @@ export const Message: FC<MessageProps> = ({ title, isEditable, onEdit, descripti
   return (
     <div className={clsx(styles.messageWrapper, isEditable && styles.isEditable, className)}>
       {isEditable && (
-        <button onClick={onEdit} className={clsx("btn-reset", styles.edit)}>
+        <button onClick={onEdit} className={clsx('btn-reset', styles.edit)}>
           <EditIcon />
         </button>
       )}

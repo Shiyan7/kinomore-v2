@@ -1,12 +1,12 @@
-import clsx from "clsx";
-import Link from "next/link";
-import { CSSTransition } from "react-transition-group";
-import { useRouter } from "next/router";
-import { headerModel } from "widgets/header";
-import { useLockedBody, useToggler } from "shared/lib/hooks";
-import { CloseIcon } from "shared/ui/icons";
-import { items } from "./config";
-import styles from "./styles.module.scss";
+import clsx from 'clsx';
+import Link from 'next/link';
+import { CSSTransition } from 'react-transition-group';
+import { useRouter } from 'next/router';
+import { headerModel } from 'widgets/header';
+import { useLockedBody, useToggler } from 'shared/lib/hooks';
+import { CloseIcon } from 'shared/ui/icons';
+import { items } from './config';
+import styles from './styles.module.scss';
 
 export const Menu = () => {
   const { isOpen, close } = useToggler(headerModel.menuInstance);
@@ -21,11 +21,11 @@ export const Menu = () => {
           return <div key={idx} className={styles.snow} />;
         })}
       </div>
-      <button onClick={close} className={clsx("btn-reset", styles.close)}>
+      <button onClick={close} className={clsx('btn-reset', styles.close)}>
         <CloseIcon />
       </button>
-      <div className={clsx("container", styles.container)}>
-        <ul className={clsx("list-reset", styles.list)}>
+      <div className={clsx('container', styles.container)}>
+        <ul className={clsx('list-reset', styles.list)}>
           {items.map((item) => {
             const isCurrentPage = pathname === item.href;
 

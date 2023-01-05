@@ -62,4 +62,4 @@ export type GetNameStr<Obj> = {
   ): string;
 };
 
-export const getNameStr = (...keys: any): any => keys.join(".");
+export const getNameStr = (...keys: any): any => keys.join('.');

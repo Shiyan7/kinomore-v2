@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 export const useHeaderFixed = () => {
   const [isFixed, setIsFixed] = useState<boolean>(false);
@@ -14,9 +14,9 @@ export const useHeaderFixed = () => {
       lastScrollTop.current = scrollDistance;
     };
 
-    window.addEventListener("scroll", headerFixed, { passive: true });
+    window.addEventListener('scroll', headerFixed, { passive: true });
 
-    return () => window.removeEventListener("scroll", headerFixed);
+    return () => window.removeEventListener('scroll', headerFixed);
   }, []);
 
   return {

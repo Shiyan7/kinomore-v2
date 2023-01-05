@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/rules-of-hooks */
 // @ts-nocheck
-import { useCallback, useEffect, useRef, type SyntheticEvent } from "react";
-import { useEvent, useStoreMap } from "effector-react/scope";
+import { useCallback, useEffect, useRef, type SyntheticEvent } from 'react';
+import { useEvent, useStoreMap } from 'effector-react/scope';
 import {
   ControllerHof,
   ControllerInjectedResult,
@@ -20,9 +20,9 @@ import {
   SetFieldStateParams,
   SetOrDeleteOuterErrorParams,
   FieldInitParams,
-} from "./ts";
-import { getIn, makeConsistentKey } from "./utils/object-manager";
-import { initialFieldState } from "./default-states";
+} from './ts';
+import { getIn, makeConsistentKey } from './utils/object-manager';
+import { initialFieldState } from './default-states';
 
 type UseFormParamsWithFactory<Values extends object, Meta> = {
   form: Form<Values>;

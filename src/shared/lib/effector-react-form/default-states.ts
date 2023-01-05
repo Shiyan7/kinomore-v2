@@ -1,7 +1,7 @@
-import { FieldState, FormState } from "./ts";
+import { FieldState, FormState } from './ts';
 
 export const initialFieldState: FieldState = {
-  _type: "fieldMeta",
+  _type: 'fieldMeta',
   active: false,
   touched: false,
   changed: false,

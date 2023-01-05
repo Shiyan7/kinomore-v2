@@ -1,16 +1,16 @@
-import clsx from "clsx";
-import { useStore } from "effector-react";
-import { searchModel } from "entities/search-window";
-import { Spinner } from "shared/ui";
-import { SearchItem } from "../search-item";
-import styles from "./styles.module.scss";
+import clsx from 'clsx';
+import { useStore } from 'effector-react';
+import { searchModel } from 'entities/search-window';
+import { Spinner } from 'shared/ui';
+import { SearchItem } from '../search-item';
+import styles from './styles.module.scss';
 
 export const SearchList = () => {
   const searchResult = useStore(searchModel.$searchResult);
   const pending = useStore(searchModel.searchFx.pending);
 
   const SearchList = (
-    <ul className={clsx("list-reset", styles.list)}>
+    <ul className={clsx('list-reset', styles.list)}>
       {searchResult?.docs?.map((item) => (
         <SearchItem key={item.id} item={item} />
       ))}

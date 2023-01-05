@@ -1,10 +1,10 @@
-import { attach, combine, createEvent, createStore, sample } from "effector";
-import { not } from "patronum";
-import { string } from "yup";
-import { createForm } from "shared/lib/effector-react-form";
-import { createObjectValidator } from "shared/form";
-import { createToggler } from "shared/lib/toggler";
-import { internalApi } from "shared/api";
+import { attach, combine, createEvent, createStore, sample } from 'effector';
+import { not } from 'patronum';
+import { string } from 'yup';
+import { createForm } from 'shared/lib/effector-react-form';
+import { createObjectValidator } from 'shared/form';
+import { createToggler } from 'shared/lib/toggler';
+import { internalApi } from 'shared/api';
 
 export const authInstance = createToggler();
 
@@ -12,7 +12,7 @@ export const checkUserFx = attach({ effect: internalApi.check });
 
 export const emailForm = createForm({
   initialValues: {
-    email: "",
+    email: '',
   },
   validate: createObjectValidator({
     email: string().email().required(),
@@ -21,7 +21,7 @@ export const emailForm = createForm({
 
 export const passwordForm = createForm({
   initialValues: {
-    password: "",
+    password: '',
   },
   validate: createObjectValidator({
     password: string().min(6).required(),
@@ -35,9 +35,9 @@ export const $progress = createStore(5)
   .on(continueClicked, () => 50)
   .on(editClicked, () => 5);
 
-export const $state = createStore<"email" | "password">("email")
-  .on(continueClicked, () => "password")
-  .on(editClicked, () => "email");
+export const $state = createStore<'email' | 'password'>('email')
+  .on(continueClicked, () => 'password')
+  .on(editClicked, () => 'email');
 
 export const $isNewUser = createStore(false);
 
@@ -66,12 +66,12 @@ sample({
   clock: passwordForm.onSubmit,
   source: formValue,
   filter: not($isNewUser),
-  fn: (value) => console.log("login", value),
+  fn: (value) => console.log('login', value),
 });
 
 sample({
   clock: passwordForm.onSubmit,
   source: formValue,
   filter: $isNewUser,
-  fn: (value) => console.log("register", value),
+  fn: (value) => console.log('register', value),
 });

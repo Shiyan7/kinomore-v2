@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // @ts-nocheck
-import { createEvent as createEventNative, sample } from "effector";
-import { CreateFieldArrayParams, FieldArray } from "../ts";
-import { getIn, removeFromInlineMap, setIn } from "../utils/object-manager";
+import { createEvent as createEventNative, sample } from 'effector';
+import { CreateFieldArrayParams, FieldArray } from '../ts';
+import { getIn, removeFromInlineMap, setIn } from '../utils/object-manager';
 
 const createFieldArray = <Values extends object = any>({
   form,

@@ -1,22 +1,22 @@
-import { ComponentProps, ElementType, ReactNode } from "react";
-import clsx from "clsx";
-import styles from "./styles.module.scss";
+import { ComponentProps, ElementType, ReactNode } from 'react';
+import clsx from 'clsx';
+import styles from './styles.module.scss';
 
 interface TitleOwnProps<E extends ElementType = ElementType> {
   className?: string;
   children: ReactNode;
-  size?: "small" | "large" | "medium";
+  size?: 'small' | 'large' | 'medium';
   as?: E;
 }
 
-const DEFAULT_ELEMENT: ElementType = "h1";
+const DEFAULT_ELEMENT: ElementType = 'h1';
 
 export type TitleProps<E extends ElementType> = TitleOwnProps<E> & Omit<ComponentProps<E>, keyof TitleOwnProps>;
 
 export const Title = <E extends ElementType = typeof DEFAULT_ELEMENT>({
   className,
   children,
-  size = "large",
+  size = 'large',
   as,
   ...props
 }: TitleProps<E>) => {

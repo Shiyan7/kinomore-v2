@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-restricted-syntax */
-import { forwardRef, type ChangeEvent, ComponentType } from "react";
-import type { Controller } from "shared/lib/effector-react-form";
+import { forwardRef, type ChangeEvent, ComponentType } from 'react';
+import type { Controller } from 'shared/lib/effector-react-form';
 
-export function createField<P, Keys extends string = "">(
+export function createField<P, Keys extends string = ''>(
   Component: ComponentType<P>,
   skippedFieldProps?: (keyof ReturnType<Controller>)[]
 ) {
@@ -25,11 +25,11 @@ export function createField<P, Keys extends string = "">(
       }
     }
 
-    return <Component ref={ref} {...(props as any)} {...fieldProps} value={fieldProps.value ?? ""} />;
+    return <Component ref={ref} {...(props as any)} {...fieldProps} value={fieldProps.value ?? ''} />;
   });
 }
 
-export function createSuggestField<P, Keys extends string = "">(
+export function createSuggestField<P, Keys extends string = ''>(
   Component: ComponentType<P>,
   skippedFieldProps?: (keyof ReturnType<Controller>)[]
 ) {
@@ -41,7 +41,7 @@ export function createSuggestField<P, Keys extends string = "">(
     // Workaround: https://github.com/vitalybaev/react-dadata/issues/94
     const fieldProps = {
       error: isShowError && error,
-      defaulQuery: value ?? "",
+      defaulQuery: value ?? '',
       inputProps: {
         onChange,
         value, // pass value here for updates on client
@@ -62,7 +62,7 @@ export function createSuggestField<P, Keys extends string = "">(
   };
 }
 
-export function createBooleanField<P, Keys extends string = "">(
+export function createBooleanField<P, Keys extends string = ''>(
   Component: ComponentType<P>,
   skippedFieldProps?: (keyof ReturnType<Controller>)[]
 ) {

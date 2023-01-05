@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // @ts-nocheck
-import stringToPath from "lodash.topath";
+import stringToPath from 'lodash.topath';
 
 /**
  * @param {object} state Redux state
@@ -31,7 +31,7 @@ export const deleteIn = <Obj = any>(
 
   const isEndPoint = pathArray.length - 1 === index;
   const isArray = Array.isArray(state);
-  const isObject = !isArray && typeof state === "object";
+  const isObject = !isArray && typeof state === 'object';
   // @ts-ignore
   const newState = isArray ? [...state] : { ...state };
 
@@ -148,7 +148,7 @@ export const getIn = <Obj, Result>(state: Obj, field: string | string[], default
 export const makeNested = <Result = Record<string, any>>(inlineMap: Record<string, any>): Result =>
   Object.entries(inlineMap).reduce((acc, [key, value]) => setIn(acc, key, value), {} as Result);
 
-const isFieldMeta = (value) => typeof value === "object" && value._type === "fieldMeta";
+const isFieldMeta = (value) => typeof value === 'object' && value._type === 'fieldMeta';
 
 export const removeFromInlineMap = (map: Record<string, any>, key: string) => {
   const nestedMap = deleteIn(makeNested(map), key);
@@ -159,7 +159,7 @@ export const removeFromInlineMap = (map: Record<string, any>, key: string) => {
     const currentNode = nodes.pop();
     Object.entries(currentNode.node).forEach(([k, v]) => {
       if (isFieldMeta(v)) {
-        newInlineMap[currentNode.path.concat(k).join(".")] = v;
+        newInlineMap[currentNode.path.concat(k).join('.')] = v;
       } else {
         nodes.push({
           node: v,
@@ -174,8 +174,8 @@ export const removeFromInlineMap = (map: Record<string, any>, key: string) => {
 
 export const makeConsistentKey = (key: string | string[]) => {
   if (Array.isArray(key)) {
-    return key.join(".");
+    return key.join('.');
   }
 
-  return stringToPath(key).join(".");
+  return stringToPath(key).join('.');
 };

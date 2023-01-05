@@ -1,5 +1,5 @@
-import { getName, GetName } from "./get-name";
-import { getNameStr, GetNameStr } from "./get-name-str";
+import { getName, GetName } from './get-name';
+import { getNameStr, GetNameStr } from './get-name-str';
 
 type NameHelper<Values extends object> = {
   getPath: GetName<Values>;

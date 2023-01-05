@@ -1,16 +1,16 @@
-import clsx from "clsx";
-import { useEffect, useState, type CSSProperties, FC, PropsWithChildren } from "react";
-import styles from "./styles.module.scss";
+import clsx from 'clsx';
+import { useEffect, useState, type CSSProperties, FC, PropsWithChildren } from 'react';
+import styles from './styles.module.scss';
 
 interface TransitionProps {
   delay?: number;
   offset?: number;
-  variant?: "bounceInBottom";
+  variant?: 'bounceInBottom';
 }
 
 export const Transition: FC<PropsWithChildren<TransitionProps>> = ({
   children,
-  variant = "bounceInBottom",
+  variant = 'bounceInBottom',
   offset = 40,
   delay = 0,
 }) => {
@@ -25,7 +25,7 @@ export const Transition: FC<PropsWithChildren<TransitionProps>> = ({
 
   return (
     <div
-      style={{ "--offset": `${offset}px`, "--delay": `${delay}s` } as CSSProperties}
+      style={{ '--offset': `${offset}px`, '--delay': `${delay}s` } as CSSProperties}
       className={clsx(styles[variant], mounted && styles.mounted)}
     >
       {children}

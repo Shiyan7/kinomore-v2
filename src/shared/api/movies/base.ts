@@ -1,5 +1,5 @@
-import axios from "axios";
-import { createHttp } from "effector-http-api";
+import axios from 'axios';
+import { createHttp } from 'effector-http-api';
 
 const instance = axios.create({
   baseURL: process.env.API_URL,
@@ -8,7 +8,7 @@ const instance = axios.create({
   },
 });
 
-const url = "/movie";
+const url = '/movie';
 
 const http = createHttp(instance);
 

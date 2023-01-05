@@ -1,11 +1,11 @@
-import type { ElementType, PropsWithChildren } from "react";
-import clsx from "clsx";
-import Link from "next/link";
-import { LIMIT } from "shared/config";
-import { Title, type TitleProps } from "shared/ui/title";
-import { CarouselMultiply, type CarouselMultiplyProps } from "shared/ui/carousel-multiply";
-import { ChevronIcon } from "shared/ui/icons";
-import styles from "./styles.module.scss";
+import type { ElementType, PropsWithChildren } from 'react';
+import clsx from 'clsx';
+import Link from 'next/link';
+import { LIMIT } from 'shared/config';
+import { Title, type TitleProps } from 'shared/ui/title';
+import { CarouselMultiply, type CarouselMultiplyProps } from 'shared/ui/carousel-multiply';
+import { ChevronIcon } from 'shared/ui/icons';
+import styles from './styles.module.scss';
 
 interface CategoryProps {
   className?: string;
@@ -14,14 +14,14 @@ interface CategoryProps {
 export const Category = ({ className, children }: PropsWithChildren<CategoryProps>) => {
   return (
     <section className={clsx(styles.section, className)}>
-      <div className={clsx("container", styles.container)}>{children}</div>
+      <div className={clsx('container', styles.container)}>{children}</div>
     </section>
   );
 };
 
 const CategoryTitle = ({ children, href, ...props }: TitleProps<ElementType<Partial<HTMLAnchorElement>>>) => {
   return (
-    <Title size="medium" className={styles.title} as={Link} href={href} {...props}>
+    <Title size='medium' className={styles.title} as={Link} href={href} {...props}>
       {children}
       <span className={styles.icon}>
         <ChevronIcon />

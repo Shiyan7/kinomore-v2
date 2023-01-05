@@ -1,3 +1,3 @@
-export { Movie } from "./ui";
-export * from "./lib";
-export * as pageModel from "./model";
+export { Movie } from './ui';
+export * from './lib';
+export * as pageModel from './model';

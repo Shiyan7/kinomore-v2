@@ -12,8 +12,8 @@ import {
   is,
   sample,
   Store,
-} from "effector";
-import { SyntheticEvent } from "react";
+} from 'effector';
+import { SyntheticEvent } from 'react';
 import {
   CreateFormParams,
   ErrorsInline,
@@ -29,9 +29,9 @@ import {
   SetValueParams,
   SetValuesParams,
   SubmitParams,
-} from "../ts";
-import { initialFieldState, initialFormState } from "../default-states";
-import { getValue } from "../utils/dom-helper";
+} from '../ts';
+import { initialFieldState, initialFormState } from '../default-states';
+import { getValue } from '../utils/dom-helper';
 import {
   deleteIn,
   getIn,
@@ -41,7 +41,7 @@ import {
   GetNameStr,
   makeConsistentKey,
   setIn,
-} from "../utils/object-manager";
+} from '../utils/object-manager';
 
 const createForm = <Values extends object = any, Meta = any>(
   {
@@ -316,7 +316,7 @@ const createForm = <Values extends object = any, Meta = any>(
         from: onSubmit,
         to: onSubmitArg,
       });
-    } else if (typeof onSubmitArg === "function") {
+    } else if (typeof onSubmitArg === 'function') {
       onSubmit.watch(onSubmitArg);
     }
   }
@@ -327,7 +327,7 @@ const createForm = <Values extends object = any, Meta = any>(
         from: onChange,
         to: onChangeArg,
       });
-    } else if (typeof onChangeArg === "function") {
+    } else if (typeof onChangeArg === 'function') {
       onChange.watch(onChangeArg);
     }
   }
@@ -420,12 +420,12 @@ const createForm = <Values extends object = any, Meta = any>(
 
   $form
     .on($outerErrorsInline.updates, (state, outerErrors) =>
-      setIn(state, "hasOuterError", Boolean(Object.keys(outerErrors).length))
+      setIn(state, 'hasOuterError', Boolean(Object.keys(outerErrors).length))
     )
-    .on(submit, (state) => setIn(state, "submitted", true))
-    .on(setSubmitted, (state, value) => setIn(state, "submitted", value))
+    .on(submit, (state) => setIn(state, 'submitted', true))
+    .on(setSubmitted, (state, value) => setIn(state, 'submitted', value))
     .on($errorsInline.updates, (state, errorsInline) =>
-      setIn(state, "hasError", Boolean(Object.keys(errorsInline).length))
+      setIn(state, 'hasError', Boolean(Object.keys(errorsInline).length))
     )
     .reset(reset);
 

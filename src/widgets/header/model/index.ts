@@ -1,3 +1,3 @@
-import { createToggler } from "shared/lib";
+import { createToggler } from 'shared/lib';
 
 export const menuInstance = createToggler();
