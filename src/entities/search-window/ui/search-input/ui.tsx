@@ -1,12 +1,12 @@
-import { useUnit } from "effector-react";
+import { useStore, useEvent } from "effector-react";
 import { useEffect, useRef } from "react";
 import { searchModel } from "entities/search-window";
 import { Input } from "shared/ui/input";
 import styles from "./styles.module.scss";
 
 export const SearchInput = () => {
-  const search = useUnit(searchModel.$search);
-  const searchChanged = useUnit(searchModel.searchChanged);
+  const search = useStore(searchModel.$search);
+  const searchChanged = useEvent(searchModel.searchChanged);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {

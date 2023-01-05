@@ -9,7 +9,7 @@ export const Player = () => {
     <div className={styles.container}>
       <div className={styles.player}>
         <iframe
-          title="Смотреть"
+          title="Плеер"
           src={`https://voidboost.net/embed/${query.id}?poster=1&nocontinue=1&poster_id=4&df=1`}
           allow="autoplay"
           className={styles.iframe}

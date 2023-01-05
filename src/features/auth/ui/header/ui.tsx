@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useUnit } from "effector-react";
+import { useStore } from "effector-react";
 import { authModel } from "features/auth";
 import { useToggler } from "shared/lib/hooks";
 import { CloseIcon } from "shared/ui/icons";
@@ -8,9 +8,9 @@ import styles from "./styles.module.scss";
 
 export const Header = () => {
   const { close } = useToggler(authModel.authInstance);
-  const { email } = useUnit(authModel.emailForm.$values);
-  const state = useUnit(authModel.$state);
-  const isNewUser = useUnit(authModel.$isNewUser);
+  const { email } = useStore(authModel.emailForm.$values);
+  const state = useStore(authModel.$state);
+  const isNewUser = useStore(authModel.$isNewUser);
   const isEmailState = state === "email";
 
   return (

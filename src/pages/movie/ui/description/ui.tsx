@@ -1,14 +1,14 @@
 import clsx from "clsx";
 import { useState } from "react";
-import { useUnit } from "effector-react";
+import { useStore } from "effector-react";
 import { pageModel } from "pages/movie";
 import styles from "./styles.module.scss";
 
 const MAX_WORDS = 35;
 
 export const Description = () => {
-  const { description, shortDescription } = useUnit(pageModel.$movie)!;
-  const [isExpanded, setIsExpanded] = useState(false);
+  const { description, shortDescription } = useStore(pageModel.$movie)!;
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const text = description || shortDescription;
   const words = text.split(" ");
   const shortText = words.slice(0, MAX_WORDS).join(" ");

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Fragment } from "react";
-import { useUnit } from "effector-react";
+import { useStore } from "effector-react";
 import { pageModel, getSeasonString, getAgeRating, getCountry } from "pages/movie";
 import { Title } from "shared/ui";
 import { MainPersons } from "../main-persons";
@@ -9,7 +9,7 @@ import { Description } from "../description";
 import styles from "./styles.module.scss";
 
 export const Info = () => {
-  const { seasonsInfo, name, year, ageRating, countries } = useUnit(pageModel.$movie)!;
+  const { seasonsInfo, name, year, ageRating, countries } = useStore(pageModel.$movie)!;
 
   const info = [year, getSeasonString(seasonsInfo.length), getCountry(countries), getAgeRating(ageRating)];
 

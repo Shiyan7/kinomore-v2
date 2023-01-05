@@ -1,11 +1,11 @@
 import clsx from "clsx";
-import { useUnit } from "effector-react";
+import { useStore } from "effector-react";
 import { pageModel, getVotes, getMovieType } from "pages/movie";
 import { getRating } from "shared/lib/get-rating";
 import styles from "./styles.module.scss";
 
 export const Rating = () => {
-  const { rating, votes, type } = useUnit(pageModel.$movie)!;
+  const { rating, votes, type } = useStore(pageModel.$movie)!;
 
   return (
     <div className={styles.container}>
