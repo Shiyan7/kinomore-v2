@@ -20,7 +20,7 @@ export const Description = () => {
   return (
     <div className={styles.container}>
       <p className={styles.desc}>{isExpanded ? text : shortText}</p>
-      {words.length >= MAX_WORDS && (
+      {words.length > MAX_WORDS && (
         <button className={clsx("btn-reset", styles.btn)} onClick={handleToggle}>
           {isExpanded ? "Скрыть" : "Показать ещё"}
         </button>

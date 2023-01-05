@@ -7,7 +7,7 @@
 }
 
 .item {
-  width: calc(50px + calc(7px * 2));
+  width: calc(50px + calc(5px * 2));
 }
 
 .link {
@@ -20,7 +20,7 @@
     transform: translateY(-2px);
 
     .image {
-      box-shadow: 0 0 0 7px rgba(#fff, 0.3);
+      box-shadow: 0 0 0 5px rgba(#fff, 0.3);
     }
 
     .name {
@@ -36,7 +36,7 @@
   height: 50px;
   overflow: hidden;
   border-radius: 12px;
-  box-shadow: 0 0 0 7px rgba(#fff, 0.2);
+  box-shadow: 0 0 0 5px rgba(#fff, 0.2);
   transition: box-shadow var(--duration);
   background-color: rgba(#fff, 0.1);
 

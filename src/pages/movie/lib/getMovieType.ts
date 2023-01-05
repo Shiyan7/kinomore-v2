@@ -1,12 +1,10 @@
-import { RoutesEnum } from "shared/config";
-
-export function getMovieType(type: string | undefined): { text: string; href: string } {
+export function getMovieType(type: string | undefined): string {
   switch (type) {
     case "movie":
-      return { text: "Фильмы", href: RoutesEnum.Films };
+      return "фильма";
     case "cartoon":
-      return { text: "Мультфильмы", href: RoutesEnum.Cartoons };
+      return "мультфильма";
     default:
-      return { text: "Сериалы", href: RoutesEnum.Series };
+      return "сериала";
   }
 }

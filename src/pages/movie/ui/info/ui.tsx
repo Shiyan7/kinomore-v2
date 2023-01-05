@@ -16,7 +16,7 @@ export const Info = () => {
   return (
     <div className={styles.info}>
       <Title className={styles.title}>
-        <span>Сериал {name} Смотреть онлайн</span>
+        <span>{name} Смотреть онлайн</span>
       </Title>
       <ul className={clsx("list-reset", styles.list)}>
         {info.map((item, idx) => (

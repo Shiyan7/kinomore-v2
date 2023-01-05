@@ -10,7 +10,7 @@ export const Player = () => {
       <div className={styles.player}>
         <iframe
           title="Смотреть"
-          src={`https://voidboost.net/embed/${query.id}?poster=1&poster_id=4&df=1`}
+          src={`https://voidboost.net/embed/${query.id}?poster=1&nocontinue=1&poster_id=4&df=1`}
           allow="autoplay"
           className={styles.iframe}
           allowFullScreen
