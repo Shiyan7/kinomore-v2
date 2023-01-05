@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useUnit } from "effector-react";
+import { useStore } from "effector-react";
 import { searchModel } from "entities/search-window";
 import { useToggler } from "shared/lib/hooks";
 import { Title, Modal, CloseIcon } from "shared/ui";
@@ -9,7 +9,7 @@ import styles from "./styles.module.scss";
 
 export const SearchWindow = () => {
   const { close, isOpen } = useToggler(searchModel.searchInstance);
-  const debouncedValue = useUnit(searchModel.$debouncedValue);
+  const debouncedValue = useStore(searchModel.$debouncedValue);
 
   return (
     <Modal isOpen={isOpen} close={close} className={styles.window}>

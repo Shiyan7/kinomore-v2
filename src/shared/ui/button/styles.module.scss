@@ -2,9 +2,12 @@
   position: relative;
   display: inline-flex;
   align-items: center;
+  overflow: hidden;
   justify-content: center;
   font-size: 13.2px;
   line-height: 15px;
+  border-radius: 10px;
+  color: var(--color-white);
   transition: background-color var(--duration);
 
   &[disabled] {
@@ -14,16 +17,27 @@
 
   span {
     position: relative;
+
+		svg {
+			display: block;
+			width: 16.5px;
+			height: 16.5px;
+
+			svg {
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+		}
   }
 }
 
 .primary {
-  color: var(--color-white);
-  border-radius: 10px;
   background-color: var(--color-primary);
   padding: 9px 15px 10px;
   min-height: 44px;
-  overflow: hidden;
 
   &:hover {
     background-color: #1250c9;
@@ -34,14 +48,25 @@
   }
 }
 
-.small {
-  color: var(--color-white);
-  border-radius: 8px;
+.glass {
+  font-size: 14px;
+  line-height: 18px;
+	min-width: 43px;
+	min-height: 43px;
+  padding: 12px 13px;
+  backdrop-filter: saturate(180%);
+  background-color: rgba(#fff, 0.15);
+
+	&:hover {
+		background-color: rgba(#fff, 0.2);
+	}
+}
+
+.gradient {
   background: linear-gradient(77.72deg, #2253b2 0%, #37b7ff 115.84%);
   font-size: 13px;
   line-height: 15px;
   padding: 10px;
-  overflow: hidden;
 }
 
 .spinner {
@@ -50,4 +75,26 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.45);
+}
+
+.startIcon,
+.endIcon {
+  display: block;
+  width: 19px;
+  height: 19px;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.startIcon {
+	margin-right: 7px;
+}
+
+.endIcon {
+	margin-left: 7px;
 }

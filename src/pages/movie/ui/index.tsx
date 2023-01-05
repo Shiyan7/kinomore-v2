@@ -1,17 +1,25 @@
 import clsx from "clsx";
 import type { NextPage } from "next";
-import { useUnit } from "effector-react";
-import { pageModel } from "pages/movie";
+import { useStore } from "effector-react";
+import { pageModel, getGenre, getMovieBreadcrumb } from "pages/movie";
+import { Breadcrumbs } from "shared/ui/breadcrumbs";
+import { Player } from "./player";
+import { Info } from "./info";
 import styles from "./styles.module.scss";
 
 export const Movie: NextPage = () => {
-  const movie = useUnit(pageModel.$movie);
-
-  console.log(movie);
+  const { genres, type } = useStore(pageModel.$movie)!;
+  const breadcrumbs = [getMovieBreadcrumb(type), getGenre(genres)];
 
   return (
     <section className={styles.section}>
-      <div className={clsx("container", styles.container)}>{movie?.name}</div>
+      <div className={clsx("container", styles.container)}>
+        <Breadcrumbs className={styles.breadcrumbs} items={breadcrumbs} />
+        <div className={styles.content}>
+          <Player />
+          <Info />
+        </div>
+      </div>
     </section>
   );
 };

@@ -6,7 +6,7 @@ interface PortalProps {
 }
 
 export const Portal: FC<PropsWithChildren<PortalProps>> = ({ rootId, children }) => {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {

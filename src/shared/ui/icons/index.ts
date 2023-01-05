@@ -16,6 +16,8 @@ import KnifeIcon from "./assets/knife.svg";
 import EditIcon from "./assets/edit.svg";
 import BookmarkIcon from "./assets/bookmark.svg";
 import BookmarkSlashIcon from "./assets/bookmark-slash.svg";
+import PlayIcon from "./assets/play.svg";
+import ExportIcon from "./assets/export.svg";
 
 export {
   SearchIcon,
@@ -36,4 +38,6 @@ export {
   EditIcon,
   BookmarkIcon,
   BookmarkSlashIcon,
+  PlayIcon,
+  ExportIcon,
 };
