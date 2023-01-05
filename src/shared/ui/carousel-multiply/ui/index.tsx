@@ -10,7 +10,7 @@ export interface CarouselMultiplyProps<T> extends SwiperProps {
   items: Array<T> | undefined;
   prevBtnClass?: string;
   nextBtnClass?: string;
-  renderItem: (item: T) => ReactNode;
+  renderItem: (item: T, idx: number) => ReactNode;
   className?: string;
   slideClassName?: string;
   containerOffsets?: boolean;
@@ -32,7 +32,7 @@ export function CarouselMultiply<T>({
     (_items: typeof items) =>
       _items?.map((item, idx) => (
         <SwiperSlide style={{ marginRight: 'var(--column-gap)' }} className={slideClassName} key={idx}>
-          {renderItem(item)}
+          {renderItem(item, idx)}
         </SwiperSlide>
       )),
     [slideClassName, renderItem]
@@ -59,8 +59,7 @@ export function CarouselMultiply<T>({
       className={clsx(styles.slider, className)}
       modules={[...(modules ?? DEFAULT_MODULES)]}
       {...swiperOptions}
-      {...props}
-    >
+      {...props}>
       <SliderButton className={clsx(styles.prev, prevBtnClass)} dir='left' />
       <SliderButton className={clsx(styles.next, nextBtnClass)} dir='right' />
       {renderItems(items)}
