@@ -17,11 +17,11 @@ import {
 import styles from './styles.module.scss';
 
 const genres = [
+  { href: '#', icon: <FireIcon />, text: 'Новые' },
+  { href: '#', icon: <HeartsIcon />, text: 'Мелодраммы' },
   { href: '#', icon: <KnifeIcon />, text: 'Ужасы' },
   { href: '#', icon: <MapIcon />, text: 'Приключения' },
   { href: '#', icon: <PeopleIcon />, text: 'Семейные' },
-  { href: '#', icon: <FireIcon />, text: 'Новые' },
-  { href: '#', icon: <HeartsIcon />, text: 'Мелодраммы' },
   { href: '#', icon: <CupIcon />, text: 'Лучшие' },
   { href: '#', icon: <HappyIcon />, text: 'Комедии' },
   { href: '#', icon: <GamepadIcon />, text: 'Игры' },
@@ -48,8 +48,7 @@ export const Genres = () => {
           onSliderMove={slideChange}
           mousewheel
           slidesPerView='auto'
-          className={clsx('list-reset', styles.list)}
-        >
+          className={clsx('list-reset', styles.list)}>
           {genres.map((genre) => (
             <SwiperSlide key={genre.text} className={styles.item}>
               <Link href={genre.href} className={styles.link}>

@@ -10,8 +10,8 @@ export const Home: NextPage = () => {
     <>
       <Hero />
       <Genres />
-      <NewFilms />
       <ComedyFilms />
+      <NewFilms />
       <ForFamily />
     </>
   );
