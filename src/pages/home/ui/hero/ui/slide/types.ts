@@ -6,4 +6,5 @@ export interface Slide {
   year: number;
   genre: string;
   trailer: string;
+  scale: string;
 }
