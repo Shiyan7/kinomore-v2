@@ -8,9 +8,9 @@
   background-color: var(--color-loader);
   color: var(--color-white);
 
-  @media (max-width: 576px) {
-    padding-top: 60%;
-  }
+	@media (max-width: 576px) {
+		padding-top: 58%;
+	}
 
   &:after {
     content: '';
@@ -67,11 +67,10 @@
 .video {
 	appearance: none;
 	position: absolute;
-	top: 0;
-	left: 0;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	transform: scale(1.05);
 	pointer-events: none;
 	background-color: var(--color-black);
 }
@@ -86,44 +85,15 @@
 	transition: opacity 0.15s;
 
 	@media (max-width: 576px) {
-		transform: translate(-50%, -50%), scale(0.5);
+		transform: translate(-50%, -50%) scale(0.8);
+	}
+
+	@media (max-width: 360px) {
+		transform: translate(-50%, -50%) scale(0.6);
 	}
 
 	&.loading {
 		opacity: 1;
-	}
-}
-
-.volumeBtn {
-	position: absolute;
-	z-index: 3;
-	bottom: 35px;
-	right: 35px;
-	padding: 0;
-	min-width: 42px;
-	min-height: 42px;
-	background-color: rgba(#fff, 0.2);
-	backdrop-filter: blur(5px);
-	border-radius: 100%;
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity var(--duration), visibility var(--duration);
-
-	&.done {
-		opacity: 1;
-		visibility: visible;
-	}
-
-	@media (max-width: 576px) {
-		min-width: 35px;
-		min-height: 35px;
-		bottom: 28px;
-		right: 22px;
-
-		span svg {
-			width: 15px;
-			height: 15px;
-		}
 	}
 }
 
@@ -146,16 +116,17 @@
 	position: relative;
   text-shadow: 0 0.75px 0 rgb(0 0 0 / 20%);
   margin-bottom: 15px;
-	transition: transform var(--duration);
+	transition: transform var(--duration), margin-bottom var(--duration);
 
 	&.done {
 		transform-origin: left bottom;
-		transform: translateY(25px) scale(0.9);
+		margin-bottom: 0;
+		transform: translateY(20px) scale(0.9);
 	}
 
   @media (max-width: 576px) {
     margin-bottom: 8px;
-    max-width: 70%;
+    max-width: 200px;
   }
 }
 

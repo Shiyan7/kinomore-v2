@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
 import { useEffect, useRef, useState, type FC } from 'react';
-import { Spinner, Title, Rating, Button, VolumeHighIcon, VolumeSlashIcon } from 'shared/ui';
+import { Spinner, Title, Rating } from 'shared/ui';
 import type { Slide } from './types';
 import styles from './styles.module.scss';
 
@@ -14,17 +14,20 @@ interface SlideProps {
 }
 
 export const HeroSlide: FC<SlideProps> = ({ item, isActiveSlide }) => {
-  const [isMuted, setIsMuted] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      videoRef.current?.play();
-      setIsActive(isActiveSlide);
-    }, 1500);
-  }, [isActiveSlide]);
+    if (isActiveSlide) {
+      setTimeout(() => {
+        videoRef.current?.play();
+        setIsActive(true);
+      }, 2000);
+    } else {
+      setIsActive(false);
+    }
+  }, [isActive, isActiveSlide]);
 
   return (
     <div className={styles.item}>
@@ -51,7 +54,7 @@ export const HeroSlide: FC<SlideProps> = ({ item, isActiveSlide }) => {
               onCanPlay={() => setIsLoading(false)}
               onWaiting={() => setIsLoading(true)}
               className={styles.video}
-              muted={isMuted}
+              muted
               ref={videoRef}
               src={item?.trailer}
               controls={false}
@@ -64,11 +67,6 @@ export const HeroSlide: FC<SlideProps> = ({ item, isActiveSlide }) => {
           </div>
         </CSSTransition>
       )}
-      <CSSTransition timeout={0} in={isActive} classNames={{ enterDone: styles.done }}>
-        <Button onClick={() => setIsMuted((prev) => !prev)} variant='glass' className={styles.volumeBtn}>
-          {isMuted ? <VolumeSlashIcon /> : <VolumeHighIcon />}
-        </Button>
-      </CSSTransition>
     </div>
   );
 };
