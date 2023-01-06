@@ -7,7 +7,7 @@ const nextConfig = {
 		},
   },
 	images: {
-		domains: ["st.kp.yandex.net", "avatars.mds.yandex.net", "www.themoviedb.org", "kinomore.onrender.com"],
+		domains: ['st.kp.yandex.net', 'avatars.mds.yandex.net', 'themoviedb.org', 'kinomore.onrender.com'],
 	},
 	env: {
 		API_TOKEN: process.env.API_TOKEN,
@@ -19,7 +19,7 @@ const nextConfig = {
 			test: /\.svg$/,
 			use: [
 				{
-					loader: "@svgr/webpack",
+					loader: '@svgr/webpack',
 					options: {
 						icon: true,
 					},
@@ -31,8 +31,8 @@ const nextConfig = {
 	},
 };
 
-if (process.env.NODE_ENV === "development") {
-  console.log("info  - lanUrl:", `http://${require("address").ip()}:3000`);
+if (process.env.NODE_ENV === 'development') {
+  console.log('info  - lanUrl:', `http://${require('address').ip()}:3000`);
 }
 
 module.exports = nextConfig;
