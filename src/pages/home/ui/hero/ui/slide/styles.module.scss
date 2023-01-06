@@ -121,11 +121,15 @@
     transform-origin: left bottom;
     margin-bottom: 0;
     transform: translateY(20px) scale(0.9);
+
+		@media (max-width: 576px) {
+			transform: translateY(23px) scale(0.9);
+		}
   }
 
   @media (max-width: 576px) {
     margin-bottom: 8px;
-    max-width: 300px;
+    max-width: 230px;
   }
 }
 
