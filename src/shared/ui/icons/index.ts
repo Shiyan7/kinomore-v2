@@ -18,6 +18,8 @@ import BookmarkIcon from './assets/bookmark.svg';
 import BookmarkSlashIcon from './assets/bookmark-slash.svg';
 import PlayIcon from './assets/play.svg';
 import ExportIcon from './assets/export.svg';
+import VolumeHighIcon from './assets/volume-high.svg';
+import VolumeSlashIcon from './assets/volume-slash.svg';
 
 export {
   SearchIcon,
@@ -40,4 +42,6 @@ export {
   BookmarkSlashIcon,
   PlayIcon,
   ExportIcon,
+  VolumeHighIcon,
+  VolumeSlashIcon,
 };

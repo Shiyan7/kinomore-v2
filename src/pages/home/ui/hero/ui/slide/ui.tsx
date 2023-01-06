@@ -3,54 +3,38 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
-import { useEffect, useRef, useState, type FC, RefObject } from 'react';
-import { Spinner, Title, Rating } from 'shared/ui';
+import { useEffect, useRef, useState, type FC } from 'react';
+import { Spinner, Title, Rating, Button, VolumeSlashIcon, VolumeHighIcon } from 'shared/ui';
+import { usePlayer } from './lib';
 import type { Slide } from './types';
 import styles from './styles.module.scss';
-
-interface PlayerHook {
-  play: () => void;
-  stop: () => void;
-}
-
-export function usePlayer(videoRef: RefObject<HTMLVideoElement>): PlayerHook {
-  const play = () => {
-    videoRef.current?.play();
-  };
-
-  const stop = () => {
-    videoRef.current?.pause();
-    videoRef.current!.currentTime = 0;
-  };
-
-  return { play, stop };
-}
 
 interface SlideProps {
   item: Slide;
   isActiveSlide: boolean;
 }
 
+const TIMEOUT_MS = 2000;
+
 export const HeroSlide: FC<SlideProps> = ({ item, isActiveSlide }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { play, stop } = usePlayer(videoRef);
+  const [isMuted, setIsMuted] = useState(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(false);
-
-  /* FIXME!!! отрефачить утром это блядское дерьмо */
 
   useEffect(() => {
     if (isActiveSlide) {
       setTimeout(() => {
         play();
         setIsActive(true);
-      }, 2000);
+      }, TIMEOUT_MS);
     } else {
       setIsActive(false);
+      setIsMuted(true);
       stop();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isActiveSlide]);
+  }, [isActiveSlide, play, stop]);
 
   return (
     <div className={styles.item}>
@@ -77,16 +61,21 @@ export const HeroSlide: FC<SlideProps> = ({ item, isActiveSlide }) => {
             onCanPlay={() => setIsLoading(false)}
             onWaiting={() => setIsLoading(true)}
             className={styles.video}
-            muted
             ref={videoRef}
             src={item?.trailer}
             playsInline
+            muted={isMuted}
             loop
           />
           <div className={clsx(styles.spinner, isLoading && styles.loading)}>
             <Spinner strokeWidth={3} />
           </div>
         </div>
+      </CSSTransition>
+      <CSSTransition timeout={0} in={isActive} classNames={{ enterDone: styles.done }}>
+        <Button onClick={() => setIsMuted((prev) => !prev)} variant="glass" className={styles.volumeBtn}>
+          {isMuted ? <VolumeSlashIcon /> : <VolumeHighIcon />}
+        </Button>
       </CSSTransition>
     </div>
   );

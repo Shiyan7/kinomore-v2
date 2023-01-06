@@ -17,10 +17,10 @@ export const Hero = () => {
           options={{
             loop: true,
           }}
-          onSlideChange={(swiper) => setRealIndex(swiper.realIndex)}
           className={styles.slider}
           slideClassName={styles.slide}
           items={data?.length ? data : [...Array(LIMIT)]}
+          onSlideChange={(swiper) => setRealIndex(swiper.realIndex)}
           renderItem={(item, idx) => <HeroSlide isActiveSlide={realIndex === idx} item={item} />}
         />
       </div>
