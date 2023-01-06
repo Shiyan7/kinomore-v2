@@ -27,7 +27,7 @@ export const AuthWindow = () => {
         <Transition>
           <Message
             className={styles.message}
-            title='Войдите или зарегистрируйтесь'
+            title="Войдите или зарегистрируйтесь"
             description={isEmailState ? 'чтобы пользоваться сервисом на любом устройстве' : null}
           />
         </Transition>

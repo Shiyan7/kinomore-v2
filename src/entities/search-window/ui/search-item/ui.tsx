@@ -13,7 +13,7 @@ export const SearchItem: FC<SearchItemProps> = ({ item }) => {
     <li className={styles.item}>
       <Link className={styles.link} href={`/film/${item?.id}`}>
         <div className={styles.image}>
-          <Image sizes='100%' fill quality={100} alt={item?.name} src={item?.poster?.previewUrl} />
+          <Image sizes="100%" fill quality={100} alt={item?.name} src={item?.poster?.previewUrl} />
         </div>
         <div className={styles.text}>
           <span className={styles.name}>{item?.name}</span>

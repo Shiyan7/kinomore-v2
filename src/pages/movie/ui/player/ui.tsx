@@ -9,21 +9,21 @@ export const Player = () => {
     <div className={styles.container}>
       <div className={styles.player}>
         <iframe
-          title='Плеер'
+          title="Плеер"
           src={`https://voidboost.net/embed/${query.id}?poster=1&poster_id=4&df=1`}
-          allow='autoplay'
+          allow="autoplay"
           className={styles.iframe}
           allowFullScreen
         />
       </div>
       <div className={styles.btns}>
-        <Button variant='glass' className={styles.btn} startIcon={<PlayIcon />}>
+        <Button variant="glass" className={styles.btn} startIcon={<PlayIcon />}>
           Трейлер
         </Button>
-        <Button variant='glass' className={styles.btn} aria-label='В избранное'>
+        <Button variant="glass" className={styles.btn} aria-label="В избранное">
           <BookmarkIcon />
         </Button>
-        <Button variant='glass' className={styles.btn} aria-label='Поделиться'>
+        <Button variant="glass" className={styles.btn} aria-label="Поделиться">
           <ExportIcon />
         </Button>
       </div>

@@ -34,7 +34,7 @@ export const HeroSlide: FC<SlideProps> = ({ item, isActiveSlide }) => {
       <Link href={`/film/${item?.id}`} className={styles.link} />
       <div className={styles.content}>
         <CSSTransition timeout={0} in={isActive} classNames={{ enterDone: styles.done }}>
-          <Title className={styles.title} as='h2' size='small'>
+          <Title className={styles.title} as="h2" size="small">
             {item?.title}
           </Title>
         </CSSTransition>
@@ -46,7 +46,7 @@ export const HeroSlide: FC<SlideProps> = ({ item, isActiveSlide }) => {
           </div>
         </CSSTransition>
       </div>
-      <Image priority sizes='100%' fill quality={100} className={styles.image} src={item?.image} alt={item?.title} />
+      <Image priority sizes="100%" fill quality={100} className={styles.image} src={item?.image} alt={item?.title} />
       {isActiveSlide && (
         <CSSTransition timeout={0} in={isActive} classNames={{ enterDone: styles.done }}>
           <div className={styles.videoContainer}>

@@ -22,7 +22,7 @@ export const EmailForm = () => {
   return (
     <div className={styles.content}>
       <Transition delay={100}>
-        <button type='button' className={clsx('btn-reset', styles.logo)}>
+        <button type="button" className={clsx('btn-reset', styles.logo)}>
           <GoogleIcon />
         </button>
       </Transition>
@@ -36,13 +36,13 @@ export const EmailForm = () => {
               name: 'email',
             })}
             ref={inputRef}
-            type='email'
+            type="email"
             className={styles.input}
-            placeholder='Введите email'
+            placeholder="Введите email"
           />
         </Transition>
         <Transition offset={40} delay={130}>
-          <Button className={styles.btn} disabled={!email} loading={pending} type='submit'>
+          <Button className={styles.btn} disabled={!email} loading={pending} type="submit">
             Продолжить
           </Button>
         </Transition>

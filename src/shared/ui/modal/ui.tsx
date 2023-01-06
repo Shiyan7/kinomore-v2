@@ -26,7 +26,7 @@ export const Modal = forwardRef<HTMLDivElement, PropsWithChildren<ModalProps>>(
           enterDone: styles.done,
         }}
       >
-        <Portal rootId='#modal'>
+        <Portal rootId="#modal">
           {isOpen && (
             <div className={clsx(styles.modal, className)} ref={ref}>
               {children}

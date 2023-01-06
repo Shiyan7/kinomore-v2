@@ -126,18 +126,9 @@ module.exports = {
 				'argsIgnorePattern': '^_'
 			}
 		],
-		'@typescript-eslint/quotes': [
-			'error',
-			'single',
-			{
-				'avoidEscape': true,
-				'allowTemplateLiterals': true
-			}
-		],
 		'@typescript-eslint/ban-ts-comment': 'off',
 		'default-param-last': 'warn',
 		'block-spacing': 'error',
-		'quotes': 'off',
 		'comma-spacing': [
 			'error',
 			{
@@ -200,10 +191,15 @@ module.exports = {
 		'unicorn/throw-new-error': 'error',
 		'unicorn/no-useless-spread': 'error',
 		'unicorn/no-unnecessary-await': 'error',
-		'jsx-quotes': [
-			'error',
-			'prefer-single'
-		],
+		'quotes': [
+      'error',
+      // Prefer simple quotes
+      'single',
+      // Allow the use of `` instead of '' and don't try to replace it, even when `` isn't needed
+      { allowTemplateLiterals: true },
+    ],
+
+    'jsx-quotes': [2, 'prefer-double'],
 		'jsx-a11y/alt-text': [
 			2,
 			{

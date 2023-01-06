@@ -8,32 +8,32 @@
   background-color: var(--color-loader);
   color: var(--color-white);
 
-	@media (max-width: 576px) {
-		padding-top: 58%;
-	}
+  @media (max-width: 576px) {
+    padding-top: 58%;
+  }
 
   &:after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-		z-index: 3;
-		pointer-events: none;
+    z-index: 3;
+    pointer-events: none;
     border-radius: var(--radius);
     border: 1px solid rgba(#fff, 0.1);
   }
 }
 
 .link {
-	position: absolute;
-	z-index: 2;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .image {
@@ -48,53 +48,53 @@
 }
 
 .videoContainer {
-	position: absolute;
-	pointer-events: none;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity var(--duration), visibility var(--duration);
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration), visibility var(--duration);
 
-	&.done {
-		opacity: 1;
-		visibility: visible;
-	}
+  &.done {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .video {
-	appearance: none;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	transform: scale(1.05);
-	pointer-events: none;
-	background-color: var(--color-black);
+  appearance: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  pointer-events: none;
+  background-color: var(--color-black);
 }
 
 .spinner {
   position: absolute;
-	z-index: 3;
+  z-index: 3;
   top: 50%;
   left: 50%;
-	opacity: 0;
+  opacity: 0;
   transform: translate(-50%, -50%);
-	transition: opacity 0.15s;
+  transition: opacity 0.15s;
 
-	@media (max-width: 576px) {
-		transform: translate(-50%, -50%) scale(0.8);
-	}
+  @media (max-width: 576px) {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
 
-	@media (max-width: 360px) {
-		transform: translate(-50%, -50%) scale(0.6);
-	}
+  @media (max-width: 360px) {
+    transform: translate(-50%, -50%) scale(0.6);
+  }
 
-	&.loading {
-		opacity: 1;
-	}
+  &.loading {
+    opacity: 1;
+  }
 }
 
 .content {
@@ -103,7 +103,7 @@
   left: 30px;
   right: 30px;
   z-index: 2;
-	pointer-events: none;
+  pointer-events: none;
 
   @media (max-width: 576px) {
     left: 23px;
@@ -113,16 +113,16 @@
 }
 
 .title {
-	position: relative;
+  position: relative;
   text-shadow: 0 0.75px 0 rgb(0 0 0 / 20%);
   margin-bottom: 15px;
-	transition: transform var(--duration), margin-bottom var(--duration);
+  transition: transform var(--duration), margin-bottom var(--duration);
 
-	&.done {
-		transform-origin: left bottom;
-		margin-bottom: 0;
-		transform: translateY(20px) scale(0.9);
-	}
+  &.done {
+    transform-origin: left bottom;
+    margin-bottom: 0;
+    transform: translateY(20px) scale(0.9);
+  }
 
   @media (max-width: 576px) {
     margin-bottom: 8px;
@@ -133,11 +133,11 @@
 .bottom {
   display: flex;
   align-items: center;
-	transition: opacity var(--duration);
+  transition: opacity var(--duration);
 
-	&.done {
-		opacity: 0;
-	}
+  &.done {
+    opacity: 0;
+  }
 }
 
 .rating {

@@ -17,7 +17,7 @@ export const SliderButton: FC<SliderButtonProps> = ({ className, dir, ...props }
   return (
     <button
       onClick={handleClick}
-      type='button'
+      type="button"
       className={clsx('btn-reset', styles.btn, styles[dir], className)}
       {...props}
     >

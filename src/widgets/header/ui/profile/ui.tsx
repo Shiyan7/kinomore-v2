@@ -19,7 +19,7 @@ export const Profile = () => {
   );
 
   const ProfileButton = (
-    <button onClick={open} type='button' className={clsx('btn-reset', styles.profile)}>
+    <button onClick={open} type="button" className={clsx('btn-reset', styles.profile)}>
       <ProfileIcon />
       Войти
     </button>

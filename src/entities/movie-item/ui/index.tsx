@@ -16,7 +16,7 @@ export const MovieItem: FC<MovieItemProps> = ({ item }) => {
     <Link className={styles.item} href={`/film/${item?.id}`}>
       <div className={styles.imageWrapper}>
         <Image
-          sizes='100%'
+          sizes="100%"
           fill
           quality={100}
           className={styles.image}
@@ -32,7 +32,7 @@ export const MovieItem: FC<MovieItemProps> = ({ item }) => {
           <span className={styles.length}>{minutesToHour(item?.movieLength)}</span>
         </div>
         <div className={styles.btns}>
-          <Button className={styles.more} as='span' variant='gradient'>
+          <Button className={styles.more} as="span" variant="gradient">
             Подробнее
           </Button>
           <FavoriteButton id={item?.id} />

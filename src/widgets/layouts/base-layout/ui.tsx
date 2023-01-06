@@ -10,7 +10,7 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <Header />
-      <main className='main'>{children}</main>
+      <main className="main">{children}</main>
       <SearchWindow />
       <AuthWindow />
     </>

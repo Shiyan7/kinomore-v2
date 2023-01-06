@@ -39,14 +39,14 @@ export const PasswordForm = () => {
                 name: 'password',
               })}
               ref={inputRef}
-              type='password'
+              type="password"
               className={styles.input}
               placeholder={isNewUser ? 'Придумайте пароль' : 'Введите пароль'}
             />
           </Transition>
         </div>
         <Transition offset={40} delay={170}>
-          <Button className={styles.btn} type='submit'>
+          <Button className={styles.btn} type="submit">
             {isNewUser ? 'Зарегистрироваться' : 'Войти'}
           </Button>
         </Transition>

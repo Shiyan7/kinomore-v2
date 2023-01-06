@@ -5,10 +5,17 @@
   "useTabs": false,
   "semi": true,
   "tabWidth": 2,
-  "singleQuote": true,
-  "jsxSingleQuote": true,
   "jsxBracketSameLine": true,
   "endOfLine": "lf",
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "*.{css,scss}",
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ],
   "importOrder": [
     "app/**",
     "pages/*/**",
