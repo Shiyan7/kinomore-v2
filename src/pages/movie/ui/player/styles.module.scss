@@ -63,10 +63,11 @@
 	align-items: center;
 	overflow-y: hidden;
 	overflow-x: auto;
-	margin-top: 20px;
-	padding: 0 18px;
+	padding: 0 15px;
 	-ms-overflow-style: none;
   scrollbar-width: none;
+	padding-top: 20px;
+	border-top: 1px solid rgba(#fff, 0.15);
 
 	@media (min-width: 577px) {
 		display: none;
@@ -83,7 +84,7 @@
 .mobileBtn {
 	display: flex;
 	align-items: center;
-	font-size: 12px;
+	font-size: 11.5px;
 	line-height: 18px;
 	color: var(--color-white);
 	padding: 10px 13px;
@@ -91,14 +92,18 @@
 	background-color: rgba(#fff, 0.08);
 	white-space: nowrap;
 
+  &:hover {
+		background-color: rgba(#fff, 0.1);
+  }
+
 	&:not(:last-child) {
-		margin-right: 12px;
+		margin-right: 11px;
 	}
 
 	svg {
 		display: block;
-		width: 18px;
-		height: 18px;
+		width: 16px;
+		height: 16px;
 		margin-right: 9px;
 	}
 }

@@ -3,6 +3,10 @@
   align-items: flex-start;
   flex-direction: column;
   margin-bottom: 30px;
+
+	@media (max-width: 576px) {
+		margin-bottom: 25px;
+	}
 }
 
 .desc {
@@ -15,8 +19,9 @@
   text-shadow: 0 1px 0 rgb(0 0 0 / 20%);
 
 	@media (max-width: 576px) {
-		font-size: 14px;
-		line-height: 25px;
+		font-size: 13px;
+		line-height: 23px;
+		color: var(--color-white);
 	}
 }
 
