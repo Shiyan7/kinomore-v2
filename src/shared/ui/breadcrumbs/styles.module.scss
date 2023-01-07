@@ -31,6 +31,11 @@
   color: rgba(#fff, 0.7);
   transition: color 0.3s;
 
+	@media (max-width: 576px) {
+		font-size: 13.5px;
+		line-height: 17px;
+	}
+
   &:hover {
     color: var(--color-white);
   }

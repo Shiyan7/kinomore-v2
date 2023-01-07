@@ -128,6 +128,7 @@
   }
 
   @media (max-width: 576px) {
+		height: 40px;
     margin-bottom: 8px;
     max-width: 230px;
   }
@@ -203,7 +204,7 @@
 	@media (max-width: 576px) {
 		min-width: 35px;
 		min-height: 35px;
-		bottom: 28px;
+		bottom: 25px;
 		right: 22px;
 
 		span svg {

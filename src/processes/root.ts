@@ -6,7 +6,7 @@ import { searchModel } from 'entities/search-window';
 
 reset({
   clock: navigationModel.routerUpdated,
-  target: [searchModel.$search, authModel.$progress, authModel.$state],
+  target: [searchModel.$search, searchModel.$debouncedValue, authModel.$progress, authModel.$state],
 });
 
 sample({

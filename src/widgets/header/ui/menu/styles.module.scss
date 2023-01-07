@@ -10,7 +10,7 @@
   overflow-y: auto;
   opacity: 0;
   visibility: hidden;
-  background-color: rgba(#000, 0.95);
+  background-color: rgba(#111, 0.95);
   transition: opacity var(--duration), visibility var(--duration);
 
   @media (min-width: 769px) {

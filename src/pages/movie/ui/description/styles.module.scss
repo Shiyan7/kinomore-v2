@@ -13,6 +13,11 @@
   color: rgba(#fff, 0.8);
   text-align: left;
   text-shadow: 0 1px 0 rgb(0 0 0 / 20%);
+
+	@media (max-width: 576px) {
+		font-size: 14px;
+		line-height: 25px;
+	}
 }
 
 .btn {
@@ -22,6 +27,11 @@
   color: var(--color-white);
   color: rgba(#fff, 0.6);
   transition: color var(--duration);
+
+	@media (max-width: 576px) {
+		font-size: 14px;
+		line-height: 17px;
+	}
 
   &:hover {
     color: var(--color-white);

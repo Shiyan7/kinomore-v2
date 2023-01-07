@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { PlayIcon, Button, BookmarkIcon, ExportIcon } from 'shared/ui';
 import styles from './styles.module.scss';
@@ -26,6 +27,20 @@ export const Player = () => {
         <Button variant="glass" className={styles.btn} aria-label="Поделиться">
           <ExportIcon />
         </Button>
+      </div>
+      <div className={styles.mobileBtns}>
+        <button className={clsx('btn-reset', styles.mobileBtn)}>
+          <PlayIcon />
+          <span>Трейлер</span>
+        </button>
+        <button className={clsx('btn-reset', styles.mobileBtn)}>
+          <BookmarkIcon />
+          <span>В избранное</span>
+        </button>
+        <button className={clsx('btn-reset', styles.mobileBtn)}>
+          <ExportIcon />
+          <span>Поделиться</span>
+        </button>
       </div>
     </div>
   );

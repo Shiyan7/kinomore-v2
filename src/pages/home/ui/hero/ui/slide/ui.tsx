@@ -23,6 +23,8 @@ export const HeroSlide: FC<SlideProps> = ({ item, isActiveSlide }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(false);
 
+  /* FIXME: придумать как избавится от setTimeout в useEffect, и оптимизировать рендеры */
+
   useEffect(() => {
     if (isActiveSlide) {
       setTimeout(() => {
@@ -63,8 +65,8 @@ export const HeroSlide: FC<SlideProps> = ({ item, isActiveSlide }) => {
             className={styles.video}
             ref={videoRef}
             src={item?.trailer}
-            playsInline
             muted={isMuted}
+            playsInline
             loop
           />
           <div className={clsx(styles.spinner, isLoading && styles.loading)}>

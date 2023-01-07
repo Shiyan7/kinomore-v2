@@ -9,6 +9,10 @@
   padding-left: calc(var(--rating-size) + 20px);
   padding-right: 20px;
   border: 1.5px solid rgba(#fff, 0.15);
+
+	@media (max-width: 576px) {
+		width: 100%;
+	}
 }
 
 .rating {
@@ -40,14 +44,19 @@
   align-items: flex-start;
   flex-direction: column;
   margin-right: 50px;
+
+	@media (max-width: 576px) {
+		margin-right: 0;
+	}
 }
 
 .caption {
   display: block;
   font-size: 14px;
   line-height: 19px;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   font-weight: 500;
+	white-space: nowrap;
 }
 
 .desc {
@@ -55,6 +64,7 @@
   font-size: 13px;
   line-height: 19px;
   color: rgba(#fff, 0.8);
+	white-space: nowrap;
 }
 
 .btn {
