@@ -7,8 +7,8 @@ import { Player } from './player';
 import { Info } from './info';
 import { MainPersons } from './main-persons';
 import { Description } from './description';
-import styles from './styles.module.scss';
 import { Rating } from './rating';
+import styles from './styles.module.scss';
 
 export const Movie: NextPage = () => {
   const { genres, type, name } = useStore(pageModel.$movie)!;
@@ -24,7 +24,7 @@ export const Movie: NextPage = () => {
           </Title>
           <Info />
         </div>
-        <div className={styles.wrapper}>
+        <div className={styles.content}>
           <Player />
           <div className={styles.info}>
             <div className={styles.desktop}>
@@ -33,11 +33,9 @@ export const Movie: NextPage = () => {
               </Title>
               <Info />
             </div>
-            <div className={styles.content}>
-              <MainPersons />
-              <Description />
-              <Rating />
-            </div>
+            <MainPersons />
+            <Description />
+            <Rating />
           </div>
         </div>
       </div>

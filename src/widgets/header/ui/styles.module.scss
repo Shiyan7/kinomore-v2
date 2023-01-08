@@ -3,15 +3,15 @@
   top: 0;
   left: 0;
   width: 100%;
-  backdrop-filter: saturate(180%) blur(7px);
-  background-color: rgba(11, 11, 11, 0.9);
+  backdrop-filter: blur(7px);
+	background-color: hsla(0,0%,4.5%,.8);
   z-index: var(--header-z-index);
   transition: transform var(--duration);
   border-bottom: 1px solid rgba(#fff, 0.15);
 
   @media (max-width: 1024px) {
-    backdrop-filter: saturate(180%) blur(5px);
-    background-color: rgba(11, 11, 11, 0.9);
+    backdrop-filter: blur(5px);
+		background-color: hsla(0,0%,4.5%,.9);
   }
 }
 
