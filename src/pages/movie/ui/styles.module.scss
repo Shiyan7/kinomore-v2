@@ -44,18 +44,6 @@
 	text-align: center;
 }
 
-.title {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 23px;
-  text-shadow: 0 1px 0 rgb(0 0 0 / 20%);
-	text-align: center;
-
-	@media (max-width: 576px) {
-		margin-bottom: 17px;
-	}
-}
-
 .mobile {
 	@media (min-width: 1199px) {
 		display: none;

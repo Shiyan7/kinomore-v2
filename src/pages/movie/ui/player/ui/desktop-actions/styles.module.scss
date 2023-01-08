@@ -1,0 +1,16 @@
+.btns {
+	display: flex;
+	align-items: center;
+	margin-top: 28px;
+
+	@media (max-width: 1199px) {
+		display: none;
+	}
+}
+
+.btn {
+
+	&:not(:last-child) {
+		margin-right: 15px;
+	}
+}
