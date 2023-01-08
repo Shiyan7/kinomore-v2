@@ -4,14 +4,14 @@
   left: 0;
   width: 100%;
   backdrop-filter: saturate(180%) blur(7px);
-  background-color: rgba(#0b0b0b, 0.8);
+  background-color: rgba(11, 11, 11, 0.9);
   z-index: var(--header-z-index);
   transition: transform var(--duration);
   border-bottom: 1px solid rgba(#fff, 0.15);
 
   @media (max-width: 1024px) {
     backdrop-filter: saturate(180%) blur(5px);
-    background-color: rgba(#0b0b0b, 0.9);
+    background-color: rgba(11, 11, 11, 0.9);
   }
 }
 

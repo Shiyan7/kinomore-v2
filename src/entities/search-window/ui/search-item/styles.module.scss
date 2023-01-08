@@ -18,7 +18,7 @@
   flex-shrink: 0;
   overflow: hidden;
   border-radius: 7px;
-  margin-right: 10px;
+  margin-right: 15px;
   background-color: var(--color-loader);
 }
 
@@ -31,7 +31,6 @@
 .info {
   display: flex;
   align-items: center;
-  font-weight: 300;
 }
 
 .name {
@@ -52,8 +51,9 @@
   position: relative;
   display: flex;
   align-items: center;
-  margin-right: 10px;
   font-size: 14px;
   line-height: 20px;
+  font-weight: 300;
   color: rgba(#fff, 0.7);
+  margin-right: 10px;
 }

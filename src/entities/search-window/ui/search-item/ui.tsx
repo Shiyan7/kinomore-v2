@@ -2,6 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
 import type { IMovieItem } from 'shared/api';
+import { getRating } from 'shared/lib';
+import { Rating } from 'shared/ui';
 import styles from './styles.module.scss';
 
 interface SearchItemProps {
@@ -19,6 +21,7 @@ export const SearchItem: FC<SearchItemProps> = ({ item }) => {
           <span className={styles.name}>{item?.name}</span>
           <div className={styles.info}>
             <span className={styles.year}>{item?.year}</span>
+            <Rating size="small">{getRating(item?.rating)}</Rating>
           </div>
         </div>
       </Link>

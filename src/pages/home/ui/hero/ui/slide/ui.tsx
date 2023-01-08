@@ -59,7 +59,7 @@ export const HeroSlide: FC<SlideProps> = ({ item, isActiveSlide }) => {
       <CSSTransition timeout={0} in={isActive} classNames={{ enterDone: styles.done }}>
         <div className={styles.videoContainer}>
           <video
-            style={{ transform: `scale(${item.scale})` }}
+            style={{ transform: `scale(${item?.scale})` }}
             onCanPlay={() => setIsLoading(false)}
             onWaiting={() => setIsLoading(true)}
             className={styles.video}
