@@ -8,17 +8,19 @@ export const Player = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.player}>
-        <iframe
-          title="Плеер"
-          src={`https://voidboost.net/embed/${query.id}?poster=1&poster_id=4&df=1`}
-          allow="autoplay"
-          className={styles.iframe}
-          allowFullScreen
-        />
+      <div className={styles.sticky}>
+        <div className={styles.player}>
+          <iframe
+            title="Плеер"
+            src={`https://voidboost.net/embed/${query.id}?poster=1&poster_id=4&df=1`}
+            allow="autoplay"
+            className={styles.iframe}
+            allowFullScreen
+          />
+        </div>
+        <DesktopActions />
+        <MobileActions />
       </div>
-      <DesktopActions />
-      <MobileActions />
     </div>
   );
 };

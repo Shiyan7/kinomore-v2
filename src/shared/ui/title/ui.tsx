@@ -5,6 +5,7 @@ import styles from './styles.module.scss';
 interface TitleOwnProps<E extends ElementType = ElementType> {
   className?: string;
   children: ReactNode;
+  href?: string;
   size?: 'small' | 'large' | 'medium';
   as?: E;
 }

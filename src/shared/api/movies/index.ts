@@ -45,7 +45,7 @@ const routesConfig = http.createRoutesConfig({
     params: {
       search: [query, '!null', getYears()],
       field: ['name', 'poster.previewUrl', 'year'],
-      limit: 20,
+      limit: 30,
       sortField: 'year',
       sortType: '-1',
       isStrict: false,

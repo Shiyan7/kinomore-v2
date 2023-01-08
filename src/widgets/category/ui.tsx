@@ -21,23 +21,25 @@ export const Category = ({ className, children }: PropsWithChildren<CategoryProp
 
 const CategoryTitle = ({ children, href, ...props }: TitleProps<ElementType<Partial<HTMLAnchorElement>>>) => {
   return (
-    <Title size="medium" className={styles.title} as={Link} href={href} {...props}>
+    <Title size="medium" className={styles.title} as={href ? Link : 'h2'} href={href} {...props}>
       {children}
-      <span className={styles.icon}>
-        <ChevronIcon />
-      </span>
+      {href && (
+        <span className={styles.icon}>
+          <ChevronIcon />
+        </span>
+      )}
     </Title>
   );
 };
 
-function CategoryCarousel<T>({ items, ...props }: CarouselMultiplyProps<T>) {
+function CategoryCarousel<T>({ items, slideClassName, ...props }: CarouselMultiplyProps<T>) {
   return (
     <div className={styles.wrapper}>
       <CarouselMultiply
         prevBtnClass={styles.prevBtn}
         nextBtnClass={styles.nextBtn}
         className={styles.slider}
-        slideClassName={styles.slide}
+        slideClassName={clsx(styles.slide, slideClassName)}
         items={items ?? [...Array(LIMIT)]}
         {...props}
       />

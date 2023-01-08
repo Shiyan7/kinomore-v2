@@ -10,9 +10,10 @@ import { Description } from './description';
 import { Rating } from './rating';
 import { Title } from './title';
 import styles from './styles.module.scss';
+import { SimilarMovies } from './similar-movies';
 
 export const Movie: NextPage = () => {
-  const { genres, type } = useStore(pageModel.$movie)!;
+  const { genres, type, similarMovies } = useStore(pageModel.$movie)!;
   const breadcrumbs = [getMovieBreadcrumb(type), getGenre(genres)];
 
   return (
@@ -36,6 +37,7 @@ export const Movie: NextPage = () => {
           </div>
         </div>
       </div>
+      {similarMovies?.length ? <SimilarMovies /> : null}
     </section>
   );
 };

@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { useCallback, type ReactNode } from 'react';
 import { Navigation, type SwiperOptions } from 'swiper';
 import { SwiperSlide, Swiper, SwiperProps } from 'swiper/react';
+import { useDomRefWithSetter } from '../lib';
 import { SliderButton } from './slider-button';
 import styles from './styles.module.scss';
 
@@ -28,6 +29,9 @@ export function CarouselMultiply<T>({
   nextBtnClass,
   ...props
 }: CarouselMultiplyProps<T>) {
+  const [nextEl, nextElRef] = useDomRefWithSetter<HTMLButtonElement>();
+  const [prevEl, prevElRef] = useDomRefWithSetter<HTMLButtonElement>();
+
   const renderItems = useCallback(
     (_items: typeof items) =>
       _items?.map((item, idx) => (
@@ -58,11 +62,14 @@ export function CarouselMultiply<T>({
     <Swiper
       className={clsx(styles.slider, className)}
       modules={[...(modules ?? DEFAULT_MODULES)]}
+      navigation={{
+        prevEl,
+        nextEl,
+      }}
       {...swiperOptions}
-      {...props}
-    >
-      <SliderButton className={clsx(styles.prev, prevBtnClass)} dir="left" />
-      <SliderButton className={clsx(styles.next, nextBtnClass)} dir="right" />
+      {...props}>
+      <SliderButton ref={prevElRef} className={clsx(styles.prev, prevBtnClass)} />
+      <SliderButton ref={nextElRef} className={clsx(styles.next, nextBtnClass)} />
       {renderItems(items)}
     </Swiper>
   );

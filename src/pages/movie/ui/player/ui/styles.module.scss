@@ -18,6 +18,12 @@
 	}
 }
 
+.sticky {
+	position: sticky;
+	top: 40px;
+	left: 0;
+}
+
 .player {
 	position: relative;
 	display: block;
