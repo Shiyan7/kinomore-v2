@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import type { FC, MouseEvent } from 'react';
-import { BookmarkIcon, BookmarkSlashIcon } from 'shared/ui/icons';
+import { BookmarkIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 
 interface FavoriteButtonProps {
@@ -8,9 +8,6 @@ interface FavoriteButtonProps {
 }
 
 export const FavoriteButton: FC<FavoriteButtonProps> = ({ id }) => {
-  /* FIXME: получать значение с api */
-  const isFavorite = false;
-
   const handleFavorite = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
@@ -19,7 +16,7 @@ export const FavoriteButton: FC<FavoriteButtonProps> = ({ id }) => {
 
   return (
     <button onClick={handleFavorite} className={clsx('btn-reset', styles.btn)}>
-      {isFavorite ? <BookmarkSlashIcon /> : <BookmarkIcon />}
+      <BookmarkIcon />
     </button>
   );
 };
