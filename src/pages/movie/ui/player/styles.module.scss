@@ -1,11 +1,11 @@
 .container {
 	margin-right: 60px;
 
-	@media (max-width: 1200px) {
+	@media (max-width: 1199px) {
 		margin-right: 40px;
 	}
 
-	@media (max-width: 1024px) {
+	@media (max-width: 1199px) {
 		margin-right: 0;
 		margin-bottom: 30px;
 	}
@@ -14,7 +14,7 @@
 		margin-left: -18px;
 		margin-right: -18px;
 		width: calc(100% + calc(18px * 2));
-		margin-bottom: 26px;
+		margin-bottom: 15px;
 	}
 }
 
@@ -25,7 +25,7 @@
 	padding-bottom: 56.25%;
 	background-color: rgba(#fff, 0.04);
 
-	@media (max-width: 576px) {
+	@media (max-width: 1199px) {
 		padding-bottom: 65%;
 	}
 }
@@ -46,7 +46,7 @@
 	align-items: center;
 	margin-top: 28px;
 
-	@media (max-width: 576px) {
+	@media (max-width: 1199px) {
 		display: none;
 	}
 }
@@ -70,8 +70,12 @@
   scrollbar-width: none;
 	padding-top: 22px;
 
-	@media (min-width: 577px) {
+	@media (min-width: 1199px) {
 		display: none;
+	}
+
+	@media (max-width: 576px) {
+		padding-top: 18px;
 	}
 
   &::-webkit-scrollbar {
@@ -86,12 +90,24 @@
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	width: 105px;
-	font-size: 11px;
-	line-height: 18px;
+	width: 130px;
+	font-size: 14px;
+	line-height: 21px;
 	color: rgba(#fff, 0.8);
 	padding: 10px 13px;
 	white-space: nowrap;
+
+	@media (max-width: 576px) {
+		font-size: 11px;
+		line-height: 18px;
+		width: 105px;
+	}
+
+	@media (max-width: 360px) {
+		font-size: 10px;
+		width: 100px;
+		line-height: 17px;
+	}
 }
 
 
@@ -99,15 +115,36 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 48px;
-	height: 48px;
+	width: 60px;
+	height: 60px;
 	background-color: rgba(#fff, 0.15);
 	border-radius: 100%;
-	margin-bottom: 6px;
+	margin-bottom: 10px;
+
+	@media (max-width: 576px) {
+		width: 48px;
+		height: 48px;
+		margin-bottom: 6px;
+	}
+
+	@media (max-width: 360px) {
+		width: 42px;
+		height: 42px;
+	}
 
 	svg {
 		display: block;
-		width: 20px;
-		height: 20px;
+		width: 23px;
+		height: 23px;
+
+		@media (max-width: 576px) {
+			width: 20px;
+			height: 20px;
+		}
+
+		@media (max-width: 360px) {
+			width: 17px;
+			height: 17px;
+		}
 	}
 }

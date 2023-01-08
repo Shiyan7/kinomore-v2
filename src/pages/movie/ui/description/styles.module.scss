@@ -21,7 +21,12 @@
 	@media (max-width: 576px) {
 		font-size: 13px;
 		line-height: 23px;
-		color: var(--color-white);
+		color: rgba(#fff, 0.8);;
+	}
+
+	@media (max-width: 360px) {
+		font-size: 11.5px;
+		line-height: 22px;
 	}
 }
 
