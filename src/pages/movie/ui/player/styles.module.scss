@@ -14,7 +14,7 @@
 		margin-left: -18px;
 		margin-right: -18px;
 		width: calc(100% + calc(18px * 2));
-		margin-bottom: 15px;
+		margin-bottom: 20px;
 	}
 }
 
@@ -23,7 +23,7 @@
 	display: block;
 	width: 100%;
 	padding-bottom: 56.25%;
-	background-color: rgba(#fff, 0.04);
+	background-color: rgba(#fff, 0.1);
 
 	@media (max-width: 1199px) {
 		padding-bottom: 65%;

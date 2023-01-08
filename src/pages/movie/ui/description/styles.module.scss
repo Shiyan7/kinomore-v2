@@ -43,7 +43,7 @@
 		line-height: 17px;
 	}
 
-  &:hover {
-    color: var(--color-white);
+  &:active {
+		color: rgba(#fff, 0.8);
   }
 }
