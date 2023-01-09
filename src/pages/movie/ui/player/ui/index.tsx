@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { DesktopActions } from './desktop-actions';
 import { MobileActions } from './mobile-actions';
+import { TrailerModal } from './trailer-modal';
 import styles from './styles.module.scss';
 
 export const Player = () => {
@@ -21,6 +22,7 @@ export const Player = () => {
         <DesktopActions />
         <MobileActions />
       </div>
+      <TrailerModal />
     </div>
   );
 };

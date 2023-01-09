@@ -1,7 +1,9 @@
 import { attach, createEvent, restore, sample } from 'effector';
 import { StaticPageContext } from 'nextjs-effector';
+import { createToggler } from 'shared/lib';
 import { moviesApi } from 'shared/api';
 
+export const trailerModalInstance = createToggler();
 export const pageStarted = createEvent();
 
 const getMovieByIdFx = attach({ effect: moviesApi.getById });

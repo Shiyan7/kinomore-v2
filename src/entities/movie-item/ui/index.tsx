@@ -29,7 +29,7 @@ export const MovieItem: FC<MovieItemProps> = ({ item }) => {
         <h3 className={styles.name}>{item?.name}</h3>
         <div className={styles.top}>
           <span className={styles.year}>{item?.year}</span>
-          <span className={styles.length}>{minutesToHour(item?.movieLength)}</span>
+          {item?.movieLength && <span className={styles.length}>{minutesToHour(item?.movieLength)}</span>}
         </div>
         <div className={styles.btns}>
           <Button className={styles.more} as="span" variant="gradient">
