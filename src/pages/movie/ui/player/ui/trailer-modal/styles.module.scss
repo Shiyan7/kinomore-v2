@@ -5,11 +5,15 @@
 	right: 0;
 	bottom: 0;
 	z-index: 1000;
-	background-color: rgba(#000, 0.7);
+	background-color: rgba(#000, 0.6);
 	cursor: pointer;
 	overflow-y: auto;
 	overflow-x: hidden;
 	text-align: center;
+
+	@media (max-width: 576px) {
+		background-color: rgba(#000, 0.7);
+	}
 
 	&:before {
 		content: "";
@@ -24,7 +28,7 @@
 	margin: 0 auto;
 	display: inline-block;
 	vertical-align: middle;
-	background-color: var(--color-black);
+	background-color: #000;
 	width: 948px;
 	height: auto;
 	max-width: calc(100vw - 100px);
@@ -87,4 +91,17 @@
 	height: 100%;
 	outline: none;
 	border: none;
+}
+
+.spinner {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 3;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--color-black);
 }
