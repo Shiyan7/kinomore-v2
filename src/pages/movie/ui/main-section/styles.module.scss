@@ -1,9 +1,9 @@
 .section {
   position: relative;
-	padding-bottom: 50px;
+	padding-bottom: 25px;
 
 	@media (max-width: 576px) {
-		padding-bottom: 40px;
+		padding-bottom: 10px;
 	}
 }
 
@@ -19,7 +19,7 @@
 
 	@media (max-width: 576px) {
 		padding-top: 35px;
-		padding-bottom: 30px;
+		padding-bottom: 15px;
 	}
 }
 

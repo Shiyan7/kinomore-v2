@@ -7,6 +7,8 @@ import styles from './styles.module.scss';
 export const SimilarMovies = () => {
   const { similarMovies } = useStore(pageModel.$movie)!;
 
+  if (!similarMovies.length) return null;
+
   return (
     <Category>
       <Category.Title className={styles.title}>Похожее кино</Category.Title>

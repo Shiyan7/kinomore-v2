@@ -23,6 +23,7 @@ export function CarouselMultiply<T>({
   renderItem,
   className,
   slideClassName,
+  navigation = true,
   options,
   modules,
   prevBtnClass,
@@ -68,8 +69,12 @@ export function CarouselMultiply<T>({
       }}
       {...swiperOptions}
       {...props}>
-      <SliderButton ref={prevElRef} className={clsx(styles.prev, prevBtnClass)} />
-      <SliderButton ref={nextElRef} className={clsx(styles.next, nextBtnClass)} />
+      {navigation && (
+        <>
+          <SliderButton ref={prevElRef} className={clsx(styles.prev, prevBtnClass)} />
+          <SliderButton ref={nextElRef} className={clsx(styles.next, nextBtnClass)} />
+        </>
+      )}
       {renderItems(items)}
     </Swiper>
   );

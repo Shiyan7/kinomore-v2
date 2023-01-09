@@ -1,0 +1,48 @@
+.item {
+	display: flex;
+	flex-direction: column;
+	color: var(--color-white);
+	padding: 0 10px;
+	transition: transform var(--duration);
+
+	@media (max-width: 576px) {
+		padding: 0 5px;
+	}
+
+	&:hover {
+		transform: translateY(-3px);
+	}
+}
+
+.image {
+	position: relative;
+	display: block;
+	width: 100%;
+	padding-bottom: 100%;
+	overflow: hidden;
+	margin: 0 auto 15px;
+	border-radius: 100%;
+	border: 1px solid rgba(#fff, 0.15);
+
+	@media (max-width: 576px) {
+		margin-bottom: 10px;
+	}
+}
+
+.name {
+	display: block;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 18px;
+	margin-bottom: 5px;
+
+	@media (max-width: 576px) {
+		font-size: 12px;
+		line-height: 16px;
+	}
+}
+
+.profession {
+	font-size: 12px;
+	color: rgba(#fff, 0.6);
+}
