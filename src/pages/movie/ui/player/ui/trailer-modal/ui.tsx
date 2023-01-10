@@ -13,31 +13,30 @@ export const TrailerModal = () => {
   const trailerUrl = videos?.trailers[videos?.trailers?.length - 1]?.url;
   const hasTrailers = videos!.trailers.length > 0;
 
-  const handleClose = () => {
-    setIsLoading(true);
-    close();
-  };
-
   return (
-    <Modal onClick={handleClose} className={styles.modal} isOpen={isOpen} close={handleClose}>
+    <Modal onClick={close} className={styles.modal} isOpen={isOpen} close={close}>
       <div className={styles.container}>
-        <button onClick={handleClose} className={clsx('btn-reset', styles.close)}>
+        <button onClick={close} className={clsx('btn-reset', styles.close)}>
           <CloseIcon />
         </button>
         <div className={styles.content}>
-          {isLoading && hasTrailers && (
-            <div className={styles.spinner}>
-              <Spinner strokeWidth={2} />
-            </div>
+          {hasTrailers && (
+            <>
+              {isLoading && (
+                <div className={styles.spinner}>
+                  <Spinner strokeWidth={2} />
+                </div>
+              )}
+              <iframe
+                onLoad={() => setIsLoading(false)}
+                className={styles.iframe}
+                src={trailerUrl}
+                title="Трейлер"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </>
           )}
-          <iframe
-            onLoad={() => setIsLoading(false)}
-            className={styles.iframe}
-            src={trailerUrl}
-            title="Трейлер"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
         </div>
       </div>
     </Modal>

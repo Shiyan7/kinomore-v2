@@ -3,13 +3,15 @@
 	flex-direction: column;
 	color: var(--color-white);
 	padding: 0 10px;
+	outline: none;
 	transition: transform var(--duration);
 
 	@media (max-width: 576px) {
 		padding: 0 5px;
 	}
 
-	&:hover {
+	&:hover,
+	&:focus-within {
 		transform: translateY(-3px);
 	}
 }

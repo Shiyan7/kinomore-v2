@@ -13,9 +13,7 @@ export const Description = () => {
   const words = text?.split(' ');
   const shortText = words?.slice(0, MAX_WORDS).join(' ');
 
-  const handleToggle = () => {
-    setIsExpanded((prev) => !prev);
-  };
+  const handleToggle = () => setIsExpanded((prev) => !prev);
 
   return (
     <div className={styles.container}>
