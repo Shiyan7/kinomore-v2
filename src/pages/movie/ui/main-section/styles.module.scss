@@ -1,15 +1,10 @@
 .section {
   position: relative;
-	padding-bottom: 25px;
-
-	@media (max-width: 576px) {
-		padding-bottom: 10px;
-	}
 }
 
 .container {
   padding-top: 32px;
-  padding-bottom: 50px;
+  padding-bottom: 80px;
   max-width: 1700px;
   margin: 0 auto;
 
@@ -19,7 +14,7 @@
 
 	@media (max-width: 576px) {
 		padding-top: 35px;
-		padding-bottom: 15px;
+		padding-bottom: 50px;
 	}
 }
 

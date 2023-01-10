@@ -1,11 +1,8 @@
-.section {
-	position: relative;
-	padding-top: 60px;
+.container {
 	padding-bottom: 80px;
 
 	@media (max-width: 576px) {
-		padding-top: 30px;
-		padding-bottom: 50px;
+		padding-bottom: 40px;
 	}
 }
 

@@ -14,7 +14,7 @@ export const MainPersons = () => {
         <li className={styles.item} key={idx}>
           <Link href="#" className={styles.link}>
             <div className={styles.image}>
-              <Image fill src={person.photo} alt={person?.name} />
+              <Image sizes="100%" fill src={person.photo} alt={person?.name} />
             </div>
             <span className={styles.name}>{person.name || person.enName}</span>
           </Link>

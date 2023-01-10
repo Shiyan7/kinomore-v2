@@ -10,7 +10,7 @@ export const SimilarMovies = () => {
   if (!similarMovies.length) return null;
 
   return (
-    <Category>
+    <Category containerClass={styles.container}>
       <Category.Title className={styles.title}>Похожее кино</Category.Title>
       <Category.Carousel items={similarMovies} renderItem={(item) => <MovieItem item={item} />} />
     </Category>

@@ -8,13 +8,14 @@ import styles from './styles.module.scss';
 const MAX_FACTS = 7;
 
 export const Facts = () => {
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const { facts } = useStore(pageModel.$movie)!;
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
+  if ((facts && !facts[0].value) || !facts?.length) return null;
+
   const itemsToShow = isExpanded ? facts : facts.slice(0, MAX_FACTS);
 
   const handleToggle = () => setIsExpanded((prev) => !prev);
-
-  if (facts.length < 2) return null;
 
   return (
     <section className={styles.section}>

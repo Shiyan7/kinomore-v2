@@ -15,7 +15,7 @@ export const PersonItem: FC<PersonItemProps> = ({ item }) => {
   return (
     <Link className={styles.item} href="#">
       <div className={styles.image}>
-        <Image fill src={photo} alt={name || enName} />
+        <Image sizes="100%" fill src={photo} alt={name || enName} />
       </div>
       <span className={styles.name}>{name || enName}</span>
       <span className={styles.profession}>{getProfession(profession || enProfession)}</span>

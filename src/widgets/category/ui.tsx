@@ -9,12 +9,13 @@ import styles from './styles.module.scss';
 
 interface CategoryProps {
   className?: string;
+  containerClass?: string;
 }
 
-export const Category = ({ className, children }: PropsWithChildren<CategoryProps>) => {
+export const Category = ({ className, containerClass, children }: PropsWithChildren<CategoryProps>) => {
   return (
     <section className={clsx(styles.section, className)}>
-      <div className={clsx('container', styles.container)}>{children}</div>
+      <div className={clsx('container', containerClass, styles.container)}>{children}</div>
     </section>
   );
 };

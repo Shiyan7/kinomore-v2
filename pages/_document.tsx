@@ -5,7 +5,7 @@ const Document = () => {
     <Html className="page" lang="ru">
       <Head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <link rel="manifest" href="/manifest.json" />
+        {/* <link rel="manifest" href="/manifest.json" /> */}
         <link rel="icon" href="/favicon.ico" />
 
         <meta property="og:description" content="Kinomore - фильмы и сериалы" />
