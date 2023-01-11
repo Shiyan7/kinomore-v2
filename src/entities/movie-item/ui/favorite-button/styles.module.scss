@@ -5,11 +5,14 @@
   width: 35px;
   height: 35px;
   border-radius: 100%;
-  background-color: #232323;
+  background-color: hsl(0,0%,20%);
   transition: background-color var(--duration);
 
-  &:hover,
-  &:focus-within {
-    background-color: #333;
+  &:hover {
+		background-color: hsl(0,0%,23%);
   }
+
+	&:active {
+		background-color: hsl(0,0%,27%);
+	}
 }

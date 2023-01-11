@@ -8,13 +8,13 @@ export const DesktopActions = () => {
 
   return (
     <div className={styles.btns}>
-      <Button onClick={open} variant="glass" className={styles.btn} startIcon={<PlayIcon />}>
+      <Button onClick={open} variant="glass" size="medium" className={styles.btn} startIcon={<PlayIcon />}>
         Трейлер
       </Button>
-      <Button variant="glass" className={styles.btn} aria-label="В избранное">
+      <Button variant="glass" size="medium" className={styles.btn} aria-label="В избранное">
         <BookmarkIcon />
       </Button>
-      <Button variant="glass" className={styles.btn} aria-label="Поделиться">
+      <Button variant="glass" size="medium" className={styles.btn} aria-label="Поделиться">
         <ShareIcon />
       </Button>
     </div>

@@ -11,7 +11,7 @@ export const Facts = () => {
   const { facts } = useStore(pageModel.$movie)!;
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
-  if ((facts && !facts[0].value) || !facts?.length) return null;
+  if ((facts && !facts[0]?.value) || !facts?.length) return null;
 
   const itemsToShow = isExpanded ? facts : facts.slice(0, MAX_FACTS);
 

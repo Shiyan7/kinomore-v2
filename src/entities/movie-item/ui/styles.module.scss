@@ -98,7 +98,7 @@
   font-weight: 500;
   font-size: 15px;
   line-height: 21px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -113,7 +113,7 @@
   }
 }
 
-.top {
+.info {
   display: flex;
   align-items: center;
 }
@@ -124,6 +124,7 @@
   line-height: 18px;
   color: rgba(#fff, 0.8);
   margin-right: 12px;
+	margin-bottom: 15px;
 }
 
 .length {
@@ -131,6 +132,7 @@
   font-size: 14px;
   line-height: 18px;
   color: rgba(#fff, 0.8);
+	margin-bottom: 15px;
 
   @media (max-width: 1024px) {
     display: none;
@@ -140,8 +142,6 @@
 .btns {
   display: flex;
   align-items: center;
-  margin-top: 15px;
-  display: none;
 
   @media (max-width: 1024px) {
     display: none;

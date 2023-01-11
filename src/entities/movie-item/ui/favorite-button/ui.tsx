@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import type { FC, MouseEvent } from 'react';
 import { BookmarkIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
@@ -15,8 +14,8 @@ export const FavoriteButton: FC<FavoriteButtonProps> = ({ id }) => {
   };
 
   return (
-    <button onClick={handleFavorite} className={clsx('btn-reset', styles.btn)}>
+    <span onClick={handleFavorite} className={styles.btn}>
       <BookmarkIcon />
-    </button>
+    </span>
   );
 };

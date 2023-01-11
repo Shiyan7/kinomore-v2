@@ -87,14 +87,12 @@
   }
 }
 
-.prevBtn[disabled],
-.nextBtn[disabled] {
-  opacity: 0;
-  visibility: hidden;
-}
-
 .prevBtn,
 .nextBtn {
+	&[disabled] {
+		opacity: 0;
+		visibility: hidden;
+	}
   @media (max-width: 1024px) {
     display: none;
   }

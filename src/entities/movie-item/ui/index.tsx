@@ -3,7 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { IMovieItem } from 'shared/api';
 import { Button, Rating } from 'shared/ui';
-import { getRating, minutesToHour } from 'shared/lib';
+import { getRating } from 'shared/lib';
+import { minutesToHour } from '../lib';
 import { FavoriteButton } from './favorite-button';
 import styles from './styles.module.scss';
 
@@ -21,18 +22,18 @@ export const MovieItem: FC<MovieItemProps> = ({ item }) => {
           quality={100}
           className={styles.image}
           alt={item?.name}
-          src={item?.id ? `https://st.kp.yandex.net/images/film_iphone/iphone360_${item?.id}.jpg` : ''}
+          src={`https://st.kp.yandex.net/images/film_iphone/iphone360_${item?.id}.jpg`}
         />
       </div>
       <div className={styles.content}>
-        <Rating className={styles.rating}>{getRating(item?.rating)}</Rating>
+        {item?.rating && <Rating className={styles.rating}>{getRating(item.rating)}</Rating>}
         <h3 className={styles.name}>{item?.name}</h3>
-        <div className={styles.top}>
-          <span className={styles.year}>{item?.year}</span>
-          {item?.movieLength && <span className={styles.length}>{minutesToHour(item?.movieLength)}</span>}
+        <div className={styles.info}>
+          {item?.year && <span className={styles.year}>{item.year}</span>}
+          {item?.movieLength && <span className={styles.length}>{minutesToHour(item.movieLength)}</span>}
         </div>
         <div className={styles.btns}>
-          <Button className={styles.more} as="span" variant="gradient">
+          <Button className={styles.more} as="span" variant="primary" size="small">
             Подробнее
           </Button>
           <FavoriteButton id={item?.id} />
