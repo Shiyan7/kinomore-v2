@@ -9,11 +9,11 @@
 
   &.error {
     .input {
-      color: var(--color-red);
+      color: #f00;
     }
 
     .placeholder {
-      color: var(--color-red);
+      color: #f00;
     }
   }
 }
