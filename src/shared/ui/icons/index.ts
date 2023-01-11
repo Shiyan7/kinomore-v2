@@ -17,6 +17,7 @@ import EditIcon from './assets/edit.svg';
 import BookmarkIcon from './assets/bookmark.svg';
 import PlayIcon from './assets/play.svg';
 import ShareIcon from './assets/share.svg';
+import LinkIcon from './assets/link.svg';
 import VolumeHighIcon from './assets/volume-high.svg';
 import VolumeSlashIcon from './assets/volume-slash.svg';
 
@@ -42,4 +43,5 @@ export {
   ShareIcon,
   VolumeHighIcon,
   VolumeSlashIcon,
+  LinkIcon,
 };

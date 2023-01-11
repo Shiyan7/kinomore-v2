@@ -10,7 +10,9 @@ export const TrailerModal = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { videos } = useStore(pageModel.$movie)!;
   const trailerModal = useToggler(pageModel.trailerModalToggler);
-  const lastTrailer = videos?.trailers.slice(-1)[0];
+  const firstTrailer = videos?.trailers[0];
+
+  console.log(videos?.trailers);
 
   return (
     <Popup
@@ -32,7 +34,7 @@ export const TrailerModal = () => {
             <iframe
               onLoad={() => setIsLoading(false)}
               className={styles.iframe}
-              src={lastTrailer?.url}
+              src={firstTrailer?.url}
               title="Трейлер"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen

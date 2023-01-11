@@ -6,7 +6,7 @@ import { Portal } from 'shared/ui/portal';
 import { useEscape } from './lib';
 import styles from './styles.module.scss';
 
-export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
+interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
   close: () => void;
 }

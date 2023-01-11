@@ -6,7 +6,9 @@ import styles from './styles.module.scss';
 export const Popup: FC<ModalProps> = ({ className, children, ...props }) => {
   return (
     <Modal className={styles.modal} {...props}>
-      <div className={clsx(styles.container, className)}>{children}</div>
+      <div onClick={(e) => e.stopPropagation()} className={clsx(styles.container, className)}>
+        {children}
+      </div>
     </Modal>
   );
 };

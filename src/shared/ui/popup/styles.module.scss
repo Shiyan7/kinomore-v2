@@ -7,8 +7,7 @@
 	z-index: 1000;
 	background-color: rgba(#000, 0.7);
 	cursor: pointer;
-	overflow-y: auto;
-	overflow-x: hidden;
+	overflow: hidden;
 	text-align: center;
 
 	@media (max-width: 576px) {
