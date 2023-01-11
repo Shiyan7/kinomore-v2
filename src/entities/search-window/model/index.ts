@@ -5,7 +5,7 @@ import { createToggler } from 'shared/lib/toggler';
 
 const DEBOUNCE_TIME = 400;
 
-export const searchInstance = createToggler();
+export const searchWindowToggler = createToggler();
 export const searchFx = attach({ effect: moviesApi.searchByName });
 export const $searchResult = restore(searchFx, null);
 export const searchChanged = createEvent<string>();

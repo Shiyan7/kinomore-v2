@@ -11,5 +11,5 @@ reset({
 
 sample({
   clock: navigationModel.routerUpdated,
-  target: [searchModel.searchInstance.close, authModel.emailForm.reset, authModel.passwordForm.reset],
+  target: [searchModel.searchWindowToggler.close, authModel.emailForm.reset, authModel.passwordForm.reset],
 });

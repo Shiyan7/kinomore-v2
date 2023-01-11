@@ -1,38 +1,6 @@
 .modal {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 1000;
-	background-color: rgba(#000, 0.7);
-	cursor: pointer;
-	overflow-y: auto;
-	overflow-x: hidden;
-	text-align: center;
-
-	@media (max-width: 576px) {
-		background-color: rgba(#000, 0.8);
-	}
-
-	&:before {
-		content: "";
-		display: inline-block;
-		vertical-align: middle;
-		height: 100%;
-	}
-}
-
-.container {
-	position: relative;
-	margin: 0 auto;
-	display: inline-block;
-	vertical-align: middle;
-	background-color: #000;
 	width: 948px;
-	height: auto;
 	max-width: calc(100vw - 100px);
-	cursor: default;
 
 	@media (max-width: 576px) {
 		max-width: calc(100vw - 30px);

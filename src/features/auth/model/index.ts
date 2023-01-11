@@ -6,7 +6,7 @@ import { createObjectValidator } from 'shared/form';
 import { createToggler } from 'shared/lib/toggler';
 import { internalApi } from 'shared/api';
 
-export const authInstance = createToggler();
+export const authWindowToggler = createToggler();
 
 export const checkUserFx = attach({ effect: internalApi.check });
 

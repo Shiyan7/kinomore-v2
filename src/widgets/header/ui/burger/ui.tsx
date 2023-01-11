@@ -5,10 +5,10 @@ import { BurgerIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 
 export const Burger = () => {
-  const { toggle } = useToggler(headerModel.menuInstance);
+  const menu = useToggler(headerModel.menuToggler);
 
   return (
-    <button onClick={toggle} type="button" className={clsx('btn-reset', styles.btn)}>
+    <button onClick={menu.toggle} type="button" className={clsx('btn-reset', styles.btn)}>
       <BurgerIcon />
     </button>
   );

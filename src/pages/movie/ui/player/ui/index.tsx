@@ -1,4 +1,7 @@
 import { useRouter } from 'next/router';
+import { ShareModal } from 'widgets/share-modal';
+import { pageModel } from 'pages/movie';
+import { useToggler } from 'shared/lib/hooks';
 import { DesktopActions } from './desktop-actions';
 import { MobileActions } from './mobile-actions';
 import { TrailerModal } from './trailer-modal';
@@ -6,6 +9,7 @@ import styles from './styles.module.scss';
 
 export const Player = () => {
   const { query } = useRouter();
+  const shareModal = useToggler(pageModel.shareModalToggler);
 
   return (
     <div className={styles.container}>
@@ -23,6 +27,7 @@ export const Player = () => {
         <MobileActions />
       </div>
       <TrailerModal />
+      <ShareModal close={shareModal.close} isOpen={shareModal.isOpen} />
     </div>
   );
 };
