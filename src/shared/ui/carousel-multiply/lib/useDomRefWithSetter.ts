@@ -1,6 +1,6 @@
 import { Ref, useEffect, useRef, useState } from 'react';
 
-export const useDomRefWithSetter = <T extends HTMLElement>(): [T | null, Ref<T>] => {
+export function useDomRefWithSetter<T extends HTMLElement>(): [T | null, Ref<T>] {
   const ref = useRef<T>(null);
   const [DOMRef, setRefState] = useState<T | null>(null);
 
@@ -11,4 +11,4 @@ export const useDomRefWithSetter = <T extends HTMLElement>(): [T | null, Ref<T>]
   }, []);
 
   return [DOMRef, ref];
-};
+}

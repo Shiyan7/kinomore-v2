@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC } from 'react';
+import type { FC } from 'react';
 import type { Person } from 'shared/api';
 import { getProfession } from './lib';
 import styles from './styles.module.scss';

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-export const useHeaderFixed = () => {
+export function useHeaderFixed() {
   const [isFixed, setIsFixed] = useState<boolean>(false);
   const lastScrollTop = useRef<number>(0);
 
@@ -23,4 +23,4 @@ export const useHeaderFixed = () => {
     isFixed,
     setIsFixed,
   };
-};
+}
