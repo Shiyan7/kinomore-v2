@@ -12,8 +12,10 @@
 	padding-top: 3px;
 
 	@media (max-width: 576px) {
-		padding-left: 4px;
-		padding-right: 4px;
+		padding-left: 18px;
+		padding-right: 18px;
+		margin-left: -18px;
+		margin-right: -18px;
 	}
 }
 
@@ -45,6 +47,6 @@
 	}
 
 	@media (max-width: 576px) {
-		width: calc(calc(100% / 3) - 25px);
+		width: calc(calc(100% / 3) - 20px);
 	}
 }

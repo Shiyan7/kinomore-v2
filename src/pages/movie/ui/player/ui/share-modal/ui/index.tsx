@@ -11,9 +11,9 @@ import { Info } from './info';
 import styles from './styles.module.scss';
 
 const items = [
-  { button: WhatsappShareButton, text: 'WhatsApp', icon: <WhatsappIcon /> },
   { button: TelegramShareButton, text: 'Telegram', icon: <TelegramIcon /> },
   { button: ViberShareButton, text: 'Viber', icon: <ViberIcon /> },
+  { button: WhatsappShareButton, text: 'WhatsApp', icon: <WhatsappIcon /> },
 ];
 
 export const ShareModal = () => {
