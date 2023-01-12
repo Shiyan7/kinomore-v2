@@ -16,10 +16,13 @@ import KnifeIcon from './assets/knife.svg';
 import EditIcon from './assets/edit.svg';
 import BookmarkIcon from './assets/bookmark.svg';
 import PlayIcon from './assets/play.svg';
-import ShareIcon from './assets/share.svg';
-import LinkIcon from './assets/link.svg';
 import VolumeHighIcon from './assets/volume-high.svg';
 import VolumeSlashIcon from './assets/volume-slash.svg';
+import ShareIcon from './assets/share.svg';
+import LinkIcon from './assets/link.svg';
+import WhatsappIcon from './assets/whatsapp.svg';
+import TelegramIcon from './assets/telegram.svg';
+import ViberIcon from './assets/viber.svg';
 
 export {
   SearchIcon,
@@ -44,4 +47,7 @@ export {
   VolumeHighIcon,
   VolumeSlashIcon,
   LinkIcon,
+  WhatsappIcon,
+  TelegramIcon,
+  ViberIcon,
 };

@@ -6,11 +6,11 @@ import { pageModel } from 'pages/movie';
 import styles from './styles.module.scss';
 
 export const MainPersons = () => {
-  const { persons } = useStore(pageModel.$movie)!;
+  const data = useStore(pageModel.$movie);
 
   return (
     <ul className={clsx('list-reset', styles.list)}>
-      {persons?.slice(0, 5).map((person, idx) => (
+      {data?.persons?.slice(0, 5).map((person, idx) => (
         <li className={styles.item} key={idx}>
           <Link href="#" className={styles.link}>
             <div className={styles.image}>

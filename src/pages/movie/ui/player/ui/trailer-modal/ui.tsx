@@ -8,11 +8,9 @@ import styles from './styles.module.scss';
 
 export const TrailerModal = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const { videos } = useStore(pageModel.$movie)!;
+  const data = useStore(pageModel.$movie);
   const trailerModal = useToggler(pageModel.trailerModalToggler);
-  const firstTrailer = videos?.trailers[0];
-
-  console.log(videos?.trailers);
+  const lastTrailer = data?.videos?.trailers.slice(-1)[0];
 
   return (
     <Popup
@@ -24,7 +22,7 @@ export const TrailerModal = () => {
         <CloseIcon />
       </button>
       <div className={styles.content}>
-        {videos?.trailers.length ? (
+        {data?.videos?.trailers.length ? (
           <>
             {isLoading && (
               <div className={styles.spinner}>
@@ -34,7 +32,7 @@ export const TrailerModal = () => {
             <iframe
               onLoad={() => setIsLoading(false)}
               className={styles.iframe}
-              src={firstTrailer?.url}
+              src={lastTrailer?.url}
               title="Трейлер"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen

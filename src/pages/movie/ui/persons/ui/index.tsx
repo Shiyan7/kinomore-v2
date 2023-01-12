@@ -6,9 +6,9 @@ import { PersonItem } from './person-item';
 import styles from './styles.module.scss';
 
 export const Persons = () => {
-  const { persons } = useStore(pageModel.$movie)!;
+  const data = useStore(pageModel.$movie);
 
-  if (!persons.length) return null;
+  if (!data?.persons.length) return null;
 
   return (
     <section className={styles.section}>
@@ -20,7 +20,7 @@ export const Persons = () => {
           className={styles.carousel}
           navigation={false}
           slideClassName={styles.slide}
-          items={persons}
+          items={data?.persons}
           renderItem={(item) => <PersonItem item={item} />}
         />
       </div>

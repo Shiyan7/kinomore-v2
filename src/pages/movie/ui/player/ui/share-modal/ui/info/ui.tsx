@@ -5,7 +5,9 @@ import { minutesToHour } from 'shared/lib';
 import styles from './styles.module.scss';
 
 export const Info = () => {
-  const { name, id, year, seasonsInfo, movieLength } = useStore(pageModel.$movie)!;
+  const data = useStore(pageModel.$movie);
+
+  const name = data?.name || 'Без названия';
 
   return (
     <div className={styles.item}>
@@ -15,15 +17,15 @@ export const Info = () => {
           fill
           quality={100}
           alt={name}
-          src={`https://st.kp.yandex.net/images/film_iphone/iphone360_${id}.jpg`}
+          src={`https://st.kp.yandex.net/images/film_iphone/iphone360_${data?.id}.jpg`}
         />
       </div>
       <div className={styles.text}>
         <span className={styles.name}>{name}</span>
         <div className={styles.info}>
-          <span className={styles.infoItem}>{year}</span>
+          {data?.year && <span className={styles.infoItem}>{data.year}</span>}
           <span className={styles.infoItem}>
-            {seasonsInfo?.length ? getSeasonString(seasonsInfo.length) : minutesToHour(movieLength)}
+            {data?.seasonsInfo?.length ? getSeasonString(data?.seasonsInfo.length) : minutesToHour(data?.movieLength)}
           </span>
         </div>
       </div>

@@ -21,6 +21,7 @@
 	border-radius: 7px;
 	overflow: hidden;
 	margin-right: 15px;
+	background-color: hsl(0,0, 14%);
 }
 
 .text {
@@ -42,6 +43,7 @@
   line-clamp: 2;
   -webkit-box-orient: vertical;
 	max-width: 100%;
+	max-width: 285px;
 }
 
 .info {

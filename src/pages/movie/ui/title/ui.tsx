@@ -4,7 +4,7 @@ import { Title as NativeTitle } from 'shared/ui/title';
 import styles from './styles.module.scss';
 
 export const Title = () => {
-  const { name } = useStore(pageModel.$movie)!;
+  const data = useStore(pageModel.$movie);
 
-  return <NativeTitle className={styles.title}>{name} Смотреть онлайн</NativeTitle>;
+  return <NativeTitle className={styles.title}>{data?.name} Смотреть онлайн</NativeTitle>;
 };

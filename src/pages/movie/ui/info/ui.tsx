@@ -5,9 +5,14 @@ import { pageModel, getSeasonString, getAgeRating, getCountry } from 'pages/movi
 import styles from './styles.module.scss';
 
 export const Info = () => {
-  const { seasonsInfo, year, ageRating, countries } = useStore(pageModel.$movie)!;
+  const data = useStore(pageModel.$movie);
 
-  const info = [year, getSeasonString(seasonsInfo.length), getCountry(countries), getAgeRating(ageRating)];
+  const info = [
+    data?.year,
+    getSeasonString(data?.seasonsInfo.length || 0),
+    getCountry(data?.countries || []),
+    getAgeRating(data?.ageRating || 0),
+  ];
 
   return (
     <ul className={clsx('list-reset', styles.list)}>

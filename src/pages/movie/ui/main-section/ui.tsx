@@ -11,8 +11,8 @@ import { Title } from '../title';
 import styles from './styles.module.scss';
 
 export const MainSection = () => {
-  const { genres, type } = useStore(pageModel.$movie)!;
-  const breadcrumbs = [getMovieBreadcrumb(type), getGenre(genres)];
+  const data = useStore(pageModel.$movie);
+  const breadcrumbs = [getMovieBreadcrumb(data?.type), getGenre(data?.genres ?? [])];
 
   return (
     <section className={styles.section}>

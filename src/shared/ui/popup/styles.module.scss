@@ -7,7 +7,8 @@
 	z-index: 1000;
 	background-color: rgba(#000, 0.7);
 	cursor: pointer;
-	overflow: hidden;
+	overflow-y: auto;
+	overflow-x: hidden;
 	text-align: center;
 
 	@media (max-width: 576px) {
@@ -24,7 +25,7 @@
 
 .container {
 	position: relative;
-	margin: 0 auto;
+	margin: 20px auto;
 	display: inline-block;
 	vertical-align: middle;
 	background-color: #000;
