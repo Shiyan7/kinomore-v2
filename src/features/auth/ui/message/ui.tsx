@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { EditIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 
