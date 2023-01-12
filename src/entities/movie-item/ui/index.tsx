@@ -3,8 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { IMovieItem } from 'shared/api';
 import { Button, Rating } from 'shared/ui';
-import { getRating } from 'shared/lib';
-import { minutesToHour } from '../lib';
+import { getRating, minutesToHour } from 'shared/lib';
 import { FavoriteButton } from './favorite-button';
 import styles from './styles.module.scss';
 

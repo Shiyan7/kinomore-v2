@@ -7,7 +7,7 @@ import { Progress } from '../progress';
 import styles from './styles.module.scss';
 
 export const Header = () => {
-  const { close } = useToggler(authModel.authInstance);
+  const authWindow = useToggler(authModel.authWindowToggler);
   const { email } = useStore(authModel.emailForm.$values);
   const state = useStore(authModel.$state);
   const isNewUser = useStore(authModel.$isNewUser);
@@ -23,7 +23,7 @@ export const Header = () => {
           <span className={styles.email}>{email}</span>
         </div>
       )}
-      <button className={clsx('btn-reset', styles.close)} type="button" onClick={close}>
+      <button className={clsx('btn-reset', styles.close)} type="button" onClick={authWindow.close}>
         <CloseIcon />
       </button>
       <Progress />

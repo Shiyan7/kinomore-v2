@@ -11,7 +11,7 @@ import styles from './styles.module.scss';
 import { Transition } from './transition';
 
 export const AuthWindow = () => {
-  const { close, isOpen } = useToggler(authModel.authInstance);
+  const authWindow = useToggler(authModel.authWindowToggler);
   const windowRef = useRef<HTMLDivElement>(null);
   const state = useStore(authModel.$state);
   const isEmailState = state === 'email';
@@ -21,7 +21,7 @@ export const AuthWindow = () => {
   }, [isEmailState]);
 
   return (
-    <Modal isOpen={isOpen} close={close} ref={windowRef} className={styles.window}>
+    <Modal isOpen={authWindow.isOpen} close={authWindow.close} ref={windowRef} className={styles.window}>
       <Header />
       <div className={styles.container}>
         <Transition>

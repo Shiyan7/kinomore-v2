@@ -1,15 +1,16 @@
 import clsx from 'clsx';
 import { pageModel } from 'pages/movie';
 import { useToggler } from 'shared/lib/hooks';
-import { BookmarkIcon, PlayIcon, ShareIcon } from 'shared/ui';
+import { BookmarkIcon, PlayIcon, ShareIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 
 export const MobileActions = () => {
-  const { open } = useToggler(pageModel.trailerModalInstance);
+  const trailerModal = useToggler(pageModel.trailerModalToggler);
+  const shareModal = useToggler(pageModel.shareModalToggler);
 
   return (
     <div className={styles.btns}>
-      <button onClick={open} className={clsx('btn-reset', styles.btn)}>
+      <button onClick={trailerModal.open} className={clsx('btn-reset', styles.btn)}>
         <span className={styles.icon}>
           <PlayIcon />
         </span>
@@ -21,7 +22,7 @@ export const MobileActions = () => {
         </span>
         <span>В избранное</span>
       </button>
-      <button className={clsx('btn-reset', styles.btn)}>
+      <button onClick={shareModal.open} className={clsx('btn-reset', styles.btn)}>
         <span className={styles.icon}>
           <ShareIcon />
         </span>

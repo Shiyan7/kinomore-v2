@@ -1,7 +1,7 @@
 import { GenresEnum, RoutesEnum } from 'shared/config';
 
 export function getGenre(genres: Array<{ name: string }>): { text: string; href: string } {
-  switch (genres[genres?.length - 1].name) {
+  switch (genres[genres?.length - 1]?.name) {
     case GenresEnum.Komediya:
       return { text: 'Комедии', href: RoutesEnum.ComedyFilms };
     case GenresEnum.Boevik:

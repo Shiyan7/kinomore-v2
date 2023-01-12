@@ -1,1 +1,1 @@
-export { Modal } from './ui';
+export { Modal, type ModalProps } from './ui';

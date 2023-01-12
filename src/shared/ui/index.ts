@@ -4,6 +4,7 @@ export * from './carousel-multiply';
 export * from './icons';
 export * from './input';
 export * from './modal';
+export * from './popup';
 export * from './portal';
 export * from './rating';
 export * from './spinner';

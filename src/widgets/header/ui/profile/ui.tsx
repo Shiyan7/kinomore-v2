@@ -7,7 +7,7 @@ import { ProfileIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 
 export const Profile = () => {
-  const { open } = useToggler(authModel.authInstance);
+  const authWindow = useToggler(authModel.authWindowToggler);
 
   const isAuth = false;
 
@@ -19,7 +19,7 @@ export const Profile = () => {
   );
 
   const ProfileButton = (
-    <button onClick={open} type="button" className={clsx('btn-reset', styles.profile)}>
+    <button onClick={authWindow.open} type="button" className={clsx('btn-reset', styles.profile)}>
       <ProfileIcon />
       Войти
     </button>
