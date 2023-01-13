@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import { Fragment } from 'react';
 import { useStore } from 'effector-react';
-import { pageModel, getSeasonString, getAgeRating, getCountry } from 'pages/movie';
+import { pageModel, getSeasonString } from 'pages/movie';
+import { getCountry, getAgeRating } from './lib';
 import styles from './styles.module.scss';
 
 export const Info = () => {

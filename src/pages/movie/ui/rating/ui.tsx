@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import { useStore } from 'effector-react';
-import { pageModel, getVotes, getMovieType } from 'pages/movie';
+import { pageModel } from 'pages/movie';
 import { getRating } from 'shared/lib/get-rating';
+import { getVotes, getMovieType } from './lib';
 import styles from './styles.module.scss';
 
 export const Rating = () => {

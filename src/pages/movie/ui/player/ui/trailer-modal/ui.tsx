@@ -4,13 +4,16 @@ import { useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
 import { useToggler } from 'shared/lib/hooks';
 import { CloseIcon, Popup, Spinner } from 'shared/ui';
+import { getTrailer } from './lib';
 import styles from './styles.module.scss';
 
 export const TrailerModal = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const data = useStore(pageModel.$movie);
   const trailerModal = useToggler(pageModel.trailerModalToggler);
-  const lastTrailer = data?.videos?.trailers.slice(-1)[0];
+  const trailerUrl = getTrailer(data?.videos);
+
+  console.log(trailerUrl);
 
   return (
     <Popup
@@ -32,7 +35,7 @@ export const TrailerModal = () => {
             <iframe
               onLoad={() => setIsLoading(false)}
               className={styles.iframe}
-              src={lastTrailer?.url}
+              src={trailerUrl}
               title="Трейлер"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
