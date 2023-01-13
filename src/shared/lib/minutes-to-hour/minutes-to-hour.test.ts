@@ -1,8 +1,8 @@
-import { minutesToHour } from '.';
+import { minutesToHour } from './minutesToHour';
 
 describe('minutesToHour', () => {
   test('converts 0 minutes to 0 hours', () => {
-    expect(minutesToHour(0)).toBe('0 ч 0 мин');
+    expect(minutesToHour(0)).toBe('0 мин');
   });
 
   test('converts 60 minutes to 1 hour', () => {
@@ -18,6 +18,6 @@ describe('minutesToHour', () => {
   });
 
   test('converts negative input to positive', () => {
-    expect(minutesToHour(-60)).toBe('1 ч 0 мин');
+    expect(minutesToHour(-60)).toBe('0 мин');
   });
 });

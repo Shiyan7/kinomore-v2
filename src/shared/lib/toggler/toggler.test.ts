@@ -1,4 +1,4 @@
-import { createToggler } from '.';
+import { createToggler } from './createToggler';
 
 describe('createToggler', () => {
   test('open event sets isOpen to true', () => {
