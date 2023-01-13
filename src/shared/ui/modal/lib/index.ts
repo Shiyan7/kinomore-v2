@@ -1,1 +1,1 @@
-export { useEscape } from './useEscape';
+export { useEscape } from './use-escape';
