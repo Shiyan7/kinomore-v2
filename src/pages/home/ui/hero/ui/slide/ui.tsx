@@ -19,7 +19,7 @@ const TIMEOUT_MS = 2000;
 export const HeroSlide: FC<SlideProps> = ({ item, isActiveSlide }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { play, stop } = usePlayer(videoRef);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isActive, setIsActive] = useState<boolean>(false);
 

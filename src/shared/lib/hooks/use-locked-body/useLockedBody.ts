@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 type UseLockedBodyOutput = [boolean, (locked: boolean) => void];
 
 export function useLockedBody(initialLocked = false): UseLockedBodyOutput {
-  const [locked, setLocked] = useState(initialLocked);
+  const [locked, setLocked] = useState<boolean>(initialLocked);
 
   useEffect(() => {
     if (!locked) {

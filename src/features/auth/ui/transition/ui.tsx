@@ -14,7 +14,7 @@ export const Transition: FC<PropsWithChildren<TransitionProps>> = ({
   offset = 40,
   delay = 0,
 }) => {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -26,8 +26,7 @@ export const Transition: FC<PropsWithChildren<TransitionProps>> = ({
   return (
     <div
       style={{ '--offset': `${offset}px`, '--delay': `${delay}s` } as CSSProperties}
-      className={clsx(styles[variant], mounted && styles.mounted)}
-    >
+      className={clsx(styles[variant], mounted && styles.mounted)}>
       {children}
     </div>
   );
