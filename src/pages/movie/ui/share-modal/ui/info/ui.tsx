@@ -1,6 +1,7 @@
-import { useStore } from 'effector-react';
 import Image from 'next/image';
-import { pageModel, getSeasonString } from 'pages/movie';
+import { useStore } from 'effector-react';
+import { pageModel } from 'pages/movie';
+import { getSeasonString } from 'shared/lib/get-season-string';
 import { minutesToHour } from 'shared/lib';
 import styles from './styles.module.scss';
 

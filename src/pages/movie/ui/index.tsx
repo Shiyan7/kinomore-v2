@@ -5,6 +5,8 @@ import { pageModel } from 'pages/movie';
 import { Persons } from './persons';
 import { SimilarMovies } from './similar-movies';
 import { MainSection } from './main-section';
+import { TrailerModal } from './trailer-modal';
+import { ShareModal } from './share-modal';
 import { Facts } from './facts';
 
 export const Movie: NextPage = () => {
@@ -29,6 +31,8 @@ export const Movie: NextPage = () => {
       <SimilarMovies />
       <Persons />
       <Facts />
+      <TrailerModal />
+      <ShareModal />
     </>
   );
 };
