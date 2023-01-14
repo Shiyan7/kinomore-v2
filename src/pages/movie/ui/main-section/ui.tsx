@@ -4,10 +4,10 @@ import { pageModel } from 'pages/movie';
 import { Breadcrumbs } from 'shared/ui/breadcrumbs';
 import { Player } from '../player';
 import { Info } from '../info';
-import { MainPersons } from '../main-persons';
-import { Description } from '../description';
 import { Rating } from '../rating';
 import { Title } from '../title';
+import { MainPersons } from '../main-persons';
+import { Description } from '../description';
 import { getGenre, getMovieBreadcrumb } from './lib';
 import styles from './styles.module.scss';
 

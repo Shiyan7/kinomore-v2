@@ -1,22 +1,26 @@
 import clsx from 'clsx';
-import { useStore } from 'effector-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
 import styles from './styles.module.scss';
+
+const MAX_PERSONS = 5;
 
 export const MainPersons = () => {
   const data = useStore(pageModel.$movie);
 
+  const persons = data?.persons.slice(0, MAX_PERSONS) || [...Array(5)];
+
   return (
     <ul className={clsx('list-reset', styles.list)}>
-      {data?.persons?.slice(0, 5).map((person, idx) => (
+      {persons?.map((person, idx) => (
         <li className={styles.item} key={idx}>
           <Link href="#" className={styles.link}>
             <div className={styles.image}>
-              <Image sizes="100%" fill src={person.photo} alt={person?.name} />
+              <Image sizes="100%" fill src={person?.photo} alt={person?.name} />
             </div>
-            <span className={styles.name}>{person.name || person.enName}</span>
+            <span className={styles.name}>{person?.name || person?.enName}</span>
           </Link>
         </li>
       ))}

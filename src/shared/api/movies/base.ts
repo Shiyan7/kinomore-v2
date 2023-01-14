@@ -8,8 +8,6 @@ const instance = axios.create({
   },
 });
 
-const url = '/movie';
+export const url = '/movie';
 
-const http = createHttp(instance);
-
-export { http, url };
+export const http = createHttp(instance);

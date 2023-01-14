@@ -1,1 +1,1 @@
-export * from './getProfession';
+export { getProfession } from './getProfession';

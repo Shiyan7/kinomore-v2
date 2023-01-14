@@ -7,8 +7,8 @@ import { EmailForm } from './email-form';
 import { Message } from './message';
 import { Header } from './header';
 import { PasswordForm } from './password-form';
-import styles from './styles.module.scss';
 import { Transition } from './transition';
+import styles from './styles.module.scss';
 
 export const AuthWindow = () => {
   const authWindow = useToggler(authModel.authWindowToggler);

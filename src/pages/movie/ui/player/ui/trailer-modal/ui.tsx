@@ -8,8 +8,8 @@ import { getTrailer } from './lib';
 import styles from './styles.module.scss';
 
 export const TrailerModal = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const data = useStore(pageModel.$movie);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const trailerModal = useToggler(pageModel.trailerModalToggler);
   const trailer = getTrailer(data?.videos);
 
@@ -18,8 +18,7 @@ export const TrailerModal = () => {
       onClick={trailerModal.close}
       className={styles.modal}
       isOpen={trailerModal.isOpen}
-      close={trailerModal.close}
-    >
+      close={trailerModal.close}>
       <button onClick={trailerModal.close} className={clsx('btn-reset', styles.close)}>
         <CloseIcon />
       </button>

@@ -19,6 +19,6 @@ export function getProfession(portfession: string): string {
     case 'writer':
       return 'Автор сценария';
     default:
-      return `Актёр`;
+      return 'Актёр';
   }
 }

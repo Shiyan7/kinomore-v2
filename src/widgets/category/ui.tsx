@@ -1,6 +1,6 @@
-import type { ElementType, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
+import type { ElementType, PropsWithChildren } from 'react';
 import { LIMIT } from 'shared/config';
 import { Title, type TitleProps } from 'shared/ui/title';
 import { CarouselMultiply, type CarouselMultiplyProps } from 'shared/ui/carousel-multiply';

@@ -1,4 +1,13 @@
 .root {
+
+	&.done {
+		.modal {
+			@media (max-width: 576px) {
+				transform: translateY(0%);
+			}
+		}
+	}
+
   @media (max-width: 576px) {
     overflow: hidden;
   }
@@ -16,14 +25,6 @@
     transition: transform var(--duration);
     transform: translateY(100%);
     margin-bottom: 0;
-  }
-}
-
-.done {
-  .modal {
-    @media (max-width: 576px) {
-      transform: translateY(0%);
-    }
   }
 }
 

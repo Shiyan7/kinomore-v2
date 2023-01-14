@@ -6,5 +6,5 @@ import styles from './styles.module.scss';
 export const Title = () => {
   const data = useStore(pageModel.$movie);
 
-  return <NativeTitle className={styles.title}>{data?.name} Смотреть онлайн</NativeTitle>;
+  return <NativeTitle className={styles.title}>{data?.name || 'Без названия'} Смотреть онлайн</NativeTitle>;
 };

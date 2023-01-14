@@ -1,2 +1,2 @@
-export * from './getMovieType';
-export * from './getVotes';
+export { getMovieType } from './getMovieType';
+export { getVotes } from './getVotes';
