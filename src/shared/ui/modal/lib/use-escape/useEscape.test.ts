@@ -2,7 +2,7 @@ import { fireEvent, renderHook } from '@testing-library/react';
 import { useEscape } from './useEscape';
 
 describe('useEscape', () => {
-  it('should call callback if `Escape` is pressed', () => {
+  test('should call callback if `Escape` is pressed', () => {
     const callback = jest.fn();
 
     renderHook(() => useEscape(callback));
@@ -12,7 +12,7 @@ describe('useEscape', () => {
     expect(callback).toHaveBeenCalledTimes(1);
   });
 
-  it('should not call callback if `Shift` is pressed', () => {
+  test('should not call callback if `Shift` is pressed', () => {
     const callback = jest.fn();
 
     renderHook(() => useEscape(callback));

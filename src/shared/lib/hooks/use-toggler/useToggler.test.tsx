@@ -4,12 +4,12 @@ import { createToggler, useToggler } from './useToggler';
 describe('useToggler', () => {
   const togglerInstance = createToggler();
 
-  it('should return the correct initial value', () => {
+  test('should return the correct initial value', () => {
     const { result } = renderHook(() => useToggler(togglerInstance));
     expect(result.current.isOpen).toBe(false);
   });
 
-  it('should toggle the value when toggle is called', () => {
+  test('should toggle the value when toggle is called', () => {
     const { result } = renderHook(() => useToggler(togglerInstance));
     act(() => {
       result.current.toggle();
@@ -17,7 +17,7 @@ describe('useToggler', () => {
     expect(result.current.isOpen).toBe(true);
   });
 
-  it('should set the value to true when open is called', () => {
+  test('should set the value to true when open is called', () => {
     const { result } = renderHook(() => useToggler(togglerInstance));
     act(() => {
       result.current.open();
@@ -25,7 +25,7 @@ describe('useToggler', () => {
     expect(result.current.isOpen).toBe(true);
   });
 
-  it('should set the value to false when close is called', () => {
+  test('should set the value to false when close is called', () => {
     const { result } = renderHook(() => useToggler(togglerInstance));
     act(() => {
       result.current.open();

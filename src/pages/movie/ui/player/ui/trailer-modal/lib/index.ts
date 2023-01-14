@@ -1,1 +1,1 @@
-export * from './getTrailer';
+export * from './get-trailer';
