@@ -3,7 +3,7 @@ import { not } from 'patronum';
 import { string } from 'yup';
 import { createForm } from 'shared/lib/effector-react-form';
 import { createObjectValidator } from 'shared/form';
-import { createToggler } from 'shared/lib/toggler';
+import { createToggler } from 'shared/lib/hooks';
 import { internalApi } from 'shared/api';
 
 export const authWindowToggler = createToggler();

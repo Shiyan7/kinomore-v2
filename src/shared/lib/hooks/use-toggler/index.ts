@@ -1,1 +1,1 @@
-export { useToggler } from './useToggler';
+export { useToggler, createToggler } from './useToggler';

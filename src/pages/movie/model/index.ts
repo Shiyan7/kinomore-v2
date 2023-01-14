@@ -1,6 +1,6 @@
 import type { PageContext } from 'nextjs-effector';
 import { attach, createEvent, restore, sample } from 'effector';
-import { createToggler } from 'shared/lib';
+import { createToggler } from 'shared/lib/hooks';
 import { moviesApi } from 'shared/api';
 
 export const trailerModalToggler = createToggler();

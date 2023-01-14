@@ -3,7 +3,8 @@ module.exports = {
 	testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/', '<rootDir>/e2e/'],
 	transform: {
 		'^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', {
-			presets: ['next/babel']
+			presets: ['next/babel'],
+  		plugins: [['effector/babel-plugin', { 'reactSsr': false }]]
 		}],
 	},
 	testEnvironment: 'jsdom',
