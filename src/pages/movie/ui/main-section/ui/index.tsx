@@ -2,13 +2,13 @@ import clsx from 'clsx';
 import { useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
 import { Breadcrumbs } from 'shared/ui/breadcrumbs';
-import { Player } from '../player';
-import { Info } from '../info';
-import { Rating } from '../rating';
-import { Title } from '../title';
-import { MainPersons } from '../main-persons';
-import { Description } from '../description';
-import { getGenre, getMovieBreadcrumb } from './lib';
+import { getGenre, getMovieBreadcrumb } from '../lib';
+import { Player } from './player';
+import { Info } from './info';
+import { Rating } from './rating';
+import { Title } from './title';
+import { MainPersons } from './main-persons';
+import { Description } from './description';
 import styles from './styles.module.scss';
 
 export const MainSection = () => {
