@@ -22,9 +22,9 @@
       border-radius: 100%;
       background-color: rgba(#fff, 0.4);
 
-			@media (max-width: 576px) {
-				background-color: rgba(#fff, 0.5);
-			}
+      @media (max-width: 576px) {
+        background-color: rgba(#fff, 0.5);
+      }
     }
   }
 }
@@ -35,11 +35,11 @@
   color: rgba(#fff, 0.7);
   transition: color 0.3s;
 
-	@media (max-width: 576px) {
-		font-size: 12.5px;
-		line-height: 15px;
-		color: var(--color-white);
-	}
+  @media (max-width: 576px) {
+    font-size: 12.5px;
+    line-height: 15px;
+    color: var(--color-white);
+  }
 
   &:hover {
     color: var(--color-white);

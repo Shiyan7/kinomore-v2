@@ -89,10 +89,10 @@
 
 .prevBtn,
 .nextBtn {
-	&[disabled] {
-		opacity: 0;
-		visibility: hidden;
-	}
+  &[disabled] {
+    opacity: 0;
+    visibility: hidden;
+  }
   @media (max-width: 1024px) {
     display: none;
   }

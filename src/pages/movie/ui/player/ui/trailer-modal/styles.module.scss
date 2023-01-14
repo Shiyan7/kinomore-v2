@@ -1,74 +1,74 @@
 .modal {
-	width: 948px;
-	max-width: calc(100vw - 100px);
+  width: 948px;
+  max-width: calc(100vw - 100px);
 
-	@media (max-width: 576px) {
-		max-width: calc(100vw - 30px);
-	}
+  @media (max-width: 576px) {
+    max-width: calc(100vw - 30px);
+  }
 }
 
 .close {
-	position: absolute;
-	top: -40px;
-	right: -10px;
-	width: 40px;
-	height: 40px;
-	color: var(--color-white);
-	transition: color var(--duration);
+  position: absolute;
+  top: -40px;
+  right: -10px;
+  width: 40px;
+  height: 40px;
+  color: var(--color-white);
+  transition: color var(--duration);
 
-	&:hover {
+  &:hover {
     color: rgba(#fff, 0.7);
   }
 
-	svg {
-		display: block;
-		width: 100%;
-		height: 100%;
-		fill: currentColor;
-	}
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
 }
 
 .content {
-	height: calc(56.25vw - 56.25px);
-	max-width: calc(100vw - 100px);
-	max-height: calc(100vh - 100px);
+  height: calc(56.25vw - 56.25px);
+  max-width: calc(100vw - 100px);
+  max-height: calc(100vh - 100px);
 
-	@media (min-width: 1025px) {
-		display: block;
-		height: 533px;
-		max-height: calc(100vh - 100px);
-	}
+  @media (min-width: 1025px) {
+    display: block;
+    height: 533px;
+    max-height: calc(100vh - 100px);
+  }
 
-	@media (max-width: 576px) {
-		width: 100vw;
-		height: calc(56.25vw - 18px);
-		max-width: calc(100vw - 32px);
-		max-height: calc(100vh - 104px);
-		margin-left: auto;
-		margin-right: auto;
-	}
+  @media (max-width: 576px) {
+    width: 100vw;
+    height: calc(56.25vw - 18px);
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 104px);
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .iframe {
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	outline: none;
-	border: none;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
 }
 
 .spinner {
-	position: absolute;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 3;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: var(--color-black);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-black);
 }

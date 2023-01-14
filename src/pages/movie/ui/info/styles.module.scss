@@ -12,10 +12,10 @@
   color: rgba(#fff, 0.8);
   text-shadow: 0 1px 0 rgb(0 0 0 / 20%);
 
-	@media (max-width: 576px) {
-		font-size: 13.5px;
-		line-height: 16px;
-	}
+  @media (max-width: 576px) {
+    font-size: 13.5px;
+    line-height: 16px;
+  }
 
   &:not(:first-child) {
     padding-left: calc(7px + 3px);

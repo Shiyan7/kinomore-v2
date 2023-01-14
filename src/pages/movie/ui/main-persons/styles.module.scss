@@ -1,128 +1,128 @@
 .list {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 27px;
-	padding-right: 35px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 27px;
+  padding-right: 35px;
 
-	@media (max-width: 1199px) {
-		max-width: 600px;
-		padding-right: 0;
-		margin: 0 auto 27px;
-	}
+  @media (max-width: 1199px) {
+    max-width: 600px;
+    padding-right: 0;
+    margin: 0 auto 27px;
+  }
 
-	@media (max-width: 576px) {
-		margin-bottom: 23px;
-	}
+  @media (max-width: 576px) {
+    margin-bottom: 23px;
+  }
 }
 
 .item {
-	width: calc(50px + calc(5px * 2));
+  width: calc(50px + calc(5px * 2));
 
-	@media (max-width: 1199px) {
-		width: calc(45px + calc(5px * 2));
-	}
+  @media (max-width: 1199px) {
+    width: calc(45px + calc(5px * 2));
+  }
 
-	@media (max-width: 576px) {
-		width: calc(40px + calc(4px * 2));
-	}
+  @media (max-width: 576px) {
+    width: calc(40px + calc(4px * 2));
+  }
 
-	@media (max-width: 360px) {
-		&:last-child {
-			display: none;
-		}
-	}
+  @media (max-width: 360px) {
+    &:last-child {
+      display: none;
+    }
+  }
 }
 
 .link {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	transition: transform var(--duration);
-	padding-top: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  transition: transform var(--duration);
+  padding-top: 5px;
 
-	@media (max-width: 576px) {
-		padding-top: 4px;
-	}
+  @media (max-width: 576px) {
+    padding-top: 4px;
+  }
 
-	&:hover {
-		transform: translateY(-2px);
+  &:hover {
+    transform: translateY(-2px);
 
-		.image {
-			box-shadow: 0 0 0 5px rgba(#fff, 0.3);
+    .image {
+      box-shadow: 0 0 0 5px rgba(#fff, 0.3);
 
-			@media (max-width: 576px) {
-				box-shadow: 0 0 0 4px rgba(#fff, 0.3);
-			}
-		}
+      @media (max-width: 576px) {
+        box-shadow: 0 0 0 4px rgba(#fff, 0.3);
+      }
+    }
 
-		.name {
-			color: var(--color-white);
-		}
-	}
+    .name {
+      color: var(--color-white);
+    }
+  }
 }
 
 .image {
-	position: relative;
-	display: block;
-	width: 50px;
-	height: 50px;
-	overflow: hidden;
-	border-radius: 12px;
-	box-shadow: 0 0 0 5px rgba(#fff, 0.2);
-	transition: box-shadow var(--duration);
-	background-color: rgba(#fff, 0.1);
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 0 5px rgba(#fff, 0.2);
+  transition: box-shadow var(--duration);
+  background-color: rgba(#fff, 0.1);
 
-	@media (max-width: 1199px) {
-		width: 45px;
-		height: 45px;
-	}
+  @media (max-width: 1199px) {
+    width: 45px;
+    height: 45px;
+  }
 
-	@media (max-width: 576px) {
-		box-shadow: 0 0 0 4px rgba(#fff, 0.2);
-		border-radius: 10px;
-		width: 40px;
-		height: 40px;
-	}
+  @media (max-width: 576px) {
+    box-shadow: 0 0 0 4px rgba(#fff, 0.2);
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+  }
 
-	@media (max-width: 360px) {
-		width: 40px;
-		height: 40px;
-	}
+  @media (max-width: 360px) {
+    width: 40px;
+    height: 40px;
+  }
 
-	img {
-		display: block;
-		overflow: hidden;
-		border-radius: 12px;
+  img {
+    display: block;
+    overflow: hidden;
+    border-radius: 12px;
 
-		@media (max-width: 576px) {
-			border-radius: 10px;
-		}
-	}
+    @media (max-width: 576px) {
+      border-radius: 10px;
+    }
+  }
 }
 
 .name {
-	display: block;
-	font-size: 12px;
-	line-height: 18px;
-	color: rgba(#fff, 0.6);
-	text-align: center;
-	margin-top: 12px;
-	transition: color var(--duration);
+  display: block;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(#fff, 0.6);
+  text-align: center;
+  margin-top: 12px;
+  transition: color var(--duration);
 
-	@media (max-width: 1199px) {
-		font-size: 13px;
-		line-height: 19px;
-		margin-top: 13px;
-	}
+  @media (max-width: 1199px) {
+    font-size: 13px;
+    line-height: 19px;
+    margin-top: 13px;
+  }
 
-	@media (max-width: 576px) {
-		font-size: 10px;
-		line-height: 15px;
-		margin-top: 10px;
-	}
+  @media (max-width: 576px) {
+    font-size: 10px;
+    line-height: 15px;
+    margin-top: 10px;
+  }
 
-	@media (max-width: 360px) {
-		font-size: 10px;
-		line-height: 15px;
-	}
+  @media (max-width: 360px) {
+    font-size: 10px;
+    line-height: 15px;
+  }
 }

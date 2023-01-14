@@ -1,13 +1,13 @@
 .title {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .container {
-	padding-top: 0;
-	padding-bottom: 80px;
+  padding-top: 0;
+  padding-bottom: 80px;
 
-	@media (max-width: 576px) {
-		padding-top: 0;
-		padding-bottom: 50px;
-	}
+  @media (max-width: 576px) {
+    padding-top: 0;
+    padding-bottom: 50px;
+  }
 }

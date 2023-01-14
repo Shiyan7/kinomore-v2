@@ -1,15 +1,15 @@
 .btns {
-	display: flex;
-	align-items: center;
-	margin-top: 28px;
+  display: flex;
+  align-items: center;
+  margin-top: 28px;
 
-	@media (max-width: 1199px) {
-		display: none;
-	}
+  @media (max-width: 1199px) {
+    display: none;
+  }
 }
 
 .btn {
-	&:not(:last-child) {
-		margin-right: 15px;
-	}
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
 }

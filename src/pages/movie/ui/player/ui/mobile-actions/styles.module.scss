@@ -1,21 +1,21 @@
 .btns {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	overflow-y: hidden;
-	overflow-x: auto;
-	padding: 0 15px;
-	-ms-overflow-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding: 0 15px;
+  -ms-overflow-style: none;
   scrollbar-width: none;
-	padding-top: 22px;
+  padding-top: 22px;
 
-	@media (min-width: 1199px) {
-		display: none;
-	}
+  @media (min-width: 1199px) {
+    display: none;
+  }
 
-	@media (max-width: 576px) {
-		padding-top: 15px;
-	}
+  @media (max-width: 576px) {
+    padding-top: 15px;
+  }
 
   &::-webkit-scrollbar {
     display: none;
@@ -26,63 +26,63 @@
 }
 
 .btn {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	width: 130px;
-	font-size: 14px;
-	line-height: 21px;
-	color: rgba(#fff, 0.8);
-	padding: 10px 13px;
-	white-space: nowrap;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 130px;
+  font-size: 14px;
+  line-height: 21px;
+  color: rgba(#fff, 0.8);
+  padding: 10px 13px;
+  white-space: nowrap;
 
-	@media (max-width: 576px) {
-		font-size: 11px;
-		line-height: 18px;
-		width: 105px;
-	}
+  @media (max-width: 576px) {
+    font-size: 11px;
+    line-height: 18px;
+    width: 105px;
+  }
 
-	@media (max-width: 360px) {
-		font-size: 10px;
-		width: 100px;
-		line-height: 17px;
-	}
+  @media (max-width: 360px) {
+    font-size: 10px;
+    width: 100px;
+    line-height: 17px;
+  }
 }
 
 .icon {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 60px;
-	height: 60px;
-	background-color: rgba(#fff, 0.1);
-	border-radius: 100%;
-	margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(#fff, 0.1);
+  border-radius: 100%;
+  margin-bottom: 10px;
 
-	@media (max-width: 576px) {
-		width: 48px;
-		height: 48px;
-		margin-bottom: 6px;
-	}
+  @media (max-width: 576px) {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 6px;
+  }
 
-	@media (max-width: 360px) {
-		width: 42px;
-		height: 42px;
-	}
+  @media (max-width: 360px) {
+    width: 42px;
+    height: 42px;
+  }
 
-	svg {
-		display: block;
-		width: 23px;
-		height: 23px;
+  svg {
+    display: block;
+    width: 23px;
+    height: 23px;
 
-		@media (max-width: 576px) {
-			width: 20px;
-			height: 20px;
-		}
+    @media (max-width: 576px) {
+      width: 20px;
+      height: 20px;
+    }
 
-		@media (max-width: 360px) {
-			width: 17px;
-			height: 17px;
-		}
-	}
+    @media (max-width: 360px) {
+      width: 17px;
+      height: 17px;
+    }
+  }
 }

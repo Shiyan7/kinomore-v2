@@ -68,7 +68,8 @@ export function CarouselMultiply<T>({
         nextEl,
       }}
       {...swiperOptions}
-      {...props}>
+      {...props}
+    >
       {navigation && (
         <>
           <SliderButton ref={prevElRef} className={clsx(styles.prev, prevBtnClass)} />

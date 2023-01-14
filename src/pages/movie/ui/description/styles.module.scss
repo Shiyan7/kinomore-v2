@@ -4,9 +4,9 @@
   flex-direction: column;
   margin-bottom: 30px;
 
-	@media (max-width: 576px) {
-		margin-bottom: 25px;
-	}
+  @media (max-width: 576px) {
+    margin-bottom: 25px;
+  }
 }
 
 .desc {
@@ -18,16 +18,16 @@
   text-align: left;
   text-shadow: 0 1px 0 rgb(0 0 0 / 20%);
 
-	@media (max-width: 576px) {
-		font-size: 13px;
-		line-height: 23px;
-		color: rgba(#fff, 0.8);;
-	}
+  @media (max-width: 576px) {
+    font-size: 13px;
+    line-height: 23px;
+    color: rgba(#fff, 0.8);
+  }
 
-	@media (max-width: 360px) {
-		font-size: 11.5px;
-		line-height: 22px;
-	}
+  @media (max-width: 360px) {
+    font-size: 11.5px;
+    line-height: 22px;
+  }
 }
 
 .btn {
@@ -38,12 +38,12 @@
   color: rgba(#fff, 0.6);
   transition: color var(--duration);
 
-	@media (max-width: 576px) {
-		font-size: 14px;
-		line-height: 17px;
-	}
+  @media (max-width: 576px) {
+    font-size: 14px;
+    line-height: 17px;
+  }
 
   &:active {
-		color: rgba(#fff, 0.8);
+    color: rgba(#fff, 0.8);
   }
 }

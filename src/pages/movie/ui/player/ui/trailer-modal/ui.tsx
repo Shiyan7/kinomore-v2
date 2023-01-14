@@ -18,7 +18,8 @@ export const TrailerModal = () => {
       onClick={trailerModal.close}
       className={styles.modal}
       isOpen={trailerModal.isOpen}
-      close={trailerModal.close}>
+      close={trailerModal.close}
+    >
       <button onClick={trailerModal.close} className={clsx('btn-reset', styles.close)}>
         <CloseIcon />
       </button>

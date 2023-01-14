@@ -34,7 +34,8 @@ export const ShareModal = () => {
         onClick={shareModal.close}
         className={styles.modal}
         isOpen={shareModal.isOpen}
-        close={shareModal.close}>
+        close={shareModal.close}
+      >
         <Info />
         <div className={styles.content}>
           <button onClick={handleCopy} className={clsx('btn-reset', styles.btn)}>

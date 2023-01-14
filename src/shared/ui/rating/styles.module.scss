@@ -5,25 +5,24 @@
   font-weight: 400;
   background-color: rgba(139, 136, 146, 0.32);
   border-radius: 5px;
-
 }
 
 .small {
-	font-size: 12px;
-	line-height: 19px;
-	padding: 0 4px;
+  font-size: 12px;
+  line-height: 19px;
+  padding: 0 4px;
 
   @media (max-width: 576px) {
     font-size: 12px;
     line-height: 19px;
-		padding: 0 4px;
+    padding: 0 4px;
   }
 }
 
 .medium {
   font-size: 15px;
   line-height: 24px;
-	padding: 0 5px;
+  padding: 0 5px;
 
   @media (max-width: 576px) {
     font-size: 14px;

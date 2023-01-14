@@ -9,17 +9,17 @@
   padding-right: 20px;
   border: 1.5px solid rgba(#fff, 0.15);
 
-	@media (max-width: 576px) {
-		width: 100%;
-		height: 65px;
-		padding-left: calc(65px + 20px);
-		border-width: 1px;
-	}
+  @media (max-width: 576px) {
+    width: 100%;
+    height: 65px;
+    padding-left: calc(65px + 20px);
+    border-width: 1px;
+  }
 
-	@media (max-width: 360px) {
-		height: 58px;
-		padding-left: calc(58px + 15px);
-	}
+  @media (max-width: 360px) {
+    height: 58px;
+    padding-left: calc(58px + 15px);
+  }
 }
 
 .rating {
@@ -38,15 +38,15 @@
   background-color: var(--color-primary);
   border-radius: 10px 0 0 10px;
 
-	@media (max-width: 576px) {
-		font-size: 18px;
-		line-height: 24px;
-		width: calc(65px + 2px);
-	}
+  @media (max-width: 576px) {
+    font-size: 18px;
+    line-height: 24px;
+    width: calc(65px + 2px);
+  }
 
-	@media (max-width: 360px) {
-		width: calc(58px + 2px);
-	}
+  @media (max-width: 360px) {
+    width: calc(58px + 2px);
+  }
 }
 
 .right {
@@ -62,9 +62,9 @@
   flex-direction: column;
   margin-right: 50px;
 
-	@media (max-width: 576px) {
-		margin-right: 0;
-	}
+  @media (max-width: 576px) {
+    margin-right: 0;
+  }
 }
 
 .caption {
@@ -73,19 +73,19 @@
   line-height: 19px;
   margin-bottom: 4px;
   font-weight: 500;
-	white-space: nowrap;
+  white-space: nowrap;
 
-	@media (max-width: 576px) {
-		font-size: 13.5px;
-		line-height: 18px;
-		margin-bottom: 3px;
-	}
+  @media (max-width: 576px) {
+    font-size: 13.5px;
+    line-height: 18px;
+    margin-bottom: 3px;
+  }
 
-	@media (max-width: 360px) {
-		font-size: 12px;
-		line-height: 17px;
-		margin-bottom: 2px;
-	}
+  @media (max-width: 360px) {
+    font-size: 12px;
+    line-height: 17px;
+    margin-bottom: 2px;
+  }
 }
 
 .desc {
@@ -93,17 +93,17 @@
   font-size: 13px;
   line-height: 19px;
   color: rgba(#fff, 0.8);
-	white-space: nowrap;
+  white-space: nowrap;
 
-	@media (max-width: 576px) {
-		font-size: 12px;
-		line-height: 18px;
-	}
+  @media (max-width: 576px) {
+    font-size: 12px;
+    line-height: 18px;
+  }
 
-	@media (max-width: 360px) {
-		font-size: 11px;
-		line-height: 17px;
-	}
+  @media (max-width: 360px) {
+    font-size: 11px;
+    line-height: 17px;
+  }
 }
 
 .btn {
@@ -117,17 +117,17 @@
   border: 1.5px solid rgba(#fff, 0.2);
   transition: border-color var(--duration), background-color var(--duration);
 
-	@media (max-width: 576px) {
-		font-size: 11.5px;
-		line-height: 16px;
-		border-width: 1px;
-	}
+  @media (max-width: 576px) {
+    font-size: 11.5px;
+    line-height: 16px;
+    border-width: 1px;
+  }
 
-	@media (max-width: 360px) {
-		font-size: 11px;
-		line-height: 15px;
-		padding: 5px 7px;
-	}
+  @media (max-width: 360px) {
+    font-size: 11px;
+    line-height: 15px;
+    padding: 5px 7px;
+  }
 
   &:hover {
     border-color: transparent;

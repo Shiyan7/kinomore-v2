@@ -26,7 +26,8 @@ export const Transition: FC<PropsWithChildren<TransitionProps>> = ({
   return (
     <div
       style={{ '--offset': `${offset}px`, '--delay': `${delay}s` } as CSSProperties}
-      className={clsx(styles[variant], mounted && styles.mounted)}>
+      className={clsx(styles[variant], mounted && styles.mounted)}
+    >
       {children}
     </div>
   );
