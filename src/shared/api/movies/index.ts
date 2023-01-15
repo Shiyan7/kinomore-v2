@@ -51,7 +51,7 @@ const routesConfig = http.createRoutesConfig({
       isStrict: false,
     },
   })),
-  getById: http.createRoute<void, IMovie>((id) => ({
+  getById: http.createRoute<string, IMovie>((id) => ({
     url,
     params: {
       search: id,

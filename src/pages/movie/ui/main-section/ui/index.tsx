@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { useStore } from 'effector-react';
-import { pageModel } from 'pages/movie';
+import { pageModel, getPageTitle } from 'pages/movie';
 import { Breadcrumbs } from 'shared/ui/breadcrumbs';
-import { getGenre, getMovieBreadcrumb } from '../lib';
+import { getMovieBreadcrumb } from '../lib';
 import { Player } from './player';
 import { Info } from './info';
 import { Rating } from './rating';
@@ -13,7 +13,7 @@ import styles from './styles.module.scss';
 
 export const MainSection = () => {
   const data = useStore(pageModel.$movie);
-  const breadcrumbs = [getMovieBreadcrumb(data?.type), getGenre(data?.genres ?? [])];
+  const breadcrumbs = [getMovieBreadcrumb(data?.type), { text: getPageTitle(data?.name) }];
 
   return (
     <section className={styles.section}>

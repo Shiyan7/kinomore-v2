@@ -12,6 +12,6 @@ export const $movie = restore(getMovieByIdFx, null);
 
 sample({
   clock: pageStarted,
-  fn: (context: PageContext | void) => context?.params?.id,
+  fn: (context: PageContext | void) => context?.params?.id as string,
   target: getMovieByIdFx,
 });

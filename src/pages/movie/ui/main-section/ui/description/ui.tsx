@@ -9,7 +9,7 @@ const MAX_WORDS = 35;
 export const Description = () => {
   const data = useStore(pageModel.$movie);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const text = data?.description || data?.shortDescription || 'Без описания';
+  const text = data?.description ?? data?.shortDescription ?? 'Без описания';
   const words = text?.split(' ');
   const shortText = words?.slice(0, MAX_WORDS).join(' ');
 

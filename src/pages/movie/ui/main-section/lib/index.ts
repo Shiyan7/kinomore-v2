@@ -1,2 +1,1 @@
-export * from './getMovieBreadcrumb';
-export * from './getGenre';
+export { getMovieBreadcrumb } from './getMovieBreadcrumb';

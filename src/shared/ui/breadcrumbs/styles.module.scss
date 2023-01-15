@@ -32,16 +32,19 @@
 .link {
   font-size: 15px;
   line-height: 18.2px;
-  color: rgba(#fff, 0.7);
-  transition: color 0.3s;
+  color: rgba(#fff, 0.6);
+
+	&[href] {
+		transition: color 0.3s;
+
+		&:hover {
+			color: var(--color-white);
+		}
+	}
 
   @media (max-width: 576px) {
     font-size: 12.5px;
     line-height: 15px;
-    color: var(--color-white);
-  }
-
-  &:hover {
     color: var(--color-white);
   }
 }

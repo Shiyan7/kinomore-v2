@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import type { NextPage } from 'next';
 import { useStore } from 'effector-react';
-import { pageModel } from 'pages/movie';
+import { pageModel, getPageTitle } from 'pages/movie';
 import { Persons } from './persons';
 import { SimilarMovies } from './similar-movies';
 import { MainSection } from './main-section';
@@ -12,9 +12,9 @@ import { Facts } from './facts';
 export const Movie: NextPage = () => {
   const data = useStore(pageModel.$movie);
 
-  const name = data?.name || 'Без названия';
+  const name = getPageTitle(data?.name);
   const year = data?.year && `(${data?.year})`;
-  const description = data?.description || data?.shortDescription;
+  const description = data?.description ?? data?.shortDescription;
 
   return (
     <>

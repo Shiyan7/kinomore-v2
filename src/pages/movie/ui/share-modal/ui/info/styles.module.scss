@@ -43,6 +43,7 @@
   -webkit-box-orient: vertical;
   max-width: 100%;
   max-width: 281px;
+	cursor: text;
 }
 
 .info {
@@ -56,6 +57,7 @@
   font-size: 13px;
   line-height: 18px;
   color: rgba(#fff, 0.8);
+	cursor: text;
 
   &:not(:first-child) {
     padding-left: calc(5px + 2px);

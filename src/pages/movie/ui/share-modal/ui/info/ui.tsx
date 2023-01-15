@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useStore } from 'effector-react';
-import { pageModel } from 'pages/movie';
+import { pageModel, getPageTitle } from 'pages/movie';
 import { getSeasonString } from 'shared/lib/get-season-string';
 import { minutesToHour } from 'shared/lib';
 import styles from './styles.module.scss';
@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 export const Info = () => {
   const data = useStore(pageModel.$movie);
 
-  const name = data?.name || 'Без названия';
+  const name = getPageTitle(data?.name);
 
   return (
     <div className={styles.item}>

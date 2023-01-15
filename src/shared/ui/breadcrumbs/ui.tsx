@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 
 interface BreadcrumbItem {
   text: string;
-  href: string;
+  href?: string;
 }
 
 interface BreadcrumbsProps {
@@ -18,9 +18,13 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({ items, className }) => {
     <ul className={clsx('list-reset', styles.list, className)}>
       {items.map((item, idx) => (
         <li className={styles.item} key={idx}>
-          <Link className={styles.link} href={item?.href}>
-            {item?.text}
-          </Link>
+          {item?.href ? (
+            <Link className={styles.link} href={item.href}>
+              {item?.text}
+            </Link>
+          ) : (
+            <span className={styles.link}>{item?.text}</span>
+          )}
         </li>
       ))}
     </ul>
