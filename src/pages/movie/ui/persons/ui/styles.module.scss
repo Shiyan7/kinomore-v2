@@ -12,10 +12,15 @@
   padding-top: 3px;
 
   @media (max-width: 576px) {
-    padding-left: 18px;
-    padding-right: 18px;
+    padding-left: calc(18px - 7px);
+    padding-right: calc(18px - 7px);
     margin-left: -18px;
     margin-right: -18px;
+  }
+
+	@media (max-width: 360px) {
+    padding-left: calc(18px - 4px);
+    padding-right: calc(18px - 4px);
   }
 }
 
@@ -28,11 +33,7 @@
 }
 
 .slide {
-  width: calc(calc(100% / 9) - 18px);
-
-  @media (max-width: 1400px) {
-    width: calc(calc(100% / 9) - 15px);
-  }
+  width: calc(calc(100% / 9) - 15px);
 
   @media (max-width: 1200px) {
     width: calc(calc(100% / 8) - 12px);
@@ -47,6 +48,6 @@
   }
 
   @media (max-width: 576px) {
-    width: calc(calc(100% / 3) - 20px);
+    width: calc(calc(100% / 3) - 24px);
   }
 }

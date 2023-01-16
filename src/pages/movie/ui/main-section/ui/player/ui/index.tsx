@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
-import { DesktopActions } from './desktop-actions';
-import { MobileActions } from './mobile-actions';
+import { Actions } from './actions';
 import styles from './styles.module.scss';
 
 export const Player = () => {
@@ -18,8 +17,7 @@ export const Player = () => {
             allowFullScreen
           />
         </div>
-        <DesktopActions />
-        <MobileActions />
+        <Actions />
       </div>
     </div>
   );

@@ -9,8 +9,12 @@
   margin: 0 auto;
 
   @media (max-width: 1199px) {
-    padding-top: 27px;
+    padding-top: 50px;
   }
+
+	@media (max-width: 768px) {
+		padding-top: 42px;
+	}
 
   @media (max-width: 576px) {
     padding-top: 35px;
@@ -23,11 +27,11 @@
 
   @media (max-width: 1199px) {
     margin-bottom: 30px;
+    display: none;
   }
 
   @media (max-width: 576px) {
     margin-bottom: 22px;
-    display: none;
   }
 }
 

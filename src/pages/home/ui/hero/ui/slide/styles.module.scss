@@ -182,6 +182,9 @@
 
 .volumeBtn {
   position: absolute;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
   z-index: 3;
   bottom: 30px;
   right: 30px;
@@ -200,13 +203,19 @@
     visibility: visible;
   }
 
+  svg {
+    display: block;
+    width: 19px;
+    height: 19px;
+  }
+
   @media (max-width: 576px) {
     min-width: 35px;
     min-height: 35px;
     bottom: 25px;
     right: 22px;
 
-    span svg {
+    svg {
       width: 15px;
       height: 15px;
     }

@@ -3,6 +3,18 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 33px;
+
+	@media (max-width: 1198px) {
+		margin-bottom: 58px;
+	}
+
+	@media (max-width: 768px) {
+		margin-bottom: 48px;
+	}
+
+	@media (max-width: 576px) {
+		margin-bottom: 40px;
+	}
 }
 
 .listItem {

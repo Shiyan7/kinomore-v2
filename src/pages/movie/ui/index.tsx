@@ -11,19 +11,17 @@ import { Facts } from './facts';
 
 export const Movie: NextPage = () => {
   const data = useStore(pageModel.$movie);
-
   const name = getPageTitle(data?.name);
-  const year = data?.year && `(${data?.year})`;
+  const year = data?.year ? `(${data?.year})` : '';
   const description = data?.description ?? data?.shortDescription;
+  const title = `${name} ${year} смотреть онлайн бесплатно в хорошем HD 1080 / 720 качестве`;
 
   return (
     <>
       <Head>
         <meta name="description" content={description} />
-        <title>
-          {name} {year} смотреть онлайн бесплатно в хорошем HD 1080 / 720 качестве
-        </title>
-        <meta property="og:title" content={`${name} ${year}`} />
+        <title>{title}</title>
+        <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={data?.poster?.url} />
       </Head>

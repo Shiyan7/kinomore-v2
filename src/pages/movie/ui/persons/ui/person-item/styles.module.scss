@@ -7,8 +7,12 @@
   transition: transform var(--duration);
 
   @media (max-width: 576px) {
-    padding: 0 5px;
+    padding: 0 7px;
   }
+
+	@media (max-width: 360px) {
+		padding: 0 4px;
+	}
 
   &:hover,
   &:focus-within {
