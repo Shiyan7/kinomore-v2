@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { searchModel } from 'entities/search-window';
-import { useToggler } from 'shared/lib/hooks';
+import { useToggler } from 'shared/lib/toggler';
 import { SearchIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 

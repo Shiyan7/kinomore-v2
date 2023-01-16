@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { TelegramShareButton, ViberShareButton, WhatsappShareButton } from 'react-share';
 import { CSSTransition } from 'react-transition-group';
 import { pageModel } from 'pages/movie';
-import { useToggler } from 'shared/lib/hooks';
+import { useToggler } from 'shared/lib/toggler';
 import { CloseIcon, LinkIcon, WhatsappIcon, TelegramIcon, ViberIcon } from 'shared/ui/icons';
 import { Popup } from 'shared/ui/popup';
 import { useCopyToClipboard } from '../lib';
@@ -34,8 +34,7 @@ export const ShareModal = () => {
         onClick={shareModal.close}
         className={styles.modal}
         isOpen={shareModal.isOpen}
-        close={shareModal.close}
-      >
+        close={shareModal.close}>
         <Info />
         <div className={styles.content}>
           <button onClick={handleCopy} className={clsx('btn-reset', styles.btn)}>

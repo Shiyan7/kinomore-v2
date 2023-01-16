@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { pageModel } from 'pages/movie';
-import { useToggler } from 'shared/lib/hooks';
+import { useToggler } from 'shared/lib/toggler';
 import { BookmarkIcon, PlayIcon, ShareIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 

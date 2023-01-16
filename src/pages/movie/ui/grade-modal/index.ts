@@ -1,0 +1,1 @@
+export { GradeModal } from './ui';

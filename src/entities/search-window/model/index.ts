@@ -1,7 +1,7 @@
 import { attach, createEvent, createStore, restore, sample } from 'effector';
 import { debounce } from 'patronum';
 import { moviesApi } from 'shared/api';
-import { createToggler } from 'shared/lib/hooks';
+import { createToggler } from 'shared/lib/toggler';
 
 const DEBOUNCE_TIME = 400;
 

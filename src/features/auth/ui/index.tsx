@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useStore } from 'effector-react';
 import { authModel } from 'features/auth';
 import { Modal } from 'shared/ui/modal';
-import { useToggler } from 'shared/lib/hooks';
+import { useToggler } from 'shared/lib/toggler';
 import { EmailForm } from './email-form';
 import { Message } from './message';
 import { Header } from './header';

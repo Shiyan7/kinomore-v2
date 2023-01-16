@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useStore } from 'effector-react';
 import { searchModel } from 'entities/search-window';
-import { useToggler } from 'shared/lib/hooks';
+import { useToggler } from 'shared/lib/toggler';
 import { Title, Modal, CloseIcon } from 'shared/ui';
 import { SearchInput } from './search-input';
 import { SearchList } from './search-list';

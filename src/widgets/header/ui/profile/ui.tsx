@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import clsx from 'clsx';
 import { authModel } from 'features/auth';
-import { useToggler } from 'shared/lib/hooks';
+import { useToggler } from 'shared/lib/toggler';
 import { RoutesEnum } from 'shared/config';
 import { ProfileIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';

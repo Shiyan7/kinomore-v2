@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
 import { useRouter } from 'next/router';
 import { headerModel } from 'widgets/header';
-import { useLockedBody, useToggler } from 'shared/lib/hooks';
+import { useLockedBody } from 'shared/lib/hooks';
+import { useToggler } from 'shared/lib/toggler';
 import { CloseIcon } from 'shared/ui/icons';
 import { items } from './config';
 import styles from './styles.module.scss';
@@ -34,8 +35,7 @@ export const Menu = () => {
                 key={item.text}
                 in={menu.isOpen}
                 timeout={item.timeout}
-                classNames={{ enterDone: styles.done }}
-              >
+                classNames={{ enterDone: styles.done }}>
                 <li className={clsx(styles.item, isCurrentPage && styles.current)}>
                   <Link href={item.href} className={styles.link}>
                     {item.text}

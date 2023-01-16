@@ -1,3 +1,3 @@
-import { createToggler } from 'shared/lib/hooks';
+import { createToggler } from 'shared/lib/toggler';
 
 export const menuToggler = createToggler();

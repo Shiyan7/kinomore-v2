@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { headerModel } from 'widgets/header';
-import { useToggler } from 'shared/lib/hooks';
+import { useToggler } from 'shared/lib/toggler';
 import { BurgerIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 

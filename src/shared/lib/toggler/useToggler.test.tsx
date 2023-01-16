@@ -1,5 +1,6 @@
 import { renderHook, act } from '@testing-library/react';
-import { createToggler, useToggler } from './useToggler';
+import { createToggler } from './createToggler';
+import { useToggler } from './useToggler';
 
 describe('useToggler', () => {
   const togglerInstance = createToggler();

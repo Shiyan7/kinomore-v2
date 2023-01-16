@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import { useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
-import { useToggler } from 'shared/lib/hooks';
+import { useToggler } from 'shared/lib/toggler';
 import { CloseIcon, Popup, Spinner } from 'shared/ui';
 import { getTrailer } from './lib';
 import styles from './styles.module.scss';

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useStore } from 'effector-react';
 import { authModel } from 'features/auth';
-import { useToggler } from 'shared/lib/hooks';
+import { useToggler } from 'shared/lib/toggler';
 import { CloseIcon } from 'shared/ui/icons';
 import { Progress } from '../progress';
 import styles from './styles.module.scss';
