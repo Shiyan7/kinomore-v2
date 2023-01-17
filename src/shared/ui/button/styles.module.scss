@@ -8,6 +8,34 @@
   color: var(--color-white);
   transition: background-color var(--duration);
 
+	&.primary {
+		background-color: var(--color-primary);
+
+		&:hover {
+			background-color: #1250c9;
+		}
+
+		&:active {
+			background-color: #1c63ee;
+		}
+	}
+
+	&.success {
+		background-color: rgba(#00a340, 0.25);
+
+		&:hover {
+			background-color: rgba(#00a340, 0.5);
+		}
+	}
+
+	&.error {
+		background-color: rgba(#f00, 0.25);
+
+		&:hover {
+			background-color: rgba(#f00, 0.5);
+		}
+	}
+
   &[disabled] {
     cursor: default;
     opacity: 0.5;
@@ -15,34 +43,6 @@
 
   span {
     position: relative;
-  }
-}
-
-/* variants */
-
-.primary {
-  background-color: var(--color-primary);
-
-  &:hover {
-    background-color: #1250c9;
-  }
-
-  &:active {
-    background-color: #1c63ee;
-  }
-}
-
-.glass {
-  background-color: rgba(#fff, 0.12);
-
-  svg {
-    display: block;
-    width: 19px;
-    height: 19px;
-  }
-
-  &:hover {
-    background-color: rgba(#fff, 0.2);
   }
 }
 
@@ -83,7 +83,13 @@
 .small {
   font-size: 13px;
   line-height: 15px;
-  padding: 10px;
+  padding: 10px 11px;
+
+	@media (max-width: 576px) {
+		font-size: 12px;
+		line-height: 13px;
+		padding: 8px 10px;
+	}
 }
 
 .regular {

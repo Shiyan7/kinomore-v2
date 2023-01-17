@@ -23,6 +23,8 @@ import LinkIcon from './assets/link.svg';
 import WhatsappIcon from './assets/whatsapp.svg';
 import TelegramIcon from './assets/telegram.svg';
 import ViberIcon from './assets/viber.svg';
+import LikeIcon from './assets/like.svg';
+import DislikeIcon from './assets/dislike.svg';
 
 export {
   SearchIcon,
@@ -50,4 +52,6 @@ export {
   WhatsappIcon,
   TelegramIcon,
   ViberIcon,
+  LikeIcon,
+  DislikeIcon,
 };

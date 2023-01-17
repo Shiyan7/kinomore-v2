@@ -1,12 +1,6 @@
-/** @type {import('next').NextConfig} */
-
 const nextConfig = {
-  experimental: {
-		images: {
-			unoptimized: true,
-		},
-  },
 	images: {
+		unoptimized: true,
 		domains: ['st.kp.yandex.net', 'avatars.mds.yandex.net', 'themoviedb.org', 'kinomore.onrender.com'],
 	},
 	env: {

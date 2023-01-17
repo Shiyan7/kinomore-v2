@@ -10,9 +10,10 @@
   overflow-y: auto;
   overflow-x: hidden;
   text-align: center;
+	backdrop-filter: blur(5px);
 
   @media (max-width: 576px) {
-    background-color: rgba(#000, 0.8);
+    background-color: rgba(#000, 0.7);
   }
 
   &:before {
