@@ -6,10 +6,9 @@ import styles from './styles.module.scss';
 interface ButtonOwnProps<E extends ElementType = ElementType> {
   className?: string;
   loading?: boolean;
-  success?: boolean;
-  error?: boolean;
-  size?: 'small' | 'regular' | 'medium';
-  variant?: 'primary' | 'border';
+  rounded?: boolean;
+  size?: 'small' | 'regular' | 'medium' | 'large';
+  variant?: 'primary' | 'white';
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   children: ReactNode;
@@ -24,12 +23,11 @@ export const Button = <E extends ElementType = typeof DEFAULT_ELEMENT>({
   children,
   as,
   loading,
+  rounded,
   startIcon,
   endIcon,
   variant = 'primary',
   size = 'regular',
-  success,
-  error,
   className,
   ...props
 }: ButtonProps<E>) => {
@@ -43,15 +41,7 @@ export const Button = <E extends ElementType = typeof DEFAULT_ELEMENT>({
 
   return (
     <Element
-      className={clsx(
-        'btn-reset',
-        styles.btn,
-        success && styles.success,
-        error && styles.error,
-        styles[variant],
-        styles[size],
-        className
-      )}
+      className={clsx('btn-reset', styles.btn, rounded && styles.rounded, styles[variant], styles[size], className)}
       {...props}>
       {startIcon && <div className={styles.startIcon}>{startIcon}</div>}
       <span>{loading ? ButtonSpinner : children}</span>

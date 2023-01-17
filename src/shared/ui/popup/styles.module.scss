@@ -27,8 +27,35 @@
 .container {
   position: relative;
   margin: 35px auto;
-  display: inline-block;
+  display: inline-flex;
+	flex-direction: column;
   vertical-align: middle;
   background-color: #000;
   cursor: default;
+}
+
+.close {
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  width: 24px;
+  height: 24px;
+  background-color: rgba(#fff, 0.2);
+  transition: background-color var(--duration);
+
+  &:hover {
+    background-color: rgba(#fff, 0.25);
+  }
+
+  svg {
+    display: block;
+    width: 90%;
+    height: 90%;
+    fill: var(--color-white);
+  }
 }

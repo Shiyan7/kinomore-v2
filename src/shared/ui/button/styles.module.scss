@@ -20,20 +20,13 @@
 		}
 	}
 
-	&.success {
-		background-color: rgba(#00a340, 0.25);
-
-		&:hover {
-			background-color: rgba(#00a340, 0.5);
-		}
+	&.white {
+		color: var(--color-black);
+		background-color: var(--color-white);
 	}
 
-	&.error {
-		background-color: rgba(#f00, 0.25);
-
-		&:hover {
-			background-color: rgba(#f00, 0.5);
-		}
+	&.rounded {
+		border-radius: 100px;
 	}
 
   &[disabled] {
@@ -83,13 +76,7 @@
 .small {
   font-size: 13px;
   line-height: 15px;
-  padding: 10px 11px;
-
-	@media (max-width: 576px) {
-		font-size: 12px;
-		line-height: 13px;
-		padding: 8px 10px;
-	}
+  padding: 9px 12px;
 }
 
 .regular {
@@ -105,4 +92,19 @@
   min-width: 43px;
   min-height: 43px;
   padding: 12px;
+}
+
+.large {
+  font-size: 16px;
+  line-height: 22px;
+  padding: 18px 29px;
+	text-transform: uppercase;
+	min-width: 265px;
+
+	@media (max-width: 576px) {
+		font-size: 15px;
+		line-height: 21px;
+		padding: 17px 28px;
+		min-width: 260px;
+	}
 }

@@ -4,7 +4,7 @@ import { TelegramShareButton, ViberShareButton, WhatsappShareButton } from 'reac
 import { CSSTransition } from 'react-transition-group';
 import { pageModel } from 'pages/movie';
 import { useToggler } from 'shared/lib/toggler';
-import { CloseIcon, LinkIcon, WhatsappIcon, TelegramIcon, ViberIcon } from 'shared/ui/icons';
+import { LinkIcon, WhatsappIcon, TelegramIcon, ViberIcon } from 'shared/ui/icons';
 import { Popup } from 'shared/ui/popup';
 import { useCopyToClipboard } from '../lib';
 import { Info } from './info';
@@ -52,9 +52,7 @@ export const ShareModal = () => {
             );
           })}
         </div>
-        <button onClick={shareModal.close} className={clsx('btn-reset', styles.close)}>
-          <CloseIcon />
-        </button>
+        <Popup.Close onClick={shareModal.close} />
       </Popup>
     </CSSTransition>
   );
