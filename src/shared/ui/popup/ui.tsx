@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import type { FC } from 'react';
 import { Modal, type ModalProps } from 'shared/ui/modal';
 import { CloseIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
