@@ -12,9 +12,9 @@ interface CloseProps {
   className?: string;
 }
 
-export const Popup = ({ rootClassName, className, children, ...props }: PopupProps) => {
+export const Popup = ({ rootClassName, className, close, children, ...props }: PopupProps) => {
   return (
-    <Modal className={clsx(styles.modal, rootClassName)} {...props}>
+    <Modal onClick={close} close={close} className={clsx(styles.modal, rootClassName)} {...props}>
       <div onClick={(e) => e.stopPropagation()} className={clsx(styles.container, className)}>
         {children}
       </div>

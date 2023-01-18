@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import { useStore } from 'effector-react';
-import { pageModel } from 'pages/movie';
+import { pageModel, getMovieType } from 'pages/movie';
 import { useToggler } from 'shared/lib/toggler';
 import { getRating } from 'shared/lib/get-rating';
-import { getVotes, getMovieType } from './lib';
+import { getVotes } from './lib';
 import styles from './styles.module.scss';
 
 export const Rating = () => {
@@ -15,7 +15,7 @@ export const Rating = () => {
       <div className={styles.rating}>{getRating(data?.rating)}</div>
       <div className={styles.right}>
         <div className={styles.text}>
-          <span className={styles.caption}>Рейтинг {getMovieType(data?.type)}</span>
+          <span className={styles.caption}>Рейтинг {getMovieType(data?.type)}а</span>
           <span className={styles.desc}>{getVotes(data?.votes)} оценок</span>
         </div>
         <button onClick={gradeModal.open} className={clsx('btn-reset', styles.btn)}>

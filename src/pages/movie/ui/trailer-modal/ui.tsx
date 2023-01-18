@@ -13,11 +13,7 @@ export const TrailerModal = () => {
   const trailer = getTrailer(data?.videos);
 
   return (
-    <Popup
-      onClick={trailerModal.close}
-      className={styles.modal}
-      isOpen={trailerModal.isOpen}
-      close={trailerModal.close}>
+    <Popup className={styles.modal} isOpen={trailerModal.isOpen} close={trailerModal.close}>
       <div className={styles.content}>
         {data?.videos?.trailers.length ? (
           <>

@@ -1,6 +1,7 @@
 import clsx from 'clsx';
+import { useStore } from 'effector-react';
 import { useState } from 'react';
-import { pageModel } from 'pages/movie';
+import { pageModel, getMovieType } from 'pages/movie';
 import { useToggler } from 'shared/lib/toggler';
 import { Button, Title, Popup } from 'shared/ui';
 import styles from './styles.module.scss';
@@ -8,14 +9,15 @@ import styles from './styles.module.scss';
 const AMOUNT_GRADES = 10;
 
 export const GradeModal = () => {
+  const data = useStore(pageModel.$movie);
   const gradeModal = useToggler(pageModel.gradeModalToggler);
   const [rating, setRating] = useState<number>(0);
   const [hover, setHover] = useState<number | null>(null);
 
   return (
-    <Popup onClick={gradeModal.close} className={styles.modal} isOpen={gradeModal.isOpen} close={gradeModal.close}>
+    <Popup className={styles.modal} isOpen={gradeModal.isOpen} close={gradeModal.close}>
       <Title size="medium" className={styles.title}>
-        Оцените фильм по {AMOUNT_GRADES}-ти бальной шкале
+        Оцените {getMovieType(data?.type)} по {AMOUNT_GRADES}-ти бальной шкале
       </Title>
       <div className={styles.container}>
         <div className={styles.grades}>

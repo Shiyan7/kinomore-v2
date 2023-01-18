@@ -29,13 +29,7 @@ export const ShareModal = () => {
 
   return (
     <CSSTransition in={shareModal.isOpen} timeout={0} classNames={{ enterDone: styles.done }}>
-      <Popup
-        rootClassName={styles.root}
-        onClick={shareModal.close}
-        className={styles.modal}
-        isOpen={shareModal.isOpen}
-        close={shareModal.close}
-      >
+      <Popup rootClassName={styles.root} className={styles.modal} isOpen={shareModal.isOpen} close={shareModal.close}>
         <Info />
         <div className={styles.content}>
           <button onClick={handleCopy} className={clsx('btn-reset', styles.btn)}>

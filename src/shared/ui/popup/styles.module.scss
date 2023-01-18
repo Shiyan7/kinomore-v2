@@ -5,15 +5,25 @@
   right: 0;
   bottom: 0;
   z-index: 1000;
-  background-color: rgba(#000, 0.7);
-  cursor: pointer;
   overflow-y: auto;
   overflow-x: hidden;
   text-align: center;
 
-  @media (max-width: 576px) {
-    background-color: rgba(#000, 0.8);
-  }
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		cursor: pointer;
+		background-color: rgba(#000, 0.7);
+
+		@media (max-width: 576px) {
+			background-color: rgba(#000, 0.8);
+		}
+	}
 
   &:before {
     content: "";
@@ -25,12 +35,11 @@
 
 .container {
   position: relative;
+	z-index: 2;
   margin: 35px auto;
   display: inline-flex;
   flex-direction: column;
   vertical-align: middle;
-  background-color: #000;
-  cursor: default;
 }
 
 .close {

@@ -1,10 +1,10 @@
 export function getMovieType(type: string | undefined): string {
   switch (type) {
     case 'movie':
-      return 'фильма';
+      return 'фильм';
     case 'cartoon':
-      return 'мультфильма';
+      return 'мультфильм';
     default:
-      return 'сериала';
+      return 'сериал';
   }
 }
