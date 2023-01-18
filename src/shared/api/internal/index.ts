@@ -4,11 +4,11 @@ import type { HeroMovie } from './types';
 const routesConfig = http.createRoutesConfig({
   getHeroMovies: http.createRoute<void, HeroMovie[]>({
     url: '/hero',
-    headers: {},
+    /* @ts-ignore */
+    headers: null,
   }),
   check: http.createRoute<string, { status: boolean }>((email) => ({
     url: '/check',
-    headers: {},
     params: {
       email,
     },
