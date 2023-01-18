@@ -6,7 +6,7 @@
   justify-content: center;
   border-radius: 10px;
   color: var(--color-white);
-  transition: background-color var(--duration);
+  transition: background-color var(--duration), color var(--duration);
 
   &.primary {
     background-color: var(--color-primary);
@@ -23,6 +23,14 @@
   &.white {
     color: var(--color-black);
     background-color: var(--color-white);
+
+		&:hover {
+			background-color: rgba(#fff, 0.9);
+		}
+
+		&:active {
+			background-color: rgba(#fff, 0.8);
+		}
   }
 
   &.rounded {
@@ -102,7 +110,7 @@
   min-width: 265px;
 
   @media (max-width: 576px) {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 21px;
     padding: 17px 28px;
     min-width: 260px;
