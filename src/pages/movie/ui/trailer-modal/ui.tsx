@@ -1,9 +1,8 @@
-import clsx from 'clsx';
 import { useState } from 'react';
 import { useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
 import { useToggler } from 'shared/lib/toggler';
-import { CloseIcon, Popup, Spinner } from 'shared/ui';
+import { Popup, Spinner } from 'shared/ui';
 import { getTrailer } from './lib';
 import styles from './styles.module.scss';
 
@@ -18,11 +17,7 @@ export const TrailerModal = () => {
       onClick={trailerModal.close}
       className={styles.modal}
       isOpen={trailerModal.isOpen}
-      close={trailerModal.close}
-    >
-      <button onClick={trailerModal.close} className={clsx('btn-reset', styles.close)}>
-        <CloseIcon />
-      </button>
+      close={trailerModal.close}>
       <div className={styles.content}>
         {data?.videos?.trailers.length ? (
           <>
@@ -42,6 +37,7 @@ export const TrailerModal = () => {
           </>
         ) : null}
       </div>
+      <Popup.Close onClick={trailerModal.close} className={styles.close} />
     </Popup>
   );
 };

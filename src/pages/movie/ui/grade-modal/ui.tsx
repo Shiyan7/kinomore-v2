@@ -2,9 +2,7 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import { pageModel } from 'pages/movie';
 import { useToggler } from 'shared/lib/toggler';
-import { Button } from 'shared/ui/button';
-import { Title } from 'shared/ui/title';
-import { Popup } from 'shared/ui/popup';
+import { Button, Title, Popup } from 'shared/ui';
 import styles from './styles.module.scss';
 
 const AMOUNT_GRADES = 10;
@@ -15,12 +13,7 @@ export const GradeModal = () => {
   const [hover, setHover] = useState<number | null>(null);
 
   return (
-    <Popup
-      rootClassName={styles.root}
-      onClick={gradeModal.close}
-      className={styles.modal}
-      isOpen={gradeModal.isOpen}
-      close={gradeModal.close}>
+    <Popup onClick={gradeModal.close} className={styles.modal} isOpen={gradeModal.isOpen} close={gradeModal.close}>
       <Title size="medium" className={styles.title}>
         Оцените фильм по {AMOUNT_GRADES}-ти бальной шкале
       </Title>

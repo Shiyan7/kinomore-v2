@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import { useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
-import { Title } from 'shared/ui';
+import { Title } from 'shared/ui/title';
 import styles from './styles.module.scss';
 
 const MAX_FACTS = 5;

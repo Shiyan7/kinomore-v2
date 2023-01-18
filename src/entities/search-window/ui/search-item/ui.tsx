@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { FC } from 'react';
 import type { IMovieItem } from 'shared/api';
 import { getRating } from 'shared/lib';
-import { Rating } from 'shared/ui';
+import { Rating } from 'shared/ui/rating';
 import styles from './styles.module.scss';
 
 interface SearchItemProps {

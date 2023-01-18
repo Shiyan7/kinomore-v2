@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useStore } from 'effector-react';
 import { searchModel } from 'entities/search-window';
-import { Spinner } from 'shared/ui';
+import { Spinner } from 'shared/ui/spinner';
 import { SearchItem } from '../search-item';
 import styles from './styles.module.scss';
 
