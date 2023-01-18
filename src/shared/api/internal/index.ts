@@ -3,6 +3,7 @@ import type { HeroMovie } from './types';
 
 const routesConfig = http.createRoutesConfig({
   getHeroMovies: http.createRoute<void, HeroMovie[]>({
+    method: 'get',
     headers: {
       'Content-Type': 'application/json',
     },
