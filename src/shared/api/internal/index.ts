@@ -13,6 +13,4 @@ const routesConfig = http.createRoutesConfig({
   })),
 });
 
-const internalApi = routesConfig.build();
-
-export { internalApi };
+export const internalApi = routesConfig.build();

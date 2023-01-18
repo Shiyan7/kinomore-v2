@@ -13,9 +13,9 @@
   &:not(:last-child) {
     margin-right: 30px;
 
-		@media (max-width: 1024px) {
-			margin-right: 27px;
-		}
+    @media (max-width: 1024px) {
+      margin-right: 27px;
+    }
   }
 }
 

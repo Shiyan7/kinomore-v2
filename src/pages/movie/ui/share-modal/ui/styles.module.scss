@@ -1,11 +1,11 @@
 .root {
-	&.done {
-		.modal {
-			@media (max-width: 576px) {
-				transform: translateY(0%);
-			}
-		}
-	}
+  &.done {
+    .modal {
+      @media (max-width: 576px) {
+        transform: translateY(0%);
+      }
+    }
+  }
 
   @media (max-width: 576px) {
     overflow: hidden;

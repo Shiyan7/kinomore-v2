@@ -20,7 +20,8 @@ export const GradeModal = () => {
       onClick={gradeModal.close}
       className={styles.modal}
       isOpen={gradeModal.isOpen}
-      close={gradeModal.close}>
+      close={gradeModal.close}
+    >
       <Title size="medium" className={styles.title}>
         Оцените фильм по {AMOUNT_GRADES}-ти бальной шкале
       </Title>
@@ -36,7 +37,8 @@ export const GradeModal = () => {
                 key={idx}
                 className={clsx(styles.label, isActive && styles.active)}
                 onMouseEnter={() => setHover(ratingValue)}
-                onMouseLeave={() => setHover(null)}>
+                onMouseLeave={() => setHover(null)}
+              >
                 <input hidden type="radio" value={ratingValue} onClick={() => setRating(ratingValue)} />
                 {ratingValue}
               </label>

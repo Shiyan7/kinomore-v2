@@ -7,9 +7,9 @@
   margin-right: 27px;
   transition: opacity var(--duration);
 
-	@media (max-width: 1024px) {
-		margin-right: 24px;
-	}
+  @media (max-width: 1024px) {
+    margin-right: 24px;
+  }
 
   @media (max-width: 768px) {
     opacity: 1;

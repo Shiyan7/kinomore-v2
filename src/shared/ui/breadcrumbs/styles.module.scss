@@ -34,13 +34,13 @@
   line-height: 18.2px;
   color: rgba(#fff, 0.6);
 
-	&[href] {
-		transition: color 0.3s;
+  &[href] {
+    transition: color 0.3s;
 
-		&:hover {
-			color: var(--color-white);
-		}
-	}
+    &:hover {
+      color: var(--color-white);
+    }
+  }
 
   @media (max-width: 576px) {
     font-size: 12.5px;
