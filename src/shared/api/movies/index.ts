@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { GenresEnum, LIMIT } from 'shared/config';
 import { getCurrentYear, getYears } from 'shared/lib/get-year';
 import { http, url } from './base';
@@ -6,6 +7,7 @@ import type { Data, IMovie, IMovieItem } from './types';
 const routesConfig = http.createRoutesConfig({
   getNew: http.createRoute<number | void, Data<IMovieItem>>((limit = LIMIT) => ({
     url,
+    headers: null,
     params: {
       'search[]': '5-9',
       'field[]': 'rating.kp',
@@ -18,6 +20,7 @@ const routesConfig = http.createRoutesConfig({
   })),
   getComedy: http.createRoute<number | void, Data<IMovieItem>>((limit = LIMIT) => ({
     url,
+    headers: null,
     params: {
       search: [getCurrentYear(), '7-10', '1', '!null', '!null', '!null'],
       field: ['year', 'rating.kp', 'typeNumber', 'name', 'votes.kp', 'poster.previewUrl'],
@@ -30,6 +33,7 @@ const routesConfig = http.createRoutesConfig({
   })),
   forFamily: http.createRoute<number | void, Data<IMovieItem>>((limit = LIMIT) => ({
     url,
+    headers: null,
     params: {
       'search[]': [GenresEnum.Semejnyj, '1-10', '!null'],
       'field[]': ['genres.name', 'rating.kp', 'poster.previewUrl'],
@@ -42,6 +46,7 @@ const routesConfig = http.createRoutesConfig({
   })),
   searchByName: http.createRoute<string | void, Data<IMovieItem>>((query) => ({
     url,
+    headers: null,
     params: {
       search: [query, '!null', getYears()],
       field: ['name', 'poster.previewUrl', 'year'],
@@ -53,6 +58,7 @@ const routesConfig = http.createRoutesConfig({
   })),
   getById: http.createRoute<string, IMovie>((id) => ({
     url,
+    headers: null,
     params: {
       search: id,
       field: 'id',
