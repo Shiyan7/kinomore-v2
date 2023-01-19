@@ -5,13 +5,18 @@
   font-weight: 700;
 }
 
-.large {
-  font-size: 41px;
-  line-height: 49px;
+.small {
+  font-size: 22px;
+  line-height: 26px;
 
   @media (max-width: 576px) {
-    font-size: 28px;
-    line-height: 36px;
+    font-size: 17px;
+    line-height: 22px;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 
@@ -30,17 +35,24 @@
   }
 }
 
-.small {
-  font-size: 22px;
-  line-height: 26px;
+.large {
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: 500;
 
   @media (max-width: 576px) {
-    font-size: 17px;
-    line-height: 22px;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 35px;
   }
+}
 
-  @media (max-width: 375px) {
-    font-size: 16px;
-    line-height: 20px;
+.xl {
+  font-size: 41px;
+  line-height: 49px;
+
+  @media (max-width: 576px) {
+    font-size: 28px;
+    line-height: 36px;
   }
 }

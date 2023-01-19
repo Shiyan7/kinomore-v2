@@ -1,5 +1,5 @@
 import { attach, combine, createEvent, createStore, sample } from 'effector';
-import { not } from 'patronum';
+import { not } from 'patronum/not';
 import { string } from 'yup';
 import { createForm } from 'shared/lib/effector-react-form';
 import { createObjectValidator } from 'shared/form';

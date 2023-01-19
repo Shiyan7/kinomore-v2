@@ -6,7 +6,7 @@ interface TitleOwnProps<E extends ElementType = ElementType> {
   className?: string;
   children: ReactNode;
   href?: string;
-  size?: 'small' | 'large' | 'medium';
+  size?: 'small' | 'medium' | 'large' | 'xl';
   as?: E;
 }
 

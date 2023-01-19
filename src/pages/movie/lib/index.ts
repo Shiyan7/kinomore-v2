@@ -1,2 +1,2 @@
-export { getPageTitle } from './getPageTitle';
-export { getMovieType } from './getMovieType';
+export * from './getPageTitle';
+export * from './getMovieType';

@@ -1,5 +1,5 @@
 import { attach, createEvent, createStore, restore, sample } from 'effector';
-import { debounce } from 'patronum';
+import { debounce } from 'patronum/debounce';
 import { moviesApi } from 'shared/api';
 import { createToggler } from 'shared/lib/toggler';
 

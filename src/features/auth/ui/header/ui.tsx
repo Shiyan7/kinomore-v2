@@ -7,8 +7,8 @@ import { Progress } from '../progress';
 import styles from './styles.module.scss';
 
 export const Header = () => {
-  const authWindow = useToggler(authModel.authWindowToggler);
   const { email } = useStore(authModel.emailForm.$values);
+  const authWindow = useToggler(authModel.authWindowToggler);
   const state = useStore(authModel.$state);
   const isNewUser = useStore(authModel.$isNewUser);
   const isEmailState = state === 'email';

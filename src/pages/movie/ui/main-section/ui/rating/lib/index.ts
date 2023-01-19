@@ -1,1 +1,1 @@
-export { getVotes } from './getVotes';
+export * from './getVotes';

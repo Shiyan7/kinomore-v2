@@ -14,7 +14,7 @@ export const MainPersons = () => {
 
   return (
     <ul className={clsx('list-reset', styles.list)}>
-      {persons?.map((person, idx) => (
+      {persons.map((person, idx) => (
         <li className={styles.item} key={idx}>
           <Link href="#" className={styles.link}>
             <div className={styles.image}>
