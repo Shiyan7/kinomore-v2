@@ -8,7 +8,24 @@ import { internalApi } from 'shared/api';
 
 export const authWindowToggler = createToggler();
 
-export const checkUserFx = attach({ effect: internalApi.check });
+export const loginWithGoogle = createEvent<string>();
+
+export const googleLoginFx = attach({ effect: internalApi.googleLogin });
+export const loginFx = attach({ effect: internalApi.login });
+export const registerFx = attach({ effect: internalApi.register });
+
+sample({
+  clock: loginWithGoogle,
+  fn: (token) => token,
+  target: googleLoginFx,
+});
+
+sample({
+  clock: googleLoginFx.doneData,
+  fn: (some) => console.log(some),
+});
+
+export const checkUserFx = attach({ effect: internalApi.checkUser });
 
 export const emailForm = createForm({
   initialValues: {
@@ -66,12 +83,14 @@ sample({
   clock: passwordForm.onSubmit,
   source: formValue,
   filter: not($isNewUser),
-  fn: (value) => console.log('login', value),
+  fn: (value) => value,
+  target: loginFx,
 });
 
 sample({
   clock: passwordForm.onSubmit,
   source: formValue,
   filter: $isNewUser,
-  fn: (value) => console.log('register', value),
+  fn: (value) => value,
+  target: registerFx,
 });

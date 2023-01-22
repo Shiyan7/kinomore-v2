@@ -1,5 +1,7 @@
 export const LIMIT = 15;
 
+export const GOOGLE_CLIENT_ID = process.env.CLIENT_ID ?? '';
+
 export enum RoutesEnum {
   Home = '/',
   Films = '/films',

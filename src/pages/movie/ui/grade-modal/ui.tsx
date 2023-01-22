@@ -24,7 +24,7 @@ export const GradeModal = () => {
           {[...Array(AMOUNT_GRADES)].map((_, idx) => {
             const ratingValue = idx + 1;
 
-            const isActive = ratingValue <= (hover || rating);
+            const isActive = ratingValue <= (hover ?? rating);
 
             return (
               <label

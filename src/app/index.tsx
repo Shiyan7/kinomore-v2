@@ -1,11 +1,13 @@
 import NextNProgress from 'nextjs-progressbar';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { useRouter } from 'next/router';
 import { useEvent } from 'effector-react';
 import { useEffect } from 'react';
 import { BaseLayout } from 'widgets/layouts';
 import { navigationModel } from 'entities/navigation';
+import { GOOGLE_CLIENT_ID } from 'shared/config';
 import { withProviders } from './providers';
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -18,7 +20,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   }, [router]);
 
   return (
-    <>
+    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
       <Head>
         <title>
           Онлайн-кинотеатр Kinomore - фильмы, сериалы и мультфильмы смотреть онлайн бесплатно в хорошем качестве
@@ -29,7 +31,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <BaseLayout>
         <Component {...pageProps} />
       </BaseLayout>
-    </>
+    </GoogleOAuthProvider>
   );
 };
 
