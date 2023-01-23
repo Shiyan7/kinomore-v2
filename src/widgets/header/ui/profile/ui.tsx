@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import clsx from 'clsx';
+import { useStore } from 'effector-react';
 import { authModel } from 'features/auth';
 import { useToggler } from 'shared/lib/toggler';
 import { RoutesEnum } from 'shared/config';
@@ -8,13 +9,12 @@ import styles from './styles.module.scss';
 
 export const Profile = () => {
   const authWindow = useToggler(authModel.authWindowToggler);
-
-  const isAuth = false;
+  const isAuth = useStore(authModel.$isAuth);
 
   const ProfileLink = (
-    <Link href={RoutesEnum.Cabinet} className={styles.profile}>
+    <Link href={RoutesEnum.Profile} className={styles.profile}>
       <ProfileIcon />
-      Кабинет
+      Профиль
     </Link>
   );
 

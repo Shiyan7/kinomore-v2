@@ -1,4 +1,4 @@
-import { useStore } from 'effector-react/scope';
+import { useStore } from 'effector-react';
 import { Category } from 'widgets/category';
 import { pageModel } from 'pages/home';
 import { MovieItem } from 'entities/movie-item';

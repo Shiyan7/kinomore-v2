@@ -12,11 +12,13 @@ export interface UserDto {
   password: string;
 }
 
+export interface User {
+  email: string;
+  id: string;
+}
+
 export interface ResponseUser {
   accessToken: string;
   refreshToken: string;
-  user: {
-    email: string;
-    id: string;
-  };
+  user: User;
 }

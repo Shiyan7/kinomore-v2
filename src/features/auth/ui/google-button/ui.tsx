@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 
 export const GoogleButton = () => {
   const login = useGoogleLogin({
-    onSuccess: async (tokenResponse) => authModel.loginWithGoogle(tokenResponse.access_token),
+    onSuccess: async (tokenResponse) => authModel.googleLogin(tokenResponse.access_token),
   });
 
   return (

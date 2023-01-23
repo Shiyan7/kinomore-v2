@@ -1,28 +1,30 @@
-import { attach, combine, createEvent, createStore, sample } from 'effector';
+import { attach, combine, createEvent, createStore, sample, forward } from 'effector';
+import { setCookie, deleteCookie } from 'cookies-next';
 import { not } from 'patronum/not';
 import { string } from 'yup';
 import { createForm } from 'shared/lib/effector-react-form';
 import { createObjectValidator } from 'shared/form';
 import { createToggler } from 'shared/lib/toggler';
-import { internalApi } from 'shared/api';
+import { internalApi, type User } from 'shared/api';
+import { localStorageKeys } from 'shared/config';
 
 export const authWindowToggler = createToggler();
-
-export const loginWithGoogle = createEvent<string>();
+export const googleLogin = createEvent<string>();
+export const startRefresh = createEvent();
+export const startLogout = createEvent();
 
 export const googleLoginFx = attach({ effect: internalApi.googleLogin });
 export const loginFx = attach({ effect: internalApi.login });
 export const registerFx = attach({ effect: internalApi.register });
+export const logoutFx = attach({ effect: internalApi.logout });
+export const refreshFx = attach({ effect: internalApi.refresh });
 
-sample({
-  clock: loginWithGoogle,
-  fn: (token) => token,
-  target: googleLoginFx,
-});
+export const $user = createStore<User | null>(null);
+export const $isAuth = $user.map((user) => !!user);
 
-sample({
-  clock: googleLoginFx.doneData,
-  fn: (some) => console.log(some),
+forward({
+  from: googleLogin,
+  to: googleLoginFx,
 });
 
 export const checkUserFx = attach({ effect: internalApi.checkUser });
@@ -70,9 +72,9 @@ sample({
   target: $isNewUser,
 });
 
-sample({
-  clock: checkUserFx.doneData,
-  target: continueClicked,
+forward({
+  from: checkUserFx.doneData,
+  to: continueClicked,
 });
 
 const formValue = combine(emailForm.$values, passwordForm.$values, ({ email }, { password }) => {
@@ -93,4 +95,31 @@ sample({
   filter: $isNewUser,
   fn: (value) => value,
   target: registerFx,
+});
+
+sample({
+  clock: [googleLoginFx.doneData, loginFx.doneData, registerFx.doneData, refreshFx.doneData],
+  fn: ({ accessToken, user }) => {
+    setCookie(localStorageKeys.ACCESS_TOKEN, accessToken);
+    return user;
+  },
+  target: $user,
+});
+
+sample({
+  clock: logoutFx.doneData,
+  fn: () => deleteCookie(localStorageKeys.ACCESS_TOKEN),
+});
+
+sample({
+  clock: logoutFx.doneData,
+  fn: () => null,
+  target: $user,
+});
+
+forward({ from: startLogout, to: logoutFx });
+
+forward({
+  from: startRefresh,
+  to: refreshFx,
 });

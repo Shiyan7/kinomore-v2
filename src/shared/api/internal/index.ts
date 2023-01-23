@@ -10,7 +10,6 @@ const routesConfig = http.createRoutesConfig({
   googleLogin: http.createRoute<string, ResponseUser>((token) => ({
     url: '/google',
     method: 'post',
-    headers: null,
     data: {
       token,
     },
@@ -26,14 +25,19 @@ const routesConfig = http.createRoutesConfig({
   login: http.createRoute<UserDto, ResponseUser>(({ ...data }) => ({
     url: '/login',
     method: 'post',
-    headers: null,
     data: {
       ...data,
     },
   })),
+  refresh: http.createRoute<void, ResponseUser>({
+    url: '/refresh',
+  }),
+  logout: http.createRoute<void, ResponseUser>({
+    url: '/logout',
+    method: 'post',
+  }),
   checkUser: http.createRoute<string, { status: boolean }>((email) => ({
     url: '/check',
-    headers: null,
     params: {
       email,
     },
