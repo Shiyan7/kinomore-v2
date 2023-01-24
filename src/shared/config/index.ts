@@ -1,10 +1,6 @@
 export const LIMIT = 15;
 
-export const GOOGLE_CLIENT_ID = process.env.CLIENT_ID ?? '';
-
-export const localStorageKeys = {
-  ACCESS_TOKEN: 'accessToken',
-};
+export const ACCESS_TOKEN = 'accessToken';
 
 export enum RoutesEnum {
   Home = '/',

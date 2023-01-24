@@ -17,7 +17,7 @@ export interface User {
   id: string;
 }
 
-export interface ResponseUser {
+export interface UserWithTokensDto {
   accessToken: string;
   refreshToken: string;
   user: User;

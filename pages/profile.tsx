@@ -1,21 +1,14 @@
 import { useEvent, useStore } from 'effector-react';
-import { useRouter } from 'next/router';
-import { authModel } from 'features/auth';
+import { session } from 'entities/session';
 
 const ProfilePage = () => {
-  const { push } = useRouter();
-  const data = useStore(authModel.$user);
-  const logout = useEvent(authModel.startLogout);
-
-  const handleLogout = () => {
-    logout();
-    push('/');
-  };
+  const data = useStore(session.$session);
+  const logout = useEvent(session.logout);
 
   return (
     <div>
-      {data?.email}
-      <button onClick={handleLogout}>выйти</button>
+      {data?.user?.email}
+      <button onClick={logout}>выйти</button>
     </div>
   );
 };

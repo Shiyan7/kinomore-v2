@@ -1,31 +1,13 @@
 import { attach, combine, createEvent, createStore, sample, forward } from 'effector';
-import { setCookie, deleteCookie } from 'cookies-next';
 import { not } from 'patronum/not';
 import { string } from 'yup';
+import { session } from 'entities/session';
 import { createForm } from 'shared/lib/effector-react-form';
 import { createObjectValidator } from 'shared/form';
 import { createToggler } from 'shared/lib/toggler';
-import { internalApi, type User } from 'shared/api';
-import { localStorageKeys } from 'shared/config';
+import { internalApi } from 'shared/api';
 
 export const authWindowToggler = createToggler();
-export const googleLogin = createEvent<string>();
-export const startRefresh = createEvent();
-export const startLogout = createEvent();
-
-export const googleLoginFx = attach({ effect: internalApi.googleLogin });
-export const loginFx = attach({ effect: internalApi.login });
-export const registerFx = attach({ effect: internalApi.register });
-export const logoutFx = attach({ effect: internalApi.logout });
-export const refreshFx = attach({ effect: internalApi.refresh });
-
-export const $user = createStore<User | null>(null);
-export const $isAuth = $user.map((user) => !!user);
-
-forward({
-  from: googleLogin,
-  to: googleLoginFx,
-});
 
 export const checkUserFx = attach({ effect: internalApi.checkUser });
 
@@ -86,7 +68,7 @@ sample({
   source: formValue,
   filter: not($isNewUser),
   fn: (value) => value,
-  target: loginFx,
+  target: session.login,
 });
 
 sample({
@@ -94,32 +76,5 @@ sample({
   source: formValue,
   filter: $isNewUser,
   fn: (value) => value,
-  target: registerFx,
-});
-
-sample({
-  clock: [googleLoginFx.doneData, loginFx.doneData, registerFx.doneData, refreshFx.doneData],
-  fn: ({ accessToken, user }) => {
-    setCookie(localStorageKeys.ACCESS_TOKEN, accessToken);
-    return user;
-  },
-  target: $user,
-});
-
-sample({
-  clock: logoutFx.doneData,
-  fn: () => deleteCookie(localStorageKeys.ACCESS_TOKEN),
-});
-
-sample({
-  clock: logoutFx.doneData,
-  fn: () => null,
-  target: $user,
-});
-
-forward({ from: startLogout, to: logoutFx });
-
-forward({
-  from: startRefresh,
-  to: refreshFx,
+  target: session.register,
 });

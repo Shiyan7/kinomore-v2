@@ -1,17 +1,13 @@
-import { hasCookie } from 'cookies-next';
-import { sample, createEvent, createStore } from 'effector';
-import { authModel } from 'features/auth';
-import { localStorageKeys } from 'shared/config';
+import { sample, createEvent } from 'effector';
+import { session } from 'entities/session';
 
 export const appStarted = createEvent();
 
 appStarted.watch(() => console.info('[Event] appStarted'));
 
-const $isAuth = createStore(hasCookie(localStorageKeys.ACCESS_TOKEN));
-
 sample({
   clock: appStarted,
-  filter: $isAuth,
+  filter: session.$hasToken,
   fn: () => null,
-  target: authModel.startRefresh,
+  target: session.startRefresh,
 });

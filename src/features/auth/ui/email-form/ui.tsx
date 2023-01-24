@@ -4,7 +4,6 @@ import { authModel } from 'features/auth';
 import { useForm } from 'shared/lib/effector-react-form';
 import { Form, Field } from 'shared/form';
 import { Button } from 'shared/ui/button';
-import { GoogleButton } from '../google-button';
 import { Transition } from '../transition';
 import styles from './styles.module.scss';
 
@@ -20,7 +19,6 @@ export const EmailForm = () => {
 
   return (
     <div className={styles.content}>
-      <GoogleButton />
       <Form onSubmit={handleSubmit} className={styles.form}>
         <Transition offset={20} delay={130}>
           <Field.Input
