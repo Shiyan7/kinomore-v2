@@ -3,11 +3,11 @@
 }
 
 .title {
-	@media (max-width: 576px) {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
+  @media (max-width: 576px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .container {
@@ -44,7 +44,7 @@
 
   @media (max-width: 576px) {
     margin-top: 0;
-		margin-left: 0;
+    margin-left: 0;
   }
 
   svg {

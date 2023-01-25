@@ -39,7 +39,7 @@ export function createSession() {
     .on(removeAccessTokenFx.done, () => false);
 
   const $sessionIsLoaded = createStore(false)
-    .on($session, (state, payload) => Boolean(payload))
+    .on($session, (_, payload) => Boolean(payload))
     .reset(logout);
 
   const $sessionIsLoading = createStore(false).on(

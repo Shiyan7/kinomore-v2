@@ -5,22 +5,16 @@ import type { HeroMovie, UserDto, UserWithTokensDto } from './types';
 const routesConfig = http.createRoutesConfig({
   getHeroMovies: http.createRoute<void, HeroMovie[]>({
     url: '/hero',
-    headers: null,
   }),
-  register: http.createRoute<UserDto, UserWithTokensDto>(({ ...data }) => ({
+  register: http.createRoute<UserDto, UserWithTokensDto>((data) => ({
     url: '/register',
     method: 'post',
-    headers: null,
-    data: {
-      ...data,
-    },
+    data,
   })),
-  login: http.createRoute<UserDto, UserWithTokensDto>(({ ...data }) => ({
+  login: http.createRoute<UserDto, UserWithTokensDto>((data) => ({
     url: '/login',
     method: 'post',
-    data: {
-      ...data,
-    },
+    data,
   })),
   refresh: http.createRoute<void, UserWithTokensDto>({
     url: '/refresh',

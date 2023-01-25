@@ -7,7 +7,6 @@ const nextConfig = {
 		API_TOKEN: process.env.API_TOKEN,
 		API_URL: process.env.API_URL,
 		CLIENT_URL: process.env.CLIENT_URL,
-		CLIENT_ID: process.env.CLIENT_ID,
 		INTERNAL_API_URL: process.env.INTERNAL_API_URL
 	},
 	webpack(config) {
