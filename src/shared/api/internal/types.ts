@@ -6,3 +6,19 @@ export interface HeroMovie {
   genre: string;
   image: string;
 }
+
+export interface UserDto {
+  email: string;
+  password: string;
+}
+
+export interface User {
+  email: string;
+  id: string;
+}
+
+export interface UserWithTokensDto {
+  accessToken: string;
+  refreshToken: string;
+  user: User;
+}

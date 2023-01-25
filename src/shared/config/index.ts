@@ -1,11 +1,13 @@
 export const LIMIT = 15;
 
+export const ACCESS_TOKEN = 'accessToken';
+
 export enum RoutesEnum {
   Home = '/',
   Films = '/films',
   Series = '/series',
   Cartoons = '/cartoons',
-  Cabinet = '/cabinet',
+  Profile = '/profile',
   NewFilms = '/new-films',
   ComedyFilms = '/comedy-films',
   ForFamily = '/for-family',

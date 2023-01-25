@@ -1,10 +1,8 @@
-import clsx from 'clsx';
 import { useEffect, useRef } from 'react';
 import { useStore } from 'effector-react';
 import { authModel } from 'features/auth';
 import { useForm } from 'shared/lib/effector-react-form';
 import { Form, Field } from 'shared/form';
-import { GoogleIcon } from 'shared/ui/icons';
 import { Button } from 'shared/ui/button';
 import { Transition } from '../transition';
 import styles from './styles.module.scss';
@@ -21,14 +19,6 @@ export const EmailForm = () => {
 
   return (
     <div className={styles.content}>
-      <Transition delay={100}>
-        <button type="button" className={clsx('btn-reset', styles.logo)}>
-          <GoogleIcon />
-        </button>
-      </Transition>
-      <Transition delay={130}>
-        <span className={styles.sep}>или</span>
-      </Transition>
       <Form onSubmit={handleSubmit} className={styles.form}>
         <Transition offset={20} delay={130}>
           <Field.Input

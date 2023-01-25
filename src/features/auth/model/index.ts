@@ -1,6 +1,7 @@
-import { attach, combine, createEvent, createStore, sample } from 'effector';
+import { attach, combine, createEvent, createStore, sample, forward } from 'effector';
 import { not } from 'patronum/not';
 import { string } from 'yup';
+import { session } from 'entities/session';
 import { createForm } from 'shared/lib/effector-react-form';
 import { createObjectValidator } from 'shared/form';
 import { createToggler } from 'shared/lib/toggler';
@@ -8,7 +9,7 @@ import { internalApi } from 'shared/api';
 
 export const authWindowToggler = createToggler();
 
-export const checkUserFx = attach({ effect: internalApi.check });
+export const checkUserFx = attach({ effect: internalApi.checkUser });
 
 export const emailForm = createForm({
   initialValues: {
@@ -53,9 +54,9 @@ sample({
   target: $isNewUser,
 });
 
-sample({
-  clock: checkUserFx.doneData,
-  target: continueClicked,
+forward({
+  from: checkUserFx.doneData,
+  to: continueClicked,
 });
 
 const formValue = combine(emailForm.$values, passwordForm.$values, ({ email }, { password }) => {
@@ -66,12 +67,14 @@ sample({
   clock: passwordForm.onSubmit,
   source: formValue,
   filter: not($isNewUser),
-  fn: (value) => console.log('login', value),
+  fn: (value) => value,
+  target: session.login,
 });
 
 sample({
   clock: passwordForm.onSubmit,
   source: formValue,
   filter: $isNewUser,
-  fn: (value) => console.log('register', value),
+  fn: (value) => value,
+  target: session.register,
 });

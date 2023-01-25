@@ -24,13 +24,13 @@
     color: var(--color-black);
     background-color: var(--color-white);
 
-		&:hover {
-			background-color: rgba(#fff, 0.9);
-		}
+    &:hover {
+      background-color: rgba(#fff, 0.9);
+    }
 
-		&:active {
-			background-color: rgba(#fff, 0.8);
-		}
+    &:active {
+      background-color: rgba(#fff, 0.8);
+    }
   }
 
   &.rounded {

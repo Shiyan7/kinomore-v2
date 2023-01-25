@@ -24,14 +24,15 @@ export const GradeModal = () => {
           {[...Array(AMOUNT_GRADES)].map((_, idx) => {
             const ratingValue = idx + 1;
 
-            const isActive = ratingValue <= (hover || rating);
+            const isActive = ratingValue <= (hover ?? rating);
 
             return (
               <label
                 key={idx}
                 className={clsx(styles.label, isActive && styles.active)}
                 onMouseEnter={() => setHover(ratingValue)}
-                onMouseLeave={() => setHover(null)}>
+                onMouseLeave={() => setHover(null)}
+              >
                 <input hidden type="radio" value={ratingValue} onClick={() => setRating(ratingValue)} />
                 {ratingValue}
               </label>

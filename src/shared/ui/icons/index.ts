@@ -3,7 +3,6 @@ import ProfileIcon from './assets/profile.svg';
 import BurgerIcon from './assets/burger.svg';
 import ChevronIcon from './assets/chevron.svg';
 import CloseIcon from './assets/close.svg';
-import GoogleIcon from './assets/google.svg';
 import MapIcon from './assets/map.svg';
 import HeartsIcon from './assets/hearts.svg';
 import PeopleIcon from './assets/people.svg';
@@ -32,7 +31,6 @@ export {
   BurgerIcon,
   ChevronIcon,
   CloseIcon,
-  GoogleIcon,
   MapIcon,
   HeartsIcon,
   PeopleIcon,
