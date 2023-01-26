@@ -7,10 +7,10 @@ import { getTrailer } from './lib';
 import styles from './styles.module.scss';
 
 export const TrailerModal = () => {
-  const data = useStore(pageModel.$movie);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const trailerModal = useToggler(pageModel.trailerModalToggler);
+  const data = useStore(pageModel.$movie);
   const trailer = getTrailer(data?.videos);
+  const trailerModal = useToggler(pageModel.trailerModalToggler);
 
   return (
     <Popup className={styles.modal} isOpen={trailerModal.isOpen} close={trailerModal.close}>

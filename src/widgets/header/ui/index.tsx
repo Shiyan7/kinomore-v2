@@ -16,7 +16,11 @@ export const Header = () => {
   const isHomePage = asPath === RoutesEnum.Home;
 
   return (
-    <header className={clsx(styles.header, isHomePage && styles.home, isFixed && styles.fixed)}>
+    <header
+      className={clsx(styles.header, {
+        [styles.home]: isHomePage,
+        [styles.fixed]: isFixed,
+      })}>
       <div className={clsx('container', styles.container)}>
         <div className={styles.row}>
           <Logo />

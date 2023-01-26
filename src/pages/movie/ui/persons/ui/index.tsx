@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import { useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
-import { CarouselMultiply, Title } from 'shared/ui';
+import { Title } from 'shared/ui/title';
+import { CarouselMultiply } from 'shared/ui/carousel-multiply';
 import { PersonItem } from './person-item';
 import styles from './styles.module.scss';
 

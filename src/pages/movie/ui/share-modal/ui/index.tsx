@@ -32,20 +32,26 @@ export const ShareModal = () => {
       <Popup rootClassName={styles.root} className={styles.modal} isOpen={shareModal.isOpen} close={shareModal.close}>
         <Info />
         <div className={styles.content}>
-          <button onClick={handleCopy} className={clsx('btn-reset', styles.btn)}>
-            <span>Скопировать ссылку</span>
-            <LinkIcon />
-          </button>
-          {items.map((item, idx) => {
-            const Button = item.button;
+          <div className={styles.btns}>
+            <div className={styles.item}>
+              <button onClick={handleCopy} className={clsx('btn-reset', styles.btn)}>
+                <span>Скопировать ссылку</span>
+                <LinkIcon />
+              </button>
+            </div>
+            {items.map((item, idx) => {
+              const Button = item.button;
 
-            return (
-              <Button key={idx} resetButtonStyle={false} url={URL} className={clsx('btn-reset', styles.btn)}>
-                <span>{item.text}</span>
-                {item.icon}
-              </Button>
-            );
-          })}
+              return (
+                <div key={idx} className={styles.item}>
+                  <Button resetButtonStyle={false} url={URL} className={clsx('btn-reset', styles.btn)}>
+                    <span>{item.text}</span>
+                    {item.icon}
+                  </Button>
+                </div>
+              );
+            })}
+          </div>
         </div>
         <Popup.Close onClick={shareModal.close} />
       </Popup>

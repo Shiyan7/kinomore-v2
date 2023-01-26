@@ -9,10 +9,10 @@ import styles from './styles.module.scss';
 const AMOUNT_GRADES = 10;
 
 export const GradeModal = () => {
-  const data = useStore(pageModel.$movie);
-  const gradeModal = useToggler(pageModel.gradeModalToggler);
   const [rating, setRating] = useState<number>(0);
   const [hover, setHover] = useState<number | null>(null);
+  const data = useStore(pageModel.$movie);
+  const gradeModal = useToggler(pageModel.gradeModalToggler);
 
   return (
     <Popup className={styles.modal} isOpen={gradeModal.isOpen} close={gradeModal.close}>
@@ -31,8 +31,7 @@ export const GradeModal = () => {
                 key={idx}
                 className={clsx(styles.label, isActive && styles.active)}
                 onMouseEnter={() => setHover(ratingValue)}
-                onMouseLeave={() => setHover(null)}
-              >
+                onMouseLeave={() => setHover(null)}>
                 <input hidden type="radio" value={ratingValue} onClick={() => setRating(ratingValue)} />
                 {ratingValue}
               </label>

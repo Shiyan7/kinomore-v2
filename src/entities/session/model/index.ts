@@ -39,9 +39,7 @@ export function createSession() {
 
   sample({
     clock: [loginFx.doneData, registerFx.doneData, refreshFx.doneData],
-    fn: ({ accessToken }) => {
-      return accessToken;
-    },
+    fn: ({ accessToken }) => accessToken,
     target: setAccessTokenFx,
   });
 

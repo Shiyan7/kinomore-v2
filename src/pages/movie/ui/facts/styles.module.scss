@@ -17,11 +17,11 @@
 .item {
   padding-top: 15px;
   padding-bottom: 17px;
-  font-size: 14px;
   font-weight: 300;
-  line-height: 22px;
   color: var(--color-white);
   border-top: 1px solid rgba(#fff, 0.2);
+  font-size: 14px;
+  line-height: 22px;
 
   @media (max-width: 576px) {
     font-size: 12.8px;
@@ -29,12 +29,16 @@
     padding-bottom: 14px;
   }
 
+	@media (max-width: 360px) {
+    font-size: 11.5px;
+    line-height: 21px;
+  }
+
   &:last-child {
     border-bottom: 1px solid rgba(#fff, 0.2);
   }
 
   a {
-    --duration: 0.2s;
     position: relative;
     display: inline-block;
     font-weight: 400;
@@ -50,7 +54,7 @@
       width: 100%;
       height: 1px;
       background-color: rgba(#fff, 0.4);
-      transition: height var(--duration);
+      transition: height 0.2s;
     }
 
     &:hover,
@@ -70,8 +74,20 @@
   transition: color var(--duration);
 
   @media (max-width: 576px) {
-    font-size: 14px;
-    line-height: 17px;
+    font-size: 12.8px;
+		margin-top: 12px;
+  }
+
+	@media (max-width: 360px) {
+    font-size: 11.5px;
+    line-height: 21px;
+		margin-top: 9px;
+  }
+
+	@media (any-hover: hover) {
+    &:hover {
+			color: rgba(#fff, 0.8);
+    }
   }
 
   &:active {
