@@ -1,6 +1,5 @@
-import axios from 'axios';
-import { getCookie, hasCookie, setCookie, deleteCookie } from 'cookies-next';
-import { createEffect, createStore, sample, attach } from 'effector';
+import { getCookie, setCookie, deleteCookie } from 'cookies-next';
+import { createEffect, createStore, sample, attach, forward, createEvent } from 'effector';
 import { internalApi, instance, type User } from 'shared/api/internal';
 import { ACCESS_TOKEN } from 'shared/config';
 
@@ -16,72 +15,75 @@ function removeAccessToken() {
   deleteCookie(ACCESS_TOKEN);
 }
 
-export function createSession() {
-  const setAccessTokenFx = createEffect({ handler: setAccessToken });
-  const removeAccessTokenFx = createEffect({ handler: removeAccessToken });
+const setAccessTokenFx = createEffect({ handler: setAccessToken });
+const removeAccessTokenFx = createEffect({ handler: removeAccessToken });
 
-  const loginFx = attach({ effect: internalApi.login });
-  const registerFx = attach({ effect: internalApi.register });
-  const logoutFx = attach({ effect: internalApi.logout });
-  const refreshFx = attach({ effect: internalApi.refresh });
+export const loginFx = attach({ effect: internalApi.login });
+export const registerFx = attach({ effect: internalApi.register });
 
-  const $user = createStore<User | null>(null)
-    .on([loginFx.doneData, registerFx.doneData, refreshFx.doneData], (_, payload) => payload.user)
-    .reset(removeAccessTokenFx.done);
+export const logout = createEvent();
 
-  const $isAuth = $user.map((user) => !!user);
+const logoutFx = attach({ effect: internalApi.logout });
 
-  const $hasToken = createStore(Boolean(getAccessToken()))
-    .on(setAccessTokenFx.done, () => true)
-    .on(removeAccessTokenFx.done, () => false);
+forward({
+  from: logout,
+  to: logoutFx,
+});
 
-  const $isLoading = createStore(false).on([loginFx.pending, registerFx.pending], (_, payload) => payload);
+export const startRefresh = createEvent();
 
-  sample({
-    clock: [loginFx.doneData, registerFx.doneData, refreshFx.doneData],
-    fn: ({ accessToken }) => accessToken,
-    target: setAccessTokenFx,
-  });
+const refreshFx = attach({ effect: internalApi.refresh });
 
-  sample({
-    clock: logoutFx.doneData,
-    target: removeAccessTokenFx,
-  });
+forward({
+  from: startRefresh,
+  to: refreshFx,
+});
 
-  instance.interceptors.request.use((config) => {
-    config.headers.Authorization = `Bearer ${getCookie(ACCESS_TOKEN)}`;
+export const $user = createStore<User | null>(null)
+  .on([loginFx.doneData, registerFx.doneData, refreshFx.doneData], (_, payload) => payload.user)
+  .reset(removeAccessTokenFx.done);
 
-    return config;
-  });
+export const $isAuth = $user.map((user) => !!user);
 
-  instance.interceptors.response.use(
-    (config) => {
-      return config;
-    },
-    async (error) => {
-      const originalRequest = error.config;
-      if (error.response.status === 401 && hasCookie(ACCESS_TOKEN) && error.config && !error.config._isRetry) {
-        originalRequest._isRetry = true;
-        try {
-          const { data } = await axios.get(`${process.env.INTERNAL_API_URL}/refresh`, { withCredentials: true });
+export const $hasToken = createStore(Boolean(getAccessToken()))
+  .on(setAccessTokenFx.done, () => true)
+  .on(removeAccessTokenFx.done, () => false);
 
-          setCookie(ACCESS_TOKEN, data?.accessToken);
-          return instance.request(originalRequest);
-        } catch (e) {
-          console.error(e);
-        }
+export const $isLoading = createStore(false).on([loginFx.pending, registerFx.pending], (_, payload) => payload);
+
+sample({
+  clock: [loginFx.doneData, registerFx.doneData, refreshFx.doneData],
+  fn: ({ accessToken }) => accessToken,
+  target: setAccessTokenFx,
+});
+
+sample({
+  clock: logoutFx.doneData,
+  target: removeAccessTokenFx,
+});
+
+instance.interceptors.request.use((config) => {
+  config.headers.Authorization = `Bearer ${getAccessToken()}`;
+
+  return config;
+});
+
+instance.interceptors.response.use(
+  (res) => {
+    return res;
+  },
+  async (err) => {
+    const originalConfig = err.config;
+
+    if (err.response?.status === 401) {
+      try {
+        startRefresh();
+        return instance.request(originalConfig);
+      } catch (e) {
+        return Promise.reject(e);
       }
     }
-  );
 
-  return {
-    $user,
-    $isAuth,
-    $hasToken,
-    $isLoading,
-    login: loginFx,
-    logout: logoutFx,
-    refresh: refreshFx,
-    register: registerFx,
-  };
-}
+    return Promise.reject(err);
+  }
+);

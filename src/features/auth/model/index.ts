@@ -1,7 +1,7 @@
 import { combine, createEvent, createStore, sample, forward, attach } from 'effector';
 import { not } from 'patronum/not';
 import { string } from 'yup';
-import { session } from 'entities/session';
+import { sessionModel } from 'entities/session';
 import { createForm } from 'shared/lib/effector-react-form';
 import { createObjectValidator } from 'shared/form';
 import { createToggler } from 'shared/lib/toggler';
@@ -68,7 +68,7 @@ sample({
   source: formValue,
   filter: not($isNewUser),
   fn: (value) => value,
-  target: session.login,
+  target: sessionModel.loginFx,
 });
 
 sample({
@@ -76,5 +76,5 @@ sample({
   source: formValue,
   filter: $isNewUser,
   fn: (value) => value,
-  target: session.register,
+  target: sessionModel.registerFx,
 });

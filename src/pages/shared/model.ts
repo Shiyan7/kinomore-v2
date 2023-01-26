@@ -1,11 +1,11 @@
 import { sample, createEvent } from 'effector';
-import { session } from 'entities/session';
+import { sessionModel } from 'entities/session';
 
 export const appStarted = createEvent();
 
 sample({
   clock: appStarted,
-  filter: session.$hasToken,
+  filter: sessionModel.$hasToken,
   fn: () => null,
-  target: session.refresh,
+  target: sessionModel.startRefresh,
 });

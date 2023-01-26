@@ -1,3 +1,1 @@
-import { createSession } from './model';
-
-export const session = createSession();
+export * as sessionModel from './model';

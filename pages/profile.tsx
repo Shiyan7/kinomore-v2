@@ -1,14 +1,14 @@
 import { useEvent, useStore } from 'effector-react';
-import { session } from 'entities/session';
+import { sessionModel } from 'entities/session';
 
 const ProfilePage = () => {
-  const data = useStore(session.$user);
-  const logout = useEvent(session.logout);
+  const data = useStore(sessionModel.$user);
+  const logout = useEvent(sessionModel.logout);
 
   return (
     <div>
       {data?.email}
-      <button onClick={logout}>выйти</button>
+      <button onClick={() => logout()}>выйти</button>
     </div>
   );
 };
