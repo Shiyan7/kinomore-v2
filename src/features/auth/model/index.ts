@@ -1,4 +1,4 @@
-import { attach, combine, createEvent, createStore, sample, forward } from 'effector';
+import { combine, createEvent, createStore, sample, forward, attach } from 'effector';
 import { not } from 'patronum/not';
 import { string } from 'yup';
 import { session } from 'entities/session';
@@ -8,8 +8,6 @@ import { createToggler } from 'shared/lib/toggler';
 import { internalApi } from 'shared/api';
 
 export const authWindowToggler = createToggler();
-
-export const checkUserFx = attach({ effect: internalApi.checkUser });
 
 export const emailForm = createForm({
   initialValues: {
@@ -39,6 +37,8 @@ export const $progress = createStore(5)
 export const $state = createStore<'email' | 'password'>('email')
   .on(continueClicked, () => 'password')
   .on(editClicked, () => 'email');
+
+export const checkUserFx = attach({ effect: internalApi.checkUser });
 
 export const $isNewUser = createStore(false);
 

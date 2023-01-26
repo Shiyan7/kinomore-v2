@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getCookie, hasCookie, setCookie, deleteCookie } from 'cookies-next';
-import { createEffect, createEvent, createStore, sample, attach } from 'effector';
-import { internalApi, instance, type UserWithTokensDto } from 'shared/api/internal';
+import { createEffect, createStore, sample, attach } from 'effector';
+import { internalApi, instance, type User } from 'shared/api/internal';
 import { ACCESS_TOKEN } from 'shared/config';
 
 function getAccessToken() {
@@ -25,36 +25,20 @@ export function createSession() {
   const logoutFx = attach({ effect: internalApi.logout });
   const refreshFx = attach({ effect: internalApi.refresh });
 
-  const logout = createEvent();
-  const startRefresh = createEvent();
-
-  const $session = createStore<UserWithTokensDto | null>(null)
-    .on([loginFx.doneData, registerFx.doneData, refreshFx.doneData], (_, payload) => payload)
+  const $user = createStore<User | null>(null)
+    .on([loginFx.doneData, registerFx.doneData, refreshFx.doneData], (_, payload) => payload.user)
     .reset(removeAccessTokenFx.done);
 
-  const $isAuth = $session.map((dto) => !!dto?.user);
+  const $isAuth = $user.map((user) => !!user);
 
   const $hasToken = createStore(Boolean(getAccessToken()))
     .on(setAccessTokenFx.done, () => true)
     .on(removeAccessTokenFx.done, () => false);
 
-  const $sessionIsLoaded = createStore(false)
-    .on($session, (_, payload) => Boolean(payload))
-    .reset(logout);
-
-  const $sessionIsLoading = createStore(false).on(
-    [loginFx.pending, registerFx.pending, refreshFx.pending],
-    (_, payload) => payload
-  );
-
-  sample({
-    clock: startRefresh,
-    target: refreshFx,
-  });
+  const $isLoading = createStore(false).on([loginFx.pending, registerFx.pending], (_, payload) => payload);
 
   sample({
     clock: [loginFx.doneData, registerFx.doneData, refreshFx.doneData],
-    filter: Boolean,
     fn: ({ accessToken }) => {
       return accessToken;
     },
@@ -63,11 +47,6 @@ export function createSession() {
 
   sample({
     clock: logoutFx.doneData,
-    target: logout,
-  });
-
-  sample({
-    clock: logout,
     target: removeAccessTokenFx,
   });
 
@@ -98,16 +77,13 @@ export function createSession() {
   );
 
   return {
+    $user,
     $isAuth,
     $hasToken,
-    $session,
-    $sessionIsLoaded,
-    $sessionIsLoading,
-    startRefresh,
+    $isLoading,
     login: loginFx,
+    logout: logoutFx,
+    refresh: refreshFx,
     register: registerFx,
-    logout,
   };
 }
-
-export type Session = ReturnType<typeof createSession>;

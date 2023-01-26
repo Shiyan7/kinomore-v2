@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { useStore, useEvent } from 'effector-react';
 import { authModel } from 'features/auth';
+import { session } from 'entities/session';
 import { useForm } from 'shared/lib/effector-react-form';
 import { Button } from 'shared/ui/button';
 import { Field, Form } from 'shared/form';
@@ -11,6 +12,7 @@ import styles from './styles.module.scss';
 export const PasswordForm = () => {
   const { handleSubmit, controller } = useForm({ form: authModel.passwordForm, resetUnmount: false });
   const { email } = useStore(authModel.emailForm.$values);
+  const pending = useStore(session.$isLoading);
   const inputRef = useRef<HTMLInputElement>(null);
   const isNewUser = useStore(authModel.$isNewUser);
   const editClicked = useEvent(authModel.editClicked);
@@ -46,7 +48,7 @@ export const PasswordForm = () => {
           </Transition>
         </div>
         <Transition offset={40} delay={170}>
-          <Button className={styles.btn} type="submit">
+          <Button loading={pending} className={styles.btn} type="submit">
             {isNewUser ? 'Зарегистрироваться' : 'Войти'}
           </Button>
         </Transition>
