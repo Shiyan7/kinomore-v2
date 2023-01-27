@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
-import { useEffect, useRef, useState, type FC } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Spinner, Title, Rating, VolumeSlashIcon, VolumeHighIcon } from 'shared/ui';
 import { usePlayer } from './lib';
 import type { Slide } from './types';
