@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { IMovieItem } from 'shared/api';
@@ -11,7 +10,7 @@ interface MovieItemProps {
   item: IMovieItem;
 }
 
-export const MovieItem: FC<MovieItemProps> = ({ item }) => {
+export const MovieItem = ({ item }: MovieItemProps) => {
   return (
     <Link className={styles.item} href={`/film/${item?.id}`}>
       <div className={styles.imageWrapper}>

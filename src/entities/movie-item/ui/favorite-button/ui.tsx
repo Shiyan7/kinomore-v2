@@ -1,4 +1,4 @@
-import type { FC, MouseEvent } from 'react';
+import type { MouseEvent } from 'react';
 import { BookmarkIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 
@@ -6,7 +6,7 @@ interface FavoriteButtonProps {
   id: number | undefined;
 }
 
-export const FavoriteButton: FC<FavoriteButtonProps> = ({ id }) => {
+export const FavoriteButton = ({ id }: FavoriteButtonProps) => {
   const handleFavorite = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 

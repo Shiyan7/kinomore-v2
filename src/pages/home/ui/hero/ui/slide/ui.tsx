@@ -16,7 +16,7 @@ interface SlideProps {
 
 const TIMEOUT_MS = 2000;
 
-export const HeroSlide: FC<SlideProps> = ({ item, isActiveSlide }) => {
+export const HeroSlide = ({ item, isActiveSlide }: SlideProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { play, stop } = usePlayer(videoRef);
   const [isMuted, setIsMuted] = useState<boolean>(true);

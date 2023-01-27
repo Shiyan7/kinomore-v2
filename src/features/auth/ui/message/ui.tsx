@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import type { FC } from 'react';
 import { EditIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 
@@ -11,7 +10,7 @@ interface MessageProps {
   className?: string;
 }
 
-export const Message: FC<MessageProps> = ({ title, isEditable, onEdit, description, className }) => {
+export const Message = ({ title, isEditable, onEdit, description, className }: MessageProps) => {
   return (
     <div className={clsx(styles.container, isEditable && styles.isEditable, className)}>
       {isEditable && (

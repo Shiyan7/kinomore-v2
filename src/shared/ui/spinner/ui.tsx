@@ -1,4 +1,4 @@
-import type { FC, CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.scss';
 
@@ -10,7 +10,7 @@ interface SpinnerProps {
   r?: number;
 }
 
-export const Spinner: FC<SpinnerProps> = ({ className, size = 50, r = 20, stroke = '#fff', strokeWidth = 5 }) => {
+export const Spinner = ({ className, size = 50, r = 20, stroke = '#fff', strokeWidth = 5 }: SpinnerProps) => {
   return (
     <div className={clsx(styles.spinner, className)} style={{ '--spinner-size': `${size}px` } as CSSProperties}>
       <svg viewBox={`0 0 ${size} ${size}`}>

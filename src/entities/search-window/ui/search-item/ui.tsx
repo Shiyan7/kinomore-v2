@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { FC } from 'react';
 import type { IMovieItem } from 'shared/api';
 import { getRating } from 'shared/lib';
 import { Rating } from 'shared/ui/rating';
@@ -10,7 +9,7 @@ interface SearchItemProps {
   item: IMovieItem;
 }
 
-export const SearchItem: FC<SearchItemProps> = ({ item }) => {
+export const SearchItem = ({ item }: SearchItemProps) => {
   return (
     <li className={styles.item}>
       <Link className={styles.link} href={`/film/${item?.id}`}>

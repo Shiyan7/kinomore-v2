@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState, type FC, PropsWithChildren } from 'react';
+import { useEffect, useRef, useState, type PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
 
-interface PortalProps {
+interface PortalProps extends PropsWithChildren {
   rootId?: string;
 }
 
-export const Portal: FC<PropsWithChildren<PortalProps>> = ({ rootId, children }) => {
+export const Portal = ({ rootId, children }: PortalProps) => {
   const [mounted, setMounted] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
 

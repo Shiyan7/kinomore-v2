@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { FC } from 'react';
 import type { Person } from 'shared/api';
 import { getProfession } from './lib';
 import styles from './styles.module.scss';
@@ -9,7 +8,7 @@ interface PersonItemProps {
   item: Person;
 }
 
-export const PersonItem: FC<PersonItemProps> = ({ item }) => {
+export const PersonItem = ({ item }: PersonItemProps) => {
   return (
     <Link className={styles.item} href="#">
       <div className={styles.image}>

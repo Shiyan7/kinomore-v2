@@ -7,12 +7,12 @@ import { CarouselMultiply, type CarouselMultiplyProps } from 'shared/ui/carousel
 import { ChevronIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 
-interface CategoryProps {
+interface CategoryProps extends PropsWithChildren {
   className?: string;
   containerClass?: string;
 }
 
-export const Category = ({ className, containerClass, children }: PropsWithChildren<CategoryProps>) => {
+export const Category = ({ className, containerClass, children }: CategoryProps) => {
   return (
     <section className={clsx(styles.section, className)}>
       <div className={clsx('container', containerClass, styles.container)}>{children}</div>
