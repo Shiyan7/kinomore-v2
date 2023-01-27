@@ -29,14 +29,17 @@ export const passwordForm = createForm({
 
 export const editClicked = createEvent();
 export const continueClicked = createEvent();
+export const authorized = createEvent();
 
 export const $progress = createStore(5)
   .on(continueClicked, () => 50)
-  .on(editClicked, () => 5);
+  .on(editClicked, () => 5)
+  .on(authorized, () => 100);
 
-export const $state = createStore<'email' | 'password'>('email')
+export const $state = createStore<'email' | 'password' | 'authorized'>('email')
   .on(continueClicked, () => 'password')
-  .on(editClicked, () => 'email');
+  .on(editClicked, () => 'email')
+  .on(authorized, () => 'authorized');
 
 export const checkUserFx = attach({ effect: internalApi.checkUser });
 
@@ -77,4 +80,9 @@ sample({
   filter: $isNewUser,
   fn: (value) => value,
   target: sessionModel.registerFx,
+});
+
+forward({
+  from: [sessionModel.loginFx.doneData, sessionModel.registerFx.doneData],
+  to: authorized,
 });

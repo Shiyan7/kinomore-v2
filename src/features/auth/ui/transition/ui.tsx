@@ -3,25 +3,32 @@ import { useEffect, useState, type CSSProperties, PropsWithChildren } from 'reac
 import styles from './styles.module.scss';
 
 interface TransitionProps extends PropsWithChildren {
+  startIn?: boolean;
   delay?: number;
   offset?: number;
-  variant?: 'bounceInBottom';
+  animation?: 'bounceInUp' | 'bounceOutUp';
 }
 
-export const Transition = ({ children, variant = 'bounceInBottom', offset = 40, delay = 0 }: TransitionProps) => {
+export const Transition = ({
+  children,
+  animation = 'bounceInUp',
+  offset = 40,
+  delay = 0,
+  startIn = true,
+}: TransitionProps) => {
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
     setTimeout(() => {
-      setMounted(true);
+      setMounted(startIn);
     }, delay);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [startIn]);
 
   return (
     <div
       style={{ '--offset': `${offset}px`, '--delay': `${delay}s` } as CSSProperties}
-      className={clsx(styles[variant], mounted && styles.mounted)}>
+      className={clsx(startIn && styles[animation], mounted && styles.mounted)}>
       {children}
     </div>
   );

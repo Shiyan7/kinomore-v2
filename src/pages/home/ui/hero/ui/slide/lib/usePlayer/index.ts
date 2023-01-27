@@ -1,1 +1,1 @@
-export { usePlayer } from './usePlayer';
+export * from './usePlayer';

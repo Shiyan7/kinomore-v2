@@ -1,4 +1,4 @@
-.bounceInBottom {
+.bounceInUp {
   transform: translateY(var(--offset));
   opacity: 0;
   transition: opacity var(--duration), transform var(--duration);
@@ -7,4 +7,14 @@
     opacity: 1;
     transform: translateY(0px);
   }
+}
+
+.bounceOutUp {
+	transform: translateY(-30px);
+	opacity: 0;
+  transition: opacity var(--duration), transform var(--duration);
+
+	&.mounted {
+		position: absolute;
+	}
 }

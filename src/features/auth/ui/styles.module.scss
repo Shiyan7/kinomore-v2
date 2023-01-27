@@ -11,6 +11,7 @@
   background-color: hsl(0, 0%, 2%, 95%);
   backdrop-filter: blur(7px);
   transition: opacity var(--duration), visibility var(--duration);
+	scroll-behavior: smooth;
 }
 
 .container {
@@ -34,4 +35,8 @@
     padding-left: 14px;
     padding-right: 14px;
   }
+}
+
+.message {
+	margin-top: 0;
 }
