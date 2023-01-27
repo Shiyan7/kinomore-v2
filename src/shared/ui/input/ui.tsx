@@ -14,7 +14,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const [isFocus, setIsFocus] = useState<boolean>(false);
 
     const handleOnBlur = () => {
-      /* p.s: не работает без переданного value параметра */
       if (value === '') {
         setIsFocus(false);
       }
@@ -37,8 +36,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <button
             type="button"
             onClick={onClear}
-            className={clsx('btn-reset', value && styles.visibile, styles.clearBtn)}
-          >
+            className={clsx('btn-reset', value && styles.visibile, styles.clearBtn)}>
             <CloseIcon />
           </button>
         )}

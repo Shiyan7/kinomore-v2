@@ -13,15 +13,15 @@ interface MessageProps {
 
 export const Message: FC<MessageProps> = ({ title, isEditable, onEdit, description, className }) => {
   return (
-    <div className={clsx(styles.messageWrapper, isEditable && styles.isEditable, className)}>
+    <div className={clsx(styles.container, isEditable && styles.isEditable, className)}>
       {isEditable && (
         <button onClick={onEdit} className={clsx('btn-reset', styles.edit)}>
           <EditIcon />
         </button>
       )}
       <div className={clsx(styles.message, isEditable && styles.right)}>
-        <span className={styles.messageTitle}>{title}</span>
-        {description && <p className={styles.messageDesc}>{description}</p>}
+        <span className={styles.title}>{title}</span>
+        {description && <p className={styles.desc}>{description}</p>}
       </div>
     </div>
   );

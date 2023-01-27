@@ -6,7 +6,7 @@
   max-width: 320px;
   margin: 0 auto;
   padding: 0 15px;
-  margin-top: 40px;
+  margin-top: 25px;
 
   @media (max-width: 576px) {
     margin-top: 30px;
@@ -32,4 +32,19 @@
 
 .btn {
   width: 100%;
+}
+
+.policy {
+	width: 100%;
+	margin-top: 25px;
+}
+
+.caption {
+	display: block;
+  font-weight: 300;
+  font-size: 11.5px;
+  line-height: 14px;
+  color: rgba(#fff, 0.5);
+  transition: opacity var(--duration);
+  margin-top: 2px;
 }

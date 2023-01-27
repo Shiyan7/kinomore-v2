@@ -3,6 +3,7 @@ export * from './button';
 export * from './carousel-multiply';
 export * from './icons';
 export * from './input';
+export * from './link';
 export * from './modal';
 export * from './popup';
 export * from './portal';

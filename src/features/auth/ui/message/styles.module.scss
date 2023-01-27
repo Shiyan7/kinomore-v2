@@ -1,4 +1,4 @@
-.messageWrapper {
+.container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -51,7 +51,7 @@
   min-width: 430px;
   padding: 17px;
   overflow: hidden;
-  background-color: #2a2a2a;
+  background-color: hsl(0,0, 15%);
   border-radius: 16px 16px 16px 0;
 
   &.right {
@@ -82,7 +82,7 @@
   }
 }
 
-.messageTitle {
+.title {
   display: block;
   font-weight: 700;
   font-size: 13.5px;
@@ -95,7 +95,7 @@
   }
 }
 
-.messageDesc {
+.desc {
   margin: 0;
   font-weight: 300;
   font-size: 12px;

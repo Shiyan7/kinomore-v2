@@ -1,0 +1,27 @@
+.link {
+	position: relative;
+	display: inline-block;
+	font-weight: 400;
+	color: var(--color-white);
+	outline: none;
+	font-size: 11.5px;
+
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background-color: rgba(#fff, 0.4);
+		transition: height 0.2s;
+	}
+
+	&:hover,
+	&:focus-within {
+		&:before {
+			height: calc(100% + 2px);
+		}
+	}
+}

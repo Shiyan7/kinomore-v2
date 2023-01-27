@@ -11,6 +11,7 @@ export enum RoutesEnum {
   NewFilms = '/new-films',
   ComedyFilms = '/comedy-films',
   ForFamily = '/for-family',
+  Policy = '/policy',
 }
 
 export enum GenresEnum {

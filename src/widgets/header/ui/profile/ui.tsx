@@ -20,7 +20,7 @@ export const Profile = () => {
   );
 
   const ProfileButton = (
-    <button onClick={authWindow.open} type="button" className={clsx('btn-reset', styles.profile)}>
+    <button onClick={authWindow.open} className={clsx('btn-reset', styles.profile)}>
       <ProfileIcon />
       Войти
     </button>
