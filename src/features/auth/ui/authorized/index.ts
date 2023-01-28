@@ -1,1 +1,0 @@
-export { Authorized } from './ui';

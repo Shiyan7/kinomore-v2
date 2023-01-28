@@ -1,11 +1,13 @@
 import { combine, createEvent, createStore, sample, forward, attach } from 'effector';
-import { not } from 'patronum/not';
+import { delay, not } from 'patronum';
 import { string } from 'yup';
 import { sessionModel } from 'entities/session';
+import { navigationModel } from 'entities/navigation';
 import { createForm } from 'shared/lib/effector-react-form';
 import { createObjectValidator } from 'shared/form';
 import { createToggler } from 'shared/lib/toggler';
 import { internalApi } from 'shared/api';
+import { RoutesEnum } from 'shared/config';
 
 export const authWindowToggler = createToggler();
 
@@ -29,17 +31,17 @@ export const passwordForm = createForm({
 
 export const editClicked = createEvent();
 export const continueClicked = createEvent();
-export const authorized = createEvent();
+export const authSuccess = createEvent();
 
 export const $progress = createStore(5)
-  .on(continueClicked, () => 50)
   .on(editClicked, () => 5)
-  .on(authorized, () => 100);
+  .on(continueClicked, () => 50)
+  .on(authSuccess, () => 100);
 
 export const $state = createStore<'email' | 'password' | 'authorized'>('email')
-  .on(continueClicked, () => 'password')
   .on(editClicked, () => 'email')
-  .on(authorized, () => 'authorized');
+  .on(continueClicked, () => 'password')
+  .on(authSuccess, () => 'authorized');
 
 export const checkUserFx = attach({ effect: internalApi.checkUser });
 
@@ -82,7 +84,27 @@ sample({
   target: sessionModel.registerFx,
 });
 
+/* Вызываем эвент, который запустит редирект на страницу профиля */
+
+const redirectToProfile = createEvent<string>();
+
 forward({
   from: [sessionModel.loginFx.doneData, sessionModel.registerFx.doneData],
-  to: authorized,
+  to: authSuccess,
+});
+
+sample({
+  clock: authSuccess,
+  fn: () => RoutesEnum.Profile,
+  target: redirectToProfile,
+});
+
+/* Пушим в урл страницу профиля через 1.5 сек когда все анимации закончились */
+
+const REDIRECT_DELAY = 1500;
+
+delay({
+  source: redirectToProfile,
+  timeout: REDIRECT_DELAY,
+  target: navigationModel.push,
 });

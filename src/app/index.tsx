@@ -2,7 +2,7 @@ import NextNProgress from 'nextjs-progressbar';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import { useEvent } from 'effector-react';
+import { useEvent, useGate } from 'effector-react';
 import { useEffect } from 'react';
 import { BaseLayout } from 'widgets/layouts';
 import { navigationModel } from 'entities/navigation';
@@ -16,6 +16,8 @@ const App = ({ Component, pageProps }: AppProps) => {
     routerUpdated(router);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
+
+  useGate(navigationModel.RouterGate, { router });
 
   return (
     <>
