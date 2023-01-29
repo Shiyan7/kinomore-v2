@@ -10,7 +10,7 @@ import { items } from './config';
 import styles from './styles.module.scss';
 
 export const Menu = () => {
-  const menu = useToggler(headerModel.menuToggler);
+  const menu = useToggler(headerModel.menu);
   const { pathname } = useRouter();
 
   useLockedBody(menu.isOpen);
@@ -35,8 +35,7 @@ export const Menu = () => {
                 key={item.text}
                 in={menu.isOpen}
                 timeout={item.timeout}
-                classNames={{ enterDone: styles.done }}
-              >
+                classNames={{ enterDone: styles.done }}>
                 <li className={clsx(styles.item, isCurrentPage && styles.current)}>
                   <Link href={item.href} className={styles.link}>
                     {item.text}

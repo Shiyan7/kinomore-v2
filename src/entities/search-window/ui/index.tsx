@@ -9,7 +9,7 @@ import { SearchList } from './search-list';
 import styles from './styles.module.scss';
 
 export const SearchWindow = () => {
-  const searchWindow = useToggler(searchModel.searchWindowToggler);
+  const searchWindow = useToggler(searchModel.searchWindow);
   const debouncedValue = useStore(searchModel.$debouncedValue);
 
   return (

@@ -7,7 +7,7 @@ import { getVotes } from './lib';
 import styles from './styles.module.scss';
 
 export const Rating = () => {
-  const gradeModal = useToggler(pageModel.gradeModalToggler);
+  const gradeModal = useToggler(pageModel.gradeModal);
   const data = useStore(pageModel.$movie);
 
   return (

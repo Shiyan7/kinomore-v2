@@ -5,7 +5,7 @@ import { SearchIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 
 export const SearchButton = () => {
-  const searchWindow = useToggler(searchModel.searchWindowToggler);
+  const searchWindow = useToggler(searchModel.searchWindow);
 
   return (
     <button onClick={searchWindow.open} type="button" className={clsx('btn-reset', styles.btn)}>

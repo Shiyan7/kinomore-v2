@@ -49,7 +49,10 @@ export const $hasToken = createStore(Boolean(getAccessToken()))
   .on(setAccessTokenFx.done, () => true)
   .on(removeAccessTokenFx.done, () => false);
 
-export const $isLoading = createStore(false).on([loginFx.pending, registerFx.pending], (_, payload) => payload);
+export const $isLoading = createStore(false).on(
+  [loginFx.pending, registerFx.pending, logoutFx.pending],
+  (_, payload) => payload
+);
 
 sample({
   clock: [loginFx.doneData, registerFx.doneData, refreshFx.doneData],

@@ -12,7 +12,7 @@ export const GradeModal = () => {
   const [rating, setRating] = useState<number>(0);
   const [hover, setHover] = useState<number | null>(null);
   const data = useStore(pageModel.$movie);
-  const gradeModal = useToggler(pageModel.gradeModalToggler);
+  const gradeModal = useToggler(pageModel.gradeModal);
 
   return (
     <Popup className={styles.modal} isOpen={gradeModal.isOpen} close={gradeModal.close}>

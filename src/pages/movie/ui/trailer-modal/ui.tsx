@@ -10,7 +10,7 @@ export const TrailerModal = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const data = useStore(pageModel.$movie);
   const trailer = getTrailer(data?.videos);
-  const trailerModal = useToggler(pageModel.trailerModalToggler);
+  const trailerModal = useToggler(pageModel.trailerModal);
 
   return (
     <Popup className={styles.modal} isOpen={trailerModal.isOpen} close={trailerModal.close}>

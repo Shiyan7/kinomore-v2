@@ -19,7 +19,7 @@ const items = [
 export const ShareModal = () => {
   const [copy] = useCopyToClipboard();
   const { asPath } = useRouter();
-  const shareModal = useToggler(pageModel.shareModalToggler);
+  const shareModal = useToggler(pageModel.shareModal);
   const URL = `${process.env.CLIENT_URL}${asPath}`;
 
   const handleCopy = () => {

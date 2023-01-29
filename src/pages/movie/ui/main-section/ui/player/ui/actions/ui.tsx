@@ -5,8 +5,8 @@ import { BookmarkIcon, PlayIcon, ShareIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 
 export const Actions = () => {
-  const trailerModal = useToggler(pageModel.trailerModalToggler);
-  const shareModal = useToggler(pageModel.shareModalToggler);
+  const trailerModal = useToggler(pageModel.trailerModal);
+  const shareModal = useToggler(pageModel.shareModal);
 
   return (
     <div className={styles.btns}>

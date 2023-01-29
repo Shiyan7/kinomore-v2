@@ -11,7 +11,7 @@ import { Transition } from './transition';
 import styles from './styles.module.scss';
 
 export const AuthWindow = () => {
-  const authWindow = useToggler(authModel.authWindowToggler);
+  const authWindow = useToggler(authModel.authWindow);
   const windowRef = useRef<HTMLDivElement>(null);
   const state = useStore(authModel.$state);
   const isEmailState = state === 'email';

@@ -9,7 +9,7 @@ import { createToggler } from 'shared/lib/toggler';
 import { internalApi } from 'shared/api';
 import { RoutesEnum } from 'shared/config';
 
-export const authWindowToggler = createToggler();
+export const authWindow = createToggler();
 
 export const emailForm = createForm({
   initialValues: {
@@ -72,7 +72,6 @@ sample({
   clock: passwordForm.onSubmit,
   source: formValue,
   filter: not($isNewUser),
-  fn: (value) => value,
   target: sessionModel.loginFx,
 });
 
@@ -80,31 +79,28 @@ sample({
   clock: passwordForm.onSubmit,
   source: formValue,
   filter: $isNewUser,
-  fn: (value) => value,
   target: sessionModel.registerFx,
 });
 
+const redirectToProfile = createEvent();
+
 forward({
   from: [sessionModel.loginFx.doneData, sessionModel.registerFx.doneData],
-  to: authSuccess,
+  to: [authSuccess, redirectToProfile],
 });
-
-/* Вызываем эвент, который запустит редирект на страницу профиля */
-
-const redirectToProfile = createEvent<string>();
-
-sample({
-  clock: authSuccess,
-  fn: () => RoutesEnum.Profile,
-  target: redirectToProfile,
-});
-
-/* Пушим в урл страницу профиля через 1.5 сек когда все анимации закончились */
 
 const REDIRECT_DELAY = 1500;
+
+const routerChanged = createEvent();
 
 delay({
   source: redirectToProfile,
   timeout: REDIRECT_DELAY,
-  target: navigationModel.push,
+  target: routerChanged,
+});
+
+sample({
+  clock: routerChanged,
+  fn: () => RoutesEnum.Profile,
+  target: [navigationModel.push, authWindow.close],
 });

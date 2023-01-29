@@ -5,7 +5,7 @@ import { BurgerIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 
 export const Burger = () => {
-  const menu = useToggler(headerModel.menuToggler);
+  const menu = useToggler(headerModel.menu);
 
   return (
     <button onClick={menu.toggle} type="button" className={clsx('btn-reset', styles.btn)}>

@@ -9,7 +9,7 @@ import { ProfileIcon } from 'shared/ui/icons';
 import styles from './styles.module.scss';
 
 export const Profile = () => {
-  const authWindow = useToggler(authModel.authWindowToggler);
+  const authWindow = useToggler(authModel.authWindow);
   const isAuth = useStore(sessionModel.$isAuth);
 
   const ProfileLink = (
