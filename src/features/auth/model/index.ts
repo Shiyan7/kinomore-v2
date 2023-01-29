@@ -84,14 +84,14 @@ sample({
   target: sessionModel.registerFx,
 });
 
-/* Вызываем эвент, который запустит редирект на страницу профиля */
-
-const redirectToProfile = createEvent<string>();
-
 forward({
   from: [sessionModel.loginFx.doneData, sessionModel.registerFx.doneData],
   to: authSuccess,
 });
+
+/* Вызываем эвент, который запустит редирект на страницу профиля */
+
+const redirectToProfile = createEvent<string>();
 
 sample({
   clock: authSuccess,

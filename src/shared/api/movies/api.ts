@@ -47,6 +47,8 @@ const routesConfig = http.createRoutesConfig({
       search: [query, '!null', getYears()],
       field: ['name', 'poster.previewUrl', 'year'],
       limit: 30,
+      'sortField[]': 'votes.russianFilmCritics',
+      'sortType[]': '-1',
       sortField: 'year',
       sortType: '-1',
       isStrict: false,
@@ -62,6 +64,4 @@ const routesConfig = http.createRoutesConfig({
   })),
 });
 
-const moviesApi = routesConfig.build();
-
-export { moviesApi };
+export const moviesApi = routesConfig.build();
