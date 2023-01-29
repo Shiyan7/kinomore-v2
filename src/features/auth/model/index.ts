@@ -7,7 +7,7 @@ import { createForm } from 'shared/lib/effector-react-form';
 import { createObjectValidator } from 'shared/form';
 import { createToggler } from 'shared/lib/toggler';
 import { internalApi } from 'shared/api';
-import { RoutesEnum } from 'shared/config';
+import { paths } from 'shared/routing';
 
 export const authWindow = createToggler();
 
@@ -101,6 +101,6 @@ delay({
 
 sample({
   clock: routerChanged,
-  fn: () => RoutesEnum.Profile,
+  fn: () => paths.profile,
   target: [navigationModel.push, authWindow.close],
 });

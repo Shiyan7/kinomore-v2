@@ -8,6 +8,9 @@ const MAX_WORDS = 35;
 
 export const Description = () => {
   const data = useStore(pageModel.$movie);
+
+  /* FIXME: переписать это адское легаси */
+
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const text = data?.description ?? data?.shortDescription ?? 'Без описания';
   const words = text?.split(' ');

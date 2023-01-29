@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { useHeaderFixed } from 'widgets/header';
-import { RoutesEnum } from 'shared/config';
+import { paths } from 'shared/routing';
 import { Burger } from './burger';
 import { Logo } from './logo';
 import { Menu } from './menu';
@@ -13,7 +13,7 @@ import styles from './styles.module.scss';
 export const Header = () => {
   const { asPath } = useRouter();
   const { isFixed } = useHeaderFixed();
-  const isHomePage = asPath === RoutesEnum.Home;
+  const isHomePage = asPath === paths.home;
 
   return (
     <header

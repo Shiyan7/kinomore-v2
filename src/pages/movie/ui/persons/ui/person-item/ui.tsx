@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Person } from 'shared/api';
+import { paths } from 'shared/routing';
 import { getProfession } from './lib';
 import styles from './styles.module.scss';
 
@@ -10,7 +11,7 @@ interface PersonItemProps {
 
 export const PersonItem = ({ item }: PersonItemProps) => {
   return (
-    <Link className={styles.item} href="#">
+    <Link className={styles.item} href={paths.person(item?.id)}>
       <div className={styles.image}>
         <Image sizes="100%" fill src={item?.photo} alt={item?.name ?? item?.enName} />
       </div>

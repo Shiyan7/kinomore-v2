@@ -1,8 +1,8 @@
-import { RoutesEnum } from 'shared/config';
+import { paths } from 'shared/routing';
 
 export const links = [
-  { text: 'Главная', href: RoutesEnum.Home },
-  { text: 'Фильмы', href: RoutesEnum.Films },
-  { text: 'Сериалы', href: RoutesEnum.Series },
-  { text: 'Мультфильмы', href: RoutesEnum.Cartoons },
+  { text: 'Главная', href: paths.home },
+  { text: 'Фильмы', href: paths.films },
+  { text: 'Сериалы', href: paths.series },
+  { text: 'Мультфильмы', href: paths.cartoons },
 ];

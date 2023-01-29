@@ -3,7 +3,7 @@ import { useStore } from 'effector-react';
 import { authModel } from 'features/auth';
 import { useForm } from 'shared/lib/effector-react-form';
 import { Form, Field } from 'shared/form';
-import { RoutesEnum } from 'shared/config';
+import { paths } from 'shared/routing';
 import { Button } from 'shared/ui/button';
 import { Link } from 'shared/ui/link';
 import { Transition } from '../transition';
@@ -43,10 +43,10 @@ export const EmailForm = () => {
         <div className={styles.policy}>
           <span className={styles.caption}>Нажимая «Продолжить», я соглашаюсь</span>
           <span className={styles.caption}>
-            с <Link href={RoutesEnum.Policy}>Политикой конфиденциальности</Link>
+            с <Link href={paths.policy}>Политикой конфиденциальности</Link>
           </span>
           <span className={styles.caption}>
-            с <Link href={RoutesEnum.Policy}>Пользовательским соглашением</Link>
+            с <Link href={paths.policy}>Пользовательским соглашением</Link>
           </span>
         </div>
       </Transition>
