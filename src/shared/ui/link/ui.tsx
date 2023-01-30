@@ -3,13 +3,13 @@ import type { AnchorHTMLAttributes, PropsWithChildren } from 'react';
 import NextLink from 'next/link';
 import styles from './styles.module.scss';
 
-interface LinkProps extends PropsWithChildren<AnchorHTMLAttributes<HTMLLinkElement>> {
+interface LinkProps extends PropsWithChildren<AnchorHTMLAttributes<HTMLAnchorElement>> {
   href: string;
 }
 
-export const Link = ({ className, children, href }: LinkProps) => {
+export const Link = ({ className, children, ...props }: LinkProps) => {
   return (
-    <NextLink href={href} className={clsx(styles.link, className)}>
+    <NextLink className={clsx(styles.link, className)} {...props}>
       {children}
     </NextLink>
   );

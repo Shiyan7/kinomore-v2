@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { http } from './base';
 import type { HeroMovie, UserDto, UserWithTokensDto } from './types';
 
