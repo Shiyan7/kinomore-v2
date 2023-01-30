@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
 import { useEffect, useRef, useState } from 'react';
 import { Spinner, Title, Rating, VolumeSlashIcon, VolumeHighIcon } from 'shared/ui';
+import { paths } from 'shared/routing';
 import { usePlayer } from './lib';
 import type { Slide } from './types';
 import styles from './styles.module.scss';
@@ -40,7 +41,7 @@ export const HeroSlide = ({ item, isActiveSlide }: SlideProps) => {
 
   return (
     <div className={styles.item}>
-      <Link href={`/film/${item?.id}`} className={styles.link} />
+      <Link href={paths.film(item?.id)} className={styles.link} />
       <div className={styles.content}>
         <CSSTransition timeout={0} in={isActive} classNames={{ enterDone: styles.done }}>
           <Title className={styles.title} as="h2" size="small">

@@ -4,8 +4,8 @@ import { useStore } from 'effector-react';
 import { authModel } from 'features/auth';
 import { sessionModel } from 'entities/session';
 import { useToggler } from 'shared/lib/toggler';
-import { RoutesEnum } from 'shared/config';
 import { ProfileIcon } from 'shared/ui/icons';
+import { paths } from 'shared/routing';
 import styles from './styles.module.scss';
 
 export const Profile = () => {
@@ -13,7 +13,7 @@ export const Profile = () => {
   const isAuth = useStore(sessionModel.$isAuth);
 
   const ProfileLink = (
-    <Link href={RoutesEnum.Profile} className={styles.profile}>
+    <Link href={paths.profile} className={styles.profile}>
       <ProfileIcon />
       Профиль
     </Link>
