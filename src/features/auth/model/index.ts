@@ -89,7 +89,7 @@ forward({
   to: [authSuccess, redirectToProfile],
 });
 
-const REDIRECT_DELAY = 1500;
+const REDIRECT_DELAY = 1700;
 
 const routerChanged = createEvent();
 

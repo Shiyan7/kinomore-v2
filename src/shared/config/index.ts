@@ -1,7 +1,5 @@
 export const LIMIT = 15;
 
-export const ACCESS_TOKEN = 'accessToken';
-
 export enum GenresEnum {
   Boevik = 'боевик',
   Fentezi = 'фэнтези',

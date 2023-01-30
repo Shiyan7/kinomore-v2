@@ -14,7 +14,7 @@ export const PasswordForm = () => {
   const { handleSubmit, controller } = useForm({ form: authModel.passwordForm, resetUnmount: false });
   const { email } = useStore(authModel.emailForm.$values);
   const { password } = useStore(authModel.passwordForm.$values);
-  const hashPassword = maskString(password);
+  const maskPassword = maskString(password);
   const pending = useStore(sessionModel.$isLoading);
   const inputRef = useRef<HTMLInputElement>(null);
   const isNewUser = useStore(authModel.$isNewUser);
@@ -62,7 +62,7 @@ export const PasswordForm = () => {
       {isAuthorizedState && (
         <>
           <Transition offset={30} delay={300}>
-            <Message className={styles.message} position="right" title={hashPassword} />
+            <Message className={styles.message} position="right" title={maskPassword} />
           </Transition>
           <Transition offset={30} delay={600}>
             <Message isSuccess title={isNewUser ? 'Успешная регистрация' : 'Вы успешно вошли'} />
