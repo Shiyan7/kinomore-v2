@@ -1,4 +1,4 @@
-import { paths } from 'shared/routing';
+import { paths } from 'shared/routes';
 
 export function getMovieBreadcrumb(type: string | undefined): { text: string; href: string } {
   switch (type) {

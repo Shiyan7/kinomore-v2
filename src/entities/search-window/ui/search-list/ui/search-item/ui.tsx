@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { IMovieItem } from 'shared/api';
 import { getRating } from 'shared/lib';
-import { paths } from 'shared/routing';
+import { paths } from 'shared/routes';
 import { Rating } from 'shared/ui/rating';
 import styles from './styles.module.scss';
 
@@ -13,7 +13,7 @@ interface SearchItemProps {
 export const SearchItem = ({ item }: SearchItemProps) => {
   return (
     <li className={styles.item}>
-      <Link className={styles.link} href={paths.film(item?.id)}>
+      <Link className={styles.link} href={paths.movie(item?.id)}>
         <div className={styles.image}>
           <Image sizes="100%" fill quality={100} alt={item?.name} src={item?.poster?.previewUrl} />
         </div>

@@ -1,4 +1,4 @@
-import { paths } from 'shared/routing';
+import { paths } from 'shared/routes';
 
 export const items = [
   { text: 'Главная', href: paths.home, timeout: 75 },

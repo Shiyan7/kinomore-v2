@@ -2,7 +2,7 @@ import { useStore } from 'effector-react';
 import { Category } from 'widgets/category';
 import { pageModel } from 'pages/home';
 import { MovieItem } from 'entities/movie-item';
-import { paths } from 'shared/routing';
+import { paths } from 'shared/routes';
 
 export const ComedyFilms = () => {
   const data = useStore(pageModel.$comedyFilms);

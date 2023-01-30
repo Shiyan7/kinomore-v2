@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { IMovieItem } from 'shared/api';
 import { Button, Rating } from 'shared/ui';
-import { paths } from 'shared/routing';
+import { paths } from 'shared/routes';
 import { getRating, minutesToHour } from 'shared/lib';
 import { FavoriteButton } from './favorite-button';
 import styles from './styles.module.scss';
@@ -13,7 +13,7 @@ interface MovieItemProps {
 
 export const MovieItem = ({ item }: MovieItemProps) => {
   return (
-    <Link className={styles.item} href={paths.film(item?.id)}>
+    <Link className={styles.item} href={paths.movie(item?.id)}>
       <div className={styles.imageWrapper}>
         <Image
           sizes="100%"

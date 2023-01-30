@@ -5,7 +5,7 @@ import { authModel } from 'features/auth';
 import { sessionModel } from 'entities/session';
 import { useToggler } from 'shared/lib/toggler';
 import { ProfileIcon } from 'shared/ui/icons';
-import { paths } from 'shared/routing';
+import { paths } from 'shared/routes';
 import styles from './styles.module.scss';
 
 export const Profile = () => {

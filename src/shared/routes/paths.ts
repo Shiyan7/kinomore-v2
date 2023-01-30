@@ -8,6 +8,6 @@ export const paths = {
   comedyFilms: '/comedy-films',
   forFamily: '/for-family',
   policy: '/policy',
-  film: (id: number) => `/film/${id}`,
+  movie: (id: number) => `/film/${id}`,
   person: (id: number) => `/name/${id}`,
 };

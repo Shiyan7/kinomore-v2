@@ -1,4 +1,4 @@
-import { paths } from 'shared/routing';
+import { paths } from 'shared/routes';
 
 export const links = [
   { text: 'Главная', href: paths.home },

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Person } from 'shared/api';
-import { paths } from 'shared/routing';
+import { paths } from 'shared/routes';
 import { getProfession } from './lib';
 import styles from './styles.module.scss';
 
