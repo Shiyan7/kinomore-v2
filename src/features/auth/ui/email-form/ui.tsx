@@ -3,7 +3,7 @@ import { useStore } from 'effector-react';
 import { authModel } from 'features/auth';
 import { useForm } from 'shared/lib/effector-react-form';
 import { Form, Field } from 'shared/form';
-import { paths } from 'shared/routes';
+import { paths } from 'shared/routing';
 import { Button } from 'shared/ui/button';
 import { Link } from 'shared/ui/link';
 import { Transition } from '../transition';

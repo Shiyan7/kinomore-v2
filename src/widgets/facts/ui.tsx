@@ -8,10 +8,10 @@ const MAX_FACTS = 5;
 
 interface FactsProps {
   facts: Fact[] | undefined;
-  className?: string;
+  narrow?: boolean;
 }
 
-export const Facts = ({ facts, className }: FactsProps) => {
+export const Facts = ({ facts, narrow }: FactsProps) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   if (!facts || facts?.length < 2) return null;
@@ -22,7 +22,7 @@ export const Facts = ({ facts, className }: FactsProps) => {
 
   return (
     <section className={styles.section}>
-      <div className={clsx('container', styles.container, className)}>
+      <div className={clsx('container', narrow && 'container--narrow', styles.container)}>
         <Title size="medium" className={styles.title}>
           Знаете ли вы, что…
         </Title>

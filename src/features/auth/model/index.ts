@@ -7,7 +7,7 @@ import { createForm } from 'shared/lib/effector-react-form';
 import { createObjectValidator } from 'shared/form';
 import { createToggler } from 'shared/lib/toggler';
 import { internalApi } from 'shared/api';
-import { paths } from 'shared/routes';
+import { paths } from 'shared/routing';
 
 export const authWindow = createToggler();
 

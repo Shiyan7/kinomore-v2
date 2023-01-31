@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
 import { useEffect, useRef, useState } from 'react';
 import { Spinner, Title, Rating, VolumeSlashIcon, VolumeHighIcon } from 'shared/ui';
-import { paths } from 'shared/routes';
+import { paths } from 'shared/routing';
 import { usePlayer } from './lib';
 import type { Slide } from './types';
 import styles from './styles.module.scss';

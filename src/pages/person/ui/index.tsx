@@ -5,7 +5,6 @@ import { Facts } from 'widgets/facts';
 import { pageModel } from 'pages/person';
 import { MainSection } from './main-section';
 import { Filmography } from './filmography';
-import styles from './styles.module.scss';
 
 export const Person: NextPage = () => {
   const data = useStore(pageModel.$person);
@@ -17,15 +16,15 @@ export const Person: NextPage = () => {
   return (
     <>
       <Head>
-        <meta name="description" content={description} />
         <title>{title}</title>
+        <meta name="description" content={description} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={data?.photo} />
       </Head>
       <MainSection />
-      <Facts className={styles.facts} facts={data?.facts} />
       <Filmography />
+      <Facts narrow facts={data?.facts} />
     </>
   );
 };

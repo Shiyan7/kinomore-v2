@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
-import { paths } from 'shared/routes';
+import { paths } from 'shared/routing';
 import styles from './styles.module.scss';
 
 const MAX_PERSONS = 5;

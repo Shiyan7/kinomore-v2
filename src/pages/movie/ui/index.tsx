@@ -20,8 +20,8 @@ export const Movie: NextPage = () => {
   return (
     <>
       <Head>
-        <meta name="description" content={description} />
         <title>{title}</title>
+        <meta name="description" content={description} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={data?.poster?.url} />

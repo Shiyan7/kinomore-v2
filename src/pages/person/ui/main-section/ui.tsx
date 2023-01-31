@@ -2,25 +2,22 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { useStore } from 'effector-react';
 import { pageModel, getPersonName } from 'pages/person';
-import { paths } from 'shared/routes';
-import { Title, Breadcrumbs } from 'shared/ui';
+import { Title } from 'shared/ui/title';
 import { getProfessions, timestampToDate } from './lib';
 import styles from './styles.module.scss';
 
 export const MainSection = () => {
   const data = useStore(pageModel.$person);
   const name = getPersonName(data?.name);
-  const breadcrumbs = [{ href: paths.home, text: 'Главная' }, { text: name }];
 
   const items = [
-    { key: 'Карьера', value: getProfessions(data?.profession) },
+    { key: 'Карьера', value: getProfessions(data?.profession ?? []) },
     { key: 'Дата рождения', value: timestampToDate(data?.birthday, 'D MMMM YYYY') },
   ];
 
   return (
     <section className={styles.section}>
       <div className={clsx('container container--narrow', styles.container)}>
-        <Breadcrumbs className={styles.breadcrumbs} items={breadcrumbs} />
         <div className={styles.top}>
           <div className={styles.photo}>
             <Image priority sizes="100%" fill quality={100} src={data?.photo ?? ''} alt={name} />

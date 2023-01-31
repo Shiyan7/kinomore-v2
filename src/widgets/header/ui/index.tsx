@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { useHeaderFixed } from 'widgets/header';
-import { paths } from 'shared/routes';
+import { paths } from 'shared/routing';
 import { Burger } from './burger';
 import { Logo } from './logo';
 import { Menu } from './menu';
