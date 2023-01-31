@@ -5,7 +5,7 @@ import { MovieItem } from 'entities/movie-item';
 import { paths } from 'shared/routes';
 
 export const ForFamily = () => {
-  const data = useStore(pageModel.$forFamily);
+  const data = useStore(pageModel.$familyMovies);
 
   return (
     <Category>

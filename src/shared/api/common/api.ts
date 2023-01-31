@@ -1,11 +1,11 @@
 import { GenresEnum } from 'shared/config';
 import { getCurrentYear, getYears } from 'shared/lib/get-year';
-import { http, url } from './base';
-import type { Data, IMovie, IMovieItem } from './types';
+import { http } from './config';
+import type { Data, IMovie, IMovieItem, IPerson } from './types';
 
 const routesConfig = http.createRoutesConfig({
-  getNew: http.createRoute<number | void, Data<IMovieItem>>({
-    url,
+  getNewMovies: http.createRoute<number | void, Data<IMovieItem>>({
+    url: '/movie',
     params: {
       'search[]': '5-9',
       'field[]': 'rating.kp',
@@ -16,8 +16,8 @@ const routesConfig = http.createRoutesConfig({
       limit: 15,
     },
   }),
-  getComedy: http.createRoute<void, Data<IMovieItem>>({
-    url,
+  getComedyMovies: http.createRoute<void, Data<IMovieItem>>({
+    url: '/movie',
     params: {
       search: [getCurrentYear(), '7-10', '1', '!null', '!null', '!null'],
       field: ['year', 'rating.kp', 'typeNumber', 'name', 'votes.kp', 'poster.previewUrl'],
@@ -28,8 +28,8 @@ const routesConfig = http.createRoutesConfig({
       limit: 15,
     },
   }),
-  forFamily: http.createRoute<number | void, Data<IMovieItem>>({
-    url,
+  getFamilyMovies: http.createRoute<number | void, Data<IMovieItem>>({
+    url: '/movie',
     params: {
       'search[]': [GenresEnum.Semejnyj, '1-10', '!null'],
       'field[]': ['genres.name', 'rating.kp', 'poster.previewUrl'],
@@ -40,12 +40,12 @@ const routesConfig = http.createRoutesConfig({
       limit: 15,
     },
   }),
-  searchByName: http.createRoute<string | void, Data<IMovieItem>>((query) => ({
-    url,
+  searchMoviesByName: http.createRoute<string | void, Data<IMovieItem>>((query) => ({
+    url: '/movie',
     params: {
       search: [query, '!null', getYears()],
       field: ['name', 'poster.previewUrl', 'year'],
-      'sortField[]': 'votes.russianFilmCritics',
+      'sortField[]': 'votes.kp',
       'sortType[]': '-1',
       sortField: 'year',
       sortType: '-1',
@@ -53,8 +53,15 @@ const routesConfig = http.createRoutesConfig({
       limit: 30,
     },
   })),
-  getById: http.createRoute<string, IMovie>((id) => ({
-    url,
+  getMovieById: http.createRoute<string, IMovie>((id) => ({
+    url: '/movie',
+    params: {
+      search: id,
+      field: 'id',
+    },
+  })),
+  getPersonById: http.createRoute<string, IPerson>((id) => ({
+    url: '/person',
     params: {
       search: id,
       field: 'id',
@@ -62,4 +69,4 @@ const routesConfig = http.createRoutesConfig({
   })),
 });
 
-export const moviesApi = routesConfig.build();
+export const commonApi = routesConfig.build();

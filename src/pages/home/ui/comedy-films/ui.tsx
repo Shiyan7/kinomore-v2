@@ -5,7 +5,7 @@ import { MovieItem } from 'entities/movie-item';
 import { paths } from 'shared/routes';
 
 export const ComedyFilms = () => {
-  const data = useStore(pageModel.$comedyFilms);
+  const data = useStore(pageModel.$comedyMovies);
 
   return (
     <Category>

@@ -1,3 +1,3 @@
 export { internalApi } from './api';
-export { instance } from './base';
+export { internalInstance } from './config';
 export * from './types';

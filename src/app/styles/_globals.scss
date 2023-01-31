@@ -98,6 +98,10 @@ h6 {
   padding-left: 96px;
   padding-right: 96px;
 
+	&--narrow {
+		max-width: 1100px;
+	}
+
   @media (max-width: 1720px) {
     padding-left: 40px;
     padding-right: 40px;

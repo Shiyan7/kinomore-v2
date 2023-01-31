@@ -8,7 +8,7 @@ interface ButtonOwnProps<E extends ElementType = ElementType> {
   loading?: boolean;
   rounded?: boolean;
   size?: 'small' | 'regular' | 'medium' | 'large';
-  variant?: 'primary' | 'white';
+  variant?: 'primary' | 'white' | 'gray';
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   children: ReactNode;
@@ -42,8 +42,7 @@ export const Button = <E extends ElementType = typeof DEFAULT_ELEMENT>({
   return (
     <Element
       className={clsx('btn-reset', styles.btn, rounded && styles.rounded, styles[variant], styles[size], className)}
-      {...props}
-    >
+      {...props}>
       {startIcon && <div className={styles.startIcon}>{startIcon}</div>}
       <span>{loading ? ButtonSpinner : children}</span>
       {endIcon && <div className={styles.endIcon}>{endIcon}</div>}

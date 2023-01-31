@@ -178,11 +178,7 @@ export interface IMovieItem {
   alternativeName: string;
   description: string;
   enName: string;
-  externalId: {
-    imdb: string;
-    kpHD: null;
-    tmdb: number;
-  };
+  externalId: ExternalId;
   id: number;
   logo: Logo;
   movieLength: number;
@@ -243,4 +239,37 @@ export interface IMovie {
   watchability: Watchability | undefined;
   lists: Lists | undefined;
   kinopoiskId: number;
+}
+
+interface PersonSpouse {
+  children: number;
+  divorced: boolean;
+  divorcedReason: string;
+  id: number;
+  name: string;
+  relation: string;
+}
+
+export interface Profession {
+  value: string;
+}
+
+export interface IPerson {
+  age: number;
+  birthPlace: { value: string }[];
+  birthday: Date;
+  countAwards: number;
+  death: Date;
+  deathPlace: Profession[];
+  enName: string;
+  facts: Fact[];
+  growth: number;
+  id: number;
+  movies: IMovieItem[];
+  name: string;
+  photo: string;
+  profession: { value: string }[];
+  sex: string;
+  spouses: PersonSpouse[];
+  updatedAt: Date;
 }

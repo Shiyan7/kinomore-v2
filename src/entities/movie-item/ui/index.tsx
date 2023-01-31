@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { IMovieItem } from 'shared/api';
@@ -9,11 +10,12 @@ import styles from './styles.module.scss';
 
 interface MovieItemProps {
   item: IMovieItem;
+  small?: boolean;
 }
 
-export const MovieItem = ({ item }: MovieItemProps) => {
+export const MovieItem = ({ item, small }: MovieItemProps) => {
   return (
-    <Link className={styles.item} href={paths.movie(item?.id)}>
+    <Link className={clsx(styles.item, small && styles.small)} href={paths.movie(item.id)}>
       <div className={styles.imageWrapper}>
         <Image
           sizes="100%"
