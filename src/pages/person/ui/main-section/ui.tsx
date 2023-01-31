@@ -12,11 +12,9 @@ export const MainSection = () => {
   const name = getPersonName(data?.name);
   const breadcrumbs = [{ href: paths.home, text: 'Главная' }, { text: name }];
 
-  console.log(data);
-
   const items = [
     { key: 'Карьера', value: getProfessions(data?.profession) },
-    { key: 'Дата рождения', value: timestampToDate(data?.birthday) },
+    { key: 'Дата рождения', value: timestampToDate(data?.birthday, 'D MMMM YYYY') },
   ];
 
   return (
@@ -27,17 +25,17 @@ export const MainSection = () => {
           <div className={styles.photo}>
             <Image priority sizes="100%" fill quality={100} src={data?.photo ?? ''} alt={name} />
           </div>
-          <div className={styles.text}>
+          <div className={styles.title}>
             <Title className={styles.name}>{name}</Title>
             <span className={styles.enName}>{data?.enName}</span>
-            <div className={styles.info}>
-              {items.map((item, idx) => (
-                <div key={idx} className={styles.row}>
-                  <span className={styles.value}>{item.key}:</span>
-                  <span className={styles.value}>{item.value}</span>
-                </div>
-              ))}
-            </div>
+          </div>
+          <div className={styles.info}>
+            {items.map((item, idx) => (
+              <div key={idx} className={styles.row}>
+                <span className={styles.value}>{item.key}:</span>
+                <span className={styles.value}>{item.value}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

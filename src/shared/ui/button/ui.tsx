@@ -8,7 +8,7 @@ interface ButtonOwnProps<E extends ElementType = ElementType> {
   loading?: boolean;
   rounded?: boolean;
   size?: 'small' | 'regular' | 'medium' | 'large';
-  variant?: 'primary' | 'white';
+  variant?: 'primary' | 'white' | 'gray';
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   children: ReactNode;

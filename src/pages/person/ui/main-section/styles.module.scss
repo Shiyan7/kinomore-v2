@@ -1,15 +1,36 @@
 .container {
 	padding-top: 30px;
 	padding-bottom: 40px;
+
+	@media (max-width: 1199px) {
+		padding-top: 60px;
+	}
+
+	@media (max-width: 576px) {
+		padding-top: 35px;
+		padding-bottom: 35px;
+	}
 }
 
 .breadcrumbs {
 	margin-bottom: 38px;
+
+	@media (max-width: 1199px) {
+    display: none;
+  }
 }
 
 .top {
-	display: flex;
-	align-items: center;
+	display: grid;
+	grid-template-areas: "photo title"
+	"photo info";
+	grid-template-columns: auto 1fr;
+
+	@media (max-width: 576px) {
+		grid-template-areas: "photo title"
+		"photo title"
+		"info info";
+	}
 }
 
 .photo {
@@ -17,32 +38,61 @@
 	display: block;
 	border-radius: 100px;
 	width: 140px;
+	flex-shrink: 0;
 	height: 140px;
 	overflow: hidden;
-	margin-right: 20px;
+	margin-right: 28px;
+	grid-area: photo;
   background-color: rgba(#fff, 0.08);
+
+	@media (max-width: 576px) {
+		margin-right: 30px;
+		width: 113px;
+		height: 113px;
+	}
 }
 
-.text {
+.title {
 	display: flex;
 	flex-direction: column;
+	grid-area: title;
+
+	@media (max-width: 576px) {
+		justify-content: center;
+	}
 }
 
 .name {
-	margin-bottom: 11px;
+	margin-bottom: 12px;
+
+	@media (max-width: 576px) {
+		font-size: 22px;
+		line-height: 25px;
+		margin-bottom: 11px;
+	}
 }
 
 .enName {
 	font-size: 17px;
 	letter-spacing: 0.7px;
-	font-weight: 500;
 	color: rgba(#fff, 0.5);
 	margin-bottom: 14px;
+
+	@media (max-width: 576px) {
+		margin-bottom: 0;
+		font-size: 15px;
+		letter-spacing: 0.2px;
+	}
 }
 
 .info {
 	display: flex;
 	flex-direction: column;
+	grid-area: info;
+
+	@media (max-width: 576px) {
+		margin-top: 20px;
+	}
 }
 
 .row {
@@ -60,8 +110,13 @@
 	line-height: 18px;
 	color: rgba(#fff, 0.5);
 
+	@media (max-width: 576px) {
+		font-size: 12px;
+		line-height: 17px;
+	}
+
 	&:first-child {
-		min-width: 138px;
+		min-width: 145px;
 	}
 
 	&:last-child {

@@ -185,7 +185,7 @@ export interface IMovieItem {
   name: string;
   names: { name: string }[];
   poster: MoviePoster;
-  rating?: MovieRating;
+  rating?: Partial<MovieRating>;
   shortDescription: string;
   type: string;
   votes: MovieRating;
@@ -250,7 +250,7 @@ interface PersonSpouse {
   relation: string;
 }
 
-interface PersonMovieItem {
+export interface PersonMovieItem {
   description: string;
   general: boolean;
   id: number;

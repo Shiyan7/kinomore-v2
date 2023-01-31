@@ -4,13 +4,15 @@ import { useStore } from 'effector-react';
 import { Facts } from 'widgets/facts';
 import { pageModel } from 'pages/person';
 import { MainSection } from './main-section';
+import { Filmography } from './filmography';
+import styles from './styles.module.scss';
 
 export const Person: NextPage = () => {
   const data = useStore(pageModel.$person);
 
   const enName = data?.enName ? `(${data?.enName})` : '';
-  const title = `${data?.name} ${enName}: Биография, Фото, Фильмография`;
-  const description = `${data?.name} ${enName}: Дуэйн Джонсон: личная жизнь, биография, фильмография`;
+  const title = `${data?.name} ${enName}: Фото, факты`;
+  const description = `${data?.name} ${enName}: Факты, фильмография`;
 
   return (
     <>
@@ -22,7 +24,8 @@ export const Person: NextPage = () => {
         <meta property="og:image" content={data?.photo} />
       </Head>
       <MainSection />
-      <Facts narrow facts={data?.facts} />
+      <Facts className={styles.facts} facts={data?.facts} />
+      <Filmography />
     </>
   );
 };
