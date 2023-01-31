@@ -1,0 +1,71 @@
+.container {
+	padding-top: 30px;
+	padding-bottom: 40px;
+}
+
+.breadcrumbs {
+	margin-bottom: 38px;
+}
+
+.top {
+	display: flex;
+	align-items: center;
+}
+
+.photo {
+	position: relative;
+	display: block;
+	border-radius: 100px;
+	width: 140px;
+	height: 140px;
+	overflow: hidden;
+	margin-right: 20px;
+  background-color: rgba(#fff, 0.08);
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+}
+
+.name {
+	margin-bottom: 11px;
+}
+
+.enName {
+	font-size: 17px;
+	letter-spacing: 0.7px;
+	font-weight: 500;
+	color: rgba(#fff, 0.5);
+	margin-bottom: 14px;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+}
+
+.row {
+	display: flex;
+	align-items: center;
+
+	&:not(:last-child) {
+		margin-bottom: 12px;
+	}
+}
+
+.value {
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 18px;
+	color: rgba(#fff, 0.5);
+
+	&:first-child {
+		min-width: 138px;
+	}
+
+	&:last-child {
+		letter-spacing: 0.3px;
+		color: rgba(#fff, 0.95);
+	}
+}

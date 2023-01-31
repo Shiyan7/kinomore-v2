@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import type { NextPage } from 'next';
 import { useStore } from 'effector-react';
+import { Facts } from 'widgets/facts';
 import { pageModel, getPageTitle } from 'pages/movie';
 import { Persons } from './persons';
 import { SimilarMovies } from './similar-movies';
@@ -8,7 +9,6 @@ import { MainSection } from './main-section';
 import { TrailerModal } from './trailer-modal';
 import { ShareModal } from './share-modal';
 import { GradeModal } from './grade-modal';
-import { Facts } from './facts';
 
 export const Movie: NextPage = () => {
   const data = useStore(pageModel.$movie);
@@ -29,7 +29,7 @@ export const Movie: NextPage = () => {
       <MainSection />
       <SimilarMovies />
       <Persons />
-      <Facts />
+      <Facts facts={data?.facts} />
       <TrailerModal />
       <ShareModal />
       <GradeModal />

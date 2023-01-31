@@ -1,2 +1,2 @@
 export * from './internal';
-export * from './movies';
+export * from './common';

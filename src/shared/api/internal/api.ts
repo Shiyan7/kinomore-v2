@@ -1,4 +1,4 @@
-import { http } from './base';
+import { http } from './config';
 import type { HeroMovie, UserDto, UserWithTokensDto } from './types';
 
 const routesConfig = http.createRoutesConfig({

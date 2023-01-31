@@ -1,6 +1,6 @@
 import { getCookie, setCookie, deleteCookie } from 'cookies-next';
 import { createEffect, createStore, sample, attach, forward, createEvent } from 'effector';
-import { internalApi, instance, type User } from 'shared/api/internal';
+import { internalApi, internalInstance, type User } from 'shared/api/internal';
 import { ACCESS_TOKEN } from './config';
 
 function getAccessToken() {
@@ -65,13 +65,13 @@ sample({
   target: removeAccessTokenFx,
 });
 
-instance.interceptors.request.use((config) => {
+internalInstance.interceptors.request.use((config) => {
   config.headers.Authorization = `Bearer ${getAccessToken()}`;
 
   return config;
 });
 
-instance.interceptors.response.use(
+internalInstance.interceptors.response.use(
   (res) => {
     return res;
   },
@@ -81,7 +81,7 @@ instance.interceptors.response.use(
     if (err.response?.status === 401) {
       try {
         startRefresh();
-        return instance.request(originalConfig);
+        return internalInstance.request(originalConfig);
       } catch (e) {
         return Promise.reject(e);
       }

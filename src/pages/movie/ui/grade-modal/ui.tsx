@@ -16,7 +16,7 @@ export const GradeModal = () => {
 
   return (
     <Popup className={styles.modal} isOpen={gradeModal.isOpen} close={gradeModal.close}>
-      <Title size="large" className={styles.title}>
+      <Title className={styles.title}>
         Оцените {getMovieType(data?.type)} по {AMOUNT_GRADES}-ти бальной шкале
       </Title>
       <div className={styles.container}>
