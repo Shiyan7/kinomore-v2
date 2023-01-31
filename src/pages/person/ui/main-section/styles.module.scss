@@ -36,10 +36,10 @@
 .photo {
 	position: relative;
 	display: block;
-	border-radius: 100px;
-	width: 140px;
+	border-radius: 100%;
 	flex-shrink: 0;
-	height: 140px;
+	width: 150px;
+	height: 150px;
 	overflow: hidden;
 	margin-right: 28px;
 	grid-area: photo;
@@ -55,20 +55,22 @@
 .title {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	grid-area: title;
-
-	@media (max-width: 576px) {
-		justify-content: center;
-	}
 }
 
 .name {
-	margin-bottom: 12px;
+	&:not(:last-child) {
+		margin-bottom: 12px;
+
+		@media (max-width: 576px) {
+			margin-bottom: 11px;
+		}
+	}
 
 	@media (max-width: 576px) {
 		font-size: 22px;
 		line-height: 25px;
-		margin-bottom: 11px;
 	}
 }
 

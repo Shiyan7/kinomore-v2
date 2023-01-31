@@ -9,20 +9,20 @@ import { FavoriteButton } from './favorite-button';
 import styles from './styles.module.scss';
 
 interface MovieItemProps {
-  item: Partial<IMovieItem>;
+  item: IMovieItem;
   small?: boolean;
 }
 
 export const MovieItem = ({ item, small }: MovieItemProps) => {
   return (
-    <Link className={clsx(styles.item, small && styles.small)} href={paths.movie(item.id!)}>
+    <Link className={clsx(styles.item, small && styles.small)} href={paths.movie(item.id)}>
       <div className={styles.imageWrapper}>
         <Image
           sizes="100%"
           fill
           quality={100}
           className={styles.image}
-          alt={item?.name ?? ''}
+          alt={item?.name}
           src={`https://st.kp.yandex.net/images/film_iphone/iphone360_${item?.id}.jpg`}
         />
       </div>

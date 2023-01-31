@@ -8,6 +8,24 @@
 
 	&.small {
 		.content {
+			position: static;
+			padding: 0;
+			border: none;
+			opacity: 1;
+			visibility: visible;
+			margin-top: 15px;
+			background-color: transparent;
+
+			@media (max-width: 1024px) {
+				display: none;
+			}
+		}
+
+		.btns {
+			display: none;
+		}
+
+		.rating {
 			display: none;
 		}
 	}

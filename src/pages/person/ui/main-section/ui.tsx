@@ -27,7 +27,7 @@ export const MainSection = () => {
           </div>
           <div className={styles.title}>
             <Title className={styles.name}>{name}</Title>
-            <span className={styles.enName}>{data?.enName}</span>
+            {data?.enName && <span className={styles.enName}>{data.enName}</span>}
           </div>
           <div className={styles.info}>
             {items.map((item, idx) => (

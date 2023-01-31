@@ -19,10 +19,15 @@
 .grid {
 	display: grid;
 	column-gap: 15px;
-	row-gap: 15px;
-	grid-template-columns: repeat(5, 1fr);
+	row-gap: 20px;
+	grid-template-columns: repeat(6, 1fr);
+
+	@media (max-width: 1200px) {
+		grid-template-columns: repeat(5, 1fr);
+	}
 
 	@media (max-width: 1024px) {
+		row-gap: 15px;
 		grid-template-columns: repeat(4, 1fr);
 	}
 
