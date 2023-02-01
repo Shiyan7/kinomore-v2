@@ -52,14 +52,13 @@ export interface VideoTypes {
   teasers: Video[];
 }
 
-export interface Person {
-  id: number;
-  photo: string;
-  name: string;
+export interface PersonCard {
+  age: number;
   enName: string;
-  description: string;
-  profession: string;
-  enProfession: string;
+  id: number;
+  name: string;
+  photo: string;
+  sex: string;
 }
 
 export interface CurrencyValue {
@@ -174,7 +173,7 @@ export interface MovieRating {
   russianFilmCritics: number;
 }
 
-export interface IMovieItem {
+export interface MovieCard {
   alternativeName: string;
   description: string;
   enName: string;
@@ -192,7 +191,31 @@ export interface IMovieItem {
   year: number;
   watchability: Watchability[];
 }
-export interface IMovie {
+
+interface PersonSpouse {
+  children: number;
+  divorced: boolean;
+  divorcedReason: string;
+  id: number;
+  name: string;
+  relation: string;
+}
+
+export interface Profession {
+  value: string;
+}
+
+export interface MoviePerson {
+  id: number;
+  photo: string;
+  name: string;
+  enName: string;
+  description: string;
+  profession: string;
+  enProfession: string;
+}
+
+export interface Movie {
   id: number;
   externalId: ExternalId | undefined;
   name: string;
@@ -221,7 +244,7 @@ export interface IMovie {
   videos: VideoTypes | undefined;
   genres: Name[];
   countries: Name[];
-  persons: Person[];
+  persons: MoviePerson[];
   color: string;
   networks: VendorImage | undefined;
   distributors: Distributor | undefined;
@@ -234,36 +257,14 @@ export interface IMovie {
   premiere: Premiere | undefined;
   ticketsOnSale: boolean;
   technology: Technology | undefined;
-  similarMovies: IMovieItem[];
-  sequelsAndPrequels: IMovieItem[];
+  similarMovies: MovieCard[];
+  sequelsAndPrequels: MovieCard[];
   watchability: Watchability | undefined;
   lists: Lists | undefined;
   kinopoiskId: number;
 }
 
-interface PersonSpouse {
-  children: number;
-  divorced: boolean;
-  divorcedReason: string;
-  id: number;
-  name: string;
-  relation: string;
-}
-
-export interface Profession {
-  value: string;
-}
-
-export interface SearchPerson {
-  id: number;
-  name: string;
-  enName: string;
-  photo: string;
-  age: number;
-  sex: string;
-}
-
-export interface IPerson {
+export interface Person {
   age: number;
   birthPlace: { value: string }[];
   birthday: Date;
@@ -274,7 +275,7 @@ export interface IPerson {
   facts: Fact[];
   growth: number;
   id: number;
-  movies: IMovieItem[];
+  movies: MovieCard[];
   name: string;
   photo: string;
   profession: { value: string }[];

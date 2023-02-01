@@ -1,2 +1,2 @@
-export { Home } from './ui';
+export { HomePage } from './ui';
 export * as pageModel from './model';

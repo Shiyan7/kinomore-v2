@@ -1,21 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { SearchPerson } from 'shared/api';
-import { getCurrentYear } from 'shared/lib';
+import type { PersonCard } from 'shared/api';
 import { paths } from 'shared/routing';
+import { getPersonAge, getPersonInfo } from './lib';
 import styles from './styles.module.scss';
 
 interface PersonItemProps {
-  person: SearchPerson;
+  person: PersonCard;
 }
 
 export const PersonItem = ({ person }: PersonItemProps) => {
-  const age = getCurrentYear() - person?.age;
-
-  const info = [person.enName, age]
-    .filter((value) => !!value)
-    .map((value) => value)
-    .join(', ');
+  const age = getPersonAge(person.age);
+  const info = getPersonInfo([person.enName, age]);
 
   return (
     <li className={styles.item}>

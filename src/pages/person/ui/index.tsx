@@ -6,7 +6,7 @@ import { pageModel } from 'pages/person';
 import { MainSection } from './main-section';
 import { Filmography } from './filmography';
 
-export const Person: NextPage = () => {
+export const PersonPage: NextPage = () => {
   const data = useStore(pageModel.$person);
 
   const enName = data?.enName ? `(${data?.enName})` : '';

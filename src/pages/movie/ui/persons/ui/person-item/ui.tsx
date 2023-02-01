@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Person } from 'shared/api';
+import type { MoviePerson } from 'shared/api';
 import { paths } from 'shared/routing';
 import { getProfession } from './lib';
 import styles from './styles.module.scss';
 
 interface PersonItemProps {
-  item: Person;
+  item: MoviePerson;
 }
 
 export const PersonItem = ({ item }: PersonItemProps) => {

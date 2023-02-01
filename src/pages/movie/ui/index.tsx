@@ -10,7 +10,7 @@ import { TrailerModal } from './trailer-modal';
 import { ShareModal } from './share-modal';
 import { GradeModal } from './grade-modal';
 
-export const Movie: NextPage = () => {
+export const MoviePage: NextPage = () => {
   const data = useStore(pageModel.$movie);
   const name = getPageTitle(data?.name);
   const year = data?.year ? `(${data?.year})` : '';

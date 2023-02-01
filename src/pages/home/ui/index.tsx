@@ -5,7 +5,7 @@ import { ComedyFilms } from './comedy-films';
 import { ForFamily } from './for-family';
 import { Genres } from './genres';
 
-export const Home: NextPage = () => {
+export const HomePage: NextPage = () => {
   return (
     <>
       <Hero />

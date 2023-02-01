@@ -1,19 +1,25 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import Image from 'next/image';
-import type { IMovieItem } from 'shared/api';
-import { Button, Rating } from 'shared/ui';
+import type { MouseEvent } from 'react';
+import type { MovieCard } from 'shared/api';
+import { Button, Rating, BookmarkIcon } from 'shared/ui';
 import { paths } from 'shared/routing';
 import { getRating, minutesToHour } from 'shared/lib';
-import { FavoriteButton } from './favorite-button';
 import styles from './styles.module.scss';
 
 interface MovieItemProps {
-  item: IMovieItem;
+  item: MovieCard;
   small?: boolean;
 }
 
 export const MovieItem = ({ item, small }: MovieItemProps) => {
+  const handleFavorite = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    console.log('add to favorites', item?.id);
+  };
+
   return (
     <Link className={clsx(styles.item, small && styles.small)} href={paths.movie(item?.id)}>
       <div className={styles.imageWrapper}>
@@ -27,17 +33,19 @@ export const MovieItem = ({ item, small }: MovieItemProps) => {
         />
       </div>
       <div className={styles.content}>
-        {item?.rating && <Rating className={styles.rating}>{getRating(item.rating)}</Rating>}
+        <Rating className={styles.rating}>{getRating(item.rating)}</Rating>
         <h3 className={styles.name}>{item?.name}</h3>
         <div className={styles.info}>
-          {item?.year && <span className={styles.year}>{item.year}</span>}
-          {item?.movieLength && <span className={styles.length}>{minutesToHour(item.movieLength)}</span>}
+          <span className={styles.year}>{item.year}</span>
+          <span className={styles.length}>{minutesToHour(item.movieLength)}</span>
         </div>
         <div className={styles.btns}>
           <Button className={styles.more} as="span" variant="primary" size="small">
             Подробнее
           </Button>
-          <FavoriteButton id={item?.id} />
+          <span onClick={handleFavorite} className={styles.favorite}>
+            <BookmarkIcon />
+          </span>
         </div>
       </div>
     </Link>

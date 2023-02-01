@@ -1,10 +1,10 @@
 import { GenresEnum } from 'shared/config';
 import { getCurrentYear, getYears } from 'shared/lib/get-year';
 import { http } from './config';
-import type { Data, IMovie, IMovieItem, IPerson, SearchPerson } from './types';
+import type { Data, Movie, MovieCard, Person, PersonCard } from './types';
 
 const routesConfig = http.createRoutesConfig({
-  getNewMovies: http.createRoute<number | void, Data<IMovieItem>>({
+  getNewMovies: http.createRoute<number | void, Data<MovieCard>>({
     url: '/movie',
     params: {
       'search[]': '5-9',
@@ -16,7 +16,7 @@ const routesConfig = http.createRoutesConfig({
       limit: 15,
     },
   }),
-  getComedyMovies: http.createRoute<void, Data<IMovieItem>>({
+  getComedyMovies: http.createRoute<void, Data<MovieCard>>({
     url: '/movie',
     params: {
       search: [getCurrentYear(), '7-10', '1', '!null', '!null', '!null'],
@@ -28,7 +28,7 @@ const routesConfig = http.createRoutesConfig({
       limit: 15,
     },
   }),
-  getFamilyMovies: http.createRoute<number | void, Data<IMovieItem>>({
+  getFamilyMovies: http.createRoute<number | void, Data<MovieCard>>({
     url: '/movie',
     params: {
       'search[]': [GenresEnum.Semejnyj, '1-10', '!null'],
@@ -40,7 +40,7 @@ const routesConfig = http.createRoutesConfig({
       limit: 15,
     },
   }),
-  searchMoviesByName: http.createRoute<string | void, Data<IMovieItem>>((query) => ({
+  searchMoviesByName: http.createRoute<string | void, Data<MovieCard>>((query) => ({
     url: '/movie',
     params: {
       search: [query, '!null', getYears()],
@@ -53,7 +53,7 @@ const routesConfig = http.createRoutesConfig({
       limit: 30,
     },
   })),
-  searchPersonsByName: http.createRoute<string | void, Data<SearchPerson>>((query) => ({
+  searchPersonsByName: http.createRoute<string | void, Data<PersonCard>>((query) => ({
     url: '/person',
     params: {
       search: [query, '!null'],
@@ -61,14 +61,14 @@ const routesConfig = http.createRoutesConfig({
       limit: 30,
     },
   })),
-  getMovieById: http.createRoute<string, IMovie>((id) => ({
+  getMovieById: http.createRoute<string, Movie>((id) => ({
     url: '/movie',
     params: {
       search: id,
       field: 'id',
     },
   })),
-  getPersonById: http.createRoute<string, IPerson>((id) => ({
+  getPersonById: http.createRoute<string, Person>((id) => ({
     url: '/person',
     params: {
       search: id,
