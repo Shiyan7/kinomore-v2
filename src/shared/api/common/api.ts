@@ -1,7 +1,7 @@
 import { GenresEnum } from 'shared/config';
 import { getCurrentYear, getYears } from 'shared/lib/get-year';
 import { http } from './config';
-import type { Data, IMovie, IMovieItem, IPerson } from './types';
+import type { Data, IMovie, IMovieItem, IPerson, SearchPerson } from './types';
 
 const routesConfig = http.createRoutesConfig({
   getNewMovies: http.createRoute<number | void, Data<IMovieItem>>({
@@ -50,6 +50,14 @@ const routesConfig = http.createRoutesConfig({
       sortField: 'year',
       sortType: '-1',
       isStrict: false,
+      limit: 30,
+    },
+  })),
+  searchPersonsByName: http.createRoute<string | void, Data<SearchPerson>>((query) => ({
+    url: '/person',
+    params: {
+      search: [query, '!null'],
+      field: ['name', 'photo'],
       limit: 30,
     },
   })),

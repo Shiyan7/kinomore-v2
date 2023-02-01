@@ -254,6 +254,15 @@ export interface Profession {
   value: string;
 }
 
+export interface SearchPerson {
+  id: number;
+  name: string;
+  enName: string;
+  photo: string;
+  age: number;
+  sex: string;
+}
+
 export interface IPerson {
   age: number;
   birthPlace: { value: string }[];
