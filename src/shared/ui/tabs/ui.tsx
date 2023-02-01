@@ -18,8 +18,8 @@ export const Tabs = ({ className, tabs }: TabsProps) => {
   return (
     <ReactTabs selectedTabClassName={styles.selected} className={classNames(styles.tabs, className)}>
       <TabList className={styles.list}>
-        {tabs.map((el) => {
-          const { txt, condition } = el;
+        {tabs.map((tab) => {
+          const { txt, condition } = tab;
 
           return <Fragment key={txt}>{condition ? <Tab className={styles.tab}>{txt}</Tab> : null}</Fragment>;
         })}
