@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import Image from 'next/image';
-import type { MouseEvent } from 'react';
 import type { MovieCard } from 'shared/api';
 import { Button, Rating, BookmarkIcon } from 'shared/ui';
 import { paths } from 'shared/routing';
@@ -14,9 +13,7 @@ interface MovieItemProps {
 }
 
 export const MovieItem = ({ item, small }: MovieItemProps) => {
-  const handleFavorite = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
+  const handleFavorite = () => {
     console.log('add to favorites', item?.id);
   };
 

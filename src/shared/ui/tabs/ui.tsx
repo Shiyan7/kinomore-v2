@@ -1,6 +1,6 @@
+import clsx from 'clsx';
 import { Fragment, type ReactNode } from 'react';
 import { Tab, TabList, TabPanel, Tabs as ReactTabs } from 'react-tabs';
-import classNames from 'clsx';
 import styles from './styles.module.scss';
 
 export interface TabItem {
@@ -16,7 +16,7 @@ interface TabsProps {
 
 export const Tabs = ({ className, tabs }: TabsProps) => {
   return (
-    <ReactTabs selectedTabClassName={styles.selected} className={classNames(styles.tabs, className)}>
+    <ReactTabs selectedTabClassName={styles.selected} className={clsx(styles.tabs, className)}>
       <TabList className={styles.list}>
         {tabs.map((tab) => {
           const { txt, condition } = tab;
