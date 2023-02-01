@@ -11,8 +11,8 @@ export const MainSection = () => {
   const name = getPersonName(data?.name);
 
   const items = [
-    { key: 'Карьера', value: getProfessions(data?.profession ?? []) },
-    { key: 'Дата рождения', value: timestampToDate(data?.birthday, 'D MMMM YYYY') },
+    { key: 'Карьера', value: data?.profession ? getProfessions(data.profession) : '—' },
+    { key: 'Дата рождения', value: data?.birthday ? timestampToDate(data.birthday, 'D MMMM YYYY') : '—' },
   ];
 
   return (

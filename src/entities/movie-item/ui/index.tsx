@@ -15,7 +15,7 @@ interface MovieItemProps {
 
 export const MovieItem = ({ item, small }: MovieItemProps) => {
   return (
-    <Link className={clsx(styles.item, small && styles.small)} href={paths.movie(item.id)}>
+    <Link className={clsx(styles.item, small && styles.small)} href={paths.movie(item?.id)}>
       <div className={styles.imageWrapper}>
         <Image
           sizes="100%"
