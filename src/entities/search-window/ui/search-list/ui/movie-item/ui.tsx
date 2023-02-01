@@ -6,11 +6,11 @@ import { paths } from 'shared/routing';
 import { Rating } from 'shared/ui/rating';
 import styles from './styles.module.scss';
 
-interface SearchItemProps {
+interface MovieItemProps {
   item: IMovieItem;
 }
 
-export const SearchItem = ({ item }: SearchItemProps) => {
+export const MovieItem = ({ item }: MovieItemProps) => {
   return (
     <li className={styles.item}>
       <Link className={styles.link} href={paths.movie(item?.id)}>
