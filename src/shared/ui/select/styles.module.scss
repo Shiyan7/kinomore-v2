@@ -1,0 +1,151 @@
+.select {
+	--radius: 6px;
+	position: relative;
+
+	&.isOpen {
+		.arrow svg {
+			transform: rotate(90deg);
+		}
+
+		.options {
+			display: block;
+		}
+	}
+}
+
+.top {
+	display: inline-flex;
+	align-items: center;
+	padding: 8px 15px;
+	border-radius: var(--radius);
+	font-size: 13.3px;
+	line-height: 24px;
+	cursor: pointer;
+	white-space: nowrap;
+	background-color: #29292A;
+	user-select: none;
+	transition: background-color var(--duration);
+
+	@media (max-width: 576px) {
+		padding: 6px 11px;
+	}
+
+	@media (max-width: 576px) {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&:hover {
+		background-color: rgba(#8A8E96, 0.3);
+	}
+
+	&:active {
+		background-color: rgba(#8A8E96, 0.4);
+	}
+
+	.icon {
+		display: block;
+		width: 24px;
+		height: 24px;
+		margin-right: 10px;
+
+		svg {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.arrow {
+		display: block;
+		width: 14px;
+		height: 14px;
+		fill: rgba(#fff, 0.6);
+		margin-left: 14px;
+
+		svg {
+			display: block;
+			width: 100%;
+			height: 100%;
+			transform: rotate(270deg);
+			transition: transform var(--duration);
+		}
+
+		@media (max-width: 576px) {
+			margin-left: 0;
+		}
+	}
+}
+
+.options {
+	position: absolute;
+	z-index: 100;
+	width: 270px;
+	border-radius: var(--radius);
+	background-color: #1E1E1E;
+	max-height: 385px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	display: none;
+	overscroll-behavior: contain;
+	-ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
+
+	&.bottom-start {
+		top: calc(100% + 8px);
+		left: 0;
+	}
+
+	&.bottom-end {
+		top: calc(100% + 8px);
+		right: 0;
+	}
+}
+
+.option {
+	position: relative;
+	font-weight: 300;
+	padding: 15px;
+	font-size: 13px;
+	line-height: 20px;
+	cursor: pointer;
+	user-select: none;
+	transition: background-color var(--duration);
+
+	&.isSelected {
+		font-weight: 400;
+		background-color: #3E4042;
+
+		.check {
+			display: block;
+		}
+	}
+
+	&:hover {
+		background-color: #2C2C2D;
+	}
+}
+
+.check {
+	display: block;
+	position: absolute;
+	top: 50%;
+	right: 17px;
+	width: 27px;
+	height: 27px;
+	transform: translateY(-50%);
+	display: none;
+
+	svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}

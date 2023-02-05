@@ -8,7 +8,7 @@ interface BreadcrumbItem {
 }
 
 interface BreadcrumbsProps {
-  items: Array<BreadcrumbItem>;
+  items: BreadcrumbItem[];
   className?: string;
 }
 

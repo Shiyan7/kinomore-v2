@@ -1,5 +1,5 @@
-import { createGSPFactory, createGSSPFactory } from 'nextjs-effector';
-
-export const createGSP = createGSPFactory();
+import { createGIPFactory, createGSSPFactory } from 'nextjs-effector';
 
 export const createGSSP = createGSSPFactory();
+
+export const createGIP = createGIPFactory();

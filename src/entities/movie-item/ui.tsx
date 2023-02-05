@@ -13,10 +13,6 @@ interface MovieItemProps {
 }
 
 export const MovieItem = ({ item, small }: MovieItemProps) => {
-  const handleFavorite = () => {
-    console.log('add to favorites', item?.id);
-  };
-
   return (
     <Link className={clsx(styles.item, small && styles.small)} href={paths.movie(item?.id)}>
       <div className={styles.imageWrapper}>
@@ -40,7 +36,7 @@ export const MovieItem = ({ item, small }: MovieItemProps) => {
           <Button className={styles.more} as="span" variant="primary" size="small">
             Подробнее
           </Button>
-          <span onClick={handleFavorite} className={styles.favorite}>
+          <span className={styles.favorite}>
             <BookmarkIcon />
           </span>
         </div>

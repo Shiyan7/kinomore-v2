@@ -1,6 +1,7 @@
 import { attach, createEvent, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import type { NextRouter } from 'next/router';
+import { QueryPayload } from './types';
 
 export const routerUpdated = createEvent<NextRouter | null>();
 
@@ -22,4 +23,12 @@ export const pushFx = attach({
 sample({
   clock: push,
   target: pushFx,
+});
+
+export const pushQuery = createEvent<QueryPayload>();
+
+sample({
+  clock: pushQuery,
+  source: $router,
+  fn: (router, { queryName, value }) => router?.push({ query: { ...router.query, [queryName]: value } }),
 });

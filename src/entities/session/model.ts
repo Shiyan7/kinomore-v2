@@ -1,6 +1,6 @@
 import { getCookie, setCookie, deleteCookie } from 'cookies-next';
 import { createEffect, createStore, sample, attach, forward, createEvent } from 'effector';
-import { internalApi, internalInstance, type User } from 'shared/api/internal';
+import { internalApi, internalInstance, type User } from 'shared/api';
 import { ACCESS_TOKEN } from './config';
 
 function getAccessToken() {

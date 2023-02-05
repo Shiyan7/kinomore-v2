@@ -1,0 +1,34 @@
+.container {
+	padding-top: 40px;
+	padding-bottom: 60px;
+
+	@media (max-width: 576px) {
+		padding-top: 30px;
+		padding-bottom: 50px;
+	}
+}
+
+.title {
+	margin-bottom: 25px;
+}
+
+.grid {
+	display: grid;
+	column-gap: 20px;
+	row-gap: 20px;
+	grid-template-columns: repeat(6, 1fr);
+
+	@media (max-width: 1024px) {
+		row-gap: 15px;
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	@media (max-width: 768px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media (max-width: 576px) {
+		column-gap: 10px;
+		row-gap: 10px;
+	}
+}

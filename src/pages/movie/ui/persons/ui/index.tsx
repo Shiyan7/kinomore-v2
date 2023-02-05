@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { FreeMode } from 'swiper';
 import { useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
 import { Title } from 'shared/ui/title';
@@ -18,7 +19,9 @@ export const Persons = () => {
           Актёры и создатели
         </Title>
         <CarouselMultiply
+          modules={[FreeMode]}
           className={styles.carousel}
+          options={{ freeMode: true }}
           navigation={false}
           slideClassName={styles.slide}
           items={data?.persons}

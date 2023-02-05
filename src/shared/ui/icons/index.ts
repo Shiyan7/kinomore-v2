@@ -24,6 +24,8 @@ import TelegramIcon from './assets/telegram.svg';
 import ViberIcon from './assets/viber.svg';
 import LikeIcon from './assets/like.svg';
 import DislikeIcon from './assets/dislike.svg';
+import SortIcon from './assets/sort.svg';
+import CheckIcon from './assets/check.svg';
 
 export {
   SearchIcon,
@@ -52,4 +54,6 @@ export {
   ViberIcon,
   LikeIcon,
   DislikeIcon,
+  SortIcon,
+  CheckIcon,
 };

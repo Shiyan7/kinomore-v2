@@ -1,3 +1,4 @@
+import { ParsedUrlQuery } from 'querystring';
 import { GenresEnum } from 'shared/config';
 import { getCurrentYear, getYears } from 'shared/lib/get-year';
 import { http } from './config';
@@ -58,6 +59,16 @@ const routesConfig = http.createRoutesConfig({
     params: {
       search: [query, '!null'],
       field: ['name', 'photo'],
+      limit: 30,
+    },
+  })),
+  getFilms: http.createRoute<ParsedUrlQuery, Data<MovieCard>>(({ genre, rating = '1', year = getYears(), sort }) => ({
+    url: '/movie',
+    params: {
+      search: [1, '!null', year, `${rating}-10`, genre],
+      field: ['typeNumber', 'poster.previewUrl', 'year', 'rating.kp', genre ? 'genres.name' : null],
+      'sortField[]': [sort, 'votes.kp'],
+      'sortType[]': ['-1', '-1'],
       limit: 30,
     },
   })),

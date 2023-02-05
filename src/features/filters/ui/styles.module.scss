@@ -1,0 +1,20 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 50px;
+}
+
+.row {
+	display: flex;
+	align-items: center;
+}
+
+.select {
+	margin-right: 8px;
+
+	&:last-child {
+		margin-right: 0;
+		margin-left: auto;
+	}
+}

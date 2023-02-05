@@ -27,13 +27,17 @@
 	position: relative;
 	font-size: 15px;
 	line-height: 20px;
-	font-weight: 500;
+	font-weight: 400;
 	padding-bottom: 12px;
-	color: rgba(#fff, 0.8);
+	color: rgba(#fff, 0.7);
 	cursor: pointer;
 	outline: none;
-	transition: color var(--duration);
 	overflow: hidden;
+	transition: color var(--duration);
+
+	&:hover {
+		color: rgba(#fff, 0.9);
+	}
 
 	&:after {
 		content: "";
@@ -51,6 +55,7 @@
 
 	&.selected {
 		color: var(--color-white);
+		font-weight: 500;
 
 		&:after {
 			opacity: 1;
