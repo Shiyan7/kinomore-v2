@@ -1,4 +1,8 @@
 <svg width="44" height="44" viewBox="0 0 44 44" fill="inherit" xmlns="http://www.w3.org/2000/svg">
-	<rect x="14.0605" y="13" width="23" height="1.5" transform="rotate(45 14.0605 13)" fill="inherit" />
-	<rect x="13" y="29.2634" width="23" height="1.5" transform="rotate(-45 13 29.2634)" fill="inherit" />
+	<g clip-path="url(#clip0_235_4499)">
+		<path d="M43.3236 40.6713L2.65247 0.000244141L3.18219e-06 2.65271L40.6711 43.3238L43.3236 40.6713Z"
+			fill="inherit" />
+		<path d="M40.6715 0.000171538L0.000400543 40.6713L2.65286 43.3237L43.324 2.65263L40.6715 0.000171538Z"
+			fill="inherit" />
+	</g>
 </svg>

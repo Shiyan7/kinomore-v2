@@ -70,16 +70,16 @@
 .close {
   position: fixed;
   z-index: 2;
-  top: 16px;
-  right: 16px;
-  width: 52px;
-  height: 52px;
+  top: 32px;
+  right: 32px;
+  width: 21px;
+  height: 21px;
 
   @media (max-width: 576px) {
-    width: 40px;
-    height: 40px;
-    right: 8px;
-    top: 15px;
+    width: 16px;
+    height: 16px;
+    right: 20px;
+    top: 27px;
   }
 
   &:hover {

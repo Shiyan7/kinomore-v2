@@ -1,6 +1,5 @@
 import type { PageContext } from 'nextjs-effector';
 import { attach, createEvent, restore, sample } from 'effector';
-import { filtersModel } from 'features/filters';
 import { commonApi } from 'shared/api';
 
 export const pageStarted = createEvent<PageContext>();
@@ -12,5 +11,5 @@ sample({
   clock: pageStarted,
   fn: ({ query }) => query,
   filter: Boolean,
-  target: [getFilmsFx, filtersModel.$query],
+  target: getFilmsFx,
 });

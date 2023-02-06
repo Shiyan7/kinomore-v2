@@ -26,6 +26,7 @@ import LikeIcon from './assets/like.svg';
 import DislikeIcon from './assets/dislike.svg';
 import SortIcon from './assets/sort.svg';
 import CheckIcon from './assets/check.svg';
+import FiltersIcon from './assets/filters.svg';
 
 export {
   SearchIcon,
@@ -56,4 +57,5 @@ export {
   DislikeIcon,
   SortIcon,
   CheckIcon,
+  FiltersIcon,
 };

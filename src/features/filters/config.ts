@@ -2,8 +2,8 @@ import type { SelectOption } from 'shared/ui/select';
 
 export const genres: SelectOption[] = [
   { value: '', label: 'Все' },
-  { value: 'биография', label: 'Биография' },
   { value: 'боевик', label: 'Боевик' },
+  { value: 'биография', label: 'Биография' },
   { value: 'вестерн', label: 'Вестерн' },
   { value: 'военный', label: 'Военный' },
   { value: 'детектив', label: 'Детектив' },
@@ -28,12 +28,13 @@ export const genres: SelectOption[] = [
   { value: 'спорт', label: 'Спорт' },
 ];
 
-export const rating: SelectOption[] = [
+export const ratings: SelectOption[] = [
   { value: '', label: 'Любой рейтинг' },
   { value: '9', label: 'Больше 9' },
   { value: '8', label: 'Больше 8' },
   { value: '7', label: 'Больше 7' },
   { value: '6', label: 'Больше 6' },
+  { value: '5', label: 'Больше 5' },
 ];
 
 export const years: SelectOption[] = [

@@ -1,3 +1,4 @@
+import type { ParsedUrlQuery } from 'querystring';
 import { attach, createEvent, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import type { NextRouter } from 'next/router';
@@ -12,6 +13,14 @@ const $router = createStore<NextRouter | null>(null, {
 })
   .on(RouterGate.open, (_, { router }) => router)
   .reset(RouterGate.close);
+
+export const $query = createStore<ParsedUrlQuery | undefined | null>(null);
+
+sample({
+  clock: $router,
+  fn: (router) => router?.query,
+  target: $query,
+});
 
 export const push = createEvent<string>();
 
