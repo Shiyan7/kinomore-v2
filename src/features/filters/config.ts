@@ -14,7 +14,6 @@ export const genres: SelectOption[] = [
   { value: 'фильм-нуар', label: 'Фильм-нуар' },
   { value: 'фантастика', label: 'Фантастика' },
   { value: 'фэнтези', label: 'Фэнтези' },
-  { value: 'игра', label: 'Игра' },
   { value: 'история', label: 'История' },
   { value: 'комедия', label: 'Комедия' },
   { value: 'концерт', label: 'Концерт' },

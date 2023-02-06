@@ -20,7 +20,6 @@ export enum GenresEnum {
   FilmNuar = 'фильм-нуар',
   DlyaVzroslyh = 'для взрослых',
   Dokumentalnyj = 'документальный',
-  Igra = 'игра',
   Istoriya = 'история',
   Koncert = 'концерт',
   Korotkometrazhka = 'короткометражка',

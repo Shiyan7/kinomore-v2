@@ -19,6 +19,7 @@
 	display: block;
 	width: 24px;
 	height: 24px;
+	flex-shrink: 0;
 
 	@media (min-width: 769px) {
 		display: none;

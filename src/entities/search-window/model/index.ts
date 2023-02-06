@@ -1,5 +1,5 @@
 import { attach, combine, createEvent, createStore, restore, sample } from 'effector';
-import { debounce, or } from 'patronum';
+import { debounce } from 'patronum/debounce';
 import { commonApi } from 'shared/api';
 import { createToggler } from 'shared/lib/toggler';
 
@@ -31,4 +31,9 @@ sample({
   target: [searchMoviesByNameFx, searchPersonsByNameFx, $debouncedValue],
 });
 
-export const $pending = or(searchMoviesByNameFx.pending, searchPersonsByNameFx.pending);
+export const $pending = createStore(false);
+
+sample({
+  clock: $pending,
+  target: [searchMoviesByNameFx.pending, searchMoviesByNameFx.pending],
+});

@@ -4,12 +4,12 @@ import { commonApi } from 'shared/api';
 
 export const pageStarted = createEvent<PageContext>();
 
-const getFilmsFx = attach({ effect: commonApi.getCatalog });
-export const $films = restore(getFilmsFx, null);
+const getCartoonsFx = attach({ effect: commonApi.getCatalog });
+export const $cartoons = restore(getCartoonsFx, null);
 
 sample({
   clock: pageStarted,
   filter: Boolean,
-  fn: ({ query }) => ({ query, type: 1 }),
-  target: getFilmsFx,
+  fn: ({ query }) => ({ query, type: 3 }),
+  target: getCartoonsFx,
 });

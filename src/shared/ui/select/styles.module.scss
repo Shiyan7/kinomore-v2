@@ -188,6 +188,7 @@
 		transform: translateY(150vh);
 		transition: transform var(--duration);
 		padding-bottom: 20px;
+		border-radius: var(--radius) var(--radius) 0 0;
 	}
 
 	&::-webkit-scrollbar {
@@ -219,7 +220,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 17px 15px;
+	padding: 15px;
 	background-color: var(--options-color);
 	border-bottom: 1px solid rgba(#fff, 0.1);
 

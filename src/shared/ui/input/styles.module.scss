@@ -63,11 +63,13 @@
 .clearBtn {
   position: absolute;
   top: 50%;
-  right: 7px;
+  right: 8px;
   transform: translateY(-50%);
-  display: block;
-  width: 26px;
-  height: 26px;
+  display: flex;
+	align-items: center;
+	justify-content: center;
+  width: 24px;
+  height: 24px;
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--duration), visibility var(--duration);
@@ -79,9 +81,8 @@
 
   svg {
     display: block;
-    width: 100%;
-    height: 100%;
-    stroke: rgba(#000, 0.7);
-    fill: rgba(#000, 0.7);
+    width: 13px;
+    height: 13px;
+    fill: #0F0F0F
   }
 }
