@@ -20,7 +20,8 @@ export const Header = () => {
       className={clsx(styles.header, {
         [styles.home]: isHomePage,
         [styles.fixed]: isFixed,
-      })}>
+      })}
+    >
       <div className={clsx('container', styles.container)}>
         <div className={styles.row}>
           <Logo />

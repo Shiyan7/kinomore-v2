@@ -1,0 +1,1 @@
+export { SeriesPage } from './ui';

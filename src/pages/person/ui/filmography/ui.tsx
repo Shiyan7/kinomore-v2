@@ -22,7 +22,7 @@ export const Filmography = () => {
     <section className={styles.section}>
       <div className={clsx('container container--narrow', styles.container)}>
         <Title className={styles.title} size="medium">
-          Фильмография ({length - 1})
+          Фильмография ({length})
         </Title>
         <div className={styles.grid}>
           {movies?.map((item, idx) => (

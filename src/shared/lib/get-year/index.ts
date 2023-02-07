@@ -1,4 +1,4 @@
-const MIN_YEAR = 1960;
+const MIN_YEAR = 0;
 
 export const getCurrentYear = () => {
   // return new Date().getFullYear();

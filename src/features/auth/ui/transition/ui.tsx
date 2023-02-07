@@ -28,7 +28,8 @@ export const Transition = ({
   return (
     <div
       style={{ '--offset': `${offset}px`, '--delay': `${delay}s` } as CSSProperties}
-      className={clsx(startIn && styles[animation], mounted && styles.mounted)}>
+      className={clsx(startIn && styles[animation], mounted && styles.mounted)}
+    >
       {children}
     </div>
   );

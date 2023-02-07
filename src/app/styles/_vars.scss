@@ -6,12 +6,15 @@
 
   // colors
   --color-white: #fff;
-  --color-black: hsl(0, 0%, 4%);
+  --color-black: hsl(0, 0%, 2%);
   --color-primary: #2253b2;
   --color-loader: #121212;
 
   // z-index
+	--popup-z-index: 1000;
   --header-z-index: 100;
   --menu-z-index: 150;
   --window-z-index: 1000;
+  --select-z-index: 50;
+  --filters-z-index: 150;
 }

@@ -35,7 +35,7 @@
   color: rgba(#fff, 0.6);
 
   &[href] {
-    transition: color 0.3s;
+    transition: color var(--duration);
 
     &:hover {
       color: var(--color-white);

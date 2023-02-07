@@ -10,11 +10,11 @@
 }
 
 .bounceOutUp {
-	transform: translateY(-30px);
-	opacity: 0;
+  transform: translateY(-30px);
+  opacity: 0;
   transition: opacity var(--duration), transform var(--duration);
 
-	&.mounted {
-		position: absolute;
-	}
+  &.mounted {
+    position: absolute;
+  }
 }

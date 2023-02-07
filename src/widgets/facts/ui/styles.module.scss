@@ -29,7 +29,7 @@
     padding-bottom: 14px;
   }
 
-	@media (max-width: 360px) {
+  @media (max-width: 360px) {
     font-size: 11.5px;
     line-height: 21px;
   }
@@ -75,18 +75,18 @@
 
   @media (max-width: 576px) {
     font-size: 12.8px;
-		margin-top: 12px;
+    margin-top: 12px;
   }
 
-	@media (max-width: 360px) {
+  @media (max-width: 360px) {
     font-size: 11.5px;
     line-height: 21px;
-		margin-top: 9px;
+    margin-top: 9px;
   }
 
-	@media (any-hover: hover) {
+  @media (any-hover: hover) {
     &:hover {
-			color: rgba(#fff, 0.8);
+      color: rgba(#fff, 0.8);
     }
   }
 

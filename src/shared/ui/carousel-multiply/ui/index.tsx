@@ -8,7 +8,7 @@ import { SliderButton } from './slider-button';
 import styles from './styles.module.scss';
 
 export interface CarouselMultiplyProps<T> extends SwiperProps {
-  items: Array<T> | undefined;
+  items: T[] | undefined;
   prevBtnClass?: string;
   nextBtnClass?: string;
   renderItem: (item: T, idx: number) => ReactNode;

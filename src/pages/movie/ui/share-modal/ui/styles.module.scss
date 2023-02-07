@@ -28,24 +28,24 @@
 }
 
 .btns {
-	overflow: hidden;
-	border-radius: 10px;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .item {
-	margin-bottom: -1px;
+  margin-bottom: -1px;
 
-	&:last-child {
-		.btn {
-			&:after {
-				display: none;
-			}
-		}
-	}
+  &:last-child {
+    .btn {
+      &:after {
+        display: none;
+      }
+    }
+  }
 }
 
 .btn {
-	position: relative;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -58,25 +58,25 @@
   background-color: hsl(0, 0, 14%);
   transition: background-color 0.1s ease-in-out;
 
-		&:after {
-			content: "";
-			display: block;
-			position: absolute;
-			z-index: 1;
-			bottom: 0;
-			left: 17px;
-			right: 17px;
-			height: 1px;
-			background-color: #404040;
-			transition: opacity 0.1s ease-in-out;
-		}
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 17px;
+    right: 17px;
+    height: 1px;
+    background-color: #404040;
+    transition: opacity 0.1s ease-in-out;
+  }
 
   &:hover {
-		background-color: #404040;
+    background-color: #404040;
 
-		&:after {
-			opacity: 0;
-		}
+    &:after {
+      opacity: 0;
+    }
   }
 
   &:active {

@@ -9,7 +9,7 @@ import { paths } from 'shared/routing';
 import styles from './styles.module.scss';
 
 export const Profile = () => {
-  const authWindow = useToggler(authModel.authWindow);
+  const { open } = useToggler(authModel.authWindow);
   const isAuth = useStore(sessionModel.$isAuth);
 
   const ProfileLink = (
@@ -20,7 +20,7 @@ export const Profile = () => {
   );
 
   const ProfileButton = (
-    <button onClick={authWindow.open} className={clsx('btn-reset', styles.profile)}>
+    <button onClick={open} className={clsx('btn-reset', styles.profile)}>
       <ProfileIcon />
       Войти
     </button>

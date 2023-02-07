@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1000;
+  z-index: var(--popup-z-index);
   overflow-y: auto;
   overflow-x: hidden;
   text-align: center;
@@ -40,7 +40,7 @@
   display: inline-flex;
   flex-direction: column;
   vertical-align: middle;
-	background-color: #000;
+  background-color: #000;
 }
 
 .close {
@@ -63,8 +63,8 @@
 
   svg {
     display: block;
-    width: 90%;
-    height: 90%;
+    width: 9px;
+    height: 9px;
     fill: var(--color-white);
   }
 }

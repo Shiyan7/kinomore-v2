@@ -23,6 +23,12 @@
   font-weight: 300;
 }
 @font-face {
+  font-family: __font_083edc;
+  src: url(/fonts/e-Ukraine-Thin.woff2) format("woff2");
+  font-display: swap;
+  font-weight: 200;
+}
+@font-face {
   font-family: __font_Fallback_083edc;
   src: local("Arial");
   ascent-override: 79.81%;

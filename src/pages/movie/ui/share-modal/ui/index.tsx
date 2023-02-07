@@ -19,17 +19,17 @@ const items = [
 export const ShareModal = () => {
   const [copy] = useCopyToClipboard();
   const { asPath } = useRouter();
-  const shareModal = useToggler(pageModel.shareModal);
+  const { close, isOpen } = useToggler(pageModel.shareModal);
   const URL = `${process.env.CLIENT_URL}${asPath}`;
 
   const handleCopy = () => {
     copy(URL);
-    shareModal.close();
+    close();
   };
 
   return (
-    <CSSTransition in={shareModal.isOpen} timeout={0} classNames={{ enterDone: styles.done }}>
-      <Popup rootClassName={styles.root} className={styles.modal} isOpen={shareModal.isOpen} close={shareModal.close}>
+    <CSSTransition in={isOpen} timeout={0} classNames={{ enterDone: styles.done }}>
+      <Popup rootClassName={styles.root} className={styles.modal} isOpen={isOpen} close={close}>
         <Info />
         <div className={styles.content}>
           <div className={styles.btns}>
@@ -53,7 +53,7 @@ export const ShareModal = () => {
             })}
           </div>
         </div>
-        <Popup.Close onClick={shareModal.close} />
+        <Popup.Close onClick={close} />
       </Popup>
     </CSSTransition>
   );

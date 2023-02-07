@@ -7,7 +7,7 @@ import { getVotes } from './lib';
 import styles from './styles.module.scss';
 
 export const Rating = () => {
-  const gradeModal = useToggler(pageModel.gradeModal);
+  const { open } = useToggler(pageModel.gradeModal);
   const data = useStore(pageModel.$movie);
 
   return (
@@ -18,7 +18,7 @@ export const Rating = () => {
           <span className={styles.caption}>Рейтинг {getMovieType(data?.type)}а</span>
           <span className={styles.desc}>{getVotes(data?.votes)} оценок</span>
         </div>
-        <button onClick={gradeModal.open} className={clsx('btn-reset', styles.btn)}>
+        <button onClick={open} className={clsx('btn-reset', styles.btn)}>
           Оценить
         </button>
       </div>
