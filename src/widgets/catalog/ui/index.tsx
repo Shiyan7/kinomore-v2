@@ -1,19 +1,19 @@
 import clsx from 'clsx';
 import { useStore } from 'effector-react';
+import { catalogModel } from 'widgets/catalog';
 import { Filters, filtersModel } from 'features/filters';
 import { MovieItem } from 'entities/movie-item';
 import { useToggler } from 'shared/lib';
-import type { Data, MovieCard } from 'shared/api';
 import { Title, FiltersIcon } from 'shared/ui';
 import styles from './styles.module.scss';
 
 interface CatalogProps {
   title: string;
-  data: Data<MovieCard> | null;
 }
 
-export const Catalog = ({ title, data }: CatalogProps) => {
+export const Catalog = ({ title }: CatalogProps) => {
   const { open } = useToggler(filtersModel.filtersToggler);
+  const data = useStore(catalogModel.$catalog);
   const params = useStore(filtersModel.$params);
 
   return (
