@@ -18,8 +18,6 @@ export const Facts = ({ facts, narrow }: FactsProps) => {
 
   const itemsToShow = isExpanded ? facts : facts?.slice(0, MAX_FACTS);
 
-  const handleToggle = () => setIsExpanded((prev) => !prev);
-
   return (
     <section className={styles.section}>
       <div className={clsx('container', narrow && 'container--narrow', styles.container)}>
@@ -32,7 +30,7 @@ export const Facts = ({ facts, narrow }: FactsProps) => {
           ))}
         </ul>
         {facts?.length > MAX_FACTS && (
-          <button className={clsx('btn-reset', styles.btn)} onClick={handleToggle}>
+          <button className={clsx('btn-reset', styles.btn)} onClick={() => setIsExpanded((prev) => !prev)}>
             {isExpanded ? 'Скрыть' : 'Показать ещё'}
           </button>
         )}

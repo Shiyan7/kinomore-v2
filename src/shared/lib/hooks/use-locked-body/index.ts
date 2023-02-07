@@ -1,1 +1,1 @@
-export { useLockedBody } from './useLockedBody';
+export { useLockedBody } from './use-locked-body';

@@ -7,13 +7,13 @@ import { getTrailer } from './lib';
 import styles from './styles.module.scss';
 
 export const TrailerModal = () => {
+  const { close, isOpen } = useToggler(pageModel.trailerModal);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const data = useStore(pageModel.$movie);
   const trailer = getTrailer(data?.videos);
-  const trailerModal = useToggler(pageModel.trailerModal);
 
   return (
-    <Popup className={styles.modal} isOpen={trailerModal.isOpen} close={trailerModal.close}>
+    <Popup className={styles.modal} isOpen={isOpen} close={close}>
       <div className={styles.content}>
         {data?.videos?.trailers.length ? (
           <>
@@ -33,7 +33,7 @@ export const TrailerModal = () => {
           </>
         ) : null}
       </div>
-      <Popup.Close onClick={trailerModal.close} className={styles.close} />
+      <Popup.Close onClick={close} className={styles.close} />
     </Popup>
   );
 };

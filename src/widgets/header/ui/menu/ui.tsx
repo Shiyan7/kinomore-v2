@@ -10,19 +10,19 @@ import { items } from './config';
 import styles from './styles.module.scss';
 
 export const Menu = () => {
-  const menu = useToggler(headerModel.menu);
+  const { isOpen, close } = useToggler(headerModel.menu);
   const { pathname } = useRouter();
 
-  useLockedBody(menu.isOpen);
+  useLockedBody(isOpen);
 
   return (
-    <div className={clsx(styles.menu, menu.isOpen && styles.opened)}>
+    <div className={clsx(styles.menu, isOpen && styles.opened)}>
       <div className={styles.snowContainer}>
         {Array.from({ length: 100 }).map((_, idx) => {
           return <div key={idx} className={styles.snow} />;
         })}
       </div>
-      <button onClick={menu.close} className={clsx('btn-reset', styles.close)}>
+      <button onClick={close} className={clsx('btn-reset', styles.close)}>
         <CloseIcon />
       </button>
       <div className={clsx('container', styles.container)}>
@@ -31,11 +31,7 @@ export const Menu = () => {
             const isCurrentPage = pathname === item.href;
 
             return (
-              <CSSTransition
-                key={item.text}
-                in={menu.isOpen}
-                timeout={item.timeout}
-                classNames={{ enterDone: styles.done }}>
+              <CSSTransition key={item.text} in={isOpen} timeout={item.timeout} classNames={{ enterDone: styles.done }}>
                 <li className={clsx(styles.item, isCurrentPage && styles.current)}>
                   <Link href={item.href} className={styles.link}>
                     {item.text}

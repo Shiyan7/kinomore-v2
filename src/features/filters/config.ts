@@ -1,4 +1,4 @@
-import type { SelectOption } from 'shared/ui/select';
+import type { SelectOption } from './types';
 
 export const genres: SelectOption[] = [
   { value: '', label: 'Все' },

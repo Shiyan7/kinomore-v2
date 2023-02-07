@@ -1,4 +1,4 @@
-import type { SelectOption } from 'shared/ui/select';
+import type { SelectOption } from '../types';
 
 export function getOption(options: SelectOption[], value: string): string | undefined {
   const option = options.filter((option) => !!option.value).find((option) => option.value === value);

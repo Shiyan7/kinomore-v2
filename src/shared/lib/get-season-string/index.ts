@@ -1,1 +1,1 @@
-export { getSeasonString } from './getSeasonString';
+export { getSeasonString } from './get-season-string';

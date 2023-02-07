@@ -1,13 +1,9 @@
 import clsx from 'clsx';
 import { ReactNode, useRef, useState } from 'react';
+import { type SelectOption } from 'features/filters';
 import { useOnClickOutside } from 'shared/lib';
 import { CheckIcon, ChevronIcon, CloseIcon, Title } from 'shared/ui';
 import styles from './styles.module.scss';
-
-export interface SelectOption {
-  value: string;
-  label: string;
-}
 
 interface SelectProps {
   options: SelectOption[];

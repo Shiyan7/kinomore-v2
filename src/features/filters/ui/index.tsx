@@ -4,8 +4,9 @@ import { useRouter } from 'next/router';
 import { useEvent } from 'effector-react';
 import { filtersModel } from 'features/filters';
 import { useLockedBody, useToggler } from 'shared/lib';
-import { Button, CloseIcon, Select, SortIcon, Title } from 'shared/ui';
+import { Button, CloseIcon, SortIcon, Title } from 'shared/ui';
 import { genres, ratings, years, filters } from '../config';
+import { Select } from './select';
 import styles from './styles.module.scss';
 
 export const Filters = () => {

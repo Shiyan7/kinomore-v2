@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
-import { useLockedBody } from './useLockedBody';
+import { useLockedBody } from './use-locked-body';
 
 describe('useLockedBody', () => {
   test('should set the initial state as the provided initial locked state', () => {

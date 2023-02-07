@@ -1,4 +1,4 @@
-import { getSeasonString } from './getSeasonString';
+import { getSeasonString } from './get-season-string';
 
 describe('getSeasonString', () => {
   test('returns "1 сезон" when length is 1', () => {
