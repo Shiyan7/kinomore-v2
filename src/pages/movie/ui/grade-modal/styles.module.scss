@@ -99,7 +99,7 @@
   line-height: 28.8px;
   background-color: hsl(0, 0, 18%);
   color: var(--color-white);
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color var(--duration), color var(--duration);
 
   @media (min-width: 1025px) {
     &:not(:last-child) {

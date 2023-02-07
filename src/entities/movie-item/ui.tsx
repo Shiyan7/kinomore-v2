@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { MovieCard } from 'shared/api';
-import { Button, Rating, BookmarkIcon } from 'shared/ui';
+import { Rating } from 'shared/ui/rating';
 import { paths } from 'shared/routing';
 import { getRating, minutesToHour } from 'shared/lib';
 import styles from './styles.module.scss';
@@ -31,14 +31,6 @@ export const MovieItem = ({ item, small }: MovieItemProps) => {
         <div className={styles.info}>
           <span className={styles.year}>{item.year}</span>
           <span className={styles.length}>{minutesToHour(item.movieLength)}</span>
-        </div>
-        <div className={styles.btns}>
-          <Button className={styles.more} as="span" variant="primary" size="small">
-            Подробнее
-          </Button>
-          <span className={styles.favorite}>
-            <BookmarkIcon />
-          </span>
         </div>
       </div>
     </Link>

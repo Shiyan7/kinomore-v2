@@ -43,10 +43,13 @@
   }
 
   @media (max-width: 768px) {
+    row-gap: 25px;
+		column-gap: 15px;
     grid-template-columns: repeat(3, 1fr);
   }
 
   @media (max-width: 576px) {
-    gap: 10px;
+    column-gap: 10px;
+    row-gap: 20px;
   }
 }

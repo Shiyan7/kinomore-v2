@@ -28,10 +28,9 @@
   }
 
   @media (min-width: 1025px) {
-    transition: transform 0.3s;
+    transition: transform var(--duration);
 
-    &:hover,
-    &:focus-within {
+    &:hover {
       transform: scale(1.03);
 
       .content {
@@ -147,12 +146,10 @@
   line-height: 18px;
   color: rgba(#fff, 0.8);
   margin-right: 12px;
-  margin-bottom: 15px;
   margin-top: -4px;
 
   @media (max-width: 1024px) {
     margin-right: 0;
-    margin-bottom: 0;
   }
 }
 
@@ -161,7 +158,6 @@
   font-size: 14px;
   line-height: 18px;
   color: rgba(#fff, 0.8);
-  margin-bottom: 15px;
   margin-top: -4px;
 
   @media (max-width: 1024px) {

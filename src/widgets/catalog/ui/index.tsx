@@ -31,7 +31,7 @@ export const Catalog = ({ title }: CatalogProps) => {
         <Filters />
         <div className={styles.grid}>
           {data?.docs.map((item) => (
-            <MovieItem small key={item.id} item={item} />
+            <MovieItem key={item.id} item={item} />
           ))}
         </div>
       </div>
