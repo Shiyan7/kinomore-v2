@@ -1,7 +1,7 @@
 import type { PageContext } from 'nextjs-effector';
 import { attach, createEvent, restore, sample } from 'effector';
-import { getCatalogType } from 'widgets/catalog';
 import { commonApi } from 'shared/api';
+import { getCatalogType } from '../lib';
 
 export const pageStarted = createEvent<PageContext>();
 

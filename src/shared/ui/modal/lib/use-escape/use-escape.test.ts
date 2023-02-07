@@ -1,5 +1,5 @@
 import { fireEvent, renderHook } from '@testing-library/react';
-import { useEscape } from './useEscape';
+import { useEscape } from './use-escape';
 
 describe('useEscape', () => {
   test('should call callback if `Escape` is pressed', () => {

@@ -1,1 +1,1 @@
-export * from './getPersonAge';
+export * from './get-person-age';

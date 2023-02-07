@@ -1,1 +1,1 @@
-export * from './getVotes';
+export * from './get-votes';

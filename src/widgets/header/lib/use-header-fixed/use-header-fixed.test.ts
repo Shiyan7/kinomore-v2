@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react';
-import { useHeaderFixed } from './useHeaderFixed';
+import { useHeaderFixed } from './use-header-fixed';
 
 describe('useHeaderFixed', () => {
   test('initializes with isFixed as false', () => {

@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
-import { usePlayer } from './usePlayer';
+import { usePlayer } from './use-player';
 
 describe('usePlayer', () => {
   let videoRef: { current: HTMLVideoElement | null } = { current: null };

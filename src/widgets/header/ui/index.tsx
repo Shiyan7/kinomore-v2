@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import { useHeaderFixed } from 'widgets/header';
 import { paths } from 'shared/routing';
+import { useHeaderFixed } from '../lib';
 import { Burger } from './burger';
 import { Logo } from './logo';
 import { Menu } from './menu';
@@ -20,8 +20,7 @@ export const Header = () => {
       className={clsx(styles.header, {
         [styles.home]: isHomePage,
         [styles.fixed]: isFixed,
-      })}
-    >
+      })}>
       <div className={clsx('container', styles.container)}>
         <div className={styles.row}>
           <Logo />

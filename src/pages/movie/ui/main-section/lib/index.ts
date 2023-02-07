@@ -1,1 +1,1 @@
-export { getMovieBreadcrumb } from './getMovieBreadcrumb';
+export { getMovieBreadcrumb } from './get-movie-breadcrumb';

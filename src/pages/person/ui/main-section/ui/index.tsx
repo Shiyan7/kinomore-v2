@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import { useStore } from 'effector-react';
-import { pageModel, getPersonName } from 'pages/person';
+import { pageModel } from 'pages/person';
 import { Title } from 'shared/ui/title';
-import { getProfessions, timestampToDate } from './lib';
+import { getProfessions, timestampToDate, getPersonName } from '../lib';
 import styles from './styles.module.scss';
 
 export const MainSection = () => {

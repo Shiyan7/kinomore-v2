@@ -1,1 +1,1 @@
-export * from './getOption';
+export * from './get-option';

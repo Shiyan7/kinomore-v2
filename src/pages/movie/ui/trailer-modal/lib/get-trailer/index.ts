@@ -1,1 +1,1 @@
-export { getTrailer } from './getTrailer';
+export { getTrailer } from './get-trailer';

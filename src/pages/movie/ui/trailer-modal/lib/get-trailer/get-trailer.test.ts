@@ -1,5 +1,5 @@
 import type { VideoTypes } from 'shared/api';
-import { getTrailer } from './getTrailer';
+import { getTrailer } from './get-trailer';
 
 describe('getTrailer', () => {
   test('should return the first trailer with type "TRAILER" and site "youtube"', () => {

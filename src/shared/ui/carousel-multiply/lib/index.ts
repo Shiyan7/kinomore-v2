@@ -1,1 +1,1 @@
-export * from './useDomRefWithSetter';
+export * from './use-dom-ref-with-setter';
