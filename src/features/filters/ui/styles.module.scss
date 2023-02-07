@@ -1,28 +1,28 @@
 .root {
-	@media (max-width: 768px) {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		overflow-x: hidden;
-		overflow-y: auto;
-		z-index: var(--filters-z-index);
-		background-color: var(--color-black);
-		padding: 24px 30px 30px;
-		opacity: 0;
-		display: grid;
-		grid-template-rows: auto 1fr;
-		visibility: hidden;
-		transition: opacity var(--duration), visibility var(--duration);
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: var(--filters-z-index);
+    background-color: var(--color-black);
+    padding: 24px 30px 30px;
+    opacity: 0;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    visibility: hidden;
+    transition: opacity var(--duration), visibility var(--duration);
 
-		&.isOpen {
-			opacity: 1;
-			visibility: visible;
-		}
-	}
+    &.isOpen {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 
-	@media (max-width: 576px) {
+  @media (max-width: 576px) {
     padding-left: 18px;
     padding-right: 18px;
   }
@@ -34,42 +34,42 @@
 }
 
 .filters {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
 
-	@media (max-width: 768px) {
-		align-items: flex-start;
-		flex-direction: column-reverse;
-		padding-bottom: 1px;
-		border-bottom: 1px solid rgba(#fff, 0.1);
-	}
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    flex-direction: column-reverse;
+    padding-bottom: 1px;
+    border-bottom: 1px solid rgba(#fff, 0.1);
+  }
 }
 
 .header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
 
-	@media (min-width: 769px) {
-		display: none;
-	}
+  @media (min-width: 769px) {
+    display: none;
+  }
 }
 
 .container {
-	@media (max-width: 768px) {
-		display: flex;
-		flex-direction: column;
-	}
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .logo {
   position: relative;
   display: block;
-	width: 108px;
-	height: 21px;
+  width: 108px;
+  height: 21px;
 
   @media (max-width: 375px) {
     width: 106px;
@@ -97,38 +97,38 @@
 }
 
 .top {
-	margin-bottom: 25px;
+  margin-bottom: 25px;
 
-	@media (min-width: 769px) {
-		display: none;
-	}
+  @media (min-width: 769px) {
+    display: none;
+  }
 }
 
 .row {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 
-	@media (max-width: 768px) {
-		flex-direction: column;
-		align-items: flex-start;
-		width: 100%;
-	}
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
 }
 
 .select {
-	margin-right: 8px;
+  margin-right: 8px;
 
-	@media (max-width: 768px) {
-		margin-right: 0;
-		width: 100%;
-	}
+  @media (max-width: 768px) {
+    margin-right: 0;
+    width: 100%;
+  }
 }
 
 .btn {
-	width: 100%;
-	margin-top: auto;
+  width: 100%;
+  margin-top: auto;
 
-	@media (min-width: 769px) {
-		display: none;
-	}
+  @media (min-width: 769px) {
+    display: none;
+  }
 }

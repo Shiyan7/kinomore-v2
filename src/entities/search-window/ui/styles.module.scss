@@ -27,7 +27,7 @@
     width: 16px;
     height: 16px;
     top: 27px;
-		right: 22px;
+    right: 22px;
     opacity: 1;
   }
 
@@ -67,17 +67,17 @@
 }
 
 .caption {
-	font-size: 20px;
-	line-height: 25px;
-	margin-bottom: 10px;
+  font-size: 20px;
+  line-height: 25px;
+  margin-bottom: 10px;
 }
 
 .desc {
-	margin: 0;
-	font-weight: 300;
-	font-size: 12px;
-	line-height: 16px;
-	color: rgba(#fff, 0.6);
-	transition: opacity var(--duration);
-	margin-top: 4px;
+  margin: 0;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(#fff, 0.6);
+  transition: opacity var(--duration);
+  margin-top: 4px;
 }

@@ -11,7 +11,8 @@ export const Form = ({ onSubmit, children, ...props }: FormProps) => (
     onSubmit={(e) => {
       e.preventDefault();
       onSubmit(e);
-    }}>
+    }}
+  >
     {children}
   </form>
 );

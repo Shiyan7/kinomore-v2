@@ -31,7 +31,8 @@ export const GradeModal = () => {
                 key={idx}
                 className={clsx(styles.label, isActive && styles.active)}
                 onMouseEnter={() => setHover(ratingValue)}
-                onMouseLeave={() => setHover(null)}>
+                onMouseLeave={() => setHover(null)}
+              >
                 <input hidden type="radio" value={ratingValue} onClick={() => setRating(ratingValue)} />
                 {ratingValue}
               </label>

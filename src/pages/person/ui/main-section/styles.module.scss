@@ -1,128 +1,130 @@
 .container {
-	padding-top: 50px;
-	padding-bottom: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 
-	@media (max-width: 1199px) {
-		padding-top: 60px;
-	}
+  @media (max-width: 1199px) {
+    padding-top: 60px;
+  }
 
-	@media (max-width: 576px) {
-		padding-top: 36px;
-		padding-bottom: 35px;
-	}
+  @media (max-width: 576px) {
+    padding-top: 36px;
+    padding-bottom: 35px;
+  }
 }
 
 .breadcrumbs {
-	margin-bottom: 38px;
+  margin-bottom: 38px;
 
-	@media (max-width: 1199px) {
+  @media (max-width: 1199px) {
     display: none;
   }
 }
 
 .top {
-	display: grid;
-	grid-template-areas: "photo title"
-	"photo info";
-	grid-template-columns: auto 1fr;
+  display: grid;
+  grid-template-areas:
+    "photo title"
+    "photo info";
+  grid-template-columns: auto 1fr;
 
-	@media (max-width: 576px) {
-		grid-template-areas: "photo title"
-		"photo title"
-		"info info";
-	}
+  @media (max-width: 576px) {
+    grid-template-areas:
+      "photo title"
+      "photo title"
+      "info info";
+  }
 }
 
 .photo {
-	position: relative;
-	display: block;
-	border-radius: 100%;
-	flex-shrink: 0;
-	width: 160px;
-	height: 160px;
-	overflow: hidden;
-	margin-right: 30px;
-	grid-area: photo;
+  position: relative;
+  display: block;
+  border-radius: 100%;
+  flex-shrink: 0;
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  margin-right: 30px;
+  grid-area: photo;
   background-color: rgba(#fff, 0.08);
 
-	@media (max-width: 576px) {
-		margin-right: 30px;
-		width: 113px;
-		height: 113px;
-	}
+  @media (max-width: 576px) {
+    margin-right: 30px;
+    width: 113px;
+    height: 113px;
+  }
 }
 
 .title {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	grid-area: title;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-area: title;
 }
 
 .name {
-	&:not(:last-child) {
-		margin-bottom: 12px;
+  &:not(:last-child) {
+    margin-bottom: 12px;
 
-		@media (max-width: 576px) {
-			margin-bottom: 11px;
-		}
-	}
+    @media (max-width: 576px) {
+      margin-bottom: 11px;
+    }
+  }
 
-	@media (max-width: 576px) {
-		font-size: 22px;
-		line-height: 25px;
-	}
+  @media (max-width: 576px) {
+    font-size: 22px;
+    line-height: 25px;
+  }
 }
 
 .enName {
-	font-size: 17px;
-	letter-spacing: 0.7px;
-	color: rgba(#fff, 0.5);
-	margin-bottom: 14px;
+  font-size: 17px;
+  letter-spacing: 0.7px;
+  color: rgba(#fff, 0.5);
+  margin-bottom: 14px;
 
-	@media (max-width: 576px) {
-		margin-bottom: 0;
-		font-size: 15px;
-		letter-spacing: 0.2px;
-	}
+  @media (max-width: 576px) {
+    margin-bottom: 0;
+    font-size: 15px;
+    letter-spacing: 0.2px;
+  }
 }
 
 .info {
-	display: flex;
-	flex-direction: column;
-	grid-area: info;
+  display: flex;
+  flex-direction: column;
+  grid-area: info;
 
-	@media (max-width: 576px) {
-		margin-top: 20px;
-	}
+  @media (max-width: 576px) {
+    margin-top: 20px;
+  }
 }
 
 .row {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 
-	&:not(:last-child) {
-		margin-bottom: 12px;
-	}
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
 }
 
 .value {
-	font-weight: 300;
-	font-size: 14px;
-	line-height: 18px;
-	color: rgba(#fff, 0.5);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(#fff, 0.5);
 
-	@media (max-width: 576px) {
-		font-size: 12px;
-		line-height: 17px;
-	}
+  @media (max-width: 576px) {
+    font-size: 12px;
+    line-height: 17px;
+  }
 
-	&:first-child {
-		min-width: 145px;
-	}
+  &:first-child {
+    min-width: 145px;
+  }
 
-	&:last-child {
-		letter-spacing: 0.3px;
-		color: rgba(#fff, 0.95);
-	}
+  &:last-child {
+    letter-spacing: 0.3px;
+    color: rgba(#fff, 0.95);
+  }
 }
