@@ -1,1 +1,0 @@
-export { MovieItem } from './ui';

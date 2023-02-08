@@ -2,7 +2,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { GenresEnum } from 'shared/config';
 import { getCurrentYear, getYears } from 'shared/lib/get-year';
 import { http } from './config';
-import type { Data, Movie, MovieCard, Person, PersonCard } from './types';
+import type { Data, Movie, MovieCard, Person } from './types';
 
 const routesConfig = http.createRoutesConfig({
   getNewMovies: http.createRoute<number | void, Data<MovieCard>>({
@@ -41,7 +41,7 @@ const routesConfig = http.createRoutesConfig({
       limit: 15,
     },
   }),
-  searchMoviesByName: http.createRoute<string | void, Data<MovieCard>>((query) => ({
+  searchByName: http.createRoute<string | void, Data<MovieCard>>((query) => ({
     url: '/movie',
     params: {
       search: [query, '!null', getYears()],
@@ -51,14 +51,6 @@ const routesConfig = http.createRoutesConfig({
       sortField: 'year',
       sortType: '-1',
       isStrict: false,
-      limit: 30,
-    },
-  })),
-  searchPersonsByName: http.createRoute<string | void, Data<PersonCard>>((query) => ({
-    url: '/person',
-    params: {
-      search: [query, '!null'],
-      field: ['name', 'photo'],
       limit: 30,
     },
   })),
