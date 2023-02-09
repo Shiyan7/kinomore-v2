@@ -1,4 +1,4 @@
-export function getCatalogType(pathname: string): string {
+export function getCatalogType(pathname: string | undefined): string {
   switch (pathname) {
     case '/films':
       return '1';

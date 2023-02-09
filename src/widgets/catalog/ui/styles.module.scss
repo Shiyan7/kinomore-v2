@@ -1,10 +1,10 @@
 .container {
   padding-top: 40px;
-  padding-bottom: 60px;
+  padding-bottom: 90px;
 
   @media (max-width: 576px) {
     padding-top: 30px;
-    padding-bottom: 50px;
+    padding-bottom: 80px;
   }
 }
 
@@ -52,4 +52,8 @@
     column-gap: 10px;
     row-gap: 20px;
   }
+}
+
+.loadMore {
+  margin-top: 25px;
 }

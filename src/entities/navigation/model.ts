@@ -4,7 +4,7 @@ import { createGate } from 'effector-react';
 import type { NextRouter } from 'next/router';
 import { QueryPayload } from './types';
 
-export const routerUpdated = createEvent<NextRouter | null>();
+export const routerUpdated = createEvent();
 
 export const RouterGate = createGate<{ router: NextRouter | null }>();
 

@@ -12,16 +12,18 @@ export const TrailerModal = () => {
   const data = useStore(pageModel.$movie);
   const trailer = getTrailer(data?.videos);
 
+  const Loader = (
+    <div className={styles.spinner}>
+      <Spinner strokeWidth={2} />
+    </div>
+  );
+
   return (
     <Popup className={styles.modal} isOpen={isOpen} close={close}>
       <div className={styles.content}>
         {data?.videos?.trailers.length ? (
           <>
-            {isLoading && (
-              <div className={styles.spinner}>
-                <Spinner strokeWidth={2} />
-              </div>
-            )}
+            {isLoading && Loader}
             <iframe
               onLoad={() => setIsLoading(false)}
               className={styles.iframe}

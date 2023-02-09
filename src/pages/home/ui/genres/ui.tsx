@@ -42,19 +42,17 @@ export const Genres = () => {
       className={clsx(styles.section, {
         [styles.isStart]: isStart,
         [styles.isCenter]: isCenter,
-      })}
-    >
+      })}>
       <h2 className="visually-hidden">Жанры</h2>
       <div className="container">
         <Swiper
           modules={[Mousewheel, FreeMode]}
           freeMode
+          mousewheel
           onSlideChange={slideChange}
           onSliderMove={slideChange}
-          mousewheel
           slidesPerView="auto"
-          className={clsx('list-reset', styles.list)}
-        >
+          className={styles.list}>
           {genres.map((genre) => (
             <SwiperSlide key={genre.text} className={styles.item}>
               <Link href={genre.href} className={styles.link}>

@@ -1,8 +1,7 @@
-import { ParsedUrlQuery } from 'querystring';
 import { GenresEnum } from 'shared/config';
 import { getCurrentYear, getYears } from 'shared/lib/get-year';
 import { http } from './config';
-import type { Data, Movie, MovieCard, Person } from './types';
+import type { CatalogParams, Data, Movie, MovieCard, Person } from './types';
 
 const routesConfig = http.createRoutesConfig({
   getNewMovies: http.createRoute<number | void, Data<MovieCard>>({
@@ -54,15 +53,15 @@ const routesConfig = http.createRoutesConfig({
       limit: 30,
     },
   })),
-  getCatalog: http.createRoute<ParsedUrlQuery, Data<MovieCard>>(
-    ({ genre, rating = '1', year = getYears(), sort, type }) => ({
+  getCatalog: http.createRoute<CatalogParams, Data<MovieCard>>(
+    ({ type, limit, genre, rating = '1', year = getYears(), sort }) => ({
       url: `/movie`,
       params: {
         search: [type, '!null', year, `${rating}-10`, genre],
         field: ['typeNumber', 'poster.previewUrl', 'year', 'rating.kp', genre ? 'genres.name' : null],
         'sortField[]': [sort, 'votes.kp'],
         'sortType[]': ['-1', '-1'],
-        limit: 30,
+        limit,
       },
     })
   ),

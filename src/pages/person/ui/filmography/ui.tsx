@@ -31,7 +31,7 @@ export const Filmography = () => {
         </div>
         {length > limit && (
           <Button size="medium" onClick={handleShowMore} className={styles.btn} variant="gray">
-            Показать ещё
+            Показать больше
           </Button>
         )}
       </div>

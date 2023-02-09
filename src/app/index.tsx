@@ -13,7 +13,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   const routerUpdated = useEvent(navigationModel.routerUpdated);
 
   useEffect(() => {
-    routerUpdated(router);
+    routerUpdated();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 

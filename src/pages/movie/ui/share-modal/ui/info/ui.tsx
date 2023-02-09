@@ -7,7 +7,6 @@ import styles from './styles.module.scss';
 
 export const Info = () => {
   const data = useStore(pageModel.$movie);
-
   const name = getPageTitle(data?.name);
 
   return (

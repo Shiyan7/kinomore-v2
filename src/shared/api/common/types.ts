@@ -1,3 +1,5 @@
+import { ParsedUrlQuery } from 'querystring';
+
 export interface Data<T> {
   docs: T[];
   total: number;
@@ -282,4 +284,10 @@ export interface Person {
   sex: string;
   spouses: PersonSpouse[];
   updatedAt: Date;
+}
+
+export interface CatalogParams {
+  [key: string]: ParsedUrlQuery | number | string;
+  type: string;
+  limit: number;
 }
