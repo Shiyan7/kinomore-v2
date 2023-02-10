@@ -1,5 +1,6 @@
+import type { ParsedUrlQuery } from 'querystring';
 import { createEvent, createStore, sample } from 'effector';
-import { navigationModel, type QueryPayload } from 'entities/navigation';
+import { navigationModel } from 'entities/navigation';
 import { createToggler, paramsToString } from 'shared/lib';
 import { getOption } from '../lib';
 import { genres, years } from '../config';
@@ -24,13 +25,28 @@ sample({
   target: $params,
 });
 
-interface OptionPayload extends QueryPayload {
-  queryName: 'genre' | 'rating' | 'year' | 'sort';
-}
+export const optionSelected = createEvent<ParsedUrlQuery>();
 
-export const optionSelected = createEvent<OptionPayload>();
+export const sendOption = createEvent<ParsedUrlQuery>();
+
+const $allParams = createStore<ParsedUrlQuery | null>(null).on(sendOption, (state, payload) => ({
+  ...state,
+  ...payload,
+}));
+
+export const applyResults = createEvent();
+
+/* Передаем все параметры в query только когда вызвался эвент applyResults */
+
+sample({
+  clock: applyResults,
+  source: $allParams,
+  target: [navigationModel.pushQuery, filtersToggler.close],
+});
+
+/* Когда что-то выбрали в селекте, сразу напрямую передаём в query */
 
 sample({
   clock: optionSelected,
-  target: [navigationModel.pushQuery, filtersToggler.close],
+  target: navigationModel.pushQuery,
 });

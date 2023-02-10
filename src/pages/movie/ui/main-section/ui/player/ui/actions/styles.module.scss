@@ -29,7 +29,7 @@
   padding: 12px;
 
   @media (min-width: 1199px) {
-    background-color: rgba(#fff, 0.12);
+    background-color: var(--color-gray-100);
     transition: background-color var(--duration);
 
     &:not(:first-child) {
@@ -45,7 +45,7 @@
     }
 
     &:hover {
-      background-color: rgba(#fff, 0.2);
+			background-color: var(--color-gray-200);
     }
   }
 
@@ -65,12 +65,6 @@
       font-size: 11px;
       line-height: 18px;
       width: 105px;
-    }
-
-    @media (max-width: 360px) {
-      font-size: 10px;
-      width: 100px;
-      line-height: 17px;
     }
   }
 
@@ -98,11 +92,6 @@
       margin-bottom: 6px;
     }
 
-    @media (max-width: 360px) {
-      width: 42px;
-      height: 42px;
-    }
-
     svg {
       display: block;
       width: 23px;
@@ -111,11 +100,6 @@
       @media (max-width: 576px) {
         width: 20px;
         height: 20px;
-      }
-
-      @media (max-width: 360px) {
-        width: 17px;
-        height: 17px;
       }
     }
   }

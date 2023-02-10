@@ -41,13 +41,7 @@ export const Catalog = ({ title }: CatalogProps) => {
           </div>
         </InfiniteScroll>
         {hasMore && (
-          <Button
-            disabled={pending}
-            skeletonLoading={pending}
-            size="medium"
-            onClick={loadMore}
-            className={styles.loadMore}
-            variant="gray">
+          <Button disabled skeletonLoading={pending} size="medium" className={styles.loadMore} variant="gray">
             Показать больше
           </Button>
         )}

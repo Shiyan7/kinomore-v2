@@ -26,11 +26,11 @@ export const MovieItem = ({ item, small }: MovieItemProps) => {
         />
       </div>
       <div className={styles.content}>
-        <Rating className={styles.rating}>{getRating(item.rating)}</Rating>
+        {item?.rating && <Rating className={styles.rating}>{getRating(item.rating)}</Rating>}
         <h3 className={styles.name}>{item?.name}</h3>
         <div className={styles.info}>
-          <span className={styles.year}>{item.year}</span>
-          <span className={styles.length}>{minutesToHour(item.movieLength)}</span>
+          <span className={styles.year}>{item?.year}</span>
+          {item?.movieLength && <span className={styles.length}>{minutesToHour(item.movieLength)}</span>}
         </div>
       </div>
     </Link>

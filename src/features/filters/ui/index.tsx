@@ -7,14 +7,25 @@ import { useLockedBody, useToggler } from 'shared/lib';
 import { Button, CloseIcon, SortIcon, Title } from 'shared/ui';
 import { genres, ratings, years, filters } from '../config';
 import { Select } from './select';
+import { DrawerSelect } from './drawer-select';
 import styles from './styles.module.scss';
+
+const options = [
+  { label: 'Жанры', queryName: 'genre', options: genres },
+  { label: 'Рейтинг', queryName: 'rating', options: ratings },
+  { label: 'Годы выхода', queryName: 'year', options: years },
+];
 
 export const Filters = () => {
   const { query } = useRouter();
   const { isOpen, close } = useToggler(filtersModel.filtersToggler);
   const optionSelected = useEvent(filtersModel.optionSelected);
+  const applyResults = useEvent(filtersModel.applyResults);
+  const sendOption = useEvent(filtersModel.sendOption);
 
   useLockedBody(isOpen);
+
+  /* FIXME: добавить позже кнопку сбросить */
 
   return (
     <div className={clsx(styles.root, isOpen && styles.isOpen)}>
@@ -32,45 +43,55 @@ export const Filters = () => {
         </div>
         <div className={styles.filters}>
           <div className={styles.row}>
-            <Select
-              value={query?.genre}
-              onSelect={({ value }) => optionSelected({ queryName: 'genre', value })}
-              options={genres}
-              className={styles.select}
-              label="Жанры"
-              defaultValue="Жанры"
-            />
-            <Select
-              value={query?.rating}
-              onSelect={({ value }) => optionSelected({ queryName: 'rating', value })}
-              options={ratings}
-              className={styles.select}
-              label="Рейтинг"
-              defaultValue="Рейтинг"
-            />
-            <Select
-              value={query?.year}
-              onSelect={({ value }) => optionSelected({ queryName: 'year', value })}
-              options={years}
-              className={styles.select}
-              label="Годы выхода"
-              defaultValue="Годы выхода"
-            />
+            {options.map((option, idx) => {
+              const { label, options, queryName } = option;
+
+              return (
+                <Select
+                  key={idx}
+                  value={query[queryName]}
+                  onSelect={({ value }) => optionSelected({ [queryName]: value })}
+                  options={options}
+                  className={styles.select}
+                  defaultValue={label}
+                />
+              );
+            })}
           </div>
           <div className={styles.row}>
             <Select
-              value={query?.sort}
-              onSelect={({ value }) => optionSelected({ queryName: 'sort', value })}
-              placement="bottom-end"
+              value={query.sort}
+              onSelect={(option) => optionSelected({ sort: option.value })}
               options={filters}
               startIcon={<SortIcon />}
+              placement="bottom-end"
               className={styles.select}
-              label="Сортировка"
               defaultValue="Рекомендуемые"
             />
           </div>
         </div>
-        <Button onClick={close} className={styles.btn} variant="primary">
+        <div className={styles.options}>
+          <DrawerSelect
+            value={query.sort}
+            onSelect={(option) => sendOption({ sort: option.value })}
+            options={filters}
+            label="Сортировка"
+          />
+          {options.map((option, idx) => {
+            const { label, options, queryName } = option;
+
+            return (
+              <DrawerSelect
+                key={idx}
+                value={query[queryName]}
+                onSelect={(option) => sendOption({ [queryName]: option.value })}
+                options={options}
+                label={label}
+              />
+            );
+          })}
+        </div>
+        <Button onClick={applyResults} className={styles.btn} variant="primary">
           Показать результаты
         </Button>
       </div>

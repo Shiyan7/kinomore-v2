@@ -25,6 +25,7 @@ export const genres: SelectOption[] = [
   { value: 'приключения', label: 'Приключения' },
   { value: 'семейный', label: 'Семейный' },
   { value: 'спорт', label: 'Спорт' },
+  { value: 'ужасы', label: 'Ужасы' },
 ];
 
 export const ratings: SelectOption[] = [
@@ -40,7 +41,8 @@ export const years: SelectOption[] = [
   { value: '', label: 'Все годы' },
   { value: '2022-2023', label: '2022-2023' },
   { value: '2020-2021', label: '2020-2021' },
-  { value: '2010-2019', label: '2010-2019' },
+  { value: '2014-2019', label: '2014-2019' },
+  { value: '2010-2014', label: '2010-2014' },
   { value: '2000-2009', label: '2000-2009' },
   { value: '1990-1999', label: '1990-1999' },
   { value: '1980-1989', label: '1980-1989' },
