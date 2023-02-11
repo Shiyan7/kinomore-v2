@@ -56,20 +56,3 @@
 .loadMore {
   margin-top: 35px;
 }
-
-
-.scroll {
-
-  &::-webkit-scrollbar {
-    width: 4px;
-    background-color: var(--background-scrollbar);
-    border-radius: 10px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--color-scrollbar);
-    border: 1.2px solid var(--background-scrollbar);
-    width: 0;
-    border-radius: 10px;
-  }
-}

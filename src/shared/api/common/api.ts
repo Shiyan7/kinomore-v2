@@ -54,7 +54,7 @@ const routesConfig = http.createRoutesConfig({
     },
   })),
   getCatalog: http.createRoute<CatalogParams, Data<MovieCard>>(
-    ({ type, limit, genre, rating = '1', year = getYears(), sort }) => ({
+    ({ type, limit, genre, rating = '1', sort, year = getYears() }) => ({
       url: `/movie`,
       params: {
         search: [type, '!null', year, `${rating}-10`, genre],

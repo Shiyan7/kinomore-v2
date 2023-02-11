@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react-hooks/exhaustive-deps */
-import { RefObject, useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState, type RefObject } from 'react';
 
 interface ObserverOptions {
   root: Element | null;
@@ -8,10 +6,10 @@ interface ObserverOptions {
   treshold: number;
 }
 
-export function useElementOnScreen(options: ObserverOptions, targetRef: RefObject<HTMLElement>, callback: () => void) {
+export function useElementOnScreen(options: ObserverOptions, targetRef: RefObject<HTMLElement>): boolean {
   const [isVisible, setIsVisible] = useState(false);
 
-  const callbackFunction = useCallback((entries: any) => {
+  const callbackFunction = useCallback((entries: IntersectionObserverEntry[]) => {
     const [entry] = entries;
     setIsVisible(entry.isIntersecting);
   }, []);
@@ -30,11 +28,8 @@ export function useElementOnScreen(options: ObserverOptions, targetRef: RefObjec
         observer.unobserve(currentTarget);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetRef.current, options]);
 
-  useEffect(() => {
-    if (isVisible) {
-      callback();
-    }
-  }, [isVisible]);
+  return isVisible;
 }

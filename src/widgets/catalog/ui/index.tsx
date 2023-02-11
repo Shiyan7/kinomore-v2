@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import clsx from 'clsx';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useEvent, useStore } from 'effector-react';
 import { catalogModel } from 'widgets/catalog';
 import { Filters, filtersModel } from 'features/filters';
@@ -22,7 +23,13 @@ export const Catalog = ({ title }: CatalogProps) => {
   const pending = useStore(catalogModel.getCatalogFx.pending);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  useElementOnScreen({ root: buttonRef.current, rootMargin: '350px', treshold: 0 }, buttonRef, loadMore);
+  const isVisible = useElementOnScreen({ root: buttonRef.current, rootMargin: '450px', treshold: 0 }, buttonRef);
+
+  useEffect(() => {
+    if (isVisible) {
+      loadMore();
+    }
+  }, [isVisible]);
 
   return (
     <section className={styles.section}>
