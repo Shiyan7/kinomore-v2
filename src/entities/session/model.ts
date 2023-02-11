@@ -8,7 +8,7 @@ function getAccessToken() {
 }
 
 function setAccessToken(token: string) {
-  setCookie(ACCESS_TOKEN, token, { maxAge: 60 * 60 * 24 });
+  setCookie(ACCESS_TOKEN, token);
 }
 
 function removeAccessToken() {
