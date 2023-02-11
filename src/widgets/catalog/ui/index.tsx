@@ -20,7 +20,7 @@ export const Catalog = ({ title }: CatalogProps) => {
   const loadMore = useEvent(catalogModel.loadMore);
   const data = useStore(catalogModel.$catalog);
   const hasMore = useStore(catalogModel.$hasMore);
-  const pending = useStore(catalogModel.getCatalogFx.pending);
+  const pending = useStore(catalogModel.$pending);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const isVisible = useElementOnScreen({ root: buttonRef.current, rootMargin: '450px', treshold: 0 }, buttonRef);

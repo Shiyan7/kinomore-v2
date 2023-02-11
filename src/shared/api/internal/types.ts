@@ -12,7 +12,7 @@ export interface UserDto {
   password: string;
 }
 
-export interface User {
+export interface Session {
   email: string;
   id: string;
 }
@@ -20,5 +20,5 @@ export interface User {
 export interface UserWithTokensDto {
   accessToken: string;
   refreshToken: string;
-  user: User;
+  user: Session;
 }

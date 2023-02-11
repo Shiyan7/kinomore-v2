@@ -1,6 +1,6 @@
 import { getCookie, setCookie, deleteCookie } from 'cookies-next';
 import { createEffect, createStore, sample, attach, forward, createEvent } from 'effector';
-import { internalApi, internalInstance, type User } from 'shared/api';
+import { internalApi, internalInstance, type Session } from 'shared/api';
 import { ACCESS_TOKEN } from './config';
 
 function getAccessToken() {
@@ -8,7 +8,7 @@ function getAccessToken() {
 }
 
 function setAccessToken(token: string) {
-  setCookie(ACCESS_TOKEN, token);
+  setCookie(ACCESS_TOKEN, token, { maxAge: 60 * 30 });
 }
 
 function removeAccessToken() {
@@ -39,17 +39,17 @@ forward({
   to: refreshFx,
 });
 
-export const $user = createStore<User | null>(null)
+export const $session = createStore<Session | null>(null)
   .on([loginFx.doneData, registerFx.doneData, refreshFx.doneData], (_, payload) => payload.user)
   .reset(removeAccessTokenFx.done);
 
-export const $isAuth = $user.map((user) => !!user);
+export const $isLogged = $session.map((session) => !!session);
 
 export const $hasToken = createStore(Boolean(getAccessToken()))
   .on(setAccessTokenFx.done, () => true)
   .on(removeAccessTokenFx.done, () => false);
 
-export const $isLoading = createStore(false).on(
+export const $pending = createStore(false).on(
   [loginFx.pending, registerFx.pending, logoutFx.pending],
   (_, payload) => payload
 );

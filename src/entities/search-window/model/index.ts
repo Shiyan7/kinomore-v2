@@ -23,9 +23,4 @@ sample({
   target: [searchByNameFx, $debouncedValue],
 });
 
-export const $pending = createStore<boolean>(false);
-
-sample({
-  clock: searchByNameFx.pending,
-  target: $pending,
-});
+export const $pending = searchByNameFx.pending;

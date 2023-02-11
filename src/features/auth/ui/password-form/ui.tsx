@@ -15,7 +15,7 @@ export const PasswordForm = () => {
   const { email } = useStore(authModel.emailForm.$values);
   const { password } = useStore(authModel.passwordForm.$values);
   const maskPassword = maskString(password);
-  const pending = useStore(sessionModel.$isLoading);
+  const pending = useStore(sessionModel.$pending);
   const inputRef = useRef<HTMLInputElement>(null);
   const isNewUser = useStore(authModel.$isNewUser);
   const editClicked = useEvent(authModel.editClicked);

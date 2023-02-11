@@ -10,7 +10,7 @@ import styles from './styles.module.scss';
 
 export const Profile = () => {
   const { open } = useToggler(authModel.authWindow);
-  const isAuth = useStore(sessionModel.$isAuth);
+  const isLogged = useStore(sessionModel.$isLogged);
 
   const ProfileLink = (
     <Link href={paths.profile} className={styles.profile}>
@@ -26,5 +26,5 @@ export const Profile = () => {
     </button>
   );
 
-  return isAuth ? ProfileLink : ProfileButton;
+  return isLogged ? ProfileLink : ProfileButton;
 };

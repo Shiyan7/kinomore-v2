@@ -23,9 +23,7 @@ sample({
   target: $pageContext,
 });
 
-const $params = combine($pageContext, $limit, (context, limit) => {
-  return { context, limit };
-});
+const $params = combine({ context: $pageContext, limit: $limit });
 
 sample({
   clock: [pageStarted, loadMore],
@@ -33,6 +31,8 @@ sample({
   fn: ({ limit, context }) => ({ ...context?.query, limit, type: getCatalogType(context?.pathname) }),
   target: getCatalogFx,
 });
+
+export const $pending = getCatalogFx.pending;
 
 sample({
   clock: getCatalogFx.doneData,
