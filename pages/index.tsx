@@ -1,7 +1,7 @@
-import { createGIP } from 'pages/shared';
+import { createGSP } from 'pages/shared';
 import { HomePage, pageModel } from 'pages/home';
 
-HomePage.getInitialProps = createGIP({
+export const getStaticProps = createGSP({
   pageEvent: pageModel.pageStarted,
 });
 

@@ -1,6 +1,5 @@
 import type { PageContext } from 'nextjs-effector';
 import { attach, combine, createEvent, createStore, restore, sample } from 'effector';
-import { navigationModel } from 'entities/navigation';
 import { commonApi } from 'shared/api';
 import { getCatalogType } from '../lib';
 
@@ -15,13 +14,13 @@ export const $hasMore = createStore(false);
 
 export const $limit = createStore(30)
   .on(loadMore, (state) => state + 30)
-  .reset(navigationModel.routerUpdated);
+  .reset(pageStarted);
 
 const $pageContext = createStore<PageContext | null>(null);
 
 sample({
   clock: pageStarted,
-  target: [$pageContext, navigationModel.routerUpdated],
+  target: $pageContext,
 });
 
 const $params = combine($pageContext, $limit, (context, limit) => {
