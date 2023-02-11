@@ -13,7 +13,7 @@ export const loadMore = createEvent();
 export const $hasMore = createStore(false);
 
 export const $limit = createStore(30)
-  .on(loadMore, (state) => state + 30)
+  .on(loadMore, (state) => state + 60)
   .reset(pageStarted);
 
 const $pageContext = createStore<PageContext | null>(null);

@@ -1,11 +1,12 @@
 import clsx from 'clsx';
-import InfiniteScroll from 'react-infinite-scroller';
+import { useRef } from 'react';
 import { useEvent, useStore } from 'effector-react';
 import { catalogModel } from 'widgets/catalog';
 import { Filters, filtersModel } from 'features/filters';
 import { MovieItem } from 'entities/movie-item';
 import { useToggler } from 'shared/lib';
 import { Title, FiltersIcon, Button } from 'shared/ui';
+import { useElementOnScreen } from '../lib';
 import styles from './styles.module.scss';
 
 interface CatalogProps {
@@ -19,6 +20,9 @@ export const Catalog = ({ title }: CatalogProps) => {
   const data = useStore(catalogModel.$catalog);
   const hasMore = useStore(catalogModel.$hasMore);
   const pending = useStore(catalogModel.getCatalogFx.pending);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useElementOnScreen({ root: buttonRef.current, rootMargin: '350px', treshold: 0 }, buttonRef, loadMore);
 
   return (
     <section className={styles.section}>
@@ -33,15 +37,19 @@ export const Catalog = ({ title }: CatalogProps) => {
           </button>
         </div>
         <Filters />
-        <InfiniteScroll pageStart={0} loadMore={loadMore} hasMore={hasMore}>
-          <div className={styles.grid}>
-            {data?.docs.map((item) => (
-              <MovieItem key={item.id} item={item} />
-            ))}
-          </div>
-        </InfiniteScroll>
+        <div className={styles.grid}>
+          {data?.docs.map((item) => (
+            <MovieItem key={item.id} item={item} />
+          ))}
+        </div>
         {hasMore && (
-          <Button disabled skeletonLoading={pending} size="medium" className={styles.loadMore} variant="gray">
+          <Button
+            ref={buttonRef}
+            disabled
+            skeletonLoading={pending}
+            size="medium"
+            className={styles.loadMore}
+            variant="gray">
             Показать больше
           </Button>
         )}

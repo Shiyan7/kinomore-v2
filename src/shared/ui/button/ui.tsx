@@ -1,5 +1,5 @@
+import { forwardRef, type ElementType, ReactNode, ComponentProps } from 'react';
 import clsx from 'clsx';
-import type { ElementType, ReactNode, ComponentProps } from 'react';
 import { Spinner } from 'shared/ui/spinner';
 import styles from './styles.module.scss';
 
@@ -20,42 +20,48 @@ const DEFAULT_ELEMENT: ElementType = 'button';
 
 export type ButtonProps<E extends ElementType> = ButtonOwnProps<E> & Omit<ComponentProps<E>, keyof ButtonOwnProps>;
 
-export const Button = <E extends ElementType = typeof DEFAULT_ELEMENT>({
-  children,
-  as,
-  loading,
-  rounded,
-  startIcon,
-  endIcon,
-  skeletonLoading,
-  variant = 'primary',
-  size = 'regular',
-  className,
-  ...props
-}: ButtonProps<E>) => {
-  const ButtonSpinner = (
-    <div className={styles.spinner}>
-      <Spinner strokeWidth={4} />
-    </div>
-  );
+export const Button = forwardRef<HTMLButtonElement, ButtonProps<typeof DEFAULT_ELEMENT>>(
+  (
+    {
+      children,
+      as,
+      loading,
+      rounded,
+      startIcon,
+      endIcon,
+      skeletonLoading,
+      variant = 'primary',
+      size = 'regular',
+      className,
+      ...props
+    },
+    ref
+  ) => {
+    const ButtonSpinner = (
+      <div className={styles.spinner}>
+        <Spinner strokeWidth={4} />
+      </div>
+    );
 
-  const Element = as || DEFAULT_ELEMENT;
+    const Element = as || DEFAULT_ELEMENT;
 
-  return (
-    <Element
-      className={clsx(
-        'btn-reset',
-        styles.btn,
-        skeletonLoading && styles.skeleton,
-        rounded && styles.rounded,
-        styles[variant],
-        styles[size],
-        className
-      )}
-      {...props}>
-      {startIcon && <div className={styles.startIcon}>{startIcon}</div>}
-      <span>{loading ? ButtonSpinner : children}</span>
-      {endIcon && <div className={styles.endIcon}>{endIcon}</div>}
-    </Element>
-  );
-};
+    return (
+      <Element
+        ref={ref}
+        className={clsx(
+          'btn-reset',
+          styles.btn,
+          skeletonLoading && styles.skeleton,
+          rounded && styles.rounded,
+          styles[variant],
+          styles[size],
+          className
+        )}
+        {...props}>
+        {startIcon && <div className={styles.startIcon}>{startIcon}</div>}
+        <span>{loading ? ButtonSpinner : children}</span>
+        {endIcon && <div className={styles.endIcon}>{endIcon}</div>}
+      </Element>
+    );
+  }
+);
