@@ -7,12 +7,12 @@ import styles from './styles.module.scss';
 export const SimilarMovies = () => {
   const data = useStore(pageModel.$movie);
 
-  if (!data?.similarMovies?.length) return null;
+  if (!data?.sequelsAndPrequels[0].id) return null;
 
   return (
     <Category containerClass={styles.container}>
       <Category.Title className={styles.title}>Похожее кино</Category.Title>
-      <Category.Carousel items={data?.similarMovies} renderItem={(item) => <MovieItem small item={item} />} />
+      <Category.Carousel items={data?.sequelsAndPrequels} renderItem={(item) => <MovieItem small item={item} />} />
     </Category>
   );
 };

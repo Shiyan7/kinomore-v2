@@ -25,7 +25,7 @@ export const Header = () => {
           <span className={styles.email}>{email}</span>
         </div>
       )}
-      <button className={clsx('btn-reset', styles.close)} type="button" onClick={close}>
+      <button className={clsx('btn-reset', styles.close)} onClick={close}>
         <CloseIcon />
       </button>
       <Progress />

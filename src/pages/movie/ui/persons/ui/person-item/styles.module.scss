@@ -28,7 +28,8 @@
   overflow: hidden;
   margin: 0 auto 15px;
   border-radius: 100%;
-  border: 1px solid rgba(#fff, 0.15);
+  border: 1px solid rgba(#fff, 0.1);
+	background-color: var(--color-loader);
 
   @media (max-width: 576px) {
     margin-bottom: 10px;

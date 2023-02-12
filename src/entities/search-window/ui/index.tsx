@@ -14,7 +14,7 @@ export const SearchWindow = () => {
 
   return (
     <Modal isOpen={searchWindow.isOpen} close={searchWindow.close} className={styles.window}>
-      <button className={clsx('btn-reset', styles.close)} type="button" onClick={searchWindow.close}>
+      <button className={clsx('btn-reset', styles.close)} onClick={searchWindow.close}>
         <CloseIcon />
       </button>
       <div className={styles.container}>
