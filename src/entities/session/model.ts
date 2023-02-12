@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createEffect, createStore, sample, attach, forward, createEvent } from 'effector';
-import { internalApi, internalInstance, type Session } from 'shared/api';
+import { internalApi, internalInstance, type Session, UserWithTokensDto } from 'shared/api';
 import { ACCESS_TOKEN } from './config';
 
 function getAccessToken() {
@@ -76,17 +76,20 @@ internalInstance.interceptors.response.use(
     return config;
   },
   async (error) => {
-    const originalRequest = error.config;
-    if (error.response.status === 401 && error.config && !error.config._isRetry) {
+    const originalRequest = error?.config;
+    if (error?.response?.status === 401 && error?.config && !error?.config?._isRetry) {
       originalRequest._isRetry = true;
       try {
-        const { data } = await axios.get(`${process.env.INTERNAL_API_URL}/refresh`, { withCredentials: true });
+        const { data } = await axios.get<UserWithTokensDto>(`${process.env.INTERNAL_API_URL}/refresh`, {
+          withCredentials: true,
+        });
         localStorage.setItem(ACCESS_TOKEN, data.accessToken);
+        originalRequest.headers = { ...originalRequest.headers };
+        originalRequest.headers.Authorization = `Bearer ${getAccessToken()}`;
         return internalInstance.request(originalRequest);
       } catch (e) {
         console.log('НЕ АВТОРИЗОВАН');
       }
     }
-    throw error;
   }
 );
