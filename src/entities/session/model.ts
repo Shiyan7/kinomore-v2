@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { createEffect, createStore, sample, attach, forward, createEvent } from 'effector';
 import { internalApi, internalInstance, type Session } from 'shared/api';
 import { ACCESS_TOKEN } from './config';
@@ -71,21 +72,21 @@ internalInstance.interceptors.request.use((config) => {
 });
 
 internalInstance.interceptors.response.use(
-  (res) => {
-    return res;
+  (config) => {
+    return config;
   },
-  async (err) => {
-    const originalConfig = err.config;
-
-    if (err.response?.status === 401) {
+  async (error) => {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && error.config && !error.config._isRetry) {
+      originalRequest._isRetry = true;
       try {
-        startRefresh();
-        return internalInstance.request(originalConfig);
+        const { data } = await axios.get(`${process.env.INTERNAL_API_URL}/refresh`, { withCredentials: true });
+        localStorage.setItem(ACCESS_TOKEN, data.accessToken);
+        return internalInstance.request(originalRequest);
       } catch (e) {
-        return Promise.reject(e);
+        console.log('НЕ АВТОРИЗОВАН');
       }
     }
-
-    return Promise.reject(err);
+    throw error;
   }
 );
