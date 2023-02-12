@@ -1,6 +1,4 @@
-export function getSeasonString(length: number | null): string | null {
-  if (!length) return null;
-
+export function getSeasonString(length: number): string {
   const formatter = new Intl.PluralRules('ru');
   const pluralCategory = formatter.select(length);
 

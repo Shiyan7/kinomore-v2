@@ -1,5 +1,3 @@
-export function getAgeRating(ageRating: number | null): string | null {
-  if (!ageRating) return null;
-
+export function getAgeRating(ageRating: number): string {
   return `${ageRating}+`;
 }

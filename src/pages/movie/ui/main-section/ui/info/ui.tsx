@@ -9,11 +9,13 @@ import styles from './styles.module.scss';
 export const Info = () => {
   const data = useStore(pageModel.$movie);
 
+  const { ageRating, countries, seasonsInfo, year } = data!;
+
   const info = [
-    data?.year,
-    getSeasonString(data?.seasonsInfo?.length ?? null),
-    getCountry(data?.countries ?? null),
-    getAgeRating(data?.ageRating ?? null),
+    year,
+    seasonsInfo?.length ? getSeasonString(seasonsInfo.length) : null,
+    countries?.length ? getCountry(countries) : null,
+    ageRating ? getAgeRating(ageRating) : null,
   ];
 
   return (
