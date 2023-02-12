@@ -1,8 +1,8 @@
-export function getSeasonString(length: number): string | null {
+export function getSeasonString(length: number | null): string | null {
+  if (!length) return null;
+
   const formatter = new Intl.PluralRules('ru');
   const pluralCategory = formatter.select(length);
-
-  if (!length) return null;
 
   switch (pluralCategory) {
     case 'one':

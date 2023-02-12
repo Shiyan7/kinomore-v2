@@ -11,9 +11,9 @@ export const Info = () => {
 
   const info = [
     data?.year,
-    getSeasonString(data?.seasonsInfo?.length ?? 0),
-    getCountry(data?.countries ?? []),
-    getAgeRating(data?.ageRating ?? 0),
+    getSeasonString(data?.seasonsInfo?.length ?? null),
+    getCountry(data?.countries ?? null),
+    getAgeRating(data?.ageRating ?? null),
   ];
 
   return (

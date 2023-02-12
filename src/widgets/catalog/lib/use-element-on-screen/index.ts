@@ -1,12 +1,14 @@
-import { useCallback, useEffect, useMemo, useState, type RefObject } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type RefObject } from 'react';
 
 interface ObserverOptions {
-  root: Element | null;
-  rootMargin: string;
-  treshold: number;
+  rootMargin?: string;
+  threshold?: number | number[];
 }
 
-export function useElementOnScreen(options: ObserverOptions, targetRef: RefObject<HTMLElement>): boolean {
+export function useElementOnScreen<T extends Element = HTMLDivElement>(
+  options: ObserverOptions
+): [RefObject<T>, boolean] {
+  const containerRef = useRef<T>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   const callbackFunction = useCallback((entries: IntersectionObserverEntry[]) => {
@@ -18,7 +20,7 @@ export function useElementOnScreen(options: ObserverOptions, targetRef: RefObjec
 
   useEffect(() => {
     const observer = new IntersectionObserver(callbackFunction, optionsMemo);
-    const currentTarget = targetRef.current;
+    const currentTarget = containerRef.current;
 
     if (currentTarget) {
       return observer.observe(currentTarget);
@@ -29,7 +31,7 @@ export function useElementOnScreen(options: ObserverOptions, targetRef: RefObjec
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [targetRef.current, options]);
+  }, [containerRef, options]);
 
-  return isVisible;
+  return [containerRef, isVisible];
 }

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import clsx from 'clsx';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useEvent, useStore } from 'effector-react';
 import { catalogModel } from 'widgets/catalog';
 import { Filters, filtersModel } from 'features/filters';
@@ -16,14 +16,12 @@ interface CatalogProps {
 
 export const Catalog = ({ title }: CatalogProps) => {
   const { open } = useToggler(filtersModel.filtersToggler);
-  const params = useStore(filtersModel.$params);
+  const [buttonRef, isVisible] = useElementOnScreen<HTMLButtonElement>({ rootMargin: '450px' });
   const loadMore = useEvent(catalogModel.loadMore);
-  const data = useStore(catalogModel.$catalog);
   const hasMore = useStore(catalogModel.$hasMore);
   const pending = useStore(catalogModel.$pending);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-
-  const isVisible = useElementOnScreen({ root: buttonRef.current, rootMargin: '450px', treshold: 0 }, buttonRef);
+  const params = useStore(filtersModel.$params);
+  const data = useStore(catalogModel.$catalog);
 
   useEffect(() => {
     if (isVisible) {
