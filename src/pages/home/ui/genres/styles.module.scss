@@ -75,7 +75,7 @@
   border-radius: 8px;
   font-weight: 400;
   color: var(--color-white);
-  background-color: rgba(#fff, 0.05);
+  background-color: rgba(#222225, 0.5);
   transition: background-color var(--duration);
 
   @media (max-width: 576px) {
@@ -85,7 +85,7 @@
   }
 
   &:hover {
-    background-color: rgba(#fff, 0.1);
+		background-color: rgba(#222225, 0.8);
   }
 }
 

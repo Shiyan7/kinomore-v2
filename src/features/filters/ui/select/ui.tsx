@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ReactNode, useRef, useState } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 import type { SelectOption } from 'features/filters';
 import { useOnClickOutside } from 'shared/lib';
 import { CheckIcon, ChevronIcon } from 'shared/ui/icons';

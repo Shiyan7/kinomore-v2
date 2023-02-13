@@ -34,12 +34,12 @@ const $allParams = createStore<ParsedUrlQuery | null>(null).on(sendOption, (stat
   ...payload,
 }));
 
-export const applyResults = createEvent();
+export const showResults = createEvent();
 
-/* Передаем все параметры в query только когда вызвался эвент applyResults */
+/* Передаем все параметры в query только когда вызвался эвент showResults */
 
 sample({
-  clock: applyResults,
+  clock: showResults,
   source: $allParams,
   target: [navigationModel.pushQuery, filtersToggler.close],
 });

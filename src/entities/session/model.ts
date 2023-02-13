@@ -1,18 +1,19 @@
 import axios from 'axios';
+import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 import { createEffect, createStore, sample, attach, forward, createEvent } from 'effector';
 import { internalApi, internalInstance, type Session, UserWithTokensDto } from 'shared/api';
 import { ACCESS_TOKEN } from './config';
 
 function getAccessToken() {
-  if (typeof window !== 'undefined') return localStorage.getItem(ACCESS_TOKEN);
+  return getCookie(ACCESS_TOKEN);
 }
 
 function setAccessToken(token: string) {
-  localStorage.setItem(ACCESS_TOKEN, token);
+  setCookie(ACCESS_TOKEN, token);
 }
 
 function removeAccessToken() {
-  localStorage.removeItem(ACCESS_TOKEN);
+  deleteCookie(ACCESS_TOKEN);
 }
 
 const setAccessTokenFx = createEffect({ handler: setAccessToken });
@@ -83,12 +84,12 @@ internalInstance.interceptors.response.use(
         const { data } = await axios.get<UserWithTokensDto>(`${process.env.INTERNAL_API_URL}/refresh`, {
           withCredentials: true,
         });
-        localStorage.setItem(ACCESS_TOKEN, data.accessToken);
+        setAccessToken(data.accessToken);
         originalRequest.headers = { ...originalRequest.headers };
         originalRequest.headers.Authorization = `Bearer ${getAccessToken()}`;
         return internalInstance.request(originalRequest);
       } catch (e) {
-        console.log('НЕ АВТОРИЗОВАН');
+        console.error(e);
       }
     }
   }

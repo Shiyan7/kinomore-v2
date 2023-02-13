@@ -20,7 +20,7 @@ export const Filters = () => {
   const { query } = useRouter();
   const { isOpen, close } = useToggler(filtersModel.filtersToggler);
   const optionSelected = useEvent(filtersModel.optionSelected);
-  const applyResults = useEvent(filtersModel.applyResults);
+  const showResults = useEvent(filtersModel.showResults);
   const sendOption = useEvent(filtersModel.sendOption);
 
   useLockedBody(isOpen);
@@ -91,7 +91,7 @@ export const Filters = () => {
             );
           })}
         </div>
-        <Button onClick={applyResults} className={styles.btn} variant="primary">
+        <Button onClick={showResults} className={styles.btn} variant="primary">
           Показать результаты
         </Button>
       </div>
