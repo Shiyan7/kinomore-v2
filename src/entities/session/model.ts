@@ -1,19 +1,18 @@
 import axios from 'axios';
-import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 import { createEffect, createStore, sample, attach, forward, createEvent } from 'effector';
 import { internalApi, internalInstance, type Session, UserWithTokensDto } from 'shared/api';
 import { ACCESS_TOKEN } from './config';
 
 function getAccessToken() {
-  return getCookie(ACCESS_TOKEN);
+  if (typeof window !== 'undefined') return localStorage.getItem(ACCESS_TOKEN);
 }
 
 function setAccessToken(token: string) {
-  setCookie(ACCESS_TOKEN, token);
+  localStorage.setItem(ACCESS_TOKEN, token);
 }
 
 function removeAccessToken() {
-  deleteCookie(ACCESS_TOKEN);
+  localStorage.removeItem(ACCESS_TOKEN);
 }
 
 const setAccessTokenFx = createEffect({ handler: setAccessToken });
