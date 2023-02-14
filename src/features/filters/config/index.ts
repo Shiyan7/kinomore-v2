@@ -1,4 +1,4 @@
-import type { SelectOption } from './types';
+import type { SelectOption } from '../types';
 
 export const genres: SelectOption[] = [
   { value: '', label: 'Все' },
