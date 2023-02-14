@@ -1,4 +1,4 @@
-import { GenresEnum } from 'shared/config';
+import { GenresEnum, LIMIT } from 'shared/config';
 import { getCurrentYear, getYears } from 'shared/lib/get-year';
 import { http } from './config';
 import type { CatalogParams, Data, Movie, MovieCard, Person } from './types';
@@ -13,7 +13,7 @@ const routesConfig = http.createRoutesConfig({
       field: 'year',
       sortField: 'votes.filmCritics',
       sortType: '-1',
-      limit: 15,
+      limit: LIMIT,
     },
   }),
   getComedyMovies: http.createRoute<void, Data<MovieCard>>({
@@ -25,7 +25,7 @@ const routesConfig = http.createRoutesConfig({
       sortType: '-1',
       'search[]': GenresEnum.Komediya,
       'field[]': 'genres.name',
-      limit: 15,
+      limit: LIMIT,
     },
   }),
   getFamilyMovies: http.createRoute<number | void, Data<MovieCard>>({
@@ -33,11 +33,23 @@ const routesConfig = http.createRoutesConfig({
     params: {
       'search[]': [GenresEnum.Semejnyj, '1-10', '!null'],
       'field[]': ['genres.name', 'rating.kp', 'poster.previewUrl'],
-      search: [getYears(), '!null', '!null'],
-      field: ['year', 'name', 'votes.kp'],
-      sortField: 'year',
+      search: ['2022-2023', '!null'],
+      field: ['year', 'name'],
+      sortField: 'votes.imdb',
       sortType: '-1',
-      limit: 15,
+      limit: LIMIT,
+    },
+  }),
+  getDramaMovies: http.createRoute<number | void, Data<MovieCard>>({
+    url: '/movie',
+    params: {
+      'search[]': [GenresEnum.Drama, '1-10', '!null'],
+      'field[]': ['genres.name', 'rating.kp', 'poster.previewUrl'],
+      search: ['2022-2023', '!null'],
+      field: ['year', 'name'],
+      sortField: 'votes.kp',
+      sortType: '-1',
+      limit: LIMIT,
     },
   }),
   searchByName: http.createRoute<string | void, Data<MovieCard>>((query) => ({

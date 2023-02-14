@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 export const SimilarMovies = () => {
   const data = useStore(pageModel.$movie);
 
-  if (!data?.sequelsAndPrequels[0].id) return null;
+  if (!data?.sequelsAndPrequels[0]?.id) return null;
 
   return (
     <Category containerClass={styles.container}>

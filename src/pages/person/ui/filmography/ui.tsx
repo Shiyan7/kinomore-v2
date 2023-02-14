@@ -16,8 +16,6 @@ export const Filmography = () => {
 
   const movies = data?.movies.slice(0, limit);
 
-  const handleShowMore = () => setLimit((prev) => prev + 20);
-
   return (
     <section className={styles.section}>
       <div className={clsx('container container--narrow', styles.container)}>
@@ -30,7 +28,7 @@ export const Filmography = () => {
           ))}
         </div>
         {length > limit && (
-          <Button size="medium" onClick={handleShowMore} className={styles.btn} variant="gray">
+          <Button size="medium" onClick={() => setLimit((prev) => prev + 20)} className={styles.btn} variant="gray">
             Показать больше
           </Button>
         )}

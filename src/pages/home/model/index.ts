@@ -12,10 +12,13 @@ export const $comedyMovies = restore(getComedyMoviesFx, null);
 const getFamilyMoviesFx = attach({ effect: commonApi.getFamilyMovies });
 export const $familyMovies = restore(getFamilyMoviesFx, null);
 
+const getDramaMoviesFx = attach({ effect: commonApi.getDramaMovies });
+export const $dramaMovies = restore(getDramaMoviesFx, null);
+
 const getHeroMoviesFx = attach({ effect: internalApi.getHeroMovies });
 export const $heroMovies = restore(getHeroMoviesFx, []);
 
 sample({
   clock: pageStarted,
-  target: [getHeroMoviesFx, getNewMoviesFx, getComedyMoviesFx, getFamilyMoviesFx],
+  target: [getHeroMoviesFx, getNewMoviesFx, getComedyMoviesFx, getFamilyMoviesFx, getDramaMoviesFx],
 });
