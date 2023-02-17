@@ -1,7 +1,4 @@
 .header {
-  position: sticky;
-  top: 0;
-  left: 0;
   width: 100%;
   backdrop-filter: blur(7px);
   background-color: hsla(0, 0%, 2%, 0.8);
@@ -10,9 +7,26 @@
   border-bottom: 1px solid rgba(#fff, 0.15);
 
   @media (max-width: 1024px) {
+		position: sticky;
+		top: 0;
+		left: 0;
     backdrop-filter: blur(5px);
     background-color: hsla(0, 0%, 2%, 0.9);
   }
+}
+
+.isSticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+
+	&.fixed {
+		transform: translateY(-100%);
+
+		@media (max-width: 1024px) {
+			transform: translateX(0%);
+		}
+	}
 }
 
 .home {
@@ -34,12 +48,4 @@
 .row {
   display: flex;
   align-items: center;
-}
-
-.fixed {
-  transform: translateY(-100%);
-
-  @media (max-width: 1024px) {
-    transform: translateX(0%);
-  }
 }

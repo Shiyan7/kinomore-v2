@@ -1,21 +1,26 @@
+import type { NextPage } from 'next';
+import type { ReactElement, ReactNode } from 'react';
+import type { AppProps } from 'next/app';
 import NextNProgress from 'nextjs-progressbar';
 import Head from 'next/head';
-import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import { useEvent, useGate } from 'effector-react';
-import { useEffect } from 'react';
+import { useGate } from 'effector-react';
 import { BaseLayout } from 'widgets/layouts';
 import { navigationModel } from 'entities/navigation';
 import { withProviders } from './providers';
 
-const App = ({ Component, pageProps }: AppProps) => {
-  const router = useRouter();
-  const routerUpdated = useEvent(navigationModel.routerUpdated);
+type AppPropsWithLayout = AppProps & {
+  Component: NextPage & {
+    getLayout?: (page: ReactElement) => ReactNode;
+  };
+};
 
-  useEffect(() => {
-    routerUpdated();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router]);
+const getFallbackLayout: (page: ReactElement) => ReactNode = (page) => <BaseLayout>{page}</BaseLayout>;
+
+const App = ({ Component, pageProps }: AppPropsWithLayout) => {
+  const getLayout = Component?.getLayout ?? getFallbackLayout;
+
+  const router = useRouter();
 
   useGate(navigationModel.RouterGate, { router });
 
@@ -40,9 +45,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta name="apple-mobile-web-app-capable" content="yes" />
       </Head>
       <NextNProgress color="var(--color-primary)" height={3} options={{ showSpinner: false }} />
-      <BaseLayout>
-        <Component {...pageProps} />
-      </BaseLayout>
+      {getLayout(<Component {...pageProps} />)}
     </>
   );
 };

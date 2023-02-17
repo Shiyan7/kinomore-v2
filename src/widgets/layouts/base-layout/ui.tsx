@@ -8,12 +8,16 @@ import { SearchWindow } from 'entities/search-window';
 // run process logic for all base layout pages
 import 'processes/root';
 
-export const BaseLayout = ({ children }: PropsWithChildren) => {
+interface BaseLayoutProps extends PropsWithChildren {
+  isHeaderSticky?: boolean;
+}
+
+export const BaseLayout = ({ children, isHeaderSticky = true }: BaseLayoutProps) => {
   usePageEvent(appStarted, { runOnce: true });
 
   return (
     <>
-      <Header />
+      <Header isSticky={isHeaderSticky} />
       <main className="main">{children}</main>
       <SearchWindow />
       <AuthWindow />

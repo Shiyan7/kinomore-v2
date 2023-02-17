@@ -10,7 +10,11 @@ import { Profile } from './profile';
 import { SearchButton } from './search-button';
 import styles from './styles.module.scss';
 
-export const Header = () => {
+interface HeaderProps {
+  isSticky?: boolean;
+}
+
+export const Header = ({ isSticky }: HeaderProps) => {
   const { asPath } = useRouter();
   const { isFixed } = useHeaderFixed();
   const isHomePage = asPath === paths.home;
@@ -19,6 +23,7 @@ export const Header = () => {
     <header
       className={clsx(styles.header, {
         [styles.home]: isHomePage,
+        [styles.isSticky]: isSticky,
         [styles.fixed]: isFixed,
       })}>
       <div className={clsx('container', styles.container)}>

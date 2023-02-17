@@ -5,11 +5,11 @@ import { navigationModel } from 'entities/navigation';
 import { searchModel } from 'entities/search-window';
 
 reset({
-  clock: navigationModel.routerUpdated,
+  clock: navigationModel.$router,
   target: [searchModel.$search, searchModel.$debouncedValue, authModel.$progress, authModel.$state],
 });
 
 sample({
-  clock: navigationModel.routerUpdated,
+  clock: navigationModel.$router,
   target: [searchModel.searchWindow.close, authModel.emailForm.reset, authModel.passwordForm.reset],
 });

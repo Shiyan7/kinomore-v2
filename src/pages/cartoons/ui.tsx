@@ -1,6 +1,6 @@
-import type { NextPage } from 'next';
 import { Catalog } from 'widgets/catalog';
+import type { Page } from 'pages/shared';
 
-export const CartoonsPage: NextPage = () => {
+export const CartoonsPage: Page = () => {
   return <Catalog title="Мультфильмы" />;
 };

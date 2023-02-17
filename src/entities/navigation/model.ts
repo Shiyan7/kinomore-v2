@@ -3,11 +3,9 @@ import type { NextRouter } from 'next/router';
 import { attach, createEvent, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
 
-export const routerUpdated = createEvent();
-
 export const RouterGate = createGate<{ router: NextRouter | null }>();
 
-const $router = createStore<NextRouter | null>(null, {
+export const $router = createStore<NextRouter | null>(null, {
   serialize: 'ignore',
 })
   .on(RouterGate.open, (_, { router }) => router)
