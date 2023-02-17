@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useStore } from 'effector-react';
 import { Facts } from 'widgets/facts';
-import type { Page } from 'pages/shared';
+import type { PageComponent } from 'pages/shared';
 import { pageModel, getPageTitle } from 'pages/movie';
 import { Persons } from './persons';
 import { SimilarMovies } from './similar-movies';
@@ -10,7 +10,7 @@ import { TrailerModal } from './trailer-modal';
 import { ShareModal } from './share-modal';
 import { GradeModal } from './grade-modal';
 
-export const MoviePage: Page = () => {
+export const MoviePage: PageComponent = () => {
   const data = useStore(pageModel.$movie);
   const name = getPageTitle(data?.name);
   const year = data?.year ? `(${data?.year})` : '';

@@ -44,16 +44,15 @@ export const Filters = () => {
         <div className={styles.filters}>
           <div className={styles.row}>
             {options.map((option, idx) => {
-              const { label, options, queryName } = option;
+              const { queryName, ...rest } = option;
 
               return (
                 <Select
                   key={idx}
                   value={query[queryName]}
                   onSelect={({ value }) => optionSelected({ [queryName]: value })}
-                  options={options}
                   className={styles.select}
-                  defaultValue={label}
+                  {...rest}
                 />
               );
             })}
@@ -66,7 +65,7 @@ export const Filters = () => {
               startIcon={<SortIcon />}
               placement="bottom-end"
               className={styles.select}
-              defaultValue="Рекомендуемые"
+              label="Рекомендуемые"
             />
           </div>
         </div>
@@ -78,15 +77,14 @@ export const Filters = () => {
             label="Сортировка"
           />
           {options.map((option, idx) => {
-            const { label, options, queryName } = option;
+            const { queryName, ...rest } = option;
 
             return (
               <DrawerSelect
                 key={idx}
                 value={query[queryName]}
                 onSelect={(option) => sendOption({ [queryName]: option.value })}
-                options={options}
-                label={label}
+                {...rest}
               />
             );
           })}

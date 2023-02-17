@@ -9,7 +9,7 @@ interface SelectProps {
   options: SelectOption[];
   value: string | string[] | undefined;
   placement?: 'bottom-start' | 'bottom-end';
-  defaultValue: string;
+  label: string;
   className?: string;
   startIcon?: ReactNode;
   onSelect: (option: SelectOption) => void;
@@ -22,11 +22,10 @@ export const Select = ({
   value,
   placement = 'bottom-start',
   startIcon,
-  defaultValue,
+  label,
 }: SelectProps) => {
-  const defaultOption = options.find((option) => option?.value === value);
-  const [selected, setSelected] = useState(defaultOption ?? options[0]);
   const [isOpen, setIsOpen] = useState(false);
+  const selected = options.find((option) => option?.value === value) ?? options[0];
   const selectRef = useRef<HTMLDivElement>(null);
 
   const handleClose = () => setIsOpen(false);
@@ -34,7 +33,6 @@ export const Select = ({
   useOnClickOutside(selectRef, handleClose);
 
   const handleSelect = (option: SelectOption) => {
-    setSelected(option);
     onSelect(option);
     handleClose();
   };
@@ -43,14 +41,14 @@ export const Select = ({
     <div className={clsx(styles.select, isOpen && styles.isOpen, className)} ref={selectRef}>
       <div onClick={() => setIsOpen(!isOpen)} className={styles.top}>
         {startIcon && <span className={styles.icon}>{startIcon}</span>}
-        <span className={styles.value}>{selected?.value ? selected.label : defaultValue}</span>
+        <span className={styles.value}>{selected.value ? selected.label : label}</span>
         <span className={styles.arrow}>
           <ChevronIcon />
         </span>
       </div>
       <div className={clsx(styles.options, styles[placement])}>
         {options?.map((option, idx) => {
-          const isSelected = selected?.value === option?.value;
+          const isSelected = selected.value === option?.value;
 
           return (
             <div

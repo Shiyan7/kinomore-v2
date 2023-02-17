@@ -1,6 +1,6 @@
 import { Catalog } from 'widgets/catalog';
-import type { Page } from 'pages/shared';
+import type { PageComponent } from 'pages/shared';
 
-export const SeriesPage: Page = () => {
+export const SeriesPage: PageComponent = () => {
   return <Catalog title="Сериалы" />;
 };

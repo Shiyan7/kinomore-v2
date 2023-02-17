@@ -1,4 +1,4 @@
-import type { Page } from 'pages/shared';
+import type { PageComponent } from 'pages/shared';
 import { Hero } from './hero';
 import { NewFilms } from './new-films';
 import { ComedyFilms } from './comedy-films';
@@ -7,7 +7,7 @@ import { Genres } from './genres';
 import { Drama } from './drama';
 import { Info } from './info';
 
-export const HomePage: Page = () => {
+export const HomePage: PageComponent = () => {
   return (
     <>
       <Hero />

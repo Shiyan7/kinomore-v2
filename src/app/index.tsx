@@ -1,21 +1,19 @@
-import type { NextPage } from 'next';
-import type { ReactElement, ReactNode } from 'react';
-import type { AppProps } from 'next/app';
 import NextNProgress from 'nextjs-progressbar';
 import Head from 'next/head';
+import type { ReactElement } from 'react';
+import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useGate } from 'effector-react';
 import { BaseLayout } from 'widgets/layouts';
+import type { PageComponent } from 'pages/shared';
 import { navigationModel } from 'entities/navigation';
 import { withProviders } from './providers';
 
-type AppPropsWithLayout = AppProps & {
-  Component: NextPage & {
-    getLayout?: (page: ReactElement) => ReactNode;
-  };
-};
+interface AppPropsWithLayout extends AppProps {
+  Component: PageComponent;
+}
 
-const getFallbackLayout: (page: ReactElement) => ReactNode = (page) => <BaseLayout>{page}</BaseLayout>;
+const getFallbackLayout = (page: ReactElement) => <BaseLayout>{page}</BaseLayout>;
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component?.getLayout ?? getFallbackLayout;
