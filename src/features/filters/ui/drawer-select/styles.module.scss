@@ -80,6 +80,7 @@
 	max-height: calc(100% - 70px);
 	transform: translateY(150vh);
 	border-radius: 6px 6px 0 0;
+	overflow: hidden;
 	transition: transform var(--duration);
 }
 

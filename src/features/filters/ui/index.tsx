@@ -25,7 +25,7 @@ export const Filters = () => {
 
   useLockedBody(isOpen);
 
-  /* FIXME: добавить позже кнопку сбросить */
+  /* добавить кнопку сбросить */
 
   return (
     <div className={clsx(styles.root, isOpen && styles.isOpen)}>

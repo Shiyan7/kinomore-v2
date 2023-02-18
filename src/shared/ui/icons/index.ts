@@ -9,7 +9,6 @@ import PeopleIcon from './assets/people.svg';
 import HappyIcon from './assets/happy.svg';
 import FireIcon from './assets/fire.svg';
 import CupIcon from './assets/cup.svg';
-import GamepadIcon from './assets/gamepad.svg';
 import MusicIcon from './assets/music.svg';
 import KnifeIcon from './assets/knife.svg';
 import EditIcon from './assets/edit.svg';
@@ -27,6 +26,8 @@ import DislikeIcon from './assets/dislike.svg';
 import SortIcon from './assets/sort.svg';
 import CheckIcon from './assets/check.svg';
 import FiltersIcon from './assets/filters.svg';
+import RocketIcon from './assets/rocket.svg';
+import TankIcon from './assets/tank.svg';
 
 export {
   SearchIcon,
@@ -40,7 +41,6 @@ export {
   HappyIcon,
   FireIcon,
   CupIcon,
-  GamepadIcon,
   MusicIcon,
   KnifeIcon,
   EditIcon,
@@ -58,4 +58,6 @@ export {
   SortIcon,
   CheckIcon,
   FiltersIcon,
+  RocketIcon,
+  TankIcon,
 };
