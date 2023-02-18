@@ -9,7 +9,7 @@ export const NewFilms = () => {
 
   return (
     <Category>
-      <Category.Title href={paths.newFilms}>Новые фильмы</Category.Title>
+      <Category.Title href={paths.catalog({ year: '2022-2023' })}>Новые фильмы</Category.Title>
       <Category.Carousel items={data?.docs} renderItem={(item) => <MovieItem item={item} />} />
     </Category>
   );

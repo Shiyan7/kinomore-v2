@@ -4,7 +4,7 @@ import { http } from './config';
 import type { CatalogParams, Data, Movie, MovieCard, Person } from './types';
 
 const routesConfig = http.createRoutesConfig({
-  getNewMovies: http.createRoute<number | void, Data<MovieCard>>({
+  getNewMovies: http.createRoute<void, Data<MovieCard>>({
     url: '/movie',
     params: {
       'search[]': '5-9',
@@ -28,7 +28,7 @@ const routesConfig = http.createRoutesConfig({
       limit: LIMIT,
     },
   }),
-  getFamilyMovies: http.createRoute<number | void, Data<MovieCard>>({
+  getFamilyMovies: http.createRoute<void, Data<MovieCard>>({
     url: '/movie',
     params: {
       'search[]': [GenresEnum.Semejnyj, '1-10', '!null'],
@@ -40,12 +40,24 @@ const routesConfig = http.createRoutesConfig({
       limit: LIMIT,
     },
   }),
-  getDramaMovies: http.createRoute<number | void, Data<MovieCard>>({
+  getDramaMovies: http.createRoute<void, Data<MovieCard>>({
     url: '/movie',
     params: {
       'search[]': [GenresEnum.Drama, '1-10', '!null'],
       'field[]': ['genres.name', 'rating.kp', 'poster.previewUrl'],
       search: ['2022-2023', '!null'],
+      field: ['year', 'name'],
+      sortField: 'votes.kp',
+      sortType: '-1',
+      limit: LIMIT,
+    },
+  }),
+  getFantasticMovies: http.createRoute<void, Data<MovieCard>>({
+    url: '/movie',
+    params: {
+      'search[]': [GenresEnum.Fantastika, '1-10', '!null'],
+      'field[]': ['genres.name', 'rating.kp', 'poster.previewUrl'],
+      search: ['2023', '!null'],
       field: ['year', 'name'],
       sortField: 'votes.kp',
       sortType: '-1',

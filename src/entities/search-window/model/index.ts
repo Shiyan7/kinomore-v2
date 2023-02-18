@@ -13,6 +13,8 @@ export const searchChanged = createEvent<string>();
 export const $search = createStore('').on(searchChanged, (_, payload) => payload);
 export const $debouncedValue = createStore('');
 
+export const $pending = searchByNameFx.pending;
+
 const debouncedSearchChanged = debounce({
   source: searchChanged,
   timeout: DEBOUNCE_TIME,
@@ -22,5 +24,3 @@ sample({
   clock: debouncedSearchChanged,
   target: [searchByNameFx, $debouncedValue],
 });
-
-export const $pending = searchByNameFx.pending;

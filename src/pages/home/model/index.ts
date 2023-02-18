@@ -15,10 +15,20 @@ export const $familyMovies = restore(getFamilyMoviesFx, null);
 const getDramaMoviesFx = attach({ effect: commonApi.getDramaMovies });
 export const $dramaMovies = restore(getDramaMoviesFx, null);
 
+const getFantasticMoviesFx = attach({ effect: commonApi.getFantasticMovies });
+export const $fantasticMovies = restore(getFantasticMoviesFx, null);
+
 const getHeroMoviesFx = attach({ effect: internalApi.getHeroMovies });
 export const $heroMovies = restore(getHeroMoviesFx, []);
 
 sample({
   clock: pageStarted,
-  target: [getHeroMoviesFx, getNewMoviesFx, getComedyMoviesFx, getFamilyMoviesFx, getDramaMoviesFx],
+  target: [
+    getHeroMoviesFx,
+    getNewMoviesFx,
+    getComedyMoviesFx,
+    getFamilyMoviesFx,
+    getDramaMoviesFx,
+    getFantasticMoviesFx,
+  ],
 });

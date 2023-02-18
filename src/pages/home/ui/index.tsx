@@ -6,6 +6,7 @@ import { ForFamily } from './for-family';
 import { Genres } from './genres';
 import { Drama } from './drama';
 import { Info } from './info';
+import { Fantastic } from './fantastic';
 
 export const HomePage: PageComponent = () => {
   return (
@@ -16,6 +17,7 @@ export const HomePage: PageComponent = () => {
       <NewFilms />
       <ForFamily />
       <Drama />
+      <Fantastic />
       <Info />
     </>
   );
