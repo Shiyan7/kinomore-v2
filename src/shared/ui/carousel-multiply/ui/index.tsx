@@ -45,7 +45,7 @@ export function CarouselMultiply<T>({
 
   const swiperOptions: SwiperOptions = {
     slidesPerView: 'auto',
-    spaceBetween: 10,
+    spaceBetween: 8,
     breakpoints: {
       769: {
         spaceBetween: 15,
@@ -68,8 +68,7 @@ export function CarouselMultiply<T>({
         nextEl,
       }}
       {...swiperOptions}
-      {...props}
-    >
+      {...props}>
       {navigation && (
         <>
           <SliderButton ref={prevElRef} className={clsx(styles.prev, prevBtnClass)} />

@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import Link from 'next/link';
+import { FreeMode, Navigation } from 'swiper';
 import type { ElementType, PropsWithChildren } from 'react';
 import { LIMIT } from 'shared/config';
 import { Title, type TitleProps } from 'shared/ui/title';
@@ -37,6 +38,8 @@ function CategoryCarousel<T>({ items, slideClassName, ...props }: CarouselMultip
   return (
     <div className={styles.wrapper}>
       <CarouselMultiply
+        modules={[FreeMode, Navigation]}
+        freeMode={{ momentumBounceRatio: 0 }}
         prevBtnClass={styles.prevBtn}
         nextBtnClass={styles.nextBtn}
         className={styles.slider}

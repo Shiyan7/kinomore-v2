@@ -10,17 +10,22 @@
 
 .top {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   margin-bottom: 25px;
 }
 
 .btn {
+	position: relative;
   display: block;
   width: 24px;
   height: 24px;
   flex-shrink: 0;
-	margin-left: 5px;
+	margin-left: 10px;
+	margin-top: 10px;
+
+	@media (max-width: 576px) {
+		margin-top: 5px;
+	}
 
   @media (min-width: 769px) {
     display: none;
@@ -49,7 +54,7 @@
   }
 
   @media (max-width: 576px) {
-    column-gap: 12px;
+    column-gap: 10px;
     row-gap: 20px;
   }
 }

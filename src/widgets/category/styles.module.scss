@@ -12,20 +12,14 @@
 
 .container {
   padding-bottom: 25px;
-  padding-top: 25px;
-
-  @media (max-width: 576px) {
-    padding-bottom: 18px;
-    padding-top: 20px;
-  }
 }
 
 .title {
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 
-  @media (min-width: 1401px) {
-    margin-bottom: 18px;
-  }
+	@media (max-width: 576px) {
+		margin-bottom: 10px;
+	}
 
   @media (any-hover: hover) {
     &:hover {
@@ -68,7 +62,7 @@
   width: 17%;
 
   @media (max-width: 1400px) {
-    width: 19%;
+    width: 18%;
   }
 
   @media (max-width: 1300px) {
@@ -84,7 +78,7 @@
   }
 
   @media (max-width: 576px) {
-    width: 42%;
+    width: 38%;
   }
 }
 

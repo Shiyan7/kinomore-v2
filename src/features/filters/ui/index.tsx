@@ -16,7 +16,11 @@ const options = [
   { label: 'Годы выхода', queryName: 'year', options: years },
 ];
 
-export const Filters = () => {
+interface FiltersProps {
+  total: number | undefined;
+}
+
+export const Filters = ({ total }: FiltersProps) => {
   const { query } = useRouter();
   const { isOpen, close } = useToggler(filtersModel.filtersToggler);
   const optionSelected = useEvent(filtersModel.optionSelected);
@@ -90,7 +94,7 @@ export const Filters = () => {
           })}
         </div>
         <Button onClick={showResults} className={styles.btn} variant="primary">
-          Показать результаты
+          Показать результаты ({total})
         </Button>
       </div>
     </div>

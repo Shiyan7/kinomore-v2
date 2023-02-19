@@ -29,7 +29,7 @@ export const optionSelected = createEvent<ParsedUrlQuery>();
 
 export const sendOption = createEvent<ParsedUrlQuery>();
 
-const $allParams = createStore<ParsedUrlQuery | null>(null).on(sendOption, (state, payload) => ({
+export const $allParams = createStore<ParsedUrlQuery | null>(null).on(sendOption, (state, payload) => ({
   ...state,
   ...payload,
 }));
