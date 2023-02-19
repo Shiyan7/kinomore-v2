@@ -15,8 +15,8 @@ interface CatalogProps {
 }
 
 export const Catalog = ({ title }: CatalogProps) => {
-  const { open } = useToggler(filtersModel.filtersToggler);
   const [buttonRef, isVisible] = useElementOnScreen<HTMLButtonElement>({ rootMargin: '450px' });
+  const { open } = useToggler(filtersModel.filtersToggler);
   const loadMore = useEvent(catalogModel.loadMore);
   const hasMore = useStore(catalogModel.$hasMore);
   const pending = useStore(catalogModel.$pending);
@@ -41,7 +41,7 @@ export const Catalog = ({ title }: CatalogProps) => {
             <FiltersIcon />
           </button>
         </div>
-        <Filters total={data?.total} />
+        <Filters />
         <div className={styles.grid}>
           {data?.docs.map((item) => (
             <MovieItem key={item.id} item={item} />
