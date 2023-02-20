@@ -4,7 +4,7 @@ import { useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
 import styles from './styles.module.scss';
 
-const MAX_WORDS = 35;
+const MAX_WORDS = 30;
 
 export const Description = () => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);

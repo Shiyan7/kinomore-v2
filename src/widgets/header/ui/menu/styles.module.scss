@@ -42,7 +42,7 @@
     transform: translateY(0);
   }
 
-  &.current {
+  &.isCurrent {
     &:before {
       content: "";
       position: absolute;

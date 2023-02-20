@@ -1,7 +1,6 @@
 .header {
   width: 100%;
-  backdrop-filter: blur(7px);
-  background-color: hsla(0, 0%, 2%, 0.8);
+	background-color: var(--color-black);
   z-index: var(--header-z-index);
   transition: transform var(--duration);
   border-bottom: 1px solid rgba(#fff, 0.15);
@@ -10,8 +9,6 @@
 		position: sticky;
 		top: 0;
 		left: 0;
-    backdrop-filter: blur(0);
-    background-color: var(--color-black);
   }
 }
 
@@ -37,7 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 83px;
+  height: 75px;
   transition: height var(--duration);
 
   @media (max-width: 576px) {
@@ -48,4 +45,5 @@
 .row {
   display: flex;
   align-items: center;
+	height: 100%;
 }

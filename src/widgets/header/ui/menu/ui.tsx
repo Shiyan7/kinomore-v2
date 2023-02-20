@@ -27,7 +27,7 @@ export const Menu = () => {
 
             return (
               <CSSTransition key={item.text} in={isOpen} timeout={item.timeout} classNames={{ enterDone: styles.done }}>
-                <li className={clsx(styles.item, isCurrentPage && styles.current)}>
+                <li className={clsx(styles.item, isCurrentPage && styles.isCurrent)}>
                   <Link href={item.href} className={styles.link}>
                     {item.text}
                   </Link>

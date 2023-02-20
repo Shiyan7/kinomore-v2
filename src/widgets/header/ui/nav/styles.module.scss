@@ -1,4 +1,6 @@
 .nav {
+	height: 100%;
+
   @media (max-width: 768px) {
     display: none;
   }
@@ -7,9 +9,12 @@
 .list {
   display: flex;
   align-items: center;
+	height: 100%;
 }
 
 .item {
+	height: 100%;
+
   &:not(:last-child) {
     margin-right: 30px;
 
@@ -20,11 +25,34 @@
 }
 
 .link {
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 100%;
   font-size: 14px;
   line-height: 22px;
   opacity: 0.6;
   color: var(--color-white);
   transition: opacity var(--duration);
+
+	&:before {
+		content: "";
+		display: none;
+		position: absolute;
+		bottom: 0;
+		left: -10px;
+		right: -10px;
+		height: 2px;
+		background: linear-gradient(270deg,transparent .17%,#2253b2 15%,#fff 50%,#2253b2 85%,transparent)
+	}
+
+	&.isCurrent {
+		opacity: 1;
+
+		&:before {
+			display: block;
+		}
+	}
 
   &:hover {
     opacity: 1;
