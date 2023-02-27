@@ -21,13 +21,15 @@ import LinkIcon from './assets/link.svg';
 import WhatsappIcon from './assets/whatsapp.svg';
 import TelegramIcon from './assets/telegram.svg';
 import ViberIcon from './assets/viber.svg';
-import LikeIcon from './assets/like.svg';
-import DislikeIcon from './assets/dislike.svg';
 import SortIcon from './assets/sort.svg';
 import CheckIcon from './assets/check.svg';
 import FiltersIcon from './assets/filters.svg';
 import RocketIcon from './assets/rocket.svg';
 import TankIcon from './assets/tank.svg';
+import VkIcon from './assets/vk.svg';
+import FacebookIcon from './assets/facebook.svg';
+import GmailIcon from './assets/gmail.svg';
+import StarIcon from './assets/star.svg';
 
 export {
   SearchIcon,
@@ -53,11 +55,13 @@ export {
   WhatsappIcon,
   TelegramIcon,
   ViberIcon,
-  LikeIcon,
-  DislikeIcon,
   SortIcon,
   CheckIcon,
   FiltersIcon,
   RocketIcon,
   TankIcon,
+  VkIcon,
+  FacebookIcon,
+  GmailIcon,
+  StarIcon,
 };

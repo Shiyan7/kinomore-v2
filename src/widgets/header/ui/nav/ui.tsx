@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { links } from './config';
+import { items } from './config';
 import styles from './styles.module.scss';
 
 export const Nav = () => {
@@ -10,7 +10,7 @@ export const Nav = () => {
   return (
     <nav className={styles.nav}>
       <ul className={clsx('list-reset', styles.list)}>
-        {links.map((item) => {
+        {items.map((item) => {
           const isCurrentPage = pathname === item.href;
 
           return (

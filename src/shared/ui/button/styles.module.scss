@@ -49,6 +49,47 @@
     border-radius: 100px;
   }
 
+	&.glass {
+		background-color: rgba(#888C92, 0.3);
+		backdrop-filter: blur(16px);
+		border-radius: 8px;
+
+		&:hover {
+			background-color: rgba(#888C92, 0.4);
+		}
+
+		&:active {
+			background-color: rgba(#888C92, 0.5);
+		}
+	}
+
+	&.gradient {
+		background: linear-gradient(85.23deg, #2253B2 0%, #3B19C5 100%);
+
+		&:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			transition: background-color var(--duration);
+		}
+
+		&:hover {
+			&:before {
+				background-color: #3344DB;
+			}
+		}
+
+		&:active {
+			&:before {
+				background-color: #2F43F6;
+			}
+		}
+	}
+
   span {
     position: relative;
   }
@@ -103,6 +144,26 @@
   min-width: 43px;
   min-height: 43px;
   padding: 12px;
+}
+
+.big {
+	min-width: 52px;
+	min-height: 52px;
+	padding: 14px;
+	font-size: 15.5px;
+	line-height: 1;
+	letter-spacing: 0.2px;
+
+	@media (max-width: 576px) {
+		font-size: 13.5px;
+		min-height: 48px;
+		min-width: 48px;
+	}
+
+	svg {
+		width: 22px;
+		height: 22px;
+	}
 }
 
 .large {

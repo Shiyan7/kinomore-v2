@@ -13,7 +13,7 @@ export const Filmography = () => {
   if (!data?.movies) return null;
 
   const length = data?.movies.length;
-
+  const hasMore = length > limit;
   const movies = data?.movies.slice(0, limit);
 
   return (
@@ -27,8 +27,8 @@ export const Filmography = () => {
             <MovieItem small key={idx} item={item} />
           ))}
         </div>
-        {length > limit && (
-          <Button size="medium" onClick={() => setLimit((prev) => prev + 20)} className={styles.btn} variant="gray">
+        {hasMore && (
+          <Button size="medium" onClick={() => setLimit((prev) => prev + 30)} className={styles.btn} variant="gray">
             Показать больше
           </Button>
         )}

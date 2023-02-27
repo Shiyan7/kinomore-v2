@@ -6,9 +6,7 @@ import { pageModel, getPageTitle } from 'pages/movie';
 import { Persons } from './persons';
 import { SimilarMovies } from './similar-movies';
 import { MainSection } from './main-section';
-import { TrailerModal } from './trailer-modal';
-import { ShareModal } from './share-modal';
-import { GradeModal } from './grade-modal';
+import { Tabs } from './tabs';
 
 export const MoviePage: PageComponent = () => {
   const data = useStore(pageModel.$movie);
@@ -27,12 +25,10 @@ export const MoviePage: PageComponent = () => {
         <meta property="og:image" content={data?.poster?.url} />
       </Head>
       <MainSection />
+      <Tabs />
       <SimilarMovies />
       <Persons />
-      <Facts facts={data?.facts} />
-      <TrailerModal />
-      <ShareModal />
-      <GradeModal />
+      <Facts data={data?.facts} />
     </>
   );
 };

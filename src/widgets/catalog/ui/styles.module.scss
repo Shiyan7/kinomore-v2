@@ -44,18 +44,13 @@
   grid-template-columns: repeat(6, 1fr);
 
   @media (max-width: 1024px) {
-    column-gap: 15px;
-		row-gap: 25px;
+    gap: 15px;
     grid-template-columns: repeat(4, 1fr);
   }
 
   @media (max-width: 768px) {
+    gap: 12px;
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 576px) {
-    column-gap: 10px;
-    row-gap: 20px;
   }
 }
 

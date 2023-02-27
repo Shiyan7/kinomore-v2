@@ -49,12 +49,12 @@ export const Catalog = ({ title }: CatalogProps) => {
         </div>
         {hasMore && (
           <Button
-            ref={buttonRef}
             disabled
-            skeletonLoading={pending}
             size="medium"
-            className={styles.loadMore}
-            variant="gray">
+            variant="gray"
+            ref={buttonRef}
+            skeletonLoading={pending}
+            className={styles.loadMore}>
             Показать больше
           </Button>
         )}

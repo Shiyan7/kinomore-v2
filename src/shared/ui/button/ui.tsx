@@ -1,5 +1,5 @@
-import { forwardRef, type ElementType, ReactNode, ComponentProps } from 'react';
 import clsx from 'clsx';
+import { forwardRef, type ElementType, ReactNode, ComponentProps } from 'react';
 import { Spinner } from 'shared/ui/spinner';
 import styles from './styles.module.scss';
 
@@ -8,8 +8,9 @@ interface ButtonOwnProps<E extends ElementType = ElementType> {
   loading?: boolean;
   skeletonLoading?: boolean;
   rounded?: boolean;
-  size?: 'small' | 'regular' | 'medium' | 'large';
-  variant?: 'primary' | 'white' | 'gray';
+  gradient?: boolean;
+  size?: 'small' | 'regular' | 'medium' | 'big' | 'large';
+  variant?: 'primary' | 'white' | 'gray' | 'glass';
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   children: ReactNode;
@@ -32,6 +33,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps<typeof DEFAULT_E
       skeletonLoading,
       variant = 'primary',
       size = 'regular',
+      gradient,
       className,
       ...props
     },
@@ -51,8 +53,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps<typeof DEFAULT_E
         className={clsx(
           'btn-reset',
           styles.btn,
-          skeletonLoading && styles.skeleton,
-          rounded && styles.rounded,
+          {
+            [styles.rounded]: rounded,
+            [styles.skeleton]: skeletonLoading,
+            [styles.gradient]: gradient,
+          },
           styles[variant],
           styles[size],
           className

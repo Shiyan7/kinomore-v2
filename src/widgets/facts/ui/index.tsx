@@ -7,16 +7,16 @@ import styles from './styles.module.scss';
 const MAX_FACTS = 5;
 
 interface FactsProps {
-  facts: Fact[] | undefined;
+  data: Fact[] | undefined;
   narrow?: boolean;
 }
 
-export const Facts = ({ facts, narrow }: FactsProps) => {
+export const Facts = ({ data, narrow }: FactsProps) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
-  if (!facts || facts?.length < 2) return null;
+  if (!data || data?.length < 2) return null;
 
-  const itemsToShow = isExpanded ? facts : facts?.slice(0, MAX_FACTS);
+  const itemsToShow = isExpanded ? data : data?.slice(0, MAX_FACTS);
 
   return (
     <section className={styles.section}>
@@ -29,7 +29,7 @@ export const Facts = ({ facts, narrow }: FactsProps) => {
             <li key={idx} className={styles.item} dangerouslySetInnerHTML={{ __html: item.value }} />
           ))}
         </ul>
-        {facts?.length > MAX_FACTS && (
+        {data?.length > MAX_FACTS && (
           <button className={clsx('btn-reset', styles.btn)} onClick={() => setIsExpanded((prev) => !prev)}>
             {isExpanded ? 'Скрыть' : 'Показать ещё'}
           </button>

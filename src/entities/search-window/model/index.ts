@@ -3,7 +3,7 @@ import { debounce } from 'patronum/debounce';
 import { commonApi } from 'shared/api';
 import { createToggler } from 'shared/lib/toggler';
 
-const DEBOUNCE_TIME = 500;
+const DEBOUNCE_TIME = 600;
 
 export const searchWindow = createToggler();
 export const searchByNameFx = attach({ effect: commonApi.searchByName });

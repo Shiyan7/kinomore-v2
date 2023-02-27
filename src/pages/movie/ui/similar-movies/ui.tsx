@@ -11,8 +11,8 @@ export const SimilarMovies = () => {
 
   return (
     <Category containerClass={styles.container}>
-      <Category.Title className={styles.title}>Похожее кино</Category.Title>
-      <Category.Carousel items={data?.sequelsAndPrequels} renderItem={(item) => <MovieItem small item={item} />} />
+      <Category.Title className={styles.title}>Похожее</Category.Title>
+      <Category.Carousel items={data?.sequelsAndPrequels} renderItem={(item) => <MovieItem item={item} />} />
     </Category>
   );
 };

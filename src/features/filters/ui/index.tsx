@@ -10,7 +10,7 @@ import { Select } from './select';
 import { DrawerSelect } from './drawer-select';
 import styles from './styles.module.scss';
 
-const options = [
+const items = [
   { label: 'Жанры', queryName: 'genre', options: genres },
   { label: 'Рейтинг', queryName: 'rating', options: ratings },
   { label: 'Годы выхода', queryName: 'year', options: years },
@@ -43,7 +43,7 @@ export const Filters = () => {
         </div>
         <div className={styles.filters}>
           <div className={styles.row}>
-            {options.map((option, idx) => {
+            {items.map((option, idx) => {
               const { queryName, ...rest } = option;
 
               return (
@@ -76,7 +76,7 @@ export const Filters = () => {
             options={filters}
             label="Сортировка"
           />
-          {options.map((option, idx) => {
+          {items.map((option, idx) => {
             const { queryName, ...rest } = option;
 
             return (

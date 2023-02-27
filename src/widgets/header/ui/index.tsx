@@ -1,6 +1,4 @@
 import clsx from 'clsx';
-import { useRouter } from 'next/router';
-import { paths } from 'shared/routing';
 import { useHeaderFixed } from '../lib';
 import { Burger } from './burger';
 import { Logo } from './logo';
@@ -10,20 +8,12 @@ import { Profile } from './profile';
 import { SearchButton } from './search-button';
 import styles from './styles.module.scss';
 
-interface HeaderProps {
-  isSticky?: boolean;
-}
-
-export const Header = ({ isSticky }: HeaderProps) => {
-  const { asPath } = useRouter();
+export const Header = () => {
   const { isFixed } = useHeaderFixed();
-  const isHomePage = asPath === paths.home;
 
   return (
     <header
       className={clsx(styles.header, {
-        [styles.home]: isHomePage,
-        [styles.isSticky]: isSticky,
         [styles.fixed]: isFixed,
       })}>
       <div className={clsx('container', styles.container)}>

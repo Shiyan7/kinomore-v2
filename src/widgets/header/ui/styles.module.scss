@@ -1,21 +1,11 @@
 .header {
-  width: 100%;
-	background-color: var(--color-black);
-  z-index: var(--header-z-index);
-  transition: transform var(--duration);
-  border-bottom: 1px solid rgba(#fff, 0.15);
-
-  @media (max-width: 1024px) {
-		position: sticky;
-		top: 0;
-		left: 0;
-  }
-}
-
-.isSticky {
   position: sticky;
   top: 0;
   left: 0;
+  width: 100%;
+  z-index: var(--header-z-index);
+	background-color: var(--color-black);
+  transition: transform var(--duration);
 
 	&.fixed {
 		transform: translateY(-100%);
@@ -26,10 +16,6 @@
 	}
 }
 
-.home {
-  border-bottom: none;
-}
-
 .container {
   display: flex;
   align-items: center;
@@ -38,7 +24,7 @@
   transition: height var(--duration);
 
   @media (max-width: 576px) {
-    height: 67px;
+    height: 65px;
   }
 }
 

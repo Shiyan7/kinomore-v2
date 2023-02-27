@@ -5,7 +5,7 @@ import { commonApi } from 'shared/api';
 
 export const trailerModal = createToggler();
 export const shareModal = createToggler();
-export const gradeModal = createToggler();
+export const playerModal = createToggler();
 export const pageStarted = createEvent<PageContext>();
 
 const getMovieByIdFx = attach({ effect: commonApi.getMovieById });

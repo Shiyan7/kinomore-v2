@@ -24,7 +24,7 @@ export const PersonPage: PageComponent = () => {
       </Head>
       <MainSection />
       <Filmography />
-      <Facts narrow facts={data?.facts} />
+      <Facts narrow data={data?.facts} />
     </>
   );
 };

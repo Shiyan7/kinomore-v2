@@ -1,5 +1,3 @@
-import type { ParsedUrlQuery } from 'querystring';
-
 export interface Data<T> {
   docs: T[];
   total: number;
@@ -212,7 +210,6 @@ export interface MoviePerson {
   photo: string;
   name: string;
   enName: string;
-  description: string;
   profession: string;
   enProfession: string;
 }
@@ -287,7 +284,10 @@ export interface Person {
 }
 
 export interface CatalogParams {
-  [key: string]: ParsedUrlQuery | number | string;
   type: string;
   limit: number;
+  genre?: string;
+  rating?: string;
+  sort?: string;
+  year?: string;
 }

@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { MovieCard } from 'shared/api';
@@ -13,8 +12,10 @@ interface MovieItemProps {
 }
 
 export const MovieItem = ({ item, small }: MovieItemProps) => {
+  const numberRating = item?.rating as number | undefined;
+
   return (
-    <Link className={clsx(styles.item, small && styles.small)} href={paths.movie(item?.id)}>
+    <Link className={styles.item} href={paths.movie(item?.id)}>
       <div className={styles.imageWrapper}>
         <Image
           sizes="100%"
@@ -26,12 +27,14 @@ export const MovieItem = ({ item, small }: MovieItemProps) => {
         />
       </div>
       <div className={styles.content}>
-        {item?.rating && <Rating className={styles.rating}>{getRating(item.rating)}</Rating>}
+        <Rating className={styles.rating}>{small ? numberRating?.toFixed(1) : getRating(item.rating)}</Rating>
         <h3 className={styles.name}>{item?.name}</h3>
-        <div className={styles.info}>
-          <span className={styles.year}>{item?.year}</span>
-          {item?.movieLength && <span className={styles.length}>{minutesToHour(item.movieLength)}</span>}
-        </div>
+        {!small && (
+          <div className={styles.info}>
+            <span className={styles.year}>{item?.year}</span>
+            {item?.movieLength && <span className={styles.length}>{minutesToHour(item.movieLength)}</span>}
+          </div>
+        )}
       </div>
     </Link>
   );

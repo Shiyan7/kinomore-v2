@@ -11,31 +11,6 @@
 		--radius: 16px;
 	}
 
-  &.small {
-    .content {
-      position: static;
-      padding: 0;
-      border: none;
-      opacity: 1;
-      visibility: visible;
-      margin-top: 15px;
-      background-color: transparent;
-
-      @media (max-width: 1024px) {
-        display: none;
-      }
-    }
-
-		.length {
-			display: none;
-		}
-
-    .btns,
-    .rating {
-      display: none;
-    }
-  }
-
   @media (min-width: 1025px) {
     transition: transform var(--duration);
 
@@ -116,13 +91,13 @@
   margin: 0;
   font-weight: 500;
   font-size: 15px;
-  line-height: 21px;
-  margin-bottom: 12px;
+  line-height: 19px;
 }
 
 .info {
   display: flex;
   align-items: center;
+	margin-top: 12px;
 }
 
 .year {
@@ -131,7 +106,6 @@
   line-height: 18px;
   color: rgba(#fff, 0.8);
   margin-right: 12px;
-  margin-top: -4px;
 }
 
 .length {
@@ -139,6 +113,5 @@
   font-size: 14px;
   line-height: 18px;
   color: rgba(#fff, 0.8);
-  margin-top: -4px;
 	white-space: nowrap;
 }

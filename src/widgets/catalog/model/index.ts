@@ -28,7 +28,7 @@ const $params = combine({ context: $pageContext, limit: $limit });
 sample({
   clock: [pageStarted, loadMore],
   source: $params,
-  fn: ({ limit, context }) => ({ ...context?.query, limit, type: getCatalogType(context?.pathname) }),
+  fn: ({ limit, context }) => ({ ...context?.query, limit, type: getCatalogType(context?.pathname ?? '') }),
   target: getCatalogFx,
 });
 

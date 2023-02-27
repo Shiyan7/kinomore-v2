@@ -6,7 +6,7 @@
 
   // colors
   --color-white: #fff;
-  --color-black: hsl(0, 0%, 2%);
+  --color-black: #000;
   --color-primary: #2253b2;
   --color-loader: #111214;
 
@@ -15,6 +15,7 @@
 	--color-gray-300: #3d3d43;
 
   // z-index
+	--player-z-index: 1500;
 	--popup-z-index: 1000;
   --header-z-index: 100;
   --menu-z-index: 150;

@@ -42,7 +42,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
         />
         <meta name="apple-mobile-web-app-capable" content="yes" />
       </Head>
-      <NextNProgress color="var(--color-primary)" height={3} options={{ showSpinner: false }} />
+      <NextNProgress color="var(--color-primary)" height={2} options={{ showSpinner: false }} />
       {getLayout(<Component {...pageProps} />)}
     </>
   );

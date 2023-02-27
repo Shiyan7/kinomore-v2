@@ -24,9 +24,8 @@ export const genres: SelectOption[] = [
   { value: 'вестерн', label: 'Вестерны' },
   { value: 'для взрослых', label: 'Для взрослых' },
   { value: 'фильм-нуар', label: 'Фильм-нуар' },
-  { value: 'концерты', label: 'Концерт' },
+  { value: 'концерт', label: 'Концерт' },
   { value: 'короткометражки', label: 'Короткометражка' },
-  { value: 'мюзиклы', label: 'Мюзикл' },
 ];
 
 export const ratings: SelectOption[] = [
