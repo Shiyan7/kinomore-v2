@@ -17,12 +17,16 @@ export const MobileActions = () => {
 
   return (
     <div className={styles.root}>
-      {items.map((item, idx) => (
-        <button onClick={item.handler} key={idx} className={clsx('btn-reset', styles.btn)}>
-          <span className={styles.icon}>{item.icon}</span>
-          <span className={styles.label}>{item.label}</span>
-        </button>
-      ))}
+      {items.map((item, idx) => {
+        const { label, handler, icon } = item;
+
+        return (
+          <button onClick={handler} key={idx} className={clsx('btn-reset', styles.btn)}>
+            <span className={styles.icon}>{icon}</span>
+            <span className={styles.label}>{label}</span>
+          </button>
+        );
+      })}
     </div>
   );
 };

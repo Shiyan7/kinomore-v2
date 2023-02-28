@@ -17,8 +17,8 @@ export const Info = () => {
   const items = [
     data?.year,
     data?.genres ? getGenre(data.genres) : null,
-    data?.countries?.length ? getCountry(data?.countries) : null,
     data?.ageRating ? getAgeRating(data.ageRating) : null,
+    data?.countries?.length ? getCountry(data?.countries) : null,
     length,
   ];
 

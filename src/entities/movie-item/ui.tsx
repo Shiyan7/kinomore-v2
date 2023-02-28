@@ -27,7 +27,7 @@ export const MovieItem = ({ item, small }: MovieItemProps) => {
         />
       </div>
       <div className={styles.content}>
-        <Rating className={styles.rating}>{small ? numberRating?.toFixed(1) : getRating(item.rating)}</Rating>
+        <Rating className={styles.rating}>{small ? numberRating?.toFixed(1) : getRating(item?.rating)}</Rating>
         <h3 className={styles.name}>{item?.name}</h3>
         {!small && (
           <div className={styles.info}>

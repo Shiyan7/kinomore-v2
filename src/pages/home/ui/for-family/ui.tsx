@@ -3,14 +3,14 @@ import { Category } from 'widgets/category';
 import { pageModel } from 'pages/home';
 import { MovieItem } from 'entities/movie-item';
 import { paths } from 'shared/routing';
-import { GenresEnum } from 'shared/config';
+import { GenresEnum, SortEnum } from 'shared/config';
 
 export const ForFamily = () => {
   const data = useStore(pageModel.$familyMovies);
 
   return (
     <Category>
-      <Category.Title href={paths.catalog({ genre: GenresEnum.Semejnyj, sort: 'year' })}>
+      <Category.Title href={paths.catalog({ genre: GenresEnum.Family, sort: SortEnum.Year })}>
         Смотрим всей семьей
       </Category.Title>
       <Category.Carousel items={data?.docs} renderItem={(item) => <MovieItem item={item} />} />

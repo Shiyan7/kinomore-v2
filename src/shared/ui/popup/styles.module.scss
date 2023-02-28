@@ -9,6 +9,13 @@
   overflow-x: hidden;
   text-align: center;
 
+  &:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+  }
+
   &:after {
     content: "";
     display: block;
@@ -23,13 +30,6 @@
     @media (max-width: 576px) {
       background-color: rgba(#000, 0.8);
     }
-  }
-
-  &:before {
-    content: "";
-    display: inline-block;
-    vertical-align: middle;
-    height: 100%;
   }
 }
 

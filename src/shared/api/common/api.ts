@@ -23,7 +23,7 @@ const routesConfig = http.createRoutesConfig({
       field: ['year', 'rating.kp', 'typeNumber', 'name', 'votes.kp', 'poster.previewUrl'],
       sortField: 'year',
       sortType: '-1',
-      'search[]': GenresEnum.Komediya,
+      'search[]': GenresEnum.Comedy,
       'field[]': 'genres.name',
       limit: LIMIT,
     },
@@ -31,7 +31,7 @@ const routesConfig = http.createRoutesConfig({
   getFamilyMovies: http.createRoute<void, Data<MovieCard>>({
     url: '/movie',
     params: {
-      'search[]': [GenresEnum.Semejnyj, '1-10', '!null'],
+      'search[]': [GenresEnum.Family, '1-10', '!null'],
       'field[]': ['genres.name', 'rating.kp', 'poster.previewUrl'],
       search: ['2022-2023', '!null'],
       field: ['year', 'name'],
@@ -55,7 +55,7 @@ const routesConfig = http.createRoutesConfig({
   getFantasticMovies: http.createRoute<void, Data<MovieCard>>({
     url: '/movie',
     params: {
-      'search[]': [GenresEnum.Fantastika, '1-10', '!null'],
+      'search[]': [GenresEnum.ScienceFiction, '1-10', '!null'],
       'field[]': ['genres.name', 'rating.kp', 'poster.previewUrl'],
       search: ['2023', '!null'],
       field: ['year', 'name'],

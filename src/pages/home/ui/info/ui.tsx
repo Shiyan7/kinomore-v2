@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Title } from 'shared/ui';
+import { Title } from 'shared/ui/title';
 import styles from './styles.module.scss';
 
 export const Info = () => {

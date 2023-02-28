@@ -1,31 +1,38 @@
+import { GenresEnum, SortEnum } from 'shared/config';
 import type { SelectOption } from '../types';
 
 export const genres: SelectOption[] = [
   { value: '', label: 'Все' },
-  { value: 'приключения', label: 'Приключения' },
-  { value: 'триллер', label: 'Триллеры' },
-  { value: 'фантастика', label: 'Фантастика' },
-  { value: 'боевик', label: 'Боевики' },
-  { value: 'комедия', label: 'Комедии' },
-  { value: 'мелодрама', label: 'Мелодрамы' },
-  { value: 'драма', label: 'Драмы' },
-  { value: 'семейный', label: 'Семейное' },
-  { value: 'криминал', label: 'Криминальное' },
-  { value: 'спорт', label: 'Спорт' },
-  { value: 'военный', label: 'Военное' },
-  { value: 'биография', label: 'Биографии' },
-  { value: 'фэнтези', label: 'Фэнтези' },
-  { value: 'ужасы', label: 'Ужасы' },
-  { value: 'история', label: 'Историческое' },
-  { value: 'музыка', label: 'Музыкальное' },
-  { value: 'документальный', label: 'Документальное' },
-  { value: 'детский', label: 'Детские' },
-  { value: 'детектив', label: 'Детективы' },
-  { value: 'вестерн', label: 'Вестерны' },
-  { value: 'для взрослых', label: 'Для взрослых' },
-  { value: 'фильм-нуар', label: 'Фильм-нуар' },
-  { value: 'концерт', label: 'Концерт' },
-  { value: 'короткометражки', label: 'Короткометражка' },
+  { value: GenresEnum.Adventure, label: 'Приключения' },
+  { value: GenresEnum.Thriller, label: 'Триллеры' },
+  { value: GenresEnum.ScienceFiction, label: 'Фантастика' },
+  { value: GenresEnum.Action, label: 'Боевики' },
+  { value: GenresEnum.Comedy, label: 'Комедии' },
+  { value: GenresEnum.Romance, label: 'Мелодрамы' },
+  { value: GenresEnum.Drama, label: 'Драмы' },
+  { value: GenresEnum.Family, label: 'Семейное' },
+  { value: GenresEnum.Crime, label: 'Криминальное' },
+  { value: GenresEnum.Sports, label: 'Спорт' },
+  { value: GenresEnum.War, label: 'Военное' },
+  { value: GenresEnum.Biography, label: 'Биографии' },
+  { value: GenresEnum.Fantasy, label: 'Фэнтези' },
+  { value: GenresEnum.Horror, label: 'Ужасы' },
+  { value: GenresEnum.History, label: 'Историческое' },
+  { value: GenresEnum.Music, label: 'Музыкальное' },
+  { value: GenresEnum.Documentary, label: 'Документальное' },
+  { value: GenresEnum.Kids, label: 'Детские' },
+  { value: GenresEnum.Detective, label: 'Детективы' },
+  { value: GenresEnum.Western, label: 'Вестерны' },
+  { value: GenresEnum.Adult, label: 'Для взрослых' },
+  { value: GenresEnum.FilmNoir, label: 'Фильм-нуар' },
+  { value: GenresEnum.Concert, label: 'Концерт' },
+  { value: GenresEnum.Short, label: 'Короткометражка' },
+];
+
+export const filters: SelectOption[] = [
+  { value: '', label: 'Рекомендуемые' },
+  { value: SortEnum.Rating, label: 'По рейтингу' },
+  { value: SortEnum.Year, label: 'По дате выхода' },
 ];
 
 export const ratings: SelectOption[] = [
@@ -49,10 +56,4 @@ export const years: SelectOption[] = [
   { value: '1970-1979', label: '1970-1979' },
   { value: '1960-1969', label: '1960-1969' },
   { value: '0-1959', label: 'до 1959' },
-];
-
-export const filters: SelectOption[] = [
-  { value: '', label: 'Рекомендуемые' },
-  { value: 'rating.kp', label: 'По рейтингу' },
-  { value: 'year', label: 'По дате выхода' },
 ];
