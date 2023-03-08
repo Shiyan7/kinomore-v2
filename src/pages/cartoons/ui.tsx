@@ -1,6 +1,6 @@
 import { Catalog } from 'widgets/catalog';
-import type { PageComponent } from 'pages/shared';
+import type { NextPageWithLayout } from 'pages/shared';
 
-export const CartoonsPage: PageComponent = () => {
+export const CartoonsPage: NextPageWithLayout = () => {
   return <Catalog title="Мультфильмы" />;
 };

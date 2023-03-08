@@ -26,7 +26,6 @@ export const Player = () => {
       className={styles.root}>
       <iframe
         onLoad={() => setIsLoading(false)}
-        title="Плеер"
         src={`https://voidboost.net/embed/${query.id}?poster=1&poster_id=4&df=1`}
         allow="autoplay"
         className={styles.iframe}

@@ -1,4 +1,4 @@
-import type { PageComponent } from 'pages/shared';
+import type { NextPageWithLayout } from 'pages/shared';
 import { Hero } from './hero';
 import { NewFilms } from './new-films';
 import { ComedyFilms } from './comedy-films';
@@ -8,7 +8,7 @@ import { Drama } from './drama';
 import { Info } from './info';
 import { Fantastic } from './fantastic';
 
-export const HomePage: PageComponent = () => {
+export const HomePage: NextPageWithLayout = () => {
   return (
     <>
       <Hero />

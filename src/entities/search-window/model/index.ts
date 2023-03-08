@@ -1,5 +1,5 @@
 import { attach, createEvent, createStore, restore, sample } from 'effector';
-import { debounce } from 'patronum/debounce';
+import { reset, debounce } from 'patronum';
 import { commonApi } from 'shared/api';
 import { createToggler } from 'shared/lib/toggler';
 
@@ -23,4 +23,9 @@ const debouncedSearchChanged = debounce({
 sample({
   clock: debouncedSearchChanged,
   target: [searchByNameFx, $debouncedValue],
+});
+
+reset({
+  clock: searchWindow.$isOpen,
+  target: [$search, $debouncedValue],
 });

@@ -5,12 +5,12 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useGate } from 'effector-react';
 import { BaseLayout } from 'widgets/layouts';
-import type { PageComponent } from 'pages/shared';
+import type { NextPageWithLayout } from 'pages/shared';
 import { navigationModel } from 'entities/navigation';
 import { withProviders } from './providers';
 
 interface AppPropsWithLayout extends AppProps {
-  Component: PageComponent;
+  Component: NextPageWithLayout;
 }
 
 const getFallbackLayout = (page: ReactElement) => <BaseLayout>{page}</BaseLayout>;

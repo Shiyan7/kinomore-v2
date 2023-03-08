@@ -14,6 +14,7 @@ import KnifeIcon from './assets/knife.svg';
 import EditIcon from './assets/edit.svg';
 import BookmarkIcon from './assets/bookmark.svg';
 import PlayIcon from './assets/play.svg';
+import PlayIcon2 from './assets/play2.svg';
 import VolumeHighIcon from './assets/volume-high.svg';
 import VolumeSlashIcon from './assets/volume-slash.svg';
 import ShareIcon from './assets/share.svg';
@@ -64,4 +65,5 @@ export {
   FacebookIcon,
   GmailIcon,
   StarIcon,
+  PlayIcon2,
 };

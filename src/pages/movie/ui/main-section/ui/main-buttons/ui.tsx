@@ -1,6 +1,6 @@
 import { useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
-import { BookmarkIcon } from 'shared/ui/icons';
+import { BookmarkIcon, PlayIcon2 } from 'shared/ui/icons';
 import { Button } from 'shared/ui/button';
 import { useToggler } from 'shared/lib';
 import { getMovieType } from './lib';
@@ -13,7 +13,13 @@ export const MainButtons = () => {
 
   return (
     <div className={styles.btns}>
-      <Button onClick={playerModal.open} size="big" className={styles.btn} gradient variant="glass">
+      <Button
+        startIcon={<PlayIcon2 />}
+        onClick={playerModal.open}
+        size="big"
+        className={styles.btn}
+        gradient
+        variant="glass">
         Смотреть {getMovieType(data?.type)}
       </Button>
       <Button onClick={trailerModal.open} size="big" className={styles.btn} variant="glass">

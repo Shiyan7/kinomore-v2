@@ -1,9 +1,7 @@
-import { Fragment } from 'react';
 import { useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
-import { getSeasonString } from 'shared/lib/get-season-string';
-import { Rating } from 'shared/ui';
-import { getRating, minutesToHour } from 'shared/lib';
+import { Rating } from 'shared/ui/rating';
+import { getRating, minutesToHour, getSeasonString } from 'shared/lib';
 import { getCountry, getAgeRating, getGenre } from './lib';
 import styles from './styles.module.scss';
 
@@ -27,9 +25,13 @@ export const Info = () => {
       <Rating showState className={styles.rating}>
         {getRating(data?.rating)}
       </Rating>
-      {items.map((item, idx) => (
-        <Fragment key={idx}>{item && <span className={styles.item}>{item}</span>}</Fragment>
-      ))}
+      {items
+        .filter((item) => !!item)
+        .map((item, idx) => (
+          <span key={idx} className={styles.item}>
+            {item}
+          </span>
+        ))}
     </div>
   );
 };

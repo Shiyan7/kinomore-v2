@@ -54,6 +54,18 @@
 		backdrop-filter: blur(16px);
 		border-radius: 8px;
 
+		.startIcon {
+			position: relative;
+			width: 24px;
+			height: 24px;
+			margin-right: 10px;
+
+			svg {
+				width: 100%;
+				height: 100%;
+			}
+		}
+
 		&:hover {
 			background-color: rgba(#888C92, 0.4);
 		}

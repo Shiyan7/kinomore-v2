@@ -120,6 +120,7 @@ module.exports = {
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'comma-dangle': 'off',
 		'@typescript-eslint/comma-dangle': 'off',
+		'jsx-a11y/iframe-has-title': 'off',
 		'@typescript-eslint/no-unused-vars': [
 			'error',
 			{

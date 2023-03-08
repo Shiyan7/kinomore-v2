@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import { useStore } from 'effector-react';
 import { Facts } from 'widgets/facts';
-import type { PageComponent } from 'pages/shared';
+import type { NextPageWithLayout } from 'pages/shared';
 import { pageModel } from 'pages/person';
 import { MainSection } from './main-section';
 import { Filmography } from './filmography';
 
-export const PersonPage: PageComponent = () => {
+export const PersonPage: NextPageWithLayout = () => {
   const data = useStore(pageModel.$person);
 
   const enName = data?.enName ? `(${data?.enName})` : '';

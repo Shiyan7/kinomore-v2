@@ -1,14 +1,14 @@
 import Head from 'next/head';
 import { useStore } from 'effector-react';
 import { Facts } from 'widgets/facts';
-import type { PageComponent } from 'pages/shared';
+import type { NextPageWithLayout } from 'pages/shared';
 import { pageModel, getPageTitle } from 'pages/movie';
 import { Persons } from './persons';
 import { SimilarMovies } from './similar-movies';
 import { MainSection } from './main-section';
 import { Tabs } from './tabs';
 
-export const MoviePage: PageComponent = () => {
+export const MoviePage: NextPageWithLayout = () => {
   const data = useStore(pageModel.$movie);
   const name = getPageTitle(data?.name);
   const year = data?.year ? `(${data?.year})` : '';
