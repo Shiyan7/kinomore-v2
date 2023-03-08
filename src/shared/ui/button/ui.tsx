@@ -62,7 +62,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps<typeof DEFAULT_E
           styles[size],
           className
         )}
-        {...props}>
+        {...props}
+      >
         {startIcon && <div className={styles.startIcon}>{startIcon}</div>}
         <span>{loading ? ButtonSpinner : children}</span>
         {endIcon && <div className={styles.endIcon}>{endIcon}</div>}

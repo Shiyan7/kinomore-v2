@@ -19,7 +19,8 @@ export const MainButtons = () => {
         size="big"
         className={styles.btn}
         gradient
-        variant="glass">
+        variant="glass"
+      >
         Смотреть {getMovieType(data?.type)}
       </Button>
       <Button onClick={trailerModal.open} size="big" className={styles.btn} variant="glass">

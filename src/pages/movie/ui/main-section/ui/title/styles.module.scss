@@ -1,9 +1,9 @@
 .root {
-	margin-bottom: 22px;
+  margin-bottom: 22px;
 
-	@media (max-width: 992px) {
-		margin-bottom: 15px;
-	}
+  @media (max-width: 992px) {
+    margin-bottom: 15px;
+  }
 }
 
 .title {
@@ -13,23 +13,23 @@
 }
 
 .logo {
-	position: relative;
-	display: block;
-	width: 420px;
-	height: 140px;
+  position: relative;
+  display: block;
+  width: 420px;
+  height: 140px;
 
-	@media (max-width: 992px) {
-		width: 300px;
-		height: 100px;
-	}
+  @media (max-width: 992px) {
+    width: 300px;
+    height: 100px;
+  }
 
-	@media (max-width: 576px) {
-		width: 268px;
-		height: 89px;
-	}
+  @media (max-width: 576px) {
+    width: 268px;
+    height: 89px;
+  }
 
-	img {
-		object-position: bottom left;
-		object-fit: contain;
-	}
+  img {
+    object-position: bottom left;
+    object-fit: contain;
+  }
 }

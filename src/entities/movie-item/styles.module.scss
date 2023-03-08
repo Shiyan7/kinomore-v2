@@ -1,5 +1,5 @@
 .item {
-	--radius: 12px;
+  --radius: 12px;
   position: relative;
   display: block;
   width: 100%;
@@ -7,9 +7,9 @@
   outline: none;
   color: var(--color-white);
 
-	@media (min-width: 577px) {
-		--radius: 16px;
-	}
+  @media (min-width: 577px) {
+    --radius: 16px;
+  }
 
   @media (min-width: 1025px) {
     transition: transform var(--duration);
@@ -77,7 +77,7 @@
   transition: opacity var(--duration), visibility var(--duration), background-color var(--duration);
 
   @media (max-width: 1024px) {
-		display: none;
+    display: none;
   }
 }
 
@@ -97,7 +97,7 @@
 .info {
   display: flex;
   align-items: center;
-	margin-top: 12px;
+  margin-top: 12px;
 }
 
 .year {
@@ -113,5 +113,5 @@
   font-size: 14px;
   line-height: 18px;
   color: rgba(#fff, 0.8);
-	white-space: nowrap;
+  white-space: nowrap;
 }

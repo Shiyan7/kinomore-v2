@@ -1,49 +1,48 @@
 .root {
-	margin-bottom: 35px;
+  margin-bottom: 35px;
 
-	@media (max-width: 576px) {
-		display: none;
-	}
+  @media (max-width: 576px) {
+    display: none;
+  }
 }
 
 .row {
-	display: flex;
+  display: flex;
 
-	&:not(:last-child) {
-		margin-bottom: 12px;
-	}
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
 }
 
 .label {
-	display: block;
-	font-weight: 300;
-	font-size: 15px;
-	line-height: 19px;
-	margin-right: 10px;
-	color: rgba(#fff, 0.6);
+  display: block;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 19px;
+  margin-right: 10px;
+  color: rgba(#fff, 0.6);
 }
 
 .list {
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .item {
-	&:not(:last-child) {
-		margin-right: 7px;
+  &:not(:last-child) {
+    margin-right: 7px;
 
-		&:after {
-			content: ",";
-			cursor: text;
-		}
-	}
+    &:after {
+      content: ",";
+      cursor: text;
+    }
+  }
 }
 
-
 .link {
-	font-weight: 300;
-	font-size: 15px;
-	line-height: 19px;
-	padding: 1px 0;
-	color: var(--color-white);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 19px;
+  padding: 1px 0;
+  color: var(--color-white);
 }

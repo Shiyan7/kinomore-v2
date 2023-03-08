@@ -4,16 +4,16 @@
   left: 0;
   width: 100%;
   z-index: var(--header-z-index);
-	background-color: var(--color-black);
+  background-color: var(--color-black);
   transition: transform var(--duration);
 
-	&.fixed {
-		transform: translateY(-100%);
+  &.fixed {
+    transform: translateY(-100%);
 
-		@media (max-width: 1024px) {
-			transform: translateX(0%);
-		}
-	}
+    @media (max-width: 1024px) {
+      transform: translateX(0%);
+    }
+  }
 }
 
 .container {
@@ -31,5 +31,5 @@
 .row {
   display: flex;
   align-items: center;
-	height: 100%;
+  height: 100%;
 }

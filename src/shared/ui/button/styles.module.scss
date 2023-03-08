@@ -36,71 +36,71 @@
   &.gray {
     background-color: var(--color-gray-100);
 
-		&:hover {
-			background-color: var(--color-gray-200);
-		}
+    &:hover {
+      background-color: var(--color-gray-200);
+    }
 
     &:active {
-			background-color: var(--color-gray-300);
-		}
+      background-color: var(--color-gray-300);
+    }
   }
 
   &.rounded {
     border-radius: 100px;
   }
 
-	&.glass {
-		background-color: rgba(#888C92, 0.3);
-		backdrop-filter: blur(16px);
-		border-radius: 8px;
+  &.glass {
+    background-color: rgba(#888c92, 0.3);
+    backdrop-filter: blur(16px);
+    border-radius: 8px;
 
-		.startIcon {
-			position: relative;
-			width: 24px;
-			height: 24px;
-			margin-right: 10px;
+    .startIcon {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
 
-			svg {
-				width: 100%;
-				height: 100%;
-			}
-		}
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
 
-		&:hover {
-			background-color: rgba(#888C92, 0.4);
-		}
+    &:hover {
+      background-color: rgba(#888c92, 0.4);
+    }
 
-		&:active {
-			background-color: rgba(#888C92, 0.5);
-		}
-	}
+    &:active {
+      background-color: rgba(#888c92, 0.5);
+    }
+  }
 
-	&.gradient {
-		background: linear-gradient(85.23deg, #2253B2 0%, #3B19C5 100%);
+  &.gradient {
+    background: linear-gradient(85.23deg, #2253b2 0%, #3b19c5 100%);
 
-		&:before {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			transition: background-color var(--duration);
-		}
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: background-color var(--duration);
+    }
 
-		&:hover {
-			&:before {
-				background-color: #3344DB;
-			}
-		}
+    &:hover {
+      &:before {
+        background-color: #3344db;
+      }
+    }
 
-		&:active {
-			&:before {
-				background-color: #2F43F6;
-			}
-		}
-	}
+    &:active {
+      &:before {
+        background-color: #2f43f6;
+      }
+    }
+  }
 
   span {
     position: relative;
@@ -159,23 +159,23 @@
 }
 
 .big {
-	min-width: 52px;
-	min-height: 52px;
-	padding: 14px;
-	font-size: 15.5px;
-	line-height: 1;
-	letter-spacing: 0.2px;
+  min-width: 52px;
+  min-height: 52px;
+  padding: 14px;
+  font-size: 15.5px;
+  line-height: 1;
+  letter-spacing: 0.2px;
 
-	@media (max-width: 576px) {
-		font-size: 13.5px;
-		min-height: 48px;
-		min-width: 48px;
-	}
+  @media (max-width: 576px) {
+    font-size: 13.5px;
+    min-height: 48px;
+    min-width: 48px;
+  }
 
-	svg {
-		width: 22px;
-		height: 22px;
-	}
+  svg {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 .large {
@@ -194,8 +194,8 @@
 }
 
 .skeleton {
-	cursor: default;
-	color: rgba(#fff, 0.4);
+  cursor: default;
+  color: rgba(#fff, 0.4);
 
   &::after {
     content: "";
@@ -205,20 +205,14 @@
     bottom: 0;
     left: 0;
     transform: translateX(-100%);
-		opacity: 0.7;
-    background-image: linear-gradient(
-      90deg,
-      rgba(#fff, 0) 0,
-      rgba(#fff, 0.2) 20%,
-      rgba(#fff, 0.5) 60%,
-      rgba(#fff, 0)
-    );
+    opacity: 0.7;
+    background-image: linear-gradient(90deg, rgba(#fff, 0) 0, rgba(#fff, 0.2) 20%, rgba(#fff, 0.5) 60%, rgba(#fff, 0));
     animation: shimmer 1.5s infinite;
   }
 }
 
 @keyframes shimmer {
-	100% {
-		transform: translateX(100%);
-	}
+  100% {
+    transform: translateX(100%);
+  }
 }

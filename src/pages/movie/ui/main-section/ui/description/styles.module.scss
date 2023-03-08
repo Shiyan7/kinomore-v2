@@ -1,15 +1,15 @@
 .desc {
-	margin: 0;
-	max-width: 500px;
-	font-weight: 300;
-	font-size: 15px;
-	line-height: 25px;
-	color: rgba(#fff, 0.9);
-	margin-bottom: 20px;
+  margin: 0;
+  max-width: 500px;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 25px;
+  color: rgba(#fff, 0.9);
+  margin-bottom: 20px;
 
-	@media (max-width: 576px) {
-		color: rgba(#fff, 0.8);
-		font-size: 14px;
-		line-height: 22.6px;
-	}
+  @media (max-width: 576px) {
+    color: rgba(#fff, 0.8);
+    font-size: 14px;
+    line-height: 22.6px;
+  }
 }

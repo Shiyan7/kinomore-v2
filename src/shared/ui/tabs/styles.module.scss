@@ -35,11 +35,11 @@
   overflow: hidden;
   transition: color var(--duration);
 
-	@media (max-width: 576px) {
-		font-size: 14px;
-		line-height: 18px;
-		padding-bottom: 14px;
-	}
+  @media (max-width: 576px) {
+    font-size: 14px;
+    line-height: 18px;
+    padding-bottom: 14px;
+  }
 
   &:hover {
     color: rgba(#fff, 0.9);
@@ -73,8 +73,8 @@
   &:not(:last-child) {
     margin-right: 30px;
 
-		@media (max-width: 576px) {
-			margin-right: 25px;
-		}
+    @media (max-width: 576px) {
+      margin-right: 25px;
+    }
   }
 }

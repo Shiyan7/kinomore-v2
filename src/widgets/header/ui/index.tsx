@@ -15,7 +15,8 @@ export const Header = () => {
     <header
       className={clsx(styles.header, {
         [styles.fixed]: isFixed,
-      })}>
+      })}
+    >
       <div className={clsx('container', styles.container)}>
         <div className={styles.row}>
           <Logo />

@@ -15,17 +15,17 @@
 }
 
 .btn {
-	position: relative;
+  position: relative;
   display: block;
   width: 24px;
   height: 24px;
   flex-shrink: 0;
-	margin-left: 10px;
-	margin-top: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
 
-	@media (max-width: 576px) {
-		margin-top: 5px;
-	}
+  @media (max-width: 576px) {
+    margin-top: 5px;
+  }
 
   @media (min-width: 769px) {
     display: none;

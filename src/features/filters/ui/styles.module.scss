@@ -38,18 +38,18 @@
   margin-bottom: 50px;
 
   @media (max-width: 768px) {
-		display: none;
+    display: none;
   }
 }
 
 .options {
-	padding-bottom: 1px;
-	margin-bottom: 20px;
-	border-bottom: 1px solid rgba(#fff, 0.1);
+  padding-bottom: 1px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(#fff, 0.1);
 
-	@media (min-width: 769px) {
-		display: none;
-	}
+  @media (min-width: 769px) {
+    display: none;
+  }
 }
 
 .header {

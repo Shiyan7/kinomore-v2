@@ -54,7 +54,8 @@ export const Select = ({
             <div
               onClick={() => handleSelect(option)}
               key={idx}
-              className={clsx(styles.option, isSelected && styles.isSelected)}>
+              className={clsx(styles.option, isSelected && styles.isSelected)}
+            >
               {option?.label}
               <span className={styles.check}>
                 <CheckIcon />

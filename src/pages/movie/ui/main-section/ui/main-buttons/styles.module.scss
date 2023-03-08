@@ -1,24 +1,23 @@
 .btns {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 
-	@media (max-width: 576px) {
-		width: 100%;
-		flex-direction: column;
-	}
+  @media (max-width: 576px) {
+    width: 100%;
+    flex-direction: column;
+  }
 }
 
 .btn {
+  @media (max-width: 576px) {
+    width: 100%;
+  }
 
-	@media (max-width: 576px) {
-		width: 100%;
-	}
+  &:not(:first-child) {
+    margin-left: 12px;
 
-	&:not(:first-child) {
-		margin-left: 12px;
-
-		@media (max-width: 576px) {
-			display: none;
-		}
-	}
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
 }

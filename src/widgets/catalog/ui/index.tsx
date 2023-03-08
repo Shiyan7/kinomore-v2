@@ -54,7 +54,8 @@ export const Catalog = ({ title }: CatalogProps) => {
             variant="gray"
             ref={buttonRef}
             skeletonLoading={pending}
-            className={styles.loadMore}>
+            className={styles.loadMore}
+          >
             Показать больше
           </Button>
         )}

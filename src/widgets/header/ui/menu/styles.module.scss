@@ -10,7 +10,7 @@
   overflow-y: auto;
   opacity: 0;
   visibility: hidden;
-	background-color: rgba(#000, .90);
+  background-color: rgba(#000, 0.9);
   backdrop-filter: blur(7px);
   transition: opacity var(--duration), visibility var(--duration);
 

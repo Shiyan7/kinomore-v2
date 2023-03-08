@@ -1,11 +1,11 @@
 .root {
-	position: fixed;
-	top: 0;
-	left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-	height: var(--height, 100vh);
-	background-color: var(--color-black);
-	z-index: var(--player-z-index);
+  height: var(--height, 100vh);
+  background-color: var(--color-black);
+  z-index: var(--player-z-index);
 }
 
 .iframe {
@@ -13,7 +13,7 @@
   position: absolute;
   top: 0;
   left: 50%;
-	transform: translateX(-50%);
+  transform: translateX(-50%);
   width: 100%;
   height: 100%;
   border: none;
@@ -21,24 +21,24 @@
 }
 
 .close {
-	position: absolute;
-	top: 20px;
-	right: 25px;
-	z-index: 1;
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 28px;
   height: 28px;
   border-radius: 100%;
-	backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
   background-color: hsla(0, 0%, 100%, 0.2);
-	transition: opacity 0.2s;
+  transition: opacity 0.2s;
 
-	@media (max-width: 1024px) {
-		right: 15px;
-		top: 15px;
-	}
+  @media (max-width: 1024px) {
+    right: 15px;
+    top: 15px;
+  }
 
   svg {
     display: block;
@@ -49,23 +49,23 @@
 }
 
 .spinner {
-	position: absolute;
-	display: none;
-	align-items: center;
-	justify-content: center;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: var(--color-black);
+  position: absolute;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-black);
 
-	&.isLoading {
-		display: flex;
-	}
+  &.isLoading {
+    display: flex;
+  }
 
-	svg {
-		@media (min-width: 577px) {
-			transform: scale(1.1);
-		}
-	}
+  svg {
+    @media (min-width: 577px) {
+      transform: scale(1.1);
+    }
+  }
 }

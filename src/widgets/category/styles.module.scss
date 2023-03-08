@@ -17,9 +17,9 @@
 .title {
   margin-bottom: 14px;
 
-	@media (max-width: 576px) {
-		margin-bottom: 10px;
-	}
+  @media (max-width: 576px) {
+    margin-bottom: 10px;
+  }
 
   @media (any-hover: hover) {
     &:hover {

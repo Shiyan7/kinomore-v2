@@ -2,23 +2,22 @@
   --radius: 6px;
   position: relative;
 
-	&.isOpen {
+  &.isOpen {
+    .arrow {
+      transform: rotate(90deg);
+    }
 
-		.arrow {
-			transform: rotate(90deg);
-		}
-
-		.options {
-			display: block;
-		}
-	}
+    .options {
+      display: block;
+    }
+  }
 }
 
 .value {
-	display: block;
+  display: block;
   font-size: 13.3px;
   line-height: 24px;
-	margin-right: 14px;
+  margin-right: 14px;
 }
 
 .top {
@@ -32,41 +31,41 @@
   user-select: none;
   transition: background-color var(--duration);
 
-	&:hover {
-		background-color: rgba(#8a8e96, 0.3);
-	}
+  &:hover {
+    background-color: rgba(#8a8e96, 0.3);
+  }
 
-	&:active {
-		background-color: rgba(#8a8e96, 0.4);
-	}
+  &:active {
+    background-color: rgba(#8a8e96, 0.4);
+  }
 }
 
 .icon {
-	display: block;
-	width: 24px;
-	height: 24px;
-	margin-right: 10px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
 
-	svg {
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .arrow {
-	display: block;
-	width: 14px;
-	height: 14px;
-	fill: rgba(#fff, 0.6);
-	transform: rotate(270deg);
-	transition: transform var(--duration);
+  display: block;
+  width: 14px;
+  height: 14px;
+  fill: rgba(#fff, 0.6);
+  transform: rotate(270deg);
+  transition: transform var(--duration);
 
-	svg {
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .options {
@@ -90,15 +89,15 @@
     background: transparent;
   }
 
-	&.bottom-start {
-		top: calc(100% + 8px);
-		left: 0;
-	}
+  &.bottom-start {
+    top: calc(100% + 8px);
+    left: 0;
+  }
 
-	&.bottom-end {
-		top: calc(100% + 8px);
-		right: 0;
-	}
+  &.bottom-end {
+    top: calc(100% + 8px);
+    right: 0;
+  }
 }
 
 .option {
