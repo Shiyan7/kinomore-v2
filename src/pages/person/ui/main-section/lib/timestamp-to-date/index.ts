@@ -3,6 +3,6 @@ import 'dayjs/locale/ru';
 
 dayjs.locale('ru');
 
-export function timestampToDate(date: string | number | Date | undefined, format = 'DD/MM/YYYY') {
+export function timestampToDate(date: string | number | Date | undefined, format: string) {
   return dayjs(date).format(format);
 }

@@ -3,12 +3,12 @@ import Image from 'next/image';
 import { useStore } from 'effector-react';
 import { pageModel } from 'pages/person';
 import { Title } from 'shared/ui/title';
-import { getProfessions, timestampToDate, getPersonName } from '../lib';
+import { getProfessions, timestampToDate } from '../lib';
 import styles from './styles.module.scss';
 
 export const MainSection = () => {
   const data = useStore(pageModel.$person);
-  const name = getPersonName(data?.name);
+  const name = data?.name ?? 'Без имени';
 
   const items = [
     { key: 'Карьера', value: data?.profession ? getProfessions(data.profession) : '—' },
