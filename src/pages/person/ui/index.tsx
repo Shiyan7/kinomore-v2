@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import { useStore } from 'effector-react';
 import { Facts } from 'widgets/facts';
 import type { NextPageWithLayout } from 'pages/shared';
@@ -15,13 +15,20 @@ export const PersonPage: NextPageWithLayout = () => {
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={data?.photo} />
-      </Head>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          title,
+          description,
+          images: [
+            {
+              url: data?.photo ?? '',
+              alt: title,
+            },
+          ],
+        }}
+      />
       <MainSection />
       <Filmography />
       <Facts narrow data={data?.facts} />
