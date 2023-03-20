@@ -5,16 +5,10 @@ import { useEvent } from 'effector-react';
 import { filtersModel } from 'features/filters';
 import { useLockedBody, useToggler } from 'shared/lib';
 import { Button, CloseIcon, SortIcon, Title } from 'shared/ui';
-import { genres, ratings, years, filters } from '../config';
+import { sort, filters } from '../config';
 import { Select } from './select';
 import { DrawerSelect } from './drawer-select';
 import styles from './styles.module.scss';
-
-const items = [
-  { label: 'Жанры', queryName: 'genre', options: genres },
-  { label: 'Рейтинг', queryName: 'rating', options: ratings },
-  { label: 'Годы выхода', queryName: 'year', options: years },
-];
 
 export const Filters = () => {
   const { query } = useRouter();
@@ -43,7 +37,7 @@ export const Filters = () => {
         </div>
         <div className={styles.filters}>
           <div className={styles.row}>
-            {items.map((option, idx) => {
+            {filters.map((option, idx) => {
               const { queryName, ...rest } = option;
 
               return (
@@ -61,7 +55,7 @@ export const Filters = () => {
             <Select
               value={query.sort}
               onSelect={(option) => optionSelected({ sort: option.value })}
-              options={filters}
+              options={sort}
               startIcon={<SortIcon />}
               placement="bottom-end"
               className={styles.select}
@@ -73,10 +67,10 @@ export const Filters = () => {
           <DrawerSelect
             value={query.sort}
             onSelect={(option) => sendOption({ sort: option.value })}
-            options={filters}
+            options={sort}
             label="Сортировка"
           />
-          {items.map((option, idx) => {
+          {filters.map((option, idx) => {
             const { queryName, ...rest } = option;
 
             return (

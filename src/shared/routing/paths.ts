@@ -1,5 +1,6 @@
 interface CatalogParams {
   genre?: string;
+  rating?: string;
   year?: string;
   sort?: string;
 }

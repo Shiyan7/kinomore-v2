@@ -29,7 +29,7 @@ export const genres: SelectOption[] = [
   { value: GenresEnum.Short, label: 'Короткометражка' },
 ];
 
-export const filters: SelectOption[] = [
+export const sort: SelectOption[] = [
   { value: '', label: 'Рекомендуемые' },
   { value: SortEnum.Rating, label: 'По рейтингу' },
   { value: SortEnum.Year, label: 'По дате выхода' },
@@ -56,4 +56,10 @@ export const years: SelectOption[] = [
   { value: '1970-1979', label: '1970-1979' },
   { value: '1960-1969', label: '1960-1969' },
   { value: '0-1959', label: 'до 1959' },
+];
+
+export const filters = [
+  { label: 'Жанры', queryName: 'genre', options: genres },
+  { label: 'Рейтинг', queryName: 'rating', options: ratings },
+  { label: 'Годы выхода', queryName: 'year', options: years },
 ];
