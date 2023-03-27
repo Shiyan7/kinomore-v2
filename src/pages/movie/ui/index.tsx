@@ -18,6 +18,8 @@ export const MoviePage: NextPageWithLayout = () => {
   return (
     <>
       <NextSeo
+        nofollow
+        noindex
         title={title}
         description={description}
         openGraph={{

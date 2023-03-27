@@ -16,6 +16,8 @@ export const PersonPage: NextPageWithLayout = () => {
   return (
     <>
       <NextSeo
+        nofollow
+        noindex
         title={title}
         description={description}
         openGraph={{
