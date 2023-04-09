@@ -20,13 +20,13 @@ export const MainPersons = () => {
         <div key={idx} className={styles.row}>
           <span className={styles.label}>{item.label}:</span>
           <ul className={clsx('list-reset', styles.list)}>
-            {item.list.map((item, idx) => {
-              const { name, id, enName } = item;
+            {item.list?.map((item, idx) => {
+              const name = item?.name ?? item?.enName;
 
               return (
                 <li className={styles.item} key={idx}>
-                  <Link className={styles.link} href={paths.person(id)}>
-                    {name ?? enName}
+                  <Link className={styles.link} href={paths.person(item?.id)}>
+                    {name}
                   </Link>
                 </li>
               );

@@ -1,6 +1,6 @@
 export const LIMIT = 15;
 
-export enum GenresEnum {
+export const enum GenresEnum {
   Action = 'боевик',
   Fantasy = 'фэнтези',
   ScienceFiction = 'фантастика',
@@ -34,7 +34,7 @@ export enum GenresEnum {
   Ceremony = 'церемония',
 }
 
-export enum SortEnum {
+export const enum SortEnum {
   Rating = 'rating.kp',
   Year = 'year',
 }
