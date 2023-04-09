@@ -3,6 +3,9 @@ const nextConfig = {
 		unoptimized: true,
 		domains: ['st.kp.yandex.net', 'avatars.mds.yandex.net', 'themoviedb.org', 'kinomore.onrender.com'],
 	},
+	experimental: {
+    runtime: 'edge',
+  },
 	env: {
 		API_TOKEN: process.env.API_TOKEN,
 		API_URL: process.env.API_URL,

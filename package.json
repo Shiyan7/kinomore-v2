@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "test": "jest --watch",
     "format": "prettier ./.prettierrc.json --write ./src",
     "lint": "next lint"
