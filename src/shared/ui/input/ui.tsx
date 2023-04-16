@@ -27,7 +27,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             onFocus={() => setIsFocus(true)}
             onBlur={handleOnBlur}
-            autoComplete="off"
             className={clsx('input-reset', isFocus && styles.isFocus, onClear && styles.clear, styles.input)}
             value={value}
             {...props}
@@ -37,8 +36,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <button
             type="button"
             onClick={onClear}
-            className={clsx('btn-reset', value && styles.visibile, styles.clearBtn)}
-          >
+            className={clsx('btn-reset', value && styles.visibile, styles.clearBtn)}>
             <CloseIcon />
           </button>
         )}

@@ -1,11 +1,4 @@
-import { sample, createEvent } from 'effector';
-import { sessionModel } from 'entities/session';
+import { createEvent, createStore, sample } from 'effector';
+import { isServerPageContext } from 'nextjs-effector';
 
 export const appStarted = createEvent();
-
-sample({
-  clock: appStarted,
-  filter: sessionModel.$hasToken,
-  fn: () => null,
-  target: sessionModel.startRefresh,
-});

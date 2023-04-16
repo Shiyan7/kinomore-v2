@@ -25,13 +25,11 @@ export const Info = () => {
       <Rating showState className={styles.rating}>
         {getRating(data?.rating)}
       </Rating>
-      {items
-        .filter((item) => !!item)
-        .map((item, idx) => (
-          <span key={idx} className={styles.item}>
-            {item}
-          </span>
-        ))}
+      {items.filter(Boolean).map((item, idx) => (
+        <span key={idx} className={styles.item}>
+          {item}
+        </span>
+      ))}
     </div>
   );
 };

@@ -1,53 +1,37 @@
-import axios from 'axios';
-import { createEffect, createStore, sample, attach, forward, createEvent } from 'effector';
-import { internalApi, internalInstance, type Session, UserWithTokensDto } from 'shared/api';
-import { ACCESS_TOKEN } from './config';
+import { createStore, attach, forward, createEvent, sample, restore } from 'effector';
+import { appStarted } from 'pages/shared';
+import { internalApi } from 'shared/api';
 
-function getAccessToken() {
-  if (typeof window !== 'undefined') return localStorage.getItem(ACCESS_TOKEN);
-}
-
-function setAccessToken(token: string) {
-  localStorage.setItem(ACCESS_TOKEN, token);
-}
-
-function removeAccessToken() {
-  localStorage.removeItem(ACCESS_TOKEN);
-}
-
-const setAccessTokenFx = createEffect({ handler: setAccessToken });
-const removeAccessTokenFx = createEffect({ handler: removeAccessToken });
-
+/* Атачнутые эффекты */
 export const loginFx = attach({ effect: internalApi.login });
 export const registerFx = attach({ effect: internalApi.register });
+export const logoutFx = attach({ effect: internalApi.logout });
+export const refreshFx = attach({ effect: internalApi.refresh });
+export const getSessionFx = attach({ effect: internalApi.getProfile });
 
+/* Эвенты которые запускают эффекты */
 export const logout = createEvent();
-
-const logoutFx = attach({ effect: internalApi.logout });
+export const startRefresh = createEvent();
+export const getSession = createEvent();
 
 forward({
   from: logout,
   to: logoutFx,
 });
 
-export const startRefresh = createEvent();
-
-const refreshFx = attach({ effect: internalApi.refresh });
-
 forward({
   from: startRefresh,
   to: refreshFx,
 });
 
-export const $session = createStore<Session | null>(null)
-  .on([loginFx.doneData, registerFx.doneData, refreshFx.doneData], (_, payload) => payload.user)
-  .reset(removeAccessTokenFx.done);
+forward({
+  from: getSession,
+  to: getSessionFx,
+});
 
-export const $isLogged = $session.map((session) => !!session);
-
-export const $hasToken = createStore(Boolean(getAccessToken()))
-  .on(setAccessTokenFx.done, () => true)
-  .on(removeAccessTokenFx.done, () => false);
+export const $isLogged = createStore(false)
+  .on([loginFx.doneData, registerFx.doneData, refreshFx.doneData, getSessionFx.doneData], () => true)
+  .reset(logoutFx.doneData);
 
 export const $pending = createStore(false).on(
   [loginFx.pending, registerFx.pending, logoutFx.pending],
@@ -55,41 +39,11 @@ export const $pending = createStore(false).on(
 );
 
 sample({
-  clock: [loginFx.doneData, registerFx.doneData, refreshFx.doneData],
-  fn: ({ accessToken }) => accessToken,
-  target: setAccessTokenFx,
+  clock: appStarted,
+  target: startRefresh,
 });
 
-sample({
-  clock: logoutFx.doneData,
-  target: removeAccessTokenFx,
-});
+export const $session = restore(getSessionFx, null);
 
-internalInstance.interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${getAccessToken()}`;
-
-  return config;
-});
-
-internalInstance.interceptors.response.use(
-  (config) => {
-    return config;
-  },
-  async (error) => {
-    const originalRequest = error?.config;
-    if (error?.response?.status === 401 && error?.config && !error?.config?._isRetry) {
-      originalRequest._isRetry = true;
-      try {
-        const { data } = await axios.get<UserWithTokensDto>(`${process.env.INTERNAL_API_URL}/refresh`, {
-          withCredentials: true,
-        });
-        setAccessToken(data.accessToken);
-        originalRequest.headers = { ...originalRequest.headers };
-        originalRequest.headers.Authorization = `Bearer ${getAccessToken()}`;
-        return internalInstance.request(originalRequest);
-      } catch (e) {
-        console.error(e);
-      }
-    }
-  }
-);
+/* Обнуляем сессию когда сработал logoutFx */
+$session.reset(logoutFx.doneData);

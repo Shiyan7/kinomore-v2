@@ -7,18 +7,20 @@ export interface HeroMovie {
   image: string;
 }
 
-export interface UserDto {
+export interface AuthDto {
   email: string;
   password: string;
 }
 
-export interface Session {
+export interface User {
+  _id: string;
   email: string;
-  id: string;
+  photo: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-export interface UserWithTokensDto {
+export interface Tokens {
   accessToken: string;
   refreshToken: string;
-  user: Session;
 }
