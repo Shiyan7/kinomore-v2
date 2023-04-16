@@ -1,4 +1,3 @@
-import { createEvent, createStore, sample } from 'effector';
-import { isServerPageContext } from 'nextjs-effector';
+import { createEvent } from 'effector';
 
 export const appStarted = createEvent();
