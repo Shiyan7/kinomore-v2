@@ -46,4 +46,4 @@ sample({
 export const $session = restore(getSessionFx, null);
 
 /* Обнуляем сессию когда сработал logoutFx */
-$session.reset(logoutFx.doneData);
+$session.reset(logoutFx.done);

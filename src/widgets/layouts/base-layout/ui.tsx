@@ -9,7 +9,7 @@ import { SearchWindow } from 'entities/search-window';
 import 'processes/root';
 
 export const BaseLayout = ({ children }: PropsWithChildren) => {
-  usePageEvent(appStarted, { runOnce: true });
+  usePageEvent(appStarted);
 
   return (
     <>
