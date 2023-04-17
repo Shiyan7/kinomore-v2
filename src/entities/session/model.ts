@@ -1,6 +1,8 @@
 import { createStore, attach, forward, createEvent, sample, restore } from 'effector';
 import { appStarted } from 'pages/shared';
+import { navigationModel } from 'entities/navigation';
 import { internalApi } from 'shared/api';
+import { paths } from 'shared/routing';
 
 /* Атачнутые эффекты */
 export const loginFx = attach({ effect: internalApi.login });
@@ -24,11 +26,6 @@ forward({
   to: refreshFx,
 });
 
-forward({
-  from: getSession,
-  to: getSessionFx,
-});
-
 export const $isLogged = createStore(false)
   .on([loginFx.doneData, registerFx.doneData, refreshFx.doneData, getSessionFx.doneData], () => true)
   .reset(logoutFx.doneData);
@@ -40,10 +37,23 @@ export const $pending = createStore(false).on(
 
 sample({
   clock: appStarted,
+  fn: () => null,
   target: startRefresh,
+});
+
+sample({
+  clock: getSession,
+  fn: () => null,
+  target: getSessionFx,
 });
 
 export const $session = restore(getSessionFx, null);
 
 /* Обнуляем сессию когда сработал logoutFx */
 $session.reset(logoutFx.done);
+
+sample({
+  clock: logoutFx.done,
+  fn: () => paths.home,
+  target: navigationModel.pushFx,
+});

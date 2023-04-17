@@ -11,6 +11,8 @@ export const ProfilePage: NextPageWithLayout = () => {
 
   usePageEvent(sessionModel.getSession);
 
+  if (!data) return null;
+
   return (
     <div>
       <Image width={150} height={150} alt={data?.email ?? ''} className={styles.avatar} src={data?.photo ?? ''} />
