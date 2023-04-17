@@ -41,12 +41,12 @@ export const showResults = createEvent();
 sample({
   clock: showResults,
   source: $allParams,
-  target: [navigationModel.pushQuery, filtersToggler.close],
+  target: [navigationModel.pushQueryFx, filtersToggler.close],
 });
 
 /* Когда что-то выбрали в селекте, сразу напрямую передаём в query */
 
 sample({
   clock: optionSelected,
-  target: navigationModel.pushQuery,
+  target: navigationModel.pushQueryFx,
 });

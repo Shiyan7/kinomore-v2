@@ -102,5 +102,5 @@ delay({
 sample({
   clock: routerChanged,
   fn: () => paths.profile,
-  target: [navigationModel.push, authWindow.close],
+  target: [navigationModel.pushFx, authWindow.close],
 });

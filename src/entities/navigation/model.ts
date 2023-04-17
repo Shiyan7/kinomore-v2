@@ -1,6 +1,6 @@
 import type { ParsedUrlQuery } from 'querystring';
 import type { NextRouter } from 'next/router';
-import { attach, createEvent, createStore, sample } from 'effector';
+import { attach, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
 
 export const RouterGate = createGate<{ router: NextRouter | null }>();
@@ -19,22 +19,12 @@ sample({
   target: $query,
 });
 
-export const push = createEvent<string>();
-
 export const pushFx = attach({
   source: $router,
   effect: (router, url: string) => router?.push(url),
 });
 
-sample({
-  clock: push,
-  target: pushFx,
-});
-
-export const pushQuery = createEvent<ParsedUrlQuery | null>();
-
-sample({
-  clock: pushQuery,
+export const pushQueryFx = attach({
   source: $router,
-  fn: (router, query) => router?.push({ query: { ...router.query, ...query } }),
+  effect: (router, query: ParsedUrlQuery | null) => router?.push({ query: { ...router.query, ...query } }),
 });

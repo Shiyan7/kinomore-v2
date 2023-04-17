@@ -26,6 +26,16 @@ forward({
   to: refreshFx,
 });
 
+forward({
+  from: appStarted,
+  to: startRefresh,
+});
+
+forward({
+  from: getSession,
+  to: getSessionFx,
+});
+
 export const $isLogged = createStore(false)
   .on([loginFx.doneData, registerFx.doneData, refreshFx.doneData, getSessionFx.doneData], () => true)
   .reset(logoutFx.doneData);
@@ -34,18 +44,6 @@ export const $pending = createStore(false).on(
   [loginFx.pending, registerFx.pending, logoutFx.pending],
   (_, payload) => payload
 );
-
-sample({
-  clock: appStarted,
-  fn: () => null,
-  target: startRefresh,
-});
-
-sample({
-  clock: getSession,
-  fn: () => null,
-  target: getSessionFx,
-});
 
 export const $session = restore(getSessionFx, null);
 
