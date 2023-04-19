@@ -5,20 +5,20 @@ import { internalApi } from 'shared/api';
 import { paths } from 'shared/routing';
 
 /* Атачнутые эффекты */
-export const loginFx = attach({ effect: internalApi.login });
-export const registerFx = attach({ effect: internalApi.register });
-export const logoutFx = attach({ effect: internalApi.logout });
+export const signInFx = attach({ effect: internalApi.signIn });
+export const signUpFx = attach({ effect: internalApi.signUp });
+export const logOutFx = attach({ effect: internalApi.logOut });
 export const refreshFx = attach({ effect: internalApi.refresh });
 export const getSessionFx = attach({ effect: internalApi.getProfile });
 
 /* Эвенты которые запускают эффекты */
-export const logout = createEvent();
+export const logOut = createEvent();
 export const startRefresh = createEvent();
 export const getSession = createEvent();
 
 forward({
-  from: logout,
-  to: logoutFx,
+  from: logOut,
+  to: logOutFx,
 });
 
 forward({
@@ -37,21 +37,21 @@ forward({
 });
 
 export const $isLogged = createStore(false)
-  .on([loginFx.doneData, registerFx.doneData, refreshFx.doneData, getSessionFx.doneData], () => true)
-  .reset(logoutFx.doneData);
+  .on([signInFx.doneData, signUpFx.doneData, refreshFx.doneData, getSessionFx.doneData], () => true)
+  .reset(logOutFx.doneData);
 
 export const $pending = createStore(false).on(
-  [loginFx.pending, registerFx.pending, logoutFx.pending],
+  [signInFx.pending, signUpFx.pending, logOutFx.pending],
   (_, payload) => payload
 );
 
 export const $session = restore(getSessionFx, null);
 
 /* Обнуляем сессию когда сработал logoutFx */
-$session.reset(logoutFx.done);
+$session.reset(logOutFx.done);
 
 sample({
-  clock: logoutFx.done,
+  clock: logOutFx.done,
   fn: () => paths.home,
   target: navigationModel.pushFx,
 });

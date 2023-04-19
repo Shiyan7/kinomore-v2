@@ -72,20 +72,20 @@ sample({
   clock: passwordForm.onSubmit,
   source: formValue,
   filter: not($isNewUser),
-  target: sessionModel.loginFx,
+  target: sessionModel.signInFx,
 });
 
 sample({
   clock: passwordForm.onSubmit,
   source: formValue,
   filter: $isNewUser,
-  target: sessionModel.registerFx,
+  target: sessionModel.signUpFx,
 });
 
 const redirectToProfile = createEvent();
 
 forward({
-  from: [sessionModel.loginFx.doneData, sessionModel.registerFx.doneData],
+  from: [sessionModel.signInFx.doneData, sessionModel.signUpFx.doneData],
   to: [authSuccess, redirectToProfile],
 });
 

@@ -14,13 +14,13 @@ export interface AuthDto {
 
 export interface User {
   _id: string;
+  name: string;
   email: string;
-  photo: string;
+  avatar: string;
   createdAt: Date;
   updatedAt: Date;
 }
 
-export interface Tokens {
-  accessToken: string;
-  refreshToken: string;
+export interface Message {
+  message: string;
 }

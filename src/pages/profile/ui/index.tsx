@@ -7,17 +7,22 @@ import styles from './styles.module.scss';
 
 export const ProfilePage: NextPageWithLayout = () => {
   const data = useStore(sessionModel.$session);
-  const logout = useEvent(sessionModel.logout);
+  const logOut = useEvent(sessionModel.logOut);
 
   usePageEvent(sessionModel.getSession);
 
   if (!data) return null;
 
   return (
-    <div>
-      <Image width={150} height={150} alt={data?.email ?? ''} className={styles.avatar} src={data?.photo ?? ''} />
-      {data?.email}
-      <button onClick={() => logout()}>выйти</button>
+    <div className="container">
+      <br />
+      <Image width={150} height={150} alt={data?.email ?? ''} className={styles.avatar} src={data?.avatar ?? ''} />
+      <br />
+      <h1>{data?.name}</h1>
+      <br />
+      <h5>{data?.email}</h5>
+      <br />
+      <button onClick={() => logOut()}>выйти</button>
     </div>
   );
 };

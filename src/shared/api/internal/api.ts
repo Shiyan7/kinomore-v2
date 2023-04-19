@@ -1,25 +1,25 @@
 import { http } from './config';
-import type { HeroMovie, AuthDto, Tokens, User } from './types';
+import type { HeroMovie, AuthDto, Message, User } from './types';
 
 const routesConfig = http.createRoutesConfig({
   getHeroMovies: http.createRoute<void, HeroMovie[]>({
     url: '/movies',
   }),
-  register: http.createRoute<AuthDto, Tokens>((data) => ({
+  signUp: http.createRoute<AuthDto, Message>((data) => ({
     url: '/auth/sign-up',
     method: 'post',
     data,
   })),
-  login: http.createRoute<AuthDto, Tokens>((data) => ({
+  signIn: http.createRoute<AuthDto, Message>((data) => ({
     url: '/auth/sign-in',
     method: 'post',
     data,
   })),
-  refresh: http.createRoute<void, Tokens>({
+  refresh: http.createRoute<void, Message>({
     url: '/auth/refresh',
     method: 'post',
   }),
-  logout: http.createRoute<void, { message: string }>({
+  logOut: http.createRoute<void, Message>({
     url: '/auth/logout',
     method: 'post',
   }),
