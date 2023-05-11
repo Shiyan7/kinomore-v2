@@ -5,16 +5,16 @@ import { internalApi } from 'shared/api';
 import { paths } from 'shared/routing';
 
 /* Атачнутые эффекты */
+export const getMeFx = attach({ effect: internalApi.getMe });
 export const signInFx = attach({ effect: internalApi.signIn });
 export const signUpFx = attach({ effect: internalApi.signUp });
 export const logOutFx = attach({ effect: internalApi.logOut });
 export const refreshFx = attach({ effect: internalApi.refresh });
-export const getSessionFx = attach({ effect: internalApi.getProfile });
 
 /* Эвенты которые запускают эффекты */
 export const logOut = createEvent();
 export const startRefresh = createEvent();
-export const getSession = createEvent();
+export const getMe = createEvent();
 
 forward({
   from: logOut,
@@ -32,12 +32,12 @@ forward({
 });
 
 forward({
-  from: getSession,
-  to: getSessionFx,
+  from: getMe,
+  to: getMeFx,
 });
 
 export const $isLogged = createStore(false)
-  .on([signInFx.doneData, signUpFx.doneData, refreshFx.doneData, getSessionFx.doneData], () => true)
+  .on([signInFx.doneData, signUpFx.doneData, refreshFx.doneData, getMeFx.doneData], () => true)
   .reset(logOutFx.doneData);
 
 export const $pending = createStore(false).on(
@@ -45,7 +45,7 @@ export const $pending = createStore(false).on(
   (_, payload) => payload
 );
 
-export const $session = restore(getSessionFx, null);
+export const $session = restore(getMeFx, null);
 
 /* Обнуляем сессию когда сработал logoutFx */
 $session.reset(logOutFx.done);

@@ -29,8 +29,8 @@ const routesConfig = http.createRoutesConfig({
       email,
     },
   })),
-  getProfile: http.createRoute<void, User>({
-    url: '/user/profile',
+  getMe: http.createRoute<void, User>({
+    url: '/user/me',
   }),
 });
 

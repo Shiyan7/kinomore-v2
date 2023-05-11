@@ -26,5 +26,7 @@ export const pushFx = attach({
 
 export const pushQueryFx = attach({
   source: $router,
-  effect: (router, query: ParsedUrlQuery | null) => router?.push({ query: { ...router.query, ...query } }),
+  effect: (router, query: ParsedUrlQuery | null) => {
+    router?.push({ query: { ...router.query, ...query } });
+  },
 });

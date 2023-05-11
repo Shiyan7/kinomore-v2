@@ -1,10 +1,12 @@
 export interface HeroMovie {
   id: number;
-  year: number;
-  rating: string;
   title: string;
-  genre: string;
   image: string;
+  rating: string;
+  year: number;
+  genre: string;
+  trailer: string;
+  scale: string;
 }
 
 export interface AuthDto {
@@ -13,7 +15,6 @@ export interface AuthDto {
 }
 
 export interface User {
-  _id: string;
   name: string;
   email: string;
   avatar: string;
