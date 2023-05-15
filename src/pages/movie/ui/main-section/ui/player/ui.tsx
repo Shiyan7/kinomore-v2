@@ -9,7 +9,7 @@ import styles from './styles.module.scss';
 
 export const Player = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const { isOpen, close } = useToggler(pageModel.playerModal);
+  const { isOpen, close } = useToggler(pageModel.playerToggler);
   const { query } = useRouter();
   const { height } = useWindowSize();
 
@@ -23,8 +23,7 @@ export const Player = () => {
       isOpen={isOpen}
       close={handleClose}
       style={{ '--height': `${height}px` } as CSSProperties}
-      className={styles.root}
-    >
+      className={styles.root}>
       <iframe
         onLoad={() => setIsLoading(false)}
         src={`https://voidboost.net/embed/${query.id}?poster=1&poster_id=4&df=1`}

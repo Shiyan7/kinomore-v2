@@ -1,6 +1,6 @@
 import { sample } from 'effector';
 import { reset } from 'patronum/reset';
-import { authModel } from 'features/auth';
+import { authModel } from 'widgets/auth';
 import { navigationModel } from 'entities/navigation';
 import { searchModel } from 'entities/search-window';
 
@@ -11,5 +11,5 @@ reset({
 
 sample({
   clock: navigationModel.$router,
-  target: [searchModel.searchWindow.close, authModel.emailForm.reset, authModel.passwordForm.reset],
+  target: [searchModel.toggler.close, authModel.emailForm.reset, authModel.passwordForm.reset],
 });

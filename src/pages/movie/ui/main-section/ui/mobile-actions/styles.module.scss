@@ -41,6 +41,8 @@
     display: block;
     width: 20px;
     height: 20px;
+		fill: transparent;
+		transition: fill var(--duration);
   }
 }
 
@@ -48,4 +50,10 @@
   font-size: 11px;
   line-height: 18px;
   color: var(--color-white);
+}
+
+.activeClass {
+	svg {
+		fill: var(--color-white);
+	}
 }

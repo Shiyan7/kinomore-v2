@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useStore } from 'effector-react';
-import { authModel } from 'features/auth';
+import { authModel } from 'widgets/auth';
 import { useForm } from 'shared/lib/effector-react-form';
 import { Form, Field } from 'shared/form';
 import { paths } from 'shared/routing';

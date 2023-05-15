@@ -5,7 +5,7 @@ import { createToggler } from 'shared/lib/toggler';
 
 const DEBOUNCE_TIME = 600;
 
-export const searchWindow = createToggler();
+export const toggler = createToggler();
 export const searchByNameFx = attach({ effect: commonApi.searchByName });
 export const $searchResult = restore(searchByNameFx, null);
 export const searchChanged = createEvent<string>();
@@ -26,6 +26,6 @@ sample({
 });
 
 reset({
-  clock: searchWindow.$isOpen,
+  clock: toggler.$isOpen,
   target: [$search, $debouncedValue],
 });

@@ -16,7 +16,7 @@ interface CatalogProps {
 
 export const Catalog = ({ title }: CatalogProps) => {
   const [buttonRef, isVisible] = useElementOnScreen<HTMLButtonElement>({ rootMargin: '450px' });
-  const { open } = useToggler(filtersModel.filtersToggler);
+  const { open } = useToggler(filtersModel.toggler);
   const loadMore = useEvent(catalogModel.loadMore);
   const hasMore = useStore(catalogModel.$hasMore);
   const pending = useStore(catalogModel.$pending);
@@ -54,8 +54,7 @@ export const Catalog = ({ title }: CatalogProps) => {
             variant="gray"
             ref={buttonRef}
             skeletonLoading={pending}
-            className={styles.loadMore}
-          >
+            className={styles.loadMore}>
             Показать больше
           </Button>
         )}

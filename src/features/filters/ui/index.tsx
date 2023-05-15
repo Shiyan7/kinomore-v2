@@ -12,7 +12,7 @@ import styles from './styles.module.scss';
 
 export const Filters = () => {
   const { query } = useRouter();
-  const { isOpen, close } = useToggler(filtersModel.filtersToggler);
+  const { isOpen, close } = useToggler(filtersModel.toggler);
   const optionSelected = useEvent(filtersModel.optionSelected);
   const showResults = useEvent(filtersModel.showResults);
   const sendOption = useEvent(filtersModel.sendOption);

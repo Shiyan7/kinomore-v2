@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import { useStore } from 'effector-react';
-import { authModel } from 'features/auth';
+import { authModel } from 'widgets/auth';
 import styles from './styles.module.scss';
 
 export const Progress = () => {
