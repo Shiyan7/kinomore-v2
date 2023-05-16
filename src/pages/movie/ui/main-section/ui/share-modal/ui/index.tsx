@@ -11,7 +11,7 @@ import styles from './styles.module.scss';
 export const ShareModal = () => {
   const [copy] = useCopyToClipboard();
   const { asPath } = useRouter();
-  const { close, isOpen } = useToggler(pageModel.shareModal);
+  const { close, isOpen } = useToggler(pageModel.shareToggler);
   const URL = `${process.env.CLIENT_URL}${asPath}`;
 
   const handleCopy = () => {

@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { useStore, useEvent } from 'effector-react';
-import { authModel } from 'features/auth';
+import { authModel } from 'widgets/auth';
 import { sessionModel } from 'entities/session';
 import { useForm } from 'shared/lib/effector-react-form';
 import { Button } from 'shared/ui/button';

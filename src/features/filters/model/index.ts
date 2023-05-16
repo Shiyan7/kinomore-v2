@@ -5,7 +5,7 @@ import { createToggler, paramsToString } from 'shared/lib';
 import { getOption } from '../lib';
 import { genres, years } from '../config';
 
-export const filtersToggler = createToggler();
+export const toggler = createToggler();
 
 export const $params = createStore('');
 
@@ -41,7 +41,7 @@ export const showResults = createEvent();
 sample({
   clock: showResults,
   source: $allParams,
-  target: [navigationModel.pushQueryFx, filtersToggler.close],
+  target: [navigationModel.pushQueryFx, toggler.close],
 });
 
 /* Когда что-то выбрали в селекте, сразу напрямую передаём в query */

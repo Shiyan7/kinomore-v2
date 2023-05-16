@@ -9,6 +9,11 @@
 }
 
 .btn {
+	svg {
+		fill: transparent;
+		transition: fill var(--duration);
+	}
+
   @media (max-width: 576px) {
     width: 100%;
   }
@@ -20,4 +25,10 @@
       display: none;
     }
   }
+}
+
+.isFavorite {
+	svg {
+		fill: var(--color-white);
+	}
 }

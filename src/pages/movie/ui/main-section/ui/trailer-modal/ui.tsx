@@ -7,7 +7,7 @@ import { getTrailer } from './lib';
 import styles from './styles.module.scss';
 
 export const TrailerModal = () => {
-  const { close, isOpen } = useToggler(pageModel.trailerModal);
+  const { close, isOpen } = useToggler(pageModel.trailerToggler);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const data = useStore(pageModel.$movie);
   const trailer = getTrailer(data?.videos);

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useStore } from 'effector-react';
-import { authModel } from 'features/auth';
+import { authModel } from 'widgets/auth';
 import { Modal } from 'shared/ui/modal';
 import { useToggler } from 'shared/lib/toggler';
 import { EmailForm } from './email-form';
@@ -11,7 +11,7 @@ import { Transition } from './transition';
 import styles from './styles.module.scss';
 
 export const AuthWindow = () => {
-  const { isOpen, close } = useToggler(authModel.authWindow);
+  const { isOpen, close } = useToggler(authModel.toggler);
   const windowRef = useRef<HTMLDivElement>(null);
   const state = useStore(authModel.$state);
   const isEmailState = state === 'email';

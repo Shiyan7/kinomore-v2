@@ -9,7 +9,7 @@ import { createToggler } from 'shared/lib/toggler';
 import { internalApi } from 'shared/api';
 import { paths } from 'shared/routing';
 
-export const authWindow = createToggler();
+export const toggler = createToggler();
 
 export const emailForm = createForm({
   initialValues: {
@@ -49,7 +49,7 @@ export const $isNewUser = createStore(false);
 
 sample({
   clock: emailForm.onSubmit,
-  fn: ({ values }) => values.email,
+  fn: ({ values }) => values,
   target: checkUserFx,
 });
 
@@ -102,5 +102,5 @@ delay({
 sample({
   clock: routerChanged,
   fn: () => paths.profile,
-  target: [navigationModel.pushFx, authWindow.close],
+  target: [navigationModel.pushFx, toggler.close],
 });

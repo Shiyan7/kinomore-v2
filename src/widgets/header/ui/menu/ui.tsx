@@ -10,7 +10,7 @@ import { items } from './config';
 import styles from './styles.module.scss';
 
 export const Menu = () => {
-  const { isOpen, close } = useToggler(headerModel.menu);
+  const { isOpen, close } = useToggler(headerModel.toggler);
   const { pathname } = useRouter();
 
   useLockedBody(isOpen);

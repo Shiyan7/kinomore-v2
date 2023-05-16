@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import clsx from 'clsx';
 import { useStore } from 'effector-react';
-import { authModel } from 'features/auth';
+import { authModel } from 'widgets/auth';
 import { sessionModel } from 'entities/session';
 import { useToggler } from 'shared/lib/toggler';
 import { ProfileIcon } from 'shared/ui/icons';
@@ -9,7 +9,7 @@ import { paths } from 'shared/routing';
 import styles from './styles.module.scss';
 
 export const Profile = () => {
-  const { open } = useToggler(authModel.authWindow);
+  const { open } = useToggler(authModel.toggler);
   const isLogged = useStore(sessionModel.$isLogged);
 
   const ProfileLink = (

@@ -23,15 +23,27 @@ const routesConfig = http.createRoutesConfig({
     url: '/auth/logout',
     method: 'post',
   }),
-  checkUser: http.createRoute<string, { status: boolean }>((email) => ({
+  checkUser: http.createRoute<{ email: string }, { status: boolean }>((data) => ({
     url: '/auth/check-email',
-    params: {
-      email,
-    },
+    data,
   })),
   getMe: http.createRoute<void, User>({
     url: '/user/me',
   }),
+  getAllFavorites: http.createRoute<void, Message>({
+    url: '/favorites',
+  }),
+  toggleFavorite: http.createRoute<{ id: string }, Message>((data) => ({
+    url: '/favorites',
+    method: 'post',
+    data,
+  })),
+  checkFavorite: http.createRoute<string, boolean>((id) => ({
+    url: '/favorites/check',
+    data: {
+      id,
+    },
+  })),
 });
 
 export const internalApi = routesConfig.build();
