@@ -1,4 +1,5 @@
 import { NextSeo } from 'next-seo';
+import { usePageEvent } from 'nextjs-effector';
 import { useStore } from 'effector-react';
 import { Facts } from 'widgets/facts';
 import type { NextPageWithLayout } from 'pages/shared';
@@ -14,6 +15,8 @@ export const MoviePage: NextPageWithLayout = () => {
   const year = data?.year ? `(${data?.year})` : '';
   const description = data?.description ?? data?.shortDescription;
   const title = `${name} ${year} смотреть онлайн бесплатно в хорошем HD 1080 / 720 качестве`;
+
+  usePageEvent(pageModel.clientStarted);
 
   return (
     <>

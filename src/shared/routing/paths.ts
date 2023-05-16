@@ -10,8 +10,10 @@ export const paths = {
   movies: '/films',
   series: '/series',
   cartoons: '/cartoons',
-  profile: '/profile',
   policy: '/policy',
+  profile: '/profile',
+  favorites: '/profile/favorites',
+  history: '/profile/history',
 
   // Get the URL for the movie catalog page
   catalog: (params: CatalogParams): string => {

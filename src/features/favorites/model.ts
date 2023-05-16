@@ -1,25 +1,17 @@
 import { and, not } from 'patronum';
-import { attach, createEvent, forward, restore, sample } from 'effector';
+import { attach, createEvent, createStore, forward, sample } from 'effector';
 import { authModel } from 'widgets/auth';
-import { appStarted } from 'pages/shared';
 import { sessionModel } from 'entities/session';
 import { internalApi } from 'shared/api';
 
-const checkFavoriteFx = attach({ effect: internalApi.checkFavorite });
 const toggleFavoriteFx = attach({ effect: internalApi.toggleFavorite });
 
-export const $isFavorite = restore(checkFavoriteFx, false);
+export const $isFavorite = createStore(false);
 export const toggleFavorite = createEvent<{ id: string }>();
 
 forward({
   from: toggleFavorite,
   to: toggleFavoriteFx,
-});
-
-sample({
-  clock: appStarted,
-  fn: ({ params }) => params?.id as string,
-  target: checkFavoriteFx,
 });
 
 sample({
