@@ -3,7 +3,7 @@ import { CSSProperties, useState } from 'react';
 import { useRouter } from 'next/router';
 import { pageModel } from 'pages/movie';
 import { useToggler } from 'shared/lib';
-import { CloseIcon, Modal, Spinner } from 'shared/ui';
+import { Modal, Spinner, Icon } from 'shared/ui';
 import { useWindowSize } from './lib';
 import styles from './styles.module.scss';
 
@@ -35,7 +35,7 @@ export const Player = () => {
         <Spinner strokeWidth={3} />
       </div>
       <button onClick={handleClose} className={clsx('btn-reset', styles.close)}>
-        <CloseIcon />
+        <Icon type="common" name="close" />
       </button>
     </Modal>
   );

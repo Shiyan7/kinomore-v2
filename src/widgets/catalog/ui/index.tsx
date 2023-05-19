@@ -6,7 +6,7 @@ import { catalogModel } from 'widgets/catalog';
 import { Filters, filtersModel } from 'features/filters';
 import { MovieItem } from 'entities/movie-item';
 import { useToggler } from 'shared/lib';
-import { Title, FiltersIcon, Button } from 'shared/ui';
+import { Title, Icon, Button } from 'shared/ui';
 import { useElementOnScreen } from '../lib';
 import styles from './styles.module.scss';
 
@@ -38,7 +38,7 @@ export const Catalog = ({ title }: CatalogProps) => {
             {params && `: ${params}`}
           </Title>
           <button onClick={open} className={clsx('btn-reset', styles.btn)}>
-            <FiltersIcon />
+            <Icon type="common" name="filters" />
           </button>
         </div>
         <Filters />

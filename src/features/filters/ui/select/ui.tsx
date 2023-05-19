@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useRef, useState, type ReactNode } from 'react';
 import type { SelectOption } from 'features/filters';
 import { useOnClickOutside } from 'shared/lib';
-import { CheckIcon, ChevronIcon } from 'shared/ui/icons';
+import { Icon } from 'shared/ui/icon';
 import styles from './styles.module.scss';
 
 interface SelectProps {
@@ -43,7 +43,7 @@ export const Select = ({
         {startIcon && <span className={styles.icon}>{startIcon}</span>}
         <span className={styles.value}>{selected.value ? selected.label : label}</span>
         <span className={styles.arrow}>
-          <ChevronIcon />
+          <Icon type="common" name="chevron" />
         </span>
       </div>
       <div className={clsx(styles.options, styles[placement])}>
@@ -54,11 +54,10 @@ export const Select = ({
             <div
               onClick={() => handleSelect(option)}
               key={idx}
-              className={clsx(styles.option, isSelected && styles.isSelected)}
-            >
+              className={clsx(styles.option, isSelected && styles.isSelected)}>
               {option?.label}
               <span className={styles.check}>
-                <CheckIcon />
+                <Icon type="common" name="check" />
               </span>
             </div>
           );

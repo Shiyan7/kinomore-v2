@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { searchModel } from 'entities/search-window';
 import { useToggler } from 'shared/lib/toggler';
-import { SearchIcon } from 'shared/ui/icons';
+import { Icon } from 'shared/ui/icon';
 import styles from './styles.module.scss';
 
 export const SearchButton = () => {
@@ -9,7 +9,7 @@ export const SearchButton = () => {
 
   return (
     <button onClick={open} className={clsx('btn-reset', styles.btn)}>
-      <SearchIcon />
+      <Icon type="common" name="search" />
     </button>
   );
 };

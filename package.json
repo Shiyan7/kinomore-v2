@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "next start",
     "test": "jest --watch",
     "format": "prettier ./.prettierrc.json --write ./src",
     "lint": "next lint"
@@ -46,6 +46,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@neodx/svg": "^0.1.9",
     "@next/eslint-plugin-next": "^13.0.2",
     "@types/axios": "^0.14.0",
     "@types/compose-function": "^0.0.30",

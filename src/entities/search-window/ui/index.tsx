@@ -3,7 +3,7 @@ import { useStore } from 'effector-react';
 import { searchModel } from 'entities/search-window';
 import { useToggler } from 'shared/lib/toggler';
 import { Title, Modal } from 'shared/ui';
-import { CloseIcon } from 'shared/ui/icons';
+import { Icon } from 'shared/ui/icon';
 import { SearchInput } from './search-input';
 import { SearchList } from './search-list';
 import styles from './styles.module.scss';
@@ -15,7 +15,7 @@ export const SearchWindow = () => {
   return (
     <Modal isOpen={toggler.isOpen} close={toggler.close} className={styles.window}>
       <button className={clsx('btn-reset', styles.close)} onClick={toggler.close}>
-        <CloseIcon />
+        <Icon type="common" name="close" />
       </button>
       <div className={styles.container}>
         <Title className={styles.title} size="xl">

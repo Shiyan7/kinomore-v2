@@ -4,7 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
 import { useEffect, useRef, useState } from 'react';
-import { Spinner, Title, Rating, VolumeSlashIcon, VolumeHighIcon } from 'shared/ui';
+import { Icon } from 'shared/ui/icon';
+import { Spinner, Title, Rating } from 'shared/ui';
 import type { HeroMovie } from 'shared/api';
 import { paths } from 'shared/routing';
 import { usePlayer } from './lib';
@@ -77,7 +78,7 @@ export const HeroSlide = ({ item, isActiveSlide }: SlideProps) => {
       </CSSTransition>
       <CSSTransition timeout={0} in={isActive} classNames={{ enterDone: styles.done }}>
         <button onClick={() => setIsMuted((prev) => !prev)} className={clsx('btn-reset', styles.volumeBtn)}>
-          {isMuted ? <VolumeSlashIcon /> : <VolumeHighIcon />}
+          {isMuted ? <Icon type="common" name="volume-slash" /> : <Icon type="common" name="volume-high" />}
         </button>
       </CSSTransition>
     </div>

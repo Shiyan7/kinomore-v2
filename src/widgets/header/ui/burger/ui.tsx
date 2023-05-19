@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { headerModel } from 'widgets/header';
 import { useToggler } from 'shared/lib/toggler';
-import { BurgerIcon } from 'shared/ui/icons';
+import { Icon } from 'shared/ui/icon';
 import styles from './styles.module.scss';
 
 export const Burger = () => {
@@ -9,7 +9,7 @@ export const Burger = () => {
 
   return (
     <button onClick={open} className={clsx('btn-reset', styles.btn)}>
-      <BurgerIcon />
+      <Icon type="common" name="burger" />
     </button>
   );
 };

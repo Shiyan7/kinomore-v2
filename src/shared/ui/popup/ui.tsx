@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { Modal, type ModalProps } from 'shared/ui/modal';
-import { CloseIcon } from 'shared/ui/icons';
+import { Icon } from 'shared/ui/icon';
 import styles from './styles.module.scss';
 
 export interface PopupProps extends ModalProps {
@@ -25,7 +25,7 @@ export const Popup = ({ rootClassName, className, close, children, ...props }: P
 const ClosePopup = ({ onClick, className }: CloseProps) => {
   return (
     <button onClick={onClick} className={clsx('btn-reset', styles.close, className)}>
-      <CloseIcon />
+      <Icon type="common" name="close" />
     </button>
   );
 };

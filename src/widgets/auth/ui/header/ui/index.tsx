@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useStore } from 'effector-react';
 import { authModel } from 'widgets/auth';
 import { useToggler } from 'shared/lib/toggler';
-import { CloseIcon } from 'shared/ui/icons';
+import { Icon } from 'shared/ui/icon';
 import { Progress } from './progress';
 import styles from './styles.module.scss';
 
@@ -26,7 +26,7 @@ export const Header = () => {
         </div>
       )}
       <button className={clsx('btn-reset', styles.close)} onClick={close}>
-        <CloseIcon />
+        <Icon type="common" name="close" />
       </button>
       <Progress />
     </div>

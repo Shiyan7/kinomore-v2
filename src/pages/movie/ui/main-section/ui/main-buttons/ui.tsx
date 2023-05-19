@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useEvent, useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
 import { favoritesModel } from 'features/favorites';
-import { BookmarkIcon } from 'shared/ui/icons';
+import { Icon } from 'shared/ui/icon';
 import { Button } from 'shared/ui/button';
 import { useToggler } from 'shared/lib';
 import { getMovieType } from './lib';
@@ -30,7 +30,7 @@ export const MainButtons = () => {
         size="big"
         className={clsx(styles.btn, isFavorite && styles.isFavorite)}
         variant="glass">
-        <BookmarkIcon />
+        <Icon type="common" name="bookmark" />
       </Button>
     </div>
   );

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { ButtonHTMLAttributes, forwardRef } from 'react';
-import { ChevronIcon } from 'shared/ui/icons';
+import { Icon } from 'shared/ui/icon';
 import styles from './styles.module.scss';
 
 interface SliderButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -10,7 +10,7 @@ interface SliderButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const SliderButton = forwardRef<HTMLButtonElement, SliderButtonProps>(({ className, ...props }, ref) => {
   return (
     <button className={clsx('btn-reset', styles.btn, className)} ref={ref} {...props}>
-      <ChevronIcon />
+      <Icon type="common" name="chevron" />
     </button>
   );
 });

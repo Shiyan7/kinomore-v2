@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { EditIcon } from 'shared/ui/icons';
+import { Icon } from 'shared/ui/icon';
 import styles from './styles.module.scss';
 
 interface MessageProps {
@@ -25,7 +25,7 @@ export const Message = ({
     <div className={clsx(styles.container, styles[position], className)}>
       {isEditable && (
         <button onClick={onEdit} className={clsx('btn-reset', styles.edit)}>
-          <EditIcon />
+          <Icon type="common" name="edit" />
         </button>
       )}
       <div className={clsx(styles.message, isSuccess && styles.isSuccess)}>

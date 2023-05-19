@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useRef, useState } from 'react';
 import type { SelectOption } from 'features/filters';
 import { useOnClickOutside } from 'shared/lib';
-import { CheckIcon, ChevronIcon, CloseIcon, Title } from 'shared/ui';
+import { Icon, Title } from 'shared/ui';
 import styles from './styles.module.scss';
 
 interface DrawerSelectProps {
@@ -37,14 +37,14 @@ export const DrawerSelect = ({ className, options, onSelect, value, label }: Dra
           <span className={styles.caption}>{selected.label}</span>
         </div>
         <span className={styles.arrow}>
-          <ChevronIcon />
+          <Icon type="common" name="chevron" />
         </span>
       </div>
       <div className={styles.drawer}>
         <div className={styles.header}>
           <Title size="medium">{label}</Title>
           <button onClick={handleClose} className={clsx('btn-reset', styles.close)}>
-            <CloseIcon />
+            <Icon type="common" name="close" />
           </button>
         </div>
         <div className={styles.options}>
@@ -55,11 +55,10 @@ export const DrawerSelect = ({ className, options, onSelect, value, label }: Dra
               <div
                 onClick={() => handleSelect(option)}
                 key={idx}
-                className={clsx(styles.option, isSelected && styles.isSelected)}
-              >
+                className={clsx(styles.option, isSelected && styles.isSelected)}>
                 {option?.label}
                 <span className={styles.check}>
-                  <CheckIcon />
+                  <Icon type="common" name="check" />
                 </span>
               </div>
             );

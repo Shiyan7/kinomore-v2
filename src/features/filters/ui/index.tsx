@@ -4,7 +4,8 @@ import { useRouter } from 'next/router';
 import { useEvent } from 'effector-react';
 import { filtersModel } from 'features/filters';
 import { useLockedBody, useToggler } from 'shared/lib';
-import { Button, CloseIcon, SortIcon, Title } from 'shared/ui';
+import { Icon } from 'shared/ui/icon';
+import { Button, Title } from 'shared/ui';
 import { sort, filters } from '../config';
 import { Select } from './select';
 import { DrawerSelect } from './drawer-select';
@@ -28,7 +29,7 @@ export const Filters = () => {
           <Image priority className={styles.image} width={131} height={26} src="/logo.svg" alt="Kinomore" />
         </div>
         <button onClick={close} className={clsx('btn-reset', styles.close)}>
-          <CloseIcon />
+          <Icon type="common" name="close" />
         </button>
       </div>
       <div className={styles.container}>
@@ -56,7 +57,7 @@ export const Filters = () => {
               value={query.sort}
               onSelect={(option) => optionSelected({ sort: option.value })}
               options={sort}
-              startIcon={<SortIcon />}
+              startIcon={<Icon type="common" name="sort" />}
               placement="bottom-end"
               className={styles.select}
               label="Рекомендуемые"
