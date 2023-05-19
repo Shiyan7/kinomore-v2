@@ -29,7 +29,8 @@ export const MainButtons = () => {
         onClick={() => toggleFavorite({ id: query?.id as string })}
         size="big"
         className={clsx(styles.btn, isFavorite && styles.isFavorite)}
-        variant="glass">
+        variant="glass"
+      >
         <Icon type="common" name="bookmark" />
       </Button>
     </div>

@@ -9,10 +9,10 @@
 }
 
 .btn {
-	svg {
-		fill: transparent;
-		transition: fill var(--duration);
-	}
+  svg {
+    fill: transparent;
+    transition: fill var(--duration);
+  }
 
   @media (max-width: 576px) {
     width: 100%;
@@ -28,7 +28,7 @@
 }
 
 .isFavorite {
-	svg {
-		fill: var(--color-white);
-	}
+  svg {
+    fill: var(--color-white);
+  }
 }

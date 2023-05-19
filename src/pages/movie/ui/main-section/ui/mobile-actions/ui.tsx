@@ -35,7 +35,8 @@ export const MobileActions = () => {
           <button
             onClick={handler}
             key={idx}
-            className={clsx('btn-reset', activeClass && styles.activeClass, styles.btn)}>
+            className={clsx('btn-reset', activeClass && styles.activeClass, styles.btn)}
+          >
             <span className={styles.icon}>{icon}</span>
             <span className={styles.label}>{label}</span>
           </button>
