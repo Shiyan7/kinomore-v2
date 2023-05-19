@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { CSSTransition } from 'react-transition-group';
 import { pageModel } from 'pages/movie';
-import { Title, Popup, LinkIcon } from 'shared/ui';
+import { Title, Popup, Icon } from 'shared/ui';
 import { useToggler } from 'shared/lib/toggler';
 import { items } from '../config';
 import { useCopyToClipboard } from '../lib';
@@ -40,7 +40,7 @@ export const ShareModal = () => {
           </div>
           <button onClick={handleCopy} className={clsx('btn-reset', styles.copy)}>
             <span className={styles.icon}>
-              <LinkIcon />
+              <Icon type="common" name="link" />
             </span>
             Копировать ссылку
           </button>

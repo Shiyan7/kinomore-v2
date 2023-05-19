@@ -4,7 +4,7 @@ import { useEvent, useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
 import { favoritesModel } from 'features/favorites';
 import { useToggler } from 'shared/lib';
-import { BookmarkIcon, PlayIcon, ShareIcon, StarIcon } from 'shared/ui/icons';
+import { Icon } from 'shared/ui/icon';
 import styles from './styles.module.scss';
 
 export const MobileActions = () => {
@@ -15,15 +15,15 @@ export const MobileActions = () => {
   const isFavorite = useStore(favoritesModel.$isFavorite);
 
   const items = [
-    { label: 'Трейлер', handler: trailerModal.open, icon: <PlayIcon /> },
+    { label: 'Трейлер', handler: trailerModal.open, icon: <Icon type="common" name="play" /> },
     {
       label: isFavorite ? 'Запомнен' : 'Запомнить',
       activeClass: isFavorite,
       handler: () => toggleFavorite({ id: query?.id as string }),
-      icon: <BookmarkIcon />,
+      icon: <Icon type="common" name="bookmark" />,
     },
-    { label: 'Оценить', icon: <StarIcon /> },
-    { label: 'Поделится', handler: shareModal.open, icon: <ShareIcon /> },
+    { label: 'Оценить', icon: <Icon type="common" name="star" /> },
+    { label: 'Поделится', handler: shareModal.open, icon: <Icon type="common" name="share" /> },
   ];
 
   return (

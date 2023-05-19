@@ -4,7 +4,7 @@ import { useStore } from 'effector-react';
 import { authModel } from 'widgets/auth';
 import { sessionModel } from 'entities/session';
 import { useToggler } from 'shared/lib/toggler';
-import { ProfileIcon } from 'shared/ui/icons';
+import { Icon } from 'shared/ui/icon';
 import { paths } from 'shared/routing';
 import styles from './styles.module.scss';
 
@@ -14,14 +14,14 @@ export const Profile = () => {
 
   const ProfileLink = (
     <Link href={paths.profile} className={styles.profile}>
-      <ProfileIcon />
+      <Icon type="common" name="profile" />
       Профиль
     </Link>
   );
 
   const ProfileButton = (
     <button onClick={open} className={clsx('btn-reset', styles.profile)}>
-      <ProfileIcon />
+      <Icon type="common" name="profile" />
       Войти
     </button>
   );

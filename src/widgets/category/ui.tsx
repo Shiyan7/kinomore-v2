@@ -5,7 +5,7 @@ import type { ElementType, PropsWithChildren } from 'react';
 import { LIMIT } from 'shared/config';
 import { Title, type TitleProps } from 'shared/ui/title';
 import { CarouselMultiply, type CarouselMultiplyProps } from 'shared/ui/carousel-multiply';
-import { ChevronIcon } from 'shared/ui/icons';
+import { Icon } from 'shared/ui/icon';
 import styles from './styles.module.scss';
 
 interface CategoryProps extends PropsWithChildren {
@@ -27,7 +27,7 @@ const CategoryTitle = ({ children, href, ...props }: TitleProps<ElementType<Part
       {children}
       {href && (
         <span className={styles.icon}>
-          <ChevronIcon />
+          <Icon type="common" name="chevron" />
         </span>
       )}
     </Title>

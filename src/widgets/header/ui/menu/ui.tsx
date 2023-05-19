@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { headerModel } from 'widgets/header';
 import { useLockedBody } from 'shared/lib/hooks';
 import { useToggler } from 'shared/lib/toggler';
-import { CloseIcon } from 'shared/ui/icons';
+import { Icon } from 'shared/ui/icon';
 import { items } from './config';
 import styles from './styles.module.scss';
 
@@ -18,7 +18,7 @@ export const Menu = () => {
   return (
     <div className={clsx(styles.menu, isOpen && styles.opened)}>
       <button onClick={close} className={clsx('btn-reset', styles.close)}>
-        <CloseIcon />
+        <Icon type="common" name="close" />
       </button>
       <div className={clsx('container', styles.container)}>
         <ul className={clsx('list-reset', styles.list)}>

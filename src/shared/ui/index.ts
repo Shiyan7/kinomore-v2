@@ -1,6 +1,6 @@
 export * from './button';
 export * from './carousel-multiply';
-export * from './icons';
+export * from './icon';
 export * from './input';
 export * from './link';
 export * from './modal';

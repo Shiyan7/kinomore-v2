@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { forwardRef, InputHTMLAttributes, useState } from 'react';
-import { CloseIcon } from 'shared/ui/icons';
+import { Icon } from 'shared/ui/icon';
 import styles from './styles.module.scss';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -37,7 +37,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             type="button"
             onClick={onClear}
             className={clsx('btn-reset', value && styles.visibile, styles.clearBtn)}>
-            <CloseIcon />
+            <Icon type="common" name="close" />
           </button>
         )}
       </div>
