@@ -8,6 +8,7 @@
     "start": "next start",
     "test": "jest --watch",
     "format": "prettier ./.prettierrc.json --write ./src",
+		"sprite": "sprite --group --root src/shared/ui/icon/assets -o public/sprite -d src/shared/ui/icon/sprite.h.ts",
     "lint": "next lint"
   },
   "dependencies": {
