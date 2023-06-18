@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 export const SimilarMovies = () => {
   const data = useStore(pageModel.$movie);
 
-  if (!data?.similarMovies.length) return null;
+  if (!data?.similarMovies?.length) return null;
 
   return (
     <Category containerClass={styles.container}>

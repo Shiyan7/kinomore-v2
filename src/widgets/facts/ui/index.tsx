@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import { useState } from 'react';
-import type { Fact } from 'shared/api';
+import type { FactInMovie, FactInPerson } from 'shared/api';
 import { Title } from 'shared/ui/title';
 import styles from './styles.module.scss';
 
 const MAX_FACTS = 5;
 
 interface FactsProps {
-  data: Fact[] | undefined;
+  data: FactInMovie[] | FactInPerson[] | undefined;
   narrow?: boolean;
 }
 
@@ -26,7 +26,7 @@ export const Facts = ({ data, narrow }: FactsProps) => {
         </Title>
         <ul className={clsx('list-reset', styles.list)}>
           {itemsToShow?.map((item, idx) => (
-            <li key={idx} className={styles.item} dangerouslySetInnerHTML={{ __html: item.value }} />
+            <li key={idx} className={styles.item} dangerouslySetInnerHTML={{ __html: item.value ?? '' }} />
           ))}
         </ul>
         {data?.length > MAX_FACTS && (

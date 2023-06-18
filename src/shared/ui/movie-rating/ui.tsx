@@ -8,7 +8,7 @@ interface RatingProps extends PropsWithChildren {
   showState?: boolean;
 }
 
-export const Rating = ({ children, showState, size = 'medium', className }: RatingProps) => {
+export const MovieRating = ({ children, showState, size = 'medium', className }: RatingProps) => {
   const rating = Number(children);
   const isHighRating = rating >= 6;
 

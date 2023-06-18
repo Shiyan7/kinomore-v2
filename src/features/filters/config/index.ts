@@ -37,11 +37,11 @@ export const sort: SelectOption[] = [
 
 export const ratings: SelectOption[] = [
   { value: '', label: 'Любой рейтинг' },
-  { value: '9', label: 'Больше 9' },
-  { value: '8', label: 'Больше 8' },
-  { value: '7', label: 'Больше 7' },
-  { value: '6', label: 'Больше 6' },
-  { value: '5', label: 'Больше 5' },
+  { value: '9-10', label: 'Больше 9' },
+  { value: '8-10', label: 'Больше 8' },
+  { value: '7-10', label: 'Больше 7' },
+  { value: '6-10', label: 'Больше 6' },
+  { value: '5-10', label: 'Больше 5' },
 ];
 
 export const years: SelectOption[] = [

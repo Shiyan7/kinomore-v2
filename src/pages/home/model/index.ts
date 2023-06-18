@@ -1,4 +1,5 @@
 import { attach, createEvent, restore, sample } from 'effector';
+import { appStarted } from 'pages/shared';
 import { commonApi, internalApi } from 'shared/api';
 
 export const pageStarted = createEvent();
@@ -23,12 +24,10 @@ export const $heroMovies = restore(getHeroMoviesFx, []);
 
 sample({
   clock: pageStarted,
-  target: [
-    getHeroMoviesFx,
-    getNewMoviesFx,
-    getComedyMoviesFx,
-    getFamilyMoviesFx,
-    getDramaMoviesFx,
-    getFantasticMoviesFx,
-  ],
+  target: getHeroMoviesFx,
+});
+
+sample({
+  clock: appStarted,
+  target: [getNewMoviesFx, getComedyMoviesFx, getFamilyMoviesFx, getDramaMoviesFx, getFantasticMoviesFx],
 });

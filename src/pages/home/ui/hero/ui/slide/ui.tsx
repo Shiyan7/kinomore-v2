@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { CSSTransition } from 'react-transition-group';
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from 'shared/ui/icon';
-import { Spinner, Title, Rating } from 'shared/ui';
+import { Spinner, Title, MovieRating } from 'shared/ui';
 import type { HeroMovie } from 'shared/api';
 import { paths } from 'shared/routing';
 import { usePlayer } from './lib';
@@ -51,7 +51,7 @@ export const HeroSlide = ({ item, isActiveSlide }: SlideProps) => {
         </CSSTransition>
         <CSSTransition timeout={0} in={isActive} classNames={{ enterDone: styles.done }}>
           <div className={styles.bottom}>
-            <Rating className={styles.rating}>{item?.rating}</Rating>
+            <MovieRating className={styles.rating}>{item?.rating}</MovieRating>
             <span className={styles.year}>{item?.year}</span>
             <span className={styles.genre}>{item?.genre}</span>
           </div>

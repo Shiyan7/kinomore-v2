@@ -15,7 +15,7 @@ export const TrailerModal = () => {
   return (
     <Popup className={styles.modal} isOpen={isOpen} close={close}>
       <div className={styles.content}>
-        {data?.videos?.trailers.length ? (
+        {data?.videos?.trailers?.length ? (
           <>
             {isLoading && (
               <div className={styles.spinner}>

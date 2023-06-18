@@ -1,4 +1,4 @@
-export const minutesToHour = (length = 0) => {
+export const minutesToHour = (length = 0): string => {
   const num = Math.abs(length);
   const hours = num / 60;
   const rhours = Math.floor(hours);

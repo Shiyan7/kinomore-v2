@@ -3,8 +3,8 @@ import { createHttp } from 'effector-http-api';
 
 export const commonInstance = axios.create({
   baseURL: process.env.API_URL,
-  params: {
-    token: process.env.API_TOKEN,
+  headers: {
+    'X-API-KEY': process.env.API_TOKEN,
   },
 });
 

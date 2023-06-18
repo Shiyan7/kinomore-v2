@@ -1,0 +1,1 @@
+export { MovieRating } from './ui';

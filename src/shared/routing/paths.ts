@@ -5,6 +5,8 @@ interface CatalogParams {
   sort?: string;
 }
 
+type Id = number | null | undefined;
+
 export const paths = {
   home: '/',
   movies: '/films',
@@ -24,8 +26,8 @@ export const paths = {
   },
 
   // Get the URL for the movie page
-  movie: (id: number): string => `/film/${id}`,
+  movie: (id: Id): string => `/film/${id}`,
 
   // Get the URL for the person page
-  person: (id: number): string => `/name/${id}`,
+  person: (id: Id): string => `/name/${id}`,
 };

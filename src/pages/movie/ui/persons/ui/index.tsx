@@ -10,7 +10,7 @@ import styles from './styles.module.scss';
 export const Persons = () => {
   const data = useStore(pageModel.$movie);
 
-  if (!data?.persons.length) return null;
+  if (!data?.persons?.length) return null;
 
   return (
     <section className={styles.section}>

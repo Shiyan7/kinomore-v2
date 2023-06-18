@@ -1,5 +1,5 @@
-import type { MovieRating } from 'shared/api';
+import type { Rating } from 'shared/api';
 
-export const getRating = (rating: Partial<MovieRating> | undefined) => {
+export const getRating = (rating: Rating | null | undefined) => {
   return (rating?.kp ?? rating?.imdb ?? 0)?.toFixed(1);
 };

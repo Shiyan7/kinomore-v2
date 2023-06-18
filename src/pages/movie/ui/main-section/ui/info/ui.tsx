@@ -1,6 +1,6 @@
 import { useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
-import { Rating } from 'shared/ui/rating';
+import { MovieRating } from 'shared/ui/movie-rating';
 import { getRating, minutesToHour, getSeasonString } from 'shared/lib';
 import { getCountry, getAgeRating, getGenre } from './lib';
 import styles from './styles.module.scss';
@@ -10,7 +10,7 @@ export const Info = () => {
 
   const length = data?.seasonsInfo?.length
     ? getSeasonString(data?.seasonsInfo.length)
-    : minutesToHour(data?.movieLength);
+    : minutesToHour(data?.movieLength ?? 0);
 
   const items = [
     data?.year,
@@ -22,9 +22,9 @@ export const Info = () => {
 
   return (
     <div className={styles.root}>
-      <Rating showState className={styles.rating}>
+      <MovieRating showState className={styles.rating}>
         {getRating(data?.rating)}
-      </Rating>
+      </MovieRating>
       {items.filter(Boolean).map((item, idx) => (
         <span key={idx} className={styles.item}>
           {item}
