@@ -42,7 +42,7 @@ export const $isLogged = createStore(false)
 
 export const $pending = createStore(false).on(
   [signInFx.pending, signUpFx.pending, logOutFx.pending],
-  (_, payload) => payload
+  (_, payload) => payload,
 );
 
 export const $session = restore(getMeFx, null);

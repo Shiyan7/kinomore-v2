@@ -1,0 +1,201 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "jest": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "prettier",
+    "airbnb",
+    "@feature-sliced/eslint-config/rules/import-order",
+    "@feature-sliced/eslint-config/rules/public-api",
+    "@feature-sliced/eslint-config/rules/layers-slices"
+  ],
+  "plugins": [
+    "unicorn",
+    "@typescript-eslint",
+    "react-hooks",
+    "jsx-a11y",
+    "react",
+    "prettier"
+  ],
+  "rules": {
+    "implicit-arrow-linebreak": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/button-has-type": 0,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".jsx", ".tsx"]
+      }
+    ],
+    "react/jsx-props-no-spreading": 0,
+    "react/destructuring-assignment": 1,
+    "react/require-default-props": 0,
+    "react/no-array-index-key": 1,
+    "react/jsx-key": 1,
+    "react/no-unescaped-entities": 1,
+    "react/no-danger": 0,
+    "react/function-component-definition": 0,
+    "react/no-unused-prop-types": 1,
+    "no-tabs": "off",
+    "react/no-unknown-property": [
+      "error",
+      {
+        "ignore": [
+          "css"
+        ]
+      }
+    ],
+    "react/no-unstable-nested-components": [
+      "warn"
+    ],
+    "import/extensions": 0,
+    "import/no-named-as-default": 0,
+    "import/prefer-default-export": 0,
+    "import/no-cycle": 0,
+    "import/no-extraneous-dependencies": 1,
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/comma-dangle": [
+      "error",
+      "only-multiline"
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "no-underscore-dangle": "off",
+    "quotes": "off",
+
+    "max-len": [
+      "warn",
+      {
+        "code": 120,
+        "ignoreComments": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "camelcase": [
+      "error",
+      {
+        "ignoreDestructuring": true
+      }
+    ],
+    "semi": [
+      "error",
+      "always",
+      {
+        "omitLastInOneLineBlock": true
+      }
+    ],
+    "spaced-comment": [
+      "error",
+      "always"
+    ],
+    "eqeqeq": [
+      "error",
+      "always"
+    ],
+    "import/no-unresolved": "off",
+    "no-unused-vars": "off",
+    "no-eval": "error",
+    "no-magic-numbers": "off",
+    "no-console": "warn",
+    "no-shadow": "off",
+    "consistent-return": "off",
+    "no-duplicate-imports": "error",
+    "no-whitespace-before-property": "error",
+    "no-template-curly-in-string": "error",
+    "space-unary-ops": "error",
+    "key-spacing": [
+      "error",
+      {
+        "afterColon": true
+      }
+    ],
+    "comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "block-spacing": "error",
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "object-curly-newline": 0,
+    "unicorn/no-unused-properties": "warn",
+    "unicorn/throw-new-error": "error",
+    "unicorn/no-useless-spread": "error",
+    "unicorn/no-unnecessary-await": "error",
+    "unicorn/catch-error-name": ["error", {
+      "ignore": ["^_\\d*$"]
+    }],
+    "unicorn/filename-case": ["error", {
+      "cases": {
+        "kebabCase": true,
+        "pascalCase": true
+      }
+    }],
+    "jsx-quotes": [2, "prefer-double"],
+    "jsx-a11y/alt-text": [
+      2,
+      {
+        "elements": [
+          "img",
+          "object",
+          "area",
+          "input[type=\"image\"]"
+        ],
+        "img": [
+          "Image"
+        ],
+        "object": [
+          "Object"
+        ],
+        "area": [
+          "Area"
+        ],
+        "input[type=\"image\"]": [
+          "InputImage"
+        ]
+      }
+    ],
+    "jsx-a11y/label-has-associated-control": 0,
+    "jsx-a11y/anchor-has-content": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-static-element-interactions": [
+      2,
+      {
+        "handlers": ["onMouseDown", "onMouseUp", "onKeyPress", "onKeyDown", "onKeyUp"]
+      }
+    ],
+    "react/jsx-one-expression-per-line": "off"
+  }
+}

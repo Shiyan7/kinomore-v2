@@ -7,10 +7,8 @@ interface LinkProps extends PropsWithChildren<AnchorHTMLAttributes<HTMLAnchorEle
   href: string;
 }
 
-export const Link = ({ className, children, ...props }: LinkProps) => {
-  return (
-    <NextLink className={clsx(styles.link, className)} {...props}>
-      {children}
-    </NextLink>
-  );
-};
+export const Link = ({ className, children, ...props }: LinkProps) => (
+  <NextLink className={clsx(styles.link, className)} {...props}>
+    {children}
+  </NextLink>
+);

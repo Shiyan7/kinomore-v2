@@ -1,7 +1,7 @@
 import type { HTMLAttributes, PropsWithChildren, SyntheticEvent } from 'react';
 
-interface FormProps extends PropsWithChildren<HTMLAttributes<HTMLFormElement>> {
-  onSubmit: (e: SyntheticEvent<HTMLFormElement>) => void;
+interface FormProps extends Omit<HTMLAttributes<HTMLFormElement>, 'onSubmit'>, PropsWithChildren {
+  onSubmit: (payload: void) => void;
 }
 
 export const Form = ({ onSubmit, children, ...props }: FormProps) => (
@@ -10,7 +10,7 @@ export const Form = ({ onSubmit, children, ...props }: FormProps) => (
     noValidate
     onSubmit={(e) => {
       e.preventDefault();
-      onSubmit(e);
+      onSubmit();
     }}
   >
     {children}

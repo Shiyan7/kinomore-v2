@@ -8,17 +8,15 @@ import { Drama } from './drama';
 import { Info } from './info';
 import { Fantastic } from './fantastic';
 
-export const HomePage: NextPageWithLayout = () => {
-  return (
-    <>
-      <Hero />
-      <Genres />
-      <ComedyFilms />
-      <NewFilms />
-      <ForFamily />
-      <Drama />
-      <Fantastic />
-      <Info />
-    </>
-  );
-};
+export const HomePage: NextPageWithLayout = () => (
+  <>
+    <Hero />
+    <Genres />
+    <ComedyFilms />
+    <NewFilms />
+    <ForFamily />
+    <Drama />
+    <Fantastic />
+    <Info />
+  </>
+);

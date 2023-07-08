@@ -36,11 +36,12 @@ export function CarouselMultiply<T>({
   const renderItems = useCallback(
     (_items: typeof items) =>
       _items?.map((item, idx) => (
+        // eslint-disable-next-line react/no-array-index-key
         <SwiperSlide style={{ marginRight: 'var(--column-gap)' }} className={slideClassName} key={idx}>
           {renderItem(item, idx)}
         </SwiperSlide>
       )),
-    [slideClassName, renderItem]
+    [slideClassName, renderItem],
   );
 
   const swiperOptions: SwiperOptions = {

@@ -2,16 +2,16 @@ import { useRef, useEffect } from 'react';
 import { useStore, useEvent } from 'effector-react';
 import { authModel } from 'widgets/auth';
 import { sessionModel } from 'entities/session';
-import { useForm } from 'shared/lib/effector-react-form';
 import { Button } from 'shared/ui/button';
-import { Field, Form } from 'shared/form';
 import { Message } from '../message';
 import { Transition } from '../transition';
 import { maskString } from './lib';
 import styles from './styles.module.scss';
+import { Field, Form } from 'shared/form';
+import { useForm } from '@filledout/react';
 
 export const PasswordForm = () => {
-  const { handleSubmit, controller } = useForm({ form: authModel.passwordForm, resetUnmount: false });
+  const { onSubmit, fields } = useForm(authModel.passwordForm);
   const { email } = useStore(authModel.emailForm.$values);
   const { password } = useStore(authModel.passwordForm.$values);
   const maskPassword = maskString(password);
@@ -38,14 +38,12 @@ export const PasswordForm = () => {
         />
       </Transition>
       <Transition animation="bounceOutUp" startIn={isAuthorizedState} offset={-30} delay={250}>
-        <Form onSubmit={handleSubmit} className={styles.form}>
+        <Form onSubmit={onSubmit} className={styles.form}>
           <div className={styles.inputs}>
             <Transition offset={20} delay={350}>
               <Field.Input
-                use={controller({
-                  name: 'password',
-                })}
                 ref={inputRef}
+                field={fields.password}
                 type="password"
                 className={styles.input}
                 placeholder={isNewUser ? 'Придумайте пароль' : 'Введите пароль'}

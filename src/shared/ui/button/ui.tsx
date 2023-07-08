@@ -37,7 +37,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps<typeof DEFAULT_E
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const ButtonSpinner = (
       <div className={styles.spinner}>
@@ -60,7 +60,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps<typeof DEFAULT_E
           },
           styles[variant],
           styles[size],
-          className
+          className,
         )}
         {...props}
       >
@@ -69,5 +69,5 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps<typeof DEFAULT_E
         {endIcon && <div className={styles.endIcon}>{endIcon}</div>}
       </Element>
     );
-  }
+  },
 );

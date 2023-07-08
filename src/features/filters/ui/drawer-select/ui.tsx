@@ -48,13 +48,13 @@ export const DrawerSelect = ({ className, options, onSelect, value, label }: Dra
           </button>
         </div>
         <div className={styles.options}>
-          {options?.map((option, idx) => {
+          {options?.map((option) => {
             const isSelected = selected?.value === option?.value;
 
             return (
               <div
                 onClick={() => handleSelect(option)}
-                key={idx}
+                key={option.label}
                 className={clsx(styles.option, isSelected && styles.isSelected)}
               >
                 {option?.label}

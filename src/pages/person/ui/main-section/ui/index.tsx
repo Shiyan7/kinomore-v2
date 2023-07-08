@@ -11,8 +11,8 @@ export const MainSection = () => {
   const name = data?.name ?? 'Без имени';
 
   const items = [
-    { key: 'Карьера', value: data?.profession ? getProfessions(data.profession) : '—' },
-    { key: 'Дата рождения', value: data?.birthday ? timestampToDate(data.birthday, 'D MMMM YYYY') : '—' },
+    { label: 'Карьера', value: data?.profession ? getProfessions(data.profession) : '—' },
+    { label: 'Дата рождения', value: data?.birthday ? timestampToDate(data.birthday, 'D MMMM YYYY') : '—' },
   ];
 
   return (
@@ -27,10 +27,10 @@ export const MainSection = () => {
             {data?.enName && <span className={styles.enName}>{data.enName}</span>}
           </div>
           <div className={styles.info}>
-            {items.map((item, idx) => (
-              <div key={idx} className={styles.row}>
-                <span className={styles.value}>{item.key}:</span>
-                <span className={styles.value}>{item.value}</span>
+            {items.map(({ label, value }) => (
+              <div key={label} className={styles.row}>
+                <span className={styles.value}>{label}:</span>
+                <span className={styles.value}>{value}</span>
               </div>
             ))}
           </div>

@@ -6,11 +6,12 @@ import styles from './styles.module.scss';
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   error?: string;
+  hasError?: boolean;
   onClear?: () => void;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, error, placeholder, onClear, value, ...props }, ref) => {
+  ({ className, hasError, placeholder, onClear, value, ...props }, ref) => {
     const [isFocus, setIsFocus] = useState<boolean>(false);
 
     const handleOnBlur = () => {
@@ -21,7 +22,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={clsx(styles.field, className)}>
-        <label className={clsx(styles.label, error && styles.error)}>
+        <label className={clsx(styles.label, hasError && styles.error)}>
           <span className={clsx(styles.placeholder, isFocus && styles.isFocus)}>{placeholder}</span>
           <input
             ref={ref}
@@ -43,5 +44,5 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     );
-  }
+  },
 );

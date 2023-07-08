@@ -34,5 +34,5 @@ export const Modal = forwardRef<HTMLDivElement, PropsWithChildren<ModalProps>>(
         </Portal>
       </CSSTransition>
     );
-  }
+  },
 );

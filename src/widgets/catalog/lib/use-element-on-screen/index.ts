@@ -6,7 +6,7 @@ interface ObserverOptions {
 }
 
 export function useElementOnScreen<T extends Element = HTMLDivElement>(
-  options: ObserverOptions
+  options: ObserverOptions,
 ): [RefObject<T>, boolean] {
   const containerRef = useRef<T>(null);
   const [isVisible, setIsVisible] = useState(false);

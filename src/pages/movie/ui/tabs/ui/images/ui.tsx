@@ -1,5 +1,3 @@
 import styles from './styles.module.scss';
 
-export const Images = () => {
-  return <div className={styles.root} />;
-};
+export const Images = () => <div className={styles.root} />;

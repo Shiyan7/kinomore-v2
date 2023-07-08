@@ -23,8 +23,8 @@ export const Filmography = () => {
           Фильмография ({length})
         </Title>
         <div className={styles.grid}>
-          {movies?.map(({ rating, ...item }, idx) => (
-            <MovieItem key={idx} rating={rating} small item={item} />
+          {movies?.map(({ rating, ...item }) => (
+            <MovieItem key={item.id} rating={rating} small item={item} />
           ))}
         </div>
         {hasMore && (

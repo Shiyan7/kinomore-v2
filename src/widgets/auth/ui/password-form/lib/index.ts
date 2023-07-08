@@ -1,1 +1,1 @@
-export * from './maskString';
+export * from './mask-string';

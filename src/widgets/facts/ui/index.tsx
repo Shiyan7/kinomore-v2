@@ -25,8 +25,8 @@ export const Facts = ({ data, narrow }: FactsProps) => {
           Знаете ли вы, что…
         </Title>
         <ul className={clsx('list-reset', styles.list)}>
-          {itemsToShow?.map((item, idx) => (
-            <li key={idx} className={styles.item} dangerouslySetInnerHTML={{ __html: item.value ?? '' }} />
+          {itemsToShow?.map(({ value }) => (
+            <li key={value} className={styles.item} dangerouslySetInnerHTML={{ __html: value ?? '' }} />
           ))}
         </ul>
         {data?.length > MAX_FACTS && (

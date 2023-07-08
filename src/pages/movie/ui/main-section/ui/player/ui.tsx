@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import clsx from 'clsx';
 import { CSSProperties, useState } from 'react';
 import { useRouter } from 'next/router';

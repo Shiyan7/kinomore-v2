@@ -27,13 +27,13 @@ export const ShareModal = () => {
             Поделится
           </Title>
           <div className={styles.btns}>
-            {items.map((item, idx) => {
-              const Button = item.button;
+            {items.map(({ icon, text, button }) => {
+              const Button = button;
 
               return (
-                <Button key={idx} resetButtonStyle={false} url={URL} className={clsx('btn-reset', styles.btn)}>
-                  {item.icon}
-                  {item.text}
+                <Button key={text} resetButtonStyle={false} url={URL} className={clsx('btn-reset', styles.btn)}>
+                  {icon}
+                  {text}
                 </Button>
               );
             })}

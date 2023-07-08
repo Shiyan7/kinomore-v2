@@ -10,12 +10,10 @@ interface SpinnerProps {
   r?: number;
 }
 
-export const Spinner = ({ className, size = 50, r = 20, stroke = '#fff', strokeWidth = 5 }: SpinnerProps) => {
-  return (
-    <div className={clsx(styles.spinner, className)} style={{ '--spinner-size': `${size}px` } as CSSProperties}>
-      <svg viewBox={`0 0 ${size} ${size}`}>
-        <circle cx={size / 2} cy={size / 2} r={r} stroke={stroke} fill="none" strokeWidth={strokeWidth} />
-      </svg>
-    </div>
-  );
-};
+export const Spinner = ({ className, size = 50, r = 20, stroke = '#fff', strokeWidth = 5 }: SpinnerProps) => (
+  <div className={clsx(styles.spinner, className)} style={{ '--spinner-size': `${size}px` } as CSSProperties}>
+    <svg viewBox={`0 0 ${size} ${size}`}>
+      <circle cx={size / 2} cy={size / 2} r={r} stroke={stroke} fill="none" strokeWidth={strokeWidth} />
+    </svg>
+  </div>
+);

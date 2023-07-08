@@ -23,7 +23,7 @@ const routesConfig = http.createRoutesConfig({
         sortType: ['-1', '-1'],
         limit,
       },
-    })
+    }),
   ),
   getNewMovies: http.createRoute<void, Data<MovieEntity>>({
     url: '/v1.3/movie',

@@ -28,20 +28,16 @@ export const MobileActions = () => {
 
   return (
     <div className={styles.root}>
-      {items.map((item, idx) => {
-        const { label, handler, icon, activeClass } = item;
-
-        return (
-          <button
-            onClick={handler}
-            key={idx}
-            className={clsx('btn-reset', activeClass && styles.activeClass, styles.btn)}
-          >
-            <span className={styles.icon}>{icon}</span>
-            <span className={styles.label}>{label}</span>
-          </button>
-        );
-      })}
+      {items.map(({ label, handler, icon, activeClass }) => (
+        <button
+          onClick={handler}
+          key={label}
+          className={clsx('btn-reset', activeClass && styles.activeClass, styles.btn)}
+        >
+          <span className={styles.icon}>{icon}</span>
+          <span className={styles.label}>{label}</span>
+        </button>
+      ))}
     </div>
   );
 };

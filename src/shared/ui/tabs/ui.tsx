@@ -14,21 +14,17 @@ interface TabsProps {
   className?: string;
 }
 
-export const Tabs = ({ className, tabs }: TabsProps) => {
-  return (
-    <ReactTabs selectedTabClassName={styles.selected} className={clsx(styles.tabs, className)}>
-      <TabList className={styles.list}>
-        {tabs.map((tab) => {
-          const { label, condition = true } = tab;
+export const Tabs = ({ className, tabs }: TabsProps) => (
+  <ReactTabs selectedTabClassName={styles.selected} className={clsx(styles.tabs, className)}>
+    <TabList className={styles.list}>
+      {tabs.map((tab) => {
+        const { label, condition = true } = tab;
 
-          return <Fragment key={label}>{condition ? <Tab className={styles.tab}>{label}</Tab> : null}</Fragment>;
-        })}
-      </TabList>
-      {tabs.map((tab, idx) => {
-        const { content, condition = true } = tab;
-
-        return <Fragment key={idx}>{condition ? <TabPanel>{content}</TabPanel> : null}</Fragment>;
+        return <Fragment key={label}>{condition ? <Tab className={styles.tab}>{label}</Tab> : null}</Fragment>;
       })}
-    </ReactTabs>
-  );
-};
+    </TabList>
+    {tabs.map(({ label, content, condition = true }) => (
+      <Fragment key={label}>{condition ? <TabPanel>{content}</TabPanel> : null}</Fragment>
+    ))}
+  </ReactTabs>
+);

@@ -1,13 +1,12 @@
 import { combine, createEvent, createStore, sample, forward, attach } from 'effector';
 import { delay, not } from 'patronum';
-import { string } from 'yup';
+import { object, string } from 'zod';
 import { sessionModel } from 'entities/session';
 import { navigationModel } from 'entities/navigation';
-import { createForm } from 'shared/lib/effector-react-form';
-import { createObjectValidator } from 'shared/form';
 import { createToggler } from 'shared/lib/toggler';
 import { internalApi } from 'shared/api';
 import { paths } from 'shared/routing';
+import { createForm } from 'shared/form';
 
 export const toggler = createToggler();
 
@@ -15,8 +14,8 @@ export const emailForm = createForm({
   initialValues: {
     email: '',
   },
-  validate: createObjectValidator({
-    email: string().email().required(),
+  schema: object({
+    email: string().email(),
   }),
 });
 
@@ -24,8 +23,8 @@ export const passwordForm = createForm({
   initialValues: {
     password: '',
   },
-  validate: createObjectValidator({
-    password: string().min(6).required(),
+  schema: object({
+    password: string().min(6),
   }),
 });
 
@@ -48,8 +47,7 @@ export const checkUserFx = attach({ effect: internalApi.checkUser });
 export const $isNewUser = createStore(false);
 
 sample({
-  clock: emailForm.onSubmit,
-  fn: ({ values }) => values,
+  clock: emailForm.submitted,
   target: checkUserFx,
 });
 
@@ -64,19 +62,17 @@ forward({
   to: continueClicked,
 });
 
-const formValue = combine(emailForm.$values, passwordForm.$values, ({ email }, { password }) => {
-  return { email, password };
-});
+const formValue = combine(emailForm.$values, passwordForm.$values, ({ email }, { password }) => ({ email, password }));
 
 sample({
-  clock: passwordForm.onSubmit,
+  clock: passwordForm.submitted,
   source: formValue,
   filter: not($isNewUser),
   target: sessionModel.signInFx,
 });
 
 sample({
-  clock: passwordForm.onSubmit,
+  clock: passwordForm.submitted,
   source: formValue,
   filter: $isNewUser,
   target: sessionModel.signUpFx,

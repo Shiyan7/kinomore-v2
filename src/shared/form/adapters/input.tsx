@@ -1,4 +1,11 @@
-import { Input as NativeInput } from 'shared/ui/input';
-import { createField } from '../create-field';
+import { forwardRef } from 'react';
+import { Input as NativeInput, InputProps as NativeInputProps } from 'shared/ui/input';
 
-export const Input = createField(NativeInput);
+interface InputProps extends Omit<NativeInputProps, 'onChange'> {
+  onChange: (value: string) => void;
+  focused?: boolean;
+}
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(({ onChange, focused, ...props }, ref) => {
+  return <NativeInput ref={ref} onChange={(e) => onChange(e.target.value)} {...props} />;
+});

@@ -38,19 +38,15 @@ export const Filters = () => {
         </div>
         <div className={styles.filters}>
           <div className={styles.row}>
-            {filters.map((option, idx) => {
-              const { queryName, ...rest } = option;
-
-              return (
-                <Select
-                  key={idx}
-                  value={query[queryName]}
-                  onSelect={({ value }) => optionSelected({ [queryName]: value })}
-                  className={styles.select}
-                  {...rest}
-                />
-              );
-            })}
+            {filters.map(({ queryName, ...rest }) => (
+              <Select
+                key={queryName}
+                value={query[queryName]}
+                onSelect={({ value }) => optionSelected({ [queryName]: value })}
+                className={styles.select}
+                {...rest}
+              />
+            ))}
           </div>
           <div className={styles.row}>
             <Select
@@ -71,18 +67,14 @@ export const Filters = () => {
             options={sort}
             label="Сортировка"
           />
-          {filters.map((option, idx) => {
-            const { queryName, ...rest } = option;
-
-            return (
-              <DrawerSelect
-                key={idx}
-                value={query[queryName]}
-                onSelect={(option) => sendOption({ [queryName]: option.value })}
-                {...rest}
-              />
-            );
-          })}
+          {filters.map(({ queryName, ...rest }) => (
+            <DrawerSelect
+              key={queryName}
+              value={query[queryName]}
+              onSelect={({ value }) => sendOption({ [queryName]: value })}
+              {...rest}
+            />
+          ))}
         </div>
         <Button onClick={showResults} className={styles.btn} variant="primary">
           Показать результаты

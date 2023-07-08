@@ -20,18 +20,16 @@ export const Message = ({
   onEdit,
   description,
   className,
-}: MessageProps) => {
-  return (
-    <div className={clsx(styles.container, styles[position], className)}>
-      {isEditable && (
-        <button onClick={onEdit} className={clsx('btn-reset', styles.edit)}>
-          <Icon type="common" name="edit" />
-        </button>
-      )}
-      <div className={clsx(styles.message, isSuccess && styles.isSuccess)}>
-        <span className={styles.title}>{title}</span>
-        {description && <p className={styles.desc}>{description}</p>}
-      </div>
+}: MessageProps) => (
+  <div className={clsx(styles.container, styles[position], className)}>
+    {isEditable && (
+      <button onClick={onEdit} className={clsx('btn-reset', styles.edit)}>
+        <Icon type="common" name="edit" />
+      </button>
+    )}
+    <div className={clsx(styles.message, isSuccess && styles.isSuccess)}>
+      <span className={styles.title}>{title}</span>
+      {description && <p className={styles.desc}>{description}</p>}
     </div>
-  );
-};
+  </div>
+);

@@ -47,13 +47,13 @@ export const Select = ({
         </span>
       </div>
       <div className={clsx(styles.options, styles[placement])}>
-        {options?.map((option, idx) => {
+        {options?.map((option) => {
           const isSelected = selected.value === option?.value;
 
           return (
             <div
               onClick={() => handleSelect(option)}
-              key={idx}
+              key={option.label}
               className={clsx(styles.option, isSelected && styles.isSelected)}
             >
               {option?.label}

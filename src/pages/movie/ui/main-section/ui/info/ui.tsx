@@ -25,8 +25,8 @@ export const Info = () => {
       <MovieRating showState className={styles.rating}>
         {getRating(data?.rating)}
       </MovieRating>
-      {items.filter(Boolean).map((item, idx) => (
-        <span key={idx} className={styles.item}>
+      {items.filter(Boolean).map((item) => (
+        <span key={item} className={styles.item}>
           {item}
         </span>
       ))}

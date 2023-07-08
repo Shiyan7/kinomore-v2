@@ -13,26 +13,22 @@ interface CategoryProps extends PropsWithChildren {
   containerClass?: string;
 }
 
-export const Category = ({ className, containerClass, children }: CategoryProps) => {
-  return (
-    <section className={clsx(styles.section, className)}>
-      <div className={clsx('container', containerClass, styles.container)}>{children}</div>
-    </section>
-  );
-};
+export const Category = ({ className, containerClass, children }: CategoryProps) => (
+  <section className={clsx(styles.section, className)}>
+    <div className={clsx('container', containerClass, styles.container)}>{children}</div>
+  </section>
+);
 
-const CategoryTitle = ({ children, href, ...props }: TitleProps<ElementType<Partial<HTMLAnchorElement>>>) => {
-  return (
-    <Title size="medium" className={styles.title} as={href ? Link : 'h2'} href={href} {...props}>
-      {children}
-      {href && (
-        <span className={styles.icon}>
-          <Icon type="common" name="chevron" />
-        </span>
-      )}
-    </Title>
-  );
-};
+const CategoryTitle = ({ children, href, ...props }: TitleProps<ElementType<Partial<HTMLAnchorElement>>>) => (
+  <Title size="medium" className={styles.title} as={href ? Link : 'h2'} href={href} {...props}>
+    {children}
+    {href && (
+      <span className={styles.icon}>
+        <Icon type="common" name="chevron" />
+      </span>
+    )}
+  </Title>
+);
 
 function CategoryCarousel<T>({ items, slideClassName, ...props }: CarouselMultiplyProps<T>) {
   return (

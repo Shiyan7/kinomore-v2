@@ -1,4 +1,5 @@
 import NextNProgress from 'nextjs-progressbar';
+import { EffectorNext } from '@effector/next';
 import { NextSeo } from 'next-seo';
 import type { ReactElement } from 'react';
 import type { AppProps } from 'next/app';
@@ -23,7 +24,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   useGate(navigationModel.RouterGate, { router });
 
   return (
-    <>
+    <EffectorNext values={pageProps.values}>
       <NextSeo
         nofollow
         noindex
@@ -57,7 +58,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
       />
       <NextNProgress color="var(--color-primary)" height={3} options={{ showSpinner: false }} />
       {getLayout(<Component {...pageProps} />)}
-    </>
+    </EffectorNext>
   );
 };
 

@@ -1,19 +1,21 @@
 import { useEffect, useRef } from 'react';
 import { useStore } from 'effector-react';
 import { authModel } from 'widgets/auth';
-import { useForm } from 'shared/lib/effector-react-form';
 import { Form, Field } from 'shared/form';
 import { paths } from 'shared/routing';
 import { Button } from 'shared/ui/button';
 import { Link } from 'shared/ui/link';
 import { Transition } from '../transition';
 import styles from './styles.module.scss';
+import { useForm } from '@filledout/react';
 
 export const EmailForm = () => {
-  const { controller, handleSubmit } = useForm({ form: authModel.emailForm, resetUnmount: false });
+  const { onSubmit, fields } = useForm(authModel.emailForm);
   const { email } = useStore(authModel.emailForm.$values);
   const inputRef = useRef<HTMLInputElement>(null);
   const pending = useStore(authModel.checkUserFx.pending);
+
+  console.log(email);
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -21,12 +23,10 @@ export const EmailForm = () => {
 
   return (
     <div className={styles.content}>
-      <Form onSubmit={handleSubmit} className={styles.form}>
+      <Form onSubmit={onSubmit} className={styles.form}>
         <Transition offset={20} delay={130}>
           <Field.Input
-            use={controller({
-              name: 'email',
-            })}
+            field={fields.email}
             ref={inputRef}
             type="email"
             className={styles.input}
