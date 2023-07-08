@@ -1,14 +1,14 @@
 import clsx from 'clsx';
+import { useEvent } from 'effector-react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEvent } from 'effector-react';
 import { filtersModel } from 'features/filters';
 import { useLockedBody, useToggler } from 'shared/lib';
-import { Icon } from 'shared/ui/icon';
 import { Button, Title } from 'shared/ui';
+import { Icon } from 'shared/ui/icon';
 import { sort, filters } from '../config';
-import { Select } from './select';
 import { DrawerSelect } from './drawer-select';
+import { Select } from './select';
 import styles from './styles.module.scss';
 
 export const Filters = () => {

@@ -1,5 +1,5 @@
-import type { PageContext } from 'nextjs-effector';
 import { attach, combine, createEvent, createStore, restore, sample } from 'effector';
+import type { PageContext } from 'nextjs-effector';
 import { commonApi } from 'shared/api';
 import { getCatalogType } from '../lib';
 

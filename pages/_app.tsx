@@ -1,4 +1,3 @@
 import 'app/styles/index.scss';
-import App from 'app';
 
-export default App;
+export { default } from 'app';

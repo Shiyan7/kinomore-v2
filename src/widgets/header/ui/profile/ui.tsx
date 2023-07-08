@@ -1,11 +1,11 @@
-import Link from 'next/link';
 import clsx from 'clsx';
 import { useStore } from 'effector-react';
+import Link from 'next/link';
 import { authModel } from 'widgets/auth';
 import { sessionModel } from 'entities/session';
 import { useToggler } from 'shared/lib/toggler';
-import { Icon } from 'shared/ui/icon';
 import { paths } from 'shared/routing';
+import { Icon } from 'shared/ui/icon';
 import styles from './styles.module.scss';
 
 export const Profile = () => {

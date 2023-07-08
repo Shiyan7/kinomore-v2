@@ -1,6 +1,6 @@
 import { useStore } from 'effector-react';
-import { Category } from 'widgets/category';
 import { pageModel } from 'pages/movie';
+import { Category } from 'widgets/category';
 import { MovieItem } from 'entities/movie-item';
 import styles from './styles.module.scss';
 

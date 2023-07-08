@@ -1,5 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useForm } from '@filledout/react';
 import { useStore } from 'effector-react';
+import { useEffect, useRef } from 'react';
 import { authModel } from 'widgets/auth';
 import { Form, Field } from 'shared/form';
 import { paths } from 'shared/routing';
@@ -7,15 +8,12 @@ import { Button } from 'shared/ui/button';
 import { Link } from 'shared/ui/link';
 import { Transition } from '../transition';
 import styles from './styles.module.scss';
-import { useForm } from '@filledout/react';
 
 export const EmailForm = () => {
   const { onSubmit, fields } = useForm(authModel.emailForm);
   const { email } = useStore(authModel.emailForm.$values);
   const inputRef = useRef<HTMLInputElement>(null);
   const pending = useStore(authModel.checkUserFx.pending);
-
-  console.log(email);
 
   useEffect(() => {
     inputRef.current?.focus();

@@ -1,9 +1,9 @@
-import type { PropsWithChildren } from 'react';
 import { usePageEvent } from 'nextjs-effector';
-import { Header } from 'widgets/header';
+import type { PropsWithChildren } from 'react';
 import { AuthWindow } from 'widgets/auth';
-import { appStarted } from 'pages/shared';
+import { Header } from 'widgets/header';
 import { SearchWindow } from 'entities/search-window';
+import { appStarted } from 'shared/config';
 
 // run process logic for all base layout pages
 import 'processes/root';

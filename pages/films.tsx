@@ -1,6 +1,6 @@
-import { catalogModel } from 'widgets/catalog';
-import { createGIP } from 'pages/shared';
 import { FilmsPage } from 'pages/films';
+import { createGIP } from 'pages/shared';
+import { catalogModel } from 'widgets/catalog';
 
 FilmsPage.getInitialProps = createGIP({
   pageEvent: catalogModel.pageStarted,

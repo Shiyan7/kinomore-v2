@@ -54,6 +54,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@feature-sliced/eslint-config": "^0.1.0-beta.6",
     "@neodx/svg": "^0.1.9",
     "@next/eslint-plugin-next": "^13.0.2",
     "@types/axios": "^0.14.0",
@@ -72,6 +73,7 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "^13.4.7",
     "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-boundaries": "^3.1.1",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",

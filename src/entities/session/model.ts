@@ -1,7 +1,7 @@
 import { createStore, attach, forward, createEvent, sample, restore } from 'effector';
-import { appStarted } from 'pages/shared';
-import { navigationModel } from 'entities/navigation';
 import { internalApi } from 'shared/api';
+import { appStarted } from 'shared/config';
+import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
 
 /* Атачнутые эффекты */

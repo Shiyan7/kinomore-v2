@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import clsx from 'clsx';
-import { CSSProperties, useState } from 'react';
 import { useRouter } from 'next/router';
+import { CSSProperties, useState } from 'react';
 import { pageModel } from 'pages/movie';
 import { useToggler } from 'shared/lib';
 import { Modal, Spinner, Icon } from 'shared/ui';

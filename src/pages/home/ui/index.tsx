@@ -1,14 +1,13 @@
-import type { NextPageWithLayout } from 'pages/shared';
-import { Hero } from './hero';
-import { NewFilms } from './new-films';
 import { ComedyFilms } from './comedy-films';
+import { Drama } from './drama';
+import { Fantastic } from './fantastic';
 import { ForFamily } from './for-family';
 import { Genres } from './genres';
-import { Drama } from './drama';
+import { Hero } from './hero';
 import { Info } from './info';
-import { Fantastic } from './fantastic';
+import { NewFilms } from './new-films';
 
-export const HomePage: NextPageWithLayout = () => (
+export const HomePage = () => (
   <>
     <Hero />
     <Genres />

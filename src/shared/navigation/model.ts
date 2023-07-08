@@ -1,7 +1,7 @@
 import type { ParsedUrlQuery } from 'querystring';
-import type { NextRouter } from 'next/router';
 import { attach, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
+import type { NextRouter } from 'next/router';
 
 export const RouterGate = createGate<{ router: NextRouter | null }>();
 

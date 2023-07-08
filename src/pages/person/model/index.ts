@@ -1,5 +1,5 @@
-import type { PageContext } from 'nextjs-effector';
 import { attach, createEvent, restore, sample } from 'effector';
+import type { PageContext } from 'nextjs-effector';
 import { commonApi } from 'shared/api';
 
 export const pageStarted = createEvent<PageContext>();

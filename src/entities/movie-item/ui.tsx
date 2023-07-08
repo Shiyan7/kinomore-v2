@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import { MovieRating } from 'shared/ui/movie-rating';
+import Link from 'next/link';
 import type { MovieEntity, Rating } from 'shared/api';
-import { paths } from 'shared/routing';
 import { getRating, minutesToHour } from 'shared/lib';
+import { paths } from 'shared/routing';
+import { MovieRating } from 'shared/ui/movie-rating';
 import styles from './styles.module.scss';
 
 interface MovieItemProps {

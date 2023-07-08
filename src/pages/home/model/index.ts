@@ -1,6 +1,6 @@
 import { attach, createEvent, restore, sample } from 'effector';
-import { appStarted } from 'pages/shared';
 import { commonApi, internalApi } from 'shared/api';
+import { appStarted } from 'shared/config';
 
 export const pageStarted = createEvent();
 

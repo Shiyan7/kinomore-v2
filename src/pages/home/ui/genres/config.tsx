@@ -1,6 +1,6 @@
-import { Icon } from 'shared/ui/icon';
 import { GenresEnum } from 'shared/config';
 import { paths } from 'shared/routing';
+import { Icon } from 'shared/ui/icon';
 
 export const genres = [
   { href: paths.movies, icon: <Icon type="genres" name="cup" />, text: 'Лучшие' },

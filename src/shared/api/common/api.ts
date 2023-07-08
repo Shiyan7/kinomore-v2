@@ -1,7 +1,9 @@
-import { GenresEnum, LIMIT } from 'shared/config';
+import { GenresEnum } from 'shared/config';
 import { getCurrentYear, getYears } from 'shared/lib/get-year';
 import { http } from './config';
 import type { CatalogParams, Data, Movie, MovieEntity, Person } from './types';
+
+const LIMIT = 15;
 
 const routesConfig = http.createRoutesConfig({
   getMovieById: http.createRoute<string, Movie>((id) => ({

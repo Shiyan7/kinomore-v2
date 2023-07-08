@@ -1,6 +1,6 @@
 import { useStore } from 'effector-react';
-import { Category } from 'widgets/category';
 import { pageModel } from 'pages/home';
+import { Category } from 'widgets/category';
 import { MovieItem } from 'entities/movie-item';
 import { paths } from 'shared/routing';
 

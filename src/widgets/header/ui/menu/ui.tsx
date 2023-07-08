@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import { CSSTransition } from 'react-transition-group';
 import { useRouter } from 'next/router';
+import { CSSTransition } from 'react-transition-group';
 import { headerModel } from 'widgets/header';
 import { useLockedBody } from 'shared/lib/hooks';
 import { useToggler } from 'shared/lib/toggler';

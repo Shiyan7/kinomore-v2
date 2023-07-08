@@ -1,8 +1,8 @@
 import { sample } from 'effector';
 import { reset } from 'patronum/reset';
 import { authModel } from 'widgets/auth';
-import { navigationModel } from 'entities/navigation';
 import { searchModel } from 'entities/search-window';
+import { navigationModel } from 'shared/navigation';
 
 reset({
   clock: navigationModel.$router,

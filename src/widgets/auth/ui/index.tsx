@@ -1,14 +1,14 @@
-import { useEffect, useRef } from 'react';
 import { useStore } from 'effector-react';
+import { useEffect, useRef } from 'react';
 import { authModel } from 'widgets/auth';
-import { Modal } from 'shared/ui/modal';
 import { useToggler } from 'shared/lib/toggler';
+import { Modal } from 'shared/ui/modal';
 import { EmailForm } from './email-form';
-import { Message } from './message';
 import { Header } from './header';
+import { Message } from './message';
 import { PasswordForm } from './password-form';
-import { Transition } from './transition';
 import styles from './styles.module.scss';
+import { Transition } from './transition';
 
 export const AuthWindow = () => {
   const { isOpen, close } = useToggler(authModel.toggler);

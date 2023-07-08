@@ -1,5 +1,5 @@
-import type { ComponentProps, ElementType, ReactNode } from 'react';
 import clsx from 'clsx';
+import type { ComponentProps, ElementType, ReactNode } from 'react';
 import styles from './styles.module.scss';
 
 interface TitleOwnProps<E extends ElementType = ElementType> {

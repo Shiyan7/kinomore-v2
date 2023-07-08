@@ -1,12 +1,11 @@
+import { useEvent, useStore } from 'effector-react';
 import Image from 'next/image';
 import { usePageEvent } from 'nextjs-effector';
-import { useEvent, useStore } from 'effector-react';
-import { NextPageWithLayout } from 'pages/shared';
 import { sessionModel } from 'entities/session';
 import { Spinner } from 'shared/ui/spinner';
 import styles from './styles.module.scss';
 
-export const ProfilePage: NextPageWithLayout = () => {
+export const ProfilePage = () => {
   const data = useStore(sessionModel.$session);
   const pending = useStore(sessionModel.getMeFx.pending);
   const logOut = useEvent(sessionModel.logOut);

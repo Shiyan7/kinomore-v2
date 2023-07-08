@@ -1,7 +1,7 @@
 import { useStore } from 'effector-react';
 import { pageModel } from 'pages/movie';
-import { MovieRating } from 'shared/ui/movie-rating';
 import { getRating, minutesToHour, getSeasonString } from 'shared/lib';
+import { MovieRating } from 'shared/ui/movie-rating';
 import { getCountry, getAgeRating, getGenre } from './lib';
 import styles from './styles.module.scss';
 

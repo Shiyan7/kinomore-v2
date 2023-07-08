@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import clsx from 'clsx';
-import { useEffect } from 'react';
 import { useEvent, useStore } from 'effector-react';
+import { useEffect } from 'react';
 import { catalogModel } from 'widgets/catalog';
 import { Filters, filtersModel } from 'features/filters';
 import { MovieItem } from 'entities/movie-item';

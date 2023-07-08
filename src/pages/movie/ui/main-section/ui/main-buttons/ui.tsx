@@ -1,11 +1,11 @@
 import clsx from 'clsx';
-import { useRouter } from 'next/router';
 import { useEvent, useStore } from 'effector-react';
+import { useRouter } from 'next/router';
 import { pageModel } from 'pages/movie';
 import { favoritesModel } from 'features/favorites';
-import { Icon } from 'shared/ui/icon';
-import { Button } from 'shared/ui/button';
 import { useToggler } from 'shared/lib';
+import { Button } from 'shared/ui/button';
+import { Icon } from 'shared/ui/icon';
 import { getMovieType } from './lib';
 import styles from './styles.module.scss';
 

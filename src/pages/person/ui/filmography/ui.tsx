@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { useState } from 'react';
 import { useStore } from 'effector-react';
+import { useState } from 'react';
 import { pageModel } from 'pages/person';
 import { MovieItem } from 'entities/movie-item';
 import { Button, Title } from 'shared/ui';

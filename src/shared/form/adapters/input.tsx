@@ -6,6 +6,6 @@ interface InputProps extends Omit<NativeInputProps, 'onChange'> {
   focused?: boolean;
 }
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(({ onChange, focused, ...props }, ref) => {
-  return <NativeInput ref={ref} onChange={(e) => onChange(e.target.value)} {...props} />;
-});
+export const Input = forwardRef<HTMLInputElement, InputProps>(({ onChange, ...props }, ref) => (
+  <NativeInput ref={ref} onChange={(e) => onChange(e.target.value)} {...props} />
+));

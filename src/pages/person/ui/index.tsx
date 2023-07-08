@@ -1,12 +1,11 @@
-import { NextSeo } from 'next-seo';
 import { useStore } from 'effector-react';
-import { Facts } from 'widgets/facts';
-import type { NextPageWithLayout } from 'pages/shared';
+import { NextSeo } from 'next-seo';
 import { pageModel } from 'pages/person';
-import { MainSection } from './main-section';
+import { Facts } from 'widgets/facts';
 import { Filmography } from './filmography';
+import { MainSection } from './main-section';
 
-export const PersonPage: NextPageWithLayout = () => {
+export const PersonPage = () => {
   const data = useStore(pageModel.$person);
 
   const enName = data?.enName ? `(${data?.enName})` : '';

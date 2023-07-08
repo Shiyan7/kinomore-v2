@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import { FreeMode } from 'swiper';
 import { useStore } from 'effector-react';
+import { FreeMode } from 'swiper';
 import { pageModel } from 'pages/movie';
-import { Title } from 'shared/ui/title';
 import { CarouselMultiply } from 'shared/ui/carousel-multiply';
+import { Title } from 'shared/ui/title';
 import { PersonItem } from './person-item';
 import styles from './styles.module.scss';
 

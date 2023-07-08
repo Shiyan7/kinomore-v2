@@ -1,9 +1,9 @@
 import type { ParsedUrlQuery } from 'querystring';
 import { createEvent, createStore, sample } from 'effector';
-import { navigationModel } from 'entities/navigation';
 import { createToggler, paramsToString } from 'shared/lib';
-import { getOption } from '../lib';
+import { navigationModel } from 'shared/navigation';
 import { genres, years } from '../config';
+import { getOption } from '../lib';
 
 export const toggler = createToggler();
 

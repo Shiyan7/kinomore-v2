@@ -1,17 +1,17 @@
 import clsx from 'clsx';
-import type { CSSProperties } from 'react';
 import { useStore } from 'effector-react';
+import type { CSSProperties } from 'react';
 import { pageModel } from 'pages/movie';
-import { Info } from './info';
-import { MainPersons } from './main-persons';
-import { MainButtons } from './main-buttons';
-import { MobileActions } from './mobile-actions';
-import { TrailerModal } from './trailer-modal';
-import { ShareModal } from './share-modal';
 import { Description } from './description';
-import { Title } from './title';
+import { Info } from './info';
+import { MainButtons } from './main-buttons';
+import { MainPersons } from './main-persons';
+import { MobileActions } from './mobile-actions';
 import { Player } from './player';
+import { ShareModal } from './share-modal';
 import styles from './styles.module.scss';
+import { Title } from './title';
+import { TrailerModal } from './trailer-modal';
 
 export const MainSection = () => {
   const data = useStore(pageModel.$movie);

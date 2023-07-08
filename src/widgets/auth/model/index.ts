@@ -2,11 +2,11 @@ import { combine, createEvent, createStore, sample, forward, attach } from 'effe
 import { delay, not } from 'patronum';
 import { object, string } from 'zod';
 import { sessionModel } from 'entities/session';
-import { navigationModel } from 'entities/navigation';
-import { createToggler } from 'shared/lib/toggler';
 import { internalApi } from 'shared/api';
-import { paths } from 'shared/routing';
 import { createForm } from 'shared/form';
+import { createToggler } from 'shared/lib/toggler';
+import { navigationModel } from 'shared/navigation';
+import { paths } from 'shared/routing';
 
 export const toggler = createToggler();
 

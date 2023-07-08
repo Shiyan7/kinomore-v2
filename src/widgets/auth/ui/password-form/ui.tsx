@@ -1,14 +1,14 @@
-import { useRef, useEffect } from 'react';
+import { useForm } from '@filledout/react';
 import { useStore, useEvent } from 'effector-react';
+import { useRef, useEffect } from 'react';
 import { authModel } from 'widgets/auth';
 import { sessionModel } from 'entities/session';
+import { Field, Form } from 'shared/form';
 import { Button } from 'shared/ui/button';
 import { Message } from '../message';
 import { Transition } from '../transition';
 import { maskString } from './lib';
 import styles from './styles.module.scss';
-import { Field, Form } from 'shared/form';
-import { useForm } from '@filledout/react';
 
 export const PasswordForm = () => {
   const { onSubmit, fields } = useForm(authModel.passwordForm);

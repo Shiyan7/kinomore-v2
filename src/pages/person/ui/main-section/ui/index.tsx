@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import Image from 'next/image';
 import { useStore } from 'effector-react';
+import Image from 'next/image';
 import { pageModel } from 'pages/person';
 import { Title } from 'shared/ui/title';
 import { getProfessions, timestampToDate } from '../lib';

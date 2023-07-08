@@ -1,5 +1,7 @@
+/* eslint-disable indent */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FieldDescriptor, useField } from '@filledout/react';
-import { ComponentType, ForwardedRef, forwardRef, RefObject } from 'react';
+import { ComponentType, forwardRef } from 'react';
 
 type FieldWrappedComponentProps<V = any> = {
   value?: V;
@@ -15,14 +17,11 @@ type UseFieldPropsParams<V = any, T = any> = {
   field: FieldDescriptor<V, T>;
 };
 
-// eslint-disable-next-line @ypescript-eslint/no-empty-function
-const nope = (..._: any[]) => {};
-
+// eslint-disable-next-line operator-linebreak
 const compose =
-  (g: any, f = nope) =>
+  (g: any, f = (..._: any[]) => {}) =>
   (x: any) => {
     g(x);
-
     f(x);
   };
 

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import SwiperClass, { Mousewheel, FreeMode } from 'swiper';
 import { useState } from 'react';
+import SwiperClass, { Mousewheel, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { genres } from './config';
 import styles from './styles.module.scss';

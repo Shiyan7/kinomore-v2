@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import type { AnchorHTMLAttributes, PropsWithChildren } from 'react';
 import NextLink from 'next/link';
+import type { AnchorHTMLAttributes, PropsWithChildren } from 'react';
 import styles from './styles.module.scss';
 
 interface LinkProps extends PropsWithChildren<AnchorHTMLAttributes<HTMLAnchorElement>> {

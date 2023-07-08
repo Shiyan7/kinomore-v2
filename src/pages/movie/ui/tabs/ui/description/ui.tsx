@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { useState } from 'react';
 import { useStore } from 'effector-react';
+import { useState } from 'react';
 import { pageModel } from 'pages/movie';
 import styles from './styles.module.scss';
 

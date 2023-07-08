@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { Modal, type ModalProps } from 'shared/ui/modal';
 import { Icon } from 'shared/ui/icon';
+import { Modal, type ModalProps } from 'shared/ui/modal';
 import styles from './styles.module.scss';
 
 export interface PopupProps extends ModalProps {

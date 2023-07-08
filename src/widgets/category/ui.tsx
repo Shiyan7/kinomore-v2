@@ -1,11 +1,10 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import { FreeMode, Navigation } from 'swiper';
 import type { ElementType, PropsWithChildren } from 'react';
-import { LIMIT } from 'shared/config';
-import { Title, type TitleProps } from 'shared/ui/title';
+import { FreeMode, Navigation } from 'swiper';
 import { CarouselMultiply, type CarouselMultiplyProps } from 'shared/ui/carousel-multiply';
 import { Icon } from 'shared/ui/icon';
+import { Title, type TitleProps } from 'shared/ui/title';
 import styles from './styles.module.scss';
 
 interface CategoryProps extends PropsWithChildren {
@@ -40,7 +39,7 @@ function CategoryCarousel<T>({ items, slideClassName, ...props }: CarouselMultip
         nextBtnClass={styles.nextBtn}
         className={styles.slider}
         slideClassName={clsx(styles.slide, slideClassName)}
-        items={items ?? [...Array(LIMIT)]}
+        items={items}
         {...props}
       />
     </div>
