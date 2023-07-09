@@ -4,7 +4,7 @@ import { useEvent, useStore } from 'effector-react';
 import { useEffect } from 'react';
 import { catalogModel } from 'widgets/catalog';
 import { Filters, filtersModel } from 'features/filters';
-import { MovieItem } from 'entities/movie-item';
+import { MovieItem } from 'entities/movie/item';
 import { useToggler } from 'shared/lib';
 import { Title, Icon, Button } from 'shared/ui';
 import { useElementOnScreen } from '../lib';

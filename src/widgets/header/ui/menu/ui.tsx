@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { CSSTransition } from 'react-transition-group';
 import { headerModel } from 'widgets/header';
-import { useLockedBody } from 'shared/lib/hooks';
+import { useLockedBody } from 'shared/lib/modal';
 import { useToggler } from 'shared/lib/toggler';
 import { Icon } from 'shared/ui/icon';
 import { items } from './config';

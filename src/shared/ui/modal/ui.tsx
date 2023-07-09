@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { forwardRef, HTMLAttributes, PropsWithChildren } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { useLockedBody } from 'shared/lib/hooks';
+import { useLockedBody } from 'shared/lib/modal';
 import { Portal } from 'shared/ui/portal';
 import { useEscape } from './lib';
 import styles from './styles.module.scss';
