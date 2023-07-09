@@ -1,6 +1,7 @@
-/* eslint-disable indent */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { FieldModel } from '@filledout/core';
+
+import compose from 'compose-function';
 
 import { ComponentType, forwardRef } from 'react';
 
@@ -13,14 +14,6 @@ type FieldChildProps = {
   hasError?: boolean;
   onChange: (...args: any[]) => any | void;
 };
-
-// eslint-disable-next-line operator-linebreak
-const compose =
-  (g: any, f = (..._: any[]) => {}) =>
-  (x: any) => {
-    g(x);
-    f(x);
-  };
 
 const useFieldProps = (is: FieldModel<any>, props: FieldChildProps) => {
   const field = useField(is);

@@ -1,5 +1,5 @@
 import { GenresEnum } from 'shared/config';
-import { getCurrentYear, getYears } from 'shared/lib/get-year';
+import { getCurrentYear, getYears } from 'shared/lib/date';
 import { http } from './config';
 import type { CatalogParams, Data, Movie, MovieEntity, Person } from './types';
 
