@@ -1,8 +1,7 @@
-import { useForm } from '@filledout/react';
 import { useStore } from 'effector-react';
 import { useEffect, useRef } from 'react';
 import { authModel } from 'widgets/auth';
-import { Form, Field } from 'shared/form';
+import { Form, Field, useForm } from 'shared/form';
 import { paths } from 'shared/routing';
 import { Button } from 'shared/ui/button';
 import { Link } from 'shared/ui/link';

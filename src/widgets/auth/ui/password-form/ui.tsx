@@ -1,9 +1,8 @@
-import { useForm } from '@filledout/react';
 import { useStore, useEvent } from 'effector-react';
 import { useRef, useEffect } from 'react';
 import { authModel } from 'widgets/auth';
 import { sessionModel } from 'entities/session';
-import { Field, Form } from 'shared/form';
+import { Field, Form, useForm } from 'shared/form';
 import { Button } from 'shared/ui/button';
 import { Message } from '../message';
 import { Transition } from '../transition';

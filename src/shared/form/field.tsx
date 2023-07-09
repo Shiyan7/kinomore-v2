@@ -1,20 +1,17 @@
 /* eslint-disable indent */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FieldDescriptor, useField } from '@filledout/react';
+import type { FieldModel } from '@filledout/core';
+
 import { ComponentType, forwardRef } from 'react';
 
-type FieldWrappedComponentProps<V = any> = {
-  value?: V;
+import { useField } from './factory';
+
+type FieldChildProps = {
+  value?: any;
   error?: string;
   focused?: boolean;
   hasError?: boolean;
-  onBlur?: (...args: any[]) => any | void;
-  onFocus?: (...args: any[]) => any | void;
-  onChange?: (...args: any[]) => any | void;
-};
-
-type UseFieldPropsParams<V = any, T = any> = {
-  field: FieldDescriptor<V, T>;
+  onChange: (...args: any[]) => any | void;
 };
 
 // eslint-disable-next-line operator-linebreak
@@ -25,10 +22,10 @@ const compose =
     f(x);
   };
 
-function useFieldProps<T extends FieldDescriptor<any, any>>(_field: T, props: FieldWrappedComponentProps) {
-  const field = useField(_field);
+const useFieldProps = (is: FieldModel<any>, props: FieldChildProps) => {
+  const field = useField(is);
 
-  const { value, errors, focused, onChange, shouldShowValidation } = field;
+  const { value, errors, focused, shouldShowValidation, onChange } = field;
 
   const error = errors?.[0];
 
@@ -41,13 +38,13 @@ function useFieldProps<T extends FieldDescriptor<any, any>>(_field: T, props: Fi
     error: errorMessage,
     onChange: compose(onChange, props.onChange),
   };
-}
+};
 
-function withField<P extends FieldWrappedComponentProps>(Component: ComponentType<P>) {
-  type Props = Omit<P, 'value' | 'onChange' | 'error' | 'hasError'> & UseFieldPropsParams;
+function withField<P>(Component: ComponentType<P>) {
+  type Props = Omit<P, 'value' | 'onChange' | 'error' | 'hasError'> & { field: FieldModel<any> };
 
   const WrappedComponent = forwardRef<any, Props>(({ field, ...props }, ref) => {
-    const _props = useFieldProps(field, props);
+    const _props = useFieldProps(field, props as any as FieldChildProps);
 
     return <Component {...props} {...(_props as any)} ref={ref} />;
   });

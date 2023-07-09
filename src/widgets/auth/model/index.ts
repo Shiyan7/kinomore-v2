@@ -1,6 +1,6 @@
 import { combine, createEvent, createStore, sample, forward, attach } from 'effector';
 import { delay, not } from 'patronum';
-import { object, string } from 'zod';
+import { object, string } from 'yup';
 import { sessionModel } from 'entities/session';
 import { internalApi } from 'shared/api';
 import { createForm } from 'shared/form';
@@ -15,7 +15,7 @@ export const emailForm = createForm({
     email: '',
   },
   schema: object({
-    email: string().email(),
+    email: string().email().required(),
   }),
 });
 
@@ -24,7 +24,7 @@ export const passwordForm = createForm({
     password: '',
   },
   schema: object({
-    password: string().min(6),
+    password: string().min(6).required(),
   }),
 });
 
