@@ -15,9 +15,7 @@
     "eslint:recommended",
     "prettier",
     "airbnb",
-    "@feature-sliced/eslint-config/rules/import-order",
-    "@feature-sliced/eslint-config/rules/public-api",
-    "@feature-sliced/eslint-config/rules/layers-slices"
+    "@feature-sliced"
   ],
   "plugins": [
     "unicorn",
@@ -107,7 +105,6 @@
     ],
     "import/no-internal-modules": 0,
     "no-restricted-exports": 0,
-    "boundaries/element-types": 0,
     "camelcase": [
       "error",
       {
@@ -207,6 +204,7 @@
       }
     ],
     "react/jsx-one-expression-per-line": 0,
-    "class-methods-use-this": 0
+    "class-methods-use-this": 0,
+    "indent": [0, 2]
   }
 }

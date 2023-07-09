@@ -1,3 +1,1 @@
-import { ProfilePage } from 'pages/profile';
-
-export default ProfilePage;
+export { ProfilePage as default } from 'pages/profile';

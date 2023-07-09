@@ -1,3 +1,4 @@
+/* eslint-disable boundaries/element-types */
 import { usePageEvent } from 'nextjs-effector';
 import type { PropsWithChildren } from 'react';
 import { AuthWindow } from 'widgets/auth';
