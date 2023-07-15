@@ -18,7 +18,7 @@ export const Hero = () => {
           }}
           className={styles.slider}
           slideClassName={styles.slide}
-          items={data}
+          items={data?.length ? data : [...Array(3)]}
           onSlideChange={(swiper) => setRealIndex(swiper.realIndex)}
           renderItem={(item, idx) => <HeroSlide isActiveSlide={realIndex === idx} item={item} />}
         />

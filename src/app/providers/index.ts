@@ -1,5 +1,5 @@
 import compose from 'compose-function';
-import { withEffectorProvider } from './with-effector';
+import { withEffector } from 'nextjs-effector';
 import { withSeo } from './with-seo';
 
-export const withProviders = compose(withEffectorProvider, withSeo);
+export const withProviders = compose(withEffector, withSeo);
