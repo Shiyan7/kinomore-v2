@@ -90,7 +90,6 @@ const routesConfig = http.createRoutesConfig({
     url: '/v1.3/movie',
     params: {
       name,
-      year: getYears(),
       limit: 30,
       sortField: ['year', 'votes.kp'],
       sortType: ['-1', '-1'],
