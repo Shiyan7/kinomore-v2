@@ -1,26 +1,22 @@
 .logo {
   position: relative;
   display: block;
-  width: 123px;
-  height: 24px;
+  width: 61px;
+  height: 42px;
   margin-right: 40px;
-
-  @media (max-width: 1024px) {
-    margin-right: 30px;
-  }
 
   @media (max-width: 768px) {
     margin-right: 0;
   }
 
   @media (max-width: 576px) {
-    width: 108px;
-    height: 21px;
+    width: 54px;
+    height: 37px;
   }
 
   @media (max-width: 375px) {
-    width: 106px;
-    height: 21px;
+    width: 50px;
+    height: 34px;
   }
 }
 
