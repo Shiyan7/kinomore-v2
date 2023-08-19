@@ -1,13 +1,13 @@
 const nextConfig = {
 	images: {
 		unoptimized: true,
-		domains: ['st.kp.yandex.net', 'avatars.mds.yandex.net', 'themoviedb.org', 'kinomore.onrender.com', 'kinomore.s3.us-east-005.backblazeb2'],
+		domains: ['st.kp.yandex.net', 'avatars.mds.yandex.net', 'themoviedb.org', 'kinomore.blob.core.windows.net'],
 	},
 	env: {
 		API_TOKEN: process.env.API_TOKEN,
 		API_URL: process.env.API_URL,
 		CLIENT_URL: process.env.CLIENT_URL,
-		INTERNAL_API_URL: process.env.INTERNAL_API_URL
+		INTERNAL_API_URL: process.env.INTERNAL_API_URL,
 	},
 };
 
