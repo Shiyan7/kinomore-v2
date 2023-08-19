@@ -28,8 +28,10 @@ export const HeroSlide = ({ item, isActiveSlide }: SlideProps) => {
   /* FIXME: придумать как избавится от setTimeout в useEffect, и оптимизировать рендеры */
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
     if (isActiveSlide) {
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         play();
         setIsActive(true);
       }, TIMEOUT_MS);
@@ -38,6 +40,8 @@ export const HeroSlide = ({ item, isActiveSlide }: SlideProps) => {
       setIsMuted(true);
       stop();
     }
+
+    return () => clearTimeout(timeout);
   }, [isActiveSlide, play, stop]);
 
   return (
@@ -60,17 +64,19 @@ export const HeroSlide = ({ item, isActiveSlide }: SlideProps) => {
       <Image priority sizes="100%" fill quality={100} className={styles.image} src={item?.image} alt={item?.title} />
       <CSSTransition timeout={0} in={isActive} classNames={{ enterDone: styles.done }}>
         <div className={styles.videoContainer}>
-          <video
-            style={{ transform: `scale(${item?.scale})` }}
-            onCanPlay={() => setIsLoading(false)}
-            onWaiting={() => setIsLoading(true)}
-            className={styles.video}
-            ref={videoRef}
-            src={item?.trailer}
-            muted={isMuted}
-            playsInline
-            loop
-          />
+          {isActive && (
+            <video
+              style={{ transform: `scale(${item?.scale})` }}
+              onCanPlay={() => setIsLoading(false)}
+              onWaiting={() => setIsLoading(true)}
+              className={styles.video}
+              ref={videoRef}
+              src={item?.trailer}
+              muted={isMuted}
+              playsInline
+              loop
+            />
+          )}
           <div className={clsx(styles.spinner, isLoading && styles.loading)}>
             <Spinner strokeWidth={3} />
           </div>

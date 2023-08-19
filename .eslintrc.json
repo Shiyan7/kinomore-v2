@@ -10,6 +10,9 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "globals": {
+    "NodeJS": true
+  },
   "extends": [
     "next/core-web-vitals",
     "eslint:recommended",
