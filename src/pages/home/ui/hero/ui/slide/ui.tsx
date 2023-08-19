@@ -4,12 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import type { HeroMovie } from 'shared/api';
 import { paths } from 'shared/routing';
 import { Spinner, Title, MovieRating } from 'shared/ui';
 import { Icon } from 'shared/ui/icon';
 import { usePlayer } from './lib';
 import styles from './styles.module.scss';
+import { HeroMovie } from './types';
 
 interface SlideProps {
   item: HeroMovie;
