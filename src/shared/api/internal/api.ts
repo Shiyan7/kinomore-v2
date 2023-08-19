@@ -1,10 +1,7 @@
 import { http } from './config';
-import type { HeroMovie, AuthDto, Message, User } from './types';
+import type { AuthDto, Message, Status, User } from './types';
 
 const routesConfig = http.createRoutesConfig({
-  getHeroMovies: http.createRoute<void, HeroMovie[]>({
-    url: '/movies',
-  }),
   signUp: http.createRoute<AuthDto, Message>((data) => ({
     url: '/auth/sign-up',
     method: 'post',
@@ -23,7 +20,7 @@ const routesConfig = http.createRoutesConfig({
     url: '/auth/logout',
     method: 'post',
   }),
-  checkUser: http.createRoute<{ email: string }, { status: boolean }>((data) => ({
+  checkUser: http.createRoute<{ email: string }, Status>((data) => ({
     url: '/auth/check-email',
     data,
   })),

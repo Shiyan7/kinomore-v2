@@ -1,13 +1,11 @@
-import { useStore } from 'effector-react';
 import { useState } from 'react';
-import { pageModel } from 'pages/home';
 import { CarouselMultiply } from 'shared/ui/carousel-multiply';
+import { heroMovies } from '../config';
 import { HeroSlide } from './slide';
 import styles from './styles.module.scss';
 
 export const Hero = () => {
   const [realIndex, setRealIndex] = useState<number>(0);
-  const data = useStore(pageModel.$heroMovies);
 
   return (
     <section className={styles.section}>
@@ -18,7 +16,7 @@ export const Hero = () => {
           }}
           className={styles.slider}
           slideClassName={styles.slide}
-          items={data?.length ? data : [...Array(3)]}
+          items={heroMovies}
           onSlideChange={(swiper) => setRealIndex(swiper.realIndex)}
           renderItem={(item, idx) => <HeroSlide isActiveSlide={realIndex === idx} item={item} />}
         />
