@@ -64,7 +64,7 @@ export const HeroSlide = ({ item, isActiveSlide }: SlideProps) => {
       <Image priority sizes="100%" fill quality={100} className={styles.image} src={item?.image} alt={item?.title} />
       <CSSTransition timeout={0} in={isActive} classNames={{ enterDone: styles.done }}>
         <div className={styles.videoContainer}>
-          {isActive && (
+          {isActiveSlide && (
             <video
               style={{ transform: `scale(${item?.scale})` }}
               onCanPlay={() => setIsLoading(false)}
