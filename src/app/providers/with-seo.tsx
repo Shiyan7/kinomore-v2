@@ -3,8 +3,8 @@ import { ComponentType } from 'react';
 
 // eslint-disable-next-line operator-linebreak
 export const withSeo =
-  <P extends object>(Component: ComponentType<P>) =>
-  (props: P) =>
+  <T extends object>(Component: ComponentType<T>) =>
+  (props: T) =>
     (
       <>
         <NextSeo

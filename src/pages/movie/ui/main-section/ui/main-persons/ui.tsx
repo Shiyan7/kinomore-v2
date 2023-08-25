@@ -24,7 +24,7 @@ export const MainPersons = () => {
               const name = item?.name ?? item?.enName;
 
               return (
-                <li className={styles.item} key={item.id}>
+                <li className={styles.item} key={item?.id}>
                   <Link className={styles.link} href={paths.person(item?.id)}>
                     {name}
                   </Link>
