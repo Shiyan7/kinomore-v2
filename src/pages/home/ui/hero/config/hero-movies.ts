@@ -5,9 +5,7 @@ export const heroMovies = [
     rating: '8.3',
     title: 'Уэнсдэй',
     genre: 'Фэнтези',
-    scale: '1.05',
     image: '/images/840de864-9493-4bf1-a891-e414ba0d819b.jpg',
-    trailer: '/videos/b7e0d85d-c163-4690-bcfa-090bc80ebd37.mp4',
   },
   {
     id: 1199773,
@@ -15,9 +13,7 @@ export const heroMovies = [
     rating: '6.8',
     title: 'Чёрная Пантера: Ваканда навеки',
     genre: 'Триллеры',
-    scale: '1.35',
     image: '/images/efacf0bc-23e1-4694-bdc6-412c67fcabe7.jpg',
-    trailer: '/videos/d07eb57e-38f7-48af-9617-fbfbab23eb0f.mp4',
   },
   {
     id: 1115098,
@@ -25,9 +21,7 @@ export const heroMovies = [
     rating: '5.7',
     title: 'Мир Юрского периода: Господство',
     genre: 'Триллеры',
-    scale: '1.15',
     image: '/images/9bfdfffe-ca6c-45a7-b537-ee52641d8ed2.jpg',
-    trailer: '/videos/5ac4a5b1-528f-4f4a-940e-b215d6859aaf.mp4',
   },
   {
     id: 505898,
@@ -35,8 +29,6 @@ export const heroMovies = [
     rating: '8.4',
     title: 'Аватар: Путь воды',
     genre: 'Фантастика',
-    scale: '1.35',
     image: '/images/07dc5e17-180f-4e20-b06a-5f9c5b465f3d.jpg',
-    trailer: '/videos/a58131da-9aaa-4d8e-9010-b635add07636.mp4',
   },
 ];

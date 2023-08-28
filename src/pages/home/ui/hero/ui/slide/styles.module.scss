@@ -44,56 +44,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.8;
-}
-
-.videoContainer {
-  position: absolute;
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--duration), visibility var(--duration);
-
-  &.done {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-.video {
-  appearance: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-  background-color: var(--color-loader);
-}
-
-.spinner {
-  position: absolute;
-  z-index: 3;
-  top: 50%;
-  left: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.15s;
-
-  @media (max-width: 576px) {
-    transform: translate(-50%, -50%) scale(0.8);
-  }
-
-  @media (max-width: 360px) {
-    transform: translate(-50%, -50%) scale(0.5);
-  }
-
-  &.loading {
-    opacity: 1;
-  }
 }
 
 .content {
@@ -115,17 +65,6 @@
   position: relative;
   text-shadow: 0 0.75px 0 rgb(0 0 0 / 20%);
   margin-bottom: 15px;
-  transition: transform var(--duration), margin-bottom var(--duration);
-
-  &.done {
-    transform-origin: left bottom;
-    margin-bottom: 0;
-    transform: translateY(20px) scale(0.9);
-
-    @media (max-width: 576px) {
-      transform: translateY(23px) scale(0.9);
-    }
-  }
 
   @media (max-width: 576px) {
     height: 40px;
@@ -137,11 +76,6 @@
 .bottom {
   display: flex;
   align-items: center;
-  transition: opacity var(--duration);
-
-  &.done {
-    opacity: 0;
-  }
 }
 
 .rating {
@@ -177,47 +111,5 @@
   @media (max-width: 576px) {
     font-size: 14px;
     line-height: 18px;
-  }
-}
-
-.volumeBtn {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-  bottom: 30px;
-  right: 30px;
-  padding: 0;
-  min-width: 42px;
-  min-height: 42px;
-  background-color: rgba(#fff, 0.2);
-  backdrop-filter: blur(5px);
-  border-radius: 100%;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--duration), visibility var(--duration);
-
-  &.done {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  svg {
-    display: block;
-    width: 19px;
-    height: 19px;
-  }
-
-  @media (max-width: 576px) {
-    min-width: 35px;
-    min-height: 35px;
-    bottom: 25px;
-    right: 22px;
-
-    svg {
-      width: 15px;
-      height: 15px;
-    }
   }
 }

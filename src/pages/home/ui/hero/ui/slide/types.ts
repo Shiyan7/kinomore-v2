@@ -5,6 +5,4 @@ export interface HeroMovie {
   title: string;
   genre: string;
   image: string;
-  trailer: string;
-  scale: string;
 }
