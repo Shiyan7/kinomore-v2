@@ -1,7 +1,7 @@
 import { GenresEnum } from 'shared/config';
 import { getCurrentYear, getYears } from 'shared/lib/date';
 import { http } from './config';
-import type { CatalogParams, Data, Movie, MovieEntity, Person } from './types';
+import type { CatalogParams, Data, Movie, MovieEntity, Person, SearchMovieEntity } from './types';
 
 const LIMIT = 15;
 
@@ -86,15 +86,11 @@ const routesConfig = http.createRoutesConfig({
       limit: LIMIT,
     },
   }),
-  searchByName: http.createRoute<string, Data<MovieEntity>>((name) => ({
-    url: '/v1.3/movie',
+  searchByName: http.createRoute<string, Data<SearchMovieEntity>>((query) => ({
+    url: '/v1.2/movie/search',
     params: {
-      name,
+      query,
       limit: 30,
-      sortField: ['year', 'votes.kp'],
-      sortType: ['-1', '-1'],
-      selectFields: 'id name poster year rating',
-      'poster.previewUrl': '!null',
     },
   })),
 });
