@@ -1,13 +1,15 @@
 import clsx from 'clsx';
-import { useStore } from 'effector-react';
+import { useEvent, useStore } from 'effector-react';
 import { searchModel } from 'entities/search-window';
-import { Title, Spinner } from 'shared/ui';
+import { Title, Spinner, Button } from 'shared/ui';
 import { SearchItem } from './search-item';
 import styles from './styles.module.scss';
 
 export const SearchList = () => {
   const data = useStore(searchModel.$searchResult);
   const pending = useStore(searchModel.$pending);
+  const loadPending = useStore(searchModel.$loadPending);
+  const loadMore = useEvent(searchModel.loadMore);
 
   const NoResultsMessage = (
     <>
@@ -21,11 +23,22 @@ export const SearchList = () => {
   if (!pending && !data?.docs.length) return NoResultsMessage;
 
   const SearchList = (
-    <ul className={clsx('list-reset', styles.list)}>
-      {data?.docs?.map((item) => (
-        <SearchItem key={item.id} item={item} />
-      ))}
-    </ul>
+    <div className={styles.content}>
+      <ul className={clsx('list-reset', styles.list)}>
+        {data?.docs?.map((item) => item.poster && <SearchItem key={item.id} item={item} />)}
+      </ul>
+      {data && data?.pages > 1 && (
+        <Button
+          onClick={loadMore}
+          size="medium"
+          variant="gray"
+          skeletonLoading={loadPending}
+          className={styles.loadMore}
+        >
+          Показать больше
+        </Button>
+      )}
+    </div>
   );
 
   const Loader = (

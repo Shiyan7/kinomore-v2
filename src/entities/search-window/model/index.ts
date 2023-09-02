@@ -10,10 +10,16 @@ export const searchByNameFx = attach({ effect: commonApi.searchByName });
 export const $searchResult = restore(searchByNameFx, null);
 export const searchChanged = createEvent<string>();
 
+export const loadMore = createEvent();
+export const $limit = createStore<number>(30);
+
+$limit.on(loadMore, (state) => state + 30);
+
 export const $search = createStore('').on(searchChanged, (_, payload) => payload);
 export const $debouncedValue = createStore('');
 
-export const $pending = searchByNameFx.pending;
+export const $pending = createStore(false);
+export const $loadPending = searchByNameFx.pending;
 
 const debouncedSearchChanged = debounce({
   source: searchChanged,
@@ -22,7 +28,23 @@ const debouncedSearchChanged = debounce({
 
 sample({
   clock: debouncedSearchChanged,
-  target: [searchByNameFx, $debouncedValue],
+  target: [$debouncedValue, $limit.reinit],
+});
+
+sample({
+  clock: $debouncedValue,
+  source: $limit,
+  fn: (limit, query) => ({ query, limit }),
+  target: searchByNameFx,
+});
+
+$pending.on(debouncedSearchChanged, () => true);
+$pending.on(searchByNameFx.doneData, () => false);
+
+sample({
+  clock: loadMore,
+  source: { query: $debouncedValue, limit: $limit },
+  target: searchByNameFx,
 });
 
 reset({

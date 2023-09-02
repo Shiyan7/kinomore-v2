@@ -592,3 +592,8 @@ export interface CatalogParams {
   sort?: string;
   year?: string;
 }
+
+export interface SearchParams {
+  query: string;
+  limit: number;
+}

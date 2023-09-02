@@ -1,3 +1,10 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
 .list {
   display: grid;
   row-gap: 17px;

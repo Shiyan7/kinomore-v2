@@ -1,7 +1,7 @@
 import { GenresEnum } from 'shared/config';
 import { getCurrentYear, getYears } from 'shared/lib/date';
 import { http } from './config';
-import type { CatalogParams, Data, Movie, MovieEntity, Person, SearchMovieEntity } from './types';
+import type { CatalogParams, Data, Movie, MovieEntity, Person, SearchMovieEntity, SearchParams } from './types';
 
 const LIMIT = 15;
 
@@ -86,11 +86,11 @@ const routesConfig = http.createRoutesConfig({
       limit: LIMIT,
     },
   }),
-  searchByName: http.createRoute<string, Data<SearchMovieEntity>>((query) => ({
+  searchByName: http.createRoute<SearchParams, Data<SearchMovieEntity>>(({ query, limit }) => ({
     url: '/v1.2/movie/search',
     params: {
       query,
-      limit: 30,
+      limit,
     },
   })),
 });
