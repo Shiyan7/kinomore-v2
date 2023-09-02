@@ -595,5 +595,5 @@ export interface CatalogParams {
 
 export interface SearchParams {
   query: string;
-  limit: number;
+  page: number;
 }

@@ -9,6 +9,7 @@ export const SearchList = () => {
   const data = useStore(searchModel.$searchResult);
   const pending = useStore(searchModel.$pending);
   const loadPending = useStore(searchModel.$loadPending);
+  const hasMore = useStore(searchModel.$hasMore);
   const loadMore = useEvent(searchModel.loadMore);
 
   const NoResultsMessage = (
@@ -20,14 +21,14 @@ export const SearchList = () => {
     </>
   );
 
-  if (!pending && !data?.docs.length) return NoResultsMessage;
+  if (!pending && !data.length) return NoResultsMessage;
 
   const SearchList = (
     <div className={styles.content}>
       <ul className={clsx('list-reset', styles.list)}>
-        {data?.docs?.map((item) => item.poster && <SearchItem key={item.id} item={item} />)}
+        {data.map((item) => item.poster && <SearchItem key={item.id} item={item} />)}
       </ul>
-      {data && data?.pages > 1 && (
+      {hasMore && (
         <Button
           onClick={loadMore}
           size="medium"

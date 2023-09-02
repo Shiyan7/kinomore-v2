@@ -1,19 +1,20 @@
-import { attach, createEvent, createStore, restore, sample } from 'effector';
+import { attach, createEvent, createStore, sample } from 'effector';
 import { reset, debounce } from 'patronum';
-import { commonApi } from 'shared/api';
+import { SearchMovieEntity, commonApi } from 'shared/api';
 import { createToggler } from 'shared/lib/toggler';
 
 const DEBOUNCE_TIME = 600;
 
 export const toggler = createToggler();
 export const searchByNameFx = attach({ effect: commonApi.searchByName });
-export const $searchResult = restore(searchByNameFx, null);
+export const $searchResult = createStore<SearchMovieEntity[]>([]);
 export const searchChanged = createEvent<string>();
 
 export const loadMore = createEvent();
-export const $limit = createStore<number>(30);
+export const $page = createStore<number>(1);
+export const $hasMore = createStore<boolean>(false);
 
-$limit.on(loadMore, (state) => state + 30);
+$page.on(loadMore, (state) => state + 1);
 
 export const $search = createStore('').on(searchChanged, (_, payload) => payload);
 export const $debouncedValue = createStore('');
@@ -28,13 +29,13 @@ const debouncedSearchChanged = debounce({
 
 sample({
   clock: debouncedSearchChanged,
-  target: [$debouncedValue, $limit.reinit],
+  target: [$debouncedValue],
 });
 
 sample({
   clock: $debouncedValue,
-  source: $limit,
-  fn: (limit, query) => ({ query, limit }),
+  source: $page,
+  fn: (page, query) => ({ query, page }),
   target: searchByNameFx,
 });
 
@@ -43,7 +44,7 @@ $pending.on(searchByNameFx.doneData, () => false);
 
 sample({
   clock: loadMore,
-  source: { query: $debouncedValue, limit: $limit },
+  source: { query: $debouncedValue, page: $page },
   target: searchByNameFx,
 });
 
@@ -51,3 +52,12 @@ reset({
   clock: toggler.$isOpen,
   target: [$search, $debouncedValue],
 });
+
+reset({
+  clock: debouncedSearchChanged,
+  target: [$searchResult, $page],
+});
+
+$searchResult.on(searchByNameFx.doneData, (state, payload) => [...state, ...payload.docs]);
+
+$hasMore.on(searchByNameFx.doneData, (_, payload) => payload.page !== payload.pages);

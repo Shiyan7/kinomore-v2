@@ -86,11 +86,12 @@ const routesConfig = http.createRoutesConfig({
       limit: LIMIT,
     },
   }),
-  searchByName: http.createRoute<SearchParams, Data<SearchMovieEntity>>(({ query, limit }) => ({
+  searchByName: http.createRoute<SearchParams, Data<SearchMovieEntity>>(({ query, page }) => ({
     url: '/v1.2/movie/search',
     params: {
       query,
-      limit,
+      page,
+      limit: 30,
     },
   })),
 });
