@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useStore } from 'effector-react';
+import { useEvent, useStore } from 'effector-react';
 import { usePageEvent } from 'nextjs-effector';
 import { favoritesModel } from 'features/favorites';
 import { MovieItem } from 'entities/movie/item';
@@ -16,6 +16,7 @@ const breadcrumbs = [
 export const FavoritesPage = () => {
   const data = useStore(favoritesModel.$allFavorites);
   const pending = useStore(favoritesModel.$pending);
+  const removeFavoriteClicked = useEvent(favoritesModel.removeFavoriteClicked);
 
   usePageEvent(favoritesModel.favoritesPageStarted);
 
@@ -28,7 +29,7 @@ export const FavoritesPage = () => {
   const Grid = (
     <div className={styles.grid}>
       {data?.map((movie) => (
-        <MovieItem key={movie.id} item={movie} />
+        <MovieItem onFavorite={() => removeFavoriteClicked({ id: movie.id })} key={movie.id} item={movie} />
       ))}
     </div>
   );
@@ -42,7 +43,7 @@ export const FavoritesPage = () => {
     </div>
   );
 
-  const Content = data ? Grid : EmptyMessage;
+  const Content = data?.length ? Grid : EmptyMessage;
 
   return (
     <section className={styles.section}>

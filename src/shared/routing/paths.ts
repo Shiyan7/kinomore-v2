@@ -11,10 +11,11 @@ export const paths = {
   home: '/',
   movies: '/films',
   series: '/series',
-  cartoons: '/cartoons',
   policy: '/policy',
   profile: '/profile',
+  cartoons: '/cartoons',
   favorites: '/profile/favorites',
+  settings: '/profile/settings',
   history: '/profile/history',
 
   // Get the URL for the movie catalog page

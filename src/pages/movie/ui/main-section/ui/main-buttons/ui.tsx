@@ -17,6 +17,8 @@ export const MainButtons = () => {
   const toggleFavorite = useEvent(favoritesModel.toggleFavorite);
   const isFavorite = useStore(favoritesModel.$isFavorite);
 
+  const movieId = Number(query.id);
+
   return (
     <div className={styles.btns}>
       <Button onClick={playerToggler.open} size="big" className={styles.btn} gradient variant="glass">
@@ -26,7 +28,7 @@ export const MainButtons = () => {
         Трейлер
       </Button>
       <Button
-        onClick={() => toggleFavorite({ id: query?.id as string })}
+        onClick={() => toggleFavorite({ id: movieId })}
         size="big"
         className={clsx(styles.btn, isFavorite && styles.isFavorite)}
         variant="glass"

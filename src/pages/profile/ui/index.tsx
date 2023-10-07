@@ -16,6 +16,7 @@ const breadcrumbs = [
 const items = [
   { href: paths.favorites, caption: 'Избранное', icon: <Icon type="common" name="bookmark2" /> },
   { href: paths.history, caption: 'Просмотренное', icon: <Icon type="common" name="history" /> },
+  { href: paths.settings, caption: 'Настройки', icon: <Icon type="common" name="settings" /> },
 ];
 
 export const ProfilePage = () => {

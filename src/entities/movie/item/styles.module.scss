@@ -17,6 +17,11 @@
     &:hover {
       transform: scale(1.03);
 
+      .favorite {
+        opacity: 1;
+        visibility: visible;
+      }
+
       .content {
         opacity: 1;
         visibility: visible;
@@ -114,4 +119,26 @@
   line-height: 18px;
   color: rgba(#fff, 0.8);
   white-space: nowrap;
+}
+
+.favorite {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -15px;
+  right: -15px;
+  width: 35px;
+  height: 35px;
+  background-color: #2f323f;
+  border-radius: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+  }
 }

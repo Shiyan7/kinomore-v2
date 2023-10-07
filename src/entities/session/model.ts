@@ -7,14 +7,12 @@ import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
 
 export const sessionModel = atom(() => {
-  /* Атачнутые эффекты */
   const getMeFx = attach({ effect: internalApi.getMe });
   const signInFx = attach({ effect: internalApi.signIn });
   const signUpFx = attach({ effect: internalApi.signUp });
   const logOutFx = attach({ effect: internalApi.logOut });
   const refreshFx = attach({ effect: internalApi.refresh });
 
-  /* Эвенты которые запускают эффекты */
   const logOut = createEvent();
   const startRefresh = createEvent();
   const getMe = createEvent();

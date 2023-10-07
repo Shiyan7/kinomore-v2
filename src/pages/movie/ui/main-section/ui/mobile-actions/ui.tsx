@@ -14,12 +14,14 @@ export const MobileActions = () => {
   const toggleFavorite = useEvent(favoritesModel.toggleFavorite);
   const isFavorite = useStore(favoritesModel.$isFavorite);
 
+  const movieId = Number(query.id);
+
   const items = [
     { label: 'Трейлер', handler: trailerModal.open, icon: <Icon type="common" name="play" /> },
     {
       label: isFavorite ? 'Запомнен' : 'Запомнить',
       activeClass: isFavorite,
-      handler: () => toggleFavorite({ id: query?.id as string }),
+      handler: () => toggleFavorite({ id: movieId }),
       icon: <Icon type="common" name="bookmark" />,
     },
     { label: 'Оценить', icon: <Icon type="common" name="star" /> },

@@ -7,21 +7,20 @@ import { createToggler } from 'shared/lib/toggler';
 const DEBOUNCE_TIME = 600;
 
 export const searchModel = atom(() => {
-  const toggler = createToggler();
+  const searchToggler = createToggler();
+
   const searchByNameFx = attach({ effect: commonApi.searchByName });
-  const $searchResult = createStore<SearchMovieEntity[]>([]);
+
   const searchChanged = createEvent<string>();
-
   const loadMore = createEvent();
-  const $page = createStore<number>(1);
-  const $hasMore = createStore<boolean>(false);
 
-  $page.on(loadMore, (state) => state + 1);
-
-  const $search = createStore('').on(searchChanged, (_, payload) => payload);
+  const $searchResult = createStore<SearchMovieEntity[]>([]);
   const $debouncedValue = createStore('');
+  const $hasMore = createStore(false);
+  const $searchPending = createStore(false);
+  const $search = createStore('');
+  const $page = createStore(1);
 
-  const $pending = createStore(false);
   const $loadPending = searchByNameFx.pending;
 
   const debouncedSearchChanged = debounce({
@@ -41,9 +40,6 @@ export const searchModel = atom(() => {
     target: searchByNameFx,
   });
 
-  $pending.on(debouncedSearchChanged, () => true);
-  $pending.on(searchByNameFx.doneData, () => false);
-
   sample({
     clock: loadMore,
     source: { query: $debouncedValue, page: $page },
@@ -51,7 +47,7 @@ export const searchModel = atom(() => {
   });
 
   reset({
-    clock: toggler.$isOpen,
+    clock: searchToggler.$isOpen,
     target: [$search, $debouncedValue],
   });
 
@@ -60,12 +56,20 @@ export const searchModel = atom(() => {
     target: [$searchResult, $page],
   });
 
+  $searchPending.on(debouncedSearchChanged, () => true);
+
+  $searchPending.on(searchByNameFx.doneData, () => false);
+
   $searchResult.on(searchByNameFx.doneData, (state, payload) => [...state, ...payload.docs]);
 
   $hasMore.on(searchByNameFx.doneData, (_, payload) => payload.page !== payload.pages);
 
+  $search.on(searchChanged, (_, payload) => payload);
+
+  $page.on(loadMore, (state) => state + 1);
+
   return {
-    toggler,
+    searchToggler,
     searchByNameFx,
     $searchResult,
     searchChanged,
@@ -74,7 +78,7 @@ export const searchModel = atom(() => {
     $hasMore,
     $search,
     $debouncedValue,
-    $pending,
+    $searchPending,
     $loadPending,
   };
 });

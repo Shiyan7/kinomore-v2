@@ -14,6 +14,7 @@ export interface SpritesMap {
     | 'play'
     | 'profile'
     | 'search'
+    | 'settings'
     | 'share'
     | 'sort'
     | 'star';
@@ -37,6 +38,7 @@ export const SPRITES_META: { [K in keyof SpritesMap]: SpritesMap[K][] } = {
     'play',
     'profile',
     'search',
+    'settings',
     'share',
     'sort',
     'star',

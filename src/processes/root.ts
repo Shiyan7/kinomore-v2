@@ -19,5 +19,5 @@ reset({
 
 sample({
   clock: navigationModel.$router,
-  target: [searchModel.toggler.close, authModel.emailForm.reset, authModel.passwordForm.reset],
+  target: [searchModel.searchToggler.close, authModel.emailForm.reset, authModel.passwordForm.reset],
 });

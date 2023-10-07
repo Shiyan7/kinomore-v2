@@ -30,7 +30,7 @@ const routesConfig = http.createRoutesConfig({
   getFavoritesId: http.createRoute<void, FavoriteItems>({
     url: '/favorites',
   }),
-  toggleFavorite: http.createRoute<{ id: string }, Message>((data) => ({
+  toggleFavorite: http.createRoute<{ id: number }, Message>((data) => ({
     url: '/favorites',
     method: 'post',
     data,

@@ -13,11 +13,12 @@ export const favoritesModel = atom(() => {
   const $pending = createStore(true);
   const $isFavorite = createStore(false);
   const $arrayOfId = createStore<number[]>([]);
-  const $allFavorites = createStore<MovieEntity[] | null>(null);
+  const $allFavorites = createStore<MovieEntity[]>([]);
 
   const abortPending = createEvent();
   const favoritesPageStarted = createEvent<PageContext>();
-  const toggleFavorite = createEvent<{ id: string }>();
+  const toggleFavorite = createEvent<{ id: number }>();
+  const removeFavoriteClicked = createEvent<{ id: number }>();
 
   sample({
     clock: toggleFavorite,
@@ -28,7 +29,7 @@ export const favoritesModel = atom(() => {
   });
 
   sample({
-    clock: toggleFavorite,
+    clock: [toggleFavorite, removeFavoriteClicked],
     target: toggleFavoriteFx,
   });
 
@@ -69,11 +70,14 @@ export const favoritesModel = atom(() => {
     target: [$allFavorites, abortPending],
   });
 
+  $allFavorites.on(removeFavoriteClicked, (state, { id }) => state?.filter((movie) => movie.id !== Number(id)));
+
   $pending.on(abortPending, () => false);
 
   return {
     favoritesPageStarted,
     toggleFavorite,
+    removeFavoriteClicked,
     $pending,
     $isFavorite,
     $allFavorites,

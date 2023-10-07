@@ -7,10 +7,16 @@ import styles from './styles.module.scss';
 
 export const SearchList = () => {
   const data = useStore(searchModel.$searchResult);
-  const pending = useStore(searchModel.$pending);
+  const searchPending = useStore(searchModel.$searchPending);
   const loadPending = useStore(searchModel.$loadPending);
   const hasMore = useStore(searchModel.$hasMore);
   const loadMore = useEvent(searchModel.loadMore);
+
+  const Loader = (
+    <div className={styles.loader}>
+      <Spinner strokeWidth={2} />
+    </div>
+  );
 
   const NoResultsMessage = (
     <>
@@ -20,8 +26,6 @@ export const SearchList = () => {
       <p className={styles.desc}>Может быть, вы ищете то, чего пока нет в каталоге</p>
     </>
   );
-
-  if (!pending && !data.length) return NoResultsMessage;
 
   const SearchList = (
     <div className={styles.content}>
@@ -42,11 +46,7 @@ export const SearchList = () => {
     </div>
   );
 
-  const Loader = (
-    <div className={styles.loader}>
-      <Spinner strokeWidth={2} />
-    </div>
-  );
+  if (!searchPending && !data.length) return NoResultsMessage;
 
-  return pending ? Loader : SearchList;
+  return searchPending ? Loader : SearchList;
 };
