@@ -2,22 +2,11 @@ import { useEvent, useStore } from 'effector-react';
 import Link from 'next/link';
 import { usePageEvent } from 'nextjs-effector';
 import { sessionModel } from 'entities/session';
-import { paths } from 'shared/routing';
 import { Button, Icon, Title } from 'shared/ui';
 import { Breadcrumbs } from 'shared/ui/breadcrumbs';
 import { Spinner } from 'shared/ui/spinner';
+import { breadcrumbs, profileItems } from '../config';
 import styles from './styles.module.scss';
-
-const breadcrumbs = [
-  { text: 'Главная', href: paths.home },
-  { text: 'Профиль', href: '' },
-];
-
-const items = [
-  { href: paths.favorites, caption: 'Избранное', icon: <Icon type="common" name="bookmark2" /> },
-  { href: paths.history, caption: 'Просмотренное', icon: <Icon type="common" name="history" /> },
-  { href: paths.settings, caption: 'Настройки', icon: <Icon type="common" name="settings" /> },
-];
 
 export const ProfilePage = () => {
   const data = useStore(sessionModel.$session);
@@ -43,10 +32,10 @@ export const ProfilePage = () => {
           Выйти
         </Button>
       </div>
-      <div className={styles.items}>
-        {items.map(({ href, icon, caption }) => (
+      <div className={styles.grid}>
+        {profileItems.map(({ href, iconName, caption }) => (
           <Link key={href} href={href} className={styles.item}>
-            {icon}
+            <Icon type="common" name={iconName} />
             <span>{caption}</span>
           </Link>
         ))}

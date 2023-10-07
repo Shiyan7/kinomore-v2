@@ -136,6 +136,11 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
   svg {
     display: block;
     width: 18px;

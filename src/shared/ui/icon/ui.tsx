@@ -1,7 +1,9 @@
 import { SpritesMap } from './sprite.h';
 
+export type IconName<Group extends keyof SpritesMap> = SpritesMap[Group];
+
 export interface IconProps<Group extends keyof SpritesMap> {
-  name: SpritesMap[Group];
+  name: IconName<Group>;
   type?: Group;
 }
 
