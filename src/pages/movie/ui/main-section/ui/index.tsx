@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useStore } from 'effector-react';
 import type { CSSProperties } from 'react';
-import { pageModel } from 'pages/movie';
+import { movieModel } from 'pages/movie';
 import { Description } from './description';
 import { Info } from './info';
 import { MainButtons } from './main-buttons';
@@ -14,7 +14,7 @@ import { Title } from './title';
 import { TrailerModal } from './trailer-modal';
 
 export const MainSection = () => {
-  const data = useStore(pageModel.$movie);
+  const data = useStore(movieModel.$movie);
 
   return (
     <section className={styles.section}>

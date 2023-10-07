@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import { useStore } from 'effector-react';
 import Image from 'next/image';
-import { pageModel } from 'pages/person';
+import { personModel } from 'pages/person';
 import { Title } from 'shared/ui/title';
 import { getProfessions, timestampToDate } from '../lib';
 import styles from './styles.module.scss';
 
 export const MainSection = () => {
-  const data = useStore(pageModel.$person);
+  const data = useStore(personModel.$person);
   const name = data?.name ?? 'Без имени';
 
   const items = [

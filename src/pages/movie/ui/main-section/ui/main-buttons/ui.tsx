@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useEvent, useStore } from 'effector-react';
 import { useRouter } from 'next/router';
-import { pageModel } from 'pages/movie';
+import { movieModel } from 'pages/movie';
 import { favoritesModel } from 'features/favorites';
 import { useToggler } from 'shared/lib';
 import { Button } from 'shared/ui/button';
@@ -11,9 +11,9 @@ import styles from './styles.module.scss';
 
 export const MainButtons = () => {
   const { query } = useRouter();
-  const data = useStore(pageModel.$movie);
-  const trailerToggler = useToggler(pageModel.trailerToggler);
-  const playerToggler = useToggler(pageModel.playerToggler);
+  const data = useStore(movieModel.$movie);
+  const trailerToggler = useToggler(movieModel.trailerToggler);
+  const playerToggler = useToggler(movieModel.playerToggler);
   const toggleFavorite = useEvent(favoritesModel.toggleFavorite);
   const isFavorite = useStore(favoritesModel.$isFavorite);
 

@@ -1,9 +1,9 @@
 /* eslint-disable boundaries/element-types */
-import { pageModel } from 'pages/person';
+import { personModel } from 'pages/person';
 import { createGSSP } from 'pages/shared';
 
 export const getServerSideProps = createGSSP({
-  pageEvent: pageModel.pageStarted,
+  pageEvent: personModel.pageStarted,
 });
 
 export { PersonPage as default } from 'pages/person';

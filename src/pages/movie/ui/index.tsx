@@ -1,7 +1,7 @@
 import { useStore } from 'effector-react';
 import { NextSeo } from 'next-seo';
 import { usePageEvent } from 'nextjs-effector';
-import { pageModel, getPageTitle } from 'pages/movie';
+import { movieModel, getPageTitle } from 'pages/movie';
 import { Facts } from 'widgets/facts';
 import { MainSection } from './main-section';
 import { Persons } from './persons';
@@ -9,13 +9,13 @@ import { SimilarMovies } from './similar-movies';
 import { Tabs } from './tabs';
 
 export const MoviePage = () => {
-  const data = useStore(pageModel.$movie);
+  const data = useStore(movieModel.$movie);
   const name = getPageTitle(data?.name);
   const year = data?.year ? `(${data?.year})` : '';
   const description = data?.description ?? data?.shortDescription ?? '';
   const title = `${name} ${year} смотреть онлайн бесплатно в хорошем HD 1080 / 720 качестве`;
 
-  usePageEvent(pageModel.clientStarted);
+  usePageEvent(movieModel.clientStarted);
 
   return (
     <>

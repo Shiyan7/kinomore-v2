@@ -10,7 +10,7 @@ import { appStarted } from 'shared/config';
 import 'processes/root';
 
 export const BaseLayout = ({ children }: PropsWithChildren) => {
-  usePageEvent(appStarted);
+  usePageEvent(appStarted, { runOnce: true });
 
   return (
     <>

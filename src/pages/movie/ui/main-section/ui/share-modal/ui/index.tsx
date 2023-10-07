@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { CSSTransition } from 'react-transition-group';
-import { pageModel } from 'pages/movie';
+import { movieModel } from 'pages/movie';
 import { useToggler } from 'shared/lib/toggler';
 import { Title, Popup, Icon } from 'shared/ui';
 import { items } from '../config';
@@ -11,7 +11,7 @@ import styles from './styles.module.scss';
 export const ShareModal = () => {
   const [copy] = useCopyToClipboard();
   const { asPath } = useRouter();
-  const { close, isOpen } = useToggler(pageModel.shareToggler);
+  const { close, isOpen } = useToggler(movieModel.shareToggler);
   const URL = `${process.env.CLIENT_URL}${asPath}`;
 
   const handleCopy = () => {

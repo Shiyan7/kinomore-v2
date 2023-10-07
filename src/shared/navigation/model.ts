@@ -2,31 +2,42 @@ import type { ParsedUrlQuery } from 'querystring';
 import { attach, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import type { NextRouter } from 'next/router';
+import { atom } from 'shared/lib/atom';
 
-export const RouterGate = createGate<{ router: NextRouter | null }>();
+export const navigationModel = atom(() => {
+  const RouterGate = createGate<{ router: NextRouter | null }>();
 
-export const $router = createStore<NextRouter | null>(null, {
-  serialize: 'ignore',
-})
-  .on(RouterGate.open, (_, { router }) => router)
-  .reset(RouterGate.close);
+  const $router = createStore<NextRouter | null>(null, {
+    serialize: 'ignore',
+  })
+    .on(RouterGate.open, (_, { router }) => router)
+    .reset(RouterGate.close);
 
-export const $query = createStore<ParsedUrlQuery | undefined | null>(null);
+  const $query = createStore<ParsedUrlQuery | undefined | null>(null);
 
-sample({
-  clock: $router,
-  fn: (router) => router?.query,
-  target: $query,
-});
+  sample({
+    clock: $router,
+    fn: (router) => router?.query,
+    target: $query,
+  });
 
-export const pushFx = attach({
-  source: $router,
-  effect: (router, url: string) => router?.push(url),
-});
+  const pushFx = attach({
+    source: $router,
+    effect: (router, url: string) => router?.push(url),
+  });
 
-export const pushQueryFx = attach({
-  source: $router,
-  effect: (router, query: ParsedUrlQuery | null) => {
-    router?.push({ query: { ...router.query, ...query } });
-  },
+  const pushQueryFx = attach({
+    source: $router,
+    effect: (router, query: ParsedUrlQuery | null) => {
+      router?.push({ query: { ...router.query, ...query } });
+    },
+  });
+
+  return {
+    RouterGate,
+    $router,
+    $query,
+    pushFx,
+    pushQueryFx,
+  };
 });

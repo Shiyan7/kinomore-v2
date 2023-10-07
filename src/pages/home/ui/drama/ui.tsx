@@ -1,12 +1,12 @@
 import { useStore } from 'effector-react';
-import { pageModel } from 'pages/home';
+import { homeModel } from 'pages/home';
 import { Category } from 'widgets/category';
 import { MovieItem } from 'entities/movie/item';
 import { GenresEnum, SortEnum } from 'shared/config';
 import { paths } from 'shared/routing';
 
 export const Drama = () => {
-  const data = useStore(pageModel.$dramaMovies);
+  const data = useStore(homeModel.$dramaMovies);
 
   return (
     <Category>

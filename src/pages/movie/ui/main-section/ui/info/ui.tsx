@@ -1,12 +1,12 @@
 import { useStore } from 'effector-react';
-import { pageModel } from 'pages/movie';
+import { movieModel } from 'pages/movie';
 import { getRating, minutesToHour, getSeasonString } from 'shared/lib';
 import { MovieRating } from 'shared/ui/movie-rating';
 import { getCountry, getAgeRating, getGenre } from './lib';
 import styles from './styles.module.scss';
 
 export const Info = () => {
-  const data = useStore(pageModel.$movie);
+  const data = useStore(movieModel.$movie);
 
   const length = data?.seasonsInfo?.length
     ? getSeasonString(data?.seasonsInfo.length)

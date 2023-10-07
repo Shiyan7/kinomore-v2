@@ -1,42 +1,55 @@
 import { attach, combine, createEvent, createStore, restore, sample } from 'effector';
 import type { PageContext } from 'nextjs-effector';
 import { commonApi } from 'shared/api';
+import { atom } from 'shared/lib/atom';
 import { getCatalogType } from '../lib';
 
-export const pageStarted = createEvent<PageContext>();
+export const catalogModel = atom(() => {
+  const pageStarted = createEvent<PageContext>();
 
-export const getCatalogFx = attach({ effect: commonApi.getCatalog });
-export const $catalog = restore(getCatalogFx, null);
+  const getCatalogFx = attach({ effect: commonApi.getCatalog });
+  const $catalog = restore(getCatalogFx, null);
 
-export const loadMore = createEvent();
+  const loadMore = createEvent();
 
-export const $hasMore = createStore(false);
+  const $hasMore = createStore(false);
 
-export const $limit = createStore(30)
-  .on(loadMore, (state) => state + 60)
-  .reset(pageStarted);
+  const $limit = createStore(30)
+    .on(loadMore, (state) => state + 60)
+    .reset(pageStarted);
 
-const $pageContext = createStore<PageContext | null>(null);
+  const $pageContext = createStore<PageContext | null>(null);
 
-sample({
-  clock: pageStarted,
-  target: $pageContext,
-});
+  sample({
+    clock: pageStarted,
+    target: $pageContext,
+  });
 
-const $params = combine({ context: $pageContext, limit: $limit });
+  const $params = combine({ context: $pageContext, limit: $limit });
 
-sample({
-  clock: [pageStarted, loadMore],
-  source: $params,
-  fn: ({ limit, context }) => ({ ...context?.query, limit, type: getCatalogType(context?.pathname ?? '') }),
-  target: getCatalogFx,
-});
+  sample({
+    clock: [pageStarted, loadMore],
+    source: $params,
+    fn: ({ limit, context }) => ({ ...context?.query, limit, type: getCatalogType(context?.pathname ?? '') }),
+    target: getCatalogFx,
+  });
 
-export const $pending = getCatalogFx.pending;
+  const $pending = getCatalogFx.pending;
 
-sample({
-  clock: getCatalogFx.doneData,
-  source: $limit,
-  fn: (limit, { total }) => total > limit,
-  target: $hasMore,
+  sample({
+    clock: getCatalogFx.doneData,
+    source: $limit,
+    fn: (limit, { total }) => total > limit,
+    target: $hasMore,
+  });
+
+  return {
+    pageStarted,
+    getCatalogFx,
+    $catalog,
+    loadMore,
+    $hasMore,
+    $limit,
+    $pending,
+  };
 });

@@ -1,14 +1,14 @@
 import clsx from 'clsx';
 import { useStore } from 'effector-react';
 import { FreeMode } from 'swiper';
-import { pageModel } from 'pages/movie';
+import { movieModel } from 'pages/movie';
 import { CarouselMultiply } from 'shared/ui/carousel-multiply';
 import { Title } from 'shared/ui/title';
 import { PersonItem } from './person-item';
 import styles from './styles.module.scss';
 
 export const Persons = () => {
-  const data = useStore(pageModel.$movie);
+  const data = useStore(movieModel.$movie);
 
   if (!data?.persons?.length) return null;
 

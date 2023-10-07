@@ -9,7 +9,7 @@ import { Breadcrumbs } from 'shared/ui/breadcrumbs';
 import styles from './styles.module.scss';
 
 const breadcrumbs = [
-  { text: 'Главная', href: paths.home },
+  { text: 'Профиль', href: paths.profile },
   { text: 'Избранное', href: '' },
 ];
 

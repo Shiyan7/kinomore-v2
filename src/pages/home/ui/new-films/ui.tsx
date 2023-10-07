@@ -1,11 +1,11 @@
 import { useStore } from 'effector-react';
-import { pageModel } from 'pages/home';
+import { homeModel } from 'pages/home';
 import { Category } from 'widgets/category';
 import { MovieItem } from 'entities/movie/item';
 import { paths } from 'shared/routing';
 
 export const NewFilms = () => {
-  const data = useStore(pageModel.$newMovies);
+  const data = useStore(homeModel.$newMovies);
 
   return (
     <Category>

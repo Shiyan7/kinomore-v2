@@ -1,12 +1,12 @@
 import { useStore } from 'effector-react';
 import { NextSeo } from 'next-seo';
-import { pageModel } from 'pages/person';
+import { personModel } from 'pages/person';
 import { Facts } from 'widgets/facts';
 import { Filmography } from './filmography';
 import { MainSection } from './main-section';
 
 export const PersonPage = () => {
-  const data = useStore(pageModel.$person);
+  const data = useStore(personModel.$person);
 
   const enName = data?.enName ? `(${data?.enName})` : '';
   const title = `${data?.name} ${enName}: Фото, факты`;

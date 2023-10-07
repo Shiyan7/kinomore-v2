@@ -1,15 +1,15 @@
 import { useStore } from 'effector-react';
 import { useState } from 'react';
-import { pageModel } from 'pages/movie';
+import { movieModel } from 'pages/movie';
 import { useToggler } from 'shared/lib/toggler';
 import { Popup, Spinner } from 'shared/ui';
 import { getTrailer } from './lib';
 import styles from './styles.module.scss';
 
 export const TrailerModal = () => {
-  const { close, isOpen } = useToggler(pageModel.trailerToggler);
+  const { close, isOpen } = useToggler(movieModel.trailerToggler);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const data = useStore(pageModel.$movie);
+  const data = useStore(movieModel.$movie);
   const trailer = getTrailer(data?.videos);
 
   return (

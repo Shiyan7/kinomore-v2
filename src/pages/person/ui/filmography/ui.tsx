@@ -1,14 +1,14 @@
 import clsx from 'clsx';
 import { useStore } from 'effector-react';
 import { useState } from 'react';
-import { pageModel } from 'pages/person';
+import { personModel } from 'pages/person';
 import { MovieItem } from 'entities/movie/item';
 import { Button, Title } from 'shared/ui';
 import styles from './styles.module.scss';
 
 export const Filmography = () => {
   const [limit, setLimit] = useState<number>(15);
-  const data = useStore(pageModel.$person);
+  const data = useStore(personModel.$person);
 
   if (!data?.movies) return null;
 

@@ -1,11 +1,11 @@
 import { useStore } from 'effector-react';
-import { pageModel } from 'pages/movie';
+import { movieModel } from 'pages/movie';
 import { Category } from 'widgets/category';
 import { MovieItem } from 'entities/movie/item';
 import styles from './styles.module.scss';
 
 export const SimilarMovies = () => {
-  const data = useStore(pageModel.$movie);
+  const data = useStore(movieModel.$movie);
 
   if (!data?.similarMovies?.length) return null;
 

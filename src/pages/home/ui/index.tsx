@@ -1,3 +1,5 @@
+import { usePageEvent } from 'nextjs-effector';
+import { homeModel } from '../model';
 import { ComedyFilms } from './comedy-films';
 import { Drama } from './drama';
 import { Fantastic } from './fantastic';
@@ -7,15 +9,19 @@ import { Hero } from './hero';
 import { Info } from './info';
 import { NewFilms } from './new-films';
 
-export const HomePage = () => (
-  <>
-    <Hero />
-    <Genres />
-    <ComedyFilms />
-    <NewFilms />
-    <ForFamily />
-    <Drama />
-    <Fantastic />
-    <Info />
-  </>
-);
+export const HomePage = () => {
+  usePageEvent(homeModel.clientStarted);
+
+  return (
+    <>
+      <Hero />
+      <Genres />
+      <ComedyFilms />
+      <NewFilms />
+      <ForFamily />
+      <Drama />
+      <Fantastic />
+      <Info />
+    </>
+  );
+};

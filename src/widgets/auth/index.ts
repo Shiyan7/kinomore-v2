@@ -1,2 +1,2 @@
 export { AuthWindow } from './ui';
-export * as authModel from './model';
+export * from './model';

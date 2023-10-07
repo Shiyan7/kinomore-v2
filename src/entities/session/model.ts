@@ -1,57 +1,89 @@
 import { createStore, attach, forward, createEvent, sample, restore } from 'effector';
+import { reset } from 'patronum';
 import { internalApi } from 'shared/api';
 import { appStarted } from 'shared/config';
+import { atom } from 'shared/lib/atom';
 import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
 
-/* Атачнутые эффекты */
-export const getMeFx = attach({ effect: internalApi.getMe });
-export const signInFx = attach({ effect: internalApi.signIn });
-export const signUpFx = attach({ effect: internalApi.signUp });
-export const logOutFx = attach({ effect: internalApi.logOut });
-export const refreshFx = attach({ effect: internalApi.refresh });
+export const sessionModel = atom(() => {
+  /* Атачнутые эффекты */
+  const getMeFx = attach({ effect: internalApi.getMe });
+  const signInFx = attach({ effect: internalApi.signIn });
+  const signUpFx = attach({ effect: internalApi.signUp });
+  const logOutFx = attach({ effect: internalApi.logOut });
+  const refreshFx = attach({ effect: internalApi.refresh });
 
-/* Эвенты которые запускают эффекты */
-export const logOut = createEvent();
-export const startRefresh = createEvent();
-export const getMe = createEvent();
+  /* Эвенты которые запускают эффекты */
+  const logOut = createEvent();
+  const startRefresh = createEvent();
+  const getMe = createEvent();
+  const triggeredHome = createEvent();
 
-forward({
-  from: logOut,
-  to: logOutFx,
-});
+  forward({
+    from: appStarted,
+    to: startRefresh,
+  });
 
-forward({
-  from: startRefresh,
-  to: refreshFx,
-});
+  forward({
+    from: logOut,
+    to: logOutFx,
+  });
 
-forward({
-  from: appStarted,
-  to: startRefresh,
-});
+  forward({
+    from: startRefresh,
+    to: refreshFx,
+  });
 
-forward({
-  from: getMe,
-  to: getMeFx,
-});
+  forward({
+    from: getMe,
+    to: getMeFx,
+  });
 
-export const $isLogged = createStore(false)
-  .on([signInFx.doneData, signUpFx.doneData, refreshFx.doneData, getMeFx.doneData], () => true)
-  .reset(logOutFx.doneData);
+  const $isLogged = createStore(false)
+    .on([signInFx.doneData, signUpFx.doneData, refreshFx.doneData, getMeFx.doneData], () => true)
+    .reset(logOutFx.doneData);
 
-export const $pending = createStore(false).on(
-  [signInFx.pending, signUpFx.pending, logOutFx.pending],
-  (_, payload) => payload,
-);
+  const $pending = createStore(false).on(
+    [signInFx.pending, signUpFx.pending, logOutFx.pending],
+    (_, payload) => payload,
+  );
 
-export const $session = restore(getMeFx, null);
+  const $session = restore(getMeFx, null);
 
-/* Обнуляем сессию когда сработал logoutFx */
-$session.reset(logOutFx.done);
+  forward({
+    from: logOutFx.done,
+    to: triggeredHome,
+  });
 
-sample({
-  clock: logOutFx.done,
-  fn: () => paths.home,
-  target: navigationModel.pushFx,
+  reset({
+    clock: logOutFx.done,
+    target: $session,
+  });
+
+  sample({
+    clock: triggeredHome,
+    fn: () => paths.home,
+    target: navigationModel.pushFx,
+  });
+
+  sample({
+    clock: [refreshFx.failData, getMeFx.failData],
+    source: navigationModel.$router,
+    filter: (router) => Boolean(router?.asPath.startsWith(paths.profile)),
+    target: triggeredHome,
+  });
+
+  return {
+    getMeFx,
+    signInFx,
+    signUpFx,
+    logOutFx,
+    startRefresh,
+    logOut,
+    getMe,
+    $isLogged,
+    $pending,
+    $session,
+  };
 });

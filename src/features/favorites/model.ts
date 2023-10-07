@@ -1,7 +1,8 @@
 import { attach, createEvent, createStore, sample } from 'effector';
-import { delay, not } from 'patronum';
+import { PageContext } from 'nextjs-effector';
 import { sessionModel } from 'entities/session';
 import { MovieEntity, commonApi, internalApi } from 'shared/api';
+import { appStarted } from 'shared/config';
 import { atom } from 'shared/lib/atom';
 
 export const favoritesModel = atom(() => {
@@ -15,7 +16,7 @@ export const favoritesModel = atom(() => {
   const $allFavorites = createStore<MovieEntity[] | null>(null);
 
   const abortPending = createEvent();
-  const favoritesPageStarted = createEvent();
+  const favoritesPageStarted = createEvent<PageContext>();
   const toggleFavorite = createEvent<{ id: string }>();
 
   sample({
@@ -38,6 +39,11 @@ export const favoritesModel = atom(() => {
   });
 
   sample({
+    clock: favoritesPageStarted,
+    target: appStarted,
+  });
+
+  sample({
     clock: getFavoritesIdFx.doneData,
     fn: ({ items }) => items.map(Number),
     target: $arrayOfId,
@@ -48,12 +54,6 @@ export const favoritesModel = atom(() => {
     filter: ({ items }) => items.length > 0,
     fn: ({ items }) => items.map((id) => `id=${id}`).join('&'),
     target: getAllFavoritesFx,
-  });
-
-  sample({
-    clock: delay({ source: favoritesPageStarted, timeout: 1000 }),
-    filter: not(sessionModel.$isLogged),
-    target: abortPending,
   });
 
   sample({

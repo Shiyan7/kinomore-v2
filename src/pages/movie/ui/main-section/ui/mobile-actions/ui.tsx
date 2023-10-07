@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useEvent, useStore } from 'effector-react';
 import { useRouter } from 'next/router';
-import { pageModel } from 'pages/movie';
+import { movieModel } from 'pages/movie';
 import { favoritesModel } from 'features/favorites';
 import { useToggler } from 'shared/lib';
 import { Icon } from 'shared/ui/icon';
@@ -9,8 +9,8 @@ import styles from './styles.module.scss';
 
 export const MobileActions = () => {
   const { query } = useRouter();
-  const trailerModal = useToggler(pageModel.trailerToggler);
-  const shareModal = useToggler(pageModel.shareToggler);
+  const trailerModal = useToggler(movieModel.trailerToggler);
+  const shareModal = useToggler(movieModel.shareToggler);
   const toggleFavorite = useEvent(favoritesModel.toggleFavorite);
   const isFavorite = useStore(favoritesModel.$isFavorite);
 
