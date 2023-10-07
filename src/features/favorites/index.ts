@@ -1,1 +1,1 @@
-export * as favoritesModel from './model';
+export * from './model';

@@ -1,0 +1,1 @@
+export { FavoritesPage } from './ui';

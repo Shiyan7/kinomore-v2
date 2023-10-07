@@ -1,3 +1,1 @@
-export default function Favorites() {
-  return <div>Favorites</div>;
-}
+export { FavoritesPage as default } from 'pages/favorites';

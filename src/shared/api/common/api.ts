@@ -94,6 +94,9 @@ const routesConfig = http.createRoutesConfig({
       limit: 30,
     },
   })),
+  getAllFavorites: http.createRoute<string, Data<MovieEntity>>((id) => ({
+    url: `/v1.3/movie?${id}&limit=250`,
+  })),
 });
 
 export const commonApi = routesConfig.build();

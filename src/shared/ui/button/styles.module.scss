@@ -50,7 +50,7 @@
   }
 
   &.glass {
-    background-color: rgba(#888c92, 0.3);
+    background-color: rgba(#9999bf, 0.2);
     backdrop-filter: blur(16px);
     border-radius: 8px;
 
@@ -67,11 +67,11 @@
     }
 
     &:hover {
-      background-color: rgba(#888c92, 0.4);
+      background-color: rgba(#9999bf, 0.3);
     }
 
     &:active {
-      background-color: rgba(#888c92, 0.5);
+      background-color: rgba(#9999bf, 0.4);
     }
   }
 

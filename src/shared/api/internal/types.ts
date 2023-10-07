@@ -18,3 +18,7 @@ export interface Message {
 export interface Status {
   status: boolean;
 }
+
+export interface FavoriteItems {
+  items: string[];
+}

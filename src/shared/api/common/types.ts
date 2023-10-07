@@ -204,7 +204,7 @@ export interface Premiere {
 }
 
 export interface LinkedMovie {
-  id?: number | null;
+  id?: number;
   name: string;
   enName: string;
   alternativeName: string;
@@ -400,7 +400,7 @@ export interface ErrorResponseDto {
 }
 
 export interface MovieEntity {
-  id: number | null;
+  id: number;
   name: string | null;
   alternativeName: string | null;
   enName: string;

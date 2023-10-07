@@ -1,5 +1,5 @@
 import { http } from './config';
-import type { AuthDto, Message, Status, User } from './types';
+import type { AuthDto, FavoriteItems, Message, Status, User } from './types';
 
 const routesConfig = http.createRoutesConfig({
   signUp: http.createRoute<AuthDto, Message>((data) => ({
@@ -27,7 +27,7 @@ const routesConfig = http.createRoutesConfig({
   getMe: http.createRoute<void, User>({
     url: '/user/me',
   }),
-  getAllFavorites: http.createRoute<void, Message>({
+  getFavoritesId: http.createRoute<void, FavoriteItems>({
     url: '/favorites',
   }),
   toggleFavorite: http.createRoute<{ id: string }, Message>((data) => ({
