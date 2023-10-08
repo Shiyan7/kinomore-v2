@@ -3,7 +3,7 @@ import type { FieldModel } from '@filledout/core';
 
 import compose from 'compose-function';
 
-import { ComponentType, forwardRef } from 'react';
+import { forwardRef, type ComponentType } from 'react';
 
 import { useField } from './factory';
 

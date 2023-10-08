@@ -1,6 +1,6 @@
-import { CreateFormParams, createLib, ValidationVisibilityCondition } from '@filledout/core';
-import { createLib as createReactLib } from '@filledout/react';
-import { applyYup, ApplyYupParams } from '@filledout/yup';
+import { createLib, ValidationVisibilityCondition, type CreateFormParams } from '@filledout/core';
+import { applyYup, type ApplyYupParams } from '@filledout/yup';
+import { createLib as createReactLib } from 'shared/lib/filledout';
 
 // here we initialize core lib
 const lib = createLib({

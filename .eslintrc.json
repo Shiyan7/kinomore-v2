@@ -208,6 +208,7 @@
     ],
     "react/jsx-one-expression-per-line": 0,
     "class-methods-use-this": 0,
-    "indent": [0, 2]
+    "indent": "off",
+    "operator-linebreak": "off"
   }
 }
