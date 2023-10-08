@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@filledout/core": "0.0.9",
-    "@filledout/react": "0.0.8",
     "@filledout/yup": "0.0.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

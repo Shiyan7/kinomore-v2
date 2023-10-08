@@ -2,7 +2,7 @@ import type { ParsedUrlQuery } from 'querystring';
 import { attach, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import type { NextRouter } from 'next/router';
-import { atom } from 'shared/lib/atom';
+import { atom } from 'shared/factory';
 
 export const navigationModel = atom(() => {
   const RouterGate = createGate<{ router: NextRouter | null }>();

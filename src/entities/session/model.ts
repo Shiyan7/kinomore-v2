@@ -1,8 +1,9 @@
 import { createStore, attach, forward, createEvent, sample, restore } from 'effector';
+import { NextRouter } from 'next/router';
 import { reset } from 'patronum';
 import { internalApi } from 'shared/api';
 import { appStarted } from 'shared/config';
-import { atom } from 'shared/lib/atom';
+import { atom } from 'shared/factory';
 import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
 
@@ -13,14 +14,23 @@ export const sessionModel = atom(() => {
   const logOutFx = attach({ effect: internalApi.logOut });
   const refreshFx = attach({ effect: internalApi.refresh });
 
+  const getMe = createEvent();
   const logOut = createEvent();
   const startRefresh = createEvent();
-  const getMe = createEvent();
-  const triggeredHome = createEvent();
+  const checkRouteAndRedirect = createEvent<NextRouter>();
 
-  forward({
-    from: appStarted,
-    to: startRefresh,
+  const $isLogged = createStore(false)
+    .on([signInFx.doneData, signUpFx.doneData, refreshFx.doneData, getMeFx.doneData], () => true)
+    .reset(logOut);
+
+  const $pending = createStore(false).on([signInFx.pending, signUpFx.pending], (_, payload) => payload);
+
+  const $session = restore(getMeFx, null);
+
+  sample({
+    clock: appStarted.status,
+    filter: Boolean,
+    target: startRefresh,
   });
 
   forward({
@@ -38,38 +48,23 @@ export const sessionModel = atom(() => {
     to: getMeFx,
   });
 
-  const $isLogged = createStore(false)
-    .on([signInFx.doneData, signUpFx.doneData, refreshFx.doneData, getMeFx.doneData], () => true)
-    .reset(logOutFx.doneData);
-
-  const $pending = createStore(false).on(
-    [signInFx.pending, signUpFx.pending, logOutFx.pending],
-    (_, payload) => payload,
-  );
-
-  const $session = restore(getMeFx, null);
-
-  forward({
-    from: logOutFx.done,
-    to: triggeredHome,
-  });
-
-  reset({
-    clock: logOutFx.done,
-    target: $session,
+  sample({
+    clock: [refreshFx.failData, getMeFx.failData, logOut],
+    source: navigationModel.$router,
+    filter: Boolean,
+    target: checkRouteAndRedirect,
   });
 
   sample({
-    clock: triggeredHome,
+    clock: checkRouteAndRedirect,
+    filter: (router) => router.asPath.startsWith(paths.profile),
     fn: () => paths.home,
     target: navigationModel.pushFx,
   });
 
-  sample({
-    clock: [refreshFx.failData, getMeFx.failData],
-    source: navigationModel.$router,
-    filter: (router) => Boolean(router?.asPath.startsWith(paths.profile)),
-    target: triggeredHome,
+  reset({
+    clock: logOut,
+    target: $session,
   });
 
   return {

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import NextNProgress from 'nextjs-progressbar';
 import type { AppProps } from 'next/app';
 import { BaseLayout } from 'widgets/layouts';
+import { appStarted } from 'shared/config';
 import { navigationModel } from 'shared/navigation';
 import { withProviders } from './providers';
 
@@ -10,6 +11,8 @@ const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
   useGate(navigationModel.RouterGate, { router });
+
+  useGate(appStarted);
 
   return (
     <>

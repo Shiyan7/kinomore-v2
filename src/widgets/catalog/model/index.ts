@@ -1,7 +1,7 @@
 import { attach, combine, createEvent, createStore, restore, sample } from 'effector';
 import type { PageContext } from 'nextjs-effector';
 import { commonApi } from 'shared/api';
-import { atom } from 'shared/lib/atom';
+import { atom } from 'shared/factory';
 import { getCatalogType } from '../lib';
 
 export const catalogModel = atom(() => {

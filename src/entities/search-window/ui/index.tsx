@@ -10,7 +10,7 @@ import styles from './styles.module.scss';
 
 export const SearchWindow = () => {
   const toggler = useToggler(searchModel.searchToggler);
-  const debouncedValue = useStore(searchModel.$debouncedValue);
+  const query = useStore(searchModel.$query);
 
   return (
     <Modal isOpen={toggler.isOpen} close={toggler.close} className={styles.window}>
@@ -22,7 +22,7 @@ export const SearchWindow = () => {
           Поиск
         </Title>
         <SearchInput />
-        {debouncedValue && <SearchList />}
+        {query && <SearchList />}
       </div>
     </Modal>
   );

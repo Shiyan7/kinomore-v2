@@ -2,8 +2,7 @@ import { attach, createEvent, createStore, sample } from 'effector';
 import { PageContext } from 'nextjs-effector';
 import { sessionModel } from 'entities/session';
 import { MovieEntity, commonApi, internalApi } from 'shared/api';
-import { appStarted } from 'shared/config';
-import { atom } from 'shared/lib/atom';
+import { atom } from 'shared/factory';
 
 export const favoritesModel = atom(() => {
   const toggleFavoriteFx = attach({ effect: internalApi.toggleFavorite });
@@ -37,11 +36,6 @@ export const favoritesModel = atom(() => {
     clock: favoritesPageStarted,
     fn: () => null,
     target: getFavoritesIdFx,
-  });
-
-  sample({
-    clock: favoritesPageStarted,
-    target: appStarted,
   });
 
   sample({

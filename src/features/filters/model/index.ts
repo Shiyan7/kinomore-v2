@@ -1,7 +1,7 @@
 import type { ParsedUrlQuery } from 'querystring';
 import { createEvent, createStore, sample } from 'effector';
+import { atom } from 'shared/factory';
 import { createToggler, paramsToString } from 'shared/lib';
-import { atom } from 'shared/lib/atom';
 import { navigationModel } from 'shared/navigation';
 import { genres, years } from '../config';
 import { getOption } from '../lib';

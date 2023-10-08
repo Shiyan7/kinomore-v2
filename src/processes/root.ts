@@ -9,9 +9,10 @@ reset({
   clock: navigationModel.$router,
   target: [
     searchModel.$search,
-    searchModel.$debouncedValue,
+    searchModel.$query,
     authModel.$progress,
     authModel.$state,
+    favoritesModel.$isFavorite,
     favoritesModel.$allFavorites,
     favoritesModel.$pending,
   ],

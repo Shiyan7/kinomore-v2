@@ -1,4 +1,3 @@
-import { createEvent } from 'effector';
-import { PageContext } from 'nextjs-effector';
+import { createGate } from 'effector-react';
 
-export const appStarted = createEvent<PageContext>();
+export const appStarted = createGate();

@@ -1,7 +1,7 @@
 import { attach, createEvent, createStore, sample } from 'effector';
 import { reset, debounce } from 'patronum';
 import { SearchMovieEntity, commonApi } from 'shared/api';
-import { atom } from 'shared/lib/atom';
+import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
 
 const DEBOUNCE_TIME = 600;
@@ -15,7 +15,7 @@ export const searchModel = atom(() => {
   const loadMore = createEvent();
 
   const $searchResult = createStore<SearchMovieEntity[]>([]);
-  const $debouncedValue = createStore('');
+  const $query = createStore('');
   const $hasMore = createStore(false);
   const $searchPending = createStore(false);
   const $search = createStore('');
@@ -30,11 +30,11 @@ export const searchModel = atom(() => {
 
   sample({
     clock: debouncedSearchChanged,
-    target: [$debouncedValue],
+    target: $query,
   });
 
   sample({
-    clock: $debouncedValue,
+    clock: $query,
     source: $page,
     fn: (page, query) => ({ query, page }),
     target: searchByNameFx,
@@ -42,13 +42,13 @@ export const searchModel = atom(() => {
 
   sample({
     clock: loadMore,
-    source: { query: $debouncedValue, page: $page },
+    source: { query: $query, page: $page },
     target: searchByNameFx,
   });
 
   reset({
     clock: searchToggler.$isOpen,
-    target: [$search, $debouncedValue],
+    target: [$search, $query],
   });
 
   reset({
@@ -77,7 +77,7 @@ export const searchModel = atom(() => {
     $page,
     $hasMore,
     $search,
-    $debouncedValue,
+    $query,
     $searchPending,
     $loadPending,
   };

@@ -1,7 +1,6 @@
 import { NextSeo } from 'next-seo';
 import { ComponentType } from 'react';
 
-// eslint-disable-next-line operator-linebreak
 export const withSeo =
   <T extends object>(Component: ComponentType<T>) =>
   (props: T) =>

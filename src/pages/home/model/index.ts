@@ -1,6 +1,6 @@
 import { attach, createEvent, restore, sample } from 'effector';
 import { commonApi } from 'shared/api';
-import { atom } from 'shared/lib/atom';
+import { atom } from 'shared/factory';
 
 export const homeModel = atom(() => {
   const clientStarted = createEvent();

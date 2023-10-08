@@ -43,7 +43,7 @@ export const Catalog = ({ title }: CatalogProps) => {
         </div>
         <Filters />
         <div className={styles.grid}>
-          {data?.docs.map((item) => (
+          {data?.docs?.map((item) => (
             <MovieItem key={item.id} item={item} />
           ))}
         </div>

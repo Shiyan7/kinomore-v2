@@ -2,7 +2,7 @@ import { attach, createEvent, restore, sample } from 'effector';
 import type { PageContext } from 'nextjs-effector';
 import { favoritesModel } from 'features/favorites';
 import { commonApi, internalApi } from 'shared/api';
-import { atom } from 'shared/lib/atom';
+import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
 
 export const movieModel = atom(() => {

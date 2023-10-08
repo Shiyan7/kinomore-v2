@@ -1397,11 +1397,6 @@
   resolved "https://registry.yarnpkg.com/@filledout/core/-/core-0.0.9.tgz#4c236b30133c9e006a46bff17e225534a6cfd431"
   integrity sha512-Pmhk7PGTn9B4ZkfLKFS7HPmp6rr++CqpzGg7onLhBeMmOjS1TIgej8p9bsZaKb7WexN7+zxoyFVJCEJ7wcqx0A==
 
-"@filledout/react@0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@filledout/react/-/react-0.0.8.tgz#d2116c4971604a675ca0111df274eedcbad5cf77"
-  integrity sha512-d/qGpXj4+4PDiFILK8fmHcDMLUMaJ6aLln+iuN3zeB4Lf0cLR39HXIxBP6paJhrr01ByGiOyfwaSEEJoGbIRpw==
-
 "@filledout/yup@0.0.4":
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/@filledout/yup/-/yup-0.0.4.tgz#24cd4ec86605cf5724dbf2ddcafdb0741fbceaac"
