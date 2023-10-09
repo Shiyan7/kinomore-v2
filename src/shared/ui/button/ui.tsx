@@ -1,12 +1,14 @@
 import clsx from 'clsx';
-import { forwardRef, type ElementType, ReactNode, ComponentProps } from 'react';
+import { forwardRef, type ElementType, ReactNode } from 'react';
 import { Spinner } from 'shared/ui/spinner';
 import styles from './styles.module.scss';
 
-interface ButtonOwnProps<E extends ElementType = ElementType> {
+interface ButtonProps<E extends ElementType = ElementType> {
   className?: string;
   loading?: boolean;
   skeletonLoading?: boolean;
+  onClick?: () => void;
+  href?: string;
   rounded?: boolean;
   gradient?: boolean;
   size?: 'small' | 'regular' | 'medium' | 'big' | 'large';
@@ -19,9 +21,7 @@ interface ButtonOwnProps<E extends ElementType = ElementType> {
 
 const DEFAULT_ELEMENT: ElementType = 'button';
 
-export type ButtonProps<E extends ElementType> = ButtonOwnProps<E> & Omit<ComponentProps<E>, keyof ButtonOwnProps>;
-
-export const Button = forwardRef<HTMLButtonElement, ButtonProps<typeof DEFAULT_ELEMENT>>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,

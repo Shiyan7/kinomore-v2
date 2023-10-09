@@ -49,7 +49,7 @@ export const sessionModel = atom(() => {
   });
 
   sample({
-    clock: [refreshFx.failData, getMeFx.failData, logOut],
+    clock: [refreshFx.failData, getMeFx.failData],
     source: navigationModel.$router,
     filter: Boolean,
     target: checkRouteAndRedirect,

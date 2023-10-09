@@ -2,6 +2,7 @@ import { useEvent, useStore } from 'effector-react';
 import Link from 'next/link';
 import { usePageEvent } from 'nextjs-effector';
 import { sessionModel } from 'entities/session';
+import { paths } from 'shared/routing';
 import { Button, Icon, Title } from 'shared/ui';
 import { Breadcrumbs } from 'shared/ui/breadcrumbs';
 import { Spinner } from 'shared/ui/spinner';
@@ -28,7 +29,14 @@ export const ProfilePage = () => {
           <Title className={styles.name}>{data?.name}</Title>
           <span className={styles.caption}>Основной профиль</span>
         </div>
-        <Button size="small" variant="glass" className={styles.btn} onClick={() => logOut()}>
+        <Button
+          as={Link}
+          href={paths.home}
+          size="small"
+          variant="glass"
+          className={styles.btn}
+          onClick={() => logOut()}
+        >
           Выйти
         </Button>
       </div>
