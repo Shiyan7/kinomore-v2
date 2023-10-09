@@ -1,13 +1,11 @@
 import clsx from 'clsx';
-import { forwardRef, type ElementType, ReactNode } from 'react';
+import { forwardRef, type ElementType, ReactNode, ButtonHTMLAttributes } from 'react';
 import { Spinner } from 'shared/ui/spinner';
 import styles from './styles.module.scss';
 
-interface ButtonProps<E extends ElementType = ElementType> {
-  className?: string;
+interface ButtonProps<E extends ElementType = ElementType> extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   skeletonLoading?: boolean;
-  onClick?: () => void;
   href?: string;
   rounded?: boolean;
   gradient?: boolean;
@@ -15,7 +13,6 @@ interface ButtonProps<E extends ElementType = ElementType> {
   variant?: 'primary' | 'white' | 'gray' | 'glass';
   startIcon?: ReactNode;
   endIcon?: ReactNode;
-  children: ReactNode;
   as?: E;
 }
 
