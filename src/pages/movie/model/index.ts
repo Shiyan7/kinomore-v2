@@ -1,4 +1,5 @@
 import { attach, createEvent, restore, sample } from 'effector';
+import { createGate } from 'effector-react';
 import type { PageContext } from 'nextjs-effector';
 import { favoritesModel } from 'features/favorites';
 import { commonApi, internalApi } from 'shared/api';
@@ -7,7 +8,7 @@ import { createToggler } from 'shared/lib/toggler';
 
 export const movieModel = atom(() => {
   const pageStarted = createEvent<PageContext>();
-  const clientStarted = createEvent<PageContext>();
+  const clientStarted = createGate<{ movieId: string }>();
 
   const trailerToggler = createToggler();
   const shareToggler = createToggler();
@@ -24,8 +25,8 @@ export const movieModel = atom(() => {
   });
 
   sample({
-    clock: clientStarted,
-    fn: ({ params }) => params?.id as string,
+    clock: clientStarted.open,
+    fn: ({ movieId }) => movieId,
     target: checkFavoriteFx,
   });
 

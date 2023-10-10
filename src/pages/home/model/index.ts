@@ -1,9 +1,10 @@
-import { attach, createEvent, restore, sample } from 'effector';
+import { attach, restore, sample } from 'effector';
+import { createGate } from 'effector-react';
 import { commonApi } from 'shared/api';
 import { atom } from 'shared/factory';
 
 export const homeModel = atom(() => {
-  const clientStarted = createEvent();
+  const clientStarted = createGate();
 
   const getNewMoviesFx = attach({ effect: commonApi.getNewMovies });
   const $newMovies = restore(getNewMoviesFx, null);
@@ -21,7 +22,7 @@ export const homeModel = atom(() => {
   const $fantasticMovies = restore(getFantasticMoviesFx, null);
 
   sample({
-    clock: clientStarted,
+    clock: clientStarted.open,
     target: [getNewMoviesFx, getComedyMoviesFx, getFamilyMoviesFx, getDramaMoviesFx, getFantasticMoviesFx],
   });
 

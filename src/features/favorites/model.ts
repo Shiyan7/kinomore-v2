@@ -1,5 +1,5 @@
 import { attach, createEvent, createStore, sample } from 'effector';
-import { PageContext } from 'nextjs-effector';
+import { createGate } from 'effector-react';
 import { sessionModel } from 'entities/session';
 import { MovieEntity, commonApi, internalApi } from 'shared/api';
 import { atom } from 'shared/factory';
@@ -15,7 +15,7 @@ export const favoritesModel = atom(() => {
   const $allFavorites = createStore<MovieEntity[]>([]);
 
   const abortPending = createEvent();
-  const favoritesPageStarted = createEvent<PageContext>();
+  const favoritesPageStarted = createGate();
   const toggleFavorite = createEvent<{ id: number }>();
   const removeFavoriteClicked = createEvent<{ id: number }>();
 
@@ -33,7 +33,7 @@ export const favoritesModel = atom(() => {
   });
 
   sample({
-    clock: favoritesPageStarted,
+    clock: favoritesPageStarted.open,
     fn: () => null,
     target: getFavoritesIdFx,
   });

@@ -1,4 +1,5 @@
 import { createStore, attach, forward, createEvent, sample, restore } from 'effector';
+import { createGate } from 'effector-react';
 import { NextRouter } from 'next/router';
 import { reset } from 'patronum';
 import { internalApi } from 'shared/api';
@@ -14,7 +15,7 @@ export const sessionModel = atom(() => {
   const logOutFx = attach({ effect: internalApi.logOut });
   const refreshFx = attach({ effect: internalApi.refresh });
 
-  const getMe = createEvent();
+  const getMe = createGate();
   const logOut = createEvent();
   const startRefresh = createEvent();
   const checkRouteAndRedirect = createEvent<NextRouter>();
@@ -28,8 +29,7 @@ export const sessionModel = atom(() => {
   const $session = restore(getMeFx, null);
 
   sample({
-    clock: appStarted.status,
-    filter: Boolean,
+    clock: appStarted.open,
     target: startRefresh,
   });
 
@@ -44,7 +44,7 @@ export const sessionModel = atom(() => {
   });
 
   forward({
-    from: getMe,
+    from: getMe.open,
     to: getMeFx,
   });
 
