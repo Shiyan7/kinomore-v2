@@ -1,6 +1,5 @@
-import { useEvent, useStore } from 'effector-react';
+import { useEvent, useGate, useStore } from 'effector-react';
 import Link from 'next/link';
-import { usePageEvent } from 'nextjs-effector';
 import { sessionModel } from 'entities/session';
 import { paths } from 'shared/routing';
 import { Button, Icon, Title } from 'shared/ui';
@@ -13,7 +12,7 @@ export const ProfilePage = () => {
   const data = useStore(sessionModel.$session);
   const logOut = useEvent(sessionModel.logOut);
 
-  usePageEvent(sessionModel.getMe);
+  useGate(sessionModel.getMe);
 
   const Loader = (
     <div className={styles.loader}>

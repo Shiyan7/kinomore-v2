@@ -1,6 +1,5 @@
 import clsx from 'clsx';
-import { useEvent, useStore } from 'effector-react';
-import { usePageEvent } from 'nextjs-effector';
+import { useEvent, useGate, useStore } from 'effector-react';
 import { favoritesModel } from 'features/favorites';
 import { MovieItem } from 'entities/movie/item';
 import { paths } from 'shared/routing';
@@ -18,7 +17,7 @@ export const FavoritesPage = () => {
   const pending = useStore(favoritesModel.$pending);
   const removeFavoriteClicked = useEvent(favoritesModel.removeFavoriteClicked);
 
-  usePageEvent(favoritesModel.favoritesPageStarted);
+  useGate(favoritesModel.favoritesPageStarted);
 
   const Loader = (
     <div className={styles.loader}>

@@ -1,10 +1,8 @@
-import { combine, createEvent, createStore, sample, forward, attach } from 'effector';
+import { createEvent, createStore, sample, forward, attach } from 'effector';
 import { delay, not } from 'patronum';
-import { object, string } from 'yup';
 import { sessionModel } from 'entities/session';
 import { internalApi } from 'shared/api';
 import { atom } from 'shared/factory';
-import { createForm } from 'shared/form';
 import { createToggler } from 'shared/lib/toggler';
 import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
@@ -12,23 +10,17 @@ import { paths } from 'shared/routing';
 export const authModel = atom(() => {
   const toggler = createToggler();
 
-  const emailForm = createForm({
-    initialValues: {
-      email: '',
-    },
-    schema: object({
-      email: string().email().required(),
-    }),
-  });
+  const $email = createStore('');
+  const $password = createStore('');
 
-  const passwordForm = createForm({
-    initialValues: {
-      password: '',
-    },
-    schema: object({
-      password: string().min(6).required(),
-    }),
-  });
+  const emailChanged = createEvent<string>();
+  const passwordChanged = createEvent<string>();
+
+  const emailFormSubmitted = createEvent();
+  const passwordFormSubmitted = createEvent();
+
+  $email.on(emailChanged, (_, payload) => payload);
+  $password.on(passwordChanged, (_, payload) => payload);
 
   const editClicked = createEvent();
   const continueClicked = createEvent();
@@ -46,10 +38,15 @@ export const authModel = atom(() => {
 
   const checkUserFx = attach({ effect: internalApi.checkUser });
 
+  const $checkUserPending = checkUserFx.pending;
+
   const $isNewUser = createStore(false);
 
+  const formValue = { email: $email, password: $password };
+
   sample({
-    clock: emailForm.submitted,
+    clock: emailFormSubmitted,
+    source: $email,
     target: checkUserFx,
   });
 
@@ -64,20 +61,15 @@ export const authModel = atom(() => {
     to: continueClicked,
   });
 
-  const formValue = combine(emailForm.$values, passwordForm.$values, ({ email }, { password }) => ({
-    email,
-    password,
-  }));
-
   sample({
-    clock: passwordForm.submitted,
+    clock: passwordFormSubmitted,
     source: formValue,
     filter: $isNewUser,
     target: sessionModel.signUpFx,
   });
 
   sample({
-    clock: passwordForm.submitted,
+    clock: passwordFormSubmitted,
     source: formValue,
     filter: not($isNewUser),
     target: sessionModel.signInFx,
@@ -108,14 +100,16 @@ export const authModel = atom(() => {
 
   return {
     toggler,
-    emailForm,
-    passwordForm,
+    $email,
+    $password,
+    emailChanged,
+    passwordChanged,
+    emailFormSubmitted,
+    passwordFormSubmitted,
     editClicked,
-    continueClicked,
-    authSuccess,
     $progress,
     $state,
-    checkUserFx,
+    $checkUserPending,
     $isNewUser,
   };
 });

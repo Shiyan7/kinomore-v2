@@ -20,9 +20,11 @@ const routesConfig = http.createRoutesConfig({
     url: '/auth/logout',
     method: 'post',
   }),
-  checkUser: http.createRoute<{ email: string }, Status>((data) => ({
+  checkUser: http.createRoute<string, Status>((email) => ({
     url: '/auth/check-email',
-    data,
+    data: {
+      email,
+    },
   })),
   getMe: http.createRoute<void, User>({
     url: '/user/me',

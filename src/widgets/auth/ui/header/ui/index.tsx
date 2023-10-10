@@ -7,7 +7,7 @@ import { Progress } from './progress';
 import styles from './styles.module.scss';
 
 export const Header = () => {
-  const { email } = useStore(authModel.emailForm.$values);
+  const email = useStore(authModel.$email);
   const { close } = useToggler(authModel.toggler);
   const state = useStore(authModel.$state);
   const isNewUser = useStore(authModel.$isNewUser);

@@ -1,4 +1,4 @@
-import { usePageEvent } from 'nextjs-effector';
+import { useGate } from 'effector-react';
 import { homeModel } from '../model';
 import { ComedyFilms } from './comedy-films';
 import { Drama } from './drama';
@@ -10,7 +10,7 @@ import { Info } from './info';
 import { NewFilms } from './new-films';
 
 export const HomePage = () => {
-  usePageEvent(homeModel.clientStarted);
+  useGate(homeModel.clientStarted);
 
   return (
     <>
