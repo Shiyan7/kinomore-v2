@@ -10,16 +10,15 @@ import { maskString } from './lib';
 import styles from './styles.module.scss';
 
 export const PasswordForm = () => {
-  const email = useStore(authModel.emailForm.$value);
-  const password = useStore(authModel.passwordForm.$value);
+  const email = useStore(authModel.$email);
+  const password = useStore(authModel.$password);
   const maskPassword = maskString(password);
   const pending = useStore(sessionModel.$pending);
   const inputRef = useRef<HTMLInputElement>(null);
   const isNewUser = useStore(authModel.$isNewUser);
   const editClicked = useEvent(authModel.editClicked);
-  const isPasswordError = useStore(authModel.passwordForm.$isError);
-  const passwordFormSubmit = useEvent(authModel.passwordForm.submit);
-  const passwordChanged = useEvent(authModel.passwordForm.changed);
+  const passwordFormSubmit = useEvent(authModel.passwordFormSubmitted);
+  const passwordChanged = useEvent(authModel.passwordChanged);
   const state = useStore(authModel.$state);
   const isAuthorizedState = state === 'authorized';
 
@@ -48,7 +47,7 @@ export const PasswordForm = () => {
           <div className={styles.inputs}>
             <Transition offset={20} delay={350}>
               <Input
-                hasError={isPasswordError}
+                minLength={6}
                 onChange={(e) => passwordChanged(e.target.value)}
                 ref={inputRef}
                 value={password}

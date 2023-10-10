@@ -12,6 +12,8 @@ reset({
     searchModel.$query,
     authModel.$progress,
     authModel.$state,
+    authModel.$email,
+    authModel.$password,
     favoritesModel.$isFavorite,
     favoritesModel.$allFavorites,
     favoritesModel.$pending,
@@ -20,5 +22,5 @@ reset({
 
 sample({
   clock: navigationModel.$router,
-  target: [searchModel.searchToggler.close, authModel.emailForm.reset, authModel.passwordForm.reset],
+  target: searchModel.searchToggler.close,
 });

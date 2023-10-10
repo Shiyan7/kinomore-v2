@@ -9,11 +9,10 @@ import { Transition } from '../transition';
 import styles from './styles.module.scss';
 
 export const EmailForm = () => {
-  const email = useStore(authModel.emailForm.$value);
-  const isEmailError = useStore(authModel.emailForm.$isError);
+  const email = useStore(authModel.$email);
   const inputRef = useRef<HTMLInputElement>(null);
-  const emailChanged = useEvent(authModel.emailForm.changed);
-  const emailFormSubmitted = useEvent(authModel.emailForm.submit);
+  const emailChanged = useEvent(authModel.emailChanged);
+  const emailFormSubmitted = useEvent(authModel.emailFormSubmitted);
   const pending = useStore(authModel.$checkUserPending);
 
   useEffect(() => {
@@ -27,10 +26,10 @@ export const EmailForm = () => {
 
   return (
     <div className={styles.content}>
-      <form noValidate onSubmit={handleSubmitForm} className={styles.form}>
+      <form onSubmit={handleSubmitForm} className={styles.form}>
         <Transition offset={20} delay={130}>
           <Input
-            hasError={isEmailError}
+            pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
             onChange={(e) => emailChanged(e.target.value)}
             value={email}
             ref={inputRef}
