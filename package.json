@@ -13,8 +13,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@filledout/core": "0.0.9",
-    "@filledout/yup": "0.0.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@types/node": "18.11.9",
@@ -45,8 +43,7 @@
     "react-tabs": "^6.0.0",
     "react-transition-group": "^4.4.5",
     "sass": "^1.56.1",
-    "swiper": "^8.4.4",
-    "yup": "0.32.11"
+    "swiper": "^8.4.4"
   },
   "devDependencies": {
     "@feature-sliced/eslint-config": "^0.1.0-beta.6",

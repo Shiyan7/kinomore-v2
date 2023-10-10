@@ -1,2 +1,1 @@
-export * from './adapters';
-export * from './factory';
+export { createForm } from './model';

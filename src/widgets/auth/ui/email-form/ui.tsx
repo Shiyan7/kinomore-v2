@@ -1,29 +1,38 @@
-import { useStore } from 'effector-react';
-import { useEffect, useRef } from 'react';
+import { useEvent, useStore } from 'effector-react';
+import { FormEventHandler, useEffect, useRef } from 'react';
 import { authModel } from 'widgets/auth';
-import { Form, Field, useForm } from 'shared/form';
 import { paths } from 'shared/routing';
+import { Input } from 'shared/ui';
 import { Button } from 'shared/ui/button';
 import { Link } from 'shared/ui/link';
 import { Transition } from '../transition';
 import styles from './styles.module.scss';
 
 export const EmailForm = () => {
-  const { onSubmit, fields } = useForm(authModel.emailForm);
-  const { email } = useStore(authModel.emailForm.$values);
+  const email = useStore(authModel.emailForm.$value);
+  const isEmailError = useStore(authModel.emailForm.$isError);
   const inputRef = useRef<HTMLInputElement>(null);
-  const pending = useStore(authModel.checkUserFx.pending);
+  const emailChanged = useEvent(authModel.emailForm.changed);
+  const emailFormSubmitted = useEvent(authModel.emailForm.submit);
+  const pending = useStore(authModel.$checkUserPending);
 
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
 
+  const handleSubmitForm: FormEventHandler = (e) => {
+    e.preventDefault();
+    emailFormSubmitted();
+  };
+
   return (
     <div className={styles.content}>
-      <Form onSubmit={onSubmit} className={styles.form}>
+      <form noValidate onSubmit={handleSubmitForm} className={styles.form}>
         <Transition offset={20} delay={130}>
-          <Field.Input
-            field={fields.email}
+          <Input
+            hasError={isEmailError}
+            onChange={(e) => emailChanged(e.target.value)}
+            value={email}
             ref={inputRef}
             type="email"
             className={styles.input}
@@ -35,7 +44,7 @@ export const EmailForm = () => {
             Продолжить
           </Button>
         </Transition>
-      </Form>
+      </form>
       <Transition offset={40} delay={185}>
         <div className={styles.policy}>
           <span className={styles.caption}>Нажимая «Продолжить», я соглашаюсь</span>

@@ -1,8 +1,8 @@
 import { useStore, useEvent } from 'effector-react';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, FormEventHandler } from 'react';
 import { authModel } from 'widgets/auth';
 import { sessionModel } from 'entities/session';
-import { Field, Form, useForm } from 'shared/form';
+import { Input } from 'shared/ui';
 import { Button } from 'shared/ui/button';
 import { Message } from '../message';
 import { Transition } from '../transition';
@@ -10,20 +10,27 @@ import { maskString } from './lib';
 import styles from './styles.module.scss';
 
 export const PasswordForm = () => {
-  const { onSubmit, fields } = useForm(authModel.passwordForm);
-  const { email } = useStore(authModel.emailForm.$values);
-  const { password } = useStore(authModel.passwordForm.$values);
+  const email = useStore(authModel.emailForm.$value);
+  const password = useStore(authModel.passwordForm.$value);
   const maskPassword = maskString(password);
   const pending = useStore(sessionModel.$pending);
   const inputRef = useRef<HTMLInputElement>(null);
   const isNewUser = useStore(authModel.$isNewUser);
   const editClicked = useEvent(authModel.editClicked);
+  const isPasswordError = useStore(authModel.passwordForm.$isError);
+  const passwordFormSubmit = useEvent(authModel.passwordForm.submit);
+  const passwordChanged = useEvent(authModel.passwordForm.changed);
   const state = useStore(authModel.$state);
   const isAuthorizedState = state === 'authorized';
 
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
+
+  const handleSubmitForm: FormEventHandler = (e) => {
+    e.preventDefault();
+    passwordFormSubmit();
+  };
 
   return (
     <>
@@ -37,12 +44,14 @@ export const PasswordForm = () => {
         />
       </Transition>
       <Transition animation="bounceOutUp" startIn={isAuthorizedState} offset={-30} delay={250}>
-        <Form onSubmit={onSubmit} className={styles.form}>
+        <form onSubmit={handleSubmitForm} className={styles.form}>
           <div className={styles.inputs}>
             <Transition offset={20} delay={350}>
-              <Field.Input
+              <Input
+                hasError={isPasswordError}
+                onChange={(e) => passwordChanged(e.target.value)}
                 ref={inputRef}
-                field={fields.password}
+                value={password}
                 type="password"
                 className={styles.input}
                 placeholder={isNewUser ? 'Придумайте пароль' : 'Введите пароль'}
@@ -54,7 +63,7 @@ export const PasswordForm = () => {
               {isNewUser ? 'Зарегистрироваться' : 'Войти'}
             </Button>
           </Transition>
-        </Form>
+        </form>
       </Transition>
       {isAuthorizedState && (
         <>
