@@ -17,7 +17,7 @@ export const FavoritesPage = () => {
   const pending = useStore(favoritesModel.$pending);
   const removeFavoriteClicked = useEvent(favoritesModel.removeFavoriteClicked);
 
-  useGate(favoritesModel.favoritesPageStarted);
+  useGate(favoritesModel.FavoritesGate);
 
   const Loader = (
     <div className={styles.loader}>

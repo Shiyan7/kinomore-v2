@@ -8,7 +8,7 @@ import { createToggler } from 'shared/lib/toggler';
 
 export const movieModel = atom(() => {
   const pageStarted = createEvent<PageContext>();
-  const clientStarted = createGate<{ movieId: string }>();
+  const MovieGate = createGate<{ movieId: string }>();
 
   const trailerToggler = createToggler();
   const shareToggler = createToggler();
@@ -25,7 +25,7 @@ export const movieModel = atom(() => {
   });
 
   sample({
-    clock: clientStarted.open,
+    clock: MovieGate.open,
     fn: ({ movieId }) => movieId,
     target: checkFavoriteFx,
   });
@@ -37,7 +37,7 @@ export const movieModel = atom(() => {
 
   return {
     pageStarted,
-    clientStarted,
+    MovieGate,
     trailerToggler,
     shareToggler,
     playerToggler,

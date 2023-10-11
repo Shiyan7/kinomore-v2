@@ -14,8 +14,8 @@ export const favoritesModel = atom(() => {
   const $arrayOfId = createStore<number[]>([]);
   const $allFavorites = createStore<MovieEntity[]>([]);
 
+  const FavoritesGate = createGate();
   const abortPending = createEvent();
-  const favoritesPageStarted = createGate();
   const toggleFavorite = createEvent<{ id: number }>();
   const removeFavoriteClicked = createEvent<{ id: number }>();
 
@@ -33,7 +33,7 @@ export const favoritesModel = atom(() => {
   });
 
   sample({
-    clock: favoritesPageStarted.open,
+    clock: FavoritesGate.open,
     target: getFavoritesIdFx,
   });
 
@@ -68,7 +68,7 @@ export const favoritesModel = atom(() => {
   $pending.on(abortPending, () => false);
 
   return {
-    favoritesPageStarted,
+    FavoritesGate,
     toggleFavorite,
     removeFavoriteClicked,
     $pending,

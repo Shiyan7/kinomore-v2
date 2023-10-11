@@ -12,7 +12,7 @@ export const ProfilePage = () => {
   const data = useStore(sessionModel.$session);
   const logOut = useEvent(sessionModel.logOut);
 
-  useGate(sessionModel.getMe);
+  useGate(sessionModel.ProfileGate);
 
   const Loader = (
     <div className={styles.loader}>

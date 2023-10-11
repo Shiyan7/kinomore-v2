@@ -2,7 +2,7 @@ import { createStore, attach, createEvent, sample, restore } from 'effector';
 import { createGate } from 'effector-react';
 import { not, reset } from 'patronum';
 import { internalApi } from 'shared/api';
-import { appStarted } from 'shared/config';
+import { AppGate } from 'shared/config';
 import { atom } from 'shared/factory';
 import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
@@ -14,7 +14,7 @@ export const sessionModel = atom(() => {
   const signUpFx = attach({ effect: internalApi.signUp });
   const refreshFx = attach({ effect: internalApi.refresh });
 
-  const getMe = createGate();
+  const ProfileGate = createGate();
   const logOut = createEvent();
   const startRefresh = createEvent<string>();
   const checkTokenAndRedirect = createEvent();
@@ -30,18 +30,18 @@ export const sessionModel = atom(() => {
   const $session = restore(getMeFx, null);
 
   sample({
-    clock: getMe.open,
+    clock: ProfileGate.open,
     target: getMeFx,
   });
 
   sample({
-    clock: appStarted.open,
+    clock: AppGate.open,
     fn: tokenService.getRefreshToken,
     target: startRefresh,
   });
 
   sample({
-    clock: appStarted.open,
+    clock: AppGate.open,
     fn: tokenService.hasAccessToken,
     target: $hasAccessToken,
   });
@@ -63,7 +63,7 @@ export const sessionModel = atom(() => {
   });
 
   sample({
-    clock: appStarted.open,
+    clock: AppGate.open,
     filter: ({ asPath }) => asPath.startsWith(paths.profile),
     target: checkTokenAndRedirect,
   });
@@ -88,6 +88,6 @@ export const sessionModel = atom(() => {
     signUpFx,
     startRefresh,
     logOut,
-    getMe,
+    ProfileGate,
   };
 });

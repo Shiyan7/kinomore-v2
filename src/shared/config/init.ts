@@ -1,3 +1,3 @@
 import { createGate } from 'effector-react';
 
-export const appStarted = createGate<{ asPath: string }>();
+export const AppGate = createGate<{ asPath: string }>();
