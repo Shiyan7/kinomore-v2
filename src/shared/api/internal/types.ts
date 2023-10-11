@@ -20,7 +20,7 @@ export interface Status {
 }
 
 export interface FavoriteItems {
-  items: string[];
+  items: number[];
 }
 
 export interface TokensDto {
