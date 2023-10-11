@@ -5,7 +5,7 @@ function capitalizeFirstLetter(str: string): string {
 }
 
 export function getGenre(genres: Name[]): string {
-  const genre = genres[genres.length - 1].name;
+  const genre = genres[genres.length - 1]?.name;
 
   return capitalizeFirstLetter(genre ?? '');
 }

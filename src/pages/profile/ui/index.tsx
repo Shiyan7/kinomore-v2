@@ -41,7 +41,7 @@ export const ProfilePage = () => {
       </div>
       <div className={styles.grid}>
         {profileItems.map(({ href, iconName, caption }) => (
-          <Link key={href} href={href} className={styles.item}>
+          <Link key={iconName} href={href} className={styles.item}>
             <Icon type="common" name={iconName} />
             <span>{caption}</span>
           </Link>

@@ -12,9 +12,13 @@ export const Filmography = () => {
 
   if (!data?.movies) return null;
 
-  const length = data?.movies.length;
+  const filteredMovies = data.movies.filter((item) => item.rating);
+
+  const length = filteredMovies?.length;
+
   const hasMore = length > limit;
-  const movies = data?.movies.slice(0, limit);
+
+  const movies = filteredMovies?.slice(0, limit);
 
   return (
     <section className={styles.section}>
