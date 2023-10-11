@@ -1,27 +1,26 @@
 import { http } from './config';
-import type { AuthDto, FavoriteItems, Message, Status, User } from './types';
+import type { AuthDto, FavoriteItems, Message, Status, TokensDto, User } from './types';
 
 const routesConfig = http.createRoutesConfig({
-  signUp: http.createRoute<AuthDto, Message>((data) => ({
+  signUp: http.createRoute<AuthDto, TokensDto>((data) => ({
     url: '/auth/sign-up',
     method: 'post',
     data,
   })),
-  signIn: http.createRoute<AuthDto, Message>((data) => ({
+  signIn: http.createRoute<AuthDto, TokensDto>((data) => ({
     url: '/auth/sign-in',
     method: 'post',
     data,
   })),
-  refresh: http.createRoute<void, Message>({
+  refresh: http.createRoute<string, TokensDto>((token) => ({
     url: '/auth/refresh',
     method: 'post',
-  }),
-  logOut: http.createRoute<void, Message>({
-    url: '/auth/logout',
-    method: 'post',
-  }),
+    data: {
+      token,
+    },
+  })),
   checkUser: http.createRoute<string, Status>((email) => ({
-    url: '/auth/check-email',
+    url: '/auth/check-user',
     data: {
       email,
     },

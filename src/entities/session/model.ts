@@ -1,24 +1,25 @@
-import { createStore, attach, forward, createEvent, sample, restore } from 'effector';
+import { createStore, attach, createEvent, sample, restore } from 'effector';
 import { createGate } from 'effector-react';
-import { NextRouter } from 'next/router';
-import { reset } from 'patronum';
+import { not, reset } from 'patronum';
 import { internalApi } from 'shared/api';
 import { appStarted } from 'shared/config';
 import { atom } from 'shared/factory';
 import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
+import { tokenService } from './token-service';
 
 export const sessionModel = atom(() => {
   const getMeFx = attach({ effect: internalApi.getMe });
   const signInFx = attach({ effect: internalApi.signIn });
   const signUpFx = attach({ effect: internalApi.signUp });
-  const logOutFx = attach({ effect: internalApi.logOut });
   const refreshFx = attach({ effect: internalApi.refresh });
 
   const getMe = createGate();
   const logOut = createEvent();
-  const startRefresh = createEvent();
-  const checkRouteAndRedirect = createEvent<NextRouter>();
+  const startRefresh = createEvent<string>();
+  const checkTokenAndRedirect = createEvent();
+
+  const $hasAccessToken = createStore(false);
 
   const $isLogged = createStore(false)
     .on([signInFx.doneData, signUpFx.doneData, refreshFx.doneData, getMeFx.doneData], () => true)
@@ -29,35 +30,47 @@ export const sessionModel = atom(() => {
   const $session = restore(getMeFx, null);
 
   sample({
+    clock: getMe.open,
+    target: getMeFx,
+  });
+
+  sample({
     clock: appStarted.open,
+    fn: tokenService.getRefreshToken,
     target: startRefresh,
   });
 
-  forward({
-    from: logOut,
-    to: logOutFx,
-  });
-
-  forward({
-    from: startRefresh,
-    to: refreshFx,
-  });
-
-  forward({
-    from: getMe.open,
-    to: getMeFx,
+  sample({
+    clock: appStarted.open,
+    fn: tokenService.hasAccessToken,
+    target: $hasAccessToken,
   });
 
   sample({
-    clock: [refreshFx.failData, getMeFx.failData],
-    source: navigationModel.$router,
-    filter: Boolean,
-    target: checkRouteAndRedirect,
+    clock: startRefresh,
+    filter: tokenService.hasRefreshToken,
+    target: refreshFx,
   });
 
   sample({
-    clock: checkRouteAndRedirect,
-    filter: (router) => router.asPath.startsWith(paths.profile),
+    clock: [refreshFx.doneData, signInFx.doneData, signUpFx.doneData],
+    fn: tokenService.setTokens,
+  });
+
+  sample({
+    clock: logOut,
+    fn: tokenService.deleteTokens,
+  });
+
+  sample({
+    clock: appStarted.open,
+    filter: ({ asPath }) => asPath.startsWith(paths.profile),
+    target: checkTokenAndRedirect,
+  });
+
+  sample({
+    clock: checkTokenAndRedirect,
+    filter: not($hasAccessToken),
     fn: () => paths.home,
     target: navigationModel.pushFx,
   });
@@ -68,15 +81,13 @@ export const sessionModel = atom(() => {
   });
 
   return {
-    getMeFx,
+    $session,
+    $isLogged,
+    $pending,
     signInFx,
     signUpFx,
-    logOutFx,
     startRefresh,
     logOut,
     getMe,
-    $isLogged,
-    $pending,
-    $session,
   };
 });

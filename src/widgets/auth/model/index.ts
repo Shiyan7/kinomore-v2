@@ -1,4 +1,4 @@
-import { createEvent, createStore, sample, forward, attach } from 'effector';
+import { createEvent, createStore, sample, attach } from 'effector';
 import { delay, not } from 'patronum';
 import { sessionModel } from 'entities/session';
 import { internalApi } from 'shared/api';
@@ -52,13 +52,13 @@ export const authModel = atom(() => {
 
   sample({
     clock: checkUserFx.doneData,
-    fn: ({ status }) => status,
+    fn: ({ isNewUser }) => isNewUser,
     target: $isNewUser,
   });
 
-  forward({
-    from: checkUserFx.doneData,
-    to: continueClicked,
+  sample({
+    clock: checkUserFx.doneData,
+    target: continueClicked,
   });
 
   sample({
@@ -77,9 +77,9 @@ export const authModel = atom(() => {
 
   const redirectToProfile = createEvent();
 
-  forward({
-    from: [sessionModel.signInFx.doneData, sessionModel.signUpFx.doneData],
-    to: [authSuccess, redirectToProfile],
+  sample({
+    clock: [sessionModel.signInFx.doneData, sessionModel.signUpFx.doneData],
+    target: [authSuccess, redirectToProfile],
   });
 
   const REDIRECT_DELAY = 1700;

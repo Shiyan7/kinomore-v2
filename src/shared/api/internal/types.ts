@@ -16,9 +16,14 @@ export interface Message {
 }
 
 export interface Status {
-  status: boolean;
+  isNewUser: boolean;
 }
 
 export interface FavoriteItems {
   items: string[];
+}
+
+export interface TokensDto {
+  accessToken: string;
+  refreshToken: string;
 }

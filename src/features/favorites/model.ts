@@ -34,7 +34,6 @@ export const favoritesModel = atom(() => {
 
   sample({
     clock: favoritesPageStarted.open,
-    fn: () => null,
     target: getFavoritesIdFx,
   });
 
