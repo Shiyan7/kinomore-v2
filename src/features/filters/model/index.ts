@@ -13,6 +13,19 @@ export const filtersModel = atom(() => {
 
   const $filters = createStore<Array<string | undefined>>([]);
 
+  const optionSelected = createEvent<ParsedUrlQuery>();
+
+  const sendOption = createEvent<ParsedUrlQuery>();
+
+  const showResults = createEvent();
+
+  const $allParams = createStore<ParsedUrlQuery | null>(null);
+
+  sample({
+    clock: optionSelected,
+    target: navigationModel.pushQueryFx,
+  });
+
   sample({
     clock: navigationModel.$query,
     filter: Boolean,
@@ -27,30 +40,15 @@ export const filtersModel = atom(() => {
     target: $params,
   });
 
-  const optionSelected = createEvent<ParsedUrlQuery>();
-
-  const sendOption = createEvent<ParsedUrlQuery>();
-
-  const $allParams = createStore<ParsedUrlQuery | null>(null).on(sendOption, (state, payload) => ({
+  $allParams.on(sendOption, (state, payload) => ({
     ...state,
     ...payload,
   }));
-
-  const showResults = createEvent();
-
-  /* Передаем все параметры в query только когда вызвался эвент showResults */
 
   sample({
     clock: showResults,
     source: $allParams,
     target: [navigationModel.pushQueryFx, toggler.close],
-  });
-
-  /* Когда что-то выбрали в селекте, сразу напрямую передаём в query */
-
-  sample({
-    clock: optionSelected,
-    target: navigationModel.pushQueryFx,
   });
 
   return {

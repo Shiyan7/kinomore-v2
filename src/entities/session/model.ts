@@ -15,12 +15,18 @@ export const sessionModel = atom(() => {
   const refreshFx = attach({ effect: internalApi.refresh });
 
   const ProfileGate = createGate();
+
   const logOut = createEvent();
+
   const startRefresh = createEvent<string>();
+
   const checkTokenAndRedirect = createEvent();
+
   const triggeredHome = createEvent();
 
   const $hasAccessToken = createStore(false);
+
+  const $isRefreshed = refreshFx.done;
 
   const $isLogged = createStore(false)
     .on([signInFx.doneData, signUpFx.doneData, refreshFx.doneData, getMeFx.doneData], () => true)
@@ -33,7 +39,8 @@ export const sessionModel = atom(() => {
   $session.reset(logOut);
 
   sample({
-    clock: ProfileGate.open,
+    clock: $isRefreshed,
+    source: ProfileGate.open,
     target: getMeFx,
   });
 
@@ -92,9 +99,11 @@ export const sessionModel = atom(() => {
   return {
     $session,
     $isLogged,
+    $isRefreshed,
     $pending,
     signInFx,
     signUpFx,
+    refreshFx,
     startRefresh,
     logOut,
     ProfileGate,

@@ -34,7 +34,8 @@ export const favoritesModel = atom(() => {
   });
 
   sample({
-    clock: FavoritesGate.open,
+    clock: sessionModel.$isRefreshed,
+    source: FavoritesGate.open,
     target: getFavoritesIdFx,
   });
 
