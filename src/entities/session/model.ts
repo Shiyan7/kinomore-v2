@@ -67,7 +67,8 @@ export const sessionModel = atom(() => {
 
   sample({
     clock: AppGate.open,
-    filter: ({ asPath }) => asPath.startsWith(paths.profile),
+    source: navigationModel.$router,
+    filter: (router) => Boolean(router?.asPath.startsWith(paths.profile)),
     target: checkTokenAndRedirect,
   });
 

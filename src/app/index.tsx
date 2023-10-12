@@ -12,7 +12,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   useGate(navigationModel.RouterGate, { router });
 
-  useGate(AppGate, { asPath: router.asPath });
+  useGate(AppGate);
 
   return (
     <>
