@@ -2,6 +2,7 @@ import { attach, createEvent, restore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import type { PageContext } from 'nextjs-effector';
 import { favoritesModel } from 'features/favorites';
+import { tokenService } from 'entities/session';
 import { commonApi, internalApi } from 'shared/api';
 import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
@@ -26,6 +27,7 @@ export const movieModel = atom(() => {
 
   sample({
     clock: MovieGate.open,
+    filter: tokenService.hasAccessToken,
     fn: ({ movieId }) => movieId,
     target: checkFavoriteFx,
   });

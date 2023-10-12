@@ -1,6 +1,6 @@
 import { createStore, attach, createEvent, sample, restore } from 'effector';
 import { createGate } from 'effector-react';
-import { not, reset } from 'patronum';
+import { not } from 'patronum';
 import { internalApi } from 'shared/api';
 import { AppGate } from 'shared/config';
 import { atom } from 'shared/factory';
@@ -18,6 +18,7 @@ export const sessionModel = atom(() => {
   const logOut = createEvent();
   const startRefresh = createEvent<string>();
   const checkTokenAndRedirect = createEvent();
+  const triggeredHome = createEvent();
 
   const $hasAccessToken = createStore(false);
 
@@ -28,6 +29,8 @@ export const sessionModel = atom(() => {
   const $pending = createStore(false).on([signInFx.pending, signUpFx.pending], (_, payload) => payload);
 
   const $session = restore(getMeFx, null);
+
+  $session.reset(logOut);
 
   sample({
     clock: ProfileGate.open,
@@ -43,7 +46,7 @@ export const sessionModel = atom(() => {
   sample({
     clock: AppGate.open,
     fn: tokenService.hasAccessToken,
-    target: $hasAccessToken,
+    target: [$hasAccessToken, $isLogged],
   });
 
   sample({
@@ -69,15 +72,20 @@ export const sessionModel = atom(() => {
   });
 
   sample({
-    clock: checkTokenAndRedirect,
-    filter: not($hasAccessToken),
-    fn: () => paths.home,
-    target: navigationModel.pushFx,
+    clock: getMeFx.failData,
+    target: [logOut, triggeredHome],
   });
 
-  reset({
-    clock: logOut,
-    target: $session,
+  sample({
+    clock: checkTokenAndRedirect,
+    filter: not($hasAccessToken),
+    target: triggeredHome,
+  });
+
+  sample({
+    clock: triggeredHome,
+    fn: () => paths.home,
+    target: navigationModel.pushFx,
   });
 
   return {
