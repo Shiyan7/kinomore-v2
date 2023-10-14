@@ -7,17 +7,25 @@ import { arrayToSearchParams } from './lib';
 
 export const favoritesModel = atom(() => {
   const toggleFavoriteFx = attach({ effect: internalApi.toggleFavorite });
+
   const getFavoritesIdFx = attach({ effect: internalApi.getFavoritesId });
+
   const getAllFavoritesFx = attach({ effect: commonApi.getAllFavorites });
 
   const $pending = createStore(true);
+
   const $isFavorite = createStore(false);
+
   const $allFavorites = createStore<MovieEntity[]>([]);
+
   const $arrayOfId = restore(getFavoritesIdFx.doneData, null);
 
   const FavoritesGate = createGate();
+
   const abortPending = createEvent();
+
   const toggleFavorite = createEvent<{ id: number }>();
+
   const removeFavoriteClicked = createEvent<{ id: number }>();
 
   sample({

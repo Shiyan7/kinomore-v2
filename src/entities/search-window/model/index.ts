@@ -12,13 +12,19 @@ export const searchModel = atom(() => {
   const searchByNameFx = attach({ effect: commonApi.searchByName });
 
   const searchChanged = createEvent<string>();
+
   const loadMore = createEvent();
 
   const $searchResult = createStore<SearchMovieEntity[]>([]);
+
   const $query = createStore('');
+
   const $hasMore = createStore(false);
+
   const $searchPending = createStore(false);
+
   const $search = createStore('');
+
   const $page = createStore(1);
 
   const $loadPending = searchByNameFx.pending;

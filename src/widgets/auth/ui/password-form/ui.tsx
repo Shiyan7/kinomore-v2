@@ -28,7 +28,7 @@ export const PasswordForm = () => {
 
   const handleSubmitForm: FormEventHandler = (e) => {
     e.preventDefault();
-    passwordFormSubmit();
+    passwordFormSubmit({ email, password });
   };
 
   return (
@@ -47,6 +47,7 @@ export const PasswordForm = () => {
           <div className={styles.inputs}>
             <Transition offset={20} delay={350}>
               <Input
+                togglePassword
                 minLength={6}
                 onChange={(e) => passwordChanged(e.target.value)}
                 ref={inputRef}

@@ -8,6 +8,7 @@ export const catalogModel = atom(() => {
   const pageStarted = createEvent<PageContext>();
 
   const getCatalogFx = attach({ effect: commonApi.getCatalog });
+
   const $catalog = restore(getCatalogFx, null);
 
   const loadMore = createEvent();

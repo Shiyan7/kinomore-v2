@@ -17,8 +17,8 @@ export const paths = {
   profile: '/profile',
   cartoons: '/cartoons',
   favorites: '/profile/favorites',
-  settings: '/profile',
-  history: '/profile',
+  settings: '/profile/settings',
+  history: '/profile/history',
 
   // Get the URL for the movie catalog page
   catalog: (params: CatalogParams): string => {

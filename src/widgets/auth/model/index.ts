@@ -1,5 +1,5 @@
 import { createEvent, createStore, sample, attach } from 'effector';
-import { delay, not } from 'patronum';
+import { condition, delay } from 'patronum';
 import { sessionModel } from 'entities/session';
 import { internalApi } from 'shared/api';
 import { atom } from 'shared/factory';
@@ -7,42 +7,54 @@ import { createToggler } from 'shared/lib/toggler';
 import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
 
+const REDIRECT_DELAY = 1700;
+
 export const authModel = atom(() => {
+  const checkUserFx = attach({ effect: internalApi.checkUser });
+
   const toggler = createToggler();
 
   const $email = createStore('');
+
   const $password = createStore('');
 
+  const $state = createStore<'email' | 'password' | 'authorized'>('email');
+
+  const $progress = createStore<5 | 50 | 100>(5);
+
+  const $isNewUser = createStore(false);
+
+  const $checkUserPending = checkUserFx.pending;
+
   const emailChanged = createEvent<string>();
+
   const passwordChanged = createEvent<string>();
 
   const emailFormSubmitted = createEvent();
-  const passwordFormSubmitted = createEvent();
-
-  $email.on(emailChanged, (_, payload) => payload);
-  $password.on(passwordChanged, (_, payload) => payload);
 
   const editClicked = createEvent();
+
   const continueClicked = createEvent();
+
   const authSuccess = createEvent();
 
-  const $progress = createStore(5)
+  const redirectToProfile = createEvent();
+
+  const passwordFormSubmitted = createEvent<{ email: string; password: string }>();
+
+  $email.on(emailChanged, (_, payload) => payload);
+
+  $password.on(passwordChanged, (_, payload) => payload);
+
+  $progress
     .on(editClicked, () => 5)
     .on(continueClicked, () => 50)
     .on(authSuccess, () => 100);
 
-  const $state = createStore<'email' | 'password' | 'authorized'>('email')
+  $state
     .on(editClicked, () => 'email')
     .on(continueClicked, () => 'password')
     .on(authSuccess, () => 'authorized');
-
-  const checkUserFx = attach({ effect: internalApi.checkUser });
-
-  const $checkUserPending = checkUserFx.pending;
-
-  const $isNewUser = createStore(false);
-
-  const formValue = { email: $email, password: $password };
 
   sample({
     clock: emailFormSubmitted,
@@ -61,55 +73,42 @@ export const authModel = atom(() => {
     target: continueClicked,
   });
 
-  sample({
-    clock: passwordFormSubmitted,
-    source: formValue,
-    filter: $isNewUser,
-    target: sessionModel.signUpFx,
+  condition({
+    source: passwordFormSubmitted,
+    if: $isNewUser,
+    then: sessionModel.signUpFx,
+    else: sessionModel.signInFx,
   });
-
-  sample({
-    clock: passwordFormSubmitted,
-    source: formValue,
-    filter: not($isNewUser),
-    target: sessionModel.signInFx,
-  });
-
-  const redirectToProfile = createEvent();
 
   sample({
     clock: [sessionModel.signInFx.doneData, sessionModel.signUpFx.doneData],
-    target: [authSuccess, redirectToProfile],
+    target: authSuccess,
   });
 
-  const REDIRECT_DELAY = 1700;
-
-  const routerChanged = createEvent();
-
   delay({
-    source: redirectToProfile,
+    source: authSuccess,
     timeout: REDIRECT_DELAY,
-    target: routerChanged,
+    target: redirectToProfile,
   });
 
   sample({
-    clock: routerChanged,
+    clock: redirectToProfile,
     fn: () => paths.profile,
     target: [navigationModel.pushFx, toggler.close],
   });
 
   return {
-    toggler,
     $email,
     $password,
+    $progress,
+    $state,
+    $checkUserPending,
+    $isNewUser,
+    toggler,
     emailChanged,
     passwordChanged,
     emailFormSubmitted,
     passwordFormSubmitted,
     editClicked,
-    $progress,
-    $state,
-    $checkUserPending,
-    $isNewUser,
   };
 });

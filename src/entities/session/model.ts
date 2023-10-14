@@ -9,12 +9,17 @@ import { paths } from 'shared/routing';
 import { tokenService } from './token-service';
 
 export const sessionModel = atom(() => {
+  /* effects */
+
   const getMeFx = attach({ effect: internalApi.getMe });
+
   const signInFx = attach({ effect: internalApi.signIn });
+
   const signUpFx = attach({ effect: internalApi.signUp });
+
   const refreshFx = attach({ effect: internalApi.refresh });
 
-  const ProfileGate = createGate();
+  /* methods */
 
   const logOut = createEvent();
 
@@ -22,21 +27,21 @@ export const sessionModel = atom(() => {
 
   const checkTokenAndRedirect = createEvent();
 
-  const triggeredHome = createEvent();
+  const redirectToHome = createEvent();
+
+  /* state */
 
   const $hasAccessToken = createStore(false);
 
-  const $isRefreshed = refreshFx.done;
+  const $isLogged = createStore(false);
 
-  const $isLogged = createStore(false)
-    .on([signInFx.doneData, signUpFx.doneData, refreshFx.doneData, getMeFx.doneData], () => true)
-    .reset(logOut);
-
-  const $pending = createStore(false).on([signInFx.pending, signUpFx.pending], (_, payload) => payload);
+  const $pending = createStore(false);
 
   const $session = restore(getMeFx, null);
 
-  $session.reset(logOut);
+  const $isRefreshed = refreshFx.done;
+
+  const ProfileGate = createGate();
 
   sample({
     clock: $isRefreshed,
@@ -75,26 +80,41 @@ export const sessionModel = atom(() => {
   sample({
     clock: AppGate.open,
     source: navigationModel.$router,
-    filter: (router) => Boolean(router?.asPath.startsWith(paths.profile)),
+    filter: (router) => router?.asPath.startsWith(paths.profile) ?? false,
     target: checkTokenAndRedirect,
   });
 
   sample({
     clock: getMeFx.failData,
-    target: [logOut, triggeredHome],
+    target: [logOut, redirectToHome],
   });
 
   sample({
     clock: checkTokenAndRedirect,
     filter: not($hasAccessToken),
-    target: triggeredHome,
+    target: redirectToHome,
   });
 
   sample({
-    clock: triggeredHome,
+    clock: [signInFx.doneData, signUpFx.doneData, refreshFx.doneData, getMeFx.doneData],
+    fn: () => true,
+    target: $isLogged,
+  });
+
+  sample({
+    clock: redirectToHome,
     fn: () => paths.home,
     target: navigationModel.pushFx,
   });
+
+  sample({
+    clock: [signInFx.pending, signUpFx.pending],
+    target: $pending,
+  });
+
+  $session.reset(logOut);
+
+  $isLogged.reset(logOut);
 
   return {
     $session,
