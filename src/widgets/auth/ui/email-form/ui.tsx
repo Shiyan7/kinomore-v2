@@ -1,10 +1,12 @@
+import clsx from 'clsx';
 import { useEvent, useStore } from 'effector-react';
 import { FormEventHandler, useEffect, useRef } from 'react';
 import { authModel } from 'widgets/auth';
 import { paths } from 'shared/routing';
-import { Input } from 'shared/ui';
+import { Icon, Input } from 'shared/ui';
 import { Button } from 'shared/ui/button';
 import { Link } from 'shared/ui/link';
+import { TransitionDelays } from '../../config';
 import { Transition } from '../transition';
 import styles from './styles.module.scss';
 
@@ -26,8 +28,18 @@ export const EmailForm = () => {
 
   return (
     <div className={styles.content}>
+      <div className={styles.top}>
+        <Transition delay={TransitionDelays.GoogleLogo}>
+          <button type="button" className={clsx('btn-reset', styles.logo)}>
+            <Icon type="common" name="google" />
+          </button>
+        </Transition>
+        <Transition delay={TransitionDelays.EmailSeparator}>
+          <span className={styles.sep}>или</span>
+        </Transition>
+      </div>
       <form onSubmit={handleSubmitForm} className={styles.form}>
-        <Transition offset={20} delay={130}>
+        <Transition offset={20} delay={TransitionDelays.EmailInput}>
           <Input
             pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
             onChange={(e) => emailChanged(e.target.value)}
@@ -38,13 +50,13 @@ export const EmailForm = () => {
             placeholder="Введите email"
           />
         </Transition>
-        <Transition offset={40} delay={150}>
+        <Transition offset={40} delay={TransitionDelays.ContinueButton}>
           <Button className={styles.btn} disabled={!email} loading={pending} type="submit">
             Продолжить
           </Button>
         </Transition>
       </form>
-      <Transition offset={40} delay={185}>
+      <Transition offset={40} delay={TransitionDelays.PolicyText}>
         <div className={styles.policy}>
           <span className={styles.caption}>Нажимая «Продолжить», я соглашаюсь</span>
           <span className={styles.caption}>

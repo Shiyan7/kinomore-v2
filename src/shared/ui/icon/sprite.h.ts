@@ -11,6 +11,7 @@ export interface SpritesMap {
     | 'eye-closed'
     | 'eye'
     | 'filters'
+    | 'google'
     | 'history'
     | 'link'
     | 'play'
@@ -37,6 +38,7 @@ export const SPRITES_META: { [K in keyof SpritesMap]: SpritesMap[K][] } = {
     'eye-closed',
     'eye',
     'filters',
+    'google',
     'history',
     'link',
     'play',

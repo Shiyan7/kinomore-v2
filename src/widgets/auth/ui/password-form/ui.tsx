@@ -4,6 +4,7 @@ import { authModel } from 'widgets/auth';
 import { sessionModel } from 'entities/session';
 import { Input } from 'shared/ui';
 import { Button } from 'shared/ui/button';
+import { TransitionDelays } from '../../config';
 import { Message } from '../message';
 import { Transition } from '../transition';
 import { maskString } from './lib';
@@ -33,19 +34,24 @@ export const PasswordForm = () => {
 
   return (
     <>
-      <Transition offset={30} delay={80}>
+      <Transition offset={30} delay={TransitionDelays.EmailInMessage}>
         <Message position="right" isEditable onEdit={editClicked} title={email} />
       </Transition>
-      <Transition offset={30} delay={300}>
+      <Transition offset={30} delay={TransitionDelays.PasswordMessage}>
         <Message
           title={isNewUser ? 'Придумайте пароль для входа' : 'Введите пароль, чтобы войти'}
           description={isNewUser ? 'Установите пароль для входа, минимум 6 символов' : ''}
         />
       </Transition>
-      <Transition animation="bounceOutUp" startIn={isAuthorizedState} offset={-30} delay={250}>
+      <Transition
+        animation="bounceOutUp"
+        startIn={isAuthorizedState}
+        offset={-30}
+        delay={TransitionDelays.PasswordForm}
+      >
         <form onSubmit={handleSubmitForm} className={styles.form}>
           <div className={styles.inputs}>
-            <Transition offset={20} delay={350}>
+            <Transition offset={20} delay={TransitionDelays.PasswordInput}>
               <Input
                 togglePassword
                 minLength={6}
@@ -58,7 +64,7 @@ export const PasswordForm = () => {
               />
             </Transition>
           </div>
-          <Transition offset={40} delay={400}>
+          <Transition offset={20} delay={TransitionDelays.PasswordButton}>
             <Button loading={pending} className={styles.btn} type="submit">
               {isNewUser ? 'Зарегистрироваться' : 'Войти'}
             </Button>
@@ -67,10 +73,10 @@ export const PasswordForm = () => {
       </Transition>
       {isAuthorizedState && (
         <>
-          <Transition offset={30} delay={300}>
+          <Transition offset={30} delay={TransitionDelays.PasswordInMessage}>
             <Message className={styles.message} position="right" title={maskPassword} />
           </Transition>
-          <Transition offset={30} delay={600}>
+          <Transition offset={30} delay={TransitionDelays.SuccessMessage}>
             <Message isSuccess title={isNewUser ? 'Успешная регистрация' : 'Вы успешно вошли'} />
           </Transition>
         </>
