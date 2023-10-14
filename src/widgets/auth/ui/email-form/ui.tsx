@@ -1,24 +1,20 @@
 import clsx from 'clsx';
 import { useEvent, useStore } from 'effector-react';
-import { FormEventHandler, useEffect, useRef } from 'react';
+import { FormEventHandler } from 'react';
 import { authModel } from 'widgets/auth';
 import { paths } from 'shared/routing';
 import { Icon, Input } from 'shared/ui';
 import { Button } from 'shared/ui/button';
 import { Link } from 'shared/ui/link';
+import { TransitionDelay } from '../../config';
 import { Transition } from '../transition';
 import styles from './styles.module.scss';
 
 export const EmailForm = () => {
   const email = useStore(authModel.$email);
-  const inputRef = useRef<HTMLInputElement>(null);
   const emailChanged = useEvent(authModel.emailChanged);
   const emailFormSubmitted = useEvent(authModel.emailFormSubmitted);
   const pending = useStore(authModel.$checkUserPending);
-
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
 
   const handleSubmitForm: FormEventHandler = (e) => {
     e.preventDefault();
@@ -28,34 +24,33 @@ export const EmailForm = () => {
   return (
     <div className={styles.content}>
       <div className={styles.top}>
-        <Transition delay={130}>
+        <Transition delay={TransitionDelay.GoogleLogo}>
           <button type="button" className={clsx('btn-reset', styles.logo)}>
             <Icon type="common" name="google" />
           </button>
         </Transition>
-        <Transition delay={140}>
+        <Transition delay={TransitionDelay.EmailSeparator}>
           <span className={styles.sep}>или</span>
         </Transition>
       </div>
       <form onSubmit={handleSubmitForm} className={styles.form}>
-        <Transition offset={20} delay={140}>
+        <Transition offset={20} delay={TransitionDelay.EmailInput}>
           <Input
             pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
             onChange={(e) => emailChanged(e.target.value)}
             value={email}
-            ref={inputRef}
             type="email"
             className={styles.input}
             placeholder="Введите email"
           />
         </Transition>
-        <Transition offset={40} delay={160}>
+        <Transition offset={40} delay={TransitionDelay.ContinueButton}>
           <Button className={styles.btn} disabled={!email} loading={pending} type="submit">
             Продолжить
           </Button>
         </Transition>
       </form>
-      <Transition offset={40} delay={195}>
+      <Transition offset={40} delay={TransitionDelay.PolicyText}>
         <div className={styles.policy}>
           <span className={styles.caption}>Нажимая «Продолжить», я соглашаюсь</span>
           <span className={styles.caption}>
