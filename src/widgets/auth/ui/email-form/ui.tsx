@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useEvent, useStore } from 'effector-react';
-import { FormEventHandler } from 'react';
+import { FormEventHandler, useEffect, useRef } from 'react';
 import { authModel } from 'widgets/auth';
 import { paths } from 'shared/routing';
 import { Icon, Input } from 'shared/ui';
@@ -12,9 +12,14 @@ import styles from './styles.module.scss';
 
 export const EmailForm = () => {
   const email = useStore(authModel.$email);
+  const inputRef = useRef<HTMLInputElement>(null);
   const emailChanged = useEvent(authModel.emailChanged);
   const emailFormSubmitted = useEvent(authModel.emailFormSubmitted);
   const pending = useStore(authModel.$checkUserPending);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   const handleSubmitForm: FormEventHandler = (e) => {
     e.preventDefault();
@@ -39,6 +44,7 @@ export const EmailForm = () => {
             pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
             onChange={(e) => emailChanged(e.target.value)}
             value={email}
+            ref={inputRef}
             type="email"
             className={styles.input}
             placeholder="Введите email"
