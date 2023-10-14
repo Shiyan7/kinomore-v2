@@ -107,10 +107,7 @@ export const sessionModel = atom(() => {
     target: navigationModel.pushFx,
   });
 
-  sample({
-    clock: [signInFx.pending, signUpFx.pending],
-    target: $pending,
-  });
+  $pending.on([signInFx.pending, signUpFx.pending], (_, payload) => payload);
 
   $session.reset(logOut);
 
