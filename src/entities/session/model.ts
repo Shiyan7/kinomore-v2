@@ -6,10 +6,8 @@ import { AppGate } from 'shared/config';
 import { atom } from 'shared/factory';
 import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
+import { REFRESH_DELAY } from './config';
 import { tokenService } from './token-service';
-
-/* Half hour */
-const REFRESH_DELAY = 1800000;
 
 export const sessionModel = atom(() => {
   /* effects */

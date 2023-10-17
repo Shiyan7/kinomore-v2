@@ -1,7 +1,5 @@
 import { TokensDto } from 'shared/api';
-
-const ACCESS_TOKEN = 'accessToken';
-const REFRESH_TOKEN = 'refreshToken';
+import { ACCESS_TOKEN, REFRESH_TOKEN } from './config';
 
 class TokenService {
   setTokens(tokens: TokensDto): void {

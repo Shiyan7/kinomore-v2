@@ -8,8 +8,6 @@
     "start": "next start",
     "test": "jest --watch",
     "format": "prettier ./.prettierrc.json --write ./src",
-    "generate-api": "node ./scripts/codegen.js",
-    "sprite": "sprite --group --root src/shared/ui/icon/assets -o public/sprite -d src/shared/ui/icon/sprite.h.ts",
     "lint": "next lint"
   },
   "dependencies": {
@@ -27,15 +25,12 @@
     "effector-http-api": "^2.3.0",
     "effector-react": "22.5.1",
     "eslint": "^8.43.0",
-    "fs": "^0.0.1-security",
     "jest-environment-jsdom": "^29.3.1",
     "next": "^13.3.0",
     "next-seo": "^5.15.0",
     "nextjs-effector": "0.40.1",
     "nextjs-progressbar": "^0.0.16",
     "normalize.css": "^8.0.1",
-    "object-path": "^0.11.8",
-    "object-path-immutable": "^4.1.2",
     "patronum": "^1.12.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -74,8 +69,6 @@
     "eslint-plugin-unicorn": "^47.0.0",
     "jest": "^29.3.1",
     "prettier": "^2.8.8",
-    "swagger-typescript-api": "^12.0.4",
-    "typescript": "4.8.4",
-    "vercel": "^28.18.4"
+    "typescript": "4.8.4"
   }
 }
