@@ -20,6 +20,5 @@ export function useLockedBody(locked = false) {
 
       document.body.style.paddingRight = '0px';
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locked]);
 }

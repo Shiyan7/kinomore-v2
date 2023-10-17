@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/media-has-caption */
 import Image from 'next/image';
 import Link from 'next/link';
 import { paths } from 'shared/routing';
