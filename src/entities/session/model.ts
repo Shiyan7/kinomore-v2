@@ -8,6 +8,9 @@ import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
 import { tokenService } from './token-service';
 
+/* Half hour */
+const REFRESH_DELAY = 1800000;
+
 export const sessionModel = atom(() => {
   /* effects */
 
@@ -29,6 +32,8 @@ export const sessionModel = atom(() => {
 
   const redirectToHome = createEvent();
 
+  const refreshTokenWithDelay = createEvent();
+
   /* state */
 
   const $hasAccessToken = createStore(false);
@@ -49,22 +54,24 @@ export const sessionModel = atom(() => {
     target: getMeFx,
   });
 
-  sample({
-    clock: AppGate.open,
-    fn: tokenService.getRefreshToken,
-    target: startRefresh,
-  });
+  setInterval(refreshTokenWithDelay, REFRESH_DELAY);
 
   sample({
-    clock: AppGate.open,
-    fn: tokenService.hasAccessToken,
-    target: [$hasAccessToken, $isLogged],
+    clock: [AppGate.open, refreshTokenWithDelay],
+    fn: tokenService.getRefreshToken,
+    target: startRefresh,
   });
 
   sample({
     clock: startRefresh,
     filter: tokenService.hasRefreshToken,
     target: refreshFx,
+  });
+
+  sample({
+    clock: AppGate.open,
+    fn: tokenService.hasAccessToken,
+    target: [$hasAccessToken, $isLogged],
   });
 
   sample({
@@ -96,16 +103,12 @@ export const sessionModel = atom(() => {
   });
 
   sample({
-    clock: [signInFx.doneData, signUpFx.doneData, refreshFx.doneData, getMeFx.doneData],
-    fn: () => true,
-    target: $isLogged,
-  });
-
-  sample({
     clock: redirectToHome,
     fn: () => paths.home,
     target: navigationModel.pushFx,
   });
+
+  $isLogged.on([signInFx.doneData, signUpFx.doneData, refreshFx.doneData, getMeFx.doneData], () => true);
 
   $pending.on([signInFx.pending, signUpFx.pending], (_, payload) => payload);
 
