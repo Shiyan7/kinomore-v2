@@ -652,15 +652,15 @@
   resolved "https://registry.yarnpkg.com/@neodx/std/-/std-0.2.0.tgz#44c1dfc135390643343e4d4ffcd35f927b2a1788"
   integrity sha512-tzUkDegqPy+7Jts+0zJm+baiaOFN8yfwmt2jTOl2uQ4iuz5eeMzJ3Yaz2Uz87Yg7QhGBQld7P5T/8g/f/46IEg==
 
-"@neodx/svg@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@neodx/svg/-/svg-0.6.0.tgz#6a62573a67679519d62948fff45ad021bad163d8"
-  integrity sha512-Srv8XjwRH4sPVuWRptrvEStxTXCr/zSjaLhXzAm0cqK39CbHsrUmHpNpq0gmMhV1Pj5viNaIL4Jf+er9vEct4w==
+"@neodx/svg@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@neodx/svg/-/svg-0.6.1.tgz#a112411a000049fdd68a3c3a03ae76819bef27b2"
+  integrity sha512-FaJhUMkWVsAYDBXjTGtAEQmwiUl58CbTcqWEzAfilrpLWILmIJXQe/PGnRz92iKeq8JXQGEdDEwgMvHxZpSLdQ==
   dependencies:
     "@neodx/fs" "0.0.10"
     "@neodx/log" "0.3.0"
     "@neodx/std" "0.2.0"
-    "@neodx/vfs" "0.1.10"
+    "@neodx/vfs" "0.1.11"
     chokidar "3.5.3"
     colord "2.9.3"
     commander "11.0.0"
@@ -672,10 +672,10 @@
     unplugin "1.5.0"
     zod "3.22.4"
 
-"@neodx/vfs@0.1.10":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@neodx/vfs/-/vfs-0.1.10.tgz#29187a6fe1cb311c3325a5d57ff22e903ea704be"
-  integrity sha512-P/XVdSb8lvnaJrm8f5ZTHfOlj+AmRV0qndgoN7aGS3KcJtlw5AAhCBTi4hG5Nu4ZfPRh48RnX5ygS3GfUq2A0Q==
+"@neodx/vfs@0.1.11":
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/@neodx/vfs/-/vfs-0.1.11.tgz#ff5c17a161a2bb39d7e4bf1847434d6023e07afa"
+  integrity sha512-ihmh1Ibm/0GwCukWpd8S/Gqhwx+BNkr6UvXBFt/BMW+sREZoLtQuaCBnYsZpSMIMDYYXfEdzMimAQhNxhuLNkQ==
   dependencies:
     "@neodx/colors" "0.2.6"
     "@neodx/fs" "0.0.10"
@@ -1241,14 +1241,9 @@ acorn@^8.1.0, acorn@^8.8.0, acorn@^8.8.1:
   integrity sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==
 
 acorn@^8.10.0:
-  version "8.10.0"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.10.0.tgz#8be5b3907a67221a81ab23c7889c4c5526b62ec5"
-  integrity sha512-F0SAmZ8iUtS//m8DmCTA0jlh6TDKkHQyK6xc6V4KDTyZKA9dnvX9/3sRTVQrWm79glUAZbnmmNcdYwUIHWVybw==
-
-address@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/address/-/address-1.2.2.tgz#2b5248dac5485a6390532c6a517fda2e3faac89e"
-  integrity sha512-4B/qKCfeE/ODUaAUpSwfzazo5x29WD4r3vXiWsB7I2mSDAihwEqKO+g8GELZUQSSAo5e1XTYh3ZVfLyxBc12nA==
+  version "8.11.2"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.11.2.tgz#ca0d78b51895be5390a5903c5b3bdcdaf78ae40b"
+  integrity sha512-nc0Axzp/0FILLEVsm4fNwLCwMttvhEI263QtVPQcbpfZZ3ts0hLsZGOpE6czNlid7CJ9MlyH8reXkpsf3YUY4w==
 
 agent-base@6:
   version "6.0.2"

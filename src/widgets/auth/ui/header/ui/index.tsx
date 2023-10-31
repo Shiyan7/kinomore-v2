@@ -7,10 +7,14 @@ import { Progress } from './progress';
 import styles from './styles.module.scss';
 
 export const Header = () => {
-  const email = useStore(authModel.$email);
   const { close } = useToggler(authModel.toggler);
+
+  const email = useStore(authModel.$email);
+
   const state = useStore(authModel.$state);
+
   const isNewUser = useStore(authModel.$isNewUser);
+
   const isEmailState = state === 'email';
 
   const headerTitle = isNewUser ? 'Новый пользователь' : 'Здравствуйте';

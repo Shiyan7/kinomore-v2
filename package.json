@@ -11,12 +11,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@neodx/svg": "^0.6.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
-    "address": "^1.2.2",
     "axios": "^1.2.6",
     "clsx": "^1.2.1",
     "compose-function": "^3.0.3",
@@ -42,7 +42,6 @@
   },
   "devDependencies": {
     "@feature-sliced/eslint-config": "^0.1.0-beta.6",
-    "@neodx/svg": "^0.6.0",
     "@next/eslint-plugin-next": "^13.0.2",
     "@types/axios": "^0.14.0",
     "@types/compose-function": "^0.0.30",

@@ -5,7 +5,7 @@ import type { NextRouter } from 'next/router';
 import { atom } from 'shared/factory';
 
 export const navigationModel = atom(() => {
-  const RouterGate = createGate<{ router: NextRouter | null }>();
+  const RouterGate = createGate<{ router: NextRouter }>();
 
   const $router = createStore<NextRouter | null>(null, {
     serialize: 'ignore',

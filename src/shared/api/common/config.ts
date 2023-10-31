@@ -1,11 +1,15 @@
 import axios from 'axios';
 import { createHttp } from 'effector-http-api';
 
-export const commonInstance = axios.create({
-  baseURL: process.env.API_URL,
+const BASE_URL = process.env.API_URL;
+
+const X_API_KEY = process.env.API_TOKEN;
+
+const instance = axios.create({
+  baseURL: BASE_URL,
   headers: {
-    'X-API-KEY': process.env.API_TOKEN,
+    'X-API-KEY': X_API_KEY,
   },
 });
 
-export const http = createHttp(commonInstance);
+export const http = createHttp(instance);

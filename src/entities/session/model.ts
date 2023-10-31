@@ -20,17 +20,17 @@ export const sessionModel = atom(() => {
 
   const refreshFx = attach({ effect: internalApi.refresh });
 
-  /* methods */
+  /* events */
+
+  const refreshTokenStarted = createEvent<string>();
 
   const logOut = createEvent();
 
-  const startRefresh = createEvent<string>();
+  const startRefreshTokenWithInterval = createEvent();
 
   const checkTokenAndRedirect = createEvent();
 
   const redirectToHome = createEvent();
-
-  const refreshTokenWithDelay = createEvent();
 
   /* state */
 
@@ -52,16 +52,21 @@ export const sessionModel = atom(() => {
     target: getMeFx,
   });
 
-  setInterval(refreshTokenWithDelay, REFRESH_DELAY);
+  sample({
+    clock: [refreshFx.doneData, signInFx.doneData, signUpFx.doneData],
+    fn: tokenService.setTokens,
+  });
+
+  setInterval(startRefreshTokenWithInterval, REFRESH_DELAY);
 
   sample({
-    clock: [AppGate.open, refreshTokenWithDelay],
+    clock: [AppGate.open, startRefreshTokenWithInterval],
     fn: tokenService.getRefreshToken,
-    target: startRefresh,
+    target: refreshTokenStarted,
   });
 
   sample({
-    clock: startRefresh,
+    clock: refreshTokenStarted,
     filter: tokenService.hasRefreshToken,
     target: refreshFx,
   });
@@ -73,8 +78,8 @@ export const sessionModel = atom(() => {
   });
 
   sample({
-    clock: [refreshFx.doneData, signInFx.doneData, signUpFx.doneData],
-    fn: tokenService.setTokens,
+    clock: getMeFx.failData,
+    target: [logOut, redirectToHome],
   });
 
   sample({
@@ -87,11 +92,6 @@ export const sessionModel = atom(() => {
     source: navigationModel.$router,
     filter: (router) => router?.asPath.startsWith(paths.profile) ?? false,
     target: checkTokenAndRedirect,
-  });
-
-  sample({
-    clock: getMeFx.failData,
-    target: [logOut, redirectToHome],
   });
 
   sample({
@@ -122,7 +122,6 @@ export const sessionModel = atom(() => {
     signInFx,
     signUpFx,
     refreshFx,
-    startRefresh,
     logOut,
     ProfileGate,
   };

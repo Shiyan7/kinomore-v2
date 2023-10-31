@@ -28,7 +28,7 @@ export const Player = () => {
     >
       <iframe
         onLoad={() => setIsLoading(false)}
-        src={`https://voidboost.net/embed/${query.id}?poster=1&poster_id=4&df=1`}
+        src={`https://voidboost.tv/embed/${query.id}?poster=1&poster_id=4&df=1`}
         allow="autoplay"
         className={styles.iframe}
         allowFullScreen

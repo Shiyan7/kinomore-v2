@@ -1,12 +1,14 @@
 import axios from 'axios';
 import { createHttp } from 'effector-http-api';
 
-export const internalInstance = axios.create({
-  baseURL: process.env.INTERNAL_API_URL,
+const BASE_URL = process.env.INTERNAL_API_URL;
+
+const instance = axios.create({
+  baseURL: BASE_URL,
   withCredentials: true,
 });
 
-internalInstance.interceptors.request.use((config) => {
+instance.interceptors.request.use((config) => {
   const token = localStorage.getItem('accessToken');
 
   if (token) {
@@ -16,4 +18,4 @@ internalInstance.interceptors.request.use((config) => {
   return config;
 });
 
-export const http = createHttp(internalInstance);
+export const http = createHttp(instance);
