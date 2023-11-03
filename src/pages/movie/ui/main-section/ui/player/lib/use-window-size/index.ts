@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { isClient } from 'shared/config';
 
 type UseWindowSizeOutput = {
   width: number;
@@ -12,7 +13,7 @@ export function useWindowSize(): UseWindowSizeOutput {
   });
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (isClient) {
       const handleResize = () => {
         setWindowSize({
           width: window.innerWidth,

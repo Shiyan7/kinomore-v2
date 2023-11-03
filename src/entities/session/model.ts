@@ -2,7 +2,7 @@ import { createStore, attach, createEvent, sample, restore } from 'effector';
 import { createGate } from 'effector-react';
 import { not } from 'patronum';
 import { internalApi } from 'shared/api';
-import { AppGate } from 'shared/config';
+import { AppGate, isClient } from 'shared/config';
 import { atom } from 'shared/factory';
 import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
@@ -42,9 +42,9 @@ export const sessionModel = atom(() => {
 
   const $session = restore(getMeFx, null);
 
-  const $isRefreshed = refreshFx.done;
-
   const ProfileGate = createGate();
+
+  const $isRefreshed = refreshFx.done;
 
   sample({
     clock: $isRefreshed,
@@ -57,7 +57,11 @@ export const sessionModel = atom(() => {
     fn: tokenService.setTokens,
   });
 
-  setInterval(startRefreshTokenWithInterval, REFRESH_DELAY);
+  setInterval(() => {
+    if (isClient) {
+      startRefreshTokenWithInterval();
+    }
+  }, REFRESH_DELAY);
 
   sample({
     clock: [AppGate.open, startRefreshTokenWithInterval],
@@ -78,7 +82,7 @@ export const sessionModel = atom(() => {
   });
 
   sample({
-    clock: getMeFx.failData,
+    clock: [getMeFx.failData, refreshFx.failData],
     target: [logOut, redirectToHome],
   });
 
