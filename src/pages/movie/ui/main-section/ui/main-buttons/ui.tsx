@@ -14,7 +14,7 @@ export const MainButtons = () => {
   const data = useStore(movieModel.$movie);
   const trailerToggler = useToggler(movieModel.trailerToggler);
   const playerToggler = useToggler(movieModel.playerToggler);
-  const toggleFavorite = useEvent(favoritesModel.toggleFavorite);
+  const toggleFavoriteClicked = useEvent(favoritesModel.toggleFavoriteClicked);
   const isFavorite = useStore(favoritesModel.$isFavorite);
 
   const movieId = Number(query.id);
@@ -28,7 +28,7 @@ export const MainButtons = () => {
         Трейлер
       </Button>
       <Button
-        onClick={() => toggleFavorite({ id: movieId })}
+        onClick={() => toggleFavoriteClicked({ id: movieId })}
         size="big"
         className={clsx(styles.btn, isFavorite && styles.isFavorite)}
         variant="glass"

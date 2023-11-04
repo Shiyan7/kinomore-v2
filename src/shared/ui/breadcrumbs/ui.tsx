@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import type { FC } from 'react';
 import styles from './styles.module.scss';
 
 interface BreadcrumbItem {
@@ -13,10 +12,10 @@ interface BreadcrumbsProps {
   className?: string;
 }
 
-export const Breadcrumbs: FC<BreadcrumbsProps> = ({ items, className }) => (
+export const Breadcrumbs = ({ items, className }: BreadcrumbsProps) => (
   <ul className={clsx('list-reset', styles.list, className)}>
     {items.map((item) => (
-      <li className={styles.item} key={item.href}>
+      <li className={styles.item} key={item.text}>
         {item?.href ? (
           <Link className={styles.link} href={item.href}>
             {item?.text}

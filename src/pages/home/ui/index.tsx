@@ -10,7 +10,7 @@ import { Info } from './info';
 import { NewFilms } from './new-films';
 
 export const HomePage = () => {
-  useGate(homeModel.HomeGate);
+  useGate(homeModel.HomePageGate);
 
   return (
     <>

@@ -12,6 +12,8 @@ export const favoritesModel = atom(() => {
 
   const getAllFavoritesFx = attach({ effect: commonApi.getAllFavorites });
 
+  const checkFavoriteFx = attach({ effect: internalApi.checkFavorite });
+
   const $pending = createStore(true);
 
   const $isFavorite = createStore(false);
@@ -20,16 +22,16 @@ export const favoritesModel = atom(() => {
 
   const $arrayOfId = restore(getFavoritesIdFx.doneData, null);
 
-  const FavoritesGate = createGate();
+  const FavoritesPageGate = createGate();
 
   const abortPending = createEvent();
 
-  const toggleFavorite = createEvent<{ id: number }>();
+  const toggleFavoriteClicked = createEvent<{ id: number }>();
 
   const removeFavoriteClicked = createEvent<{ id: number }>();
 
   sample({
-    clock: toggleFavorite,
+    clock: toggleFavoriteClicked,
     source: $isFavorite,
     filter: sessionModel.$isLogged,
     fn: (isFavorite) => !isFavorite,
@@ -37,13 +39,13 @@ export const favoritesModel = atom(() => {
   });
 
   sample({
-    clock: [toggleFavorite, removeFavoriteClicked],
+    clock: [toggleFavoriteClicked, removeFavoriteClicked],
     target: toggleFavoriteFx,
   });
 
   sample({
     clock: sessionModel.$isRefreshed,
-    source: FavoritesGate.open,
+    source: FavoritesPageGate.open,
     target: getFavoritesIdFx,
   });
 
@@ -73,16 +75,22 @@ export const favoritesModel = atom(() => {
     target: abortPending,
   });
 
+  sample({
+    clock: checkFavoriteFx.doneData,
+    target: $isFavorite,
+  });
+
   $allFavorites.on(removeFavoriteClicked, (state, { id }) => state?.filter((movie) => movie.id !== id));
 
   $pending.on(abortPending, () => false);
 
   return {
-    FavoritesGate,
-    toggleFavorite,
+    FavoritesPageGate,
+    toggleFavoriteClicked,
     removeFavoriteClicked,
     $pending,
     $isFavorite,
     $allFavorites,
+    checkFavoriteFx,
   };
 });

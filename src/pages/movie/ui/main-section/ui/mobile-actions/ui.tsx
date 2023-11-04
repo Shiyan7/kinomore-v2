@@ -11,7 +11,7 @@ export const MobileActions = () => {
   const { query } = useRouter();
   const trailerModal = useToggler(movieModel.trailerToggler);
   const shareModal = useToggler(movieModel.shareToggler);
-  const toggleFavorite = useEvent(favoritesModel.toggleFavorite);
+  const toggleFavoriteClicked = useEvent(favoritesModel.toggleFavoriteClicked);
   const isFavorite = useStore(favoritesModel.$isFavorite);
 
   const movieId = Number(query.id);
@@ -21,7 +21,7 @@ export const MobileActions = () => {
     {
       label: isFavorite ? 'Запомнен' : 'Запомнить',
       activeClass: isFavorite,
-      handler: () => toggleFavorite({ id: movieId }),
+      handler: () => toggleFavoriteClicked({ id: movieId }),
       icon: <Icon type="common" name="bookmark" />,
     },
     { label: 'Оценить', icon: <Icon type="common" name="star" /> },

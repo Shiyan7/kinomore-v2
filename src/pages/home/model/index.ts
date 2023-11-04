@@ -4,7 +4,7 @@ import { commonApi } from 'shared/api';
 import { atom } from 'shared/factory';
 
 export const homeModel = atom(() => {
-  const HomeGate = createGate();
+  const HomePageGate = createGate();
 
   const getNewMoviesFx = attach({ effect: commonApi.getNewMovies });
   const $newMovies = restore(getNewMoviesFx, null);
@@ -22,12 +22,12 @@ export const homeModel = atom(() => {
   const $fantasticMovies = restore(getFantasticMoviesFx, null);
 
   sample({
-    clock: HomeGate.open,
+    clock: HomePageGate.open,
     target: [getNewMoviesFx, getComedyMoviesFx, getFamilyMoviesFx, getDramaMoviesFx, getFantasticMoviesFx],
   });
 
   return {
-    HomeGate,
+    HomePageGate,
     $newMovies,
     $comedyMovies,
     $familyMovies,

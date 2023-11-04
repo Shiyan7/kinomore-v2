@@ -3,14 +3,14 @@ import { createGate } from 'effector-react';
 import type { PageContext } from 'nextjs-effector';
 import { favoritesModel } from 'features/favorites';
 import { sessionModel } from 'entities/session';
-import { commonApi, internalApi } from 'shared/api';
+import { commonApi } from 'shared/api';
 import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
 
 export const movieModel = atom(() => {
   const pageStarted = createEvent<PageContext>();
 
-  const MovieGate = createGate<{ movieId: string }>();
+  const MoviePageGate = createGate<{ movieId: string }>();
 
   const trailerToggler = createToggler();
 
@@ -19,8 +19,6 @@ export const movieModel = atom(() => {
   const playerToggler = createToggler();
 
   const getMovieByIdFx = attach({ effect: commonApi.getMovieById });
-
-  const checkFavoriteFx = attach({ effect: internalApi.checkFavorite });
 
   const $movie = restore(getMovieByIdFx, null);
 
@@ -32,19 +30,14 @@ export const movieModel = atom(() => {
 
   sample({
     clock: sessionModel.$isRefreshed,
-    source: MovieGate.open,
+    source: MoviePageGate.open,
     fn: ({ movieId }) => movieId,
-    target: checkFavoriteFx,
-  });
-
-  sample({
-    clock: checkFavoriteFx.doneData,
-    target: favoritesModel.$isFavorite,
+    target: favoritesModel.checkFavoriteFx,
   });
 
   return {
     pageStarted,
-    MovieGate,
+    MoviePageGate,
     trailerToggler,
     shareToggler,
     playerToggler,

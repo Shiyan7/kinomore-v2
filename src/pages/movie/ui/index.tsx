@@ -16,7 +16,7 @@ export const MoviePage = () => {
   const description = data?.description ?? data?.shortDescription ?? '';
   const title = `${name} ${year} смотреть онлайн бесплатно в хорошем HD 1080 / 720 качестве`;
 
-  useGate(movieModel.MovieGate, { movieId: query.id as string });
+  useGate(movieModel.MoviePageGate, { movieId: query.id as string });
 
   return (
     <>

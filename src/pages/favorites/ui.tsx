@@ -9,7 +9,7 @@ import styles from './styles.module.scss';
 
 const breadcrumbs = [
   { text: 'Профиль', href: paths.profile },
-  { text: 'Избранное', href: '' },
+  { text: 'Избранное' },
 ];
 
 export const FavoritesPage = () => {
@@ -17,7 +17,7 @@ export const FavoritesPage = () => {
   const pending = useStore(favoritesModel.$pending);
   const removeFavoriteClicked = useEvent(favoritesModel.removeFavoriteClicked);
 
-  useGate(favoritesModel.FavoritesGate);
+  useGate(favoritesModel.FavoritesPageGate);
 
   const Loader = (
     <div className={styles.loader}>

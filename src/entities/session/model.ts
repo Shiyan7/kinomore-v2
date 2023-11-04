@@ -42,13 +42,13 @@ export const sessionModel = atom(() => {
 
   const $session = restore(getMeFx, null);
 
-  const ProfileGate = createGate();
+  const ProfilePageGate = createGate();
 
   const $isRefreshed = refreshFx.done;
 
   sample({
     clock: $isRefreshed,
-    source: ProfileGate.open,
+    source: ProfilePageGate.open,
     target: getMeFx,
   });
 
@@ -82,8 +82,14 @@ export const sessionModel = atom(() => {
   });
 
   sample({
-    clock: [getMeFx.failData, refreshFx.failData],
+    clock: getMeFx.failData,
     target: [logOut, redirectToHome],
+  });
+
+  sample({
+    clock: refreshFx.failData,
+    fn: () => null,
+    target: logOut,
   });
 
   sample({
@@ -127,6 +133,6 @@ export const sessionModel = atom(() => {
     signUpFx,
     refreshFx,
     logOut,
-    ProfileGate,
+    ProfilePageGate,
   };
 });
