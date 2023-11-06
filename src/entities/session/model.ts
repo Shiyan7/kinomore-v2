@@ -87,12 +87,6 @@ export const sessionModel = atom(() => {
   });
 
   sample({
-    clock: refreshFx.failData,
-    fn: () => null,
-    target: logOut,
-  });
-
-  sample({
     clock: logOut,
     fn: tokenService.deleteTokens,
   });
@@ -123,6 +117,8 @@ export const sessionModel = atom(() => {
   $session.reset(logOut);
 
   $isLogged.reset(logOut);
+
+  refreshFx.failData.watch(() => logOut());
 
   return {
     $session,
