@@ -1,5 +1,8 @@
+/* eslint-disable boundaries/element-types */
 import { attach, createEvent, createStore, restore, sample } from 'effector';
 import { createGate } from 'effector-react';
+import { and, not } from 'patronum';
+import { authModel } from 'widgets/auth';
 import { sessionModel } from 'entities/session';
 import { MovieEntity, commonApi, internalApi } from 'shared/api';
 import { atom } from 'shared/factory';
@@ -40,6 +43,7 @@ export const favoritesModel = atom(() => {
 
   sample({
     clock: [toggleFavoriteClicked, removeFavoriteClicked],
+    filter: sessionModel.$isLogged,
     target: toggleFavoriteFx,
   });
 
@@ -78,6 +82,12 @@ export const favoritesModel = atom(() => {
   sample({
     clock: checkFavoriteFx.doneData,
     target: $isFavorite,
+  });
+
+  sample({
+    clock: toggleFavoriteClicked,
+    filter: and(not(sessionModel.$isLogged), not(sessionModel.refreshFx.pending)),
+    target: authModel.toggler.open,
   });
 
   $allFavorites.on(removeFavoriteClicked, (state, { id }) => state?.filter((movie) => movie.id !== id));

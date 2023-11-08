@@ -3,6 +3,7 @@ import { useStore } from 'effector-react';
 import type { CSSProperties } from 'react';
 import { movieModel } from 'pages/movie';
 import { Description } from './description';
+import { GradeModal } from './grade-modal';
 import { Info } from './info';
 import { MainButtons } from './main-buttons';
 import { MainPersons } from './main-persons';
@@ -32,6 +33,7 @@ export const MainSection = () => {
       </div>
       <TrailerModal />
       <ShareModal />
+      <GradeModal />
       <Player />
     </section>
   );

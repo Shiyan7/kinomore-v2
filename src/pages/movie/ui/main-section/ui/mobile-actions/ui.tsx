@@ -9,23 +9,24 @@ import styles from './styles.module.scss';
 
 export const MobileActions = () => {
   const { query } = useRouter();
-  const trailerModal = useToggler(movieModel.trailerToggler);
-  const shareModal = useToggler(movieModel.shareToggler);
   const toggleFavoriteClicked = useEvent(favoritesModel.toggleFavoriteClicked);
   const isFavorite = useStore(favoritesModel.$isFavorite);
+  const shareToggler = useToggler(movieModel.shareToggler);
+  const gradeToggler = useToggler(movieModel.gradeToggler);
+  const trailerToggler = useToggler(movieModel.trailerToggler);
 
   const movieId = Number(query.id);
 
   const items = [
-    { label: 'Трейлер', handler: trailerModal.open, icon: <Icon type="common" name="play" /> },
+    { label: 'Трейлер', handler: trailerToggler.open, icon: <Icon type="common" name="play" /> },
     {
       label: isFavorite ? 'Запомнен' : 'Запомнить',
       activeClass: isFavorite,
       handler: () => toggleFavoriteClicked({ id: movieId }),
       icon: <Icon type="common" name="bookmark" />,
     },
-    { label: 'Оценить', icon: <Icon type="common" name="star" /> },
-    { label: 'Поделится', handler: shareModal.open, icon: <Icon type="common" name="share" /> },
+    { label: 'Оценить', handler: gradeToggler.open, icon: <Icon type="common" name="star" /> },
+    { label: 'Поделится', handler: shareToggler.open, icon: <Icon type="common" name="share" /> },
   ];
 
   return (

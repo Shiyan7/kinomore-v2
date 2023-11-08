@@ -14,6 +14,8 @@ export const movieModel = atom(() => {
 
   const trailerToggler = createToggler();
 
+  const gradeToggler = createToggler();
+
   const shareToggler = createToggler();
 
   const playerToggler = createToggler();
@@ -39,6 +41,7 @@ export const movieModel = atom(() => {
     pageStarted,
     MoviePageGate,
     trailerToggler,
+    gradeToggler,
     shareToggler,
     playerToggler,
     $movie,
