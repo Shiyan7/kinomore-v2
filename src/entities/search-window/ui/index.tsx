@@ -9,12 +9,12 @@ import { SearchList } from './search-list';
 import styles from './styles.module.scss';
 
 export const SearchWindow = () => {
-  const toggler = useToggler(searchModel.searchToggler);
+  const { isOpen, close } = useToggler(searchModel.toggler);
   const query = useStore(searchModel.$query);
 
   return (
-    <Modal isOpen={toggler.isOpen} close={toggler.close} className={styles.window}>
-      <button className={clsx('btn-reset', styles.close)} onClick={toggler.close}>
+    <Modal isOpen={isOpen} close={close} className={styles.window}>
+      <button className={clsx('btn-reset', styles.close)} onClick={close}>
         <Icon type="common" name="close" />
       </button>
       <div className={styles.container}>

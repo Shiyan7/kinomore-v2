@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import clsx from 'clsx';
+import { useEvent, useStore } from 'effector-react';
 import { useState } from 'react';
 import { movieModel } from 'pages/movie';
 import { useToggler } from 'shared/lib/toggler';
@@ -7,9 +8,11 @@ import { Button, Title, Popup } from 'shared/ui';
 import styles from './styles.module.scss';
 
 export const GradeModal = () => {
-  const [rating, setRating] = useState<number>(0);
   const [hover, setHover] = useState<number | null>(null);
+  const rating = useStore(movieModel.$rating);
   const gradeToggler = useToggler(movieModel.gradeToggler);
+  const ratingModalClosed = useEvent(movieModel.ratingModalClosed);
+  const ratingSelected = useEvent(movieModel.ratingSelected);
 
   return (
     <Popup className={styles.modal} isOpen={gradeToggler.isOpen} close={gradeToggler.close}>
@@ -30,7 +33,12 @@ export const GradeModal = () => {
                 onMouseEnter={() => setHover(ratingValue)}
                 onMouseLeave={() => setHover(null)}
               >
-                <input hidden type="radio" value={ratingValue} onClick={() => setRating(ratingValue)} />
+                <input
+                  hidden
+                  type="radio"
+                  value={ratingValue}
+                  onClick={() => ratingSelected({ rating: ratingValue })}
+                />
                 {ratingValue}
               </label>
             );
@@ -41,7 +49,7 @@ export const GradeModal = () => {
           <span className={styles.caption}>Отлично</span>
         </div>
       </div>
-      <Button onClick={gradeToggler.close} className={styles.btn} variant="white" rounded size="large">
+      <Button onClick={ratingModalClosed} className={styles.btn} variant="white" rounded size="large">
         Поставить оценку
       </Button>
       <Popup.Close onClick={gradeToggler.close} />

@@ -1,4 +1,4 @@
-import { attach, createEvent, restore, sample } from 'effector';
+import { attach, createEvent, createStore, restore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import type { PageContext } from 'nextjs-effector';
 import { favoritesModel } from 'features/favorites';
@@ -24,6 +24,25 @@ export const movieModel = atom(() => {
 
   const $movie = restore(getMovieByIdFx, null);
 
+  const $isRated = createStore(false);
+
+  const $rating = createStore(0);
+
+  const ratingSelected = createEvent<{ rating: number }>();
+
+  const ratingModalClosed = createEvent();
+
+  sample({
+    clock: ratingSelected,
+    fn: ({ rating }) => rating,
+    target: $rating,
+  });
+
+  sample({
+    clock: ratingModalClosed,
+    target: gradeToggler.close,
+  });
+
   sample({
     clock: pageStarted,
     fn: ({ params }) => params?.id as string,
@@ -37,6 +56,8 @@ export const movieModel = atom(() => {
     target: favoritesModel.checkFavoriteFx,
   });
 
+  $isRated.on(ratingModalClosed, () => true);
+
   return {
     pageStarted,
     MoviePageGate,
@@ -45,5 +66,9 @@ export const movieModel = atom(() => {
     shareToggler,
     playerToggler,
     $movie,
+    $isRated,
+    $rating,
+    ratingModalClosed,
+    ratingSelected,
   };
 });

@@ -7,7 +7,7 @@ import { createToggler } from 'shared/lib/toggler';
 const DEBOUNCE_TIME = 600;
 
 export const searchModel = atom(() => {
-  const searchToggler = createToggler();
+  const toggler = createToggler();
 
   const searchByNameFx = attach({ effect: commonApi.searchByName });
 
@@ -53,7 +53,7 @@ export const searchModel = atom(() => {
   });
 
   reset({
-    clock: searchToggler.$isOpen,
+    clock: toggler.$isOpen,
     target: [$search, $query],
   });
 
@@ -75,7 +75,7 @@ export const searchModel = atom(() => {
   $page.on(loadMore, (state) => state + 1);
 
   return {
-    searchToggler,
+    toggler,
     searchByNameFx,
     $searchResult,
     searchChanged,

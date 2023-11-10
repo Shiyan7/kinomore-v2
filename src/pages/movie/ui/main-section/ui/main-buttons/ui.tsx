@@ -15,6 +15,7 @@ export const MainButtons = () => {
   const data = useStore(movieModel.$movie);
   const toggleFavoriteClicked = useEvent(favoritesModel.toggleFavoriteClicked);
   const isFavorite = useStore(favoritesModel.$isFavorite);
+  const isRated = useStore(movieModel.$isRated);
   const trailerToggler = useToggler(movieModel.trailerToggler);
   const playerToggler = useToggler(movieModel.playerToggler);
   const gradeToggler = useToggler(movieModel.gradeToggler);
@@ -26,22 +27,22 @@ export const MainButtons = () => {
     { children: 'Трейлер', handler: trailerToggler.open },
     {
       children: <Icon type="common" name="bookmark" />,
-      className: isFavorite && styles.isFavorite,
+      activeCondition: isFavorite,
       handler: () => toggleFavoriteClicked({ id: movieId }),
     },
-    { children: <Icon type="common" name="star" />, handler: gradeToggler.open },
+    { children: <Icon type="common" name="star" />, activeCondition: isRated, handler: gradeToggler.open },
   ];
 
   return (
     <div className={styles.btns}>
-      {items.map(({ children, handler, className, ...props }, idx) => (
+      {items.map(({ children, handler, activeCondition, gradient }, idx) => (
         <Button
           key={idx}
           onClick={handler}
           size="big"
-          className={clsx(styles.btn, className)}
+          className={clsx(styles.btn, activeCondition && styles.isActive)}
           variant="glass"
-          {...props}
+          gradient={gradient}
         >
           {children}
         </Button>

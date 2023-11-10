@@ -1,5 +1,5 @@
-import { sample } from 'effector';
 import { reset } from 'patronum/reset';
+import { movieModel } from 'pages/movie';
 import { authModel } from 'widgets/auth';
 import { favoritesModel } from 'features/favorites';
 import { searchModel } from 'entities/search-window';
@@ -8,19 +8,17 @@ import { navigationModel } from 'shared/navigation';
 reset({
   clock: navigationModel.$router,
   target: [
-    searchModel.$search,
-    searchModel.$query,
-    authModel.$progress,
     authModel.$state,
     authModel.$email,
+    movieModel.$rating,
+    searchModel.$query,
+    searchModel.$search,
     authModel.$password,
-    favoritesModel.$isFavorite,
-    favoritesModel.$allFavorites,
+    movieModel.$isRated,
+    authModel.$progress,
     favoritesModel.$pending,
+    favoritesModel.$isFavorite,
+    searchModel.toggler.$isOpen,
+    favoritesModel.$allFavorites,
   ],
-});
-
-sample({
-  clock: navigationModel.$router,
-  target: searchModel.searchToggler.close,
 });
