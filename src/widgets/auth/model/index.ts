@@ -1,6 +1,5 @@
-import { createEvent, createStore, sample, attach } from 'effector';
+import { createEvent, createStore, sample } from 'effector';
 import { condition, delay } from 'patronum';
-import { sessionModel } from 'entities/session';
 import { internalApi } from 'shared/api';
 import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
@@ -10,7 +9,13 @@ import { paths } from 'shared/routing';
 const REDIRECT_DELAY = 1700;
 
 export const authModel = atom(() => {
-  const checkUserFx = attach({ effect: internalApi.checkUser });
+  const checkUserFx = internalApi.checkUser;
+
+  const signInFx = internalApi.signIn;
+
+  const signUpFx = internalApi.signUp;
+
+  const googleLoginFx = internalApi.googleLogin;
 
   const toggler = createToggler();
 
@@ -76,12 +81,12 @@ export const authModel = atom(() => {
   condition({
     source: passwordFormSubmitted,
     if: $isNewUser,
-    then: sessionModel.signUpFx,
-    else: sessionModel.signInFx,
+    then: signUpFx,
+    else: signInFx,
   });
 
   sample({
-    clock: [sessionModel.signInFx.doneData, sessionModel.signUpFx.doneData],
+    clock: [signInFx.doneData, signUpFx.doneData],
     target: authSuccess,
   });
 
@@ -92,7 +97,7 @@ export const authModel = atom(() => {
   });
 
   sample({
-    clock: redirectToProfile,
+    clock: [redirectToProfile, googleLoginFx.doneData],
     fn: () => paths.profile,
     target: [navigationModel.pushFx, toggler.close],
   });

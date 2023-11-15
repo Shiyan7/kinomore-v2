@@ -12,6 +12,13 @@ const routesConfig = http.createRoutesConfig({
     method: 'post',
     data,
   })),
+  googleLogin: http.createRoute<string, TokensDto>((code) => ({
+    url: '/auth/google',
+    method: 'post',
+    data: {
+      code,
+    },
+  })),
   refresh: http.createRoute<string, TokensDto>((token) => ({
     url: '/auth/refresh',
     method: 'post',

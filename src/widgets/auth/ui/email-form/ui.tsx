@@ -1,7 +1,9 @@
+import { useGoogleLogin } from '@react-oauth/google';
 import clsx from 'clsx';
 import { useEvent, useStore } from 'effector-react';
 import { FormEventHandler, useEffect, useRef } from 'react';
 import { authModel } from 'widgets/auth';
+import { sessionModel } from 'entities/session';
 import { paths } from 'shared/routing';
 import { Icon, Input } from 'shared/ui';
 import { Button } from 'shared/ui/button';
@@ -15,7 +17,13 @@ export const EmailForm = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const emailChanged = useEvent(authModel.emailChanged);
   const emailFormSubmitted = useEvent(authModel.emailFormSubmitted);
+  const loginWithGoogle = useEvent(sessionModel.loginWithGoogle);
   const pending = useStore(authModel.$checkUserPending);
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: loginWithGoogle,
+    flow: 'auth-code',
+  });
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -30,7 +38,7 @@ export const EmailForm = () => {
     <div className={styles.content}>
       <div className={styles.top}>
         <Transition delay={TransitionDelays.GoogleLogo}>
-          <button type="button" className={clsx('btn-reset', styles.logo)}>
+          <button onClick={googleLogin} className={clsx('btn-reset', styles.logo)}>
             <Icon type="common" name="google" />
           </button>
         </Transition>

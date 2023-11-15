@@ -1,4 +1,4 @@
-import { attach, createEvent, restore, sample } from 'effector';
+import { createEvent, restore, sample } from 'effector';
 import type { PageContext } from 'nextjs-effector';
 import { commonApi } from 'shared/api';
 import { atom } from 'shared/factory';
@@ -6,7 +6,7 @@ import { atom } from 'shared/factory';
 export const personModel = atom(() => {
   const pageStarted = createEvent<PageContext>();
 
-  const getPersonByIdFx = attach({ effect: commonApi.getPersonById });
+  const getPersonByIdFx = commonApi.getPersonById;
 
   const $person = restore(getPersonByIdFx, null);
 

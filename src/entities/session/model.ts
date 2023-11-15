@@ -1,4 +1,4 @@
-import { createStore, attach, createEvent, sample, restore } from 'effector';
+import { createStore, createEvent, sample, restore } from 'effector';
 import { createGate } from 'effector-react';
 import { not } from 'patronum';
 import { internalApi } from 'shared/api';
@@ -12,13 +12,15 @@ import { tokenService } from './token-service';
 export const sessionModel = atom(() => {
   /* effects */
 
-  const getMeFx = attach({ effect: internalApi.getMe });
+  const getMeFx = internalApi.getMe;
 
-  const signInFx = attach({ effect: internalApi.signIn });
+  const signInFx = internalApi.signIn;
 
-  const signUpFx = attach({ effect: internalApi.signUp });
+  const signUpFx = internalApi.signUp;
 
-  const refreshFx = attach({ effect: internalApi.refresh });
+  const refreshFx = internalApi.refresh;
+
+  const googleLoginFx = internalApi.googleLogin;
 
   /* events */
 
@@ -31,6 +33,8 @@ export const sessionModel = atom(() => {
   const checkTokenAndRedirect = createEvent();
 
   const redirectToHome = createEvent();
+
+  const loginWithGoogle = createEvent<{ code: string }>();
 
   /* state */
 
@@ -53,7 +57,7 @@ export const sessionModel = atom(() => {
   });
 
   sample({
-    clock: [refreshFx.doneData, signInFx.doneData, signUpFx.doneData],
+    clock: [refreshFx.doneData, signInFx.doneData, signUpFx.doneData, googleLoginFx.doneData],
     fn: tokenService.setTokens,
   });
 
@@ -110,7 +114,16 @@ export const sessionModel = atom(() => {
     target: navigationModel.pushFx,
   });
 
-  $isLogged.on([signInFx.doneData, signUpFx.doneData, refreshFx.doneData, getMeFx.doneData], () => true);
+  sample({
+    clock: loginWithGoogle,
+    fn: ({ code }) => code,
+    target: googleLoginFx,
+  });
+
+  $isLogged.on(
+    [signInFx.doneData, googleLoginFx.doneData, signUpFx.doneData, refreshFx.doneData, getMeFx.doneData],
+    () => true,
+  );
 
   $pending.on([signInFx.pending, signUpFx.pending], (_, payload) => payload);
 
@@ -128,6 +141,8 @@ export const sessionModel = atom(() => {
     signInFx,
     signUpFx,
     refreshFx,
+    googleLoginFx,
+    loginWithGoogle,
     logOut,
     ProfilePageGate,
   };

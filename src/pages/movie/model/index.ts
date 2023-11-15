@@ -1,4 +1,4 @@
-import { attach, createEvent, createStore, restore, sample } from 'effector';
+import { createEvent, createStore, restore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import type { PageContext } from 'nextjs-effector';
 import { favoritesModel } from 'features/favorites';
@@ -20,7 +20,7 @@ export const movieModel = atom(() => {
 
   const playerToggler = createToggler();
 
-  const getMovieByIdFx = attach({ effect: commonApi.getMovieById });
+  const getMovieByIdFx = commonApi.getMovieById;
 
   const $movie = restore(getMovieByIdFx, null);
 
