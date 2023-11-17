@@ -1,13 +1,11 @@
 import { combine, createEvent, createStore, restore, sample } from 'effector';
 import type { PageContext } from 'nextjs-effector';
-import { commonApi } from 'shared/api';
+import { getCatalogFx } from 'shared/api';
 import { atom } from 'shared/factory';
 import { getCatalogType } from '../lib';
 
 export const catalogModel = atom(() => {
   const pageStarted = createEvent<PageContext>();
-
-  const getCatalogFx = commonApi.getCatalog;
 
   const $catalog = restore(getCatalogFx, null);
 

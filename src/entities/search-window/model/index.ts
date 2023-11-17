@@ -1,6 +1,6 @@
 import { createEvent, createStore, sample } from 'effector';
 import { reset, debounce } from 'patronum';
-import { SearchMovieEntity, commonApi } from 'shared/api';
+import { SearchMovieEntity, searchByNameFx } from 'shared/api';
 import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
 
@@ -8,8 +8,6 @@ const DEBOUNCE_TIME = 600;
 
 export const searchModel = atom(() => {
   const toggler = createToggler();
-
-  const searchByNameFx = commonApi.searchByName;
 
   const searchChanged = createEvent<string>();
 

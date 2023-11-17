@@ -1,6 +1,6 @@
 import { createEvent, createStore, sample } from 'effector';
 import { condition, delay } from 'patronum';
-import { internalApi } from 'shared/api';
+import { checkUserFx, signInFx, signUpFx, googleLoginFx } from 'shared/api';
 import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
 import { navigationModel } from 'shared/navigation';
@@ -9,14 +9,6 @@ import { paths } from 'shared/routing';
 const REDIRECT_DELAY = 1700;
 
 export const authModel = atom(() => {
-  const checkUserFx = internalApi.checkUser;
-
-  const signInFx = internalApi.signIn;
-
-  const signUpFx = internalApi.signUp;
-
-  const googleLoginFx = internalApi.googleLogin;
-
   const toggler = createToggler();
 
   const $email = createStore('');

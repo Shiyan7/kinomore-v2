@@ -6,13 +6,13 @@ import type { CatalogParams, Data, Movie, MovieEntity, Person, SearchMovieEntity
 const LIMIT = 15;
 
 const routesConfig = http.createRoutesConfig({
-  getMovieById: http.createRoute<string, Movie>((id) => ({
+  getMovieByIdFx: http.createRoute<string, Movie>((id) => ({
     url: `/v1.3/movie/${id}`,
   })),
-  getPersonById: http.createRoute<string, Person>((id) => ({
+  getPersonByIdFx: http.createRoute<string, Person>((id) => ({
     url: `/v1/person/${id}`,
   })),
-  getCatalog: http.createRoute<CatalogParams, Data<MovieEntity>>(
+  getCatalogFx: http.createRoute<CatalogParams, Data<MovieEntity>>(
     ({ type, limit, genre, rating = '1-10', sort, year = getYears() }) => ({
       url: '/v1.3/movie',
       params: {
@@ -27,7 +27,7 @@ const routesConfig = http.createRoutesConfig({
       },
     }),
   ),
-  getNewMovies: http.createRoute<void, Data<MovieEntity>>({
+  getNewMoviesFx: http.createRoute<void, Data<MovieEntity>>({
     url: '/v1.3/movie',
     params: {
       'rating.kp': '5-9',
@@ -37,7 +37,7 @@ const routesConfig = http.createRoutesConfig({
       limit: LIMIT,
     },
   }),
-  getComedyMovies: http.createRoute<void, Data<MovieEntity>>({
+  getComedyMoviesFx: http.createRoute<void, Data<MovieEntity>>({
     url: '/v1.3/movie',
     params: {
       year: getCurrentYear(),
@@ -50,7 +50,7 @@ const routesConfig = http.createRoutesConfig({
       limit: LIMIT,
     },
   }),
-  getFamilyMovies: http.createRoute<void, Data<MovieEntity>>({
+  getFamilyMoviesFx: http.createRoute<void, Data<MovieEntity>>({
     url: '/v1.3/movie',
     params: {
       'genres.name': GenresEnum.Family,
@@ -62,7 +62,7 @@ const routesConfig = http.createRoutesConfig({
       limit: LIMIT,
     },
   }),
-  getDramaMovies: http.createRoute<void, Data<MovieEntity>>({
+  getDramaMoviesFx: http.createRoute<void, Data<MovieEntity>>({
     url: '/v1.3/movie',
     params: {
       year: getCurrentYear(),
@@ -74,7 +74,7 @@ const routesConfig = http.createRoutesConfig({
       limit: LIMIT,
     },
   }),
-  getFantasticMovies: http.createRoute<void, Data<MovieEntity>>({
+  getFantasticMoviesFx: http.createRoute<void, Data<MovieEntity>>({
     url: '/v1.3/movie',
     params: {
       'genres.name': GenresEnum.ScienceFiction,
@@ -86,7 +86,7 @@ const routesConfig = http.createRoutesConfig({
       limit: LIMIT,
     },
   }),
-  searchByName: http.createRoute<SearchParams, Data<SearchMovieEntity>>(({ query, page }) => ({
+  searchByNameFx: http.createRoute<SearchParams, Data<SearchMovieEntity>>(({ query, page }) => ({
     url: '/v1.2/movie/search',
     params: {
       query,
@@ -94,9 +94,20 @@ const routesConfig = http.createRoutesConfig({
       limit: 30,
     },
   })),
-  getAllFavorites: http.createRoute<string, Data<MovieEntity>>((id) => ({
+  getAllFavoritesFx: http.createRoute<string, Data<MovieEntity>>((id) => ({
     url: `/v1.3/movie?${id}&limit=250`,
   })),
 });
 
-export const commonApi = routesConfig.build();
+export const {
+  getMovieByIdFx,
+  getPersonByIdFx,
+  getCatalogFx,
+  getNewMoviesFx,
+  getComedyMoviesFx,
+  getFamilyMoviesFx,
+  getDramaMoviesFx,
+  getFantasticMoviesFx,
+  searchByNameFx,
+  getAllFavoritesFx,
+} = routesConfig.build();

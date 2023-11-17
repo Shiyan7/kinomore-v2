@@ -1,7 +1,7 @@
 import { createStore, createEvent, sample, restore } from 'effector';
 import { createGate } from 'effector-react';
 import { not } from 'patronum';
-import { internalApi } from 'shared/api';
+import { getMeFx, refreshFx, signInFx, signUpFx, googleLoginFx } from 'shared/api';
 import { AppGate, isClient } from 'shared/config';
 import { atom } from 'shared/factory';
 import { navigationModel } from 'shared/navigation';
@@ -10,20 +10,6 @@ import { REFRESH_DELAY } from './config';
 import { tokenService } from './token-service';
 
 export const sessionModel = atom(() => {
-  /* effects */
-
-  const getMeFx = internalApi.getMe;
-
-  const signInFx = internalApi.signIn;
-
-  const signUpFx = internalApi.signUp;
-
-  const refreshFx = internalApi.refresh;
-
-  const googleLoginFx = internalApi.googleLogin;
-
-  /* events */
-
   const refreshTokenStarted = createEvent<string>();
 
   const logOut = createEvent();
@@ -35,8 +21,6 @@ export const sessionModel = atom(() => {
   const redirectToHome = createEvent();
 
   const loginWithGoogle = createEvent<{ code: string }>();
-
-  /* state */
 
   const $hasAccessToken = createStore(false);
 

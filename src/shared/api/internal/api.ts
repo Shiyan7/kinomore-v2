@@ -2,48 +2,48 @@ import { http } from './config';
 import type { AuthDto, FavoriteItems, Message, Status, TokensDto, User } from './types';
 
 const routesConfig = http.createRoutesConfig({
-  signUp: http.createRoute<AuthDto, TokensDto>((data) => ({
+  signUpFx: http.createRoute<AuthDto, TokensDto>((data) => ({
     url: '/auth/sign-up',
     method: 'post',
     data,
   })),
-  signIn: http.createRoute<AuthDto, TokensDto>((data) => ({
+  signInFx: http.createRoute<AuthDto, TokensDto>((data) => ({
     url: '/auth/sign-in',
     method: 'post',
     data,
   })),
-  googleLogin: http.createRoute<string, TokensDto>((code) => ({
+  googleLoginFx: http.createRoute<string, TokensDto>((code) => ({
     url: '/auth/google',
     method: 'post',
     data: {
       code,
     },
   })),
-  refresh: http.createRoute<string, TokensDto>((token) => ({
+  refreshFx: http.createRoute<string, TokensDto>((token) => ({
     url: '/auth/refresh',
     method: 'post',
     data: {
       token,
     },
   })),
-  checkUser: http.createRoute<string, Status>((email) => ({
+  checkUserFx: http.createRoute<string, Status>((email) => ({
     url: '/auth/check-user',
     data: {
       email,
     },
   })),
-  getMe: http.createRoute<void, User>({
+  getMeFx: http.createRoute<void, User>({
     url: '/user/me',
   }),
-  getFavoritesId: http.createRoute<void, FavoriteItems>({
+  getFavoritesIdFx: http.createRoute<void, FavoriteItems>({
     url: '/favorites',
   }),
-  toggleFavorite: http.createRoute<{ id: number }, Message>((data) => ({
+  toggleFavoriteFx: http.createRoute<{ id: number }, Message>((data) => ({
     url: '/favorites',
     method: 'post',
     data,
   })),
-  checkFavorite: http.createRoute<string, boolean>((id) => ({
+  checkFavoriteFx: http.createRoute<string, boolean>((id) => ({
     url: '/favorites/check',
     data: {
       id,
@@ -51,4 +51,14 @@ const routesConfig = http.createRoutesConfig({
   })),
 });
 
-export const internalApi = routesConfig.build();
+export const {
+  signUpFx,
+  signInFx,
+  googleLoginFx,
+  refreshFx,
+  checkUserFx,
+  getMeFx,
+  getFavoritesIdFx,
+  toggleFavoriteFx,
+  checkFavoriteFx,
+} = routesConfig.build();

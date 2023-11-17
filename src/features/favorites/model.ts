@@ -4,19 +4,11 @@ import { createGate } from 'effector-react';
 import { and, not } from 'patronum';
 import { authModel } from 'widgets/auth';
 import { sessionModel } from 'entities/session';
-import { MovieEntity, commonApi, internalApi } from 'shared/api';
+import { MovieEntity, toggleFavoriteFx, getAllFavoritesFx, checkFavoriteFx, getFavoritesIdFx } from 'shared/api';
 import { atom } from 'shared/factory';
 import { arrayToSearchParams } from './lib';
 
 export const favoritesModel = atom(() => {
-  const toggleFavoriteFx = internalApi.toggleFavorite;
-
-  const getFavoritesIdFx = internalApi.getFavoritesId;
-
-  const getAllFavoritesFx = commonApi.getAllFavorites;
-
-  const checkFavoriteFx = internalApi.checkFavorite;
-
   const $pending = createStore(true);
 
   const $isFavorite = createStore(false);

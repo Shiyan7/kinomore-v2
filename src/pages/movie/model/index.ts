@@ -3,7 +3,7 @@ import { createGate } from 'effector-react';
 import type { PageContext } from 'nextjs-effector';
 import { favoritesModel } from 'features/favorites';
 import { sessionModel } from 'entities/session';
-import { commonApi } from 'shared/api';
+import { getMovieByIdFx } from 'shared/api';
 import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
 
@@ -19,8 +19,6 @@ export const movieModel = atom(() => {
   const shareToggler = createToggler();
 
   const playerToggler = createToggler();
-
-  const getMovieByIdFx = commonApi.getMovieById;
 
   const $movie = restore(getMovieByIdFx, null);
 

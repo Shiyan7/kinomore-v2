@@ -1,2 +1,2 @@
-export { internalApi } from './api';
+export * from './api';
 export * from './types';
