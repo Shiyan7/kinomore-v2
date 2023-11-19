@@ -26,11 +26,11 @@ export const MainButtons = () => {
     { children: `Смотреть ${getMovieType(data?.type)}`, handler: playerToggler.open, gradient: true },
     { children: 'Трейлер', handler: trailerToggler.open },
     {
-      children: <Icon type="common" name="bookmark" />,
+      children: <Icon name="common/bookmark" />,
       activeCondition: isFavorite,
       handler: () => toggleFavoriteClicked({ id: movieId }),
     },
-    { children: <Icon type="common" name="star" />, activeCondition: isRated, handler: gradeToggler.open },
+    { children: <Icon name="common/star" />, activeCondition: isRated, handler: gradeToggler.open },
   ];
 
   return (

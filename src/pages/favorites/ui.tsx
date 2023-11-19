@@ -7,10 +7,7 @@ import { Icon, Spinner, Title } from 'shared/ui';
 import { Breadcrumbs } from 'shared/ui/breadcrumbs';
 import styles from './styles.module.scss';
 
-const breadcrumbs = [
-  { text: 'Профиль', href: paths.profile },
-  { text: 'Избранное' },
-];
+const breadcrumbs = [{ text: 'Профиль', href: paths.profile }, { text: 'Избранное' }];
 
 export const FavoritesPage = () => {
   const data = useStore(favoritesModel.$allFavorites);
@@ -36,7 +33,7 @@ export const FavoritesPage = () => {
   const EmptyMessage = (
     <div className={styles.empty}>
       <div className={styles.icon}>
-        <Icon type="common" name="bookmark-slash" />
+        <Icon name="common/bookmark-slash" />
       </div>
       <span>Список избранного пуст :(</span>
     </div>

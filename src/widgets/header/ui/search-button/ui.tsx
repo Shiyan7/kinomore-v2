@@ -9,7 +9,7 @@ export const SearchButton = () => {
 
   return (
     <button onClick={open} className={clsx('btn-reset', styles.btn)}>
-      <Icon type="common" name="search" />
+      <Icon name="common/search" />
     </button>
   );
 };

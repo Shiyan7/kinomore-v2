@@ -37,14 +37,14 @@ export const DrawerSelect = ({ className, options, onSelect, value, label }: Dra
           <span className={styles.caption}>{selected.label}</span>
         </div>
         <span className={styles.arrow}>
-          <Icon type="common" name="chevron" />
+          <Icon name="common/chevron" />
         </span>
       </div>
       <div className={styles.drawer}>
         <div className={styles.header}>
           <Title size="medium">{label}</Title>
           <button onClick={handleClose} className={clsx('btn-reset', styles.close)}>
-            <Icon type="common" name="close" />
+            <Icon name="common/close" />
           </button>
         </div>
         <div className={styles.options}>
@@ -59,7 +59,7 @@ export const DrawerSelect = ({ className, options, onSelect, value, label }: Dra
               >
                 {option?.label}
                 <span className={styles.check}>
-                  <Icon type="common" name="check" />
+                  <Icon name="common/check" />
                 </span>
               </div>
             );

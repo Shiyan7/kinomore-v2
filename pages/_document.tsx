@@ -16,6 +16,7 @@ const Document = () => (
     <body className="page__body">
       <Main />
       <div id="modal" />
+      <div id="notification" />
       <NextScript />
     </body>
   </Html>

@@ -37,7 +37,7 @@ export const Player = () => {
         <Spinner strokeWidth={3} />
       </div>
       <button onClick={handleClose} className={clsx('btn-reset', styles.close)}>
-        <Icon type="common" name="close" />
+        <Icon name="common/close" />
       </button>
     </Modal>
   );

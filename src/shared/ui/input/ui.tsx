@@ -53,12 +53,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             onClick={onClear}
             className={clsx('btn-reset', value && styles.visibile, styles.clearBtn)}
           >
-            <Icon type="common" name="close" />
+            <Icon name="common/close" />
           </button>
         )}
         {togglePassword && (
           <button type="button" className={clsx('btn-reset', styles.eye)} onClick={handlePasswordType}>
-            <Icon type="common" name={inputType === 'text' ? 'eye' : 'eye-closed'} />
+            <Icon name={inputType === 'text' ? 'common/eye' : 'common/eye-closed'} />
           </button>
         )}
       </div>

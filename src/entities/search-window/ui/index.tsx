@@ -15,7 +15,7 @@ export const SearchWindow = () => {
   return (
     <Modal isOpen={isOpen} close={close} className={styles.window}>
       <button className={clsx('btn-reset', styles.close)} onClick={close}>
-        <Icon type="common" name="close" />
+        <Icon name="common/close" />
       </button>
       <div className={styles.container}>
         <Title className={styles.title} size="xl">

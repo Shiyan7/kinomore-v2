@@ -38,7 +38,7 @@ export const Catalog = ({ title }: CatalogProps) => {
             {params && `: ${params}`}
           </Title>
           <button onClick={open} className={clsx('btn-reset', styles.btn)}>
-            <Icon type="common" name="filters" />
+            <Icon name="common/filters" />
           </button>
         </div>
         <Filters />

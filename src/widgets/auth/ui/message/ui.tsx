@@ -24,7 +24,7 @@ export const Message = ({
   <div className={clsx(styles.container, styles[position], className)}>
     {isEditable && (
       <button onClick={onEdit} className={clsx('btn-reset', styles.edit)}>
-        <Icon type="common" name="edit" />
+        <Icon name="common/edit" />
       </button>
     )}
     <div className={clsx(styles.message, isSuccess && styles.isSuccess)}>

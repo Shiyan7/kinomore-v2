@@ -28,7 +28,7 @@ export const MovieItem = ({ item, rating, small, onFavorite }: MovieItemProps) =
     <Link className={styles.item} href={paths.movie(item?.id)}>
       {onFavorite && (
         <button onClick={favoriteClickHandler} className={clsx('btn-reset', styles.favorite)}>
-          <Icon type="common" name="bookmark-slash" />
+          <Icon name="common/bookmark-slash" />
         </button>
       )}
       <div className={styles.imageWrapper}>

@@ -22,7 +22,7 @@ export const Popup = ({ rootClassName, className, close, children, ...props }: P
 
 const ClosePopup = ({ onClick, className }: CloseProps) => (
   <button onClick={onClick} className={clsx('btn-reset', styles.close, className)}>
-    <Icon type="common" name="close" />
+    <Icon name="common/close" />
   </button>
 );
 

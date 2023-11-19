@@ -1,16 +1,17 @@
-import { SpritesMap } from './sprite.h';
+import clsx from 'clsx';
+import type { SVGProps } from 'react';
+import type { IconName } from './types';
 
-export type IconName<Group extends keyof SpritesMap> = SpritesMap[Group];
-
-export interface IconProps<Group extends keyof SpritesMap> {
-  name: IconName<Group>;
-  type?: Group;
+export interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'name' | 'type'> {
+  name: IconName;
 }
 
-export function Icon<Group extends keyof SpritesMap = 'common'>({ type, name }: IconProps<Group>) {
+export function Icon({ name, className, viewBox, ...props }: IconProps) {
+  const [spriteName, iconName] = name.split('/');
+
   return (
-    <svg className="icon">
-      <use xlinkHref={`/sprite/${type}.svg#${name}`} />
+    <svg className={clsx('icon', className)} viewBox={viewBox} focusable="false" aria-hidden {...props}>
+      <use xlinkHref={`/sprite/${spriteName}.svg#${iconName}`} />
     </svg>
   );
 }

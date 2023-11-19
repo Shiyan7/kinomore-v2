@@ -28,9 +28,9 @@ export const sessionModel = atom(() => {
 
   const $pending = createStore(false);
 
-  const $session = sessionQuery.$data;
-
   const ProfilePageGate = createGate();
+
+  const $session = sessionQuery.$data;
 
   const $isRefreshed = refreshQuery.$finished;
 

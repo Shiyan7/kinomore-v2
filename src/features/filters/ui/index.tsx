@@ -29,7 +29,7 @@ export const Filters = () => {
           <Image priority className={styles.image} width={131} height={26} src="/logo.svg" alt="Kinomore" />
         </div>
         <button onClick={close} className={clsx('btn-reset', styles.close)}>
-          <Icon type="common" name="close" />
+          <Icon name="common/close" />
         </button>
       </div>
       <div className={styles.container}>
@@ -53,7 +53,7 @@ export const Filters = () => {
               value={query.sort}
               onSelect={(option) => optionSelected({ sort: option.value })}
               options={sort}
-              startIcon={<Icon type="common" name="sort" />}
+              startIcon={<Icon name="common/sort" />}
               placement="bottom-end"
               className={styles.select}
               label="Рекомендуемые"

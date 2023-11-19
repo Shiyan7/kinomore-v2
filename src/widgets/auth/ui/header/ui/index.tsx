@@ -30,7 +30,7 @@ export const Header = () => {
         </div>
       )}
       <button className={clsx('btn-reset', styles.close)} onClick={close}>
-        <Icon type="common" name="close" />
+        <Icon name="common/close" />
       </button>
       <Progress />
     </div>

@@ -15,14 +15,14 @@ export const Profile = () => {
 
   const ProfileLink = (
     <Link href={paths.profile} className={styles.profile}>
-      <Icon type="common" name="profile" />
+      <Icon name="common/profile" />
       Профиль
     </Link>
   );
 
   const ProfileButton = (
     <button onClick={open} className={clsx('btn-reset', styles.profile)}>
-      <Icon type="common" name="profile" />
+      <Icon name="common/profile" />
       Войти
     </button>
   );

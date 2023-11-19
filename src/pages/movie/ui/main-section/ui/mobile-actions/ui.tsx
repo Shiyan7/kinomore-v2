@@ -20,20 +20,20 @@ export const MobileActions = () => {
   const movieId = Number(query.id);
 
   const items = [
-    { label: 'Трейлер', handler: trailerToggler.open, icon: <Icon type="common" name="play" /> },
+    { label: 'Трейлер', handler: trailerToggler.open, icon: <Icon name="common/play" /> },
     {
       label: isFavorite ? 'Запомнен' : 'Запомнить',
       activeCondition: isFavorite,
       handler: () => toggleFavoriteClicked({ id: movieId }),
-      icon: <Icon type="common" name="bookmark" />,
+      icon: <Icon name="common/bookmark" />,
     },
     {
       label: isRated ? `Оценка ${rating}` : 'Оценить',
       activeCondition: isRated,
       handler: gradeToggler.open,
-      icon: <Icon type="common" name="star" />,
+      icon: <Icon name="common/star" />,
     },
-    { label: 'Поделится', handler: shareToggler.open, icon: <Icon type="common" name="share" /> },
+    { label: 'Поделится', handler: shareToggler.open, icon: <Icon name="common/share" /> },
   ];
 
   return (

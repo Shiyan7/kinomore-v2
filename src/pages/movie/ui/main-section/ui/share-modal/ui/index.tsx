@@ -40,7 +40,7 @@ export const ShareModal = () => {
           </div>
           <button onClick={handleCopy} className={clsx('btn-reset', styles.copy)}>
             <span className={styles.icon}>
-              <Icon type="common" name="link" />
+              <Icon name="common/link" />
             </span>
             Копировать ссылку
           </button>

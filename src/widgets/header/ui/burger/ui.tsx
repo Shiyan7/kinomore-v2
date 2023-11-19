@@ -9,7 +9,7 @@ export const Burger = () => {
 
   return (
     <button onClick={open} className={clsx('btn-reset', styles.btn)}>
-      <Icon type="common" name="burger" />
+      <Icon name="common/burger" />
     </button>
   );
 };

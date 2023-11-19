@@ -9,6 +9,6 @@ interface SliderButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const SliderButton = forwardRef<HTMLButtonElement, SliderButtonProps>(({ className, ...props }, ref) => (
   <button className={clsx('btn-reset', styles.btn, className)} ref={ref} {...props}>
-    <Icon type="common" name="chevron" />
+    <Icon name="common/chevron" />
   </button>
 ));

@@ -39,7 +39,7 @@ export const EmailForm = () => {
       <div className={styles.top}>
         <Transition delay={TransitionDelays.GoogleLogo}>
           <button onClick={googleLogin} className={clsx('btn-reset', styles.logo)}>
-            <Icon type="common" name="google" />
+            <Icon name="common/google" />
           </button>
         </Transition>
         <Transition delay={TransitionDelays.EmailSeparator}>

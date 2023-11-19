@@ -43,7 +43,7 @@ export const Select = ({
         {startIcon && <span className={styles.icon}>{startIcon}</span>}
         <span className={styles.value}>{selected.value ? selected.label : label}</span>
         <span className={styles.arrow}>
-          <Icon type="common" name="chevron" />
+          <Icon name="common/chevron" />
         </span>
       </div>
       <div className={clsx(styles.options, styles[placement])}>
@@ -58,7 +58,7 @@ export const Select = ({
             >
               {option?.label}
               <span className={styles.check}>
-                <Icon type="common" name="check" />
+                <Icon name="common/check" />
               </span>
             </div>
           );

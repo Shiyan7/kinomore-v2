@@ -18,7 +18,7 @@ export const Menu = () => {
   return (
     <div className={clsx(styles.menu, isOpen && styles.opened)}>
       <button onClick={close} className={clsx('btn-reset', styles.close)}>
-        <Icon type="common" name="close" />
+        <Icon name="common/close" />
       </button>
       <div className={clsx('container', styles.container)}>
         <ul className={clsx('list-reset', styles.list)}>

@@ -24,7 +24,7 @@ const CategoryTitle = ({ children, href, ...props }: TitleProps<ElementType<Part
     {children}
     {href && (
       <span className={styles.icon}>
-        <Icon type="common" name="chevron" />
+        <Icon name="common/chevron" />
       </span>
     )}
   </Title>
