@@ -1,30 +1,30 @@
-import { restore, sample } from 'effector';
+import { sample } from 'effector';
 import { createGate } from 'effector-react';
-import {
-  getNewMoviesFx,
-  getComedyMoviesFx,
-  getFamilyMoviesFx,
-  getDramaMoviesFx,
-  getFantasticMoviesFx,
-} from 'shared/api';
 import { atom } from 'shared/factory';
+import { comedyMoviesQuery, dramaMoviesQuery, familyMoviesQuery, fantasticMoviesQuery, newMoviesQuery } from '../api';
 
 export const homeModel = atom(() => {
   const HomePageGate = createGate();
 
-  const $newMovies = restore(getNewMoviesFx, null);
+  const $newMovies = newMoviesQuery.$data;
 
-  const $comedyMovies = restore(getComedyMoviesFx, null);
+  const $comedyMovies = comedyMoviesQuery.$data;
 
-  const $familyMovies = restore(getFamilyMoviesFx, null);
+  const $familyMovies = familyMoviesQuery.$data;
 
-  const $dramaMovies = restore(getDramaMoviesFx, null);
+  const $dramaMovies = dramaMoviesQuery.$data;
 
-  const $fantasticMovies = restore(getFantasticMoviesFx, null);
+  const $fantasticMovies = fantasticMoviesQuery.$data;
 
   sample({
     clock: HomePageGate.open,
-    target: [getNewMoviesFx, getComedyMoviesFx, getFamilyMoviesFx, getDramaMoviesFx, getFantasticMoviesFx],
+    target: [
+      newMoviesQuery.start,
+      comedyMoviesQuery.start,
+      familyMoviesQuery.start,
+      dramaMoviesQuery.start,
+      fantasticMoviesQuery.start,
+    ],
   });
 
   return {

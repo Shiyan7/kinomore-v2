@@ -343,6 +343,11 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.43.0.tgz#559ca3d9ddbd6bf907ad524320a0d14b85586af0"
   integrity sha512-s2UHCoiXfxMvmfzqoN+vrQ84ahUSYde9qNO1MdxmoEhyHWsfmwOpFlwYV+ePJEVc7gFnATGUi376WowX1N7tFg==
 
+"@farfetched/core@^0.10.5":
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/@farfetched/core/-/core-0.10.5.tgz#5b2ad8adae8a1421b42f06613621ac5257ef595b"
+  integrity sha512-9OHscEbBhuQfRE/42BDdGco53SQAuLAaBfmDON5sOF4mm8Cp2zxpuOCdCnFnRCkIzUvbaulYg5qukyJFp1hHvw==
+
 "@feature-sliced/eslint-config@^0.1.0-beta.6":
   version "0.1.0-beta.6"
   resolved "https://registry.yarnpkg.com/@feature-sliced/eslint-config/-/eslint-config-0.1.0-beta.6.tgz#ba818d630449c97b802c0e5dda874f12b6b51cf2"
@@ -1405,7 +1410,7 @@ axe-core@^4.6.2:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.6.3.tgz#fc0db6fdb65cc7a80ccf85286d91d64ababa3ece"
   integrity sha512-/BQzOX780JhsxDnPpH4ZiyrJAzcd8AfzFPkv+89veFSr1rcMjuq2JDCwypKaPeB6ljHp9KjXhPpjgCvQlWYuqg==
 
-axios@*, axios@^1.1.3, axios@^1.2.6:
+axios@*:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.3.5.tgz#e07209b39a0d11848e3e341fa087acd71dadc542"
   integrity sha512-glL/PvG/E+xCWwV8S6nCHcrfg1exGx7vxyUIivIA1iL7BIh6bePylCfVHwp6k13ao7SATxB6imau2kqY+I67kw==
@@ -1963,6 +1968,11 @@ delayed-stream@~1.0.0:
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
 
+destr@^2.0.1:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/destr/-/destr-2.0.2.tgz#8d3c0ee4ec0a76df54bc8b819bca215592a8c218"
+  integrity sha512-65AlobnZMiCET00KaFFjUefxDX0khFA/E4myqZ7a6Sq1yZtR8+FVIvilVX66vF2uobSumxooYZChiRPCKNqhmg==
+
 detect-newline@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-3.1.0.tgz#576f5dfc63ae1a192ff192d8ad3af6308991b651"
@@ -2051,14 +2061,6 @@ domutils@^3.0.1:
     domelementtype "^2.3.0"
     domhandler "^5.0.3"
 
-effector-http-api@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/effector-http-api/-/effector-http-api-2.3.0.tgz#0a75f5e876991ad2a847dddd6e3fb4c648fc8d3b"
-  integrity sha512-cznR+/hb+061CoKRVXAT3cMMWKf5D2NR0PzCEpR9jAAojFItkh68fwrM6CCcSyFRERb4kAVTrXBY1WWibigcPw==
-  dependencies:
-    axios "^1.1.3"
-    effector "^22.3.0"
-
 effector-react@22.5.1:
   version "22.5.1"
   resolved "https://registry.yarnpkg.com/effector-react/-/effector-react-22.5.1.tgz#09e7ef9a9328edf1ff4f4fcd50b0f4ff98980a52"
@@ -2066,7 +2068,7 @@ effector-react@22.5.1:
   dependencies:
     use-sync-external-store "^1.0.0"
 
-effector@22.8.0, effector@^22.3.0:
+effector@22.8.0:
   version "22.8.0"
   resolved "https://registry.yarnpkg.com/effector/-/effector-22.8.0.tgz#e3eb2ee08f5355ee9ae14c136bfd87742e6869a0"
   integrity sha512-YLECzXGyIpJjefai3noBonQOx7prhs9qg6zLdIxV9VBNXbRO4iYPXOVh2rh34JETroObDiZpQ+XqsxLJtIykKA==
@@ -4044,6 +4046,11 @@ nextjs-progressbar@^0.0.16:
     nprogress "^0.2.0"
     prop-types "^15.8.1"
 
+node-fetch-native@^1.4.0:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/node-fetch-native/-/node-fetch-native-1.4.1.tgz#5a336e55b4e1b1e72b9927da09fecd2b374c9be5"
+  integrity sha512-NsXBU0UgBxo2rQLOeWNZqS3fvflWePMECr8CoSWoSTqCqGbVVsvl9vZu1HfQicYN0g5piV9Gh8RTEvo/uP752w==
+
 node-int64@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
@@ -4172,6 +4179,15 @@ object.values@^1.1.6:
     call-bind "^1.0.2"
     define-properties "^1.1.4"
     es-abstract "^1.20.4"
+
+ofetch@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/ofetch/-/ofetch-1.3.3.tgz#588cb806a28e5c66c2c47dd8994f9059a036d8c0"
+  integrity sha512-s1ZCMmQWXy4b5K/TW9i/DtiN8Ku+xCiHcjQ6/J/nDdssirrQNOoB165Zu8EqLMA2lln1JUth9a0aW9Ap2ctrUg==
+  dependencies:
+    destr "^2.0.1"
+    node-fetch-native "^1.4.0"
+    ufo "^1.3.0"
 
 once@^1.3.0:
   version "1.4.0"
@@ -5160,6 +5176,11 @@ typescript@4.8.4:
   version "4.8.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.4.tgz#c464abca159669597be5f96b8943500b238e60e6"
   integrity sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==
+
+ufo@^1.3.0:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/ufo/-/ufo-1.3.2.tgz#c7d719d0628a1c80c006d2240e0d169f6e3c0496"
+  integrity sha512-o+ORpgGwaYQXgqGDwd+hkS4PuZ3QnmqMMxRuajK/a38L6fTpcE5GPIfrf+L/KemFzfUpeUQc1rRS1iDBozvnFA==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"

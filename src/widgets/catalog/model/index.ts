@@ -1,13 +1,13 @@
-import { combine, createEvent, createStore, restore, sample } from 'effector';
+import { combine, createEvent, createStore, sample } from 'effector';
 import type { PageContext } from 'nextjs-effector';
-import { getCatalogFx } from 'shared/api';
 import { atom } from 'shared/factory';
+import { catalogQuery } from '../api';
 import { getCatalogType } from '../lib';
 
 export const catalogModel = atom(() => {
   const pageStarted = createEvent<PageContext>();
 
-  const $catalog = restore(getCatalogFx, null);
+  const $catalog = catalogQuery.$data;
 
   const loadMore = createEvent();
 
@@ -30,21 +30,20 @@ export const catalogModel = atom(() => {
     clock: [pageStarted, loadMore],
     source: $params,
     fn: ({ limit, context }) => ({ ...context?.query, limit, type: getCatalogType(context?.pathname ?? '') }),
-    target: getCatalogFx,
+    target: catalogQuery.start,
   });
 
-  const $pending = getCatalogFx.pending;
+  const { $pending } = catalogQuery;
 
   sample({
-    clock: getCatalogFx.doneData,
+    clock: catalogQuery.finished.success,
     source: $limit,
-    fn: (limit, { total }) => total > limit,
+    fn: (limit, { result }) => result.total > limit,
     target: $hasMore,
   });
 
   return {
     pageStarted,
-    getCatalogFx,
     $catalog,
     loadMore,
     $hasMore,

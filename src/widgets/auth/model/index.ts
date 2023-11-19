@@ -1,6 +1,6 @@
 import { createEvent, createStore, sample } from 'effector';
 import { condition, delay } from 'patronum';
-import { checkUserFx, signInFx, signUpFx, googleLoginFx } from 'shared/api';
+import { checkUserQuery, googleLoginQuery, signInQuery, signUpQuery } from 'entities/session';
 import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
 import { navigationModel } from 'shared/navigation';
@@ -21,7 +21,7 @@ export const authModel = atom(() => {
 
   const $isNewUser = createStore(false);
 
-  const $checkUserPending = checkUserFx.pending;
+  const $checkUserPending = checkUserQuery.$pending;
 
   const emailChanged = createEvent<string>();
 
@@ -56,29 +56,29 @@ export const authModel = atom(() => {
   sample({
     clock: emailFormSubmitted,
     source: $email,
-    target: checkUserFx,
+    target: checkUserQuery.start,
   });
 
   sample({
-    clock: checkUserFx.doneData,
-    fn: ({ isNewUser }) => isNewUser,
+    clock: checkUserQuery.finished.success,
+    fn: ({ result }) => result.isNewUser,
     target: $isNewUser,
   });
 
   sample({
-    clock: checkUserFx.doneData,
+    clock: checkUserQuery.finished.success,
     target: continueClicked,
   });
 
   condition({
     source: passwordFormSubmitted,
     if: $isNewUser,
-    then: signUpFx,
-    else: signInFx,
+    then: signUpQuery.start,
+    else: signInQuery.start,
   });
 
   sample({
-    clock: [signInFx.doneData, signUpFx.doneData],
+    clock: [signInQuery.finished.success, signUpQuery.finished.success],
     target: authSuccess,
   });
 
@@ -89,7 +89,7 @@ export const authModel = atom(() => {
   });
 
   sample({
-    clock: [redirectToProfile, googleLoginFx.doneData],
+    clock: [redirectToProfile, googleLoginQuery.finished.success],
     fn: () => paths.profile,
     target: [navigationModel.pushFx, toggler.close],
   });

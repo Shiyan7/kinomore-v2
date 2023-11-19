@@ -3,7 +3,7 @@ export interface AuthDto {
   password: string;
 }
 
-export interface User {
+export interface Session {
   name: string;
   email: string;
   avatar: string;
@@ -11,16 +11,8 @@ export interface User {
   updatedAt: Date;
 }
 
-export interface Message {
-  message: string;
-}
-
 export interface Status {
   isNewUser: boolean;
-}
-
-export interface FavoriteItems {
-  items: number[];
 }
 
 export interface TokensDto {

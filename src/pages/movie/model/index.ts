@@ -1,11 +1,11 @@
-import { createEvent, createStore, restore, sample } from 'effector';
+import { createEvent, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import type { PageContext } from 'nextjs-effector';
-import { favoritesModel } from 'features/favorites';
+import { checkFavoriteQuery } from 'features/favorites';
 import { sessionModel } from 'entities/session';
-import { getMovieByIdFx } from 'shared/api';
 import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
+import { movieByIdQuery } from '../api';
 
 export const movieModel = atom(() => {
   const pageStarted = createEvent<PageContext>();
@@ -20,7 +20,7 @@ export const movieModel = atom(() => {
 
   const playerToggler = createToggler();
 
-  const $movie = restore(getMovieByIdFx, null);
+  const $movie = movieByIdQuery.$data;
 
   const $isRated = createStore(false);
 
@@ -44,14 +44,14 @@ export const movieModel = atom(() => {
   sample({
     clock: pageStarted,
     fn: ({ params }) => params?.id as string,
-    target: getMovieByIdFx,
+    target: movieByIdQuery.start,
   });
 
   sample({
     clock: sessionModel.$isRefreshed,
     source: MoviePageGate.open,
     fn: ({ movieId }) => movieId,
-    target: favoritesModel.checkFavoriteFx,
+    target: checkFavoriteQuery.start,
   });
 
   $isRated.on(ratingModalClosed, () => true);

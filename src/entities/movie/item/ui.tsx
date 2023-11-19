@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { MouseEventHandler } from 'react';
-import type { MovieEntity, Rating } from 'shared/api';
+import type { MovieEntity, Rating } from 'shared/api/types';
 import { getRating, minutesToHour } from 'shared/lib';
 import { paths } from 'shared/routing';
 import { Icon } from 'shared/ui';

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { SearchMovieEntity } from 'shared/api';
+import type { SearchMovieEntity } from 'shared/api/types';
 import { paths } from 'shared/routing';
 import { MovieRating } from 'shared/ui/movie-rating';
 import styles from './styles.module.scss';

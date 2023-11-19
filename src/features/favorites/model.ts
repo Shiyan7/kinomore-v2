@@ -1,11 +1,12 @@
 /* eslint-disable boundaries/element-types */
-import { createEvent, createStore, restore, sample } from 'effector';
+import { createEvent, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import { and, not } from 'patronum';
 import { authModel } from 'widgets/auth';
-import { sessionModel } from 'entities/session';
-import { MovieEntity, toggleFavoriteFx, getAllFavoritesFx, checkFavoriteFx, getFavoritesIdFx } from 'shared/api';
+import { refreshQuery, sessionModel } from 'entities/session';
+import { MovieEntity } from 'shared/api/types';
 import { atom } from 'shared/factory';
+import { allFavoritesQuery, checkFavoriteQuery, favoritesIdQuery, toggleFavoriteQuery } from './api';
 import { arrayToSearchParams } from './lib';
 
 export const favoritesModel = atom(() => {
@@ -15,7 +16,7 @@ export const favoritesModel = atom(() => {
 
   const $allFavorites = createStore<MovieEntity[]>([]);
 
-  const $arrayOfId = restore(getFavoritesIdFx.doneData, null);
+  const $arrayOfId = favoritesIdQuery.$data;
 
   const FavoritesPageGate = createGate();
 
@@ -36,49 +37,50 @@ export const favoritesModel = atom(() => {
   sample({
     clock: [toggleFavoriteClicked, removeFavoriteClicked],
     filter: sessionModel.$isLogged,
-    target: toggleFavoriteFx,
+    target: toggleFavoriteQuery.start,
   });
 
   sample({
     clock: sessionModel.$isRefreshed,
     source: FavoritesPageGate.open,
-    target: getFavoritesIdFx,
+    target: favoritesIdQuery.start,
   });
 
   sample({
-    clock: getFavoritesIdFx.doneData,
-    filter: ({ items }) => items.length > 0,
-    fn: ({ items }) => arrayToSearchParams(items),
-    target: getAllFavoritesFx,
+    clock: favoritesIdQuery.finished.success,
+    filter: ({ result }) => result.items.length > 0,
+    fn: ({ result }) => arrayToSearchParams(result.items),
+    target: allFavoritesQuery.start,
   });
 
   sample({
-    clock: getFavoritesIdFx.doneData,
-    filter: ({ items }) => !items.length,
+    clock: favoritesIdQuery.finished.success,
+    filter: ({ result }) => !result.items.length,
     target: abortPending,
   });
 
   sample({
-    clock: getAllFavoritesFx.doneData,
+    clock: allFavoritesQuery.finished.success,
     source: $arrayOfId,
     filter: Boolean,
-    fn: ({ items }, { docs }) => docs.sort((a, b) => items.indexOf(b.id) - items.indexOf(a.id)),
+    fn: ({ items }, { result }) => result.docs.sort((a, b) => items.indexOf(b.id) - items.indexOf(a.id)),
     target: $allFavorites,
   });
 
   sample({
-    clock: getAllFavoritesFx.doneData,
+    clock: allFavoritesQuery.finished.success,
     target: abortPending,
   });
 
   sample({
-    clock: checkFavoriteFx.doneData,
+    clock: checkFavoriteQuery.finished.success,
+    fn: ({ result }) => result.status,
     target: $isFavorite,
   });
 
   sample({
     clock: toggleFavoriteClicked,
-    filter: and(not(sessionModel.$isLogged), not(sessionModel.refreshFx.pending)),
+    filter: and(not(sessionModel.$isLogged), not(refreshQuery.$pending)),
     target: authModel.toggler.open,
   });
 
@@ -93,6 +95,5 @@ export const favoritesModel = atom(() => {
     $pending,
     $isFavorite,
     $allFavorites,
-    checkFavoriteFx,
   };
 });

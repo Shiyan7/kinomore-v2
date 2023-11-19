@@ -1,4 +1,4 @@
-import type { Name } from 'shared/api';
+import type { Name } from 'shared/api/types';
 
 function capitalizeFirstLetter(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);

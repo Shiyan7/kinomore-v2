@@ -1,6 +1,3 @@
-const MIN_YEAR = 0;
+export const getCurrentYear = () => new Date().getFullYear();
 
-export const getCurrentYear = () =>
-  // return new Date().getFullYear();
-  2022;
-export const getYears = () => `${MIN_YEAR}-${getCurrentYear()}`;
+export const getYears = () => `0-${getCurrentYear()}`;

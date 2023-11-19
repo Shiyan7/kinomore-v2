@@ -1,24 +1,24 @@
-import { createStore, createEvent, sample, restore } from 'effector';
+import { createStore, createEvent, sample } from 'effector';
 import { createGate } from 'effector-react';
 import { not } from 'patronum';
-import { getMeFx, refreshFx, signInFx, signUpFx, googleLoginFx } from 'shared/api';
 import { AppGate, isClient } from 'shared/config';
 import { atom } from 'shared/factory';
 import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
+import { sessionQuery, googleLoginQuery, refreshQuery, signInQuery, signUpQuery } from './api';
 import { REFRESH_DELAY } from './config';
 import { tokenService } from './token-service';
 
 export const sessionModel = atom(() => {
-  const refreshTokenStarted = createEvent<string>();
-
   const logOut = createEvent();
 
-  const startRefreshTokenWithInterval = createEvent();
+  const redirectToHome = createEvent();
 
   const checkTokenAndRedirect = createEvent();
 
-  const redirectToHome = createEvent();
+  const refreshTokenStarted = createEvent<string>();
+
+  const startRefreshTokenWithInterval = createEvent();
 
   const loginWithGoogle = createEvent<{ code: string }>();
 
@@ -28,21 +28,26 @@ export const sessionModel = atom(() => {
 
   const $pending = createStore(false);
 
-  const $session = restore(getMeFx, null);
+  const $session = sessionQuery.$data;
 
   const ProfilePageGate = createGate();
 
-  const $isRefreshed = refreshFx.done;
+  const $isRefreshed = refreshQuery.$finished;
 
   sample({
     clock: $isRefreshed,
     source: ProfilePageGate.open,
-    target: getMeFx,
+    target: sessionQuery.start,
   });
 
   sample({
-    clock: [refreshFx.doneData, signInFx.doneData, signUpFx.doneData, googleLoginFx.doneData],
-    fn: tokenService.setTokens,
+    clock: [
+      refreshQuery.finished.success,
+      signInQuery.finished.success,
+      signUpQuery.finished.success,
+      googleLoginQuery.finished.success,
+    ],
+    fn: ({ result }) => tokenService.setTokens(result),
   });
 
   setInterval(() => {
@@ -60,7 +65,7 @@ export const sessionModel = atom(() => {
   sample({
     clock: refreshTokenStarted,
     filter: tokenService.hasRefreshToken,
-    target: refreshFx,
+    target: refreshQuery.start,
   });
 
   sample({
@@ -70,7 +75,7 @@ export const sessionModel = atom(() => {
   });
 
   sample({
-    clock: getMeFx.failData,
+    clock: sessionQuery.finished.failure,
     target: [logOut, redirectToHome],
   });
 
@@ -101,31 +106,36 @@ export const sessionModel = atom(() => {
   sample({
     clock: loginWithGoogle,
     fn: ({ code }) => code,
-    target: googleLoginFx,
+    target: googleLoginQuery.start,
+  });
+
+  sample({
+    clock: logOut,
+    target: sessionQuery.reset,
   });
 
   $isLogged.on(
-    [signInFx.doneData, googleLoginFx.doneData, signUpFx.doneData, refreshFx.doneData, getMeFx.doneData],
+    [
+      signInQuery.finished.success,
+      googleLoginQuery.finished.success,
+      signUpQuery.finished.success,
+      refreshQuery.finished.success,
+      sessionQuery.finished.success,
+    ],
     () => true,
   );
 
-  $pending.on([signInFx.pending, signUpFx.pending], (_, payload) => payload);
-
-  $session.reset(logOut);
+  $pending.on([signInQuery.$pending, signUpQuery.$pending], () => true);
 
   $isLogged.reset(logOut);
 
-  refreshFx.failData.watch(() => logOut());
+  refreshQuery.finished.failure.watch(() => logOut());
 
   return {
     $session,
     $isLogged,
     $isRefreshed,
     $pending,
-    signInFx,
-    signUpFx,
-    refreshFx,
-    googleLoginFx,
     loginWithGoogle,
     logOut,
     ProfilePageGate,

@@ -1,8 +1,9 @@
 import { createEvent, createStore, sample } from 'effector';
 import { reset, debounce } from 'patronum';
-import { SearchMovieEntity, searchByNameFx } from 'shared/api';
+import { SearchMovieEntity } from 'shared/api/types';
 import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
+import { searchByNameQuery } from '../api';
 
 const DEBOUNCE_TIME = 600;
 
@@ -25,7 +26,7 @@ export const searchModel = atom(() => {
 
   const $page = createStore(1);
 
-  const $loadPending = searchByNameFx.pending;
+  const $loadPending = searchByNameQuery.$pending;
 
   const debouncedSearchChanged = debounce({
     source: searchChanged,
@@ -41,13 +42,13 @@ export const searchModel = atom(() => {
     clock: $query,
     source: $page,
     fn: (page, query) => ({ query, page }),
-    target: searchByNameFx,
+    target: searchByNameQuery.start,
   });
 
   sample({
     clock: loadMore,
     source: { query: $query, page: $page },
-    target: searchByNameFx,
+    target: searchByNameQuery.start,
   });
 
   reset({
@@ -62,11 +63,11 @@ export const searchModel = atom(() => {
 
   $searchPending.on(debouncedSearchChanged, () => true);
 
-  $searchPending.on(searchByNameFx.doneData, () => false);
+  $searchPending.on(searchByNameQuery.finished.success, () => false);
 
-  $searchResult.on(searchByNameFx.doneData, (state, payload) => [...state, ...payload.docs]);
+  $searchResult.on(searchByNameQuery.finished.success, (state, { result }) => [...state, ...result.docs]);
 
-  $hasMore.on(searchByNameFx.doneData, (_, payload) => payload.page !== payload.pages);
+  $hasMore.on(searchByNameQuery.finished.success, (_, { result }) => result.page !== result.pages);
 
   $search.on(searchChanged, (_, payload) => payload);
 
@@ -74,7 +75,6 @@ export const searchModel = atom(() => {
 
   return {
     toggler,
-    searchByNameFx,
     $searchResult,
     searchChanged,
     loadMore,

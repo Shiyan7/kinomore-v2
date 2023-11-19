@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { PersonInMovie } from 'shared/api';
+import type { PersonInMovie } from 'shared/api/types';
 import { paths } from 'shared/routing';
 import { getProfession } from './lib';
 import styles from './styles.module.scss';

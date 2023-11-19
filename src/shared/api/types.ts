@@ -597,3 +597,7 @@ export interface SearchParams {
   query: string;
   page: number;
 }
+
+export type Movies = Data<MovieEntity>;
+
+export type SearchMovies = Data<SearchMovieEntity>;

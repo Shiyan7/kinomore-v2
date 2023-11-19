@@ -1,17 +1,17 @@
-import { createEvent, restore, sample } from 'effector';
+import { createEvent, sample } from 'effector';
 import type { PageContext } from 'nextjs-effector';
-import { getPersonByIdFx } from 'shared/api';
 import { atom } from 'shared/factory';
+import { personByIdQuery } from '../api';
 
 export const personModel = atom(() => {
   const pageStarted = createEvent<PageContext>();
 
-  const $person = restore(getPersonByIdFx, null);
+  const $person = personByIdQuery.$data;
 
   sample({
     clock: pageStarted,
     fn: ({ params }) => params?.id as string,
-    target: getPersonByIdFx,
+    target: personByIdQuery.start,
   });
 
   return {

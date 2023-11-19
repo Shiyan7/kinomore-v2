@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useState } from 'react';
-import type { FactInMovie, FactInPerson } from 'shared/api';
+import type { FactInMovie, FactInPerson } from 'shared/api/types';
 import { Title } from 'shared/ui/title';
 import styles from './styles.module.scss';
 
