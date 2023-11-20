@@ -28,14 +28,19 @@ export const Filmography = () => {
         </Title>
         <div className={styles.grid}>
           {movies?.map(({ rating, ...item }) => (
-            <MovieItem key={item.id} rating={rating} small item={item} />
+            <MovieItem item={item} key={item.id} rating={rating} small />
           ))}
         </div>
-        {hasMore && (
-          <Button size="medium" onClick={() => setLimit((prev) => prev + 30)} className={styles.btn} variant="gray">
+        {hasMore ? (
+          <Button
+            className={styles.btn}
+            onClick={() => setLimit((prev) => prev + 30)}
+            size="medium"
+            variant="gray"
+          >
             Показать больше
           </Button>
-        )}
+        ) : null}
       </div>
     </section>
   );

@@ -11,11 +11,18 @@ export const Fantastic = () => {
   return (
     <Category>
       <Category.Title
-        href={paths.catalog({ genre: GenresEnum.ScienceFiction, sort: SortEnum.Year, year: '2022-2023' })}
+        href={paths.catalog({
+          genre: GenresEnum.ScienceFiction,
+          sort: SortEnum.Year,
+          year: '2022-2023',
+        })}
       >
         Фантастика
       </Category.Title>
-      <Category.Carousel items={data?.docs} renderItem={(item) => <MovieItem item={item} />} />
+      <Category.Carousel
+        items={data?.docs}
+        renderItem={(item) => <MovieItem item={item} />}
+      />
     </Category>
   );
 };

@@ -1,5 +1,5 @@
 import { paths } from 'shared/routing';
-import { IconName } from 'shared/ui/icon';
+import type { IconName } from 'shared/ui/icon';
 
 interface ProfileItem {
   href: string;

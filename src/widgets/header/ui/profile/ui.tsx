@@ -1,7 +1,6 @@
 import clsx from 'clsx';
-import { useStore } from 'effector-react';
 import Link from 'next/link';
-// eslint-disable-next-line boundaries/element-types
+import { useStore } from 'effector-react';
 import { authModel } from 'widgets/auth';
 import { sessionModel } from 'entities/session';
 import { useToggler } from 'shared/lib/toggler';
@@ -14,14 +13,14 @@ export const Profile = () => {
   const isLogged = useStore(sessionModel.$isLogged);
 
   const ProfileLink = (
-    <Link href={paths.profile} className={styles.profile}>
+    <Link className={styles.profile} href={paths.profile}>
       <Icon name="common/profile" />
       Профиль
     </Link>
   );
 
   const ProfileButton = (
-    <button onClick={open} className={clsx('btn-reset', styles.profile)}>
+    <button className={clsx('btn-reset', styles.profile)} onClick={open}>
       <Icon name="common/profile" />
       Войти
     </button>

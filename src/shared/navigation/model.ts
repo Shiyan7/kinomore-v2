@@ -1,4 +1,4 @@
-import type { ParsedUrlQuery } from 'querystring';
+import type { ParsedUrlQuery } from 'node:querystring';
 import { attach, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import type { NextRouter } from 'next/router';

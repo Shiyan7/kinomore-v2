@@ -30,18 +30,18 @@ export const ProfilePage = () => {
         </div>
         <Button
           as={Link}
+          className={styles.btn}
           href={paths.home}
+          onClick={logOut}
           size="small"
           variant="glass"
-          className={styles.btn}
-          onClick={() => logOut()}
         >
           Выйти
         </Button>
       </div>
       <div className={styles.grid}>
         {profileItems.map(({ href, iconName, caption }) => (
-          <Link key={iconName} href={href} className={styles.item}>
+          <Link className={styles.item} href={href} key={iconName}>
             <Icon name={iconName} />
             <span>{caption}</span>
           </Link>

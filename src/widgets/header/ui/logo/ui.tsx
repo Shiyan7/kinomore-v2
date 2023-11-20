@@ -4,7 +4,14 @@ import { paths } from 'shared/routing';
 import styles from './styles.module.scss';
 
 export const Logo = () => (
-  <Link href={paths.home} className={styles.logo}>
-    <Image priority className={styles.image} width={131} height={26} src="/logo.svg" alt="Kinomore" />
+  <Link className={styles.logo} href={paths.home}>
+    <Image
+      alt="Kinomore"
+      className={styles.image}
+      height={26}
+      priority
+      src="/logo.svg"
+      width={131}
+    />
   </Link>
 );

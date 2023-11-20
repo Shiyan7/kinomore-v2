@@ -20,17 +20,30 @@ export const Facts = ({ data, narrow }: FactsProps) => {
 
   return (
     <section className={styles.section}>
-      <div className={clsx('container', narrow && 'container--narrow', styles.container)}>
-        <Title size="medium" className={styles.title}>
+      <div
+        className={clsx(
+          'container',
+          narrow && 'container--narrow',
+          styles.container
+        )}
+      >
+        <Title className={styles.title} size="medium">
           Знаете ли вы, что…
         </Title>
         <ul className={clsx('list-reset', styles.list)}>
           {itemsToShow?.map(({ value }) => (
-            <li key={value} className={styles.item} dangerouslySetInnerHTML={{ __html: value ?? '' }} />
+            <li
+              className={styles.item}
+              dangerouslySetInnerHTML={{ __html: value ?? '' }}
+              key={value}
+            />
           ))}
         </ul>
         {data?.length > MAX_FACTS && (
-          <button className={clsx('btn-reset', styles.btn)} onClick={() => setIsExpanded((prev) => !prev)}>
+          <button
+            className={clsx('btn-reset', styles.btn)}
+            onClick={() => setIsExpanded((prev) => !prev)}
+          >
             {isExpanded ? 'Скрыть' : 'Показать ещё'}
           </button>
         )}

@@ -1,3 +1,5 @@
-export default function History() {
+const History = () => {
   return <div>History</div>;
-}
+};
+
+export default History;

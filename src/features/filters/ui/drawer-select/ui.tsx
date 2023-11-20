@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { useRef, useState } from 'react';
 import type { SelectOption } from 'features/filters';
+import { useRef, useState } from 'react';
 import { useOnClickOutside } from 'shared/lib';
 import { Icon, Title } from 'shared/ui';
 import styles from './styles.module.scss';
@@ -13,7 +13,13 @@ interface DrawerSelectProps {
   onSelect: (option: SelectOption) => void;
 }
 
-export const DrawerSelect = ({ className, options, onSelect, value, label }: DrawerSelectProps) => {
+export const DrawerSelect = ({
+  className,
+  options,
+  onSelect,
+  value,
+  label,
+}: DrawerSelectProps) => {
   const defaultOption = options.find((option) => option?.value === value);
   const [selected, setSelected] = useState(defaultOption ?? options[0]);
   const [isOpen, setIsOpen] = useState(false);
@@ -30,8 +36,11 @@ export const DrawerSelect = ({ className, options, onSelect, value, label }: Dra
   };
 
   return (
-    <div className={clsx(styles.select, isOpen && styles.isOpen, className)} ref={selectRef}>
-      <div onClick={() => setIsOpen(!isOpen)} className={styles.top}>
+    <div
+      className={clsx(styles.select, isOpen && styles.isOpen, className)}
+      ref={selectRef}
+    >
+      <div className={styles.top} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.text}>
           <span className={styles.label}>{label}</span>
           <span className={styles.caption}>{selected.label}</span>
@@ -43,7 +52,10 @@ export const DrawerSelect = ({ className, options, onSelect, value, label }: Dra
       <div className={styles.drawer}>
         <div className={styles.header}>
           <Title size="medium">{label}</Title>
-          <button onClick={handleClose} className={clsx('btn-reset', styles.close)}>
+          <button
+            className={clsx('btn-reset', styles.close)}
+            onClick={handleClose}
+          >
             <Icon name="common/close" />
           </button>
         </div>
@@ -53,9 +65,9 @@ export const DrawerSelect = ({ className, options, onSelect, value, label }: Dra
 
             return (
               <div
-                onClick={() => handleSelect(option)}
-                key={option.label}
                 className={clsx(styles.option, isSelected && styles.isSelected)}
+                key={option.label}
+                onClick={() => handleSelect(option)}
               >
                 {option?.label}
                 <span className={styles.check}>

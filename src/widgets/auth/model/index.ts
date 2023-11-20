@@ -1,6 +1,11 @@
 import { createEvent, createStore, sample } from 'effector';
 import { condition, delay } from 'patronum';
-import { checkUserQuery, googleLoginQuery, signInQuery, signUpQuery } from 'entities/session';
+import {
+  checkUserQuery,
+  googleLoginQuery,
+  signInQuery,
+  signUpQuery,
+} from 'entities/session';
 import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
 import { navigationModel } from 'shared/navigation';
@@ -37,7 +42,10 @@ export const authModel = atom(() => {
 
   const redirectToProfile = createEvent();
 
-  const passwordFormSubmitted = createEvent<{ email: string; password: string }>();
+  const passwordFormSubmitted = createEvent<{
+    email: string;
+    password: string;
+  }>();
 
   $email.on(emailChanged, (_, payload) => payload);
 

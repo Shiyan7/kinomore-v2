@@ -1,12 +1,16 @@
-/* eslint-disable boundaries/element-types */
 import { createEvent, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import { and, not } from 'patronum';
 import { authModel } from 'widgets/auth';
 import { refreshQuery, sessionModel } from 'entities/session';
-import { MovieEntity } from 'shared/api/types';
+import type { MovieEntity } from 'shared/api/types';
 import { atom } from 'shared/factory';
-import { allFavoritesQuery, checkFavoriteQuery, favoritesIdQuery, toggleFavoriteQuery } from './api';
+import {
+  allFavoritesQuery,
+  checkFavoriteQuery,
+  favoritesIdQuery,
+  toggleFavoriteQuery,
+} from './api';
 import { arrayToSearchParams } from './lib';
 
 export const favoritesModel = atom(() => {
@@ -63,7 +67,8 @@ export const favoritesModel = atom(() => {
     clock: allFavoritesQuery.finished.success,
     source: $arrayOfId,
     filter: Boolean,
-    fn: ({ items }, { result }) => result.docs.sort((a, b) => items.indexOf(b.id) - items.indexOf(a.id)),
+    fn: ({ items }, { result }) =>
+      result.docs.sort((a, b) => items.indexOf(b.id) - items.indexOf(a.id)),
     target: $allFavorites,
   });
 
@@ -84,7 +89,9 @@ export const favoritesModel = atom(() => {
     target: authModel.toggler.open,
   });
 
-  $allFavorites.on(removeFavoriteClicked, (state, { id }) => state?.filter((movie) => movie.id !== id));
+  $allFavorites.on(removeFavoriteClicked, (state, { id }) =>
+    state?.filter((movie) => movie.id !== id)
+  );
 
   $pending.on(abortPending, () => false);
 

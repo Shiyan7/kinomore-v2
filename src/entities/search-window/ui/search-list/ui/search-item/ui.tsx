@@ -16,7 +16,15 @@ export const SearchItem = ({ item }: SearchItemProps) => {
     <li className={styles.item}>
       <Link className={styles.link} href={paths.movie(id)}>
         <div className={styles.image}>
-          {poster && <Image sizes="100%" fill quality={100} alt={item?.name ?? ''} src={poster} />}
+          {poster ? (
+            <Image
+              alt={item?.name ?? ''}
+              fill
+              quality={100}
+              sizes="100%"
+              src={poster}
+            />
+          ) : null}
         </div>
         <div className={styles.text}>
           <span className={styles.name}>{name}</span>

@@ -1,7 +1,7 @@
-import { useGate } from 'effector-react';
-import { useRouter } from 'next/router';
 import NextNProgress from 'nextjs-progressbar';
 import type { AppProps } from 'next/app';
+import { useGate } from 'effector-react';
+import { useRouter } from 'next/router';
 import { BaseLayout } from 'widgets/layouts';
 import { AppGate } from 'shared/config';
 import { navigationModel } from 'shared/navigation';
@@ -16,7 +16,11 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      <NextNProgress color="var(--color-primary)" height={3} options={{ showSpinner: false }} />
+      <NextNProgress
+        color="var(--color-primary)"
+        height={3}
+        options={{ showSpinner: false }}
+      />
       <BaseLayout>
         <Component {...pageProps} />
       </BaseLayout>

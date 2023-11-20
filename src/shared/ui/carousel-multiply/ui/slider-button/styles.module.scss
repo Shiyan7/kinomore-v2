@@ -14,7 +14,11 @@
 
   &:hover {
     &:before {
-      background: radial-gradient(100% 100% at 100% 0, rgba(188, 186, 193, 0.32) 0, rgba(139, 136, 146, 0.32) 100%);
+      background: radial-gradient(
+        100% 100% at 100% 0,
+        rgba(188, 186, 193, 0.32) 0,
+        rgba(139, 136, 146, 0.32) 100%
+      );
       transform: scale(1.2) translateZ(0);
     }
   }
@@ -27,7 +31,7 @@
   }
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     -webkit-backdrop-filter: blur(13px);
     backdrop-filter: blur(13px);

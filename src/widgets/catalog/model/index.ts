@@ -29,7 +29,11 @@ export const catalogModel = atom(() => {
   sample({
     clock: [pageStarted, loadMore],
     source: $params,
-    fn: ({ limit, context }) => ({ ...context?.query, limit, type: getCatalogType(context?.pathname ?? '') }),
+    fn: ({ limit, context }) => ({
+      ...context?.query,
+      limit,
+      type: getCatalogType(context?.pathname ?? ''),
+    }),
     target: catalogQuery.start,
   });
 

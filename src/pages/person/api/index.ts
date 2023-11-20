@@ -1,6 +1,6 @@
 import { createQuery } from '@farfetched/core';
 import { createCommonRequestFx } from 'shared/api/requests';
-import { Person } from 'shared/api/types';
+import type { Person } from 'shared/api/types';
 
 export const personByIdQuery = createQuery({
   effect: createCommonRequestFx<string, Person>((id) => ({

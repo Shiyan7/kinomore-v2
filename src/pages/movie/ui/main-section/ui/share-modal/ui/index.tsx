@@ -20,10 +20,19 @@ export const ShareModal = () => {
   };
 
   return (
-    <CSSTransition in={isOpen} timeout={0} classNames={{ enterDone: styles.done }}>
-      <Popup rootClassName={styles.root} className={styles.modal} isOpen={isOpen} close={close}>
+    <CSSTransition
+      classNames={{ enterDone: styles.done }}
+      in={isOpen}
+      timeout={0}
+    >
+      <Popup
+        className={styles.modal}
+        close={close}
+        isOpen={isOpen}
+        rootClassName={styles.root}
+      >
         <div className={styles.content}>
-          <Title className={styles.title} size="small" as="h2">
+          <Title as="h2" className={styles.title} size="small">
             Поделится
           </Title>
           <div className={styles.btns}>
@@ -31,14 +40,22 @@ export const ShareModal = () => {
               const Button = button;
 
               return (
-                <Button key={text} resetButtonStyle={false} url={URL} className={clsx('btn-reset', styles.btn)}>
+                <Button
+                  className={clsx('btn-reset', styles.btn)}
+                  key={text}
+                  resetButtonStyle={false}
+                  url={URL}
+                >
                   {icon}
                   {text}
                 </Button>
               );
             })}
           </div>
-          <button onClick={handleCopy} className={clsx('btn-reset', styles.copy)}>
+          <button
+            className={clsx('btn-reset', styles.copy)}
+            onClick={handleCopy}
+          >
             <span className={styles.icon}>
               <Icon name="common/link" />
             </span>

@@ -39,7 +39,7 @@
   background-color: var(--color-loader);
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     top: 0;
@@ -79,7 +79,8 @@
   border-radius: var(--radius);
   background-color: rgba(#000, 0.5);
   border: 1px solid rgba(#fff, 0.1);
-  transition: opacity var(--duration), visibility var(--duration), background-color var(--duration);
+  transition: opacity var(--duration), visibility var(--duration),
+    background-color var(--duration);
 
   @media (max-width: 1024px) {
     display: none;

@@ -1,6 +1,6 @@
 import { createQuery } from '@farfetched/core';
 import { createCommonRequestFx } from 'shared/api/requests';
-import { CatalogParams, Movies } from 'shared/api/types';
+import type { CatalogParams, Movies } from 'shared/api/types';
 import { getYears } from 'shared/lib';
 
 export const catalogQuery = createQuery({
@@ -17,6 +17,6 @@ export const catalogQuery = createQuery({
         sortType: ['-1', '-1'],
         limit,
       },
-    }),
+    })
   ),
 });

@@ -1,7 +1,8 @@
 .container {
   display: flex;
   align-items: center;
-  transition: transform var(--duration), opacity var(--duration), height var(--duration);
+  transition: transform var(--duration), opacity var(--duration),
+    height var(--duration);
   margin-top: 30px;
 
   @media (max-width: 576px) {

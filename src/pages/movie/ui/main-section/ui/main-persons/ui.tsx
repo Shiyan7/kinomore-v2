@@ -17,7 +17,7 @@ export const MainPersons = () => {
   return (
     <div className={styles.root}>
       {items.map(({ label, list }) => (
-        <div key={label} className={styles.row}>
+        <div className={styles.row} key={label}>
           <span className={styles.label}>{label}:</span>
           <ul className={clsx('list-reset', styles.list)}>
             {list?.map((item) => {

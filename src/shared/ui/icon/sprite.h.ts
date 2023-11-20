@@ -21,7 +21,17 @@ export interface SpritesMap {
     | 'share'
     | 'sort'
     | 'star';
-  genres: 'cup' | 'fire' | 'happy' | 'hearts' | 'knife' | 'map' | 'music' | 'people' | 'rocket' | 'tank';
+  genres:
+    | 'cup'
+    | 'fire'
+    | 'happy'
+    | 'hearts'
+    | 'knife'
+    | 'map'
+    | 'music'
+    | 'people'
+    | 'rocket'
+    | 'tank';
   social: 'facebook' | 'gmail' | 'telegram' | 'viber' | 'vk' | 'whatsapp';
 }
 export const SPRITES_META: {
@@ -48,8 +58,21 @@ export const SPRITES_META: {
     | 'sort'
     | 'star'
   >;
-  genres: Array<'cup' | 'fire' | 'happy' | 'hearts' | 'knife' | 'map' | 'music' | 'people' | 'rocket' | 'tank'>;
-  social: Array<'facebook' | 'gmail' | 'telegram' | 'viber' | 'vk' | 'whatsapp'>;
+  genres: Array<
+    | 'cup'
+    | 'fire'
+    | 'happy'
+    | 'hearts'
+    | 'knife'
+    | 'map'
+    | 'music'
+    | 'people'
+    | 'rocket'
+    | 'tank'
+  >;
+  social: Array<
+    'facebook' | 'gmail' | 'telegram' | 'viber' | 'vk' | 'whatsapp'
+  >;
 } = {
   common: [
     'bookmark-slash',
@@ -74,6 +97,17 @@ export const SPRITES_META: {
     'sort',
     'star',
   ],
-  genres: ['cup', 'fire', 'happy', 'hearts', 'knife', 'map', 'music', 'people', 'rocket', 'tank'],
+  genres: [
+    'cup',
+    'fire',
+    'happy',
+    'hearts',
+    'knife',
+    'map',
+    'music',
+    'people',
+    'rocket',
+    'tank',
+  ],
   social: ['facebook', 'gmail', 'telegram', 'viber', 'vk', 'whatsapp'],
 };

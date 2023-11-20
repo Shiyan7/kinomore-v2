@@ -16,5 +16,7 @@ export const Portal = ({ rootId, children }: PortalProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return mounted && !!containerRef.current ? createPortal(children, containerRef.current) : null;
+  return mounted && Boolean(containerRef.current)
+    ? createPortal(children, containerRef.current as HTMLDivElement)
+    : null;
 };

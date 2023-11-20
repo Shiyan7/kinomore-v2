@@ -10,14 +10,14 @@
   text-align: center;
 
   &:before {
-    content: "";
+    content: '';
     display: inline-block;
     vertical-align: middle;
     height: 100%;
   }
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     position: fixed;
     top: 0;

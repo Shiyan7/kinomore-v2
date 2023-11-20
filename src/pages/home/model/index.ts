@@ -1,7 +1,13 @@
 import { sample } from 'effector';
 import { createGate } from 'effector-react';
 import { atom } from 'shared/factory';
-import { comedyMoviesQuery, dramaMoviesQuery, familyMoviesQuery, fantasticMoviesQuery, newMoviesQuery } from '../api';
+import {
+  comedyMoviesQuery,
+  dramaMoviesQuery,
+  familyMoviesQuery,
+  fantasticMoviesQuery,
+  newMoviesQuery,
+} from '../api';
 
 export const homeModel = atom(() => {
   const HomePageGate = createGate();

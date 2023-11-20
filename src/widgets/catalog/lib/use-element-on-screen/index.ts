@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type RefObject } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type RefObject,
+} from 'react';
 
 interface ObserverOptions {
   rootMargin?: string;
@@ -6,15 +13,18 @@ interface ObserverOptions {
 }
 
 export function useElementOnScreen<T extends Element = HTMLDivElement>(
-  options: ObserverOptions,
+  options: ObserverOptions
 ): [RefObject<T>, boolean] {
   const containerRef = useRef<T>(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  const callbackFunction = useCallback((entries: IntersectionObserverEntry[]) => {
-    const [entry] = entries;
-    setIsVisible(entry.isIntersecting);
-  }, []);
+  const callbackFunction = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const [entry] = entries;
+      setIsVisible(entry.isIntersecting);
+    },
+    []
+  );
 
   const optionsMemo = useMemo(() => options, [options]);
 

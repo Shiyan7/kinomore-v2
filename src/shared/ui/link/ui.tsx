@@ -3,7 +3,8 @@ import NextLink from 'next/link';
 import type { AnchorHTMLAttributes, PropsWithChildren } from 'react';
 import styles from './styles.module.scss';
 
-interface LinkProps extends PropsWithChildren<AnchorHTMLAttributes<HTMLAnchorElement>> {
+interface LinkProps
+  extends PropsWithChildren<AnchorHTMLAttributes<HTMLAnchorElement>> {
   href: string;
 }
 

@@ -10,10 +10,15 @@ export const ForFamily = () => {
 
   return (
     <Category>
-      <Category.Title href={paths.catalog({ genre: GenresEnum.Family, sort: SortEnum.Year })}>
+      <Category.Title
+        href={paths.catalog({ genre: GenresEnum.Family, sort: SortEnum.Year })}
+      >
         Смотрим всей семьей
       </Category.Title>
-      <Category.Carousel items={data?.docs} renderItem={(item) => <MovieItem item={item} />} />
+      <Category.Carousel
+        items={data?.docs}
+        renderItem={(item) => <MovieItem item={item} />}
+      />
     </Category>
   );
 };

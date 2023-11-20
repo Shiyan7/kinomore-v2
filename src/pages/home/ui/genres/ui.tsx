@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useState } from 'react';
-import SwiperClass, { Mousewheel, FreeMode } from 'swiper';
+import type SwiperClass from 'swiper';
+import { Mousewheel, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { genres } from './config';
 import styles from './styles.module.scss';
@@ -25,17 +26,17 @@ export const Genres = () => {
       <h2 className="visually-hidden">Жанры</h2>
       <div className="container">
         <Swiper
-          modules={[Mousewheel, FreeMode]}
+          className={styles.carousel}
           freeMode
+          modules={[Mousewheel, FreeMode]}
           mousewheel
           onSlideChange={slideChange}
           onSliderMove={slideChange}
           slidesPerView="auto"
-          className={styles.carousel}
         >
           {genres.map((genre) => (
-            <SwiperSlide key={genre.text} className={styles.item}>
-              <Link href={genre.href} className={styles.link}>
+            <SwiperSlide className={styles.item} key={genre.text}>
+              <Link className={styles.link} href={genre.href}>
                 <span className={styles.icon}>{genre.icon}</span>
                 <span className={styles.text}>{genre.text}</span>
               </Link>

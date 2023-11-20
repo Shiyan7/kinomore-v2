@@ -15,8 +15,12 @@ export const GradeModal = () => {
   const ratingSelected = useEvent(movieModel.ratingSelected);
 
   return (
-    <Popup className={styles.modal} isOpen={gradeToggler.isOpen} close={gradeToggler.close}>
-      <Title size="large" className={styles.title}>
+    <Popup
+      className={styles.modal}
+      close={gradeToggler.close}
+      isOpen={gradeToggler.isOpen}
+    >
+      <Title className={styles.title} size="large">
         Оцените по 10-ти бальной шкале
       </Title>
       <div className={styles.container}>
@@ -28,16 +32,16 @@ export const GradeModal = () => {
 
             return (
               <label
-                key={idx}
                 className={clsx(styles.label, isActive && styles.active)}
+                key={idx}
                 onMouseEnter={() => setHover(ratingValue)}
                 onMouseLeave={() => setHover(null)}
               >
                 <input
                   hidden
+                  onClick={() => ratingSelected({ rating: ratingValue })}
                   type="radio"
                   value={ratingValue}
-                  onClick={() => ratingSelected({ rating: ratingValue })}
                 />
                 {ratingValue}
               </label>
@@ -49,7 +53,13 @@ export const GradeModal = () => {
           <span className={styles.caption}>Отлично</span>
         </div>
       </div>
-      <Button onClick={ratingModalClosed} className={styles.btn} variant="white" rounded size="large">
+      <Button
+        className={styles.btn}
+        onClick={ratingModalClosed}
+        rounded
+        size="large"
+        variant="white"
+      >
         Поставить оценку
       </Button>
       <Popup.Close onClick={gradeToggler.close} />

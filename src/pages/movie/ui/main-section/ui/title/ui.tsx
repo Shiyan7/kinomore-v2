@@ -11,11 +11,15 @@ export const Title = () => {
 
   const Logo = (
     <div className={styles.logo}>
-      <Image priority sizes="100%" fill src={data?.logo?.url ?? ''} alt="" />
+      <Image alt="" fill priority sizes="100%" src={data?.logo?.url ?? ''} />
     </div>
   );
 
-  const Title = <NativeTitle className={styles.title}>{getPageTitle(data?.name)} Смотреть онлайн</NativeTitle>;
+  const Title = (
+    <NativeTitle className={styles.title}>
+      {getPageTitle(data?.name)} Смотреть онлайн
+    </NativeTitle>
+  );
 
   return <div className={styles.root}>{hasLogo ? Logo : Title}</div>;
 };

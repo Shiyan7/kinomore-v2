@@ -13,27 +13,27 @@ export const TrailerModal = () => {
   const trailer = getTrailer(data?.videos);
 
   return (
-    <Popup className={styles.modal} isOpen={isOpen} close={close}>
+    <Popup className={styles.modal} close={close} isOpen={isOpen}>
       <div className={styles.content}>
         {data?.videos?.trailers?.length ? (
           <>
-            {isLoading && (
+            {isLoading ? (
               <div className={styles.spinner}>
                 <Spinner strokeWidth={2} />
               </div>
-            )}
+            ) : null}
             <iframe
-              onLoad={() => setIsLoading(false)}
-              className={styles.iframe}
-              src={`${trailer?.url}?autoplay=1`}
-              title="Трейлер"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
+              className={styles.iframe}
+              onLoad={() => setIsLoading(false)}
+              src={`${trailer?.url}?autoplay=1`}
+              title="Трейлер"
             />
           </>
         ) : null}
       </div>
-      <Popup.Close onClick={close} className={styles.close} />
+      <Popup.Close className={styles.close} onClick={close} />
     </Popup>
   );
 };

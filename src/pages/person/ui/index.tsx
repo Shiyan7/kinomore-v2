@@ -15,10 +15,9 @@ export const PersonPage = () => {
   return (
     <>
       <NextSeo
+        description={description}
         nofollow
         noindex
-        title={title}
-        description={description}
         openGraph={{
           title,
           description,
@@ -29,10 +28,11 @@ export const PersonPage = () => {
             },
           ],
         }}
+        title={title}
       />
       <MainSection />
       <Filmography />
-      <Facts narrow data={data?.facts} />
+      <Facts data={data?.facts} narrow />
     </>
   );
 };

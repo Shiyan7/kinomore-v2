@@ -1,5 +1,5 @@
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { ComponentType } from 'react';
+import type { ComponentType } from 'react';
 
 export const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID ?? '';
 

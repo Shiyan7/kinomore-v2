@@ -6,5 +6,10 @@ import styles from './styles.module.scss';
 export const Progress = () => {
   const progress = useStore(authModel.$progress);
 
-  return <div className={styles.progress} style={{ '--progress-width': `${progress}%` } as CSSProperties} />;
+  return (
+    <div
+      className={styles.progress}
+      style={{ '--progress-width': `${progress}%` } as CSSProperties}
+    />
+  );
 };

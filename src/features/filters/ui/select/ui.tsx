@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { useRef, useState, type ReactNode } from 'react';
 import type { SelectOption } from 'features/filters';
+import { useRef, useState, type ReactNode } from 'react';
 import { useOnClickOutside } from 'shared/lib';
 import { Icon } from 'shared/ui/icon';
 import styles from './styles.module.scss';
@@ -25,7 +25,8 @@ export const Select = ({
   label,
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const selected = options.find((option) => option?.value === value) ?? options[0];
+  const selected =
+    options.find((option) => option?.value === value) ?? options[0];
   const selectRef = useRef<HTMLDivElement>(null);
 
   const handleClose = () => setIsOpen(false);
@@ -38,10 +39,15 @@ export const Select = ({
   };
 
   return (
-    <div className={clsx(styles.select, isOpen && styles.isOpen, className)} ref={selectRef}>
-      <div onClick={() => setIsOpen(!isOpen)} className={styles.top}>
-        {startIcon && <span className={styles.icon}>{startIcon}</span>}
-        <span className={styles.value}>{selected.value ? selected.label : label}</span>
+    <div
+      className={clsx(styles.select, isOpen && styles.isOpen, className)}
+      ref={selectRef}
+    >
+      <div className={styles.top} onClick={() => setIsOpen(!isOpen)}>
+        {startIcon ? <span className={styles.icon}>{startIcon}</span> : null}
+        <span className={styles.value}>
+          {selected.value ? selected.label : label}
+        </span>
         <span className={styles.arrow}>
           <Icon name="common/chevron" />
         </span>
@@ -52,9 +58,9 @@ export const Select = ({
 
           return (
             <div
-              onClick={() => handleSelect(option)}
-              key={option.label}
               className={clsx(styles.option, isSelected && styles.isSelected)}
+              key={option.label}
+              onClick={() => handleSelect(option)}
             >
               {option?.label}
               <span className={styles.check}>

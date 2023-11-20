@@ -21,14 +21,23 @@ export const AuthWindow = () => {
   }, [isEmailState]);
 
   return (
-    <Modal isOpen={isOpen} close={close} ref={windowRef} className={styles.window}>
+    <Modal
+      className={styles.window}
+      close={close}
+      isOpen={isOpen}
+      ref={windowRef}
+    >
       <Header />
       <div className={styles.container}>
         <Transition>
           <Message
             className={styles.message}
+            description={
+              isEmailState
+                ? 'чтобы пользоваться сервисом на любом устройстве'
+                : null
+            }
             title="Войдите или зарегистрируйтесь"
-            description={isEmailState ? 'чтобы пользоваться сервисом на любом устройстве' : null}
           />
         </Transition>
         {isEmailState ? <EmailForm /> : <PasswordForm />}

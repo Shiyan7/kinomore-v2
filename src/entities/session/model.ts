@@ -5,7 +5,13 @@ import { AppGate, isClient } from 'shared/config';
 import { atom } from 'shared/factory';
 import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
-import { sessionQuery, googleLoginQuery, refreshQuery, signInQuery, signUpQuery } from './api';
+import {
+  sessionQuery,
+  googleLoginQuery,
+  refreshQuery,
+  signInQuery,
+  signUpQuery,
+} from './api';
 import { REFRESH_DELAY } from './config';
 import { tokenService } from './token-service';
 
@@ -110,8 +116,13 @@ export const sessionModel = atom(() => {
   });
 
   sample({
+    clock: refreshQuery.finished.failure,
+    target: logOut,
+  });
+
+  sample({
     clock: logOut,
-    target: sessionQuery.reset,
+    taget: [sessionQuery.reset, $isLogged.reset],
   });
 
   $isLogged.on(
@@ -122,14 +133,13 @@ export const sessionModel = atom(() => {
       refreshQuery.finished.success,
       sessionQuery.finished.success,
     ],
-    () => true,
+    () => true
   );
 
-  $pending.on([signInQuery.$pending, signUpQuery.$pending], () => true);
-
-  $isLogged.reset(logOut);
-
-  refreshQuery.finished.failure.watch(() => logOut());
+  $pending.on(
+    [signInQuery.$pending, signUpQuery.$pending],
+    (_, payload) => payload
+  );
 
   return {
     $session,

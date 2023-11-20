@@ -10,10 +10,15 @@ export const ComedyFilms = () => {
 
   return (
     <Category>
-      <Category.Title href={paths.catalog({ genre: GenresEnum.Comedy, sort: SortEnum.Year })}>
+      <Category.Title
+        href={paths.catalog({ genre: GenresEnum.Comedy, sort: SortEnum.Year })}
+      >
         Комедийные фильмы
       </Category.Title>
-      <Category.Carousel items={data?.docs} renderItem={(item) => <MovieItem item={item} />} />
+      <Category.Carousel
+        items={data?.docs}
+        renderItem={(item) => <MovieItem item={item} />}
+      />
     </Category>
   );
 };

@@ -36,14 +36,21 @@
   transition: opacity var(--duration);
 
   &:before {
-    content: "";
+    content: '';
     display: none;
     position: absolute;
     bottom: 0;
     left: -10px;
     right: -10px;
     height: 2px;
-    background: linear-gradient(270deg, transparent 0.17%, #2253b2 15%, #fff 50%, #2253b2 85%, transparent);
+    background: linear-gradient(
+      270deg,
+      transparent 0.17%,
+      #2253b2 15%,
+      #fff 50%,
+      #2253b2 85%,
+      transparent
+    );
   }
 
   &.isCurrent {

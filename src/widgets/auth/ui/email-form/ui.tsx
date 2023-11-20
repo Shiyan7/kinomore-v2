@@ -1,7 +1,8 @@
 import { useGoogleLogin } from '@react-oauth/google';
 import clsx from 'clsx';
 import { useEvent, useStore } from 'effector-react';
-import { FormEventHandler, useEffect, useRef } from 'react';
+import type { FormEventHandler } from 'react';
+import { useEffect, useRef } from 'react';
 import { authModel } from 'widgets/auth';
 import { sessionModel } from 'entities/session';
 import { paths } from 'shared/routing';
@@ -38,7 +39,10 @@ export const EmailForm = () => {
     <div className={styles.content}>
       <div className={styles.top}>
         <Transition delay={TransitionDelays.GoogleLogo}>
-          <button onClick={googleLogin} className={clsx('btn-reset', styles.logo)}>
+          <button
+            className={clsx('btn-reset', styles.logo)}
+            onClick={googleLogin}
+          >
             <Icon name="common/google" />
           </button>
         </Transition>
@@ -46,27 +50,34 @@ export const EmailForm = () => {
           <span className={styles.sep}>или</span>
         </Transition>
       </div>
-      <form onSubmit={handleSubmitForm} className={styles.form}>
-        <Transition offset={20} delay={TransitionDelays.EmailInput}>
+      <form className={styles.form} onSubmit={handleSubmitForm}>
+        <Transition delay={TransitionDelays.EmailInput} offset={20}>
           <Input
-            pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+            className={styles.input}
             onChange={(e) => emailChanged(e.target.value)}
-            value={email}
+            pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+            placeholder="Введите email"
             ref={inputRef}
             type="email"
-            className={styles.input}
-            placeholder="Введите email"
+            value={email}
           />
         </Transition>
-        <Transition offset={40} delay={TransitionDelays.ContinueButton}>
-          <Button className={styles.btn} disabled={!email} loading={pending} type="submit">
+        <Transition delay={TransitionDelays.ContinueButton} offset={40}>
+          <Button
+            className={styles.btn}
+            disabled={!email}
+            loading={pending}
+            type="submit"
+          >
             Продолжить
           </Button>
         </Transition>
       </form>
-      <Transition offset={40} delay={TransitionDelays.PolicyText}>
+      <Transition delay={TransitionDelays.PolicyText} offset={40}>
         <div className={styles.policy}>
-          <span className={styles.caption}>Нажимая «Продолжить», я соглашаюсь</span>
+          <span className={styles.caption}>
+            Нажимая «Продолжить», я соглашаюсь
+          </span>
           <span className={styles.caption}>
             с <Link href={paths.policy}>Политикой конфиденциальности</Link>
           </span>

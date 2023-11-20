@@ -1,5 +1,6 @@
 import { useStore, useEvent } from 'effector-react';
-import { FormEvent, useEffect, useRef } from 'react';
+import type { FormEvent } from 'react';
+import { useEffect, useRef } from 'react';
 import { searchModel } from 'entities/search-window';
 import { Input } from 'shared/ui/input';
 import styles from './styles.module.scss';
@@ -26,12 +27,12 @@ export const SearchInput = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Input
+        className={styles.input}
+        onChange={(e) => searchChanged(e.target.value)}
+        onClear={handleClear}
+        placeholder="Фильмы, сериалы, мультфильмы"
         ref={inputRef}
         value={search}
-        onClear={handleClear}
-        onChange={(e) => searchChanged(e.target.value)}
-        className={styles.input}
-        placeholder="Фильмы, сериалы, мультфильмы"
       />
     </form>
   );

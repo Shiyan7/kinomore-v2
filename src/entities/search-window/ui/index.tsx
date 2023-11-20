@@ -13,7 +13,7 @@ export const SearchWindow = () => {
   const query = useStore(searchModel.$query);
 
   return (
-    <Modal isOpen={isOpen} close={close} className={styles.window}>
+    <Modal className={styles.window} close={close} isOpen={isOpen}>
       <button className={clsx('btn-reset', styles.close)} onClick={close}>
         <Icon name="common/close" />
       </button>
@@ -22,7 +22,7 @@ export const SearchWindow = () => {
           Поиск
         </Title>
         <SearchInput />
-        {query && <SearchList />}
+        {query ? <SearchList /> : null}
       </div>
     </Modal>
   );

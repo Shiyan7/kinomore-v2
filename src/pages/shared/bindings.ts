@@ -1,4 +1,8 @@
-import { createGIPFactory, createGSPFactory, createGSSPFactory } from 'nextjs-effector';
+import {
+  createGIPFactory,
+  createGSPFactory,
+  createGSSPFactory,
+} from 'nextjs-effector';
 
 export const createGSSP = createGSSPFactory();
 

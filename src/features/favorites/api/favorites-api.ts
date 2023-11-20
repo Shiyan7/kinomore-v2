@@ -1,7 +1,10 @@
 import { createQuery } from '@farfetched/core';
-import { createCommonRequestFx, createInternalRequestFx } from 'shared/api/requests';
-import { Movies } from 'shared/api/types';
-import { FavoriteItems, Message, Status } from './types';
+import {
+  createCommonRequestFx,
+  createInternalRequestFx,
+} from 'shared/api/requests';
+import type { Movies } from 'shared/api/types';
+import type { FavoriteItems, Message, Status } from './types';
 
 export const favoritesIdQuery = createQuery({
   effect: createInternalRequestFx<void, FavoriteItems>({

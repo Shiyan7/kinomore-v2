@@ -12,7 +12,8 @@ interface TitleOwnProps<E extends ElementType = ElementType> {
 
 const DEFAULT_ELEMENT: ElementType = 'h1';
 
-export type TitleProps<E extends ElementType> = TitleOwnProps<E> & Omit<ComponentProps<E>, keyof TitleOwnProps>;
+export type TitleProps<E extends ElementType> = TitleOwnProps<E> &
+  Omit<ComponentProps<E>, keyof TitleOwnProps>;
 
 export const Title = <E extends ElementType = typeof DEFAULT_ELEMENT>({
   className,

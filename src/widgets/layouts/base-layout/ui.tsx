@@ -1,4 +1,3 @@
-/* eslint-disable boundaries/element-types */
 import type { PropsWithChildren } from 'react';
 import { AuthWindow } from 'widgets/auth';
 import { Header } from 'widgets/header';

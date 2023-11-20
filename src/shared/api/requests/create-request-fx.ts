@@ -14,6 +14,11 @@ type CreateRequestInstanceParams<P> = CreateRequestParams & {
   payload: Payload<P>;
 };
 
+type CreateRequestFxParams = Omit<
+  CreateRequestInstanceParams<CreateRequestParams>,
+  'payload' | 'url'
+>;
+
 function getConfig<P>(payload: Payload<P>, params: P): CreateRequestParams {
   return typeof payload === 'function' ? payload(params) : payload;
 }
@@ -30,7 +35,10 @@ const createRequestInstance = <P = CreateRequestParams, R = void>({
     const newHeaders = new Headers(headers);
 
     if (withTokenInHeaders) {
-      newHeaders.append('Authorization', `Bearer ${localStorage.getItem('accessToken')}`);
+      newHeaders.append(
+        'Authorization',
+        `Bearer ${localStorage.getItem('accessToken')}`
+      );
     }
 
     return ofetch(url, {
@@ -41,6 +49,9 @@ const createRequestInstance = <P = CreateRequestParams, R = void>({
   });
 
 export const createRequestFx =
-  (params: Omit<CreateRequestInstanceParams<CreateRequestParams>, 'payload' | 'url'>) =>
+  (params: CreateRequestFxParams) =>
   <P = CreateRequestParams, R = void>(payload: Payload<P>) =>
-    createRequestInstance<P, R>({ ...(params as CreateRequestInstanceParams<P>), payload });
+    createRequestInstance<P, R>({
+      ...(params as CreateRequestParams),
+      payload,
+    });

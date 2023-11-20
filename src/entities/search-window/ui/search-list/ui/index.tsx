@@ -23,26 +23,30 @@ export const SearchList = () => {
       <Title className={styles.title} size="small">
         Ничего не нашлось
       </Title>
-      <p className={styles.desc}>Может быть, вы ищете то, чего пока нет в каталоге</p>
+      <p className={styles.desc}>
+        Может быть, вы ищете то, чего пока нет в каталоге
+      </p>
     </>
   );
 
   const SearchList = (
     <div className={styles.content}>
       <ul className={clsx('list-reset', styles.list)}>
-        {data.map((item) => item.poster && <SearchItem key={item.id} item={item} />)}
+        {data.map(
+          (item) => item.poster && <SearchItem item={item} key={item.id} />
+        )}
       </ul>
-      {hasMore && (
+      {hasMore ? (
         <Button
+          className={styles.loadMore}
           onClick={loadMore}
           size="medium"
-          variant="gray"
           skeletonLoading={loadPending}
-          className={styles.loadMore}
+          variant="gray"
         >
           Показать больше
         </Button>
-      )}
+      ) : null}
     </div>
   );
 

@@ -12,16 +12,33 @@ interface CloseProps {
   className?: string;
 }
 
-export const Popup = ({ rootClassName, className, close, children, ...props }: PopupProps) => (
-  <Modal onClick={close} close={close} className={clsx(styles.modal, rootClassName)} {...props}>
-    <div onClick={(e) => e.stopPropagation()} className={clsx(styles.container, className)}>
+export const Popup = ({
+  rootClassName,
+  className,
+  close,
+  children,
+  ...props
+}: PopupProps) => (
+  <Modal
+    className={clsx(styles.modal, rootClassName)}
+    close={close}
+    onClick={close}
+    {...props}
+  >
+    <div
+      className={clsx(styles.container, className)}
+      onClick={(e) => e.stopPropagation()}
+    >
       {children}
     </div>
   </Modal>
 );
 
 const ClosePopup = ({ onClick, className }: CloseProps) => (
-  <button onClick={onClick} className={clsx('btn-reset', styles.close, className)}>
+  <button
+    className={clsx('btn-reset', styles.close, className)}
+    onClick={onClick}
+  >
     <Icon name="common/close" />
   </button>
 );

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { paths } from 'shared/routing';
 import { Title, MovieRating } from 'shared/ui';
 import styles from './styles.module.scss';
-import { HeroMovie } from './types';
+import type { HeroMovie } from './types';
 
 interface SlideProps {
   item: HeroMovie;
@@ -14,9 +14,9 @@ export const HeroSlide = ({ item }: SlideProps) => {
 
   return (
     <div className={styles.item}>
-      <Link href={paths.movie(id)} className={styles.link} />
+      <Link className={styles.link} href={paths.movie(id)} />
       <div className={styles.content}>
-        <Title className={styles.title} as="h2" size="small">
+        <Title as="h2" className={styles.title} size="small">
           {title}
         </Title>
         <div className={styles.bottom}>
@@ -25,7 +25,15 @@ export const HeroSlide = ({ item }: SlideProps) => {
           <span className={styles.genre}>{genre}</span>
         </div>
       </div>
-      <Image priority sizes="100%" fill quality={100} className={styles.image} src={image} alt={title} />
+      <Image
+        alt={title}
+        className={styles.image}
+        fill
+        priority
+        quality={100}
+        sizes="100%"
+        src={image}
+      />
     </div>
   );
 };

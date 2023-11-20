@@ -1,4 +1,3 @@
-/* eslint-disable boundaries/element-types */
 import { personModel } from 'pages/person';
 import { createGSSP } from 'pages/shared';
 

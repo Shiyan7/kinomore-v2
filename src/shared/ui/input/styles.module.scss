@@ -55,7 +55,8 @@
   transform: translateY(-50%);
   pointer-events: none;
   color: rgba(#000, 0.45);
-  transition: font-size var(--duration), line-height var(--duration), top var(--duration), color var(--duration);
+  transition: font-size var(--duration), line-height var(--duration),
+    top var(--duration), color var(--duration);
 
   &.isFocus {
     font-size: 10px;

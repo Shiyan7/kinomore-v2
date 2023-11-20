@@ -8,7 +8,7 @@ export const SearchButton = () => {
   const { open } = useToggler(searchModel.toggler);
 
   return (
-    <button onClick={open} className={clsx('btn-reset', styles.btn)}>
+    <button className={clsx('btn-reset', styles.btn)} onClick={open}>
       <Icon name="common/search" />
     </button>
   );

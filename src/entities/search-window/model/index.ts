@@ -1,6 +1,6 @@
 import { createEvent, createStore, sample } from 'effector';
 import { reset, debounce } from 'patronum';
-import { SearchMovieEntity } from 'shared/api/types';
+import type { SearchMovieEntity } from 'shared/api/types';
 import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
 import { searchByNameQuery } from '../api';
@@ -65,9 +65,15 @@ export const searchModel = atom(() => {
 
   $searchPending.on(searchByNameQuery.finished.success, () => false);
 
-  $searchResult.on(searchByNameQuery.finished.success, (state, { result }) => [...state, ...result.docs]);
+  $searchResult.on(searchByNameQuery.finished.success, (state, { result }) => [
+    ...state,
+    ...result.docs,
+  ]);
 
-  $hasMore.on(searchByNameQuery.finished.success, (_, { result }) => result.page !== result.pages);
+  $hasMore.on(
+    searchByNameQuery.finished.success,
+    (_, { result }) => result.page !== result.pages
+  );
 
   $search.on(searchChanged, (_, payload) => payload);
 

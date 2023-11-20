@@ -20,7 +20,12 @@ export const MainSection = () => {
   return (
     <section className={styles.section}>
       <div className={styles.height} />
-      <div style={{ backgroundImage: `url(${data?.backdrop?.url})` } as CSSProperties} className={styles.bg} />
+      <div
+        className={styles.bg}
+        style={
+          { backgroundImage: `url(${data?.backdrop?.url})` } as CSSProperties
+        }
+      />
       <div className={clsx('container', styles.container)}>
         <div className={styles.content}>
           <Title />

@@ -23,26 +23,34 @@ export const MainButtons = () => {
   const movieId = Number(query.id);
 
   const items = [
-    { children: `Смотреть ${getMovieType(data?.type)}`, handler: playerToggler.open, gradient: true },
+    {
+      children: `Смотреть ${getMovieType(data?.type)}`,
+      handler: playerToggler.open,
+      gradient: true,
+    },
     { children: 'Трейлер', handler: trailerToggler.open },
     {
       children: <Icon name="common/bookmark" />,
       activeCondition: isFavorite,
       handler: () => toggleFavoriteClicked({ id: movieId }),
     },
-    { children: <Icon name="common/star" />, activeCondition: isRated, handler: gradeToggler.open },
+    {
+      children: <Icon name="common/star" />,
+      activeCondition: isRated,
+      handler: gradeToggler.open,
+    },
   ];
 
   return (
     <div className={styles.btns}>
       {items.map(({ children, handler, activeCondition, gradient }, idx) => (
         <Button
+          className={clsx(styles.btn, activeCondition && styles.isActive)}
+          gradient={gradient}
           key={idx}
           onClick={handler}
           size="big"
-          className={clsx(styles.btn, activeCondition && styles.isActive)}
           variant="glass"
-          gradient={gradient}
         >
           {children}
         </Button>

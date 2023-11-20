@@ -14,8 +14,11 @@ export const Nav = () => {
           const isCurrentPage = pathname === item.href;
 
           return (
-            <li key={item.text} className={styles.item}>
-              <Link className={clsx(styles.link, isCurrentPage && styles.isCurrent)} href={item.href}>
+            <li className={styles.item} key={item.text}>
+              <Link
+                className={clsx(styles.link, isCurrentPage && styles.isCurrent)}
+                href={item.href}
+              >
                 {item.text}
               </Link>
             </li>

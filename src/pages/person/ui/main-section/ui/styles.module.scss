@@ -15,15 +15,15 @@
 .top {
   display: grid;
   grid-template-areas:
-    "photo title"
-    "photo info";
+    'photo title'
+    'photo info';
   grid-template-columns: auto 1fr;
 
   @media (max-width: 576px) {
     grid-template-areas:
-      "photo title"
-      "photo title"
-      "info info";
+      'photo title'
+      'photo title'
+      'info info';
   }
 }
 

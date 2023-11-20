@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import { CSSProperties, useState } from 'react';
+import type { CSSProperties } from 'react';
+import { useState } from 'react';
 import { movieModel } from 'pages/movie';
 import { useToggler } from 'shared/lib';
 import { Modal, Spinner, Icon } from 'shared/ui';
@@ -21,22 +22,22 @@ export const Player = () => {
 
   return (
     <Modal
-      isOpen={isOpen}
-      close={handleClose}
-      style={{ '--height': `${height}px` } as CSSProperties}
       className={styles.root}
+      close={handleClose}
+      isOpen={isOpen}
+      style={{ '--height': `${height}px` } as CSSProperties}
     >
       <iframe
+        allow="autoplay"
+        allowFullScreen
+        className={styles.iframe}
         onLoad={() => setIsLoading(false)}
         src={`https://voidboost.tv/embed/${query.id}?poster=1&poster_id=4&df=1`}
-        allow="autoplay"
-        className={styles.iframe}
-        allowFullScreen
       />
       <div className={clsx(styles.spinner, isLoading && styles.isLoading)}>
         <Spinner strokeWidth={3} />
       </div>
-      <button onClick={handleClose} className={clsx('btn-reset', styles.close)}>
+      <button className={clsx('btn-reset', styles.close)} onClick={handleClose}>
         <Icon name="common/close" />
       </button>
     </Modal>

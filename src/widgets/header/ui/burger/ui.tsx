@@ -8,7 +8,7 @@ export const Burger = () => {
   const { open } = useToggler(headerModel.toggler);
 
   return (
-    <button onClick={open} className={clsx('btn-reset', styles.btn)}>
+    <button className={clsx('btn-reset', styles.btn)} onClick={open}>
       <Icon name="common/burger" />
     </button>
   );

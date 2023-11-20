@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { useEvent } from 'effector-react';
 import Image from 'next/image';
+import { useEvent } from 'effector-react';
 import { useRouter } from 'next/router';
 import { filtersModel } from 'features/filters';
 import { useLockedBody, useToggler } from 'shared/lib';
@@ -26,9 +26,16 @@ export const Filters = () => {
     <div className={clsx(styles.root, isOpen && styles.isOpen)}>
       <div className={styles.header}>
         <div className={styles.logo}>
-          <Image priority className={styles.image} width={131} height={26} src="/logo.svg" alt="Kinomore" />
+          <Image
+            alt="Kinomore"
+            className={styles.image}
+            height={26}
+            priority
+            src="/logo.svg"
+            width={131}
+          />
         </div>
-        <button onClick={close} className={clsx('btn-reset', styles.close)}>
+        <button className={clsx('btn-reset', styles.close)} onClick={close}>
           <Icon name="common/close" />
         </button>
       </div>
@@ -40,43 +47,43 @@ export const Filters = () => {
           <div className={styles.row}>
             {filters.map(({ queryName, ...rest }) => (
               <Select
-                key={queryName}
-                value={query[queryName]}
-                onSelect={({ value }) => optionSelected({ [queryName]: value })}
                 className={styles.select}
+                key={queryName}
+                onSelect={({ value }) => optionSelected({ [queryName]: value })}
+                value={query[queryName]}
                 {...rest}
               />
             ))}
           </div>
           <div className={styles.row}>
             <Select
-              value={query.sort}
-              onSelect={(option) => optionSelected({ sort: option.value })}
-              options={sort}
-              startIcon={<Icon name="common/sort" />}
-              placement="bottom-end"
               className={styles.select}
               label="Рекомендуемые"
+              onSelect={(option) => optionSelected({ sort: option.value })}
+              options={sort}
+              placement="bottom-end"
+              startIcon={<Icon name="common/sort" />}
+              value={query.sort}
             />
           </div>
         </div>
         <div className={styles.options}>
           <DrawerSelect
-            value={query.sort}
+            label="Сортировка"
             onSelect={(option) => sendOption({ sort: option.value })}
             options={sort}
-            label="Сортировка"
+            value={query.sort}
           />
           {filters.map(({ queryName, ...rest }) => (
             <DrawerSelect
               key={queryName}
-              value={query[queryName]}
               onSelect={({ value }) => sendOption({ [queryName]: value })}
+              value={query[queryName]}
               {...rest}
             />
           ))}
         </div>
-        <Button onClick={showResults} className={styles.btn} variant="primary">
+        <Button className={styles.btn} onClick={showResults} variant="primary">
           Показать результаты
         </Button>
       </div>

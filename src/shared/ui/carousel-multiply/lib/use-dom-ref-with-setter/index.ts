@@ -1,6 +1,10 @@
+/* eslint-disable react/hook-use-state */
 import { useEffect, useRef, useState, type Ref } from 'react';
 
-export function useDomRefWithSetter<T extends HTMLElement>(): [T | null, Ref<T>] {
+export function useDomRefWithSetter<T extends HTMLElement>(): [
+  T | null,
+  Ref<T>
+] {
   const ref = useRef<T>(null);
   const [DOMRef, setRefState] = useState<T | null>(null);
 

@@ -15,17 +15,17 @@ export const Persons = () => {
   return (
     <section className={styles.section}>
       <div className={clsx('container', styles.container)}>
-        <Title size="medium" className={styles.title}>
+        <Title className={styles.title} size="medium">
           Актёры и создатели
         </Title>
         <CarouselMultiply
-          modules={[FreeMode]}
           className={styles.carousel}
-          options={{ freeMode: true }}
-          navigation={false}
-          slideClassName={styles.slide}
           items={data?.persons}
+          modules={[FreeMode]}
+          navigation={false}
+          options={{ freeMode: true }}
           renderItem={(item) => <PersonItem item={item} />}
+          slideClassName={styles.slide}
         />
       </div>
     </section>

@@ -420,7 +420,8 @@ export interface MovieEntity {
   releaseYears: number[];
 }
 
-export interface SearchMovieEntity extends Omit<MovieEntity, 'backdrop' | 'poster' | 'rating'> {
+export interface SearchMovieEntity
+  extends Omit<MovieEntity, 'backdrop' | 'poster' | 'rating'> {
   backdrop: string;
   poster: string;
   rating: number;

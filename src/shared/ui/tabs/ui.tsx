@@ -15,16 +15,25 @@ interface TabsProps {
 }
 
 export const Tabs = ({ className, tabs }: TabsProps) => (
-  <ReactTabs selectedTabClassName={styles.selected} className={clsx(styles.tabs, className)}>
+  <ReactTabs
+    className={clsx(styles.tabs, className)}
+    selectedTabClassName={styles.selected}
+  >
     <TabList className={styles.list}>
       {tabs.map((tab) => {
         const { label, condition = true } = tab;
 
-        return <Fragment key={label}>{condition ? <Tab className={styles.tab}>{label}</Tab> : null}</Fragment>;
+        return (
+          <Fragment key={label}>
+            {condition ? <Tab className={styles.tab}>{label}</Tab> : null}
+          </Fragment>
+        );
       })}
     </TabList>
     {tabs.map(({ label, content, condition = true }) => (
-      <Fragment key={label}>{condition ? <TabPanel>{content}</TabPanel> : null}</Fragment>
+      <Fragment key={label}>
+        {condition ? <TabPanel>{content}</TabPanel> : null}
+      </Fragment>
     ))}
   </ReactTabs>
 );

@@ -1,4 +1,3 @@
-/* eslint-disable boundaries/element-types */
 import { movieModel } from 'pages/movie';
 import { createGSSP } from 'pages/shared';
 

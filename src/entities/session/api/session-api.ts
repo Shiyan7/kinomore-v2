@@ -1,6 +1,6 @@
 import { createQuery } from '@farfetched/core';
 import { createInternalRequestFx } from 'shared/api/requests';
-import { AuthDto, Status, TokensDto, Session } from './types';
+import type { AuthDto, Status, TokensDto, Session } from './types';
 
 export const signUpQuery = createQuery({
   effect: createInternalRequestFx<AuthDto, TokensDto>((body) => ({

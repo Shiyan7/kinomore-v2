@@ -1,4 +1,4 @@
-import type { ParsedUrlQuery } from 'querystring';
+import type { ParsedUrlQuery } from 'node:querystring';
 import { createEvent, createStore, sample } from 'effector';
 import { atom } from 'shared/factory';
 import { createToggler, paramsToString } from 'shared/lib';
@@ -29,7 +29,10 @@ export const filtersModel = atom(() => {
   sample({
     clock: navigationModel.$query,
     filter: Boolean,
-    fn: ({ genre, year }) => [getOption(genres, genre as string), getOption(years, year as string)],
+    fn: ({ genre, year }) => [
+      getOption(genres, genre as string),
+      getOption(years, year as string),
+    ],
     target: $filters,
   });
 

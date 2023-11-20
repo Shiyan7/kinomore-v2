@@ -1,4 +1,4 @@
-import { TokensDto } from './api';
+import type { TokensDto } from './api';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from './config';
 
 class TokenService {

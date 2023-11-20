@@ -7,7 +7,10 @@ import { Icon, Spinner, Title } from 'shared/ui';
 import { Breadcrumbs } from 'shared/ui/breadcrumbs';
 import styles from './styles.module.scss';
 
-const breadcrumbs = [{ text: 'Профиль', href: paths.profile }, { text: 'Избранное' }];
+const breadcrumbs = [
+  { text: 'Профиль', href: paths.profile },
+  { text: 'Избранное' },
+];
 
 export const FavoritesPage = () => {
   const data = useStore(favoritesModel.$allFavorites);
@@ -25,7 +28,11 @@ export const FavoritesPage = () => {
   const Grid = (
     <div className={styles.grid}>
       {data?.map((movie) => (
-        <MovieItem onFavorite={() => removeFavoriteClicked({ id: movie.id })} key={movie.id} item={movie} />
+        <MovieItem
+          item={movie}
+          key={movie.id}
+          onFavorite={() => removeFavoriteClicked({ id: movie.id })}
+        />
       ))}
     </div>
   );

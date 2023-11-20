@@ -1,9 +1,11 @@
 import clsx from 'clsx';
-import { forwardRef, type ElementType, ReactNode, ButtonHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
+import type { ReactNode, ButtonHTMLAttributes, ElementType } from 'react';
 import { Spinner } from 'shared/ui/spinner';
 import styles from './styles.module.scss';
 
-interface ButtonProps<E extends ElementType = ElementType> extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps<E extends ElementType = ElementType>
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   skeletonLoading?: boolean;
   href?: string;
@@ -34,7 +36,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       ...props
     },
-    ref,
+    ref
   ) => {
     const ButtonSpinner = (
       <div className={styles.spinner}>
@@ -46,7 +48,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <Element
-        ref={ref}
         className={clsx(
           'btn-reset',
           styles.btn,
@@ -57,14 +58,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           },
           styles[variant],
           styles[size],
-          className,
+          className
         )}
+        ref={ref}
         {...props}
       >
-        {startIcon && <div className={styles.startIcon}>{startIcon}</div>}
+        {startIcon ? <div className={styles.startIcon}>{startIcon}</div> : null}
         <span>{loading ? ButtonSpinner : children}</span>
-        {endIcon && <div className={styles.endIcon}>{endIcon}</div>}
+        {endIcon ? <div className={styles.endIcon}>{endIcon}</div> : null}
       </Element>
     );
-  },
+  }
 );

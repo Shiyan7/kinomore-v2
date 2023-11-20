@@ -22,14 +22,14 @@ export const Message = ({
   className,
 }: MessageProps) => (
   <div className={clsx(styles.container, styles[position], className)}>
-    {isEditable && (
-      <button onClick={onEdit} className={clsx('btn-reset', styles.edit)}>
+    {isEditable ? (
+      <button className={clsx('btn-reset', styles.edit)} onClick={onEdit}>
         <Icon name="common/edit" />
       </button>
-    )}
+    ) : null}
     <div className={clsx(styles.message, isSuccess && styles.isSuccess)}>
       <span className={styles.title}>{title}</span>
-      {description && <p className={styles.desc}>{description}</p>}
+      {description ? <p className={styles.desc}>{description}</p> : null}
     </div>
   </div>
 );

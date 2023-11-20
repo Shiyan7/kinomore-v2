@@ -2,7 +2,10 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import type { ElementType, PropsWithChildren } from 'react';
 import { FreeMode, Navigation } from 'swiper';
-import { CarouselMultiply, type CarouselMultiplyProps } from 'shared/ui/carousel-multiply';
+import {
+  CarouselMultiply,
+  type CarouselMultiplyProps,
+} from 'shared/ui/carousel-multiply';
 import { Icon } from 'shared/ui/icon';
 import { Spinner } from 'shared/ui/spinner';
 import { Title, type TitleProps } from 'shared/ui/title';
@@ -13,35 +16,55 @@ interface CategoryProps extends PropsWithChildren {
   containerClass?: string;
 }
 
-export const Category = ({ className, containerClass, children }: CategoryProps) => (
+export const Category = ({
+  className,
+  containerClass,
+  children,
+}: CategoryProps) => (
   <section className={clsx(styles.section, className)}>
-    <div className={clsx('container', containerClass, styles.container)}>{children}</div>
+    <div className={clsx('container', containerClass, styles.container)}>
+      {children}
+    </div>
   </section>
 );
 
-const CategoryTitle = ({ children, href, ...props }: TitleProps<ElementType<Partial<HTMLAnchorElement>>>) => (
-  <Title size="medium" className={styles.title} as={href ? Link : 'h2'} href={href} {...props}>
+const CategoryTitle = ({
+  children,
+  href,
+  ...props
+}: TitleProps<ElementType<Partial<HTMLAnchorElement>>>) => (
+  <Title
+    as={href ? Link : 'h2'}
+    className={styles.title}
+    href={href}
+    size="medium"
+    {...props}
+  >
     {children}
-    {href && (
+    {href ? (
       <span className={styles.icon}>
         <Icon name="common/chevron" />
       </span>
-    )}
+    ) : null}
   </Title>
 );
 
-function CategoryCarousel<T>({ items, slideClassName, ...props }: CarouselMultiplyProps<T>) {
+const CategoryCarousel = <T, _>({
+  items,
+  slideClassName,
+  ...props
+}: CarouselMultiplyProps<T>) => {
   return (
     <div className={styles.wrapper}>
       {items ? (
         <CarouselMultiply
-          modules={[FreeMode, Navigation]}
-          freeMode={{ momentumBounceRatio: 0 }}
-          prevBtnClass={styles.prevBtn}
-          nextBtnClass={styles.nextBtn}
           className={styles.slider}
-          slideClassName={clsx(styles.slide, slideClassName)}
+          freeMode={{ momentumBounceRatio: 0 }}
           items={items}
+          modules={[FreeMode, Navigation]}
+          nextBtnClass={styles.nextBtn}
+          prevBtnClass={styles.prevBtn}
+          slideClassName={clsx(styles.slide, slideClassName)}
           {...props}
         />
       ) : (
@@ -51,7 +74,7 @@ function CategoryCarousel<T>({ items, slideClassName, ...props }: CarouselMultip
       )}
     </div>
   );
-}
+};
 
 Category.Title = CategoryTitle;
 Category.Carousel = CategoryCarousel;

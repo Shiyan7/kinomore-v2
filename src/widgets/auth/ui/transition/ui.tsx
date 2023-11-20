@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import { useEffect, useState, type CSSProperties, PropsWithChildren } from 'react';
+import { useEffect, useState } from 'react';
+import type { PropsWithChildren, CSSProperties } from 'react';
 import styles from './styles.module.scss';
 
 interface TransitionProps extends PropsWithChildren {
@@ -27,8 +28,10 @@ export const Transition = ({
 
   return (
     <div
-      style={{ '--offset': `${offset}px`, '--delay': `${delay}s` } as CSSProperties}
       className={clsx(startIn && styles[animation], mounted && styles.mounted)}
+      style={
+        { '--offset': `${offset}px`, '--delay': `${delay}s` } as CSSProperties
+      }
     >
       {children}
     </div>

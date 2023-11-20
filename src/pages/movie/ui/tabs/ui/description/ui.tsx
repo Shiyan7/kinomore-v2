@@ -17,7 +17,10 @@ export const Description = () => {
     <div className={styles.container}>
       <p className={styles.desc}>{isExpanded ? text : shortText}</p>
       {words?.length > MAX_WORDS && (
-        <button className={clsx('btn-reset', styles.btn)} onClick={() => setIsExpanded((prev) => !prev)}>
+        <button
+          className={clsx('btn-reset', styles.btn)}
+          onClick={() => setIsExpanded((prev) => !prev)}
+        >
           {isExpanded ? 'Свернуть описание' : 'Подробное описание'}
         </button>
       )}

@@ -20,7 +20,11 @@ export const MobileActions = () => {
   const movieId = Number(query.id);
 
   const items = [
-    { label: 'Трейлер', handler: trailerToggler.open, icon: <Icon name="common/play" /> },
+    {
+      label: 'Трейлер',
+      handler: trailerToggler.open,
+      icon: <Icon name="common/play" />,
+    },
     {
       label: isFavorite ? 'Запомнен' : 'Запомнить',
       activeCondition: isFavorite,
@@ -33,16 +37,24 @@ export const MobileActions = () => {
       handler: gradeToggler.open,
       icon: <Icon name="common/star" />,
     },
-    { label: 'Поделится', handler: shareToggler.open, icon: <Icon name="common/share" /> },
+    {
+      label: 'Поделится',
+      handler: shareToggler.open,
+      icon: <Icon name="common/share" />,
+    },
   ];
 
   return (
     <div className={styles.root}>
       {items.map(({ label, handler, icon, activeCondition }) => (
         <button
-          onClick={handler}
+          className={clsx(
+            'btn-reset',
+            activeCondition && styles.isActive,
+            styles.btn
+          )}
           key={label}
-          className={clsx('btn-reset', activeCondition && styles.isActive, styles.btn)}
+          onClick={handler}
         >
           <span className={styles.icon}>{icon}</span>
           <span className={styles.label}>{label}</span>

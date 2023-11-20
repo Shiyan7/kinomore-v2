@@ -7,13 +7,13 @@ export const Hero = () => (
   <section className={styles.section}>
     <div className={styles.container}>
       <CarouselMultiply
+        className={styles.slider}
+        items={heroMovies}
         options={{
           loop: true,
         }}
-        className={styles.slider}
-        slideClassName={styles.slide}
-        items={heroMovies}
         renderItem={(item) => <HeroSlide item={item} />}
+        slideClassName={styles.slide}
       />
     </div>
   </section>

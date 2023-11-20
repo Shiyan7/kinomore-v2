@@ -21,10 +21,9 @@ export const MoviePage = () => {
   return (
     <>
       <NextSeo
+        description={description}
         nofollow
         noindex
-        title={title}
-        description={description}
         openGraph={{
           title,
           description,
@@ -35,6 +34,7 @@ export const MoviePage = () => {
             },
           ],
         }}
+        title={title}
       />
       <MainSection />
       <Tabs />

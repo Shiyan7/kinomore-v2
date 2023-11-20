@@ -1,6 +1,6 @@
 import { createQuery } from '@farfetched/core';
 import { createCommonRequestFx } from 'shared/api/requests';
-import { Movies } from 'shared/api/types';
+import type { Movies } from 'shared/api/types';
 import { GenresEnum } from 'shared/config';
 import { getCurrentYear } from 'shared/lib';
 

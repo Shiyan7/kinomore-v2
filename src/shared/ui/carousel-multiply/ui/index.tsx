@@ -1,8 +1,10 @@
+/* eslint-disable react/no-array-index-key */
 import 'swiper/css';
 import clsx from 'clsx';
 import { useCallback, type ReactNode } from 'react';
 import { Navigation, type SwiperOptions } from 'swiper';
-import { SwiperSlide, Swiper, SwiperProps } from 'swiper/react';
+import type { SwiperProps } from 'swiper/react';
+import { SwiperSlide, Swiper } from 'swiper/react';
 import { useDomRefWithSetter } from '../lib';
 import { SliderButton } from './slider-button';
 import styles from './styles.module.scss';
@@ -18,7 +20,7 @@ export interface CarouselMultiplyProps<T> extends SwiperProps {
   options?: SwiperOptions;
 }
 
-export function CarouselMultiply<T>({
+export const CarouselMultiply = <T, _>({
   items,
   renderItem,
   className,
@@ -29,19 +31,22 @@ export function CarouselMultiply<T>({
   prevBtnClass,
   nextBtnClass,
   ...props
-}: CarouselMultiplyProps<T>) {
+}: CarouselMultiplyProps<T>) => {
   const [nextEl, nextElRef] = useDomRefWithSetter<HTMLButtonElement>();
   const [prevEl, prevElRef] = useDomRefWithSetter<HTMLButtonElement>();
 
   const renderItems = useCallback(
     (_items: typeof items) =>
       _items?.map((item, idx) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <SwiperSlide style={{ marginRight: 'var(--column-gap)' }} className={slideClassName} key={idx}>
+        <SwiperSlide
+          className={slideClassName}
+          key={idx}
+          style={{ marginRight: 'var(--column-gap)' }}
+        >
           {renderItem(item, idx)}
         </SwiperSlide>
       )),
-    [slideClassName, renderItem],
+    [slideClassName, renderItem]
   );
 
   const swiperOptions: SwiperOptions = {
@@ -71,13 +76,19 @@ export function CarouselMultiply<T>({
       {...swiperOptions}
       {...props}
     >
-      {navigation && (
+      {navigation ? (
         <>
-          <SliderButton ref={prevElRef} className={clsx(styles.prev, prevBtnClass)} />
-          <SliderButton ref={nextElRef} className={clsx(styles.next, nextBtnClass)} />
+          <SliderButton
+            className={clsx(styles.prev, prevBtnClass)}
+            ref={prevElRef}
+          />
+          <SliderButton
+            className={clsx(styles.next, nextBtnClass)}
+            ref={nextElRef}
+          />
         </>
-      )}
+      ) : null}
       {renderItems(items)}
     </Swiper>
   );
-}
+};

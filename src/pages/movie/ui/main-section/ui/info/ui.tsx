@@ -22,11 +22,11 @@ export const Info = () => {
 
   return (
     <div className={styles.root}>
-      <MovieRating showState className={styles.rating}>
+      <MovieRating className={styles.rating} showState>
         {getRating(data?.rating)}
       </MovieRating>
       {items.filter(Boolean).map((item) => (
-        <span key={item} className={styles.item}>
+        <span className={styles.item} key={item}>
           {item}
         </span>
       ))}

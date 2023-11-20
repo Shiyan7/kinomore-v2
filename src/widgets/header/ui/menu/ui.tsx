@@ -17,7 +17,7 @@ export const Menu = () => {
 
   return (
     <div className={clsx(styles.menu, isOpen && styles.opened)}>
-      <button onClick={close} className={clsx('btn-reset', styles.close)}>
+      <button className={clsx('btn-reset', styles.close)} onClick={close}>
         <Icon name="common/close" />
       </button>
       <div className={clsx('container', styles.container)}>
@@ -26,9 +26,19 @@ export const Menu = () => {
             const isCurrentPage = pathname === item.href;
 
             return (
-              <CSSTransition key={item.text} in={isOpen} timeout={item.timeout} classNames={{ enterDone: styles.done }}>
-                <li className={clsx(styles.item, isCurrentPage && styles.isCurrent)}>
-                  <Link href={item.href} className={styles.link}>
+              <CSSTransition
+                classNames={{ enterDone: styles.done }}
+                in={isOpen}
+                key={item.text}
+                timeout={item.timeout}
+              >
+                <li
+                  className={clsx(
+                    styles.item,
+                    isCurrentPage && styles.isCurrent
+                  )}
+                >
+                  <Link className={styles.link} href={item.href}>
                     {item.text}
                   </Link>
                 </li>

@@ -10,8 +10,15 @@ export const Drama = () => {
 
   return (
     <Category>
-      <Category.Title href={paths.catalog({ genre: GenresEnum.Drama, sort: SortEnum.Year })}>Драма</Category.Title>
-      <Category.Carousel items={data?.docs} renderItem={(item) => <MovieItem item={item} />} />
+      <Category.Title
+        href={paths.catalog({ genre: GenresEnum.Drama, sort: SortEnum.Year })}
+      >
+        Драма
+      </Category.Title>
+      <Category.Carousel
+        items={data?.docs}
+        renderItem={(item) => <MovieItem item={item} />}
+      />
     </Category>
   );
 };
