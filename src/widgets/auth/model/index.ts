@@ -1,4 +1,4 @@
-import { createEvent, createStore, sample } from 'effector';
+import { createEffect, createEvent, createStore, sample } from 'effector';
 import { condition, delay } from 'patronum';
 import {
   checkUserQuery,
@@ -10,6 +10,7 @@ import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
 import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
+import { notificationModel } from 'entities/notification';
 
 const REDIRECT_DELAY = 1700;
 
@@ -100,6 +101,18 @@ export const authModel = atom(() => {
     clock: [redirectToProfile, googleLoginQuery.finished.success],
     fn: () => paths.profile,
     target: [navigationModel.pushFx, toggler.close],
+  });
+
+  const signInFailedFx = createEffect(() => {
+    notificationModel.error({
+      message: 'Ошибка',
+      description: 'Неверно указаны логин или пароль. Попробуй еще раз',
+    });
+  });
+
+  sample({
+    clock: signInQuery.finished.failure,
+    target: signInFailedFx,
   });
 
   return {

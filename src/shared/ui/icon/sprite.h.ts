@@ -32,6 +32,7 @@ export interface SpritesMap {
     | 'people'
     | 'rocket'
     | 'tank';
+  notification: 'error' | 'info' | 'success' | 'warning';
   social: 'facebook' | 'gmail' | 'telegram' | 'viber' | 'vk' | 'whatsapp';
 }
 export const SPRITES_META: {
@@ -70,6 +71,7 @@ export const SPRITES_META: {
     | 'rocket'
     | 'tank'
   >;
+  notification: Array<'error' | 'info' | 'success' | 'warning'>;
   social: Array<
     'facebook' | 'gmail' | 'telegram' | 'viber' | 'vk' | 'whatsapp'
   >;
@@ -109,5 +111,6 @@ export const SPRITES_META: {
     'rocket',
     'tank',
   ],
+  notification: ['error', 'info', 'success', 'warning'],
   social: ['facebook', 'gmail', 'telegram', 'viber', 'vk', 'whatsapp'],
 };

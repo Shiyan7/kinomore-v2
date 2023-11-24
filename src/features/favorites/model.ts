@@ -20,8 +20,6 @@ export const favoritesModel = atom(() => {
 
   const $allFavorites = createStore<MovieEntity[]>([]);
 
-  const $arrayOfId = favoritesIdQuery.$data;
-
   const FavoritesPageGate = createGate();
 
   const abortPending = createEvent();
@@ -29,6 +27,8 @@ export const favoritesModel = atom(() => {
   const toggleFavoriteClicked = createEvent<{ id: number }>();
 
   const removeFavoriteClicked = createEvent<{ id: number }>();
+
+  const $arrayOfId = favoritesIdQuery.$data;
 
   sample({
     clock: toggleFavoriteClicked,

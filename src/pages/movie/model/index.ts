@@ -1,10 +1,11 @@
-import { createEvent, createStore, sample } from 'effector';
+import { createEffect, createEvent, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import type { PageContext } from 'nextjs-effector';
 import { checkFavoriteQuery } from 'features/favorites';
 import { sessionModel } from 'entities/session';
 import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
+import { notificationModel } from 'entities/notification';
 import { movieByIdQuery } from '../api';
 
 export const movieModel = atom(() => {
@@ -30,6 +31,8 @@ export const movieModel = atom(() => {
 
   const ratingModalClosed = createEvent();
 
+  const linkCopied = createEvent<{ url: string }>();
+
   sample({
     clock: ratingSelected,
     fn: ({ rating }) => rating,
@@ -54,6 +57,36 @@ export const movieModel = atom(() => {
     target: checkFavoriteQuery.start,
   });
 
+  const linkCopiedSuccessFx = createEffect(() => {
+    notificationModel.info({
+      message: 'Скопировано!',
+      description: 'Ссылка скопирована в буфер обмена',
+    });
+  });
+
+  const copyUrlFx = createEffect((url: string) => {
+    if (!navigator?.clipboard) {
+      return false;
+    }
+
+    try {
+      navigator.clipboard.writeText(url);
+    } catch (error) {
+      throw new Error();
+    }
+  });
+
+  sample({
+    clock: linkCopied,
+    fn: ({ url }) => url,
+    target: copyUrlFx,
+  });
+
+  sample({
+    clock: copyUrlFx.done,
+    target: [shareToggler.close, linkCopiedSuccessFx],
+  });
+
   $isRated.on(ratingModalClosed, () => true);
 
   return {
@@ -68,5 +101,6 @@ export const movieModel = atom(() => {
     $rating,
     ratingModalClosed,
     ratingSelected,
+    linkCopied,
   };
 });

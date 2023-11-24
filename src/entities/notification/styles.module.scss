@@ -1,0 +1,135 @@
+.notfications {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding: 40px;
+  gap: 15px;
+  height: 100%;
+  z-index: var(--notification-z-index);
+
+  @media (max-width: 576px) {
+    padding: 15px;
+  }
+}
+
+.notice {
+  position: relative;
+  display: flex;
+  padding: 15px;
+  border-radius: 10px;
+  padding-left: 25px;
+  pointer-events: all;
+  padding-right: 60px;
+  background-color: var(--color-gray-100);
+
+  &.enter {
+    transform: translateX(150%);
+  }
+
+  &.enterActive {
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &.exit {
+    transform: translateX(0);
+  }
+
+  &.exitActive {
+    transform: translateX(150%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 7px;
+    width: 4px;
+    border-radius: 100px;
+    background-color: var(--notice-color);
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  margin-right: 16px;
+  border-radius: 100%;
+  background-color: var(--notice-color);
+
+  svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+  }
+}
+
+.message {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.desc {
+  max-width: 250px;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 18px;
+  color: #868e96;
+  margin: 0;
+}
+
+.close {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: block;
+  width: 15px;
+  height: 15px;
+  fill: #fff;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.success {
+  --notice-color: #12b886;
+}
+
+.error {
+  --notice-color: #fa5252;
+}
+
+.warning {
+  --notice-color: #fd7e14;
+}
+
+.info {
+  --notice-color: #228be6;
+}

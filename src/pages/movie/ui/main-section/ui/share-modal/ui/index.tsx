@@ -4,19 +4,18 @@ import { CSSTransition } from 'react-transition-group';
 import { movieModel } from 'pages/movie';
 import { useToggler } from 'shared/lib/toggler';
 import { Title, Popup, Icon } from 'shared/ui';
+import { useEvent } from 'effector-react';
 import { items } from '../config';
-import { useCopyToClipboard } from '../lib';
 import styles from './styles.module.scss';
 
 export const ShareModal = () => {
-  const [copy] = useCopyToClipboard();
   const { asPath } = useRouter();
   const { close, isOpen } = useToggler(movieModel.shareToggler);
+  const linkCopied = useEvent(movieModel.linkCopied);
   const URL = `${process.env.CLIENT_URL}${asPath}`;
 
   const handleCopy = () => {
-    copy(URL);
-    close();
+    linkCopied({ url: URL });
   };
 
   return (

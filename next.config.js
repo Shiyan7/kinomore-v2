@@ -3,7 +3,7 @@ const svg = require('@neodx/svg/webpack');
 const nextConfig = {
   images: {
     unoptimized: true,
-    domains: ['st.kp.yandex.net', 'avatars.mds.yandex.net', 'themoviedb.org', 'kinomore.blob.core.windows.net'],
+    domains: ['st.kp.yandex.net', 'avatars.mds.yandex.net', 'themoviedb.org'],
   },
   env: {
     API_TOKEN: process.env.API_TOKEN,
@@ -21,7 +21,7 @@ const nextConfig = {
           output: 'public/sprite',
           resetColors: false,
           metadata: 'src/shared/ui/icon/sprite.h.ts',
-        }),
+        })
       );
     }
     return config;

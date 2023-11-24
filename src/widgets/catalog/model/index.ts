@@ -7,8 +7,6 @@ import { getCatalogType } from '../lib';
 export const catalogModel = atom(() => {
   const pageStarted = createEvent<PageContext>();
 
-  const $catalog = catalogQuery.$data;
-
   const loadMore = createEvent();
 
   const $hasMore = createStore(false);
@@ -18,6 +16,8 @@ export const catalogModel = atom(() => {
     .reset(pageStarted);
 
   const $pageContext = createStore<PageContext | null>(null);
+
+  const $catalog = catalogQuery.$data;
 
   sample({
     clock: pageStarted,

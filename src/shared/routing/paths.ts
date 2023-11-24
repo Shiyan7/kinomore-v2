@@ -1,9 +1,9 @@
-interface CatalogParams {
+type CatalogParams = {
   genre?: string;
   rating?: string;
   year?: string;
   sort?: string;
-}
+};
 
 type Id = number | null | undefined;
 
