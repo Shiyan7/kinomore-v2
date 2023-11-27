@@ -136,7 +136,7 @@
   border-radius: 100%;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition: opacity var(--duration), visibility var(--duration);
 
   @media (max-width: 1024px) {
     display: none;

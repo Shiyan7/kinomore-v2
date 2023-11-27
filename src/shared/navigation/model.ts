@@ -17,7 +17,8 @@ export const navigationModel = atom(() => {
 
   sample({
     clock: $router,
-    fn: (router) => router?.query,
+    filter: Boolean,
+    fn: ({ query }) => query,
     target: $query,
   });
 
@@ -29,7 +30,11 @@ export const navigationModel = atom(() => {
   const pushQueryFx = attach({
     source: $router,
     effect: (router, query: ParsedUrlQuery | null) => {
-      router?.push({ query: { ...router.query, ...query } });
+      if (router) {
+        const { page, ...routerQuery } = router.query;
+
+        router?.push({ query: { ...routerQuery, ...query } });
+      }
     },
   });
 

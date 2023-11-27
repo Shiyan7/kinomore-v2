@@ -1,6 +1,6 @@
 import { createQuery } from '@farfetched/core';
 import { createInternalRequestFx } from 'shared/api/requests';
-import type { AuthDto, Status, TokensDto, Session } from './types';
+import type { AuthDto, TokensDto, Session } from './types';
 
 export const signUpQuery = createQuery({
   effect: createInternalRequestFx<AuthDto, TokensDto>((body) => ({
@@ -34,15 +34,6 @@ export const refreshQuery = createQuery({
     method: 'post',
     body: {
       token,
-    },
-  })),
-});
-
-export const checkUserQuery = createQuery({
-  effect: createInternalRequestFx<string, Status>((email) => ({
-    url: '/auth/check-user',
-    params: {
-      email,
     },
   })),
 });

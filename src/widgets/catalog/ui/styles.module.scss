@@ -42,6 +42,7 @@
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(6, 1fr);
+  margin-bottom: 55px;
 
   @media (max-width: 1024px) {
     gap: 15px;
@@ -52,8 +53,4 @@
     gap: 12px;
     grid-template-columns: repeat(3, 1fr);
   }
-}
-
-.loadMore {
-  margin-top: 35px;
 }

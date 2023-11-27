@@ -86,11 +86,6 @@ export const sessionModel = atom(() => {
   });
 
   sample({
-    clock: logOut,
-    fn: tokenService.deleteTokens,
-  });
-
-  sample({
     clock: AppGate.open,
     source: navigationModel.$router,
     filter: (router) => router?.asPath.startsWith(paths.profile) ?? false,
@@ -122,8 +117,11 @@ export const sessionModel = atom(() => {
 
   sample({
     clock: logOut,
-    taget: [sessionQuery.reset, $isLogged.reset],
+    fn: tokenService.deleteTokens,
+    target: sessionQuery.reset,
   });
+
+  $isLogged.reset(logOut);
 
   $isLogged.on(
     [

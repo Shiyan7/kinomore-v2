@@ -7,6 +7,7 @@ export * from './modal';
 export * from './popup';
 export * from './portal';
 export * from './movie-rating';
+export * from './pagination';
 export * from './spinner';
 export * from './tabs';
 export * from './title';

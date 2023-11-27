@@ -33,7 +33,7 @@ export const Select = ({
 
   useOnClickOutside(selectRef, handleClose);
 
-  const handleSelect = (option: SelectOption) => {
+  const handleSelect = (option: SelectOption) => () => {
     onSelect(option);
     handleClose();
   };
@@ -60,7 +60,7 @@ export const Select = ({
             <div
               className={clsx(styles.option, isSelected && styles.isSelected)}
               key={option.label}
-              onClick={() => handleSelect(option)}
+              onClick={handleSelect(option)}
             >
               {option?.label}
               <span className={styles.check}>

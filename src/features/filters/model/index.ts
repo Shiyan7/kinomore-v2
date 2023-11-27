@@ -11,7 +11,7 @@ export const filtersModel = atom(() => {
 
   const $params = createStore('');
 
-  const $filters = createStore<Array<string | undefined>>([]);
+  const $filters = createStore<string[]>([]);
 
   const optionSelected = createEvent<ParsedUrlQuery>();
 
@@ -39,7 +39,7 @@ export const filtersModel = atom(() => {
   sample({
     clock: navigationModel.$query,
     source: $filters,
-    fn: (params) => paramsToString(params as string[]),
+    fn: paramsToString,
     target: $params,
   });
 

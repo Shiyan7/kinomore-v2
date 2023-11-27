@@ -1,13 +1,11 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import clsx from 'clsx';
-import { useEvent, useStore } from 'effector-react';
-import { useEffect } from 'react';
-import { catalogModel } from 'widgets/catalog';
+import { useStore } from 'effector-react';
 import { Filters, filtersModel } from 'features/filters';
 import { MovieItem } from 'entities/movie/item';
 import { useToggler } from 'shared/lib';
-import { Title, Icon, Button } from 'shared/ui';
-import { useElementOnScreen } from '../lib';
+import { Title, Icon, Pagination } from 'shared/ui';
+import { useRouter } from 'next/router';
+import { catalogModel } from '../model';
 import styles from './styles.module.scss';
 
 interface CatalogProps {
@@ -15,29 +13,18 @@ interface CatalogProps {
 }
 
 export const Catalog = ({ title }: CatalogProps) => {
-  const [buttonRef, isVisible] = useElementOnScreen<HTMLButtonElement>({
-    rootMargin: '450px',
-  });
+  const { query, push } = useRouter();
   const { open } = useToggler(filtersModel.toggler);
-  const loadMore = useEvent(catalogModel.loadMore);
-  const hasMore = useStore(catalogModel.$hasMore);
-  const pending = useStore(catalogModel.$pending);
   const params = useStore(filtersModel.$params);
-  const data = useStore(catalogModel.$catalog);
-
-  useEffect(() => {
-    if (isVisible) {
-      loadMore();
-    }
-  }, [isVisible]);
+  const data = useStore(catalogModel.$data);
 
   return (
     <section className={styles.section}>
       <div className={clsx('container', styles.container)}>
         <div className={styles.top}>
           <Title className={styles.title}>
-            {title}
-            {params ? `: ${params}` : null}
+            {params ? `${title}: ` : title}
+            {params}
           </Title>
           <button className={clsx('btn-reset', styles.btn)} onClick={open}>
             <Icon name="common/filters" />
@@ -49,18 +36,11 @@ export const Catalog = ({ title }: CatalogProps) => {
             <MovieItem item={item} key={item.id} />
           ))}
         </div>
-        {hasMore ? (
-          <Button
-            className={styles.loadMore}
-            disabled
-            ref={buttonRef}
-            size="medium"
-            skeletonLoading={pending}
-            variant="gray"
-          >
-            Показать больше
-          </Button>
-        ) : null}
+        <Pagination
+          onChange={(page) => push({ query: { ...query, page } })}
+          page={Number(query?.page) || 1}
+          total={data?.pages}
+        />
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 export interface SpritesMap {
   common:
+    | 'arrows'
     | 'bookmark-slash'
     | 'bookmark'
     | 'bookmark2'
@@ -37,6 +38,7 @@ export interface SpritesMap {
 }
 export const SPRITES_META: {
   common: Array<
+    | 'arrows'
     | 'bookmark-slash'
     | 'bookmark'
     | 'bookmark2'
@@ -77,6 +79,7 @@ export const SPRITES_META: {
   >;
 } = {
   common: [
+    'arrows',
     'bookmark-slash',
     'bookmark',
     'bookmark2',

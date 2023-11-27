@@ -34,11 +34,11 @@ export const Genres = () => {
           onSliderMove={slideChange}
           slidesPerView="auto"
         >
-          {genres.map((genre) => (
-            <SwiperSlide className={styles.item} key={genre.text}>
-              <Link className={styles.link} href={genre.href}>
-                <span className={styles.icon}>{genre.icon}</span>
-                <span className={styles.text}>{genre.text}</span>
+          {genres.map(({ text, href, icon }) => (
+            <SwiperSlide className={styles.item} key={text}>
+              <Link className={styles.link} href={href}>
+                <span className={styles.icon}>{icon}</span>
+                <span className={styles.text}>{text}</span>
               </Link>
             </SwiperSlide>
           ))}

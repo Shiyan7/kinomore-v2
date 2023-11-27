@@ -2403,10 +2403,10 @@ effector-react@22.5.1:
   dependencies:
     use-sync-external-store "^1.0.0"
 
-effector@22.8.0:
-  version "22.8.0"
-  resolved "https://registry.yarnpkg.com/effector/-/effector-22.8.0.tgz#e3eb2ee08f5355ee9ae14c136bfd87742e6869a0"
-  integrity sha512-YLECzXGyIpJjefai3noBonQOx7prhs9qg6zLdIxV9VBNXbRO4iYPXOVh2rh34JETroObDiZpQ+XqsxLJtIykKA==
+effector@^22.8.7:
+  version "22.8.7"
+  resolved "https://registry.yarnpkg.com/effector/-/effector-22.8.7.tgz#39d00a8fba86645cc093bec49205d549519d0ffa"
+  integrity sha512-vCevjxmFwnZJuRGtqjwfi+sHtu+7gK3qdbv4fxi/AsMdDtoMeoz9C3/28pjNABviZeEARj6ZfAHbNAq5i9d7RQ==
 
 electron-to-chromium@^1.4.284:
   version "1.4.363"

@@ -587,7 +587,7 @@ export interface Image {
 
 export interface CatalogParams {
   type: string;
-  limit: number;
+  page?: string;
   genre?: string;
   rating?: string;
   sort?: string;

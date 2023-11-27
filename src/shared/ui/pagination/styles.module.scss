@@ -1,0 +1,95 @@
+.pagination {
+  --pagination-size: 44px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.item {
+  display: block;
+  min-width: var(--pagination-size);
+  padding: 0 10px;
+  height: var(--pagination-size);
+  color: var(--color-white);
+  background-color: var(--color-gray-200);
+  border-radius: 5px;
+  transition: background-color var(--duration);
+
+  &.activeItem {
+    background-color: var(--color-primary);
+  }
+
+  &:not(.activeItem) {
+    &:hover {
+      background-color: var(--color-gray-300);
+    }
+  }
+}
+
+.prev,
+.next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--pagination-size);
+  height: var(--pagination-size);
+  font-size: 20px;
+  line-height: 20px;
+  border-radius: 5px;
+  color: var(--color-white);
+  background-color: var(--color-gray-200);
+  transition: background-color var(--duration);
+
+  &:hover {
+    background-color: var(--color-gray-300);
+  }
+
+  svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+}
+
+.next {
+  svg {
+    transform: rotate(180deg);
+  }
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--pagination-size);
+  height: var(--pagination-size);
+  position: relative;
+  color: rgba(#fff, 0.3);
+  transition: color var(--duration);
+
+  &.isRightDots {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:hover {
+    color: transparent;
+
+    svg {
+      opacity: 1;
+    }
+  }
+
+  svg {
+    position: absolute;
+    z-index: 2;
+    width: 25px;
+    height: 25px;
+    fill: var(--color-primary);
+    opacity: 0;
+    transition: opacity var(--duration);
+  }
+}

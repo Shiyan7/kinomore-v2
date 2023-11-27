@@ -77,7 +77,7 @@
   font-size: 12px;
   color: var(--color-white);
   background-color: rgba(#9999bf, 0.2);
-  transition: background-color 0.3s;
+  transition: background-color var(--duration);
 
   @media (max-width: 576px) {
     padding: 20px 8px 30px;

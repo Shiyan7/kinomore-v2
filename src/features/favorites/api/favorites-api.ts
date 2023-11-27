@@ -30,8 +30,8 @@ export const checkFavoriteQuery = createQuery({
 });
 
 export const allFavoritesQuery = createQuery({
-  effect: createCommonRequestFx<string, Movies>((id) => ({
-    url: `/v1.3/movie?${id}`,
+  effect: createCommonRequestFx<string, Movies>((params) => ({
+    url: `/v1.3/movie?${params}`,
     params: {
       limit: 250,
     },

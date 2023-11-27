@@ -1,12 +1,12 @@
 export function getCatalogType(pathname: string): string {
   switch (pathname) {
     case '/films':
-      return '1';
+      return 'movie';
     case '/series':
-      return '2';
+      return 'tv-series';
     case '/cartoons':
-      return '3';
+      return 'cartoon';
     default:
-      return '1';
+      return 'movie';
   }
 }

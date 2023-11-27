@@ -1,16 +1,12 @@
 import { createEffect, createEvent, createStore, sample } from 'effector';
 import { condition, delay } from 'patronum';
-import {
-  checkUserQuery,
-  googleLoginQuery,
-  signInQuery,
-  signUpQuery,
-} from 'entities/session';
+import { googleLoginQuery, signInQuery, signUpQuery } from 'entities/session';
 import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
 import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
 import { notificationModel } from 'entities/notification';
+import { checkUserQuery } from '../api';
 
 const REDIRECT_DELAY = 1700;
 

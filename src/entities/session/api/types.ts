@@ -11,10 +11,6 @@ export interface Session {
   updatedAt: Date;
 }
 
-export interface Status {
-  isNewUser: boolean;
-}
-
 export interface TokensDto {
   accessToken: string;
   refreshToken: string;

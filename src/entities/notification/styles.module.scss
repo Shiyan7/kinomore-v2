@@ -36,7 +36,7 @@
 
   &.enterActive {
     transform: translateX(0);
-    transition: transform 0.3s ease-in-out;
+    transition: transform var(--duration) ease-in-out;
   }
 
   &.exit {
@@ -45,7 +45,7 @@
 
   &.exitActive {
     transform: translateX(150%);
-    transition: transform 0.3s ease-in-out;
+    transition: transform var(--duration) ease-in-out;
   }
 
   @media (max-width: 576px) {

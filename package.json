@@ -23,7 +23,7 @@
     "clsx": "^1.2.1",
     "compose-function": "^3.0.3",
     "dayjs": "^1.11.7",
-    "effector": "22.8.0",
+    "effector": "^22.8.7",
     "effector-react": "22.5.1",
     "eslint": "^8.43.0",
     "jest-environment-jsdom": "^29.3.1",
