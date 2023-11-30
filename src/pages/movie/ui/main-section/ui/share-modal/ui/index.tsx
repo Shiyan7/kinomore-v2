@@ -31,9 +31,12 @@ export const ShareModal = () => {
         rootClassName={styles.root}
       >
         <div className={styles.content}>
-          <Title as="h2" className={styles.title} size="small">
-            Поделится
-          </Title>
+          <div className={styles.row}>
+            <Title as="h2" className={styles.title} size="small">
+              Поделится
+            </Title>
+            <Popup.Close className={styles.close} onClick={close} />
+          </div>
           <div className={styles.btns}>
             {items.map(({ icon, text, button }) => {
               const Button = button;

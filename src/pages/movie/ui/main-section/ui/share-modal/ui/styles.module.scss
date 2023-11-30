@@ -1,10 +1,6 @@
 .root {
   overflow: hidden;
 
-  @media (min-width: 577px) {
-    display: none;
-  }
-
   &.done {
     .modal {
       transform: translateY(0%);
@@ -13,18 +9,30 @@
 }
 
 .modal {
+  --offset: 25px;
+  max-width: 500px;
   width: calc(100% - 18px);
-  border-radius: 15px;
+  border-radius: var(--offset);
   background-color: var(--color-gray-100);
-  vertical-align: bottom;
   transition: transform var(--duration);
-  transform: translateY(100%);
   margin-bottom: 12px;
+
+  @media (max-width: 576px) {
+    --offset: 15px;
+    vertical-align: bottom;
+    transform: translateY(100%);
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0 var(--offset);
 }
 
 .title {
-  margin-bottom: 20px;
-  padding: 0 15px;
 }
 
 .btns {
@@ -32,7 +40,7 @@
   align-items: flex-start;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0 15px 5px;
+  padding: 0 var(--offset) 5px;
   border-bottom: 1px solid rgba(#000, 0.15);
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -79,7 +87,7 @@
   line-height: 15px;
   font-weight: 300;
   color: var(--color-white);
-  padding: 15px;
+  padding: var(--offset);
 
   .icon {
     display: flex;
@@ -97,4 +105,10 @@
       height: 24px;
     }
   }
+}
+
+.close {
+  position: static;
+  transform: none;
+  top: 25px;
 }

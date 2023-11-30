@@ -19,6 +19,7 @@ export const MainButtons = () => {
   const trailerToggler = useToggler(movieModel.trailerToggler);
   const playerToggler = useToggler(movieModel.playerToggler);
   const gradeToggler = useToggler(movieModel.gradeToggler);
+  const shareToggler = useToggler(movieModel.shareToggler);
 
   const movieId = Number(query.id);
 
@@ -38,6 +39,10 @@ export const MainButtons = () => {
       children: <Icon name="common/star" />,
       activeCondition: isRated,
       handler: gradeToggler.open,
+    },
+    {
+      children: <Icon name="common/share" />,
+      handler: shareToggler.open,
     },
   ];
 
