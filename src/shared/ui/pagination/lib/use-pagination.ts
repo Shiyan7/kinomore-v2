@@ -12,7 +12,7 @@ export interface PaginationParams {
   page?: number;
 
   /** Total amount of pages */
-  total?: number;
+  total: number;
 
   /** Siblings amount on left/right side of selected page, defaults to 1 */
   siblings?: number;
@@ -29,7 +29,7 @@ export function usePagination({
   siblings = 1,
   boundaries = 1,
   initialPage = 1,
-  total = 10,
+  total,
   onChange,
 }: PaginationParams) {
   const _total = Math.max(Math.trunc(total), 0);

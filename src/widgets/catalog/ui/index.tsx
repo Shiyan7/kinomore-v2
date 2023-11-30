@@ -6,6 +6,7 @@ import { useToggler } from 'shared/lib';
 import { Title, Icon, Pagination } from 'shared/ui';
 import { useRouter } from 'next/router';
 import { catalogModel } from '../model';
+import { paramsToString } from '../lib';
 import styles from './styles.module.scss';
 
 interface CatalogProps {
@@ -15,8 +16,8 @@ interface CatalogProps {
 export const Catalog = ({ title }: CatalogProps) => {
   const { query, push } = useRouter();
   const { open } = useToggler(filtersModel.toggler);
-  const params = useStore(filtersModel.$params);
   const data = useStore(catalogModel.$data);
+  const params = paramsToString([query.genre as string, query.year as string]);
 
   return (
     <section className={styles.section}>
@@ -36,11 +37,13 @@ export const Catalog = ({ title }: CatalogProps) => {
             <MovieItem item={item} key={item.id} />
           ))}
         </div>
-        <Pagination
-          onChange={(page) => push({ query: { ...query, page } })}
-          page={Number(query?.page) || 1}
-          total={data?.pages}
-        />
+        {data ? (
+          <Pagination
+            onChange={(page) => push({ query: { ...query, page } })}
+            page={Number(query?.page) || 1}
+            total={data.pages}
+          />
+        ) : null}
       </div>
     </section>
   );

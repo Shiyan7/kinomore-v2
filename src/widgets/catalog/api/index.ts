@@ -8,11 +8,11 @@ export const catalogQuery = createQuery({
       url: '/v1.4/movie',
       params: {
         limit: 90,
+        notNullFields: ['poster.url'],
         selectFields: ['id', 'name', 'year', 'movieLength', 'rating'],
         ...(sort && { sortField: [sort, 'votes.kp'], sortType: ['-1', '-1'] }),
-        'genres.name': genre,
-        'rating.kp': rating,
-        'poster.previewUrl': '!null',
+        ...(genre && { 'genres.name': genre }),
+        ...(rating && { 'rating.kp': rating }),
         ...rest,
       },
     })

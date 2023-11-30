@@ -15,12 +15,10 @@ export const Filters = () => {
   const { query } = useRouter();
   const { isOpen, close } = useToggler(filtersModel.toggler);
   const optionSelected = useEvent(filtersModel.optionSelected);
-  const showResults = useEvent(filtersModel.showResults);
-  const sendOption = useEvent(filtersModel.sendOption);
+  const showResultsClicked = useEvent(filtersModel.showResultsClicked);
+  const mobileOptionSelected = useEvent(filtersModel.mobileOptionSelected);
 
   useLockedBody(isOpen);
-
-  /* добавить кнопку сбросить */
 
   return (
     <div className={clsx(styles.root, isOpen && styles.isOpen)}>
@@ -70,20 +68,26 @@ export const Filters = () => {
         <div className={styles.options}>
           <DrawerSelect
             label="Сортировка"
-            onSelect={(option) => sendOption({ sort: option.value })}
+            onSelect={(option) => mobileOptionSelected({ sort: option.value })}
             options={sort}
             value={query.sort}
           />
           {filters.map(({ queryName, ...rest }) => (
             <DrawerSelect
               key={queryName}
-              onSelect={({ value }) => sendOption({ [queryName]: value })}
+              onSelect={({ value }) =>
+                mobileOptionSelected({ [queryName]: value })
+              }
               value={query[queryName]}
               {...rest}
             />
           ))}
         </div>
-        <Button className={styles.btn} onClick={showResults} variant="primary">
+        <Button
+          className={styles.btn}
+          onClick={showResultsClicked}
+          variant="primary"
+        >
           Показать результаты
         </Button>
       </div>

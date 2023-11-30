@@ -1,25 +1,24 @@
 import type { ParsedUrlQuery } from 'node:querystring';
 import { createEvent, createStore, sample } from 'effector';
 import { atom } from 'shared/factory';
-import { createToggler, paramsToString } from 'shared/lib';
+import { createToggler } from 'shared/lib';
 import { navigationModel } from 'shared/navigation';
-import { genres, years } from '../config';
-import { getOption } from '../lib';
 
 export const filtersModel = atom(() => {
   const toggler = createToggler();
 
-  const $params = createStore('');
-
-  const $filters = createStore<string[]>([]);
-
   const optionSelected = createEvent<ParsedUrlQuery>();
 
-  const sendOption = createEvent<ParsedUrlQuery>();
+  const mobileOptionSelected = createEvent<ParsedUrlQuery>();
 
-  const showResults = createEvent();
+  const showResultsClicked = createEvent();
 
-  const $allParams = createStore<ParsedUrlQuery | null>(null);
+  const $filters = createStore<ParsedUrlQuery | null>(null);
+
+  $filters.on(mobileOptionSelected, (state, payload) => ({
+    ...state,
+    ...payload,
+  }));
 
   sample({
     clock: optionSelected,
@@ -27,39 +26,15 @@ export const filtersModel = atom(() => {
   });
 
   sample({
-    clock: navigationModel.$query,
-    filter: Boolean,
-    fn: ({ genre, year }) => [
-      getOption(genres, genre as string),
-      getOption(years, year as string),
-    ],
-    target: $filters,
-  });
-
-  sample({
-    clock: navigationModel.$query,
+    clock: showResultsClicked,
     source: $filters,
-    fn: paramsToString,
-    target: $params,
-  });
-
-  $allParams.on(sendOption, (state, payload) => ({
-    ...state,
-    ...payload,
-  }));
-
-  sample({
-    clock: showResults,
-    source: $allParams,
     target: [navigationModel.pushQueryFx, toggler.close],
   });
 
   return {
     toggler,
-    $params,
     optionSelected,
-    sendOption,
-    $allParams,
-    showResults,
+    mobileOptionSelected,
+    showResultsClicked,
   };
 });
