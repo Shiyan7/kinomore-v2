@@ -58,9 +58,10 @@ export const movieModel = atom(() => {
   });
 
   const linkCopiedSuccessFx = createEffect(() => {
-    notificationModel.info({
+    notificationModel.show({
       message: 'Скопировано!',
       description: 'Ссылка скопирована в буфер обмена',
+      type: 'info',
     });
   });
 

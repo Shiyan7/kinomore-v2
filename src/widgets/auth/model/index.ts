@@ -100,9 +100,10 @@ export const authModel = atom(() => {
   });
 
   const signInFailedFx = createEffect(() => {
-    notificationModel.error({
+    notificationModel.show({
       message: 'Ошибка',
       description: 'Неверно указаны логин или пароль. Попробуй еще раз',
+      type: 'error',
     });
   });
 
