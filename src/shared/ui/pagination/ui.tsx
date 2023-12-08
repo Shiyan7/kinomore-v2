@@ -30,7 +30,7 @@ export const Pagination = ({ total, page, onChange }: PaginationProps) => {
     window.scrollTo(0, 0);
   }, [page]);
 
-  if (total < 1) return null;
+  if (total < 2) return null;
 
   return (
     <div className={styles.pagination}>

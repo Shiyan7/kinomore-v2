@@ -3,7 +3,7 @@ import { useStore } from 'effector-react';
 import { Filters, filtersModel } from 'features/filters';
 import { MovieItem } from 'entities/movie/item';
 import { useToggler } from 'shared/lib';
-import { Title, Icon, Pagination } from 'shared/ui';
+import { Title, Icon, Pagination, usePageChange } from 'shared/ui';
 import { useRouter } from 'next/router';
 import { catalogModel } from '../model';
 import { paramsToString } from '../lib';
@@ -14,8 +14,9 @@ interface CatalogProps {
 }
 
 export const Catalog = ({ title }: CatalogProps) => {
-  const { query, push } = useRouter();
+  const { query } = useRouter();
   const { open } = useToggler(filtersModel.toggler);
+  const { page, onChange } = usePageChange();
   const data = useStore(catalogModel.$data);
   const params = paramsToString([query.genre as string, query.year as string]);
 
@@ -38,11 +39,7 @@ export const Catalog = ({ title }: CatalogProps) => {
           ))}
         </div>
         {data ? (
-          <Pagination
-            onChange={(page) => push({ query: { ...query, page } })}
-            page={Number(query?.page) || 1}
-            total={data.pages}
-          />
+          <Pagination onChange={onChange} page={page} total={data.pages} />
         ) : null}
       </div>
     </section>
