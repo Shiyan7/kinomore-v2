@@ -9,13 +9,13 @@ import styles from './styles.module.scss';
 
 export const MobileActions = () => {
   const { query } = useRouter();
-  const toggleFavoriteClicked = useEvent(favoritesModel.toggleFavoriteClicked);
-  const isFavorite = useStore(favoritesModel.$isFavorite);
-  const isRated = useStore(movieModel.$isRated);
   const rating = useStore(movieModel.$rating);
+  const isRated = useStore(movieModel.$isRated);
+  const isFavorite = useStore(favoritesModel.$isFavorite);
   const shareToggler = useToggler(movieModel.shareToggler);
   const gradeToggler = useToggler(movieModel.gradeToggler);
   const trailerToggler = useToggler(movieModel.trailerToggler);
+  const toggleFavorite = useEvent(favoritesModel.toggleFavorite);
 
   const movieId = Number(query.id);
 
@@ -28,7 +28,7 @@ export const MobileActions = () => {
     {
       label: isFavorite ? 'Запомнен' : 'Запомнить',
       activeCondition: isFavorite,
-      handler: () => toggleFavoriteClicked({ id: movieId }),
+      handler: () => toggleFavorite({ id: movieId }),
       icon: <Icon name="common/bookmark" />,
     },
     {

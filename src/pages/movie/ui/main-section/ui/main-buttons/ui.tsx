@@ -13,7 +13,7 @@ import styles from './styles.module.scss';
 export const MainButtons = () => {
   const { query } = useRouter();
   const data = useStore(movieModel.$movie);
-  const toggleFavoriteClicked = useEvent(favoritesModel.toggleFavoriteClicked);
+  const toggleFavorite = useEvent(favoritesModel.toggleFavorite);
   const isFavorite = useStore(favoritesModel.$isFavorite);
   const isRated = useStore(movieModel.$isRated);
   const trailerToggler = useToggler(movieModel.trailerToggler);
@@ -33,7 +33,7 @@ export const MainButtons = () => {
     {
       children: <Icon name="common/bookmark" />,
       activeCondition: isFavorite,
-      handler: () => toggleFavoriteClicked({ id: movieId }),
+      handler: () => toggleFavorite({ id: movieId }),
     },
     {
       children: <Icon name="common/star" />,

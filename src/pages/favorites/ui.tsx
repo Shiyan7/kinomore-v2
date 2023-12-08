@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useEvent, useGate, useStore } from 'effector-react';
+import { useGate, useStore } from 'effector-react';
 import { favoritesModel } from 'features/favorites';
 import { MovieItem } from 'entities/movie/item';
 import { paths } from 'shared/routing';
@@ -13,9 +13,8 @@ const breadcrumbs = [
 ];
 
 export const FavoritesPage = () => {
-  const data = useStore(favoritesModel.$allFavorites);
+  const data = useStore(favoritesModel.$data);
   const pending = useStore(favoritesModel.$pending);
-  const removeFavoriteClicked = useEvent(favoritesModel.removeFavoriteClicked);
 
   useGate(favoritesModel.FavoritesPageGate);
 
@@ -28,11 +27,7 @@ export const FavoritesPage = () => {
   const Grid = (
     <div className={styles.grid}>
       {data?.map((movie) => (
-        <MovieItem
-          item={movie}
-          key={movie.id}
-          onFavorite={() => removeFavoriteClicked({ id: movie.id })}
-        />
+        <MovieItem item={movie} key={movie.id} />
       ))}
     </div>
   );

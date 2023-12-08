@@ -50,6 +50,7 @@
   }
 
   @media (max-width: 768px) {
+    margin-bottom: 25px;
     gap: 12px;
     grid-template-columns: repeat(3, 1fr);
   }

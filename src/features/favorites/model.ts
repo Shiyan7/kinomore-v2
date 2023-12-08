@@ -6,32 +6,28 @@ import { refreshQuery, sessionModel } from 'entities/session';
 import type { MovieEntity } from 'shared/api/types';
 import { atom } from 'shared/factory';
 import {
-  allFavoritesQuery,
+  moviesQuery,
   checkFavoriteQuery,
-  favoritesIdQuery,
+  favoritesQuery,
   toggleFavoriteQuery,
 } from './api';
-import { arrayToSearchParams } from './lib';
+import { arrayToQueryParams, sortByIds } from './lib';
 
 export const favoritesModel = atom(() => {
+  const FavoritesPageGate = createGate();
+
   const $pending = createStore(true);
 
   const $isFavorite = createStore(false);
 
-  const $allFavorites = createStore<MovieEntity[]>([]);
+  const $data = createStore<MovieEntity[]>([]);
 
-  const FavoritesPageGate = createGate();
+  const toggleFavorite = createEvent<{ id: number }>();
 
-  const abortPending = createEvent();
-
-  const toggleFavoriteClicked = createEvent<{ id: number }>();
-
-  const removeFavoriteClicked = createEvent<{ id: number }>();
-
-  const $arrayOfId = favoritesIdQuery.$data;
+  const $arrayOfId = favoritesQuery.$data.map((data) => data?.items ?? []);
 
   sample({
-    clock: toggleFavoriteClicked,
+    clock: toggleFavorite,
     source: $isFavorite,
     filter: sessionModel.$isLogged,
     fn: (isFavorite) => !isFavorite,
@@ -39,7 +35,7 @@ export const favoritesModel = atom(() => {
   });
 
   sample({
-    clock: [toggleFavoriteClicked, removeFavoriteClicked],
+    clock: toggleFavorite,
     filter: sessionModel.$isLogged,
     target: toggleFavoriteQuery.start,
   });
@@ -47,34 +43,27 @@ export const favoritesModel = atom(() => {
   sample({
     clock: sessionModel.$isRefreshed,
     source: FavoritesPageGate.open,
-    target: favoritesIdQuery.start,
+    target: favoritesQuery.start,
   });
 
   sample({
-    clock: favoritesIdQuery.finished.success,
-    filter: ({ result }) => result.items.length > 0,
-    fn: ({ result }) => arrayToSearchParams(result.items),
-    target: allFavoritesQuery.start,
-  });
-
-  sample({
-    clock: favoritesIdQuery.finished.success,
-    filter: ({ result }) => !result.items.length,
-    target: abortPending,
-  });
-
-  sample({
-    clock: allFavoritesQuery.finished.success,
+    clock: favoritesQuery.finished.success,
     source: $arrayOfId,
-    filter: Boolean,
-    fn: ({ items }, { result }) =>
-      result.docs.sort((a, b) => items.indexOf(b.id) - items.indexOf(a.id)),
-    target: $allFavorites,
+    fn: arrayToQueryParams,
+    target: moviesQuery.start,
   });
 
   sample({
-    clock: allFavoritesQuery.finished.success,
-    target: abortPending,
+    clock: moviesQuery.$data,
+    source: $arrayOfId,
+    fn: (array, data) => sortByIds({ array, data }),
+    target: $data,
+  });
+
+  sample({
+    clock: [favoritesQuery.finished.failure, moviesQuery.finished.success],
+    fn: () => false,
+    target: $pending,
   });
 
   sample({
@@ -84,23 +73,16 @@ export const favoritesModel = atom(() => {
   });
 
   sample({
-    clock: toggleFavoriteClicked,
+    clock: toggleFavorite,
     filter: and(not(sessionModel.$isLogged), not(refreshQuery.$pending)),
     target: authModel.toggler.open,
   });
 
-  $allFavorites.on(removeFavoriteClicked, (state, { id }) =>
-    state?.filter((movie) => movie.id !== id)
-  );
-
-  $pending.on(abortPending, () => false);
-
   return {
     FavoritesPageGate,
-    toggleFavoriteClicked,
-    removeFavoriteClicked,
+    toggleFavorite,
     $pending,
     $isFavorite,
-    $allFavorites,
+    $data,
   };
 });

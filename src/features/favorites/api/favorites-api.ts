@@ -1,4 +1,4 @@
-import { createQuery } from '@farfetched/core';
+import { createQuery, createMutation } from '@farfetched/core';
 import {
   createCommonRequestFx,
   createInternalRequestFx,
@@ -6,13 +6,13 @@ import {
 import type { Movies } from 'shared/api/types';
 import type { FavoriteItems, Message, Status } from './types';
 
-export const favoritesIdQuery = createQuery({
+export const favoritesQuery = createQuery({
   effect: createInternalRequestFx<void, FavoriteItems>({
     url: '/favorites',
   }),
 });
 
-export const toggleFavoriteQuery = createQuery({
+export const toggleFavoriteQuery = createMutation({
   effect: createInternalRequestFx<{ id: number }, Message>((body) => ({
     url: '/favorites',
     method: 'post',
@@ -29,11 +29,14 @@ export const checkFavoriteQuery = createQuery({
   })),
 });
 
-export const allFavoritesQuery = createQuery({
+export const moviesQuery = createQuery({
   effect: createCommonRequestFx<string, Movies>((params) => ({
     url: `/v1.3/movie?${params}`,
     params: {
       limit: 250,
     },
   })),
+  mapData({ result }) {
+    return result.docs;
+  },
 });

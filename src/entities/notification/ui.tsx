@@ -26,7 +26,11 @@ export const Notification = () => {
 
   return (
     <Portal rootId="#notification">
-      <TransitionGroup className={styles.notfications}>
+      <TransitionGroup
+        className={clsx(styles.notfications, {
+          [styles.isVisible]: notifications.length,
+        })}
+      >
         {notifications.map(({ id, message, description, type }) => (
           <CSSTransition
             classNames={{

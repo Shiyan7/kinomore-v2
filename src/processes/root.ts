@@ -16,9 +16,9 @@ reset({
     authModel.$password,
     movieModel.$isRated,
     authModel.$progress,
+    favoritesModel.$data,
     favoritesModel.$pending,
     favoritesModel.$isFavorite,
     searchModel.toggler.$isOpen,
-    favoritesModel.$allFavorites,
   ],
 });
