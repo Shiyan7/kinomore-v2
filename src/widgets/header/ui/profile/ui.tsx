@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { authModel } from 'widgets/auth';
 import { sessionModel } from 'entities/session';
 import { useToggler } from 'shared/lib/toggler';
@@ -10,7 +10,7 @@ import styles from './styles.module.scss';
 
 export const Profile = () => {
   const { open } = useToggler(authModel.toggler);
-  const isLogged = useStore(sessionModel.$isLogged);
+  const { isLogged } = useUnit({ isLogged: sessionModel.$isLogged });
 
   const ProfileLink = (
     <Link className={styles.profile} href={paths.profile}>

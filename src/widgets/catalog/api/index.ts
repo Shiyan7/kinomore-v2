@@ -1,4 +1,4 @@
-import { createQuery } from '@farfetched/core';
+import { cache, createQuery } from '@farfetched/core';
 import { createCommonRequestFx } from 'shared/api/requests';
 import type { CatalogParams, Movies } from 'shared/api/types';
 
@@ -18,3 +18,5 @@ export const catalogQuery = createQuery({
     })
   ),
 });
+
+cache(catalogQuery);

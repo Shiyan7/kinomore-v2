@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { useState } from 'react';
 import { movieModel } from 'pages/movie';
 import styles from './styles.module.scss';
@@ -8,8 +8,8 @@ const MAX_WORDS = 30;
 
 export const Description = () => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const data = useStore(movieModel.$movie);
-  const text = data?.description ?? data?.shortDescription ?? 'Без описания';
+  const { movie } = useUnit({ movie: movieModel.$movie });
+  const text = movie?.description ?? movie?.shortDescription ?? 'Без описания';
   const words = text?.split(' ');
   const shortText = words?.slice(0, MAX_WORDS).join(' ');
 

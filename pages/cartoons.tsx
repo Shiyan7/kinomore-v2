@@ -1,9 +1,15 @@
+import { allSettled, fork, serialize } from 'effector';
 import { CartoonsPage } from 'pages/cartoons';
-import { createGIP } from 'pages/shared';
 import { catalogModel } from 'widgets/catalog';
 
-CartoonsPage.getInitialProps = createGIP({
-  pageEvent: catalogModel.pageStarted,
-});
+CartoonsPage.getInitialProps = async (params) => {
+  const scope = fork();
+
+  await allSettled(catalogModel.pageStarted, { scope, params });
+
+  return {
+    values: serialize(scope),
+  };
+};
 
 export default CartoonsPage;

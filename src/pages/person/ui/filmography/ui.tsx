@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { useState } from 'react';
 import { personModel } from 'pages/person';
 import { MovieItem } from 'entities/movie/item';
@@ -8,11 +8,11 @@ import styles from './styles.module.scss';
 
 export const Filmography = () => {
   const [limit, setLimit] = useState<number>(15);
-  const data = useStore(personModel.$person);
+  const { person } = useUnit({ person: personModel.$person });
 
-  if (!data?.movies) return null;
+  if (!person?.movies) return null;
 
-  const filteredMovies = data.movies.filter((item) => item.rating);
+  const filteredMovies = person.movies.filter((item) => item.rating);
 
   const length = filteredMovies?.length;
 

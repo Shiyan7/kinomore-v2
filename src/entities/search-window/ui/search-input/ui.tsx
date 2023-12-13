@@ -1,4 +1,4 @@
-import { useStore, useEvent } from 'effector-react';
+import { useUnit } from 'effector-react';
 import type { FormEvent } from 'react';
 import { useEffect, useRef } from 'react';
 import { searchModel } from 'entities/search-window';
@@ -6,8 +6,11 @@ import { Input } from 'shared/ui/input';
 import styles from './styles.module.scss';
 
 export const SearchInput = () => {
-  const search = useStore(searchModel.$search);
-  const searchChanged = useEvent(searchModel.searchChanged);
+  const { search, searchChanged } = useUnit({
+    search: searchModel.$search,
+    searchChanged: searchModel.searchChanged,
+  });
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {

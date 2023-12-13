@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { movieModel } from 'pages/movie';
 import { paths } from 'shared/routing';
 import { Link } from 'shared/ui/link';
@@ -7,11 +7,11 @@ import { getActors, getDirector } from './lib';
 import styles from './styles.module.scss';
 
 export const MainPersons = () => {
-  const data = useStore(movieModel.$movie);
+  const { movie } = useUnit({ movie: movieModel.$movie });
 
   const items = [
-    { label: 'Режиссёр', list: getDirector(data?.persons ?? []) },
-    { label: 'Актеры', list: getActors(data?.persons ?? []) },
+    { label: 'Режиссёр', list: getDirector(movie?.persons ?? []) },
+    { label: 'Актеры', list: getActors(movie?.persons ?? []) },
   ];
 
   return (

@@ -1,4 +1,4 @@
-import { useEvent, useGate, useStore } from 'effector-react';
+import { useUnit, useGate } from 'effector-react';
 import Link from 'next/link';
 import { sessionModel } from 'entities/session';
 import { paths } from 'shared/routing';
@@ -9,8 +9,10 @@ import { breadcrumbs, profileItems } from '../config';
 import styles from './styles.module.scss';
 
 export const ProfilePage = () => {
-  const data = useStore(sessionModel.$session);
-  const logOut = useEvent(sessionModel.logOut);
+  const { session, logOut } = useUnit({
+    session: sessionModel.$session,
+    logOut: sessionModel.logOut,
+  });
 
   useGate(sessionModel.ProfilePageGate);
 
@@ -25,7 +27,7 @@ export const ProfilePage = () => {
       <Breadcrumbs className={styles.breadcrumbs} items={breadcrumbs} />
       <div className={styles.top}>
         <div className={styles.left}>
-          <Title className={styles.name}>{data?.name}</Title>
+          <Title className={styles.name}>{session?.name}</Title>
           <span className={styles.caption}>Основной профиль</span>
         </div>
         <Button
@@ -50,5 +52,5 @@ export const ProfilePage = () => {
     </div>
   );
 
-  return <div className="container">{!data ? Loader : Content}</div>;
+  return <div className="container">{!session ? Loader : Content}</div>;
 };

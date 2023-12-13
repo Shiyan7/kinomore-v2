@@ -41,8 +41,8 @@ export const favoritesModel = atom(() => {
   });
 
   sample({
-    clock: sessionModel.$isRefreshed,
-    source: FavoritesPageGate.open,
+    clock: and(sessionModel.$isRefreshed, FavoritesPageGate.status),
+    filter: Boolean,
     target: favoritesQuery.start,
   });
 

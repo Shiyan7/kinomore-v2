@@ -1,8 +1,8 @@
-import type { Store, Event } from 'effector';
+import type { StoreWritable, EventCallable } from 'effector';
 
 export interface TogglerInstance {
-  open: Event<void>;
-  close: Event<void>;
-  toggle: Event<void>;
-  $isOpen: Store<boolean>;
+  open: EventCallable<void>;
+  close: EventCallable<void>;
+  toggle: EventCallable<void>;
+  $isOpen: StoreWritable<boolean>;
 }

@@ -10,7 +10,7 @@ export const navigationModel = atom(() => {
   const $router = createStore<NextRouter | null>(null, {
     serialize: 'ignore',
   })
-    .on(RouterGate.open, (_, { router }) => router)
+    .on(RouterGate.state, (_, { router }) => router)
     .reset(RouterGate.close);
 
   const $query = createStore<ParsedUrlQuery | undefined | null>(null);

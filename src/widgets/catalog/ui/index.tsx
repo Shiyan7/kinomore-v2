@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { Filters, filtersModel } from 'features/filters';
 import { MovieItem } from 'entities/movie/item';
 import { useToggler } from 'shared/lib';
@@ -17,7 +17,7 @@ export const Catalog = ({ title }: CatalogProps) => {
   const { query } = useRouter();
   const { open } = useToggler(filtersModel.toggler);
   const { page, onChange } = usePageChange();
-  const data = useStore(catalogModel.$data);
+  const { data } = useUnit({ data: catalogModel.$data });
   const params = paramsToString([query.genre as string, query.year as string]);
 
   return (

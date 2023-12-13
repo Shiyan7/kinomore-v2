@@ -1,4 +1,4 @@
-import { useStore, useEvent } from 'effector-react';
+import { useUnit } from 'effector-react';
 import type { FormEventHandler } from 'react';
 import { useRef, useEffect } from 'react';
 import { authModel } from 'widgets/auth';
@@ -12,16 +12,28 @@ import { maskString } from './lib';
 import styles from './styles.module.scss';
 
 export const PasswordForm = () => {
-  const email = useStore(authModel.$email);
-  const password = useStore(authModel.$password);
+  const {
+    email,
+    password,
+    pending,
+    isNewUser,
+    editClicked,
+    passwordFormSubmitted,
+    passwordChanged,
+    state,
+  } = useUnit({
+    email: authModel.$email,
+    password: authModel.$password,
+    pending: sessionModel.$pending,
+    isNewUser: authModel.$isNewUser,
+    editClicked: authModel.editClicked,
+    passwordFormSubmitted: authModel.passwordFormSubmitted,
+    passwordChanged: authModel.passwordChanged,
+    state: authModel.$state,
+  });
+
   const maskPassword = maskString(password);
-  const pending = useStore(sessionModel.$pending);
   const inputRef = useRef<HTMLInputElement>(null);
-  const isNewUser = useStore(authModel.$isNewUser);
-  const editClicked = useEvent(authModel.editClicked);
-  const passwordFormSubmit = useEvent(authModel.passwordFormSubmitted);
-  const passwordChanged = useEvent(authModel.passwordChanged);
-  const state = useStore(authModel.$state);
   const isAuthorizedState = state === 'authorized';
 
   useEffect(() => {
@@ -30,7 +42,7 @@ export const PasswordForm = () => {
 
   const handleSubmitForm: FormEventHandler = (e) => {
     e.preventDefault();
-    passwordFormSubmit({ email, password });
+    passwordFormSubmitted({ email, password });
   };
 
   return (

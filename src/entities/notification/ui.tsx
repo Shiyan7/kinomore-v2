@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useEffect } from 'react';
-import { useEvent, useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Icon, Portal } from 'shared/ui';
 import { notificationModel } from './model';
@@ -9,8 +9,10 @@ import styles from './styles.module.scss';
 const DELETE_DELAY = 5000;
 
 export const Notification = () => {
-  const notifications = useStore(notificationModel.$notifications);
-  const closeNotice = useEvent(notificationModel.deleteNotice);
+  const { notifications, closeNotice } = useUnit({
+    notifications: notificationModel.$notifications,
+    closeNotice: notificationModel.deleteNotice,
+  });
 
   const closeNoticeHandler = (id: number) => () => {
     closeNotice({ id });

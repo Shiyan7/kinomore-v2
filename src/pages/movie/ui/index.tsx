@@ -1,4 +1,4 @@
-import { useGate, useStore } from 'effector-react';
+import { useGate, useUnit } from 'effector-react';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import { movieModel, getPageTitle } from 'pages/movie';
@@ -10,10 +10,10 @@ import { Tabs } from './tabs';
 
 export const MoviePage = () => {
   const { query } = useRouter();
-  const data = useStore(movieModel.$movie);
-  const name = getPageTitle(data?.name);
-  const year = data?.year ? `(${data?.year})` : '';
-  const description = data?.description ?? data?.shortDescription ?? '';
+  const { movie } = useUnit({ movie: movieModel.$movie });
+  const name = getPageTitle(movie?.name);
+  const year = movie?.year ? `(${movie?.year})` : '';
+  const description = movie?.description ?? movie?.shortDescription ?? '';
   const title = `${name} ${year} смотреть онлайн бесплатно в хорошем HD 1080 / 720 качестве`;
 
   useGate(movieModel.MoviePageGate, { movieId: query.id as string });
@@ -29,7 +29,7 @@ export const MoviePage = () => {
           description,
           images: [
             {
-              url: data?.poster?.url ?? '',
+              url: movie?.poster?.url ?? '',
               alt: name,
             },
           ],
@@ -40,7 +40,7 @@ export const MoviePage = () => {
       <Tabs />
       <SimilarMovies />
       <Persons />
-      <Facts data={data?.facts} />
+      <Facts data={movie?.facts} />
     </>
   );
 };

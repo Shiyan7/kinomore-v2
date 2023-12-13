@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import { useEvent } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { useRouter } from 'next/router';
 import { useLockedBody, useToggler } from 'shared/lib';
 import { Button, Title } from 'shared/ui';
@@ -14,9 +14,11 @@ import styles from './styles.module.scss';
 export const Filters = () => {
   const { query } = useRouter();
   const { isOpen, close } = useToggler(filtersModel.toggler);
-  const optionSelected = useEvent(filtersModel.optionSelected);
-  const showResultsClicked = useEvent(filtersModel.showResultsClicked);
-  const mobileOptionSelected = useEvent(filtersModel.mobileOptionSelected);
+  const { optionSelected, showResultsClicked, mobileOptionSelected } = useUnit({
+    optionSelected: filtersModel.optionSelected,
+    showResultsClicked: filtersModel.showResultsClicked,
+    mobileOptionSelected: filtersModel.mobileOptionSelected,
+  });
 
   useLockedBody(isOpen);
 

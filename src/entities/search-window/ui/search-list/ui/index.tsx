@@ -1,16 +1,18 @@
 import clsx from 'clsx';
-import { useEvent, useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { searchModel } from 'entities/search-window';
 import { Title, Spinner, Button } from 'shared/ui';
 import { SearchItem } from './search-item';
 import styles from './styles.module.scss';
 
 export const SearchList = () => {
-  const data = useStore(searchModel.$searchResult);
-  const searchPending = useStore(searchModel.$searchPending);
-  const loadPending = useStore(searchModel.$loadPending);
-  const hasMore = useStore(searchModel.$hasMore);
-  const loadMore = useEvent(searchModel.loadMore);
+  const { data, searchPending, loadPending, hasMore, loadMore } = useUnit({
+    data: searchModel.$searchResult,
+    searchPending: searchModel.$searchPending,
+    loadPending: searchModel.$loadPending,
+    hasMore: searchModel.$hasMore,
+    loadMore: searchModel.loadMore,
+  });
 
   const Loader = (
     <div className={styles.loader}>
@@ -32,9 +34,11 @@ export const SearchList = () => {
   const SearchList = (
     <div className={styles.content}>
       <ul className={clsx('list-reset', styles.list)}>
-        {data.map(
-          (item) => item.poster && <SearchItem item={item} key={item.id} />
-        )}
+        {data.map((item) => {
+          if (!item.poster) return null;
+
+          return <SearchItem item={item} key={item.id} />;
+        })}
       </ul>
       {hasMore ? (
         <Button

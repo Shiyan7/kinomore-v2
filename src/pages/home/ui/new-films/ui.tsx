@@ -1,11 +1,11 @@
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { homeModel } from 'pages/home';
 import { Category } from 'widgets/category';
 import { MovieItem } from 'entities/movie/item';
 import { paths } from 'shared/routing';
 
 export const NewFilms = () => {
-  const data = useStore(homeModel.$newMovies);
+  const { newMovies } = useUnit({ newMovies: homeModel.$newMovies });
 
   return (
     <Category>
@@ -13,7 +13,7 @@ export const NewFilms = () => {
         Новые фильмы
       </Category.Title>
       <Category.Carousel
-        items={data?.docs}
+        items={newMovies?.docs}
         renderItem={(item) => <MovieItem item={item} />}
       />
     </Category>

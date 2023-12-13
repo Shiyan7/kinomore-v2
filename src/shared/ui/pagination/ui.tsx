@@ -60,18 +60,9 @@ export const Pagination = ({ total, page, onChange }: PaginationProps) => {
               {item}
             </button>
           ) : (
-            <button
-              className={clsx('btn-reset', styles.dots, {
-                [styles.isLeftDots]: isLeftDot,
-                [styles.isRightDots]: !isLeftDot,
-              })}
-              key={idx}
-              onClick={() => setPage(isLeftDot ? page - 5 : page + 5)}
-              title={`${isLeftDot ? 'Предыдущие' : 'Следующие'} 5 страниц`}
-            >
+            <span className={styles.dots} key={idx}>
               •••
-              <Icon name="common/arrows" />
-            </button>
+            </span>
           );
         })}
       </div>

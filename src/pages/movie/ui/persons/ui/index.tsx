@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { FreeMode } from 'swiper';
 import { movieModel } from 'pages/movie';
 import { CarouselMultiply } from 'shared/ui/carousel-multiply';
@@ -8,9 +8,9 @@ import { PersonItem } from './person-item';
 import styles from './styles.module.scss';
 
 export const Persons = () => {
-  const data = useStore(movieModel.$movie);
+  const { movie } = useUnit({ movie: movieModel.$movie });
 
-  if (!data?.persons?.length) return null;
+  if (!movie?.persons?.length) return null;
 
   return (
     <section className={styles.section}>
@@ -20,7 +20,7 @@ export const Persons = () => {
         </Title>
         <CarouselMultiply
           className={styles.carousel}
-          items={data?.persons}
+          items={movie?.persons}
           modules={[FreeMode]}
           navigation={false}
           options={{ freeMode: true }}

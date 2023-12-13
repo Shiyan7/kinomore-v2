@@ -1,4 +1,4 @@
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { homeModel } from 'pages/home';
 import { Category } from 'widgets/category';
 import { MovieItem } from 'entities/movie/item';
@@ -6,7 +6,9 @@ import { GenresEnum, SortEnum } from 'shared/config';
 import { paths } from 'shared/routing';
 
 export const Fantastic = () => {
-  const data = useStore(homeModel.$fantasticMovies);
+  const { fantasticMovies } = useUnit({
+    fantasticMovies: homeModel.$fantasticMovies,
+  });
 
   return (
     <Category>
@@ -20,7 +22,7 @@ export const Fantastic = () => {
         Фантастика
       </Category.Title>
       <Category.Carousel
-        items={data?.docs}
+        items={fantasticMovies?.docs}
         renderItem={(item) => <MovieItem item={item} />}
       />
     </Category>

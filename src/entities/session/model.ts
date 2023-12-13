@@ -1,6 +1,6 @@
 import { createStore, createEvent, sample } from 'effector';
 import { createGate } from 'effector-react';
-import { not } from 'patronum';
+import { and, not } from 'patronum';
 import { AppGate, isClient } from 'shared/config';
 import { atom } from 'shared/factory';
 import { navigationModel } from 'shared/navigation';
@@ -41,8 +41,8 @@ export const sessionModel = atom(() => {
   const $isRefreshed = refreshQuery.$finished;
 
   sample({
-    clock: $isRefreshed,
-    source: ProfilePageGate.open,
+    clock: and($isRefreshed, ProfilePageGate.status),
+    filter: Boolean,
     target: sessionQuery.start,
   });
 

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import clsx from 'clsx';
-import { useEvent, useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { useRouter } from 'next/router';
 import { movieModel } from 'pages/movie';
 import { favoritesModel } from 'features/favorites';
@@ -12,20 +12,24 @@ import styles from './styles.module.scss';
 
 export const MainButtons = () => {
   const { query } = useRouter();
-  const data = useStore(movieModel.$movie);
-  const toggleFavorite = useEvent(favoritesModel.toggleFavorite);
-  const isFavorite = useStore(favoritesModel.$isFavorite);
-  const isRated = useStore(movieModel.$isRated);
+
   const trailerToggler = useToggler(movieModel.trailerToggler);
   const playerToggler = useToggler(movieModel.playerToggler);
   const gradeToggler = useToggler(movieModel.gradeToggler);
   const shareToggler = useToggler(movieModel.shareToggler);
 
+  const { movie, toggleFavorite, isFavorite, isRated } = useUnit({
+    movie: movieModel.$movie,
+    toggleFavorite: favoritesModel.toggleFavorite,
+    isFavorite: favoritesModel.$isFavorite,
+    isRated: movieModel.$isRated,
+  });
+
   const movieId = Number(query.id);
 
   const items = [
     {
-      children: `Смотреть ${getMovieType(data?.type)}`,
+      children: `Смотреть ${getMovieType(movie?.type)}`,
       handler: playerToggler.open,
       gradient: true,
     },

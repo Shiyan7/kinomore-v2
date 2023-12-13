@@ -1,15 +1,15 @@
 import { createEffect, createEvent, createStore, sample } from 'effector';
-import { createGate } from 'effector-react';
-import type { PageContext } from 'nextjs-effector';
 import { checkFavoriteQuery } from 'features/favorites';
 import { sessionModel } from 'entities/session';
 import { atom } from 'shared/factory';
 import { createToggler } from 'shared/lib/toggler';
 import { notificationModel } from 'entities/notification';
+import { and } from 'patronum';
+import { createGate } from 'effector-react';
 import { movieByIdQuery } from '../api';
 
 export const movieModel = atom(() => {
-  const pageStarted = createEvent<PageContext>();
+  const pageStarted = createEvent<{ movieId: string }>();
 
   const MoviePageGate = createGate<{ movieId: string }>();
 
@@ -46,13 +46,14 @@ export const movieModel = atom(() => {
 
   sample({
     clock: pageStarted,
-    fn: ({ params }) => params?.id as string,
+    fn: ({ movieId }) => movieId as string,
     target: movieByIdQuery.start,
   });
 
   sample({
-    clock: sessionModel.$isRefreshed,
-    source: MoviePageGate.open,
+    clock: and(sessionModel.$isRefreshed, MoviePageGate.status),
+    source: MoviePageGate.state,
+    filter: (_, status) => Boolean(status),
     fn: ({ movieId }) => movieId,
     target: checkFavoriteQuery.start,
   });

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useEvent, useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { useRouter } from 'next/router';
 import { movieModel } from 'pages/movie';
 import { favoritesModel } from 'features/favorites';
@@ -9,13 +9,17 @@ import styles from './styles.module.scss';
 
 export const MobileActions = () => {
   const { query } = useRouter();
-  const rating = useStore(movieModel.$rating);
-  const isRated = useStore(movieModel.$isRated);
-  const isFavorite = useStore(favoritesModel.$isFavorite);
+
   const shareToggler = useToggler(movieModel.shareToggler);
   const gradeToggler = useToggler(movieModel.gradeToggler);
   const trailerToggler = useToggler(movieModel.trailerToggler);
-  const toggleFavorite = useEvent(favoritesModel.toggleFavorite);
+
+  const { rating, isRated, isFavorite, toggleFavorite } = useUnit({
+    rating: movieModel.$rating,
+    isRated: movieModel.$isRated,
+    isFavorite: favoritesModel.$isFavorite,
+    toggleFavorite: favoritesModel.toggleFavorite,
+  });
 
   const movieId = Number(query.id);
 

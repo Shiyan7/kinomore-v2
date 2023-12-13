@@ -1,4 +1,4 @@
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { NextSeo } from 'next-seo';
 import { personModel } from 'pages/person';
 import { Facts } from 'widgets/facts';
@@ -6,11 +6,11 @@ import { Filmography } from './filmography';
 import { MainSection } from './main-section';
 
 export const PersonPage = () => {
-  const data = useStore(personModel.$person);
+  const { person } = useUnit({ person: personModel.$person });
 
-  const enName = data?.enName ? `(${data?.enName})` : '';
-  const title = `${data?.name} ${enName}: Фото, факты`;
-  const description = `${data?.name} ${enName}: Факты, фильмография`;
+  const enName = person?.enName ? `(${person?.enName})` : '';
+  const title = `${person?.name} ${enName}: Фото, факты`;
+  const description = `${person?.name} ${enName}: Факты, фильмография`;
 
   return (
     <>
@@ -23,7 +23,7 @@ export const PersonPage = () => {
           description,
           images: [
             {
-              url: data?.photo ?? '',
+              url: person?.photo ?? '',
               alt: title,
             },
           ],
@@ -32,7 +32,7 @@ export const PersonPage = () => {
       />
       <MainSection />
       <Filmography />
-      <Facts data={data?.facts} narrow />
+      <Facts data={person?.facts} narrow />
     </>
   );
 };

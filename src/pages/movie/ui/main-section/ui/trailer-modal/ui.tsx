@@ -1,4 +1,4 @@
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { useState } from 'react';
 import { movieModel } from 'pages/movie';
 import { useToggler } from 'shared/lib/toggler';
@@ -9,13 +9,13 @@ import styles from './styles.module.scss';
 export const TrailerModal = () => {
   const { close, isOpen } = useToggler(movieModel.trailerToggler);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const data = useStore(movieModel.$movie);
-  const trailer = getTrailer(data?.videos);
+  const { movie } = useUnit({ movie: movieModel.$movie });
+  const trailer = getTrailer(movie?.videos);
 
   return (
     <Popup className={styles.modal} close={close} isOpen={isOpen}>
       <div className={styles.content}>
-        {data?.videos?.trailers?.length ? (
+        {movie?.videos?.trailers?.length ? (
           <>
             {isLoading ? (
               <div className={styles.spinner}>

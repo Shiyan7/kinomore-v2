@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import clsx from 'clsx';
-import { useEvent, useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { useState } from 'react';
 import { movieModel } from 'pages/movie';
 import { useToggler } from 'shared/lib/toggler';
@@ -9,10 +9,12 @@ import styles from './styles.module.scss';
 
 export const GradeModal = () => {
   const [hover, setHover] = useState<number | null>(null);
-  const rating = useStore(movieModel.$rating);
   const gradeToggler = useToggler(movieModel.gradeToggler);
-  const ratingModalClosed = useEvent(movieModel.ratingModalClosed);
-  const ratingSelected = useEvent(movieModel.ratingSelected);
+  const { rating, ratingModalClosed, ratingSelected } = useUnit({
+    rating: movieModel.$rating,
+    ratingModalClosed: movieModel.ratingModalClosed,
+    ratingSelected: movieModel.ratingSelected,
+  });
 
   return (
     <Popup

@@ -87,30 +87,6 @@
   color: rgba(#fff, 0.3);
   transition: color var(--duration);
 
-  &.isRightDots {
-    svg {
-      transform: rotate(180deg);
-    }
-  }
-
-  &:hover {
-    color: transparent;
-
-    svg {
-      opacity: 1;
-    }
-  }
-
-  svg {
-    position: absolute;
-    z-index: 2;
-    width: 25px;
-    height: 25px;
-    fill: var(--color-primary);
-    opacity: 0;
-    transition: opacity var(--duration);
-  }
-
   @media (max-width: 768px) {
     display: none;
   }

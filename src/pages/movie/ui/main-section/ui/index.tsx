@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import type { CSSProperties } from 'react';
 import { movieModel } from 'pages/movie';
 import { Description } from './description';
@@ -15,7 +15,7 @@ import { Title } from './title';
 import { TrailerModal } from './trailer-modal';
 
 export const MainSection = () => {
-  const data = useStore(movieModel.$movie);
+  const { movie } = useUnit({ movie: movieModel.$movie });
 
   return (
     <section className={styles.section}>
@@ -23,7 +23,7 @@ export const MainSection = () => {
       <div
         className={styles.bg}
         style={
-          { backgroundImage: `url(${data?.backdrop?.url})` } as CSSProperties
+          { backgroundImage: `url(${movie?.backdrop?.url})` } as CSSProperties
         }
       />
       <div className={clsx('container', styles.container)}>

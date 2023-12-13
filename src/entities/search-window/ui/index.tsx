@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import { searchModel } from 'entities/search-window';
 import { useToggler } from 'shared/lib/toggler';
 import { Title, Modal } from 'shared/ui';
@@ -10,7 +10,7 @@ import styles from './styles.module.scss';
 
 export const SearchWindow = () => {
   const { isOpen, close } = useToggler(searchModel.toggler);
-  const query = useStore(searchModel.$query);
+  const { query } = useUnit({ query: searchModel.$query });
 
   return (
     <Modal className={styles.window} close={close} isOpen={isOpen}>

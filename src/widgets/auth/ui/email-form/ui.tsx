@@ -1,6 +1,6 @@
 import { useGoogleLogin } from '@react-oauth/google';
 import clsx from 'clsx';
-import { useEvent, useStore } from 'effector-react';
+import { useUnit } from 'effector-react';
 import type { FormEventHandler } from 'react';
 import { useEffect, useRef } from 'react';
 import { authModel } from 'widgets/auth';
@@ -14,12 +14,21 @@ import { Transition } from '../transition';
 import styles from './styles.module.scss';
 
 export const EmailForm = () => {
-  const email = useStore(authModel.$email);
+  const {
+    email,
+    emailChanged,
+    emailFormSubmitted,
+    loginWithGoogle,
+    checkUserPending,
+  } = useUnit({
+    email: authModel.$email,
+    emailChanged: authModel.emailChanged,
+    emailFormSubmitted: authModel.emailFormSubmitted,
+    loginWithGoogle: sessionModel.loginWithGoogle,
+    checkUserPending: authModel.$checkUserPending,
+  });
+
   const inputRef = useRef<HTMLInputElement>(null);
-  const emailChanged = useEvent(authModel.emailChanged);
-  const emailFormSubmitted = useEvent(authModel.emailFormSubmitted);
-  const loginWithGoogle = useEvent(sessionModel.loginWithGoogle);
-  const pending = useStore(authModel.$checkUserPending);
 
   const googleLogin = useGoogleLogin({
     onSuccess: loginWithGoogle,
@@ -66,7 +75,7 @@ export const EmailForm = () => {
           <Button
             className={styles.btn}
             disabled={!email}
-            loading={pending}
+            loading={checkUserPending}
             type="submit"
           >
             Продолжить
