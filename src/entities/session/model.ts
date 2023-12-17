@@ -1,7 +1,7 @@
 import { createStore, createEvent, sample } from 'effector';
 import { createGate } from 'effector-react';
-import { and, not } from 'patronum';
-import { AppGate, isClient } from 'shared/config';
+import { and, not, or } from 'patronum';
+import { isClient } from 'shared/config';
 import { atom } from 'shared/factory';
 import { navigationModel } from 'shared/navigation';
 import { paths } from 'shared/routing';
@@ -22,8 +22,6 @@ export const sessionModel = atom(() => {
 
   const checkTokenAndRedirect = createEvent();
 
-  const refreshTokenStarted = createEvent<string>();
-
   const startRefreshTokenWithInterval = createEvent();
 
   const loginWithGoogle = createEvent<{ code: string }>();
@@ -32,7 +30,7 @@ export const sessionModel = atom(() => {
 
   const $isLogged = createStore(false);
 
-  const $pending = createStore(false);
+  const $pending = or(signInQuery.$pending, signUpQuery.$pending);
 
   const ProfilePageGate = createGate();
 
@@ -63,19 +61,14 @@ export const sessionModel = atom(() => {
   }, REFRESH_DELAY);
 
   sample({
-    clock: [AppGate.open, startRefreshTokenWithInterval],
-    fn: tokenService.getRefreshToken,
-    target: refreshTokenStarted,
-  });
-
-  sample({
-    clock: refreshTokenStarted,
+    clock: [navigationModel.$asPath, startRefreshTokenWithInterval],
     filter: tokenService.hasRefreshToken,
+    fn: tokenService.getRefreshToken,
     target: refreshQuery.start,
   });
 
   sample({
-    clock: AppGate.open,
+    clock: navigationModel.$asPath,
     fn: tokenService.hasAccessToken,
     target: [$hasAccessToken, $isLogged],
   });
@@ -86,9 +79,8 @@ export const sessionModel = atom(() => {
   });
 
   sample({
-    clock: AppGate.open,
-    source: navigationModel.$router,
-    filter: (router) => router?.asPath.startsWith(paths.profile) ?? false,
+    clock: navigationModel.$asPath,
+    filter: (asPath) => asPath?.startsWith(paths.profile) ?? false,
     target: checkTokenAndRedirect,
   });
 
@@ -121,23 +113,18 @@ export const sessionModel = atom(() => {
     target: sessionQuery.reset,
   });
 
-  $isLogged.reset(logOut);
-
-  $isLogged.on(
-    [
-      signInQuery.finished.success,
-      googleLoginQuery.finished.success,
-      signUpQuery.finished.success,
-      refreshQuery.finished.success,
-      sessionQuery.finished.success,
+  sample({
+    clock: [
+      signInQuery.$succeeded,
+      googleLoginQuery.$succeeded,
+      signUpQuery.$succeeded,
+      refreshQuery.$succeeded,
+      sessionQuery.$succeeded,
     ],
-    () => true
-  );
+    target: $isLogged,
+  });
 
-  $pending.on(
-    [signInQuery.$pending, signUpQuery.$pending],
-    (_, payload) => payload
-  );
+  $isLogged.reset(logOut);
 
   return {
     $session,

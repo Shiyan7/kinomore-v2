@@ -6,7 +6,7 @@ import { searchModel } from 'entities/search-window';
 import { navigationModel } from 'shared/navigation';
 
 reset({
-  clock: navigationModel.$router,
+  clock: navigationModel.$asPath,
   target: [
     authModel.$state,
     authModel.$email,

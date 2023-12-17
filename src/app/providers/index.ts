@@ -1,5 +1,5 @@
 import compose from 'compose-function';
 import { withGoogleOAuth } from './with-google-oauth';
-import { withSeo } from './with-seo';
+import { withEffectorNext } from './with-effector-next';
 
-export const withProviders = compose(withSeo, withGoogleOAuth);
+export const withProviders = compose(withEffectorNext, withGoogleOAuth);

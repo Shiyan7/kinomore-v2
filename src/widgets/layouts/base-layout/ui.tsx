@@ -3,10 +3,10 @@ import { AuthWindow } from 'widgets/auth';
 import { Header } from 'widgets/header';
 import { useGate } from 'effector-react';
 import { useRouter } from 'next/router';
-import { AppGate } from 'shared/config';
 import { navigationModel } from 'shared/navigation';
 import { SearchWindow } from 'entities/search-window';
 import { Notification } from 'entities/notification';
+import { Seo } from './seo';
 
 // run process logic for all base layout pages
 import 'processes/root';
@@ -16,8 +16,6 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
 
   useGate(navigationModel.RouterGate, { router });
 
-  useGate(AppGate);
-
   return (
     <>
       <Header />
@@ -25,6 +23,7 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
       <SearchWindow />
       <AuthWindow />
       <Notification />
+      <Seo />
     </>
   );
 };

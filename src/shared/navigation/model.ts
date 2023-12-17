@@ -1,8 +1,9 @@
 import type { ParsedUrlQuery } from 'node:querystring';
-import { attach, createStore, sample } from 'effector';
+import { attach, createEvent, createStore, sample } from 'effector';
 import { createGate } from 'effector-react';
 import type { NextRouter } from 'next/router';
 import { atom } from 'shared/factory';
+import { reshape } from 'patronum';
 
 export const navigationModel = atom(() => {
   const RouterGate = createGate<{ router: NextRouter }>();
@@ -13,13 +14,12 @@ export const navigationModel = atom(() => {
     .on(RouterGate.state, (_, { router }) => router)
     .reset(RouterGate.close);
 
-  const $query = createStore<ParsedUrlQuery | undefined | null>(null);
-
-  sample({
-    clock: $router,
-    filter: Boolean,
-    fn: ({ query }) => query,
-    target: $query,
+  const { $query, $asPath } = reshape({
+    source: $router,
+    shape: {
+      $query: (router) => router?.query,
+      $asPath: (router) => router?.asPath,
+    },
   });
 
   const pushFx = attach({
@@ -44,5 +44,6 @@ export const navigationModel = atom(() => {
     $query,
     pushFx,
     pushQueryFx,
+    $asPath,
   };
 });

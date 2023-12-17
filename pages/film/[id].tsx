@@ -1,6 +1,7 @@
 import { allSettled, fork, serialize } from 'effector';
 import type { GetServerSideProps } from 'next';
 import { movieModel } from 'pages/movie';
+import { paths } from 'shared/routing';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const scope = fork();
@@ -9,6 +10,15 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     scope,
     params: { movieId: params?.id },
   });
+
+  if (!params?.id) {
+    return {
+      redirect: {
+        destination: paths.home,
+        permanent: false,
+      },
+    };
+  }
 
   const values = serialize(scope);
 

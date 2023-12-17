@@ -44,7 +44,6 @@ export const Pagination = ({ total, page, onChange }: PaginationProps) => {
       <div className={styles.range}>
         {range.map((item, idx) => {
           const isNumberItem = item !== 'dots';
-          const isLeftDot = idx <= 2;
           const isActive = active === item;
 
           return isNumberItem ? (

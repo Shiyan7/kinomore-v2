@@ -6,7 +6,7 @@ import { createToggler } from 'shared/lib/toggler';
 import { notificationModel } from 'entities/notification';
 import { and } from 'patronum';
 import { createGate } from 'effector-react';
-import { movieByIdQuery } from '../api';
+import { movieQuery } from '../api';
 
 export const movieModel = atom(() => {
   const pageStarted = createEvent<{ movieId: string }>();
@@ -21,7 +21,7 @@ export const movieModel = atom(() => {
 
   const playerToggler = createToggler();
 
-  const $movie = movieByIdQuery.$data;
+  const $movie = movieQuery.$data;
 
   const $isRated = createStore(false);
 
@@ -47,7 +47,7 @@ export const movieModel = atom(() => {
   sample({
     clock: pageStarted,
     fn: ({ movieId }) => movieId as string,
-    target: movieByIdQuery.start,
+    target: movieQuery.start,
   });
 
   sample({
