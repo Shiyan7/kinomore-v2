@@ -28,7 +28,7 @@
     "effector-react": "23.0.1",
     "eslint": "^8.43.0",
     "jest-environment-jsdom": "^29.3.1",
-    "next": "^14.0.4",
+    "next": "13.3.0",
     "next-seo": "^6.4.0",
     "nextjs-progressbar": "^0.0.16",
     "normalize.css": "^8.0.1",

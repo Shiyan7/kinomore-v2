@@ -6,11 +6,6 @@ import { paths } from 'shared/routing';
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const scope = fork();
 
-  await allSettled(movieModel.pageStarted, {
-    scope,
-    params: { movieId: params?.id },
-  });
-
   if (!params?.id) {
     return {
       redirect: {
@@ -19,6 +14,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       },
     };
   }
+
+  await allSettled(movieModel.pageStarted, {
+    scope,
+    params: { movieId: params?.id },
+  });
 
   const values = serialize(scope);
 
