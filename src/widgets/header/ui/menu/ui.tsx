@@ -17,6 +17,12 @@ export const Menu = () => {
 
   return (
     <div className={clsx(styles.menu, isOpen && styles.opened)}>
+      <div className={styles.snowContainer}>
+        {Array.from({ length: 150 }).map((_, idx) => {
+          // eslint-disable-next-line react/no-array-index-key
+          return <div className={styles.snow} key={idx} />;
+        })}
+      </div>
       <button className={clsx('btn-reset', styles.close)} onClick={close}>
         <Icon name="common/close" />
       </button>

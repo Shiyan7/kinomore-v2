@@ -4,6 +4,7 @@ import { authModel } from 'widgets/auth';
 import { favoritesModel } from 'features/favorites';
 import { searchModel } from 'entities/search-window';
 import { navigationModel } from 'shared/navigation';
+import { headerModel } from 'widgets/header';
 
 reset({
   clock: navigationModel.$asPath,
@@ -20,5 +21,6 @@ reset({
     favoritesModel.$pending,
     favoritesModel.$isFavorite,
     searchModel.toggler.$isOpen,
+    headerModel.toggler.$isOpen,
   ],
 });
