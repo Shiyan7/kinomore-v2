@@ -18,12 +18,12 @@ export const BaseLayout = ({ children }: PropsWithChildren) => {
 
   return (
     <>
+      <Seo />
       <Header />
       <main className="main">{children}</main>
       <SearchWindow />
       <AuthWindow />
       <Notification />
-      <Seo />
     </>
   );
 };

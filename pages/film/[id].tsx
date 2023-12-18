@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   await allSettled(movieModel.pageStarted, {
     scope,
-    params: { movieId: params?.id },
+    params: { movieId: params.id },
   });
 
   const values = serialize(scope);
