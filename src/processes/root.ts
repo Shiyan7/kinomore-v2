@@ -5,6 +5,7 @@ import { favoritesModel } from 'features/favorites';
 import { searchModel } from 'entities/search-window';
 import { navigationModel } from 'shared/navigation';
 import { headerModel } from 'widgets/header';
+import { favoritesPageModel } from 'pages/favorites';
 
 reset({
   clock: navigationModel.$asPath,
@@ -17,9 +18,9 @@ reset({
     authModel.$password,
     movieModel.$isRated,
     authModel.$progress,
-    favoritesModel.$data,
-    favoritesModel.$pending,
+    favoritesPageModel.$data,
     favoritesModel.$isFavorite,
+    favoritesPageModel.$pending,
     searchModel.toggler.$isOpen,
     headerModel.toggler.$isOpen,
   ],

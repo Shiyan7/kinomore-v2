@@ -1,15 +1,14 @@
 import { createQuery } from '@farfetched/core';
 import { createCommonRequestFx } from 'shared/api/requests';
 import type { Movies } from 'shared/api/types';
-import { GenresEnum } from 'shared/config';
-import { getCurrentYear } from 'shared/lib';
+import { GenresEnum, CURRENT_YEAR } from 'shared/config';
 
 export const newMoviesQuery = createQuery({
   effect: createCommonRequestFx<void, Movies>({
     url: '/v1.3/movie',
     params: {
       'rating.kp': '5-9',
-      year: getCurrentYear(),
+      year: CURRENT_YEAR,
       sortField: 'votes.filmCritics',
       sortType: '-1',
       limit: 15,
@@ -21,7 +20,7 @@ export const comedyMoviesQuery = createQuery({
   effect: createCommonRequestFx<void, Movies>({
     url: '/v1.3/movie',
     params: {
-      year: getCurrentYear(),
+      year: CURRENT_YEAR,
       type: 'movie',
       name: '!null',
       'rating.kp': '7-10',
@@ -39,7 +38,7 @@ export const familyMoviesQuery = createQuery({
     params: {
       'genres.name': GenresEnum.Family,
       'poster.previewUrl': '!null',
-      year: getCurrentYear(),
+      year: CURRENT_YEAR,
       name: '!null',
       sortField: 'votes.imdb',
       sortType: '-1',
@@ -52,7 +51,7 @@ export const dramaMoviesQuery = createQuery({
   effect: createCommonRequestFx<void, Movies>({
     url: '/v1.3/movie',
     params: {
-      year: getCurrentYear(),
+      year: CURRENT_YEAR,
       'genres.name': GenresEnum.Drama,
       'poster.previewUrl': '!null',
       name: '!null',
@@ -69,7 +68,7 @@ export const fantasticMoviesQuery = createQuery({
     params: {
       'genres.name': GenresEnum.ScienceFiction,
       'poster.previewUrl': '!null',
-      year: getCurrentYear(),
+      year: CURRENT_YEAR,
       name: '!null',
       sortField: 'votes.kp',
       sortType: '-1',

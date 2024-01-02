@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import { useGate, useUnit } from 'effector-react';
-import { favoritesModel } from 'features/favorites';
 import { MovieItem } from 'entities/movie/item';
 import { paths } from 'shared/routing';
 import { Icon, Spinner, Title } from 'shared/ui';
 import { Breadcrumbs } from 'shared/ui/breadcrumbs';
+import { favoritesPageModel } from './model';
 import styles from './styles.module.scss';
 
 const breadcrumbs = [
@@ -14,11 +14,11 @@ const breadcrumbs = [
 
 export const FavoritesPage = () => {
   const { favorites, pending } = useUnit({
-    favorites: favoritesModel.$data,
-    pending: favoritesModel.$pending,
+    favorites: favoritesPageModel.$data,
+    pending: favoritesPageModel.$pending,
   });
 
-  useGate(favoritesModel.FavoritesPageGate);
+  useGate(favoritesPageModel.FavoritesPageGate);
 
   const Loader = (
     <div className={styles.loader}>

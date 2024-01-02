@@ -1,30 +1,14 @@
 import { createEvent, createStore, sample } from 'effector';
-import { createGate } from 'effector-react';
 import { and, not } from 'patronum';
 import { authModel } from 'widgets/auth';
 import { refreshQuery, sessionModel } from 'entities/session';
-import type { MovieEntity } from 'shared/api/types';
 import { atom } from 'shared/factory';
-import {
-  moviesQuery,
-  checkFavoriteQuery,
-  favoritesQuery,
-  toggleFavoriteQuery,
-} from './api';
-import { arrayToQueryParams, sortByIds } from './lib';
+import { checkFavoriteQuery, toggleFavoriteQuery } from './api';
 
 export const favoritesModel = atom(() => {
-  const FavoritesPageGate = createGate();
-
-  const $pending = createStore(true);
-
   const $isFavorite = createStore(false);
 
-  const $data = createStore<MovieEntity[]>([]);
-
   const toggleFavorite = createEvent<{ id: number }>();
-
-  const $arrayOfId = favoritesQuery.$data.map((data) => data?.items ?? []);
 
   sample({
     clock: toggleFavorite,
@@ -41,32 +25,6 @@ export const favoritesModel = atom(() => {
   });
 
   sample({
-    clock: and(sessionModel.$isRefreshed, FavoritesPageGate.status),
-    filter: Boolean,
-    target: favoritesQuery.start,
-  });
-
-  sample({
-    clock: favoritesQuery.finished.success,
-    source: $arrayOfId,
-    fn: arrayToQueryParams,
-    target: moviesQuery.start,
-  });
-
-  sample({
-    clock: moviesQuery.$data,
-    source: $arrayOfId,
-    fn: (array, data) => sortByIds({ array, data }),
-    target: $data,
-  });
-
-  sample({
-    clock: [favoritesQuery.finished.failure, moviesQuery.finished.success],
-    fn: () => false,
-    target: $pending,
-  });
-
-  sample({
     clock: checkFavoriteQuery.finished.success,
     fn: ({ result }) => result.status,
     target: $isFavorite,
@@ -79,10 +37,7 @@ export const favoritesModel = atom(() => {
   });
 
   return {
-    FavoritesPageGate,
     toggleFavorite,
-    $pending,
     $isFavorite,
-    $data,
   };
 });

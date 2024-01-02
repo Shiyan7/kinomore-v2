@@ -1,6 +1,5 @@
 import { createStore, createEvent, sample } from 'effector';
-import { createGate } from 'effector-react';
-import { and, not, or } from 'patronum';
+import { not, or } from 'patronum';
 import { isClient } from 'shared/config';
 import { atom } from 'shared/factory';
 import { navigationModel } from 'shared/navigation';
@@ -32,17 +31,7 @@ export const sessionModel = atom(() => {
 
   const $pending = or(signInQuery.$pending, signUpQuery.$pending);
 
-  const ProfilePageGate = createGate();
-
-  const $session = sessionQuery.$data;
-
   const $isRefreshed = refreshQuery.$finished;
-
-  sample({
-    clock: and($isRefreshed, ProfilePageGate.status),
-    filter: Boolean,
-    target: sessionQuery.start,
-  });
 
   sample({
     clock: [
@@ -116,10 +105,10 @@ export const sessionModel = atom(() => {
   sample({
     clock: [
       signInQuery.$succeeded,
-      googleLoginQuery.$succeeded,
       signUpQuery.$succeeded,
       refreshQuery.$succeeded,
       sessionQuery.$succeeded,
+      googleLoginQuery.$succeeded,
     ],
     target: $isLogged,
   });
@@ -127,12 +116,10 @@ export const sessionModel = atom(() => {
   $isLogged.reset(logOut);
 
   return {
-    $session,
     $isLogged,
     $isRefreshed,
     $pending,
     loginWithGoogle,
     logOut,
-    ProfilePageGate,
   };
 });

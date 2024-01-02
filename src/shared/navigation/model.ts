@@ -1,5 +1,5 @@
 import type { ParsedUrlQuery } from 'node:querystring';
-import { attach, createEvent, createStore, sample } from 'effector';
+import { attach, createStore } from 'effector';
 import { createGate } from 'effector-react';
 import type { NextRouter } from 'next/router';
 import { atom } from 'shared/factory';
@@ -42,8 +42,8 @@ export const navigationModel = atom(() => {
     RouterGate,
     $router,
     $query,
+    $asPath,
     pushFx,
     pushQueryFx,
-    $asPath,
   };
 });

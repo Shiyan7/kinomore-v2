@@ -6,15 +6,16 @@ import { Button, Icon, Title } from 'shared/ui';
 import { Breadcrumbs } from 'shared/ui/breadcrumbs';
 import { Spinner } from 'shared/ui/spinner';
 import { breadcrumbs, profileItems } from '../config';
+import { profileModel } from '../model';
 import styles from './styles.module.scss';
 
 export const ProfilePage = () => {
   const { session, logOut } = useUnit({
-    session: sessionModel.$session,
+    session: profileModel.$session,
     logOut: sessionModel.logOut,
   });
 
-  useGate(sessionModel.ProfilePageGate);
+  useGate(profileModel.ProfilePageGate);
 
   const Loader = (
     <div className={styles.loader}>

@@ -4469,10 +4469,10 @@ pathe@1.1.1:
   resolved "https://registry.yarnpkg.com/pathe/-/pathe-1.1.1.tgz#1dd31d382b974ba69809adc9a7a347e65d84829a"
   integrity sha512-d+RQGp0MAYTIaDBIMmOfMwz3E+LOZnxx1HZd5R18mmCZY0QBlK0LDZfPc8FW8Ed2DlvsuE6PRjroDY+wg4+j/Q==
 
-patronum@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/patronum/-/patronum-2.0.0.tgz#1d5bc37f41feb675e48e7bd8390d2907b0f701f4"
-  integrity sha512-qNlLpXXE9ULVEH6+Tj7pQeHgiRNBL1ibE8kScD89ZysW9yQym+xUQXPJzC1XZlCK4olkTHFhmFLK/mks8r/3fQ==
+patronum@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/patronum/-/patronum-2.1.1.tgz#25a2939a546e4ae61d6ad578628078f7d63a3772"
+  integrity sha512-VPGBzylMxmkpw94ApK887hXqlzF+81gK3UJeUyTACjGVoQsNOkWdwK8FWUCFvBZK4R/TG4tT0eytlUjytkvbEQ==
 
 picocolors@1.0.0, picocolors@^1.0.0:
   version "1.0.0"
