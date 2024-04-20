@@ -32,7 +32,7 @@ export const Player = () => {
         allowFullScreen
         className={styles.iframe}
         onLoad={() => setIsLoading(false)}
-        src={`https://api.linktodo.ws/embed/kp/${query.id}?host=kinobd.net`}
+        src={`https://api.linktodo.ws/embed/kp/${query.id}`}
       />
       <div className={clsx(styles.spinner, isLoading && styles.isLoading)}>
         <Spinner strokeWidth={3} />
